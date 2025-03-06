@@ -20,7 +20,7 @@
 lang: en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title: Note of J.
+title: Jiho's Blog
 
 timezone: Asia/Seoul
 
@@ -31,7 +31,7 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >
-  melody of notes
+    Sweet berries, Readable writings
 
 # A list of keywords for your blog
 keywords:              ["Development", "C++", "Rust", "Jekyll"]
@@ -39,7 +39,7 @@ keywords:              ["Development", "C++", "Rust", "Jekyll"]
 # A (square) logo for your site.
 # If provided, it will be shown at the top of the sidebar.
 # It also used by the `jekyll-seo-tag` plugin.
-logo:                  /assets/img/gtjump2.jpeg
+logo:                  /assets/img/berry.jpg
 
 # This should be the same author as first entry in `_data/authors.yml`.
 author:
@@ -49,7 +49,7 @@ author:
   picture:             /assets/img/avatar.jpg
   social:
     linkedin:
-    github:            phylosopher07
+    github:            berryjune07
     stackoverflow:
     email:             pianoforte0203@gmail.com
 
@@ -101,7 +101,7 @@ theme_color:           rgb(31,55,75)
 
 # The string encoding which fonts to fetch from Google Fonts.
 # See: <https://hydejack.com/docs/config/#changing-fonts>
-google_fonts:          Noto+Sans+KR|JetBrains+Mono|Nanum+Gothic+Coding
+google_fonts:          Roboto+Slab:700|Noto+Sans+KR|JetBrains+Mono|Nanum+Gothic+Coding
 
 # The text font. Expects a string that is a valid CSS font-family value.
 # To change font-weight, see _sass/variables.scss
@@ -109,7 +109,7 @@ font:                  Noto Sans KR, Helvetica, Arial, sans-serif
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
 # To change font-weight, see _sass/variables.scss
-font_heading:          Helvetica, Arial, sans-serif
+font_heading:          Roboto Slab, Helvetica, Arial, sans-serif
 
 # The font used for code blocks. Expects a string that is a valid CSS font-family value.
 font_code:             JetBrains Mono, Nanum Gothic Coding, Menlo, Monaco, Consolas, monospace;
@@ -215,7 +215,7 @@ comments:
 # Make sure all variables are set properly. Check below link for detail.
 # https://giscus.vercel.app/
 giscus:
-  repo: phylosopher07/phylosopher07.github.io_comments            # <gh-username>/<repo>
+  repo: berryjune07/berryjune07.github.io_comments            # <gh-username>/<repo>
   repo_id: R_kgDOJI7E3g
   category: General
   category_id: DIC_kwDOJI7E3s4CU11p

@@ -4,11 +4,11 @@ basics:
   picture: /assets/img/piano.png
   email: "pianoforte0203@gmail.com"
   phone: "(+82) 10-9124-8985"
-  website: "https://phylosopher07.github.io"
+  website: "https://berryjune07.github.io"
   summary: >
-    Hello, I'm Jiho Jun from South Korea.<br>
-    I'm attending to GSHS (Gyeonggi Science High School) and I'm 3rd grader. <br>
-    This blog is my note for my study and my life, so that I can remember what I've done and what I've thought. <br>
+    Hello, I'm Jiho Jun from South Korea. <br>
+    I'm a freshman at Seoul National University (SNU). <br>
+    This blog is my personal journal where I record my studies and life experiences—so I can look back on what I've learned and thought along the way. <br>
   location:
   #   address: "2712 Broadway St"
   #   postalCode: "CA 94115"
@@ -17,8 +17,8 @@ basics:
     region: "Hwasung"
   profiles:
     - network: "Github"
-      username: "phylosopher07"
-      url: "https://github.com/phylosopher07"
+      username: "berryjune07"
+      url: "https://github.com/berryjune07"
     - network: "Facebook"
       username: Jiho Jun
       url: "https://www.facebook.com/profile.php?id=100078342350761"
@@ -46,11 +46,11 @@ volunteer:
   #    - "Database Systems; Teaching & helping sophomores on the database system course."
   #    - "Awarded 'Hanyang Best Mentor' for mentoring Database Systems course."
 education:
-  - institution: "GSHS (Gyeonggi Science High School), Suwon"
+  - institution: "GSHS (Gyeonggi Science High School)"
     area: "Secondary educations"
-    studyType: "Bachelor"
+    studyType: "Graduate"
     startDate: "2022-03-02"
-    endDate: "2024, expected"
+    endDate: "2024-12-31"
     gpa: "4.xx / 4.3"
     courses:
       - "AP Physics"
@@ -59,6 +59,10 @@ education:
       - "AP Computer Programming"
   #- certificate: "PongPong"
   #  date: "2022-12-22"
+  - institution: "SNU (Seoul National University)"
+    area: "Higher educations"
+    studyType: "Freshman"
+    startDate: "2025-03-04"
 projects:
   - title: "3d Rendering on 2d Screen"
     startDate: "2019-08-01"

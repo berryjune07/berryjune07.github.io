@@ -10,7 +10,6 @@ order: 1
 ## Hello, World!
 
 Hi, I'm **Jiho Jun**.<br>
-I'm currently attending to **[GSHS (Gyeonggi Science High School)]**.<br>
 Please check my [resume] if you wish to know more about me.
 
 ***
@@ -30,6 +29,5 @@ based on the jekyll theme [Hydejack].
 <!--author-->
 
 <!-- Links -->
-[GSHS (Gyeonggi Science High School)]: https://www.gs.hs.kr/
 [resume]: /resume/
 [Hydejack]: https://hydejack.com
