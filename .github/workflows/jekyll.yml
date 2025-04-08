@@ -39,7 +39,7 @@ jobs:
       - name: Remove hard links and symbolic links from _site
         run: |
           find ./_site -type l -delete
-          find ./_site -type f -links +1 -delete    
+          find ./_site -type f -links +1 -delete
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
