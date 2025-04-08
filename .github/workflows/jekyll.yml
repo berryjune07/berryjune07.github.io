@@ -40,6 +40,8 @@ jobs:
         run: |
           find ./_site -type l -delete
           find ./_site -type f -links +1 -delete
+      - name: List all files and sizes
+        run: find ./_site -type f -exec ls -lh {} \; 2>/dev/null
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
