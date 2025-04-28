@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-04-28T15:56:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Set Theory for Statistics</title><link href="http://localhost:4000/mathematics/set-theory-for-statistics.html" rel="alternate" type="text/html" title="Set Theory for Statistics" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/set-theory-for-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/set-theory-for-statistics.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="mathematical-statistics" /><summary type="html"></summary></entry><entry><title type="html">Functions and Their Graphs</title><link href="http://localhost:4000/mathematics/functions-and-their-graphs.html" rel="alternate" type="text/html" title="Functions and Their Graphs" /><published>2025-04-15T00:00:00+09:00</published><updated>2025-04-15T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/functions-and-their-graphs</id><content type="html" xml:base="http://localhost:4000/mathematics/functions-and-their-graphs.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Functions
+
+A **function** $f$ is a rule that assigns to each element $x$ in a set $D$ exactly one element $y$ in a set $E$. The set $D$ is called the **domain** of the function, and the set $E$ is called the **codomain** of the function. The notation $f(x)=y$ indicates that $y$ is the image of $x$ under the function $f$. The set of all images of elements in the domain is called the **range** of the function.
+The following is the most common representation of a function:
+
+\\[
+f: X \to Y : x \mapsto f(x)
+\\]
+
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Codomain2.SVG/1280px-Codomain2.SVG.png)
+{:.centered}
+
+A diagram showing the relationship between the domain, codomain, and range of a function
+{:.figcaption}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Lazy Propagation</title><link href="http://localhost:4000/computer-science/lazy-propagation.html" rel="alternate" type="text/html" title="Lazy Propagation" /><published>2024-08-02T00:00:00+09:00</published><updated>2024-08-02T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/lazy-propagation</id><content type="html" xml:base="http://localhost:4000/computer-science/lazy-propagation.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Introduction
+**Lazy propagation** is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.
+
+## Lazy Propagation
+
+### Explanation
+Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
+$F \subset M^M$ which satisfies the following property:
+- $\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$
+
+i.e. $f$ is an endomorphism of the monoid $(M, \ast)$.
+- $F = \mathrm{End}(M)$
+
+An endomorphism is a homomorphism from a set to itself, and a homomorphism is a function that preserves the structure of the set. (Read more about homomorphisms [here](https://en.wikipedia.org/wiki/Homomorphism).)
+
+Consider an array $A=[a_1,\cdots,a_N]$ of size $N$.
+Segment tree with lazy propagation can carry out two types of queries in $O(\log N)$ time complexity:
+1. **Range query**: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.
+2. **Range update**: Given a range $[l,r]$ and a function $f\in F$, update all elements in the range by applying the function $f$ to them:
+    $[\cdots,a_l,\cdots,a_r,\cdots] \to [\cdots, f(a_l), \cdots, f(a_r),\cdots]$
+
+The idea is to store the updates in the nodes of the segment tree and apply them only when needed.
+Such new tree nodes are called **lazy nodes** and the updates are called **lazy updates**.
+
+```mermaid
+graph TD
+    subgraph s1 [&quot;1/[1:4]&quot;];
+        f1(4); l1( ):::lazy;
+    end;
+    subgraph s2 [&quot;2/[1:2]&quot;];
+        f2(2); l2( ):::lazy;
+    end;
+    subgraph s3 [&quot;3/[3:4]&quot;];
+        f3(2); l3( ):::lazy;
+    end;
+    subgraph s4 [&quot;4/[1]&quot;];
+        f4(1); l4( ):::lazy;
+    end;
+    subgraph s5 [&quot;5/[2]&quot;];
+        f5(1); l5( ):::lazy;
+    end;
+    subgraph s6 [&quot;6/[3]&quot;];
+        f6(1); l6( ):::lazy;
+    end;
+    subgraph s7 [&quot;7/[4]&quot;];
+        f7(1); l7( ):::lazy;
+    end;
+
+    s1:::round---s2:::round &amp; s3:::round;
+    s2---s4:::round &amp; s5:::round;
+    s3---s6:::round &amp; s7:::round;
+
+    classDef lazy fill:#ccf;
+    classDef round rx:10,ry:10,fill:#ffe;
+```
+
+The binary tree above is an example of a segment tree with lazy propagation for the array $[1,1,1,1]$.
+In each subgraph, the left node represents the sum of all elements in the range, and the right node represents the lazy update.
+
+When we update the range $[2:4]$ by adding $1$ to all elements, the segment tree will be updated as follows.
+
+```mermaid
+graph TD
+    subgraph s1 [&quot;1/[1:4]&quot;];
+        f1(7); l1( ):::lazy;
+    end;
+    subgraph s2 [&quot;2/[1:2]&quot;];
+        f2(3); l2( ):::lazy;
+    end;
+    subgraph s3 [&quot;3/[3:4]&quot;];
+        f3(4); l3(1):::lazy;
+    end;
+    subgraph s4 [&quot;4/[1]&quot;];
+        f4(1); l4( ):::lazy;
+    end;
+    subgraph s5 [&quot;5/[2]&quot;];
+        f5(2); l5(1):::lazy;
+    end;
+    subgraph s6 [&quot;6/[3]&quot;];
+        f6(1); l6( ):::lazy;
+    end;
+    subgraph s7 [&quot;7/[4]&quot;];
+        f7(1); l7( ):::lazy;
+    end;
+
+    s1:::round---s2:::round &amp; s3:::round;
+    s2---s4:::round &amp; s5:::round;
+    s3---s6:::round &amp; s7:::round;
+
+    classDef lazy fill:#ccf;
+    classDef round rx:10,ry:10,fill:#ffe;
+```
+
+When we update the range $[1:3]$ by adding $1$ to all elements, the segment tree will be updated as follows.
+
+```mermaid
+graph TD
+    subgraph s1 [&quot;1/[1:4]&quot;];
+        f1(10); l1( ):::lazy;
+    end;
+    subgraph s2 [&quot;2/[1:2]&quot;];
+        f2(5); l2(1):::lazy;
+    end;
+    subgraph s3 [&quot;3/[3:4]&quot;];
+        f3(5); l3( ):::lazy;
+    end;
+    subgraph s4 [&quot;4/[1]&quot;];
+        f4(1); l4( ):::lazy;
+    end;
+    subgraph s5 [&quot;5/[2]&quot;];
+        f5(2); l5(1):::lazy;
+    end;
+    subgraph s6 [&quot;6/[3]&quot;];
+        f6(3); l6(2):::lazy;
+    end;
+    subgraph s7 [&quot;7/[4]&quot;];
+        f7(2); l7(1):::lazy;
+    end;
+
+    s1:::round---s2:::round &amp; s3:::round;
+    s2---s4:::round &amp; s5:::round;
+    s3---s6:::round &amp; s7:::round;
+
+    classDef lazy fill:#ccf;
+    classDef round rx:10,ry:10,fill:#ffe;
+```
+
+When we query the sum of the elements in the range $[3,4]$, the segment tree will be updated
+and the nodes will be visited as follows.
+
+```mermaid
+graph TD
+    subgraph s1 [&quot;1/[1:4]&quot;];
+        f1(10); l1( ):::lazy;
+    end;
+    subgraph s2 [&quot;2/[1:2]&quot;];
+        f2(5); l2( ):::lazy;
+    end;
+    subgraph s3 [&quot;3/[3:4]&quot;];
+        f3(5); l3( ):::lazy;
+    end;
+    subgraph s4 [&quot;4/[1]&quot;];
+        f4(2); l4(1):::lazy;
+    end;
+    subgraph s5 [&quot;5/[2]&quot;];
+        f5(3); l5(2):::lazy;
+    end;
+    subgraph s6 [&quot;6/[3]&quot;];
+        f6(3); l6(2):::lazy;
+    end;
+    subgraph s7 [&quot;7/[4]&quot;];
+        f7(2); l7(1):::lazy;
+    end;
+
+    s1:::round---s2:::round &amp; s3:::round;
+    s2---s4:::round &amp; s5:::round;
+    s3---s6:::round &amp; s7:::round;
+    s5:::highlight; s6:::highlight;
+
+    classDef lazy fill:#ccf;
+    classDef round rx:10,ry:10,fill:#ffe;
+    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
+```
+
+### Code
+Let&apos;s see the sample code.
+```cpp
+const int N;
+const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
+
+data A[N];
+Node tree[TREE_SIZE];
+Node_lazy lazy[TREE_SIZE];
+
+Node merge(Node a,Node b){ /* merge two nodes */ }
+Node conv(data a){ /* convert data to node */ }
+Node identity(){ /* return identity node */ }
+Node_lazy merge_lazy(Node_lazy a,Node_lazy b){ /* merge two lazy nodes */ }
+Node_lazy identity_lazy(){ /* return identity lazy node */ }
+Node apply_lazy(Node nd,Node_lazy lz){ /* apply lazy node to the node */ }
+
+Node init(int nd,int l,int r){
+    if(l==r) return tree[nd] = conv(A[l]);
+    int m = (l+r)/2;
+    return tree[nd] = merge(init(nd*2,l,m),init(nd*2+1,m+1,r));
+}
+
+void propagate(int nd,int l,int r){
+    if(lazy[nd]==identity_lazy()) return;
+    lazy[nd*2] = merge_lazy(lazy[nd*2],lazy[nd]), lazy[nd*2+1] = merge_lazy(lazy[nd*2+1],lazy[nd]);
+    tree[nd*2] = apply_lazy(tree[nd*2],lazy[nd]), tree[nd*2+1] = apply_lazy(tree[nd*2+1],lazy[nd]);
+    lazy[nd] = identity_lazy();
+}
+
+Node update(int nd,int l,int r,int s,int e,Node_lazy lz){
+    if(e&lt;l or r&lt;s) return tree[nd];
+    if(s&lt;=l and r&lt;=e){
+        lazy[nd] = merge_lazy(lazy[nd],lz);
+        return tree[nd] = apply_lazy(tree[nd],lz);
+    }
+    propagate(nd,l,r);
+    int m = (l+r)/2;
+    return tree[nd] = merge(update(nd*2,l,m,s,e,lz),update(nd*2+1,m+1,r,s,e,lz));
+}
+
+Node Query(int nd,int l,int r,int s,int e){
+    if(e&lt;l or r&lt;s) return identity();
+    if(s&lt;=l and r&lt;=e) return tree[nd];
+    propagate(nd,l,r);
+    int m = (l+r)/2;
+    return merge(Query(nd*2,l,m,s,e),Query(nd*2+1,m+1,r,s,e));
+}
+```
+
+### Example
+
+Let&apos;s think of an example of calculating the sum of elements in a range and updating the elements in a range by adding a constant value.
+Then, the code will be as follows:
+
+```cpp
+struct Node{
+    int sum,len;
+    Node(int sum=0,int len=0):sum(sum),len(len){}
+};
+
+Node merge(Node a,Node b){
+    return Node(a.sum+b.sum,a.len+b.len);
+}
+Node conv(int a){
+    return Node(a,1);
+}
+Node identity(){
+    return Node(0,0);
+}
+int merge_lazy(int a,int b){
+    return a+b;
+}
+int identity_lazy(){
+    return 0;
+}
+Node apply_lazy(Node nd,int lz){
+    return Node(nd.sum+nd.len*lz,nd.len);
+}
+```</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 2042] 구간 합 구하기</title><link href="http://localhost:4000/computer-science/boj2042.html" rel="alternate" type="text/html" title="[BOJ 2042] 구간 합 구하기" /><published>2024-07-31T00:00:00+09:00</published><updated>2024-07-31T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj2042</id><content type="html" xml:base="http://localhost:4000/computer-science/boj2042.html">[https://www.acmicpc.net/problem/2042](https://www.acmicpc.net/problem/2042)
+
+&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+&lt;script src=&quot;https://gist.github.com/phylosopher07/77754fb375fb72a1d1bb937c750234f8.js&quot;&gt;&lt;/script&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/2042</summary></entry><entry><title type="html">Segment Tree</title><link href="http://localhost:4000/computer-science/segment-tree.html" rel="alternate" type="text/html" title="Segment Tree" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Introduction
+A **segment tree** is a tree data structure for storing intervals, or segments. It allows to perform queries and updates on the intervals in very efficient manner.
+There are many applications of segment trees: calculating the sum of all elements in a range, finding the minimum or maximum element in a range, etc.
+
+## Segment Tree
+
+### Explanation
+Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
+(Read more about monoids [here](https://en.wikipedia.org/wiki/Monoid).)
+
+Given an array $A=[a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l,r]$ of the array.
+Each node stores the result of applying the operation $\ast$ to all elements in the interval it represents, i.e. $a_l \ast \cdots \ast a_r$.
+The root node represents the entire array $[1:N]$, and each leaf node represents a single element of the array.
+Every parent node has left and right children, which represent the left and right halves of the parent&apos;s interval.
+You can see that the segment tree is a _full binary tree_.
+
+Segment tree can carry out two types of queries in $O(\log N)$ time complexity:
+1. **Range query**: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.
+2. **Point update**: Given an index $i$ and a new value $v$, update the element $a_i$ to $v$.
+
+```mermaid
+graph TD
+    f1(&quot;1 &lt;br&gt; [1:11]&quot;); f2(&quot;2 &lt;br&gt; [1:6]&quot;);
+    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
+    f5(&quot;5 &lt;br&gt; [4:6]&quot;); f6(&quot;6 &lt;br&gt; [7:9]&quot;);
+    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
+    f9(&quot;9 &lt;br&gt; [3]&quot;); f10(&quot;10 &lt;br&gt; [4:5]&quot;);
+    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;);
+    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
+    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
+    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
+    f21(&quot;21 &lt;br&gt; [5]&quot;); f24(&quot;24 &lt;br&gt; [7]&quot;);
+    f25(&quot;25 &lt;br&gt; [8]&quot;);
+
+    f1---f2 &amp; f3;
+    f2---f4 &amp; f5;
+    f3---f6 &amp; f7;
+    f4---f8 &amp; f9;
+    f5---f10 &amp; f11;
+    f6---f12 &amp; f13;
+    f7---f14 &amp; f15;
+    f8---f16 &amp; f17;
+    f10---f20 &amp; f21;
+    f12---f24 &amp; f25;
+```
+
+The binary tree above is an example of a segment tree for the array with 11 elements.
+Each node is written in the form of node index and the interval it represents.
+When we update the 5th element of the array, the segment tree will be updated as follows.
+
+```mermaid
+graph TD
+    f1(&quot;1 &lt;br&gt; [1:11]&quot;):::highlight ; f2(&quot;2 &lt;br&gt; [1:6]&quot;):::highlight;
+    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
+    f5(&quot;5 &lt;br&gt; [4:6]&quot;):::highlight; f6(&quot;6 &lt;br&gt; [7:9]&quot;);
+    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
+    f9(&quot;9 &lt;br&gt; [3]&quot;); f10(&quot;10 &lt;br&gt; [4:5]&quot;):::highlight;
+    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;);
+    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
+    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
+    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
+    f21(&quot;21 &lt;br&gt; [5]&quot;):::highlight; f24(&quot;24 &lt;br&gt; [7]&quot;);
+    f25(&quot;25 &lt;br&gt; [8]&quot;);
+
+    f1---f2 &amp; f3;
+    f2---f4 &amp; f5;
+    f3---f6 &amp; f7;
+    f4---f8 &amp; f9;
+    f5---f10 &amp; f11;
+    f6---f12 &amp; f13;
+    f7---f14 &amp; f15;
+    f8---f16 &amp; f17;
+    f10---f20 &amp; f21;
+    f12---f24 &amp; f25;
+
+    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
+```
+
+When we query the sum of the elements in the range $[3,8]$, following nodes will be visited.
+
+```mermaid
+graph TD
+    f1(&quot;1 &lt;br&gt; [1:11]&quot;); f2(&quot;2 &lt;br&gt; [1:6]&quot;);
+    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
+    f5(&quot;5 &lt;br&gt; [4:6]&quot;):::highlight;; f6(&quot;6 &lt;br&gt; [7:9]&quot;);
+    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
+    f9(&quot;9 &lt;br&gt; [3]&quot;):::highlight;; f10(&quot;10 &lt;br&gt; [4:5]&quot;);
+    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;):::highlight;;
+    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
+    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
+    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
+    f21(&quot;21 &lt;br&gt; [5]&quot;); f24(&quot;24 &lt;br&gt; [7]&quot;);
+    f25(&quot;25 &lt;br&gt; [8]&quot;);
+
+    f1---f2 &amp; f3;`
+    f2---f4 &amp; f5;
+    f3---f6 &amp; f7;
+    f4---f8 &amp; f9;
+    f5---f10 &amp; f11;
+    f6---f12 &amp; f13;
+    f7---f14 &amp; f15;
+    f8---f16 &amp; f17;
+    f10---f20 &amp; f21;
+    f12---f24 &amp; f25;
+
+    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
+```
+
+### Code
+Let&apos;s see the sample code.
+```cpp
+const int N;
+const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
+
+data A[N];
+Node tree[TREE_SIZE];
+
+Node merge(Node a,Node b){ /* merge two nodes */ }
+Node conv(data a){ /* convert data to node */ }
+Node identity(){ /* return identity node */ }
+
+Node init(int nd,int l,int r){
+    if(l==r) return tree[nd] = conv(A[l]);
+    int m = (l+r)/2;
+    return tree[nd] = merge(init(nd*2,l,m),init(nd*2+1,m+1,r));
+}
+
+Node update(int nd,int l,int r,int idx,data val){
+    if(idx&lt;l or r&lt;idx) return tree[nd];
+    if(l==r) return tree[nd] = conv(val);
+    int m = (l+r)/2;
+    return tree[nd] = merge(update(nd*2,l,m,idx,val),update(nd*2+1,m+1,r,idx,val));
+}
+
+Node Query(int nd,int l,int r,int s,int e){
+    if(e&lt;l or r&lt;s) return identity();
+    if(s&lt;=l and r&lt;=e) return tree[nd];
+    int m = (l+r)/2;
+    return merge(Query(nd*2,l,m,s,e),Query(nd*2+1,m+1,r,s,e));
+}
+```
+
+So here, the data type **Node** should be the monoid structure $(M, \ast)$.
+Commonly, we store data in the array $A$ in another data type(**data**, such as integer etc.), because it&apos;s easy and intuitive.
+If such data type is different with the node, you should convert the data to the node structure in the function **conv**.
+
+### Applications
+
+* Range sum query
+* Range minimum/maximum query
+* Range gcd/lcm query</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Ravel, La Valse, M.72</title><link href="http://localhost:4000/classical-music/ravel-m72.html" rel="alternate" type="text/html" title="Ravel, La Valse, M.72" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/ravel-m72</id><content type="html" xml:base="http://localhost:4000/classical-music/ravel-m72.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+&lt;object type=&quot;application/pdf&quot;
+data=&quot;https://vmirror.imslp.org/files/imglnks/usimg/8/8b/IMSLP919224-PMLP07611-Ravel-M72-La-Valse-Arr-Piano-FE.pdf&quot;
+width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
+
+&lt;div class=&quot;iframe-container&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/NhNCGgFIxN8&quot;
+width=&quot;100%&quot; height=500
+frameborder=&quot;0&quot;
+allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="ravel" /><summary type="html"></summary></entry><entry><title type="html">Rachmaninoff, 9 Etudes-Tableaux, Op. 39</title><link href="http://localhost:4000/classical-music/rach-op39.html" rel="alternate" type="text/html" title="Rachmaninoff, 9 Etudes-Tableaux, Op. 39" /><published>2024-07-27T00:00:00+09:00</published><updated>2024-07-27T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/rach-op39</id><content type="html" xml:base="http://localhost:4000/classical-music/rach-op39.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+&lt;object type=&quot;application/pdf&quot;
+data=&quot;https://ks15.imslp.org/files/imglnks/usimg/4/49/IMSLP00243-Rachmaninoff_-_9_Etudes_Tableaux,_Op_39.pdf&quot;
+width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
+
+&lt;div class=&quot;iframe-container&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/8L6CxUpBZlY&quot;
+width=&quot;100%&quot; height=500
+frameborder=&quot;0&quot;
+allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
+allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="rachmaninoff" /><summary type="html"></summary></entry><entry><title type="html">Defining the Natural Numbers; Peano’s Axioms</title><link href="http://localhost:4000/mathematics/defining-the-natural-numbers.html" rel="alternate" type="text/html" title="Defining the Natural Numbers; Peano’s Axioms" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/defining-the-natural-numbers</id><content type="html" xml:base="http://localhost:4000/mathematics/defining-the-natural-numbers.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Introduction
+
+Historically, mathematics has been built on the foundation of natural numbers. Natural numbers are the abstraction of counting objects, 
+and have always thought to be the most axiomatic and fundamental concept in mathematics.
+
+&gt; **“God made natural numbers; all else is the work of man“** - Leopold Kronecker
+{:.lead}
+
+## Peano&apos;s Axioms
+
+After Kronecker, Peano tried to describe the natural numbers in a more mathematical and logical way.
+He proposed a set of axioms to define the set of natural numbers $\mathbb{N}$, and those are called Peano&apos;s Axioms.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="number-theory" /><summary type="html"></summary></entry><entry><title type="html">Euler equations</title><link href="http://localhost:4000/physics/euler-equations.html" rel="alternate" type="text/html" title="Euler equations" /><published>2023-04-05T00:00:00+09:00</published><updated>2023-04-05T00:00:00+09:00</updated><id>http://localhost:4000/physics/euler-equations</id><content type="html" xml:base="http://localhost:4000/physics/euler-equations.html">from **「Fluid Mechanics」**: _Landau, L.D. &amp; Lifschitz, E.M._
+{:.figcaption}
+
+&gt; Equations for adiabatic and inviscid flow.
+
+&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Momentum equation
+
+The **momentum equation** is a partial differential equation that describes the motion of an ideal fluid,
+
+\\[ \frac{D\b{u}}{Dt} = -\frac{1}{\rho}\nabla p \\]
+
+where $\frac{D}{Dt}$ is the _material derivative_.
+The momentum equation is derived from the conservation of momentum,
+which states that the total momentum of a system is constant.
+
+### Proof
+
+Let us consider some volume $V_0$ in the fluid.
+The total force acting on this volume is equal to the surface integral of the pressure.
+It can be transformed to a volume integral by the _divergence theorem_:
+
+\\[ -\oint_{\partial V_0}p \dd{\b{f}} = -\int_{V_0} \nabla p \dd{V} \\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html">from 「Fluid Mechanics」: Landau, L.D. &amp;amp; Lifschitz, E.M. Equations for adiabatic and inviscid flow.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Continuity equation</title><link href="http://localhost:4000/physics/continuity-equation.html" rel="alternate" type="text/html" title="Continuity equation" /><published>2023-04-04T00:00:00+09:00</published><updated>2023-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/continuity-equation</id><content type="html" xml:base="http://localhost:4000/physics/continuity-equation.html">from **「Fluid Mechanics」**: _Landau, L.D. &amp; Lifschitz, E.M._
+{:.figcaption}
+
+&gt; The continuity equation.
+
+&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Continuity equation
+
+In fluid dynamics, the **continuity equation** states that the rate at which mass enters a system is equal to 
+the rate at which mass leaves the system plus the accumulation of mass within the system.
+
+\\[ \pdv{\rho}{t} + \div(\rho\b{u}) = 0 \\]
+
+where $\rho$ is the density of the fluid, $\b{u}$ is the velocity of the fluid, and $t$ is time.
+
+The continuity equation is a consequence of the conservation of mass, and we&apos;ll derive the equation
+from the assumption now.
+
+### Derivation
+
+We consider some volume $V_0$ of space. The change per unit time in the mass of fluid in this volume
+should be the same as the quantity flowing in unit time through the surface of the volume.
+Therefore, we can write as follows:
+
+\\[ \pdv{ }{t}\int_{V_0}\rho \dd{V} = -\oint_{\partial V_0}\rho\b{u}\cdot\d{\b{S}} \\]
+
+The surface integral can be transformed by the _divergence theorem_ to a volume integral, thus:
+
+\\[ \pdv{ }{t}\int_{V_0}\rho \dd{V} = -\int_{V_0}\div(\rho\b{u}) \dd{V} \nl\;\nl
+\\int_{V_0}\left[ \pdv{\rho}{t}+\div(\rho\b{u})\right] \d V = 0 \\]
+
+Since the equation must hold for any volume $V_0$, the integrand must vanish.
+
+\\[ \pdv{\rho}{t} + \div(\rho\b{u}) = 0 \\]
+
+Defining the vector $\b{j}$ as $\rho\b{u}$, we can write the continuity equation as:
+
+\\[ \pdv{\rho}{t} + \div\b{j} = 0 \\]
+
+Here $\b{j}$ is called the **momentum density**. Its direction is that of the motion of the fluid,
+while its magnitude equals the mass of fluid flowing in unit time through unit area perpendicular to the velocity.
+
+### Interpretation
+
+Expanding the expression for the momentum density, we have:
+
+\\[ \pdv{\rho}{t} + \rho\div\b{u} + (\nabla\rho)\cdot\b{u} = 0 \\]
+
+We can simplyfy the equation by the _material derivative_,
+
+\\[ \frac{D}{Dt} = \pdv{ }{t} + \b{u}\cdot\nabla \\]
+
+we get the following equation.
+
+\\[ \frac{D\rho}{Dt} + \rho\nabla\cdot\b{u} = 0 \\]
+
+A change in the density over time should be proportional to the divergence of the velocity field.
+So if the fluid is _incompressible_, the divergence of the velocity field must be zero, which is expressed as:
+
+\\[ \nabla\cdot\b{u} = 0 \\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html">from 「Fluid Mechanics」: Landau, L.D. &amp;amp; Lifschitz, E.M. The continuity equation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

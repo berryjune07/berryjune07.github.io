@@ -1,55 +1,33 @@
 # .github/workflows/deploy.yml
 
-name: Build and Deploy to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main   # 메인 브랜치에 push 될 때만 작동
+      - main    # 네가 작업하는 브랜치
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2' # 네 프로젝트에 맞게 수정
-
-      - name: Install dependencies
-        run: |
-          bundle install
-
-      - name: Build the site
-        run: |
-          bundle exec jekyll build  # 예시야, 너가 쓰는 build 커맨드로 수정 (ex: middleman build, etc.)
-
-      - name: Upload build output
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./_site   # 빌드 결과물이 나오는 폴더를 지정 (jekyll이면 _site/, 다른거면 dist/ 또는 build/)
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Upload _site folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site    # 로컬에서 만든 _site 디렉터리를 업로드
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
