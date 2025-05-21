@@ -10,5 +10,5 @@ description: >
 ---
 
 \\[ \Huge \fcolorbox{transparent}{transparent}{ $$ \dps
-f(x) = \odv{}{x} \int_a^x f(x) \dd{x}
+f(x) = \odv{}{x} \int_a^x f(x') \dd{x'}
 $$ }\\]

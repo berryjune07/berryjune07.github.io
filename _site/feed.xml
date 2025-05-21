@@ -1,53 +1,569 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-04-28T15:59:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Set Theory for Statistics</title><link href="http://localhost:4000/mathematics/set-theory-for-statistics.html" rel="alternate" type="text/html" title="Set Theory for Statistics" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/set-theory-for-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/set-theory-for-statistics.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="mathematical-statistics" /><summary type="html"></summary></entry><entry><title type="html">Functions and Their Graphs</title><link href="http://localhost:4000/mathematics/functions-and-their-graphs.html" rel="alternate" type="text/html" title="Functions and Their Graphs" /><published>2025-04-15T00:00:00+09:00</published><updated>2025-04-15T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/functions-and-their-graphs</id><content type="html" xml:base="http://localhost:4000/mathematics/functions-and-their-graphs.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-22T02:08:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">One-Sided Limits</title><link href="http://localhost:4000/mathematics/one-sided-limits.html" rel="alternate" type="text/html" title="One-Sided Limits" /><published>2025-05-22T00:00:00+09:00</published><updated>2025-05-22T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/one-sided-limits</id><content type="html" xml:base="http://localhost:4000/mathematics/one-sided-limits.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#one-sided-limits&quot; id=&quot;markdown-toc-one-sided-limits&quot;&gt;One-Sided Limits&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#relationship-between-one-sided-limits-and-general-limits&quot; id=&quot;markdown-toc-relationship-between-one-sided-limits-and-general-limits&quot;&gt;Relationship Between One-Sided Limits and General Limits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Functions
+&lt;h2 id=&quot;one-sided-limits&quot;&gt;One-Sided Limits&lt;/h2&gt;
 
-A **function** $f$ is a rule that assigns to each element $x$ in a set $D$ exactly one element $y$ in a set $E$. The set $D$ is called the **domain** of the function, and the set $E$ is called the **codomain** of the function. The notation $f(x)=y$ indicates that $y$ is the image of $x$ under the function $f$. The set of all images of elements in the domain is called the **range** of the function.
-The following is the most common representation of a function:
+&lt;p&gt;A &lt;strong&gt;one-sided limit&lt;/strong&gt; is a limit that only considers the behavior of a function as it approaches a specific point from one side (either the left or the right).
+There are two types of one-sided limits:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Left-Hand Limit&lt;/strong&gt;: The limit of a function as the input approaches a certain value from the left side(values less than the point).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Right-Hand Limit&lt;/strong&gt;: The limit of a function as the input approaches a certain value from the right side(values greater than the point).&lt;/li&gt;
+&lt;/ul&gt;
 
-\\[
+&lt;p&gt;They are defined precisely as follows: Let $f$ be a function defined on an open interval $I$ containing $a$ (except possibly at $a$ itself).
+If for every number $\epsilon &amp;gt; 0$, there exists a corresponding number $\delta &amp;gt; 0$ such that &lt;br /&gt;
+$a &amp;lt; x &amp;lt; a + \delta \implies |f(x) - L| &amp;lt; \epsilon$, then we write it as
+\[
+\lim_{x \to a^+} f(x) \quad \text{or} \quad \lim_{x \downarrow a} f(x) \quad \text{or} \quad \lim_{x \searrow a} f(x) = L
+\]
+or $a - \delta &amp;lt; x &amp;lt; a \implies |f(x) - L| &amp;lt; \epsilon$, then we write it as
+\[
+\lim_{x \to a^-} f(x) \quad \text{or} \quad \lim_{x \uparrow a} f(x) \quad \text{or} \quad \lim_{x \nearrow a} f(x) = L
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;relationship-between-one-sided-limits-and-general-limits&quot;&gt;Relationship Between One-Sided Limits and General Limits&lt;/h2&gt;
+
+&lt;p&gt;Trivially, if the left-hand limit and right-hand limit of a function at a point are equal, then the general limit exists and is equal to that common value.
+\[
+\lim_{x \to a} f(x) = L \quad \text{if and only if} \quad \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L
+\]
+This means that if the function approaches the same value from both sides as $x$ approaches $a$, then the limit exists and is equal to that value.
+Conversely, if even one of the one-sided limits does not exist or is not equal to the other, then the general limit does not exist.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">A Limit of a Function</title><link href="http://localhost:4000/mathematics/a-limit-of-a-function.html" rel="alternate" type="text/html" title="A Limit of a Function" /><published>2025-05-12T00:00:00+09:00</published><updated>2025-05-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/a-limit-of-a-function</id><content type="html" xml:base="http://localhost:4000/mathematics/a-limit-of-a-function.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#definition-of-limit&quot; id=&quot;markdown-toc-definition-of-limit&quot;&gt;Definition of Limit&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#limit-laws&quot; id=&quot;markdown-toc-limit-laws&quot;&gt;Limit Laws&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#proof-of-limit-laws&quot; id=&quot;markdown-toc-proof-of-limit-laws&quot;&gt;Proof of Limit Laws&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#limits-of-polynomials&quot; id=&quot;markdown-toc-limits-of-polynomials&quot;&gt;Limits of Polynomials&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#limits-of-rational-functions&quot; id=&quot;markdown-toc-limits-of-rational-functions&quot;&gt;Limits of Rational Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sandwich-theorem&quot; id=&quot;markdown-toc-sandwich-theorem&quot;&gt;Sandwich Theorem&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;definition-of-limit&quot;&gt;Definition of Limit&lt;/h2&gt;
+
+&lt;p&gt;Suppose we are watching the values of a function $f(x)$ as $x$ approaches a number $a$,
+without actually reaching $a$. This is the basic idea of a limit.
+We can define the limit of a function preciselt using the &lt;strong&gt;epsilon-delta definition&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let $f$ be a function defined on an open interval $I$ containing $a$ (except possibly at $a$ itself).
+We say that the limit of $f(x)$ as $x$ approaches $a$ is $L$, and we write&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} f(x) = L
+\]&lt;/p&gt;
+
+&lt;p&gt;if for every number $\epsilon &amp;gt; 0$, there exists a corresponding number $\delta &amp;gt; 0$ such that&lt;/p&gt;
+
+&lt;p&gt;\[
+0 &amp;lt; |x - a| &amp;lt; \delta \implies |f(x) - L| &amp;lt; \epsilon
+\]&lt;/p&gt;
+
+&lt;p&gt;This means that we can make the values of $f(x)$ as close to $L$ as we want by making $x$ sufficiently close to $a$.&lt;/p&gt;
+
+&lt;h2 id=&quot;limit-laws&quot;&gt;Limit Laws&lt;/h2&gt;
+
+&lt;p&gt;If $L,M,c,k$ are real numbers, $n$ is a positive integer, and
+\[
+\lim_{x \to a} f(x) = L, \quad \lim_{x \to a} g(x) = M
+\]
+then the following limit laws hold:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\bullet \;&amp;amp; \lim_{x \to a} (f(x) + g(x)) = L + M \nl
+\bullet \;&amp;amp; \lim_{x \to a} (f(x) - g(x)) = L - M \nl
+\bullet \;&amp;amp; \lim_{x \to a} kf(x) = kL \nl
+\bullet \;&amp;amp; \lim_{x \to a} f(x)g(x) = LM \nl
+\bullet \;&amp;amp; \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M} \quad (M \neq 0) \nl
+\bullet \;&amp;amp; \lim_{x \to a} f(x)^n = L^n \nl
+\bullet \;&amp;amp; \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} \quad (2\mid n \rightarrow L \geq 0)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-of-limit-laws&quot;&gt;Proof of Limit Laws&lt;/h3&gt;
+
+&lt;p&gt;The proof of the limit laws is based on the epsilon-delta definition of limits.&lt;/p&gt;
+
+&lt;p&gt;⁣1. $ \lim_{x \to a} (f(x) \pm g(x)) = L \pm M $&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+&amp;amp; \forall \varepsilon&amp;gt;0, \exists \delta_1,\delta_2&amp;gt;0 \quad \text{s.t.} \quad
+\begin{cases}
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_1 \implies |f(x)-L|&amp;lt;\frac{\varepsilon}{2} \nl \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |g(x)-M|&amp;lt;\frac{\varepsilon}{2} 
+\end{cases} \nl
+&amp;amp; \delta = \min(\delta_1,\delta_2) \nl\nl
+&amp;amp; \begin{aligned} 0&amp;lt;|x-a|&amp;lt;\delta \implies |f(x)\pm g(x) - (L\pm M)| &amp;amp;\leq |f(x)-L| + |g(x)-M| \nl
+&amp;amp;&amp;lt; \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \end{aligned} \nl
+&amp;amp; \therefore \lim_{x \to a} (f(x) \pm g(x)) = L \pm M
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;⁣2. $ \lim_{x \to a} f(x)g(x) = LM $&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+&amp;amp; \forall \varepsilon&amp;gt;0, \exists \delta_1,\delta_2,\delta_3&amp;gt;0 \quad \text{s.t.} \quad
+\begin{cases}
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_1 \implies |g(x)-M|&amp;lt;\frac{\varepsilon}{2(|L|+1)} \nl \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |g(x)-M|&amp;lt;1 \implies |g(x)|&amp;lt;|M|+1 \nl \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_3 \implies |f(x)-L|&amp;lt;\frac{\varepsilon}{2(|M|+1)}
+\end{cases} \nl
+&amp;amp; \delta = \min(\delta_1,\delta_2,\delta_3) \nl\nl
+&amp;amp; \begin{aligned} 0&amp;lt;|x-a|&amp;lt;\delta \implies |f(x)g(x) - LM| &amp;amp;\leq |f(x)g(x) - Lg(x)| + |Lg(x) - LM| \nl
+&amp;amp;= |f(x) - L||g(x)| + |L||g(x) - M| \nl
+&amp;amp;&amp;lt; \frac{\varepsilon}{2(|M|+1)}(|M|+1) + |L|\frac{\varepsilon}{2(|L|+1)} \nl
+&amp;amp;\leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \end{aligned} \nl
+&amp;amp; \therefore \lim_{x \to a} f(x)g(x) = LM
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;⁣3. $ \lim_{x \to a} 1/f(x) = 1/L \quad (L \neq 0) $&lt;/p&gt;
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+&amp;amp; \forall \varepsilon&amp;gt;0, \exists \delta_1,\delta_2&amp;gt;0 \quad \text{s.t.} \quad
+\begin{cases}
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_1 \implies |f(x)-L|&amp;lt;\frac{|L|}{2} \implies |f(x)|&amp;gt;\frac{|L|}{2} \nl \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |f(x)-L|&amp;lt;\frac{|L|^2}{2}\varepsilon
+\end{cases} \nl
+&amp;amp; \delta = \min(\delta_1,\delta_2) \nl\nl
+&amp;amp; \begin{aligned} 0&amp;lt;|x-a|&amp;lt;\delta \implies \left|\frac{1}{f(x)} - \frac{1}{L}\right| &amp;amp;= \left|\frac{f(x) - L}{f(x)L}\right| \nl
+&amp;amp;&amp;lt; \frac{|f(x) - L|}{\frac{|L|}{2}|L|} = \frac{2|f(x) - L|}{|L|^2} \nl
+&amp;amp;&amp;lt; \frac{2\varepsilon}{|L|^2} \cdot \frac{|L|^2}{2} = \varepsilon \end{aligned} \nl
+&amp;amp; \therefore \lim_{x \to a} \frac{1}{f(x)} = \frac{1}{L}
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can prove the other limit laws using the above equations already proved.
+The last limit law, $ \lim_{x \to a} \sqrt[n]{f(x)} = \sqrt[n]{L} $, is only the exception.
+Knowledge about continuous functions is required to prove it, so we will not prove it here.&lt;/p&gt;
+
+&lt;h3 id=&quot;limits-of-polynomials&quot;&gt;Limits of Polynomials&lt;/h3&gt;
+
+&lt;p&gt;Let $f(x)\in \mathbb{R}[x]$ be a polynomial function.&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} f(x) = f(a)
+\]&lt;/p&gt;
+
+&lt;p&gt;We can prove this by a simple induction.&lt;/p&gt;
+
+&lt;h3 id=&quot;limits-of-rational-functions&quot;&gt;Limits of Rational Functions&lt;/h3&gt;
+
+&lt;p&gt;Let $P(x)$ and $Q(x)$ be polynomials such that $Q(a) \neq 0$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} \frac{P(x)}{Q(x)} = \frac{P(a)}{Q(a)}
+\]&lt;/p&gt;
+
+&lt;p&gt;It is trivial by the quotient law.&lt;/p&gt;
+
+&lt;h3 id=&quot;sandwich-theorem&quot;&gt;Sandwich Theorem&lt;/h3&gt;
+
+&lt;p&gt;Suppose that $g(x) \leq f(x) \leq h(x)$ for all $x$ in some open interval containing $a$, except possibly at $a$ itself.
+Then the following holds:&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} g(x) = \lim_{x \to a} h(x) = L \implies \lim_{x \to a} f(x) = L
+\]&lt;/p&gt;
+
+&lt;p&gt;It is called the &lt;strong&gt;sandwich theorem&lt;/strong&gt; because the function $f(x)$ is caught between $g(x)$ and $h(x)$ just like a ham between two slices of bread.
+Thus, it is also called the &lt;strong&gt;squeeze theorem&lt;/strong&gt;. Lets’ prove it.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+&amp;amp; \forall \varepsilon&amp;gt;0, \exists \delta_1,\delta_2&amp;gt;0 \quad \text{s.t.} \quad
+\begin{cases}
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_1 \implies |g(x)-L|&amp;lt;\varepsilon \implies L-\varepsilon&amp;lt;g(x)&amp;lt;L+\varepsilon \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |h(x)-L|&amp;lt;\varepsilon \implies L-\varepsilon&amp;lt;h(x)&amp;lt;L+\varepsilon
+\end{cases} \nl
+&amp;amp; \delta = \min(\delta_1,\delta_2) \nl\nl
+&amp;amp; 0&amp;lt;|x-a|&amp;lt;\delta \implies L-\varepsilon &amp;lt; g(x) \le f(x) \le h(x)&amp;lt;L+\varepsilon
+\implies |f(x) - L| &amp;lt; \varepsilon \nl
+&amp;amp; \therefore \lim_{x \to a} f(x) = L
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Sandwich theorem is very useful to find the specific limit of a function.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Combining Functions</title><link href="http://localhost:4000/mathematics/combining-functions.html" rel="alternate" type="text/html" title="Combining Functions" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/combining-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/combining-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#basic-operations-on-functions&quot; id=&quot;markdown-toc-basic-operations-on-functions&quot;&gt;Basic Operations on Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#composition-of-functions&quot; id=&quot;markdown-toc-composition-of-functions&quot;&gt;Composition of Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#shifting&quot; id=&quot;markdown-toc-shifting&quot;&gt;Shifting&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#scaling-and-reflection&quot; id=&quot;markdown-toc-scaling-and-reflection&quot;&gt;Scaling and Reflection&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;basic-operations-on-functions&quot;&gt;Basic Operations on Functions&lt;/h2&gt;
+
+&lt;p&gt;Like numbers, functions can be combined using basic operations such as addition, subtraction, multiplication, and division.
+If $f$ and $g$ are two functions, we can define new functions on their common domain $D(f) \cap D(g)$ as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Addition&lt;/strong&gt;: $(f+g)(x) = f(x) + g(x)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subtraction&lt;/strong&gt;: $(f-g)(x) = f(x) - g(x)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Multiplication&lt;/strong&gt;: $(fg)(x) = f(x)g(x)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Division&lt;/strong&gt;: $(f/g)(x) = \frac{f(x)}{g(x)}$ for $g(x) \neq 0$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;composition-of-functions&quot;&gt;Composition of Functions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;composition&lt;/strong&gt; of two functions $f$ and $g$ is a new function defined by applying one function to the result of the other.
+It can only be performed when the range of the first function is a subset of the domain of the second function,
+i.e. $g(X) \subset D(f)$.
+The composition of $f$ and $g$ is denoted by $f \circ g$ and is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+f \circ g (x) = f(g(x))
+\]&lt;/p&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Example_for_a_composition_of_two_functions.svg/1703px-Example_for_a_composition_of_two_functions.svg.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;A diagram showing the composition of two functions&lt;/p&gt;
+
+&lt;h2 id=&quot;shifting&quot;&gt;Shifting&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;shifting&lt;/strong&gt; of a function is a transformation that moves the graph of the function in the coordinate plane.
+There are two types of shifts: vertical and horizontal.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Vertical Shift&lt;/strong&gt;: $y = f(x) + k$ shifts the graph in the vertical direction.
+    &lt;ul&gt;
+      &lt;li&gt;If $k &amp;gt; 0$, the graph shifts up.&lt;/li&gt;
+      &lt;li&gt;If $k &amp;lt; 0$, the graph shifts down.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Horizontal Shift&lt;/strong&gt;: $y = f(x - h)$ shifts the graph in the horizontal direction.
+    &lt;ul&gt;
+      &lt;li&gt;If $h &amp;gt; 0$, the graph shifts to the right.&lt;/li&gt;
+      &lt;li&gt;If $h &amp;lt; 0$, the graph shifts to the left.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Both types of shifts can also be performed simultaneously.&lt;/p&gt;
+
+&lt;h2 id=&quot;scaling-and-reflection&quot;&gt;Scaling and Reflection&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Scaling&lt;/strong&gt; is a transformation that stretches or compresses the graph of a function in the vertical or horizontal direction.
+There also are two types of scaling: vertical and horizontal.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Vertical Scaling&lt;/strong&gt;: $y = kf(x)$ scales the graph vertically.
+    &lt;ul&gt;
+      &lt;li&gt;If $k &amp;gt; 1$, the graph stretches vertically.&lt;/li&gt;
+      &lt;li&gt;If $0 &amp;lt; k &amp;lt; 1$, the graph compresses vertically.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Horizontal Scaling&lt;/strong&gt;: $y = f(kx)$ scales the graph horizontally.
+    &lt;ul&gt;
+      &lt;li&gt;If $k &amp;gt; 1$, the graph compresses horizontally.&lt;/li&gt;
+      &lt;li&gt;If $0 &amp;lt; k &amp;lt; 1$, the graph stretches horizontally.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reflection&lt;/strong&gt; is a transformation that flips the graph of a function across a line.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Reflection across the x-axis&lt;/strong&gt;: $y = -f(x)$ reflects the graph across the x-axis.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reflection across the y-axis&lt;/strong&gt;: $y = f(-x)$ reflects the graph across the y-axis.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can think of the reflection as a special case of scaling, where the scaling factor is exactly $k = -1$.
+Scaling for any $k&amp;lt;0$, can be regarded as a reflection followed by a scaling with $|k|$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Periodic and Trigonometric Functions</title><link href="http://localhost:4000/mathematics/periodic-and-trigonometric-functions.html" rel="alternate" type="text/html" title="Periodic and Trigonometric Functions" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/periodic-and-trigonometric-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/periodic-and-trigonometric-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#periodic-functions&quot; id=&quot;markdown-toc-periodic-functions&quot;&gt;Periodic Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#trigonometric-functions&quot; id=&quot;markdown-toc-trigonometric-functions&quot;&gt;Trigonometric Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#angle-measurement&quot; id=&quot;markdown-toc-angle-measurement&quot;&gt;Angle Measurement&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sine-and-cosine-functions&quot; id=&quot;markdown-toc-sine-and-cosine-functions&quot;&gt;Sine and Cosine Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-six-basic-trigonometric-functions&quot; id=&quot;markdown-toc-the-six-basic-trigonometric-functions&quot;&gt;The Six Basic Trigonometric Functions&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#trigonometrical-identities&quot; id=&quot;markdown-toc-trigonometrical-identities&quot;&gt;Trigonometrical Identities&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#pythagorean-identities&quot; id=&quot;markdown-toc-pythagorean-identities&quot;&gt;Pythagorean Identities&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#angle-addition-identities&quot; id=&quot;markdown-toc-angle-addition-identities&quot;&gt;Angle Addition Identities&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-law-of-cosines&quot; id=&quot;markdown-toc-the-law-of-cosines&quot;&gt;The Law of Cosines&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#extra-properties&quot; id=&quot;markdown-toc-extra-properties&quot;&gt;Extra Properties&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;periodic-functions&quot;&gt;Periodic Functions&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;periodic function&lt;/strong&gt; is a function that repeats its values at regular intervals.
+The smallest positive value of $p$ such that $f(x + p) = f(x)$ for all $x$ in the domain of $f$ is called the &lt;strong&gt;period&lt;/strong&gt; of the function. (Sometimes, the word “smallest” is omitted)
+The period of a periodic function is the length of one complete cycle of the function.
+Trigonometric functions are the most common examples of periodic functions.&lt;/p&gt;
+
+&lt;h2 id=&quot;trigonometric-functions&quot;&gt;Trigonometric Functions&lt;/h2&gt;
+
+&lt;h3 id=&quot;angle-measurement&quot;&gt;Angle Measurement&lt;/h3&gt;
+
+&lt;p&gt;Angles are measured in &lt;strong&gt;radians&lt;/strong&gt;. Radians are defined as the ratio of the length of the arc subtended by the angle to the radius of the circle.&lt;/p&gt;
+
+&lt;p&gt;\[
+\theta = \frac{s}{r}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\theta$ is the angle in radians, $s$ is the length of the arc, and $r$ is the radius of the circle.
+The relationship between degrees and radians is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pi \text{ rad} = 180^\circ
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;sine-and-cosine-functions&quot;&gt;Sine and Cosine Functions&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;sine&lt;/strong&gt; and &lt;strong&gt;cosine&lt;/strong&gt; functions can be defined in several ways, typically using the unit circle(geometrical way) or power series(analytical way).
+It is convenient to define them using the power series for latter discussions such as differentiation,
+but here we will use the unit circle definition for simplicity.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;unit circle&lt;/strong&gt; is a circle with a radius of 1 centered at the origin of the Cartesian coordinate system.
+The coordinates of a point on the unit circle can be expressed in terms of the angle $\theta$ as follows,
+and thus the sine and cosine functions are defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+x = \cos(\theta), \quad y = \sin(\theta)
+\]&lt;/p&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/1024px-Unit_circle.svg.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;Sine and cosine functions on the unit circle&lt;/p&gt;
+
+&lt;p&gt;The sine and cosine functions are periodic with a period of $2\pi$.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-six-basic-trigonometric-functions&quot;&gt;The Six Basic Trigonometric Functions&lt;/h3&gt;
+
+&lt;p&gt;The six basic trigonometric functions are defined as follows:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Sine&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Cosine&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Tangent&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Cosecant&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Secant&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Cotangent&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Functions&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\sin x$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\cos x$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\tan x = \dfrac{\sin x}{\cos x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\csc x = \dfrac{1}{\sin x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\sec x = \dfrac{1}{\cos x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\cot x = \dfrac{\cos x}{\sin x}$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Domain&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus \left( \mathbb{Z} + \dfrac{1}{2} \right)\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus \mathbb{Z}\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus \left( \mathbb{Z} + \dfrac{1}{2} \right)\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus \mathbb{Z}\pi$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Range&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$[-1, 1]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$[-1, 1]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus (-1,1)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R} \setminus (-1,1)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Period&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$2\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$2\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$2\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$2\pi$&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$\pi$&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Symmetry&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Odd&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Even&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Odd&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Odd&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Even&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Odd&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/2/27/Trigonometric_functions_derivation_animation.svg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;Animation of the six basic trigonometric functions&lt;/p&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Trigonometric_functions.svg/2560px-Trigonometric_functions.svg.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;Graph of the six basic trigonometric functions&lt;/p&gt;
+
+&lt;h2 id=&quot;trigonometrical-identities&quot;&gt;Trigonometrical Identities&lt;/h2&gt;
+
+&lt;h3 id=&quot;pythagorean-identities&quot;&gt;Pythagorean Identities&lt;/h3&gt;
+
+&lt;p&gt;\[
+\sin^2 x + \cos^2 x = 1 \nl
+\sec^2 x = 1 + \tan^2 x \nl
+\csc^2 x = 1 + \cot^2 x
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;angle-addition-identities&quot;&gt;Angle Addition Identities&lt;/h3&gt;
+
+&lt;p&gt;\[
+\sin(x + y) = \sin x \cos y + \cos x \sin y \nl
+\cos(x + y) = \cos x \cos y - \sin x \sin y \nl
+\tan(x + y) = \frac{\tan x + \tan y}{1 - \tan x \tan y}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;the-law-of-cosines&quot;&gt;The Law of Cosines&lt;/h3&gt;
+
+&lt;p&gt;If $a,b,c$ are the lengths of the sides of a triangle opposite to angles $A,B,C$, respectively, then:&lt;/p&gt;
+
+&lt;p&gt;\[
+c^2 = a^2 + b^2 - 2ab \cos C \nl
+a^2 = b^2 + c^2 - 2bc \cos A \nl
+b^2 = c^2 + a^2 - 2ca \cos B
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;extra-properties&quot;&gt;Extra Properties&lt;/h3&gt;
+
+&lt;p&gt;\[
+\abs{ \sin \theta } \leq \abs{ \theta } \leq \abs{ \tan \theta } \quad \left( \abs{ \theta } &amp;lt; \frac{\pi}{2} \right) \nt
+0\leq 1 - \cos \theta \leq \frac{ \theta^2 }{2}
+\]&lt;/p&gt;
+
+&lt;p&gt;These are very easy to prove, so I will not include the proofs here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Set Theory for Statistics</title><link href="http://localhost:4000/mathematics/set-theory-for-statistics.html" rel="alternate" type="text/html" title="Set Theory for Statistics" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/set-theory-for-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/set-theory-for-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="mathematical-statistics" /><summary type="html"></summary></entry><entry><title type="html">Functions and Their Graphs</title><link href="http://localhost:4000/mathematics/functions-and-their-graphs.html" rel="alternate" type="text/html" title="Functions and Their Graphs" /><published>2025-04-15T00:00:00+09:00</published><updated>2025-04-15T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/functions-and-their-graphs</id><content type="html" xml:base="http://localhost:4000/mathematics/functions-and-their-graphs.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#functions&quot; id=&quot;markdown-toc-functions&quot;&gt;Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#graphs-of-functions&quot; id=&quot;markdown-toc-graphs-of-functions&quot;&gt;Graphs of Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#increasing-and-decreasing-functions&quot; id=&quot;markdown-toc-increasing-and-decreasing-functions&quot;&gt;Increasing and Decreasing Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#even-and-odd-functions&quot; id=&quot;markdown-toc-even-and-odd-functions&quot;&gt;Even and Odd Functions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;functions&quot;&gt;Functions&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;function&lt;/strong&gt; $f$ is a rule that assigns to each element $x$ in a set $D$ exactly one element $y$ in a set $E$. The set $D$ is called the &lt;strong&gt;domain&lt;/strong&gt; of the function, and the set $E$ is called the &lt;strong&gt;codomain&lt;/strong&gt; of the function.
+The notation $f(x)=y$ indicates that $y$ is the image of $x$ under the function $f$. The set of all images of elements in the domain is called the &lt;strong&gt;range&lt;/strong&gt; of the function, and is denoted by $Y=f(D)$.
+The following is the most common representation of a function:&lt;/p&gt;
+
+&lt;p&gt;\[
 f: X \to Y : x \mapsto f(x)
-\\]
+\]&lt;/p&gt;
 
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Codomain2.SVG/1280px-Codomain2.SVG.png)
-{:.centered}
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Codomain2.SVG/1280px-Codomain2.SVG.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-A diagram showing the relationship between the domain, codomain, and range of a function
-{:.figcaption}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Lazy Propagation</title><link href="http://localhost:4000/computer-science/lazy-propagation.html" rel="alternate" type="text/html" title="Lazy Propagation" /><published>2024-08-02T00:00:00+09:00</published><updated>2024-08-02T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/lazy-propagation</id><content type="html" xml:base="http://localhost:4000/computer-science/lazy-propagation.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;p class=&quot;figcaption&quot;&gt;A diagram showing the relationship between the domain, codomain, and range of a function&lt;/p&gt;
 
-## Introduction
-**Lazy propagation** is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.
+&lt;p&gt;Often a function is given by a formula that describes how to compute the image of an element in the domain.
+If the domain is not stated eplicitly, it is assumed to be the largest set for which the formula is defined and this is called the &lt;strong&gt;natural domain&lt;/strong&gt; of the function.&lt;/p&gt;
 
-## Lazy Propagation
+&lt;h2 id=&quot;graphs-of-functions&quot;&gt;Graphs of Functions&lt;/h2&gt;
 
-### Explanation
-Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
-$F \subset M^M$ which satisfies the following property:
-- $\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$
+&lt;p&gt;If $y=f(x)$, then the graph of the function is the set of all points $(x,y)$ in the Cartesian plane such that $y$ is the image of $x$ under the function $f$. The graph of a function is a visual representation of the relationship between the domain and range of the function.
+Graph can be represented in set notation:&lt;/p&gt;
 
-i.e. $f$ is an endomorphism of the monoid $(M, \ast)$.
-- $F = \mathrm{End}(M)$
+&lt;p&gt;\[
+G(f) = \set{ (x,f(x)) | x \in D } \subset X\times Y
+\]&lt;/p&gt;
 
-An endomorphism is a homomorphism from a set to itself, and a homomorphism is a function that preserves the structure of the set. (Read more about homomorphisms [here](https://en.wikipedia.org/wiki/Homomorphism).)
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://visionbook.mit.edu/figures/Image_processing_sampling/sinc_function.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
 
-Consider an array $A=[a_1,\cdots,a_N]$ of size $N$.
-Segment tree with lazy propagation can carry out two types of queries in $O(\log N)$ time complexity:
-1. **Range query**: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.
-2. **Range update**: Given a range $[l,r]$ and a function $f\in F$, update all elements in the range by applying the function $f$ to them:
-    $[\cdots,a_l,\cdots,a_r,\cdots] \to [\cdots, f(a_l), \cdots, f(a_r),\cdots]$
+&lt;p class=&quot;figcaption&quot;&gt;The graph of the sinc function&lt;/p&gt;
 
-The idea is to store the updates in the nodes of the segment tree and apply them only when needed.
-Such new tree nodes are called **lazy nodes** and the updates are called **lazy updates**.
+&lt;h2 id=&quot;increasing-and-decreasing-functions&quot;&gt;Increasing and Decreasing Functions&lt;/h2&gt;
 
-```mermaid
-graph TD
+&lt;p&gt;If the graph of a function climbs as we move from left to right, the function is said to be &lt;strong&gt;increasing&lt;/strong&gt;. If the graph falls as we move from left to right, the function is said to be &lt;strong&gt;decreasing&lt;/strong&gt;.
+Let $f$ be a function defined on an interval $I$, and $x_1,x_2\in I$ two points in the interval.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)&amp;lt;f(x_2)$, then $f$ is &lt;strong&gt;strictly increasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)&amp;gt;f(x_2)$, then $f$ is &lt;strong&gt;strictly decreasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are also weaker definitions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)\leq f(x_2)$, then $f$ is &lt;strong&gt;(weakly) increasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)\geq f(x_2)$, then $f$ is &lt;strong&gt;(weakly) decreasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We call a function &lt;strong&gt;monotonic&lt;/strong&gt; if it is either increasing or decreasing on the entire interval.&lt;/p&gt;
+
+&lt;h2 id=&quot;even-and-odd-functions&quot;&gt;Even and Odd Functions&lt;/h2&gt;
+
+&lt;p&gt;The graphs of &lt;em&gt;even&lt;/em&gt; and &lt;em&gt;odd&lt;/em&gt; functions have special symmetries. A function $y=f(x)$ is&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;even&lt;/strong&gt; if $f(-x)=f(x)$,&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;odd&lt;/strong&gt; if $f(-x)=-f(x)$,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for all $x$ in the domain of $f$.&lt;/p&gt;
+
+&lt;p&gt;The graph of an even function is symmetric with respect to the $y$-axis, while the graph of an odd function is symmetric with respect to the origin.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Lazy Propagation</title><link href="http://localhost:4000/computer-science/lazy-propagation.html" rel="alternate" type="text/html" title="Lazy Propagation" /><published>2024-08-02T00:00:00+09:00</published><updated>2024-08-02T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/lazy-propagation</id><content type="html" xml:base="http://localhost:4000/computer-science/lazy-propagation.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lazy-propagation&quot; id=&quot;markdown-toc-lazy-propagation&quot;&gt;Lazy Propagation&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Lazy propagation&lt;/strong&gt; is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.&lt;/p&gt;
+
+&lt;h2 id=&quot;lazy-propagation&quot;&gt;Lazy Propagation&lt;/h2&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
+$F \subset M^M$ which satisfies the following property:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;i.e. $f$ is an endomorphism of the monoid $(M, \ast)$.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$F = \mathrm{End}(M)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An endomorphism is a homomorphism from a set to itself, and a homomorphism is a function that preserves the structure of the set. (Read more about homomorphisms &lt;a href=&quot;https://en.wikipedia.org/wiki/Homomorphism&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;Consider an array $A=[a_1,\cdots,a_N]$ of size $N$.
+Segment tree with lazy propagation can carry out two types of queries in $O(\log N)$ time complexity:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Range query&lt;/strong&gt;: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Range update&lt;/strong&gt;: Given a range $[l,r]$ and a function $f\in F$, update all elements in the range by applying the function $f$ to them:
+ $[\cdots,a_l,\cdots,a_r,\cdots] \to [\cdots, f(a_l), \cdots, f(a_r),\cdots]$&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The idea is to store the updates in the nodes of the segment tree and apply them only when needed.
+Such new tree nodes are called &lt;strong&gt;lazy nodes&lt;/strong&gt; and the updates are called &lt;strong&gt;lazy updates&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
     subgraph s1 [&quot;1/[1:4]&quot;];
         f1(4); l1( ):::lazy;
     end;
@@ -70,21 +586,20 @@ graph TD
         f7(1); l7( ):::lazy;
     end;
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+    s1:::round---s2:::round &amp;amp; s3:::round;
+    s2---s4:::round &amp;amp; s5:::round;
+    s3---s6:::round &amp;amp; s7:::round;
 
     classDef lazy fill:#ccf;
     classDef round rx:10,ry:10,fill:#ffe;
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-The binary tree above is an example of a segment tree with lazy propagation for the array $[1,1,1,1]$.
-In each subgraph, the left node represents the sum of all elements in the range, and the right node represents the lazy update.
+&lt;p&gt;The binary tree above is an example of a segment tree with lazy propagation for the array $[1,1,1,1]$.
+In each subgraph, the left node represents the sum of all elements in the range, and the right node represents the lazy update.&lt;/p&gt;
 
-When we update the range $[2:4]$ by adding $1$ to all elements, the segment tree will be updated as follows.
+&lt;p&gt;When we update the range $[2:4]$ by adding $1$ to all elements, the segment tree will be updated as follows.&lt;/p&gt;
 
-```mermaid
-graph TD
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
     subgraph s1 [&quot;1/[1:4]&quot;];
         f1(7); l1( ):::lazy;
     end;
@@ -107,18 +622,17 @@ graph TD
         f7(1); l7( ):::lazy;
     end;
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+    s1:::round---s2:::round &amp;amp; s3:::round;
+    s2---s4:::round &amp;amp; s5:::round;
+    s3---s6:::round &amp;amp; s7:::round;
 
     classDef lazy fill:#ccf;
     classDef round rx:10,ry:10,fill:#ffe;
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-When we update the range $[1:3]$ by adding $1$ to all elements, the segment tree will be updated as follows.
+&lt;p&gt;When we update the range $[1:3]$ by adding $1$ to all elements, the segment tree will be updated as follows.&lt;/p&gt;
 
-```mermaid
-graph TD
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
     subgraph s1 [&quot;1/[1:4]&quot;];
         f1(10); l1( ):::lazy;
     end;
@@ -141,19 +655,18 @@ graph TD
         f7(2); l7(1):::lazy;
     end;
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+    s1:::round---s2:::round &amp;amp; s3:::round;
+    s2---s4:::round &amp;amp; s5:::round;
+    s3---s6:::round &amp;amp; s7:::round;
 
     classDef lazy fill:#ccf;
     classDef round rx:10,ry:10,fill:#ffe;
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-When we query the sum of the elements in the range $[3,4]$, the segment tree will be updated
-and the nodes will be visited as follows.
+&lt;p&gt;When we query the sum of the elements in the range $[3,4]$, the segment tree will be updated
+and the nodes will be visited as follows.&lt;/p&gt;
 
-```mermaid
-graph TD
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
     subgraph s1 [&quot;1/[1:4]&quot;];
         f1(10); l1( ):::lazy;
     end;
@@ -176,383 +689,262 @@ graph TD
         f7(2); l7(1):::lazy;
     end;
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+    s1:::round---s2:::round &amp;amp; s3:::round;
+    s2---s4:::round &amp;amp; s5:::round;
+    s3---s6:::round &amp;amp; s7:::round;
     s5:::highlight; s6:::highlight;
 
     classDef lazy fill:#ccf;
     classDef round rx:10,ry:10,fill:#ffe;
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-### Code
-Let&apos;s see the sample code.
-```cpp
-const int N;
-const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-data A[N];
-Node tree[TREE_SIZE];
-Node_lazy lazy[TREE_SIZE];
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 
-Node merge(Node a,Node b){ /* merge two nodes */ }
-Node conv(data a){ /* convert data to node */ }
-Node identity(){ /* return identity node */ }
-Node_lazy merge_lazy(Node_lazy a,Node_lazy b){ /* merge two lazy nodes */ }
-Node_lazy identity_lazy(){ /* return identity lazy node */ }
-Node apply_lazy(Node nd,Node_lazy lz){ /* apply lazy node to the node */ }
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* convert data to node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two lazy nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity lazy node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* apply lazy node to the node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-Node init(int nd,int l,int r){
-    if(l==r) return tree[nd] = conv(A[l]);
-    int m = (l+r)/2;
-    return tree[nd] = merge(init(nd*2,l,m),init(nd*2+1,m+1,r));
-}
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-void propagate(int nd,int l,int r){
-    if(lazy[nd]==identity_lazy()) return;
-    lazy[nd*2] = merge_lazy(lazy[nd*2],lazy[nd]), lazy[nd*2+1] = merge_lazy(lazy[nd*2+1],lazy[nd]);
-    tree[nd*2] = apply_lazy(tree[nd*2],lazy[nd]), tree[nd*2+1] = apply_lazy(tree[nd*2+1],lazy[nd]);
-    lazy[nd] = identity_lazy();
-}
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-Node update(int nd,int l,int r,int s,int e,Node_lazy lz){
-    if(e&lt;l or r&lt;s) return tree[nd];
-    if(s&lt;=l and r&lt;=e){
-        lazy[nd] = merge_lazy(lazy[nd],lz);
-        return tree[nd] = apply_lazy(tree[nd],lz);
-    }
-    propagate(nd,l,r);
-    int m = (l+r)/2;
-    return tree[nd] = merge(update(nd*2,l,m,s,e,lz),update(nd*2+1,m+1,r,s,e,lz));
-}
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-Node Query(int nd,int l,int r,int s,int e){
-    if(e&lt;l or r&lt;s) return identity();
-    if(s&lt;=l and r&lt;=e) return tree[nd];
-    propagate(nd,l,r);
-    int m = (l+r)/2;
-    return merge(Query(nd*2,l,m,s,e),Query(nd*2+1,m+1,r,s,e));
-}
-```
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-### Example
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
 
-Let&apos;s think of an example of calculating the sum of elements in a range and updating the elements in a range by adding a constant value.
-Then, the code will be as follows:
+&lt;p&gt;Let’s think of an example of calculating the sum of elements in a range and updating the elements in a range by adding a constant value.
+Then, the code will be as follows:&lt;/p&gt;
 
-```cpp
-struct Node{
-    int sum,len;
-    Node(int sum=0,int len=0):sum(sum),len(len){}
-};
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-Node merge(Node a,Node b){
-    return Node(a.sum+b.sum,a.len+b.len);
-}
-Node conv(int a){
-    return Node(a,1);
-}
-Node identity(){
-    return Node(0,0);
-}
-int merge_lazy(int a,int b){
-    return a+b;
-}
-int identity_lazy(){
-    return 0;
-}
-Node apply_lazy(Node nd,int lz){
-    return Node(nd.sum+nd.len*lz,nd.len);
-}
-```</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 2042] 구간 합 구하기</title><link href="http://localhost:4000/computer-science/boj2042.html" rel="alternate" type="text/html" title="[BOJ 2042] 구간 합 구하기" /><published>2024-07-31T00:00:00+09:00</published><updated>2024-07-31T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj2042</id><content type="html" xml:base="http://localhost:4000/computer-science/boj2042.html">[https://www.acmicpc.net/problem/2042](https://www.acmicpc.net/problem/2042)
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 2042] 구간 합 구하기</title><link href="http://localhost:4000/computer-science/boj2042.html" rel="alternate" type="text/html" title="[BOJ 2042] 구간 합 구하기" /><published>2024-07-31T00:00:00+09:00</published><updated>2024-07-31T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj2042</id><content type="html" xml:base="http://localhost:4000/computer-science/boj2042.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2042&quot;&gt;https://www.acmicpc.net/problem/2042&lt;/a&gt;&lt;/p&gt;
 
 &lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
 
-&lt;script src=&quot;https://gist.github.com/phylosopher07/77754fb375fb72a1d1bb937c750234f8.js&quot;&gt;&lt;/script&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/2042</summary></entry><entry><title type="html">Segment Tree</title><link href="http://localhost:4000/computer-science/segment-tree.html" rel="alternate" type="text/html" title="Segment Tree" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;script src=&quot;https://gist.github.com/phylosopher07/77754fb375fb72a1d1bb937c750234f8.js&quot;&gt;&lt;/script&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/2042</summary></entry><entry><title type="html">Ravel, La Valse, M.72</title><link href="http://localhost:4000/classical-music/ravel-m72.html" rel="alternate" type="text/html" title="Ravel, La Valse, M.72" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/ravel-m72</id><content type="html" xml:base="http://localhost:4000/classical-music/ravel-m72.html">&lt;!--more--&gt;
 
-## Introduction
-A **segment tree** is a tree data structure for storing intervals, or segments. It allows to perform queries and updates on the intervals in very efficient manner.
-There are many applications of segment trees: calculating the sum of all elements in a range, finding the minimum or maximum element in a range, etc.
+&lt;object type=&quot;application/pdf&quot; data=&quot;https://vmirror.imslp.org/files/imglnks/usimg/8/8b/IMSLP919224-PMLP07611-Ravel-M72-La-Valse-Arr-Piano-FE.pdf&quot; width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
 
-## Segment Tree
+&lt;div class=&quot;iframe-container&quot;&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/NhNCGgFIxN8&quot; width=&quot;100%&quot; height=&quot;500&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="ravel" /><summary type="html"></summary></entry><entry><title type="html">Segment Tree</title><link href="http://localhost:4000/computer-science/segment-tree.html" rel="alternate" type="text/html" title="Segment Tree" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#segment-tree&quot; id=&quot;markdown-toc-segment-tree&quot;&gt;Segment Tree&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-### Explanation
-Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
-(Read more about monoids [here](https://en.wikipedia.org/wiki/Monoid).)
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;segment tree&lt;/strong&gt; is a tree data structure for storing intervals, or segments. It allows to perform queries and updates on the intervals in very efficient manner.
+There are many applications of segment trees: calculating the sum of all elements in a range, finding the minimum or maximum element in a range, etc.&lt;/p&gt;
 
-Given an array $A=[a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l,r]$ of the array.
+&lt;h2 id=&quot;segment-tree&quot;&gt;Segment Tree&lt;/h2&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+&lt;p&gt;Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
+(Read more about monoids &lt;a href=&quot;https://en.wikipedia.org/wiki/Monoid&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;p&gt;Given an array $A=[a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l,r]$ of the array.
 Each node stores the result of applying the operation $\ast$ to all elements in the interval it represents, i.e. $a_l \ast \cdots \ast a_r$.
 The root node represents the entire array $[1:N]$, and each leaf node represents a single element of the array.
-Every parent node has left and right children, which represent the left and right halves of the parent&apos;s interval.
-You can see that the segment tree is a _full binary tree_.
+Every parent node has left and right children, which represent the left and right halves of the parent’s interval.
+You can see that the segment tree is a &lt;em&gt;full binary tree&lt;/em&gt;.&lt;/p&gt;
 
-Segment tree can carry out two types of queries in $O(\log N)$ time complexity:
-1. **Range query**: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.
-2. **Point update**: Given an index $i$ and a new value $v$, update the element $a_i$ to $v$.
+&lt;p&gt;Segment tree can carry out two types of queries in $O(\log N)$ time complexity:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Range query&lt;/strong&gt;: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Point update&lt;/strong&gt;: Given an index $i$ and a new value $v$, update the element $a_i$ to $v$.&lt;/li&gt;
+&lt;/ol&gt;
 
-```mermaid
-graph TD
-    f1(&quot;1 &lt;br&gt; [1:11]&quot;); f2(&quot;2 &lt;br&gt; [1:6]&quot;);
-    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
-    f5(&quot;5 &lt;br&gt; [4:6]&quot;); f6(&quot;6 &lt;br&gt; [7:9]&quot;);
-    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
-    f9(&quot;9 &lt;br&gt; [3]&quot;); f10(&quot;10 &lt;br&gt; [4:5]&quot;);
-    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;);
-    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
-    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
-    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
-    f21(&quot;21 &lt;br&gt; [5]&quot;); f24(&quot;24 &lt;br&gt; [7]&quot;);
-    f25(&quot;25 &lt;br&gt; [8]&quot;);
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;); f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;);
+    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
+    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;); f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
+    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
+    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;); f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;);
+    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;);
+    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
+    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
+    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
+    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;); f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
+    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
 
-    f1---f2 &amp; f3;
-    f2---f4 &amp; f5;
-    f3---f6 &amp; f7;
-    f4---f8 &amp; f9;
-    f5---f10 &amp; f11;
-    f6---f12 &amp; f13;
-    f7---f14 &amp; f15;
-    f8---f16 &amp; f17;
-    f10---f20 &amp; f21;
-    f12---f24 &amp; f25;
-```
+    f1---f2 &amp;amp; f3;
+    f2---f4 &amp;amp; f5;
+    f3---f6 &amp;amp; f7;
+    f4---f8 &amp;amp; f9;
+    f5---f10 &amp;amp; f11;
+    f6---f12 &amp;amp; f13;
+    f7---f14 &amp;amp; f15;
+    f8---f16 &amp;amp; f17;
+    f10---f20 &amp;amp; f21;
+    f12---f24 &amp;amp; f25;
+&lt;/code&gt;&lt;/pre&gt;
 
-The binary tree above is an example of a segment tree for the array with 11 elements.
+&lt;p&gt;The binary tree above is an example of a segment tree for the array with 11 elements.
 Each node is written in the form of node index and the interval it represents.
-When we update the 5th element of the array, the segment tree will be updated as follows.
+When we update the 5th element of the array, the segment tree will be updated as follows.&lt;/p&gt;
 
-```mermaid
-graph TD
-    f1(&quot;1 &lt;br&gt; [1:11]&quot;):::highlight ; f2(&quot;2 &lt;br&gt; [1:6]&quot;):::highlight;
-    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
-    f5(&quot;5 &lt;br&gt; [4:6]&quot;):::highlight; f6(&quot;6 &lt;br&gt; [7:9]&quot;);
-    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
-    f9(&quot;9 &lt;br&gt; [3]&quot;); f10(&quot;10 &lt;br&gt; [4:5]&quot;):::highlight;
-    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;);
-    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
-    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
-    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
-    f21(&quot;21 &lt;br&gt; [5]&quot;):::highlight; f24(&quot;24 &lt;br&gt; [7]&quot;);
-    f25(&quot;25 &lt;br&gt; [8]&quot;);
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;):::highlight ; f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;):::highlight;
+    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
+    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;):::highlight; f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
+    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
+    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;); f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;):::highlight;
+    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;);
+    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
+    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
+    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
+    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;):::highlight; f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
+    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
 
-    f1---f2 &amp; f3;
-    f2---f4 &amp; f5;
-    f3---f6 &amp; f7;
-    f4---f8 &amp; f9;
-    f5---f10 &amp; f11;
-    f6---f12 &amp; f13;
-    f7---f14 &amp; f15;
-    f8---f16 &amp; f17;
-    f10---f20 &amp; f21;
-    f12---f24 &amp; f25;
-
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-```
-
-When we query the sum of the elements in the range $[3,8]$, following nodes will be visited.
-
-```mermaid
-graph TD
-    f1(&quot;1 &lt;br&gt; [1:11]&quot;); f2(&quot;2 &lt;br&gt; [1:6]&quot;);
-    f3(&quot;3 &lt;br&gt; [7:11]&quot;); f4(&quot;4 &lt;br&gt; [1:3]&quot;);
-    f5(&quot;5 &lt;br&gt; [4:6]&quot;):::highlight;; f6(&quot;6 &lt;br&gt; [7:9]&quot;);
-    f7(&quot;7 &lt;br&gt; [10:11]&quot;); f8(&quot;8 &lt;br&gt; [1:2]&quot;);
-    f9(&quot;9 &lt;br&gt; [3]&quot;):::highlight;; f10(&quot;10 &lt;br&gt; [4:5]&quot;);
-    f11(&quot;11 &lt;br&gt; [6]&quot;); f12(&quot;12 &lt;br&gt; [7:8]&quot;):::highlight;;
-    f13(&quot;13 &lt;br&gt; [9]&quot;); f14(&quot;14 &lt;br&gt; [10]&quot;);
-    f15(&quot;15 &lt;br&gt; [11]&quot;); f16(&quot;16 &lt;br&gt; [1]&quot;);
-    f17(&quot;17 &lt;br&gt; [2]&quot;); f20(&quot;20 &lt;br&gt; [4]&quot;);
-    f21(&quot;21 &lt;br&gt; [5]&quot;); f24(&quot;24 &lt;br&gt; [7]&quot;);
-    f25(&quot;25 &lt;br&gt; [8]&quot;);
-
-    f1---f2 &amp; f3;`
-    f2---f4 &amp; f5;
-    f3---f6 &amp; f7;
-    f4---f8 &amp; f9;
-    f5---f10 &amp; f11;
-    f6---f12 &amp; f13;
-    f7---f14 &amp; f15;
-    f8---f16 &amp; f17;
-    f10---f20 &amp; f21;
-    f12---f24 &amp; f25;
+    f1---f2 &amp;amp; f3;
+    f2---f4 &amp;amp; f5;
+    f3---f6 &amp;amp; f7;
+    f4---f8 &amp;amp; f9;
+    f5---f10 &amp;amp; f11;
+    f6---f12 &amp;amp; f13;
+    f7---f14 &amp;amp; f15;
+    f8---f16 &amp;amp; f17;
+    f10---f20 &amp;amp; f21;
+    f12---f24 &amp;amp; f25;
 
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-```
+&lt;/code&gt;&lt;/pre&gt;
 
-### Code
-Let&apos;s see the sample code.
-```cpp
-const int N;
-const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
+&lt;p&gt;When we query the sum of the elements in the range $[3,8]$, following nodes will be visited.&lt;/p&gt;
 
-data A[N];
-Node tree[TREE_SIZE];
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;); f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;);
+    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
+    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;):::highlight;; f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
+    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
+    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;):::highlight;; f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;);
+    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;):::highlight;;
+    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
+    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
+    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
+    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;); f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
+    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
 
-Node merge(Node a,Node b){ /* merge two nodes */ }
-Node conv(data a){ /* convert data to node */ }
-Node identity(){ /* return identity node */ }
+    f1---f2 &amp;amp; f3;`
+    f2---f4 &amp;amp; f5;
+    f3---f6 &amp;amp; f7;
+    f4---f8 &amp;amp; f9;
+    f5---f10 &amp;amp; f11;
+    f6---f12 &amp;amp; f13;
+    f7---f14 &amp;amp; f15;
+    f8---f16 &amp;amp; f17;
+    f10---f20 &amp;amp; f21;
+    f12---f24 &amp;amp; f25;
 
-Node init(int nd,int l,int r){
-    if(l==r) return tree[nd] = conv(A[l]);
-    int m = (l+r)/2;
-    return tree[nd] = merge(init(nd*2,l,m),init(nd*2+1,m+1,r));
-}
+    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
 
-Node update(int nd,int l,int r,int idx,data val){
-    if(idx&lt;l or r&lt;idx) return tree[nd];
-    if(l==r) return tree[nd] = conv(val);
-    int m = (l+r)/2;
-    return tree[nd] = merge(update(nd*2,l,m,idx,val),update(nd*2+1,m+1,r,idx,val));
-}
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-Node Query(int nd,int l,int r,int s,int e){
-    if(e&lt;l or r&lt;s) return identity();
-    if(s&lt;=l and r&lt;=e) return tree[nd];
-    int m = (l+r)/2;
-    return merge(Query(nd*2,l,m,s,e),Query(nd*2+1,m+1,r,s,e));
-}
-```
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 
-So here, the data type **Node** should be the monoid structure $(M, \ast)$.
-Commonly, we store data in the array $A$ in another data type(**data**, such as integer etc.), because it&apos;s easy and intuitive.
-If such data type is different with the node, you should convert the data to the node structure in the function **conv**.
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* convert data to node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-### Applications
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-* Range sum query
-* Range minimum/maximum query
-* Range gcd/lcm query</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Ravel, La Valse, M.72</title><link href="http://localhost:4000/classical-music/ravel-m72.html" rel="alternate" type="text/html" title="Ravel, La Valse, M.72" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/ravel-m72</id><content type="html" xml:base="http://localhost:4000/classical-music/ravel-m72.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-&lt;object type=&quot;application/pdf&quot;
-data=&quot;https://vmirror.imslp.org/files/imglnks/usimg/8/8b/IMSLP919224-PMLP07611-Ravel-M72-La-Valse-Arr-Piano-FE.pdf&quot;
-width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;iframe-container&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/NhNCGgFIxN8&quot;
-width=&quot;100%&quot; height=500
-frameborder=&quot;0&quot;
-allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
-allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="ravel" /><summary type="html"></summary></entry><entry><title type="html">Rachmaninoff, 9 Etudes-Tableaux, Op. 39</title><link href="http://localhost:4000/classical-music/rach-op39.html" rel="alternate" type="text/html" title="Rachmaninoff, 9 Etudes-Tableaux, Op. 39" /><published>2024-07-27T00:00:00+09:00</published><updated>2024-07-27T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/rach-op39</id><content type="html" xml:base="http://localhost:4000/classical-music/rach-op39.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;p&gt;So here, the data type &lt;strong&gt;Node&lt;/strong&gt; should be the monoid structure $(M, \ast)$.
+Commonly, we store data in the array $A$ in another data type(&lt;strong&gt;data&lt;/strong&gt;, such as integer etc.), because it’s easy and intuitive.
+If such data type is different with the node, you should convert the data to the node structure in the function &lt;strong&gt;conv&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;object type=&quot;application/pdf&quot;
-data=&quot;https://ks15.imslp.org/files/imglnks/usimg/4/49/IMSLP00243-Rachmaninoff_-_9_Etudes_Tableaux,_Op_39.pdf&quot;
-width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
+&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
 
-&lt;div class=&quot;iframe-container&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/8L6CxUpBZlY&quot;
-width=&quot;100%&quot; height=500
-frameborder=&quot;0&quot;
-allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot;
-allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="rachmaninoff" /><summary type="html"></summary></entry><entry><title type="html">Defining the Natural Numbers; Peano’s Axioms</title><link href="http://localhost:4000/mathematics/defining-the-natural-numbers.html" rel="alternate" type="text/html" title="Defining the Natural Numbers; Peano’s Axioms" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/defining-the-natural-numbers</id><content type="html" xml:base="http://localhost:4000/mathematics/defining-the-natural-numbers.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Introduction
-
-Historically, mathematics has been built on the foundation of natural numbers. Natural numbers are the abstraction of counting objects, 
-and have always thought to be the most axiomatic and fundamental concept in mathematics.
-
-&gt; **“God made natural numbers; all else is the work of man“** - Leopold Kronecker
-{:.lead}
-
-## Peano&apos;s Axioms
-
-After Kronecker, Peano tried to describe the natural numbers in a more mathematical and logical way.
-He proposed a set of axioms to define the set of natural numbers $\mathbb{N}$, and those are called Peano&apos;s Axioms.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="number-theory" /><summary type="html"></summary></entry><entry><title type="html">Euler equations</title><link href="http://localhost:4000/physics/euler-equations.html" rel="alternate" type="text/html" title="Euler equations" /><published>2023-04-05T00:00:00+09:00</published><updated>2023-04-05T00:00:00+09:00</updated><id>http://localhost:4000/physics/euler-equations</id><content type="html" xml:base="http://localhost:4000/physics/euler-equations.html">from **「Fluid Mechanics」**: _Landau, L.D. &amp; Lifschitz, E.M._
-{:.figcaption}
-
-&gt; Equations for adiabatic and inviscid flow.
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Momentum equation
-
-The **momentum equation** is a partial differential equation that describes the motion of an ideal fluid,
-
-\\[ \frac{D\b{u}}{Dt} = -\frac{1}{\rho}\nabla p \\]
-
-where $\frac{D}{Dt}$ is the _material derivative_.
-The momentum equation is derived from the conservation of momentum,
-which states that the total momentum of a system is constant.
-
-### Proof
-
-Let us consider some volume $V_0$ in the fluid.
-The total force acting on this volume is equal to the surface integral of the pressure.
-It can be transformed to a volume integral by the _divergence theorem_:
-
-\\[ -\oint_{\partial V_0}p \dd{\b{f}} = -\int_{V_0} \nabla p \dd{V} \\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html">from 「Fluid Mechanics」: Landau, L.D. &amp;amp; Lifschitz, E.M. Equations for adiabatic and inviscid flow.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Continuity equation</title><link href="http://localhost:4000/physics/continuity-equation.html" rel="alternate" type="text/html" title="Continuity equation" /><published>2023-04-04T00:00:00+09:00</published><updated>2023-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/continuity-equation</id><content type="html" xml:base="http://localhost:4000/physics/continuity-equation.html">from **「Fluid Mechanics」**: _Landau, L.D. &amp; Lifschitz, E.M._
-{:.figcaption}
-
-&gt; The continuity equation.
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Continuity equation
-
-In fluid dynamics, the **continuity equation** states that the rate at which mass enters a system is equal to 
-the rate at which mass leaves the system plus the accumulation of mass within the system.
-
-\\[ \pdv{\rho}{t} + \div(\rho\b{u}) = 0 \\]
-
-where $\rho$ is the density of the fluid, $\b{u}$ is the velocity of the fluid, and $t$ is time.
-
-The continuity equation is a consequence of the conservation of mass, and we&apos;ll derive the equation
-from the assumption now.
-
-### Derivation
-
-We consider some volume $V_0$ of space. The change per unit time in the mass of fluid in this volume
-should be the same as the quantity flowing in unit time through the surface of the volume.
-Therefore, we can write as follows:
-
-\\[ \pdv{ }{t}\int_{V_0}\rho \dd{V} = -\oint_{\partial V_0}\rho\b{u}\cdot\d{\b{S}} \\]
-
-The surface integral can be transformed by the _divergence theorem_ to a volume integral, thus:
-
-\\[ \pdv{ }{t}\int_{V_0}\rho \dd{V} = -\int_{V_0}\div(\rho\b{u}) \dd{V} \nl\;\nl
-\\int_{V_0}\left[ \pdv{\rho}{t}+\div(\rho\b{u})\right] \d V = 0 \\]
-
-Since the equation must hold for any volume $V_0$, the integrand must vanish.
-
-\\[ \pdv{\rho}{t} + \div(\rho\b{u}) = 0 \\]
-
-Defining the vector $\b{j}$ as $\rho\b{u}$, we can write the continuity equation as:
-
-\\[ \pdv{\rho}{t} + \div\b{j} = 0 \\]
-
-Here $\b{j}$ is called the **momentum density**. Its direction is that of the motion of the fluid,
-while its magnitude equals the mass of fluid flowing in unit time through unit area perpendicular to the velocity.
-
-### Interpretation
-
-Expanding the expression for the momentum density, we have:
-
-\\[ \pdv{\rho}{t} + \rho\div\b{u} + (\nabla\rho)\cdot\b{u} = 0 \\]
-
-We can simplyfy the equation by the _material derivative_,
-
-\\[ \frac{D}{Dt} = \pdv{ }{t} + \b{u}\cdot\nabla \\]
-
-we get the following equation.
-
-\\[ \frac{D\rho}{Dt} + \rho\nabla\cdot\b{u} = 0 \\]
-
-A change in the density over time should be proportional to the divergence of the velocity field.
-So if the fluid is _incompressible_, the divergence of the velocity field must be zero, which is expressed as:
-
-\\[ \nabla\cdot\b{u} = 0 \\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html">from 「Fluid Mechanics」: Landau, L.D. &amp;amp; Lifschitz, E.M. The continuity equation.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/physics/fluid-mechanics/Landau.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;ul&gt;
+  &lt;li&gt;Range sum query&lt;/li&gt;
+  &lt;li&gt;Range minimum/maximum query&lt;/li&gt;
+  &lt;li&gt;Range gcd/lcm query&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>
