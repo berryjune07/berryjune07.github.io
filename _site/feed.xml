@@ -1,5 +1,447 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-22T02:08:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">One-Sided Limits</title><link href="http://localhost:4000/mathematics/one-sided-limits.html" rel="alternate" type="text/html" title="One-Sided Limits" /><published>2025-05-22T00:00:00+09:00</published><updated>2025-05-22T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/one-sided-limits</id><content type="html" xml:base="http://localhost:4000/mathematics/one-sided-limits.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-25T06:36:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Continuity</title><link href="http://localhost:4000/mathematics/limits-involving-infinity.html" rel="alternate" type="text/html" title="Continuity" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/limits-involving-infinity</id><content type="html" xml:base="http://localhost:4000/mathematics/limits-involving-infinity.html">&lt;!--more--&gt;
+
+&lt;p&gt;##&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Random Variables and Distribution Functions</title><link href="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html" rel="alternate" type="text/html" title="Random Variables and Distribution Functions" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-variables-and-distribution-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#random-variables&quot; id=&quot;markdown-toc-random-variables&quot;&gt;Random Variables&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#distribution-functions&quot; id=&quot;markdown-toc-distribution-functions&quot;&gt;Distribution Functions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;random-variables&quot;&gt;Random Variables&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;random variable&lt;/strong&gt;  is a function that assigns a real number to each outcome in a sample space.
+$X: S \to \mathbb{R}$ is a most common notation for a random variable, where $S$ is the sample space.&lt;/p&gt;
+
+&lt;p&gt;Suppose we have a sample space $S = \set{s_1, s_2, \ldots, s_n}$.
+Then a random variable $X$ can be defined as a function that maps each outcome $s_i$ to a real number.
+\[
+X: S \to \mathbb{R}, X(S) = \mathscr{X} = \set{x_1, x_2, \ldots, x_m}
+\]
+Thus, we get
+\[
+P_X(X=x_i) = P(\set{s_j \in S \mid X(s_j) = x_i})
+\]
+where $P_X$ is the probability measure induced by the random variable $X$.
+It is also called the &lt;strong&gt;induced probability function&lt;/strong&gt; on $\mathscr{X}$,
+and we can easily check that it satisfies the Kolmogorov axioms.
+Therefore, in most cases, we simply write $P(X=x_i)$ instead of $P_X(X=x_i)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;distribution-functions&quot;&gt;Distribution Functions&lt;/h2&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Conditional Probability and Independence</title><link href="http://localhost:4000/mathematics/conditional-probability-and-independence.html" rel="alternate" type="text/html" title="Conditional Probability and Independence" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/conditional-probability-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/conditional-probability-and-independence.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#conditional-probability&quot; id=&quot;markdown-toc-conditional-probability&quot;&gt;Conditional Probability&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#bayes-theorem&quot; id=&quot;markdown-toc-bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#independence&quot; id=&quot;markdown-toc-independence&quot;&gt;Independence&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#mutually-independent-events&quot; id=&quot;markdown-toc-mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conditional-probability&quot;&gt;Conditional Probability&lt;/h2&gt;
+
+&lt;p&gt;If $A$ and $B$ are two events (where $B$ is not an empty event), the &lt;strong&gt;conditional probability&lt;/strong&gt; of $A$ given $B$ is defined as the probability of $A$ occurring under the condition that $B$ has occurred.
+\[
+P(A | B) = \frac{P(A \cap B)}{P(B)}
+\]&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$ P(A| A) = 1$&lt;/li&gt;
+  &lt;li&gt;If $A$ and $B$ are disjoint, $P(A| B) = P(B| A) = 0$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can obtain the following equation.
+\[
+P(A \cap B) = P(A | B) P(B) = P(B | A) P(A)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/h3&gt;
+
+&lt;p&gt;Bayes’ theorem relates the conditional probabilities of two events $A$ and $B$.
+\[
+P(A | B) = \frac{P(B | A) P(A)}{P(B)}
+\]&lt;/p&gt;
+
+&lt;p&gt;We can also use its extended form. Let $\set{A_i}_{i\in I}$ be a partition of the sample space, and $B$ be any non-empty event.
+Then,
+\[
+P(A_i | B) = \frac{P(B | A_i) P(A_i)}{\dps \sum_{j \in I} P(B | A_j) P(A_j)}
+\]
+is true. Bayes’ theorem is useful when we want to update our beliefs about the probability of an event based on new evidence.&lt;/p&gt;
+
+&lt;h2 id=&quot;independence&quot;&gt;Independence&lt;/h2&gt;
+&lt;p&gt;Two events $A$ and $B$ are said to be &lt;strong&gt;independent&lt;/strong&gt; if the occurrence of one does not affect the probability of the other.
+This is mathematically defined as:
+\[
+P(A \cap B) = P(A) P(B)
+\]
+If $A$ and $B$ are independent, then:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$P(A | B) = P(A)$&lt;/li&gt;
+  &lt;li&gt;$P(B | A) = P(B)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Following paris of events are also independent:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A$ and $B^\complement$&lt;/li&gt;
+  &lt;li&gt;$A^\complement$ and $B$&lt;/li&gt;
+  &lt;li&gt;$A^\complement$ and $B^\complement$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/h3&gt;
+
+&lt;p&gt;A collection of events $\set{A_i}_{i \in I}$ is said to be &lt;strong&gt;mutually independent&lt;/strong&gt;
+if for every finite subset $J \subseteq I$,
+\[
+P\left(\bigcap_{j \in J} A_j\right) = \prod_{j \in J} P(A_j)
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Basic Probability Theory</title><link href="http://localhost:4000/mathematics/basic-probability-theory.html" rel="alternate" type="text/html" title="Basic Probability Theory" /><published>2025-06-23T00:00:00+09:00</published><updated>2025-06-23T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/basic-probability-theory</id><content type="html" xml:base="http://localhost:4000/mathematics/basic-probability-theory.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#axiomatic-foundations-of-probability&quot; id=&quot;markdown-toc-axiomatic-foundations-of-probability&quot;&gt;Axiomatic Foundations of Probability&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sigma-algebra&quot; id=&quot;markdown-toc-sigma-algebra&quot;&gt;Sigma-Algebra&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#probability-function&quot; id=&quot;markdown-toc-probability-function&quot;&gt;Probability Function&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#theorems&quot; id=&quot;markdown-toc-theorems&quot;&gt;Theorems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1&quot; id=&quot;markdown-toc-1&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2&quot; id=&quot;markdown-toc-2&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3&quot; id=&quot;markdown-toc-3&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4&quot; id=&quot;markdown-toc-4&quot;&gt;4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5bonferronis-inequality&quot; id=&quot;markdown-toc-5bonferronis-inequality&quot;&gt;5(Bonferroni’s Inequality)&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;axiomatic-foundations-of-probability&quot;&gt;Axiomatic Foundations of Probability&lt;/h2&gt;
+
+&lt;p&gt;When an experiment is performed, the realization of the experiment is an outcome in the sample space.
+If the experiment is repeated, the outcomes may vary.
+The &lt;strong&gt;probability&lt;/strong&gt; of an event is a measure of how likely that event is to occur.&lt;/p&gt;
+
+&lt;h3 id=&quot;sigma-algebra&quot;&gt;Sigma-Algebra&lt;/h3&gt;
+
+&lt;p&gt;A collection of subsets, of a sample space $S$ is called a &lt;strong&gt;sigma-algebra&lt;/strong&gt;(or &lt;em&gt;Borel field&lt;/em&gt;), denoted by $\mathscr{B}$, if it satisfies the following properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\emptyset \in \mathscr{B}$&lt;/li&gt;
+  &lt;li&gt;$A \in \mathscr{B} \implies A^\complement \in \mathscr{B}$&lt;/li&gt;
+  &lt;li&gt;$A_i \in \mathscr{B} \; (i \in I) \implies \bigcup_{i \in I} A_i \in \mathscr{B}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;By the second and third properties and the De Morgan’s laws, we can also conclude that&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A_i \in \mathscr{B} \; (i \in I) \implies \bigcap_{i \in I} A_i \in \mathscr{B}$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Associated with sample space $S$, we can have many different sigma-algebras.
+For example, the collection of the two sets ${\emptyset, S}$ is a sigma-algebra, called the &lt;strong&gt;trivial sigma-algebra&lt;/strong&gt;.
+The largest sigma-algebra associated with $S$ is the collection of all subsets of $S$, called the &lt;strong&gt;power set&lt;/strong&gt; of $S$, denoted by $\mathcal{P}(S)$.&lt;/p&gt;
+
+&lt;h3 id=&quot;probability-function&quot;&gt;Probability Function&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;probability function&lt;/strong&gt; is a function $P: \mathscr{B} \to \mathbb{R}$ that satisfies the following properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\forall A\in \mathscr{B}: \;P(A) \ge 0$&lt;/li&gt;
+  &lt;li&gt;$P(S) = 1$&lt;/li&gt;
+  &lt;li&gt;If $\set{A_i}_{i \in I} \subseteq \mathscr{B}$ are pairwise disjoint, then
+\[
+P\left(\bigcup_{i \in I} A_i\right) = \sum_{i \in I} P(A_i)
+\]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The three properties above are called the &lt;strong&gt;Kolmogorov axioms&lt;/strong&gt; of probability.
+Any funcion $P$ that satisfies these axioms is called a probability function.&lt;/p&gt;
+
+&lt;h2 id=&quot;theorems&quot;&gt;Theorems&lt;/h2&gt;
+
+&lt;h3 id=&quot;1&quot;&gt;1&lt;/h3&gt;
+
+&lt;p&gt;Let $S=\set{s_1, \cdots, s_n}$ be a finite sample space and $\mathscr{B}$ be any sigma-algebra on $S$.
+Let $p_1, \cdots, p_n$ be non-negative real numbers such that $\sum_{i=1}^n p_i = 1$.
+Then there exists a unique probability function $P: \mathscr{B} \to \mathbb{R}$ such that
+\[
+P(A) = \sum_{\set{i \mid s_i \in A}} p_i
+\]
+This also remains true if $S$ is countably infinite.&lt;/p&gt;
+
+&lt;h3 id=&quot;2&quot;&gt;2&lt;/h3&gt;
+
+&lt;p&gt;If $P$ is a probability function on a sigma-algebra $\mathscr{B}$, then for any $A \in \mathscr{B}$, we have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$P(\emptyset) = 0$&lt;/li&gt;
+  &lt;li&gt;$P(A) \le 1$&lt;/li&gt;
+  &lt;li&gt;$P(A^\complement) = 1 - P(A)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3&quot;&gt;3&lt;/h3&gt;
+
+&lt;p&gt;If $P$ is a probability function on a sigma-algebra $\mathscr{B}$, then for any $A, B \in \mathscr{B}$, we have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$P(B\cap A^\complement) = P(B) - P(A\cap B)$&lt;/li&gt;
+  &lt;li&gt;$P(A\cup B) = P(A) + P(B) - P(A\cap B)$&lt;/li&gt;
+  &lt;li&gt;$A \subseteq B \implies P(A) \le P(B)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4&quot;&gt;4&lt;/h3&gt;
+
+&lt;p&gt;If $P$ is a probability function on a sample space $S$ with a sigma-algebra $\mathscr{B}$, then for any partition
+$\set{C_i}_{i \in I}$ of $S$ and for any events $\set{A_i}_{i \in I} \subseteq \mathscr{B}$, we have:
+1.
+\[
+P(A) = \sum_{i \in I} P(A\cap C_i)
+\]&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Boole’s Inequality:
+\[
+P\left (\bigcup_{i \in I} A_i\right) \leq \sum_{i \in I} P(A_i)
+\]&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof of 1 &lt;/summary&gt;
+  &lt;p&gt;Since $\set{C_i}_{i \in I}$ is a partition of $S$,
+\[
+A = A \cup S = A \cup \left(\bigcup_{i \in I} C_i\right) = \bigcup_{i \in I} (A\cap C_i)
+\]
+Thus, by the third property of the probability function,
+\[
+P(A) = P\left(\bigcup_{i \in I} (A\cap C_i)\right) = \sum_{i \in I} P(A\cap C_i)
+\]&lt;/p&gt;
+&lt;/details&gt;
+&lt;details&gt;
+  &lt;summary&gt; Proof of 2 &lt;/summary&gt;
+  &lt;p&gt;Let $I = \set{1, 2, \cdots, n}$ and here $I$ is countable.
+Let’s construct a disjoint collection as follows:
+\[
+A_1^\ast = A_1, \quad A_i^\ast = A_i \setminus \bigcup_{j=1}^{i-1} A_j
+\]
+Then, we have
+\[
+P\left(\bigcup_{i=1}^n A_i\right) = P\left(\bigcup_{i=1}^n A_i^\ast\right) = \sum_{i=1}^n P(A_i^\ast)
+\]
+Since $A_i^\ast \subseteq A_i$, we have $P(A_i^\ast) \leq P(A_i)$.
+Thus,
+\[
+P\left(\bigcup_{i=1}^n A_i\right) \leq \sum_{i=1}^n P(A_i)
+\]&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;5bonferronis-inequality&quot;&gt;5(Bonferroni’s Inequality)&lt;/h3&gt;
+
+&lt;p&gt;\[
+P\left(\bigcup_{i=1}^n A_i\right) \leq \sum_{i=1}^n P(A_i) - (n-1)
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;We can use the Boole’s Inequality to prove this.
+\[
+P\left( \bigcup_{i=1}^n A_i^\complement \right) \leq \sum_{i=1}^n P(A_i^\complement)
+\]
+Using the theorem 2, we have
+\[
+1 - P\left( \bigcup_{i=1}^n A_i \right) \leq n - \sum_{i=1}^n P(A_i)
+\]&lt;/p&gt;
+&lt;/details&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Continuity</title><link href="http://localhost:4000/mathematics/continuity-of-a-function.html" rel="alternate" type="text/html" title="Continuity" /><published>2025-05-26T00:00:00+09:00</published><updated>2025-05-26T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/continuity-of-a-function</id><content type="html" xml:base="http://localhost:4000/mathematics/continuity-of-a-function.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#continuity-at-a-point&quot; id=&quot;markdown-toc-continuity-at-a-point&quot;&gt;Continuity at a Point&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuity-test&quot; id=&quot;markdown-toc-continuity-test&quot;&gt;Continuity Test&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#types-of-discontinuities&quot; id=&quot;markdown-toc-types-of-discontinuities&quot;&gt;Types of Discontinuities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#continuous-functions&quot; id=&quot;markdown-toc-continuous-functions&quot;&gt;Continuous Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties-of-continuous-functions&quot; id=&quot;markdown-toc-properties-of-continuous-functions&quot;&gt;Properties of Continuous Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#limits-of-continuous-functions&quot; id=&quot;markdown-toc-limits-of-continuous-functions&quot;&gt;Limits of Continuous Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuity-of-compositions-of-functions&quot; id=&quot;markdown-toc-continuity-of-compositions-of-functions&quot;&gt;Continuity of Compositions of Functions&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#intermediate-value-theorem&quot; id=&quot;markdown-toc-intermediate-value-theorem&quot;&gt;Intermediate Value Theorem&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#continuous-extension&quot; id=&quot;markdown-toc-continuous-extension&quot;&gt;Continuous Extension&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;continuity-at-a-point&quot;&gt;Continuity at a Point&lt;/h2&gt;
+
+&lt;p&gt;Let $a$ be a point that is either an interior point or an endpoint of the domain of a function $f$.
+The function $f$ is said to be &lt;strong&gt;continuous at $a$&lt;/strong&gt; if&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} f(x) = f(a)
+\]&lt;/p&gt;
+
+&lt;p&gt;The function is said to be &lt;strong&gt;right-continuous at $a$ (or continuous from the right)&lt;/strong&gt; if&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a^+} f(x) = f(a)
+\]&lt;/p&gt;
+
+&lt;p&gt;The function is said to be &lt;strong&gt;left-continuous at $a$ (or continuous from the left)&lt;/strong&gt; if&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a^-} f(x) = f(a)
+\]&lt;/p&gt;
+
+&lt;p&gt;We say that $f$ is &lt;strong&gt;continuous on an interval&lt;/strong&gt; if it is continuous at every point in that interval.
+Specifically, if $f$ is continuous at every point in the open interval $(a, b)$, we say that $f$ is continuous on $(a, b)$.
+We need a slightly different definition for the closed interval $[a, b]$.
+We say that $f$ is continuous on $[a, b]$ if it is continuous at every point in the open interval $(a, b)$ and also right-continuous at $a$ and left-continuous at $b$.
+If a function is not continuous at a point $c$ of its domain, we say that $f$ is &lt;strong&gt;discontinuous at $c$&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;continuity-test&quot;&gt;Continuity Test&lt;/h3&gt;
+
+&lt;p&gt;A function $f$ is continuous at a point $a$ if and only if the following three conditions are satisfied:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;$f(a)$ is defined (i.e., $a$ is in the domain of $f$).&lt;/li&gt;
+  &lt;li&gt;The limit $\lim_{x \to a} f(x)$ exists.&lt;/li&gt;
+  &lt;li&gt;The limit $\lim_{x \to a} f(x)$ is equal to $f(a)$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;types-of-discontinuities&quot;&gt;Types of Discontinuities&lt;/h2&gt;
+
+&lt;p&gt;A function can be discontinuous at a point for several reasons, leading to different types of discontinuities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Removable Discontinuity&lt;/strong&gt;: This occurs when the limit exists at a point, but the function is either not defined at that point or is defined to be a different value than the limit.
+    &lt;ul&gt;
+      &lt;li&gt;ex) sinc function: $f(x) = \sin x/x$ is discontinuous at $x = 0$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jump Discontinuity&lt;/strong&gt;: This occurs when the left-hand limit and right-hand limit at a point exist but are not equal.
+    &lt;ul&gt;
+      &lt;li&gt;ex) step function: $f(x) = \lfloor x \rfloor$ is discontinuous at every integer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Infinite Discontinuity&lt;/strong&gt;: This occurs when the function approaches infinity or negative infinity as it approaches a point.
+    &lt;ul&gt;
+      &lt;li&gt;ex) $f(x) = 1/x$ is discontinuous at $x = 0$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Oscillating Discontinuity&lt;/strong&gt;: This occurs when the function oscillates infinitely as it approaches a point, preventing the limit from existing.
+    &lt;ul&gt;
+      &lt;li&gt;ex) $f(x) = \sin(1/x)$ as $x$ approaches 0&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Essential Discontinuity&lt;/strong&gt;: This is a more general term that can refer to any discontinuity that does not fit neatly into the other categories, often involving complex behavior of the function.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;continuous-functions&quot;&gt;Continuous Functions&lt;/h2&gt;
+
+&lt;p&gt;We define a &lt;strong&gt;continuous function&lt;/strong&gt; as a function that is continuous at every point in its domain.
+If a function is discontinuous at even one point, it is not considered continuous.&lt;/p&gt;
+
+&lt;h3 id=&quot;properties-of-continuous-functions&quot;&gt;Properties of Continuous Functions&lt;/h3&gt;
+
+&lt;p&gt;If the function $f$ and $g$ are continuous at $a$, then the following properties hold:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Sums&lt;/strong&gt;: $f + g$ is continuous at $a$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Differences&lt;/strong&gt;: $f - g$ is continuous at $a$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Constant Multiples&lt;/strong&gt;: $c \cdot f$ is continuous at $a$ for any constant $c$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Products&lt;/strong&gt;: $f \cdot g$ is continuous at $a$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Quotients&lt;/strong&gt;: $f/g$ is continuous at $a$ if $g(a) \neq 0$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Powers&lt;/strong&gt;: $f^n$ is continuous at $a$ for any integer $n$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Roots&lt;/strong&gt;: $\sqrt[n]{f}$ is continuous at $a$ if $f(a) \geq 0$ for even $n$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These properties are easily verified using the &lt;a href=&quot;https://berryjune07.github.io/mathematics/a-limit-of-a-function.html#limit-laws&quot;&gt;limit properties&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;limits-of-continuous-functions&quot;&gt;Limits of Continuous Functions&lt;/h3&gt;
+
+&lt;p&gt;If $\lim_{x \to a} f(x) = b$ and $g$ is continuous at $b$, then the limit of the composition is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} g(f(x)) = g(b) = g\left( \lim_{x \to a} f(x) \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;This means that limit operators can be commuted with continuous functions. Let’s prove it using the epsilon-delta strategy.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+&amp;amp; \forall \varepsilon&amp;gt;0, \exists \delta_1,\delta_2&amp;gt;0 \quad \text{s.t.} \quad
+\begin{cases}
+\dps 0&amp;lt;|y-b|&amp;lt;\delta_1 \implies |g(y)-g(b)|&amp;lt;\varepsilon \nl
+\dps 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |f(x)-b|&amp;lt;\delta_1
+\end{cases} \nl
+&amp;amp; \text{set} \;\; y=f(x) \nl \nl
+&amp;amp; 0&amp;lt;|x-a|&amp;lt;\delta_2 \implies |g(f(x)) - g(b)| &amp;lt; \varepsilon \nl
+&amp;amp; \therefore \lim_{x \to a} g(f(x)) = g(b) = g\left( \lim_{x \to a} f(x) \right)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;continuity-of-compositions-of-functions&quot;&gt;Continuity of Compositions of Functions&lt;/h3&gt;
+
+&lt;p&gt;If $f$ is continuous at $a$ and $g$ is continuous at $f(a)$, then the composition $g \circ f$ is continuous at $a$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{x \to a} f(x) = f(a), \;\; \lim_{y \to f(a)} g(y) = g(f(a)) \implies \lim_{x \to a} g(f(x)) = g(f(a))
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;intermediate-value-theorem&quot;&gt;Intermediate Value Theorem&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;Intermediate Value Theorem(IVT)&lt;/strong&gt; states that if $f$ is continuous on the closed interval $[a, b]$ and $y_0$ is any value between $f(a)$ and $f(b)$, then there exists at least one point $c$ in the interval $(a, b)$ such that $f(c) = y_0$.
+Geometrically, this means that the graph of $f$ must cross the horizontal line $y = y_0$ at least once in the interval $(a, b)$.&lt;/p&gt;
+
+&lt;p&gt;Let’s state the theorem formally:
+If $f:[a,b]\to\mathbb{R}$ is continuous,&lt;/p&gt;
+
+&lt;p&gt;\[
+\forall y_0 \in \left( \min \{f(a),f(b)\}, \max \{f(a),f(b)\} \right),\; \exists c \in (a,b) \quad \text{s.t.} \quad f(c) = y_0
+\]&lt;/p&gt;
+
+&lt;p&gt;or can also be stated as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\left[\min \{f(a),f(b)\}, \max \{f(a),f(b)\} \right] \subseteq f([a,b])
+\]&lt;/p&gt;
+
+&lt;p&gt;where $f([a,b])$ is also a closed interval. IVT is a powerful tool in calculus, especially for proving the existence of roots of equations and understanding the behavior of continuous functions.
+Its proof relies on the completeness property of the real numbers.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;WLOG assume $f(a) &amp;lt; f(b)$, then $f(a) &amp;lt; y_0 &amp;lt; f(b)$. For an arbitrary $y_0$, define the set&lt;/p&gt;
+
+  &lt;p&gt;\[
+E = \Set{ x\in [a,b] \mid f(x) &amp;lt; y_0 }
+\]
+Then $E$ is non-empty since $a \in E$ and $E$ is bounded above by $b$. Therefore, by the completeness property of the real numbers, $E$ has a least upper bound $c = \sup E$.
+Since $f$ is continuous at $c$, we have $\delta &amp;gt; 0$ which satisfies
+\[
+a\le x &amp;lt; a+\delta \implies f(x) &amp;lt; y_0 \nl
+b-\delta &amp;lt; x \le b \implies f(x) &amp;gt; y_0
+\]
+Therefore, $a&amp;lt;c&amp;lt;b$, and let’s prove by contradiction that $f(c) = y_0$.
+Assume $f(c) &amp;gt; y_0$, then there exists $\eta&amp;gt;0$ such that
+\[
+c-\eta &amp;lt; x &amp;lt; c+\eta \implies f(x) &amp;gt; y_0
+\]
+Then $c-\eta$ is an upper bound of $E$, which contradicts the fact that $c$ is the least upper bound of $E$.
+If $f(c) &amp;lt; y_0$, then there exists $\eta&amp;gt;0$ such that
+\[
+c-\eta &amp;lt; x &amp;lt; c+\eta \implies f(x) &amp;lt; y_0
+\]
+Then $c+\eta/2 \in E$, which contradicts the fact that $c$ is the least upper bound of $E$.
+Therefore, finally we conclude that $f(c) = y_0$.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&quot;continuous-extension&quot;&gt;Continuous Extension&lt;/h2&gt;
+
+&lt;p&gt;A function $f$ is said to have a &lt;strong&gt;continuous extension&lt;/strong&gt; at a point $a$ if there exists a function $g$ such that:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$g$ is continuous at $a$,&lt;/li&gt;
+  &lt;li&gt;$g(x) = f(x)$ for all $x$ in the domain of $f$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In other words, $g$ extends $f$ to include the point $a$ while preserving continuity.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$g(a) = \lim_{x \to a} f(x)$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The sinc function is a classic example of a function that has a continuous extension at $x = 0$.
+The continuous extension of the sinc function is defined as:
+\[
+g(x) = \begin{cases}
+\sin x / x &amp;amp;; x \neq 0 \nl
+1 &amp;amp;; x = 0
+\end{cases}
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">One-Sided Limits</title><link href="http://localhost:4000/mathematics/one-sided-limits.html" rel="alternate" type="text/html" title="One-Sided Limits" /><published>2025-05-22T00:00:00+09:00</published><updated>2025-05-22T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/one-sided-limits</id><content type="html" xml:base="http://localhost:4000/mathematics/one-sided-limits.html">&lt;!--more--&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#one-sided-limits&quot; id=&quot;markdown-toc-one-sided-limits&quot;&gt;One-Sided Limits&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#relationship-between-one-sided-limits-and-general-limits&quot; id=&quot;markdown-toc-relationship-between-one-sided-limits-and-general-limits&quot;&gt;Relationship Between One-Sided Limits and General Limits&lt;/a&gt;&lt;/li&gt;
@@ -454,497 +896,103 @@ b^2 = c^2 + a^2 - 2ca \cos B
 0\leq 1 - \cos \theta \leq \frac{ \theta^2 }{2}
 \]&lt;/p&gt;
 
-&lt;p&gt;These are very easy to prove, so I will not include the proofs here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Set Theory for Statistics</title><link href="http://localhost:4000/mathematics/set-theory-for-statistics.html" rel="alternate" type="text/html" title="Set Theory for Statistics" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/set-theory-for-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/set-theory-for-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="mathematical-statistics" /><summary type="html"></summary></entry><entry><title type="html">Functions and Their Graphs</title><link href="http://localhost:4000/mathematics/functions-and-their-graphs.html" rel="alternate" type="text/html" title="Functions and Their Graphs" /><published>2025-04-15T00:00:00+09:00</published><updated>2025-04-15T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/functions-and-their-graphs</id><content type="html" xml:base="http://localhost:4000/mathematics/functions-and-their-graphs.html">&lt;!--more--&gt;
+&lt;p&gt;These are very easy to prove, so I will not include the proofs here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Set Theory for Statistics</title><link href="http://localhost:4000/mathematics/set-theory-for-statistics.html" rel="alternate" type="text/html" title="Set Theory for Statistics" /><published>2025-04-18T00:00:00+09:00</published><updated>2025-04-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/set-theory-for-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/set-theory-for-statistics.html">&lt;!--more--&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#functions&quot; id=&quot;markdown-toc-functions&quot;&gt;Functions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#graphs-of-functions&quot; id=&quot;markdown-toc-graphs-of-functions&quot;&gt;Graphs of Functions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#increasing-and-decreasing-functions&quot; id=&quot;markdown-toc-increasing-and-decreasing-functions&quot;&gt;Increasing and Decreasing Functions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#even-and-odd-functions&quot; id=&quot;markdown-toc-even-and-odd-functions&quot;&gt;Even and Odd Functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#sample-space-and-events&quot; id=&quot;markdown-toc-sample-space-and-events&quot;&gt;Sample Space and Events&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#set-relationships-and-operations&quot; id=&quot;markdown-toc-set-relationships-and-operations&quot;&gt;Set Relationships and Operations&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#elementary-identities&quot; id=&quot;markdown-toc-elementary-identities&quot;&gt;Elementary Identities&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#infinite-unions-and-intersections&quot; id=&quot;markdown-toc-infinite-unions-and-intersections&quot;&gt;Infinite Unions and Intersections&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#disjoint-events&quot; id=&quot;markdown-toc-disjoint-events&quot;&gt;Disjoint Events&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#partitions&quot; id=&quot;markdown-toc-partitions&quot;&gt;Partitions&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;functions&quot;&gt;Functions&lt;/h2&gt;
+&lt;h2 id=&quot;sample-space-and-events&quot;&gt;Sample Space and Events&lt;/h2&gt;
 
-&lt;p&gt;A &lt;strong&gt;function&lt;/strong&gt; $f$ is a rule that assigns to each element $x$ in a set $D$ exactly one element $y$ in a set $E$. The set $D$ is called the &lt;strong&gt;domain&lt;/strong&gt; of the function, and the set $E$ is called the &lt;strong&gt;codomain&lt;/strong&gt; of the function.
-The notation $f(x)=y$ indicates that $y$ is the image of $x$ under the function $f$. The set of all images of elements in the domain is called the &lt;strong&gt;range&lt;/strong&gt; of the function, and is denoted by $Y=f(D)$.
-The following is the most common representation of a function:&lt;/p&gt;
+&lt;p&gt;In statistics, we often deal with experiments or processes that yield outcomes.
+The &lt;strong&gt;sample space&lt;/strong&gt; is the set of all possible outcomes of an experiment or process.
+An &lt;strong&gt;event&lt;/strong&gt; is a subset of the sample space, representing a specific outcome or a group of outcomes that we are interested in.
+We can classify sample spaces into two types:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Countable Sample Space&lt;/strong&gt;: A sample space is countable if it can be put into a one-to-one correspondence with the set of natural numbers.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Uncountable Sample Space&lt;/strong&gt;: A sample space is uncountable if it cannot be put into a one-to-one correspondence with the set of natural numbers, such as the set of real numbers.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;\[
-f: X \to Y : x \mapsto f(x)
-\]&lt;/p&gt;
+&lt;p&gt;For example, the sample space of rolling a die $S = \set{1, 2, 3, 4, 5, 6 }$ is countable, while the sample space of measuring the height of a person is uncountable (it can take any real value within a certain range).&lt;/p&gt;
 
-&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Codomain2.SVG/1280px-Codomain2.SVG.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;set-relationships-and-operations&quot;&gt;Set Relationships and Operations&lt;/h2&gt;
 
-&lt;p class=&quot;figcaption&quot;&gt;A diagram showing the relationship between the domain, codomain, and range of a function&lt;/p&gt;
-
-&lt;p&gt;Often a function is given by a formula that describes how to compute the image of an element in the domain.
-If the domain is not stated eplicitly, it is assumed to be the largest set for which the formula is defined and this is called the &lt;strong&gt;natural domain&lt;/strong&gt; of the function.&lt;/p&gt;
-
-&lt;h2 id=&quot;graphs-of-functions&quot;&gt;Graphs of Functions&lt;/h2&gt;
-
-&lt;p&gt;If $y=f(x)$, then the graph of the function is the set of all points $(x,y)$ in the Cartesian plane such that $y$ is the image of $x$ under the function $f$. The graph of a function is a visual representation of the relationship between the domain and range of the function.
-Graph can be represented in set notation:&lt;/p&gt;
-
-&lt;p&gt;\[
-G(f) = \set{ (x,f(x)) | x \in D } \subset X\times Y
-\]&lt;/p&gt;
-
-&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://visionbook.mit.edu/figures/Image_processing_sampling/sinc_function.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;figcaption&quot;&gt;The graph of the sinc function&lt;/p&gt;
-
-&lt;h2 id=&quot;increasing-and-decreasing-functions&quot;&gt;Increasing and Decreasing Functions&lt;/h2&gt;
-
-&lt;p&gt;If the graph of a function climbs as we move from left to right, the function is said to be &lt;strong&gt;increasing&lt;/strong&gt;. If the graph falls as we move from left to right, the function is said to be &lt;strong&gt;decreasing&lt;/strong&gt;.
-Let $f$ be a function defined on an interval $I$, and $x_1,x_2\in I$ two points in the interval.&lt;/p&gt;
+&lt;p&gt;We first need to define the following two relationships between events (or sets; implying that we are using set theory):&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)&amp;lt;f(x_2)$, then $f$ is &lt;strong&gt;strictly increasing&lt;/strong&gt; on $I$.&lt;/li&gt;
-  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)&amp;gt;f(x_2)$, then $f$ is &lt;strong&gt;strictly decreasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Containment&lt;/strong&gt;: $A\subset B \iff (\forall x\in A \implies x\in B) $&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Equality&lt;/strong&gt;: $A = B \iff (A\subset B \land B\subset A) $&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;There are also weaker definitions:&lt;/p&gt;
+&lt;p&gt;Also, we have the following elementary set operations:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)\leq f(x_2)$, then $f$ is &lt;strong&gt;(weakly) increasing&lt;/strong&gt; on $I$.&lt;/li&gt;
-  &lt;li&gt;If $x_1&amp;lt;x_2 \implies f(x_1)\geq f(x_2)$, then $f$ is &lt;strong&gt;(weakly) decreasing&lt;/strong&gt; on $I$.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Union&lt;/strong&gt;: $A \cup B = \set{x \mid x \in A \lor x \in B}$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Intersection&lt;/strong&gt;: $A \cap B = \set{x \mid x \in A \land x \in B}$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Complementation&lt;/strong&gt;: $A^\complement = \set{x \mid x \notin A}$&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;We call a function &lt;strong&gt;monotonic&lt;/strong&gt; if it is either increasing or decreasing on the entire interval.&lt;/p&gt;
+&lt;h3 id=&quot;elementary-identities&quot;&gt;Elementary Identities&lt;/h3&gt;
 
-&lt;h2 id=&quot;even-and-odd-functions&quot;&gt;Even and Odd Functions&lt;/h2&gt;
-
-&lt;p&gt;The graphs of &lt;em&gt;even&lt;/em&gt; and &lt;em&gt;odd&lt;/em&gt; functions have special symmetries. A function $y=f(x)$ is&lt;/p&gt;
+&lt;p&gt;For any events, $A$, $B$, and $C$, defined on a sample space $S$, the following identities hold:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;even&lt;/strong&gt; if $f(-x)=f(x)$,&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;odd&lt;/strong&gt; if $f(-x)=-f(x)$,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;for all $x$ in the domain of $f$.&lt;/p&gt;
-
-&lt;p&gt;The graph of an even function is symmetric with respect to the $y$-axis, while the graph of an odd function is symmetric with respect to the origin.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Lazy Propagation</title><link href="http://localhost:4000/computer-science/lazy-propagation.html" rel="alternate" type="text/html" title="Lazy Propagation" /><published>2024-08-02T00:00:00+09:00</published><updated>2024-08-02T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/lazy-propagation</id><content type="html" xml:base="http://localhost:4000/computer-science/lazy-propagation.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#lazy-propagation&quot; id=&quot;markdown-toc-lazy-propagation&quot;&gt;Lazy Propagation&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Commutativity&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$A \cup B = B \cup A$&lt;/li&gt;
+      &lt;li&gt;$A \cap B = B \cap A$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Associativity&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$(A \cup B) \cup C = A \cup (B \cup C)$&lt;/li&gt;
+      &lt;li&gt;$(A \cap B) \cap C = A \cap (B \cap C)$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Distributivity&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$&lt;/li&gt;
+      &lt;li&gt;$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;De Morgan’s Laws&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;$(A \cup B)^\complement = A^\complement \cap B^\complement$&lt;/li&gt;
+      &lt;li&gt;$(A \cap B)^\complement = A^\complement \cup B^\complement$&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Lazy propagation&lt;/strong&gt; is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.&lt;/p&gt;
+&lt;p&gt;Proofs of these identities are left as a workout for set theory readers.&lt;/p&gt;
 
-&lt;h2 id=&quot;lazy-propagation&quot;&gt;Lazy Propagation&lt;/h2&gt;
+&lt;h3 id=&quot;infinite-unions-and-intersections&quot;&gt;Infinite Unions and Intersections&lt;/h3&gt;
 
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
-&lt;p&gt;Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
-$F \subset M^M$ which satisfies the following property:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Since the associativity of union and intersection holds, we can extend these operations to infinite collections of sets.&lt;/p&gt;
 
-&lt;p&gt;i.e. $f$ is an endomorphism of the monoid $(M, \ast)$.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$F = \mathrm{End}(M)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;An endomorphism is a homomorphism from a set to itself, and a homomorphism is a function that preserves the structure of the set. (Read more about homomorphisms &lt;a href=&quot;https://en.wikipedia.org/wiki/Homomorphism&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
-
-&lt;p&gt;Consider an array $A=[a_1,\cdots,a_N]$ of size $N$.
-Segment tree with lazy propagation can carry out two types of queries in $O(\log N)$ time complexity:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Range query&lt;/strong&gt;: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Range update&lt;/strong&gt;: Given a range $[l,r]$ and a function $f\in F$, update all elements in the range by applying the function $f$ to them:
- $[\cdots,a_l,\cdots,a_r,\cdots] \to [\cdots, f(a_l), \cdots, f(a_r),\cdots]$&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The idea is to store the updates in the nodes of the segment tree and apply them only when needed.
-Such new tree nodes are called &lt;strong&gt;lazy nodes&lt;/strong&gt; and the updates are called &lt;strong&gt;lazy updates&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    subgraph s1 [&quot;1/[1:4]&quot;];
-        f1(4); l1( ):::lazy;
-    end;
-    subgraph s2 [&quot;2/[1:2]&quot;];
-        f2(2); l2( ):::lazy;
-    end;
-    subgraph s3 [&quot;3/[3:4]&quot;];
-        f3(2); l3( ):::lazy;
-    end;
-    subgraph s4 [&quot;4/[1]&quot;];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 [&quot;5/[2]&quot;];
-        f5(1); l5( ):::lazy;
-    end;
-    subgraph s6 [&quot;6/[3]&quot;];
-        f6(1); l6( ):::lazy;
-    end;
-    subgraph s7 [&quot;7/[4]&quot;];
-        f7(1); l7( ):::lazy;
-    end;
-
-    s1:::round---s2:::round &amp;amp; s3:::round;
-    s2---s4:::round &amp;amp; s5:::round;
-    s3---s6:::round &amp;amp; s7:::round;
-
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The binary tree above is an example of a segment tree with lazy propagation for the array $[1,1,1,1]$.
-In each subgraph, the left node represents the sum of all elements in the range, and the right node represents the lazy update.&lt;/p&gt;
-
-&lt;p&gt;When we update the range $[2:4]$ by adding $1$ to all elements, the segment tree will be updated as follows.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    subgraph s1 [&quot;1/[1:4]&quot;];
-        f1(7); l1( ):::lazy;
-    end;
-    subgraph s2 [&quot;2/[1:2]&quot;];
-        f2(3); l2( ):::lazy;
-    end;
-    subgraph s3 [&quot;3/[3:4]&quot;];
-        f3(4); l3(1):::lazy;
-    end;
-    subgraph s4 [&quot;4/[1]&quot;];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 [&quot;5/[2]&quot;];
-        f5(2); l5(1):::lazy;
-    end;
-    subgraph s6 [&quot;6/[3]&quot;];
-        f6(1); l6( ):::lazy;
-    end;
-    subgraph s7 [&quot;7/[4]&quot;];
-        f7(1); l7( ):::lazy;
-    end;
-
-    s1:::round---s2:::round &amp;amp; s3:::round;
-    s2---s4:::round &amp;amp; s5:::round;
-    s3---s6:::round &amp;amp; s7:::round;
-
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When we update the range $[1:3]$ by adding $1$ to all elements, the segment tree will be updated as follows.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    subgraph s1 [&quot;1/[1:4]&quot;];
-        f1(10); l1( ):::lazy;
-    end;
-    subgraph s2 [&quot;2/[1:2]&quot;];
-        f2(5); l2(1):::lazy;
-    end;
-    subgraph s3 [&quot;3/[3:4]&quot;];
-        f3(5); l3( ):::lazy;
-    end;
-    subgraph s4 [&quot;4/[1]&quot;];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 [&quot;5/[2]&quot;];
-        f5(2); l5(1):::lazy;
-    end;
-    subgraph s6 [&quot;6/[3]&quot;];
-        f6(3); l6(2):::lazy;
-    end;
-    subgraph s7 [&quot;7/[4]&quot;];
-        f7(2); l7(1):::lazy;
-    end;
-
-    s1:::round---s2:::round &amp;amp; s3:::round;
-    s2---s4:::round &amp;amp; s5:::round;
-    s3---s6:::round &amp;amp; s7:::round;
-
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When we query the sum of the elements in the range $[3,4]$, the segment tree will be updated
-and the nodes will be visited as follows.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    subgraph s1 [&quot;1/[1:4]&quot;];
-        f1(10); l1( ):::lazy;
-    end;
-    subgraph s2 [&quot;2/[1:2]&quot;];
-        f2(5); l2( ):::lazy;
-    end;
-    subgraph s3 [&quot;3/[3:4]&quot;];
-        f3(5); l3( ):::lazy;
-    end;
-    subgraph s4 [&quot;4/[1]&quot;];
-        f4(2); l4(1):::lazy;
-    end;
-    subgraph s5 [&quot;5/[2]&quot;];
-        f5(3); l5(2):::lazy;
-    end;
-    subgraph s6 [&quot;6/[3]&quot;];
-        f6(3); l6(2):::lazy;
-    end;
-    subgraph s7 [&quot;7/[4]&quot;];
-        f7(2); l7(1):::lazy;
-    end;
-
-    s1:::round---s2:::round &amp;amp; s3:::round;
-    s2---s4:::round &amp;amp; s5:::round;
-    s3---s6:::round &amp;amp; s7:::round;
-    s5:::highlight; s6:::highlight;
-
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* convert data to node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two lazy nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity lazy node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* apply lazy node to the node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node_lazy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;propagate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;Let’s think of an example of calculating the sum of elements in a range and updating the elements in a range by adding a constant value.
-Then, the code will be as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;apply_lazy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lz&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 2042] 구간 합 구하기</title><link href="http://localhost:4000/computer-science/boj2042.html" rel="alternate" type="text/html" title="[BOJ 2042] 구간 합 구하기" /><published>2024-07-31T00:00:00+09:00</published><updated>2024-07-31T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj2042</id><content type="html" xml:base="http://localhost:4000/computer-science/boj2042.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/2042&quot;&gt;https://www.acmicpc.net/problem/2042&lt;/a&gt;&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;script src=&quot;https://gist.github.com/phylosopher07/77754fb375fb72a1d1bb937c750234f8.js&quot;&gt;&lt;/script&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/2042</summary></entry><entry><title type="html">Ravel, La Valse, M.72</title><link href="http://localhost:4000/classical-music/ravel-m72.html" rel="alternate" type="text/html" title="Ravel, La Valse, M.72" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/classical-music/ravel-m72</id><content type="html" xml:base="http://localhost:4000/classical-music/ravel-m72.html">&lt;!--more--&gt;
-
-&lt;object type=&quot;application/pdf&quot; data=&quot;https://vmirror.imslp.org/files/imglnks/usimg/8/8b/IMSLP919224-PMLP07611-Ravel-M72-La-Valse-Arr-Piano-FE.pdf&quot; width=&quot;100%&quot; height=&quot;500&quot;&gt;&lt;/object&gt;
-
-&lt;div class=&quot;iframe-container&quot;&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/NhNCGgFIxN8&quot; width=&quot;100%&quot; height=&quot;500&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="classical-music" /><category term="ravel" /><summary type="html"></summary></entry><entry><title type="html">Segment Tree</title><link href="http://localhost:4000/computer-science/segment-tree.html" rel="alternate" type="text/html" title="Segment Tree" /><published>2024-07-29T00:00:00+09:00</published><updated>2024-07-29T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#segment-tree&quot; id=&quot;markdown-toc-segment-tree&quot;&gt;Segment Tree&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;A &lt;strong&gt;segment tree&lt;/strong&gt; is a tree data structure for storing intervals, or segments. It allows to perform queries and updates on the intervals in very efficient manner.
-There are many applications of segment trees: calculating the sum of all elements in a range, finding the minimum or maximum element in a range, etc.&lt;/p&gt;
-
-&lt;h2 id=&quot;segment-tree&quot;&gt;Segment Tree&lt;/h2&gt;
-
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
-&lt;p&gt;Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
-(Read more about monoids &lt;a href=&quot;https://en.wikipedia.org/wiki/Monoid&quot;&gt;here&lt;/a&gt;.)&lt;/p&gt;
-
-&lt;p&gt;Given an array $A=[a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l,r]$ of the array.
-Each node stores the result of applying the operation $\ast$ to all elements in the interval it represents, i.e. $a_l \ast \cdots \ast a_r$.
-The root node represents the entire array $[1:N]$, and each leaf node represents a single element of the array.
-Every parent node has left and right children, which represent the left and right halves of the parent’s interval.
-You can see that the segment tree is a &lt;em&gt;full binary tree&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Segment tree can carry out two types of queries in $O(\log N)$ time complexity:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Range query&lt;/strong&gt;: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Point update&lt;/strong&gt;: Given an index $i$ and a new value $v$, update the element $a_i$ to $v$.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;); f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;);
-    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
-    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;); f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
-    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
-    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;); f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;);
-    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;);
-    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
-    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
-    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
-    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;); f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
-    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
-
-    f1---f2 &amp;amp; f3;
-    f2---f4 &amp;amp; f5;
-    f3---f6 &amp;amp; f7;
-    f4---f8 &amp;amp; f9;
-    f5---f10 &amp;amp; f11;
-    f6---f12 &amp;amp; f13;
-    f7---f14 &amp;amp; f15;
-    f8---f16 &amp;amp; f17;
-    f10---f20 &amp;amp; f21;
-    f12---f24 &amp;amp; f25;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The binary tree above is an example of a segment tree for the array with 11 elements.
-Each node is written in the form of node index and the interval it represents.
-When we update the 5th element of the array, the segment tree will be updated as follows.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;):::highlight ; f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;):::highlight;
-    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
-    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;):::highlight; f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
-    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
-    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;); f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;):::highlight;
-    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;);
-    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
-    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
-    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
-    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;):::highlight; f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
-    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
-
-    f1---f2 &amp;amp; f3;
-    f2---f4 &amp;amp; f5;
-    f3---f6 &amp;amp; f7;
-    f4---f8 &amp;amp; f9;
-    f5---f10 &amp;amp; f11;
-    f6---f12 &amp;amp; f13;
-    f7---f14 &amp;amp; f15;
-    f8---f16 &amp;amp; f17;
-    f10---f20 &amp;amp; f21;
-    f12---f24 &amp;amp; f25;
-
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;When we query the sum of the elements in the range $[3,8]$, following nodes will be visited.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
-    f1(&quot;1 &amp;lt;br&amp;gt; [1:11]&quot;); f2(&quot;2 &amp;lt;br&amp;gt; [1:6]&quot;);
-    f3(&quot;3 &amp;lt;br&amp;gt; [7:11]&quot;); f4(&quot;4 &amp;lt;br&amp;gt; [1:3]&quot;);
-    f5(&quot;5 &amp;lt;br&amp;gt; [4:6]&quot;):::highlight;; f6(&quot;6 &amp;lt;br&amp;gt; [7:9]&quot;);
-    f7(&quot;7 &amp;lt;br&amp;gt; [10:11]&quot;); f8(&quot;8 &amp;lt;br&amp;gt; [1:2]&quot;);
-    f9(&quot;9 &amp;lt;br&amp;gt; [3]&quot;):::highlight;; f10(&quot;10 &amp;lt;br&amp;gt; [4:5]&quot;);
-    f11(&quot;11 &amp;lt;br&amp;gt; [6]&quot;); f12(&quot;12 &amp;lt;br&amp;gt; [7:8]&quot;):::highlight;;
-    f13(&quot;13 &amp;lt;br&amp;gt; [9]&quot;); f14(&quot;14 &amp;lt;br&amp;gt; [10]&quot;);
-    f15(&quot;15 &amp;lt;br&amp;gt; [11]&quot;); f16(&quot;16 &amp;lt;br&amp;gt; [1]&quot;);
-    f17(&quot;17 &amp;lt;br&amp;gt; [2]&quot;); f20(&quot;20 &amp;lt;br&amp;gt; [4]&quot;);
-    f21(&quot;21 &amp;lt;br&amp;gt; [5]&quot;); f24(&quot;24 &amp;lt;br&amp;gt; [7]&quot;);
-    f25(&quot;25 &amp;lt;br&amp;gt; [8]&quot;);
-
-    f1---f2 &amp;amp; f3;`
-    f2---f4 &amp;amp; f5;
-    f3---f6 &amp;amp; f7;
-    f4---f8 &amp;amp; f9;
-    f5---f10 &amp;amp; f11;
-    f6---f12 &amp;amp; f13;
-    f7---f14 &amp;amp; f15;
-    f8---f16 &amp;amp; f17;
-    f10---f20 &amp;amp; f21;
-    f12---f24 &amp;amp; f25;
-
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
-&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* merge two nodes */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* convert data to node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* return identity node */&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;So here, the data type &lt;strong&gt;Node&lt;/strong&gt; should be the monoid structure $(M, \ast)$.
-Commonly, we store data in the array $A$ in another data type(&lt;strong&gt;data&lt;/strong&gt;, such as integer etc.), because it’s easy and intuitive.
-If such data type is different with the node, you should convert the data to the node structure in the function &lt;strong&gt;conv&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;applications&quot;&gt;Applications&lt;/h3&gt;
+&lt;p&gt;For any collection of sets $\set{A_i}_{i \in I}$ indexed by some index set $I$, we define:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Range sum query&lt;/li&gt;
-  &lt;li&gt;Range minimum/maximum query&lt;/li&gt;
-  &lt;li&gt;Range gcd/lcm query&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>
+  &lt;li&gt;&lt;strong&gt;Infinite Union&lt;/strong&gt;:
+\[ \bigcup_{i \in I} A_i = \Set{x \mid \exists i \in I, x \in A_i} \]&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Infinite Intersection&lt;/strong&gt;:
+\[ \bigcap_{i \in I} A_i = \Set{x \mid \forall i \in I, x \in A_i} \]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here the index set $I$ can be any set, including infinite sets, and the definitions extend the finite cases to infinite collections of sets.&lt;/p&gt;
+
+&lt;h2 id=&quot;disjoint-events&quot;&gt;Disjoint Events&lt;/h2&gt;
+
+&lt;p&gt;Two events (or sets) $A$ and $B$ are said to be &lt;strong&gt;disjoint&lt;/strong&gt; (or mutually exclusive) they have no elements in common, i.e., $A \cap B = \emptyset$.
+The events $A_1, A_2, \ldots, A_n$ are said to be &lt;strong&gt;pairwise disjoint&lt;/strong&gt; if for any $i \neq j$, $A_i \cap A_j = \emptyset$.
+Disjoint sets are sets that do not overlap, meaning they do not share any elements.&lt;/p&gt;
+
+&lt;h2 id=&quot;partitions&quot;&gt;Partitions&lt;/h2&gt;
+
+&lt;p&gt;If $\set{A_i}_{i \in I}$ are pairwise disjoint events such that satisfies,
+$\bigcup_{i\in I} A_i = S$, then we say that $ \set{A_i}_{i \in I} $ is a &lt;strong&gt;partition&lt;/strong&gt; of the sample space $S$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>

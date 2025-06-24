@@ -1,12 +1,12 @@
 ---
 layout: tag-list
 type: tag
-title: Mathematical Statistics
-slug: mathematical-statistics
+title: Statistics
+slug: statistics
 category: mathematics
 sidebar: true
 description: >
-    mathematical statistics
+    statistics
 ---
 
 \\[ \Huge \fcolorbox{transparent}{transparent}{ $$ \dps
