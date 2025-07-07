@@ -126,3 +126,11 @@ Using the theorem 2, we have
 1 - P\left( \bigcup_{i=1}^n A_i \right) \leq n - \sum_{i=1}^n P(A_i)
 \\]
 </details>
+
+### 6(Inclusion-Exclusion Principle)
+
+\\[
+P\left( \bigcup_{i=1}^n A_i \right) = \sum_{k=1}^n (-1)^{k-1} \sum_{\substack{ I\subseteq \set{1,\cdots,n} \nl\abs{I}=k}} P\left(\bigcap_{i \in I} A_i\right)
+\\]
+
+It can be proved by induction on $n$.

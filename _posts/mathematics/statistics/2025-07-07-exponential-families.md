@@ -1,14 +1,12 @@
 ---
 layout: post
-title: "Limits Involving Infinity"
-subtitle: "cal2.4"
-classification: "Calculus 2.4"
+title: "Exponential Families"
+subtitle: "stat3.2"
+classification: "Statistics 3.2"
 categories: mathematics
-tags: calculus
+tags: statistics
 ---
 
 <!--more-->
 * this unordered seed list will be replaced by the toc
 {:toc}
-
-## 
