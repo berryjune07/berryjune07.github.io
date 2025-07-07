@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-07-07T12:41:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Exponential Families</title><link href="http://localhost:4000/mathematics/exponential-families.html" rel="alternate" type="text/html" title="Exponential Families" /><published>2025-07-07T00:00:00+09:00</published><updated>2025-07-07T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/exponential-families</id><content type="html" xml:base="http://localhost:4000/mathematics/exponential-families.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Common Discrete and Continuous Distributions</title><link href="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html" rel="alternate" type="text/html" title="Common Discrete and Continuous Distributions" /><published>2025-07-04T00:00:00+09:00</published><updated>2025-07-04T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/common-discrete-and-continuous-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#common-discrete-distributions&quot; id=&quot;markdown-toc-common-discrete-distributions&quot;&gt;Common Discrete Distributions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#discrete-uniform-distribution&quot; id=&quot;markdown-toc-discrete-uniform-distribution&quot;&gt;Discrete Uniform Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hypergeometric-distribution&quot; id=&quot;markdown-toc-hypergeometric-distribution&quot;&gt;Hypergeometric Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#bernoulli-distribution&quot; id=&quot;markdown-toc-bernoulli-distribution&quot;&gt;Bernoulli Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#binomial-distribution&quot; id=&quot;markdown-toc-binomial-distribution&quot;&gt;Binomial Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#poisson-distribution&quot; id=&quot;markdown-toc-poisson-distribution&quot;&gt;Poisson Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#negative-binomial-distribution&quot; id=&quot;markdown-toc-negative-binomial-distribution&quot;&gt;Negative Binomial Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#geometric-distribution&quot; id=&quot;markdown-toc-geometric-distribution&quot;&gt;Geometric Distribution&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#common-continuous-distributions&quot; id=&quot;markdown-toc-common-continuous-distributions&quot;&gt;Common Continuous Distributions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuous-uniform-distribution&quot; id=&quot;markdown-toc-continuous-uniform-distribution&quot;&gt;Continuous Uniform Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gamma-distribution&quot; id=&quot;markdown-toc-gamma-distribution&quot;&gt;Gamma Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#chi-squared-distribution&quot; id=&quot;markdown-toc-chi-squared-distribution&quot;&gt;Chi-Squared Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#exponential-distribution&quot; id=&quot;markdown-toc-exponential-distribution&quot;&gt;Exponential Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#normal-distribution&quot; id=&quot;markdown-toc-normal-distribution&quot;&gt;Normal Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#beta-distribution&quot; id=&quot;markdown-toc-beta-distribution&quot;&gt;Beta Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cauchy-distribution&quot; id=&quot;markdown-toc-cauchy-distribution&quot;&gt;Cauchy Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#log-normal-distribution&quot; id=&quot;markdown-toc-log-normal-distribution&quot;&gt;Log-Normal Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#laplace-distribution&quot; id=&quot;markdown-toc-laplace-distribution&quot;&gt;Laplace Distribution&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#poisson-approximation&quot; id=&quot;markdown-toc-poisson-approximation&quot;&gt;Poisson Approximation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#gammapoisson-relation&quot; id=&quot;markdown-toc-gammapoisson-relation&quot;&gt;Gamma–Poisson Relation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#normal-approximation&quot; id=&quot;markdown-toc-normal-approximation&quot;&gt;Normal Approximation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PMFs are only provided on the supports&lt;/li&gt;
+  &lt;li&gt;CDFs are defined for all real numbers, but assume that the “real” CDFs are obtained by operating the “Ramp Function”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;\[
+R(x) = \min(\max(x, 0), 1) = \begin{cases}
+0 &amp;amp; ; x &amp;lt; 0 \nl
+x &amp;amp; ; 0 \le x \le 1 \nl
+1 &amp;amp; ; x &amp;gt; 1
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;common-discrete-distributions&quot;&gt;Common Discrete Distributions&lt;/h2&gt;
+
+&lt;h3 id=&quot;discrete-uniform-distribution&quot;&gt;Discrete Uniform Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathcal{U}(a, b)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;discrete uniform distribution&lt;/strong&gt; has a constant PMF over its support.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$a, b \in \mathbb{Z} \nl n := b-a+1$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$[a,b]\cap\mathbb{Z}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{n}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\lfloor x\rfloor -a+1}{n}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{a+b}{2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{n^2-1}{12}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$-\dfrac{6}{5}\cdot\dfrac{n^2+1}{n^2-1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{e^{at}}{n}\cdot\dfrac{1-e^{nt}}{1-e^t}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{e^{iat}}{n}\cdot\dfrac{1-e^{int}}{1-e^{it}}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;hypergeometric-distribution&quot;&gt;Hypergeometric Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Hypergeometric}(N, K, n)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;hypergeometric distribution&lt;/strong&gt; describes the probability of drawing $x$ successes in $n$ draws from a finite population of size $N$ containing $K$ successes, without replacement.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$N,K,n\in\mathbb{N}_0 \nl K,n\le N$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$[\max(0,n+K-N),\min(K,n)]\cap\mathbb{Z}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \sum_{k=0}^{\lfloor x \rfloor} \dfrac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{nK}{N}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{nK(N-K)(N-n)}{N^2(N-1)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{(N-2K)\cdot\sqrt{N-1}\cdot(N-2n)}{\sqrt{nK(N-K)(N-n)}\cdot(N-2)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{N^2(N-1)[N(N+1)-6K(N-K)-6n(N-n)]+6nK(N-K)(N-n)(5N-6)}{nK(N-K)(N-n)(N-2)(N-3)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \dfrac{\binom{N-K}{n}}{\binom{N}{n}} {}_2F_1\left[ \begin{matrix} -n, -K \nl N-K-n+1 \end{matrix} ; e^t \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \dfrac{\binom{N-K}{n}}{\binom{N}{n}} {}_2F_1\left[ \begin{matrix} -n, -K \nl N-K-n+1 \end{matrix} ; e^{it} \right]$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where ${}_pF_q\left[ \begin{matrix} a_1 &amp;amp; a_2 &amp;amp; \cdots &amp;amp; a_p \nl b_1 &amp;amp; b_2 &amp;amp; \ldots &amp;amp; b_q \end{matrix} ; z \right]$
+is the &lt;em&gt;generalized hypergeometric function&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;bernoulli-distribution&quot;&gt;Bernoulli Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Bernoulli}(p)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Bernoulli distribution&lt;/strong&gt; is a special case of the binomial distribution with $n=1$.
+$p$ is the probability of success, and $q=1-p$ is the probability of failure.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p\in[0,1] \nl q:=1-p$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\set{0,1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p^xq^{1-x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$q\mathbf{1} _{x\ge0}+p\mathbf{1} _{x\ge1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$pq$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{q-p}{\sqrt{pq}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1-6pq}{pq}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$pe^t + q$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$pe^{it} + q$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;binomial-distribution&quot;&gt;Binomial Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{B}(n, p)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;binomial distribution&lt;/strong&gt; describes the number of successes in $n$ independent Bernoulli trials, each with success probability $p$.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$n\in\mathbb{N}_0, p\in[0,1] \nl q:=1-p$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$[0,n]\cap\mathbb{Z}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \binom{n}{x}p^xq^{n-x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \sum_{k=0}^{\lfloor x \rfloor} \binom{n}{k}p^kq^{n-k}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$np$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$npq$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{q-p}{\sqrt{npq}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1-6pq}{npq}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(pe^t + q)^n$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(pe^{it} + q)^n$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;poisson-distribution&quot;&gt;Poisson Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Poisson}(\lambda)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Poisson distribution&lt;/strong&gt; describes the number of events occurring in a fixed interval of time or space, given a known average rate $\lambda$.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\lambda&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{N}_0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\lambda^x e^{-\lambda}}{x!}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dsum_{k=0}^{\lfloor x \rfloor} \dfrac{\lambda^k e^{-\lambda}}{k!}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\lambda$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\lambda$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\sqrt{\lambda}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\lambda}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp[\lambda(e^t-1)]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp[\lambda(e^{it}-1)]$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;negative-binomial-distribution&quot;&gt;Negative Binomial Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{NB}(r, p)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;negative binomial distribution&lt;/strong&gt; describes the number of failures before the $r$-th success in a sequence of independent Bernoulli trials, each with success probability $p$.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$r\in\mathbb{N}, p\in[0,1] \nl q:=1-p$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{N}_0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \binom{x+r-1}{r-1}p^rq^x$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \sum_{k=0}^{\lfloor x \rfloor} \binom{k+r-1}{r-1}p^rq^k$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{rq}{p}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{rq}{p^2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{2-p}{\sqrt{rq}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{6q+p^2}{rq}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\left(\dfrac{p}{1-qe^t}\right)^r$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\left(\dfrac{p}{1-qe^{it}}\right)^r$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;geometric-distribution&quot;&gt;Geometric Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Geometric}(p)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;geometric distribution&lt;/strong&gt; describes the number of trials until the first success in a sequence of independent Bernoulli trials, each with success probability $p$.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PMF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p\in(0,1] \nl q:=1-p$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{N}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p q^{x-1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$1-q^{\lfloor x \rfloor}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{p}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{q}{p^2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{2-p}{\sqrt{q}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{6q+p^2}{q}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{pe^t}{1-qe^t}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{pe^{it}}{1-qe^{it}}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;common-continuous-distributions&quot;&gt;Common Continuous Distributions&lt;/h2&gt;
+
+&lt;h3 id=&quot;continuous-uniform-distribution&quot;&gt;Continuous Uniform Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathcal{U}_{[a, b]}
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;continuous uniform distribution&lt;/strong&gt; has a constant PDF over its support.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$a&amp;lt;b$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$[a,b]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{b-a}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{x-a}{b-a}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{a+b}{2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{(b-a)^2}{12}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$-\dfrac{6}{5}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{e^{bt} - e^{at}}{t(b-a)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{e^{ibt} - e^{iat}}{it(b-a)}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;gamma-distribution&quot;&gt;Gamma Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Gamma}(\alpha, \beta)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;gamma distribution&lt;/strong&gt; is a two-parameter family of continuous probability distributions, often used to model waiting times.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\alpha,\beta&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}_{\ge0}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\Gamma(\alpha)\beta^\alpha} x^{\alpha-1} e^{-x/\beta}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\Gamma(\alpha)} \gamma\left(\alpha, \dfrac{x}{\beta}\right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\alpha\beta$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\alpha\beta^2$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{2}{\sqrt{\alpha}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{6}{\alpha}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(1-\beta t)^{-\alpha} \;\; \left( t&amp;lt;\dfrac{1}{\beta} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(1-i\beta t)^{-\alpha} $&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where $\Gamma(\alpha)$ is the &lt;em&gt;Gamma function&lt;/em&gt; and $\gamma(\alpha, x)$ is the &lt;em&gt;lower incomplete gamma function&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;chi-squared-distribution&quot;&gt;Chi-Squared Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \chi^2(k)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;chi-squared distribution&lt;/strong&gt; is a special case of the gamma distribution with $\alpha = k/2$ and $\beta = 2$.
+It is also defined as the distribution of the sum of the squares of $k$ independent standard normal random variables.
+We commonly use it in hypothesis testing and confidence interval estimation.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$k\in\mathbb{N}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}_+$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2^{k/2}\Gamma(k/2)} x^{k/2-1} e^{-x/2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\Gamma(k/2)} \gamma\left(\dfrac{k}{2}, \dfrac{x}{2}\right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$k$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$2k$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\sqrt{\dfrac{8}{k}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{12}{k}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(1-2t)^{-k/2} \;\; \left( t&amp;lt;\dfrac{1}{2} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$(1-2it)^{-k/2}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;exponential-distribution&quot;&gt;Exponential Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Exp}(\lambda)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;exponential distribution&lt;/strong&gt; is a special case of the gamma distribution with $\alpha = 1$ and $\beta = 1/\lambda$.
+It is often used to model the time until an event occurs, such as the time until failure of a machine or the time between arrivals in a Poisson process.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\lambda&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}_{\ge0}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\lambda e^{-\lambda x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$1-e^{-\lambda x}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\lambda}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\lambda^2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$2$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$6$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\lambda}{\lambda-t} \;\; (t&amp;lt;\lambda)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\lambda}{\lambda-it}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;normal-distribution&quot;&gt;Normal Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathcal{N}(\mu, \sigma^2)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;normal distribution&lt;/strong&gt; (or Gaussian distribution) is a continuous probability distribution characterized by its bell-shaped curve.
+It is the most important distribution in statistics, as many statistical tests and methods assume normality.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu\in\mathbb{R} \nl \sigma&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\sqrt{2\pi}\sigma} \exp\left( -\dfrac{(x-\mu)^2}{2\sigma^2}\right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} \left[ 1 + \mathrm{erf}\left( \dfrac{x-\mu}{\sigma\sqrt{2}} \right) \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\sigma^2$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp\left( \mu t + \dfrac{\sigma^2 t^2}{2} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp\left( i\mu t - \dfrac{\sigma^2 t^2}{2} \right)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where $\mathrm{erf}(x)$ is the &lt;em&gt;error function&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;beta-distribution&quot;&gt;Beta Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Beta}(\alpha, \beta)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;beta distribution&lt;/strong&gt; is a continuous probability distribution defined on the interval $[0, 1]$.
+It is often used to model random variables that are constrained to a finite range, such as proportions or probabilities.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\alpha,\beta&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$[0,1]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta-1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \dfrac{1}{B(\alpha, \beta)} \int_0^x t^{\alpha-1} (1-t)^{\beta-1} dt$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\alpha}{\alpha+\beta}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{2(\beta-\alpha)\sqrt{\alpha+\beta+1}}{(\alpha+\beta+2)\sqrt{\alpha\beta}}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{6[(\alpha-\beta)^2(\alpha+\beta+1)-\alpha\beta(\alpha+\beta+2)]}{\alpha\beta(\alpha+\beta+2)(\alpha+\beta+3)}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;${}_1F_1\left[ \begin{matrix} \alpha \nl \alpha+\beta \end{matrix} ; t \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;${}_1F_1\left[ \begin{matrix} \alpha \nl \alpha+\beta \end{matrix} ; it \right]$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;where $B(\alpha, \beta)$ is the &lt;em&gt;Beta function&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;cauchy-distribution&quot;&gt;Cauchy Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Cauchy}(\mu, \gamma)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Cauchy distribution&lt;/strong&gt; is a continuous probability distribution with heavy tails.
+It is often used in robust statistics and is known for its undefined mean and variance.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu\in\mathbb{R} \nl \gamma&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\pi\gamma \left[ 1+\left( \dfrac{x-\mu}{\gamma} \right)^2 \right]}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} + \dfrac{1}{\pi} \arctan\left( \dfrac{x-\mu}{\gamma} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp\left( i\mu t - \gamma \abs{t} \right)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;log-normal-distribution&quot;&gt;Log-Normal Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{LogNormal}(\mu, \sigma^2)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;log-normal distribution&lt;/strong&gt; is a continuous probability distribution of a random variable whose logarithm is normally distributed.
+It is often used to model stock prices, income distributions, and other positive-valued data.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu\in\mathbb{R} \nl \sigma&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}_+$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{x\sigma\sqrt{2\pi}} \exp\left( -\dfrac{(\ln x - \mu)^2}{2\sigma^2} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} \left[ 1 + \mathrm{erf}\left( \dfrac{\ln x - \mu}{\sigma\sqrt{2}} \right) \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp\left( \mu + \dfrac{\sigma^2}{2} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\left( \exp(\sigma^2) - 1 \right) \exp\left( 2\mu + \sigma^2 \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\left(\exp(\sigma^2) +2\right)\sqrt{\exp(\sigma^2)-1}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\exp(4\sigma^2) +2\exp(3\sigma^2)+3\exp(2\sigma^2) -6$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dps \sum_{n=0}^\infty \dfrac{(it)^n}{n!e^{n\mu+n^2\sigma^2/2}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;laplace-distribution&quot;&gt;Laplace Distribution&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Laplace}(\mu, \sigma)
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Laplace distribution&lt;/strong&gt; (or double exponential distribution) is a continuous probability distribution characterized by its peakedness at the mean and exponential decay in both tails.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_X$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_X(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_X(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[X]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[X]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_X(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_X(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu\in\mathbb{R} \nl \sigma&amp;gt;0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2\sigma} \exp\left( -\dfrac{\abs{x-\mu}}{\sigma} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} \left[ 1 + \mathrm{sgn}(x-\mu) \left( 1 - \exp\left( -\dfrac{\abs{x-\mu}}{\sigma} \right) \right) \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mu$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$2\sigma^2$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$3$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\exp(\mu t)}{1-b^2t^2} \;\; \left( \abs{t}&amp;lt;\dfrac{1}{\sigma}\right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\exp(i\mu t)}{1+b^2t^2}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;properties&quot;&gt;Properties&lt;/h2&gt;
+
+&lt;h3 id=&quot;poisson-approximation&quot;&gt;Poisson Approximation&lt;/h3&gt;
+
+&lt;p&gt;The Poisson distribution can be used to approximate the binomial distribution when $n$ is large and $p$ is small, such that $np = \lambda$ is moderate.
+This is particularly useful when dealing with rare events.&lt;/p&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{B}(n, p) \approx \mathrm{Poisson}(np)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;gammapoisson-relation&quot;&gt;Gamma–Poisson Relation&lt;/h3&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{Gamma}(\alpha, \beta), \; Y \sim \mathrm{Poisson}(x/\beta) \implies F_X(x)=1-F_Y(\alpha)
+\]&lt;/p&gt;
+
+&lt;p&gt;The equation above holds when $\alpha$ is a positive integer.
+It is proven by integrating the PDF of the gamma distribution and simple induction on $\alpha$.&lt;/p&gt;
+
+&lt;h3 id=&quot;normal-approximation&quot;&gt;Normal Approximation&lt;/h3&gt;
+
+&lt;p&gt;The normal distribution can be used to approximate the binomial distribution when $n$ is large and $p$ is not too close to 0 or 1.&lt;/p&gt;
+
+&lt;p&gt;\[
+X \sim \mathrm{B}(n, p), \; Y \sim \mathcal{N}(np, npq) \implies F_X(x) \approx F_Y(x)
+\]&lt;/p&gt;
+
+&lt;p&gt;Generally, we can use this approximation when $\min(np, nq) \ge 5$. However, we do not approximate
+$P(X \le x)$ with $P(Y \le x)$, but rather use the &lt;strong&gt;continuity correction&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$P(X \le x) \approx P(Y \le x + 0.5)$&lt;/li&gt;
+  &lt;li&gt;$P(X \ge x) \approx P(Y \ge x - 0.5)$&lt;/li&gt;
+  &lt;li&gt;$P(a \le X \le b) \approx P(a - 0.5 \le Y \le b + 0.5)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This correction accounts for the fact that the binomial distribution is discrete while the normal distribution is continuous.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Skewness and Kurtosis</title><link href="http://localhost:4000/mathematics/skewness-and-kurtosis.html" rel="alternate" type="text/html" title="Skewness and Kurtosis" /><published>2025-07-02T00:00:00+09:00</published><updated>2025-07-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/skewness-and-kurtosis</id><content type="html" xml:base="http://localhost:4000/mathematics/skewness-and-kurtosis.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#skewness&quot; id=&quot;markdown-toc-skewness&quot;&gt;Skewness&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#interpretation-of-skewness&quot; id=&quot;markdown-toc-interpretation-of-skewness&quot;&gt;Interpretation of Skewness&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kurtosis&quot; id=&quot;markdown-toc-kurtosis&quot;&gt;Kurtosis&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#interpretation-of-kurtosis&quot; id=&quot;markdown-toc-interpretation-of-kurtosis&quot;&gt;Interpretation of Kurtosis&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;skewness&quot;&gt;Skewness&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Skewness&lt;/strong&gt; $\gamma_1$ is a measure of the asymmetry of the probability distribution of a real-valued random variable. It can be calculated using the formula:&lt;/p&gt;
+
+&lt;p&gt;\[
+\gamma_1 = \mathrm{E}\left[\left(\frac{X - \mu}{\sigma}\right)^3\right] = \frac{\mu_3}{\sigma^3}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mu$ is the mean, $\sigma$ is the standard deviation, and $\mu_3$ is the third central moment of the distribution.&lt;/p&gt;
+
+&lt;h3 id=&quot;interpretation-of-skewness&quot;&gt;Interpretation of Skewness&lt;/h3&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Negative_and_positive_skew_diagrams_%28English%29.svg/2560px-Negative_and_positive_skew_diagrams_%28English%29.svg.png&quot; alt=&quot;Skewness&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;Distributions with negative and positive skewness&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Negative Skewness&lt;/strong&gt;: The left tail is longer or fatter than the right tail. The mass of the distribution is concentrated on the right.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Positive Skewness&lt;/strong&gt;: The right tail is longer or fatter than the left tail. The mass of the distribution is concentrated on the left.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Zero Skewness&lt;/strong&gt;: The distribution is symmetric, meaning the left and right tails are balanced.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;kurtosis&quot;&gt;Kurtosis&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Kurtosis&lt;/strong&gt; $\gamma_2$ is a measure of the “tailedness” of the probability distribution of a real-valued random variable. It can be calculated using the formula:&lt;/p&gt;
+
+&lt;p&gt;\[
+\gamma_2 = \mathrm{E}\left[\left(\frac{X - \mu}{\sigma}\right)^4\right] - 3 = \frac{\mu_4}{\sigma^4} - 3
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mu_4$ is the fourth central moment of the distribution.
+Usually, the value with 3 subtracted is used, so that a normal distribution has a kurtosis of 0,
+and it is called &lt;strong&gt;excess kurtosis&lt;/strong&gt;. Some sources may use the raw kurtosis value without subtracting 3, which would make the normal distribution have a kurtosis of 3.&lt;/p&gt;
+
+&lt;h3 id=&quot;interpretation-of-kurtosis&quot;&gt;Interpretation of Kurtosis&lt;/h3&gt;
+
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://res.cloudinary.com/jerrick/image/upload/v1687242449/649146d1744395001d91a13b.jpg&quot; alt=&quot;Kurtosis&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;Distributions with negative, positive, and zero kurtosis&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Negative Kurtosis&lt;/strong&gt;: The distribution has lighter tails than a normal distribution, indicating fewer outliers. It is often referred to as “platykurtic.”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Zero Kurtosis&lt;/strong&gt;: The distribution has tails similar to a normal distribution, indicating a moderate level of outliers. It is often referred to as “mesokurtic.”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Positive Kurtosis&lt;/strong&gt;: The distribution has heavier tails than a normal distribution, indicating more outliers. It is often referred to as “leptokurtic.”&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Expected Values</title><link href="http://localhost:4000/mathematics/expected-values.html" rel="alternate" type="text/html" title="Expected Values" /><published>2025-07-01T00:00:00+09:00</published><updated>2025-07-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/expected-values</id><content type="html" xml:base="http://localhost:4000/mathematics/expected-values.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#expected-value&quot; id=&quot;markdown-toc-expected-value&quot;&gt;Expected Value&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties-of-expected-value&quot; id=&quot;markdown-toc-properties-of-expected-value&quot;&gt;Properties of Expected Value&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#minimizing-distance&quot; id=&quot;markdown-toc-minimizing-distance&quot;&gt;Minimizing Distance&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;expected-value&quot;&gt;Expected Value&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;expected value&lt;/strong&gt; of a random variable $g(X)$ is a measure of the central tendency of the distribution of $g(X)$.
+It is denoted by $\mathrm{E}[g(X)]$, $\mathbb{E}[g(X)]$, $\mathrm{E}g(X)$, or just simply $\mu_{g(X)}$.
+$\langle g(X) \rangle$ or $\overline{g(X)}$ are also used in some contexts, especially in physics.
+It is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}[g(X)] = \begin{cases}
+\dps \int_{-\infty}^{\infty} g(x) f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
+\dps \sum_{x \in \mathscr{X}} g(x) f_X(x) &amp;amp; ; X \text{ is discrete}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;, if the integral or the sum is defined, where $f_X(x)$ is the probability density function (PDF) for continuous random variables or the probability mass function (PMF) for discrete random variables.
+If $g=\mathrm{id}$, then $\mathrm{E}[X]$ is called the &lt;strong&gt;expected value&lt;/strong&gt; or &lt;strong&gt;mean&lt;/strong&gt; of $X$.&lt;/p&gt;
+
+&lt;h3 id=&quot;properties-of-expected-value&quot;&gt;Properties of Expected Value&lt;/h3&gt;
+
+&lt;p&gt;The most important property of expected value is its linearity:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}[aX + bY + c] = a \mathrm{E}[X] + b \mathrm{E}[Y] + c
+\]
+where $a$, $b$, and $c$ are constants, and $X$ and $Y$ are random variables.
+It is trivial by its definition, since the integral or sum are also linear operations.
+Following are some other useful properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$X\le Y \implies \mathrm{E}[X] \leq \mathrm{E}[Y]$&lt;/li&gt;
+  &lt;li&gt;$a\le X \le b \implies a \leq \mathrm{E}[X] \leq b$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;minimizing-distance&quot;&gt;Minimizing Distance&lt;/h3&gt;
+
+&lt;p&gt;The expected value can be interpreted as the point that minimizes the distance to the random variable.&lt;/p&gt;
+
+&lt;p&gt;\[
+\argmin_{c \in \mathbb{R}} \mathrm{E}[(X - c)^2] = \mathrm{E}[X]
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;Proof&lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+\Expct{(X - c)^2} &amp;amp; = \Expct{ (X-\expct{X} + \expct{X} - c)^2 } \nl
+&amp;amp; = \Expct{ (X-\expct{X})^2 + 2(X-\expct{X})(\expct{X} - c) + (\expct{X} - c)^2 } \nl
+&amp;amp; = \Expct{ (X-\expct{X})^2 } + 2(\expct{X} - c)(\expct{X}-\expct{X}) + (\expct{X} - c)^2 \nl
+&amp;amp; = \Expct{ (X-\expct{X})^2 } + (\expct{X} - c)^2
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Moments and Moment Generating Functions</title><link href="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html" rel="alternate" type="text/html" title="Moments and Moment Generating Functions" /><published>2025-07-01T00:00:00+09:00</published><updated>2025-07-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/moments-and-moment-generating-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#moments&quot; id=&quot;markdown-toc-moments&quot;&gt;Moments&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#variance--standard-deviation&quot; id=&quot;markdown-toc-variance--standard-deviation&quot;&gt;Variance &amp;amp; Standard Deviation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#moment-generating-functions&quot; id=&quot;markdown-toc-moment-generating-functions&quot;&gt;Moment Generating Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#unique-determination-of-distribution&quot; id=&quot;markdown-toc-unique-determination-of-distribution&quot;&gt;Unique Determination of Distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#convergence-of-moment-generating-functions&quot; id=&quot;markdown-toc-convergence-of-moment-generating-functions&quot;&gt;Convergence of Moment Generating Functions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cumulant-generating-functions&quot; id=&quot;markdown-toc-cumulant-generating-functions&quot;&gt;Cumulant Generating Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#cumulants&quot; id=&quot;markdown-toc-cumulants&quot;&gt;Cumulants&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#factorial-moment-generating-functions&quot; id=&quot;markdown-toc-factorial-moment-generating-functions&quot;&gt;Factorial Moment Generating Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#factorial-moments&quot; id=&quot;markdown-toc-factorial-moments&quot;&gt;Factorial Moments&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#characteristic-functions&quot; id=&quot;markdown-toc-characteristic-functions&quot;&gt;Characteristic Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#convergence-of-characteristic-functions&quot; id=&quot;markdown-toc-convergence-of-characteristic-functions&quot;&gt;Convergence of Characteristic Functions&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;moments&quot;&gt;Moments&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;$n$-th moment&lt;/strong&gt; of a random variable $X$ is defined as the expected value of $X^n$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mu_n^\prime = \mathrm{E}[X^n]
+\]&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;$n$-th central moment&lt;/strong&gt; is defined as the expected value of the deviation of $X$ from its mean raised to the $n$-th power:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mu_n = \mathrm{E}[(X - \mu)^n]
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mu=\mu_1^\prime = \mathrm{E}[X]$ is the first moment (mean) of $X$.&lt;/p&gt;
+
+&lt;h3 id=&quot;variance--standard-deviation&quot;&gt;Variance &amp;amp; Standard Deviation&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;variance&lt;/strong&gt; of a random variable $X$ is the second central moment, and often denoted as
+$\mathrm{Var}(X)$, $\mathbb{V}(X)$, or $\sigma^2$. It is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sigma^2 = \mathrm{Var}(X) = \mu_2 = \mathrm{E}[(X - \mu)^2]
+\]&lt;/p&gt;
+
+&lt;p&gt;The positive square root of the variance is called the &lt;strong&gt;standard deviation&lt;/strong&gt;, which is usually denoted by $\sigma$.
+The variance measures the spread of the random variable around its mean. There are two useful formulas for variance:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$\mathrm{Var}(aX + b) = a^2 \mathrm{Var}(X)$&lt;/li&gt;
+  &lt;li&gt;$\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;moment-generating-functions&quot;&gt;Moment Generating Functions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;moment generating function (MGF)&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+M_X(t) = \mathrm{E}[e^{tX}]
+\]&lt;/p&gt;
+
+&lt;p&gt;provided that the expectation exists for $t$ in some neighborhood of $0$. More explicitly, the MGF is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+M_X(t) = \begin{cases}
+\dps \int_{-\infty}^{\infty} e^{tx} f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
+\dps \sum_{x} e^{tx} f_X(x) &amp;amp; ; X \text{ is discrete}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;The MGF is useful because it can be used to find all moments of the random variable $X$.
+If $X$ has mgf $M_X(t)$,&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}[X^n] = M_X^{(n)}(0) = \odvn{n}{}{t} M_X(t) \bigg|_{t=0}
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;Proof&lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+\odvn{n}{}{t} M_X(t) &amp;amp;= \odvn{n}{}{t} \int_{-\infty}^{\infty} e^{tx} f_X(x) \dd{x} \nl
+&amp;amp;= \int_{-\infty}^{\infty} \odvn{n}{}{t} e^{tx} f_X(x) \dd{x} \nl
+&amp;amp;= \int_{-\infty}^{\infty} x^n e^{tx} f_X(x) \dd{x} \nl
+&amp;amp;= \mathrm{E}\left[X^n e^{tX}\right]
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;p&gt;The following is a useful property of the MGF, omitting the proof.&lt;/p&gt;
+
+&lt;p&gt;\[
+M_{aX + b}(t) = e^{bt} M_X(at)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;unique-determination-of-distribution&quot;&gt;Unique Determination of Distribution&lt;/h3&gt;
+
+&lt;p&gt;Since we can find out that the MGF is a &lt;strong&gt;laplace transform&lt;/strong&gt; of the pdf, it is not always defined.
+This is because the infinite sum $\sum_{n=0}^\infty \mu_n^\prime t^n/n!$ may not converge.
+But once it is defined, it uniquely determines the distribution of the random variable $X$.&lt;/p&gt;
+
+&lt;p&gt;Let $F_X(x)$ and $F_Y(y)$ be the cdfs all of whose moments exist.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$X,Y$ have bounded support, then $F_X(u)=F_Y(u) \iff \mu_n^\prime(X) = \mu_n^\prime(Y)$ for all $n\in\mathbb{N}_0$.&lt;/li&gt;
+  &lt;li&gt;If mgfs exists and $M_X(t) = M_Y(t)$ for all $t$ in some neighborhood of $0$, then $F_X(u)=F_Y(u)$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;convergence-of-moment-generating-functions&quot;&gt;Convergence of Moment Generating Functions&lt;/h3&gt;
+
+&lt;p&gt;Suppose $\set{X_i}_{i\in\mathbb{N}}$ is a sequence of random variables, each with mgf $M_{X_i}(t)$.
+Furthermore, assume that&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{i \to \infty} M_{X_i}(t) = M_X(t) \quad t\in\mathcal{N}(0, \epsilon)
+\]&lt;/p&gt;
+
+&lt;p&gt;for some $\epsilon &amp;gt; 0$. $\mathcal{N}(0, \epsilon)$ is a neighborhood of $0$.
+Then, the mgf $M_X(t)$ uniquely determines the distribution of $X$. Specifically, there is a unique
+cdf $F_X(x)$ whose mgf is $M_X(t)$. Convergence of mgf implies convergence in distribution.&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{i \to \infty} F_{X_i}(x) = F_X(x)
+\]&lt;/p&gt;
+
+&lt;p&gt;The proof of this statement relies on the theory of Laplace transforms. We’ll not cover it here.&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Here we introduce an example for nonunique moments.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+f_1(x) &amp;amp;= \frac{1}{\sqrt{2\pi}x} e^{-(\ln x)^2/2} \quad (x \ge 0) \nl \nl
+f_2(x) &amp;amp;= f_1(x) [1+\sin(2\pi\ln x)] \quad (x \ge 0)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Try to calculate the moments of $f_1$ and $f_2$, and you will find out that they are the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;cumulant-generating-functions&quot;&gt;Cumulant Generating Functions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;cumulant generating function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+K(t) = \ln M_X(t) = \ln \mathrm{E}[e^{tX}]
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;cumulants&quot;&gt;Cumulants&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;$n$-th cumulant&lt;/strong&gt; of a random variable $X$ is defined as the $n$-th derivative of the cumulant generating function evaluated at $t=0$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\kappa_n = \odvn{n}{}{t} K(t) \bigg|_{t=0}
+\]&lt;/p&gt;
+
+&lt;p&gt;Following are the first few cumulants:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\kappa_1 = \mu_1^\prime$ (mean)&lt;/li&gt;
+  &lt;li&gt;$\kappa_2 = \mu_2$ (variance)&lt;/li&gt;
+  &lt;li&gt;$\kappa_3 = \mu_3$&lt;/li&gt;
+  &lt;li&gt;$\kappa_4 = \mu_4 - 3\mu_2^2$ (excess kurtosis)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;factorial-moment-generating-functions&quot;&gt;Factorial Moment Generating Functions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;factorial moment generating function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+FM_X(t) = \mathrm{E}[t^X]
+\]&lt;/p&gt;
+
+&lt;p&gt;provided that the expectation exists for $t$ in some neighborhood of $0$. The factorial moment generating function is useful for discrete random variables.&lt;/p&gt;
+
+&lt;h3 id=&quot;factorial-moments&quot;&gt;Factorial Moments&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;$n$-th factorial moment&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}[(X)_n] = \mathrm{E}\left[ \binom{X}{n} n! \right] = \odvn{n}{}{t} FM_X(t) \bigg|_{t=1}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $(X)_n$ is the falling factorial.&lt;/p&gt;
+
+&lt;h2 id=&quot;characteristic-functions&quot;&gt;Characteristic Functions&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;characteristic function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\phi_X(t) = \mathrm{E}[e^{itX}] = \begin{cases}
+\dps \int_{-\infty}^{\infty} e^{itx} f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
+\dps \sum_{x} e^{itx} f_X(x) &amp;amp; ; X \text{ is discrete}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;The characteristic function is the most useful generating function,
+as it exists for all random variables and uniquely determines the distribution of $X$.
+And this is guaranteed by the theory of Fourier transform, since the characteristic function is the Fourier transform of the pdf.&lt;/p&gt;
+
+&lt;h3 id=&quot;convergence-of-characteristic-functions&quot;&gt;Convergence of Characteristic Functions&lt;/h3&gt;
+
+&lt;p&gt;Suppose $\set{X_k}_{k\in\mathbb{N}}$ is a sequence of random variables, each with characteristic function $\phi_{X_k}(t)$.
+Furthermore, assume that&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{k \to \infty} \phi_{X_k}(t) = \phi_X(t) \quad t\in\mathcal{N}(0, \epsilon)
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, for all $x$ where $F_X(x)$ is continuous, we have&lt;/p&gt;
+
+&lt;p&gt;\[
+\lim_{k \to \infty} F_{X_k}(x) = F_X(x)
+\]&lt;/p&gt;
+
+&lt;p&gt;The proof of this statement relies on the theory of Fourier transforms. We’ll not cover it here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Distributions of Functions of a Random Variable</title><link href="http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable.html" rel="alternate" type="text/html" title="Distributions of Functions of a Random Variable" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable</id><content type="html" xml:base="http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#transformation-of-random-variables&quot; id=&quot;markdown-toc-transformation-of-random-variables&quot;&gt;Transformation of Random Variables&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#transformation-of-pdfs&quot; id=&quot;markdown-toc-transformation-of-pdfs&quot;&gt;Transformation of PDFs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#monotonic-transformations&quot; id=&quot;markdown-toc-monotonic-transformations&quot;&gt;Monotonic Transformations&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#transformation-of-pdfs-1&quot; id=&quot;markdown-toc-transformation-of-pdfs-1&quot;&gt;Transformation of PDFs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#monotonic-partitions&quot; id=&quot;markdown-toc-monotonic-partitions&quot;&gt;Monotonic Partitions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#probability-integral-transformation&quot; id=&quot;markdown-toc-probability-integral-transformation&quot;&gt;Probability integral transformation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;transformation-of-random-variables&quot;&gt;Transformation of Random Variables&lt;/h2&gt;
+
+&lt;p&gt;If $X$ is a random variable with cdf $F_X(x)$, then any function of $X$, say $Y = g(X)$, is also a random variable.
+We can describe the probabilistic behavior of $Y$ in terms of $X$ and $g$.&lt;/p&gt;
+
+&lt;p&gt;\[
+P(Y \in A) = P( g(X) \in A ) = P(X \in g^{-1}(A))
+\]&lt;/p&gt;
+
+&lt;p&gt;where $g^{-1}(A)$ is the preimage of $A$ under $g$. Formally, if we write $y=g(x)$, the
+function $g$ defines a mapping from the original sample space of $X$, $\mathscr{X}$, to a new sample space,
+$\mathscr{Y}$, the sample space of $Y$. A preimage of a set $A \subseteq \mathscr{Y}$ is the set of all points in $\mathscr{X}$ that map to $A$ under $g$:&lt;/p&gt;
+
+&lt;p&gt;\[
+g^{-1}(A) = \set{ x \in \mathscr{X} \mid g(x) \in A }
+\]&lt;/p&gt;
+
+&lt;p&gt;Basically, $A$ and $g^{-1}(A)$ are sets, but if they are singletons(i.e., sets with one element),
+we can omit the set notation.&lt;/p&gt;
+
+&lt;h3 id=&quot;transformation-of-pdfs&quot;&gt;Transformation of PDFs&lt;/h3&gt;
+
+&lt;p&gt;Suppose that $X$ and $Y$ are discrete r
+If $X$ is a continuous random variable with pdf $f_X(x)$, then the pdf of $Y = g(X)$ can be derived as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+f_Y(y) = P(Y=y) = \sum_{x \in g^{-1}(y)} P(X=x) = \sum_{x \in g^{-1}(y)} f_X(x)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Let $X$ be a uniform random variable on the interval $[0,2\pi]$ with pdf&lt;/p&gt;
+
+&lt;p&gt;\[
+f_X(x) = \begin{cases}
+1/2\pi &amp;amp; ; 0 &amp;lt; x &amp;lt; 2\pi \nl
+0 &amp;amp; ; \text{otherwise}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;Let $Y = \sin^2(X)$, then the cdf of $Y$ can be derived as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+F_Y(y) &amp;amp;= P(Y \leq y) = P(\sin^2(X) \leq y) = P(-\sqrt{y} \leq \sin(X) \leq \sqrt{y}) \nl
+&amp;amp;= 4P(0 \leq X \leq \arcsin\sqrt{y}) \nl
+&amp;amp;= \frac{2\arcsin\sqrt{y}}{\pi}
+\quad (0 \leq y \leq 1)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Therefore, the whole cdf and pdf is&lt;/p&gt;
+
+&lt;p&gt;\[
+F_Y(y) = \begin{cases}
+0 &amp;amp; ; y &amp;lt; 0 \nl
+\frac{2}{\pi}\arcsin\sqrt{y} &amp;amp; ; 0 \leq y \leq 1 \nl
+1 &amp;amp; ; y &amp;gt; 1
+\end{cases}
+\quad
+f_Y(y) = \odv{}{y} F_Y(y) = \begin{cases}
+0 &amp;amp; ; y \le 0 \nl
+1/\pi\sqrt{y(1-y)} &amp;amp; ; 0 &amp;lt; y &amp;lt; 1 \nl
+0 &amp;amp; ; y \ge 1 \nl
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;monotonic-transformations&quot;&gt;Monotonic Transformations&lt;/h2&gt;
+
+&lt;p&gt;If $g$ is a monotonic function, we can derive the pdf of $Y = g(X)$ more easily. First, we should
+investigate the relationship between the cdf of $Y$ and the cdf of $X$.
+We usually set as $\mathscr{X} = \set{ x \mid f_X(x) &amp;gt; 0 }$, which is called a support, for a convenience so that $g$ becomes one-to-one.
+For $y\in \mathscr{Y} = g(\mathscr{X})$, we have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$g$ is an increasing function on $\mathscr{X}$: $F_Y(y) = F_X(g^{-1}(y))$&lt;/li&gt;
+  &lt;li&gt;$g$ is a decreasing function on $\mathscr{X}$: $F_Y(y) = 1 - F_X(g^{-1}(y))$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+
+  &lt;p&gt;If $g$ is an increasing function, we have:
+\[
+F_Y(y) = P(X \leq g^{-1}(y)) = \int_{-\infty}^{g^{-1}(y)} f_X(x) \dd{x} = F_X(g^{-1}(y))
+\]&lt;/p&gt;
+
+  &lt;p&gt;If $g$ is a decreasing function, we have:
+\[
+F_Y(y) = P(X \geq g^{-1}(y)) = \int_{g^{-1}(y)}^{\infty} f_X(x) \dd{x} = 1 - F_X(g^{-1}(y))
+\]&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;transformation-of-pdfs-1&quot;&gt;Transformation of PDFs&lt;/h3&gt;
+
+&lt;p&gt;By the theorem above, we can derive the pdf of $Y = g(X)$ as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+f_Y(y) = \begin{cases}
+\dps f_X(g^{-1}(y)) \abs{ \odv{}{y}g^{-1}(y) } &amp;amp; ; y \in \mathscr{Y} \nl
+0 &amp;amp; ; y \notin \mathscr{Y}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;monotonic-partitions&quot;&gt;Monotonic Partitions&lt;/h3&gt;
+
+&lt;p&gt;Suppose there exists a partition $\set{A_0,A_1,\ldots,A_k}$ of $\mathscr{X}$ such that $P(X\in X_0) = 0$
+and $f_X(x)$ is continuous on each $A_i$. Further, suppose there exist functions
+$g_1(x),\ldots,g_k(x)$ defined on $A_1,\ldots,A_k$ respectively, satisfying&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$g(x)=g_i(x)$ for $x\in A_i$&lt;/li&gt;
+  &lt;li&gt;$g_i$ is monotonic on $A_i$&lt;/li&gt;
+  &lt;li&gt;$g_i^{-1}(y)\in\mathcal{C}^1$ for $y\in g_i(A_i)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Also, let’s write $\mathscr{Y} = g(\mathscr{X}) = \bigcup_{i=1}^k g_i(A_i)$, which is the image of $\mathscr{X}$ under $g$.
+Then the pdf of $Y = g(X)$ can be derived as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+f_Y(y) = \begin{cases}
+\dps \sum_{i=1}^k f_X(g_i^{-1}(y)) \abs{ \odv{}{y}g_i^{-1}(y) } \mathbf{1}_{g_i(A_i)}(y) &amp;amp; ; y \in \mathscr{Y} \nl
+0 &amp;amp; ; y \notin \mathscr{Y}
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mathbf{1}_{g_i(A_i)}(y)$ is the indicator function of the set $g_i(A_i)$, which is 1 if $y\in g_i(A_i)$ and 0 otherwise.
+Here, $A_0$ is a technical set that is not used in the calculation, but it is necessary to make the partition complete.&lt;/p&gt;
+
+&lt;h3 id=&quot;probability-integral-transformation&quot;&gt;Probability integral transformation&lt;/h3&gt;
+
+&lt;p&gt;The probability integral transformation states that if $X$ is a random variable with continuous cdf $F_X(x)$,
+then the random variable $Y = F_X(X)$ is uniformly distributed on the interval $[0,1]$.&lt;/p&gt;
+
+&lt;p&gt;\[
+F_Y(y) = P(F_X(X) \leq y) = y
+\]&lt;/p&gt;
+
+&lt;p&gt;Before we prove this theorem, we need to introduce the concept of a quantile function.
+The &lt;strong&gt;quantile function&lt;/strong&gt; of a random variable $X$ is defined as the pseudo-inverse of its cdf, i.e.,&lt;/p&gt;
+
+&lt;p&gt;\[
+Q_X(p) = \inf \set{ x \mid F_X(x) \geq p }
+\]&lt;/p&gt;
+
+&lt;p&gt;The quantile function is a non-decreasing function that maps the interval $[0,1]$ to the support of $X$.
+Since $F_X(x)$ is monotonic but not necessarily strictly increasing, the inverse of $F_X(x)$ does not exist,
+so we need the such definition by an infimum.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+F_Y(y) &amp;amp;= P(F_X(X) \leq y) \nl
+&amp;amp;= P(X \leq Q_X(y)) \nl
+&amp;amp;= F_X(Q_X(y)) \nl
+&amp;amp;= y
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Density and Mass Functions</title><link href="http://localhost:4000/mathematics/density-and-mass-functions.html" rel="alternate" type="text/html" title="Density and Mass Functions" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/density-and-mass-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/density-and-mass-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#prabability-mass-function-pmf&quot; id=&quot;markdown-toc-prabability-mass-function-pmf&quot;&gt;Prabability Mass Function (PMF)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#probability-density-function-pdf&quot; id=&quot;markdown-toc-probability-density-function-pdf&quot;&gt;Probability Density Function (PDF)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;prabability-mass-function-pmf&quot;&gt;Prabability Mass Function (PMF)&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;probability mass function (PMF)&lt;/strong&gt; of a discrete random variable $X$ is given by:
+\[
+f_X(x) = P(X = x)
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;probability-density-function-pdf&quot;&gt;Probability Density Function (PDF)&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;probability density function (PDF)&lt;/strong&gt; of a continuous random variable $X$ is the function that satisfies:
+\[
+F_X(x) = \int_{-\infty}^x f_X(t) \dd{t}
+\]
+for all $x\in\mathbb{R}$, where $F_X(x)$ is the cumulative distribution function (CDF) of $X$.&lt;/p&gt;
+
+&lt;h2 id=&quot;properties&quot;&gt;Properties&lt;/h2&gt;
+&lt;p&gt;A function $f_X(x)$ is a PDF or a PMF of a random variable $X$ if and only if&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$f_X(x) \geq 0$&lt;/li&gt;
+  &lt;li&gt;$\sum_{x} f_X(x) = 1$ (for PMF)&lt;/li&gt;
+  &lt;li&gt;$\int_{-\infty}^{\infty} f_X(x) \dd{x} = 1$ (for PDF)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Limits Involving Infinity</title><link href="http://localhost:4000/mathematics/limits-involving-infinity.html" rel="alternate" type="text/html" title="Limits Involving Infinity" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/limits-involving-infinity</id><content type="html" xml:base="http://localhost:4000/mathematics/limits-involving-infinity.html">&lt;!--more--&gt;
+
+&lt;p&gt;##&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Conditional Probability and Independence</title><link href="http://localhost:4000/mathematics/conditional-probability-and-independence.html" rel="alternate" type="text/html" title="Conditional Probability and Independence" /><published>2025-06-24T00:00:00+09:00</published><updated>2025-06-24T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/conditional-probability-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/conditional-probability-and-independence.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#conditional-probability&quot; id=&quot;markdown-toc-conditional-probability&quot;&gt;Conditional Probability&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#bayes-theorem&quot; id=&quot;markdown-toc-bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#independence&quot; id=&quot;markdown-toc-independence&quot;&gt;Independence&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#mutually-independent-events&quot; id=&quot;markdown-toc-mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conditional-probability&quot;&gt;Conditional Probability&lt;/h2&gt;
+
+&lt;p&gt;If $A$ and $B$ are two events (where $B$ is not an empty event), the &lt;strong&gt;conditional probability&lt;/strong&gt; of $A$ given $B$ is defined as the probability of $A$ occurring under the condition that $B$ has occurred.
+\[
+P(A | B) = \frac{P(A \cap B)}{P(B)}
+\]&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$ P(A| A) = 1$&lt;/li&gt;
+  &lt;li&gt;If $A$ and $B$ are disjoint, $P(A| B) = P(B| A) = 0$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can obtain the following equation.
+\[
+P(A \cap B) = P(A | B) P(B) = P(B | A) P(A)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/h3&gt;
+
+&lt;p&gt;Bayes’ theorem relates the conditional probabilities of two events $A$ and $B$.
+\[
+P(A | B) = \frac{P(B | A) P(A)}{P(B)}
+\]&lt;/p&gt;
+
+&lt;p&gt;We can also use its extended form. Let $\set{A_i}_{i\in I}$ be a partition of the sample space, and $B$ be any non-empty event.
+Then,
+\[
+P(A_i | B) = \frac{P(B | A_i) P(A_i)}{\dps \sum_{j \in I} P(B | A_j) P(A_j)}
+\]
+is true. Bayes’ theorem is useful when we want to update our beliefs about the probability of an event based on new evidence.&lt;/p&gt;
+
+&lt;h2 id=&quot;independence&quot;&gt;Independence&lt;/h2&gt;
+&lt;p&gt;Two events $A$ and $B$ are said to be &lt;strong&gt;independent&lt;/strong&gt; if the occurrence of one does not affect the probability of the other.
+This is mathematically defined as:
+\[
+P(A \cap B) = P(A) P(B)
+\]
+If $A$ and $B$ are independent, then:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$P(A | B) = P(A)$&lt;/li&gt;
+  &lt;li&gt;$P(B | A) = P(B)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Following paris of events are also independent:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$A$ and $B^\complement$&lt;/li&gt;
+  &lt;li&gt;$A^\complement$ and $B$&lt;/li&gt;
+  &lt;li&gt;$A^\complement$ and $B^\complement$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/h3&gt;
+
+&lt;p&gt;A collection of events $\set{A_i}_{i \in I}$ is said to be &lt;strong&gt;mutually independent&lt;/strong&gt;
+if for every finite subset $J \subseteq I$,
+\[
+P\left(\bigcap_{j \in J} A_j\right) = \prod_{j \in J} P(A_j)
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Variables and Distribution Functions</title><link href="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html" rel="alternate" type="text/html" title="Random Variables and Distribution Functions" /><published>2025-06-24T00:00:00+09:00</published><updated>2025-06-24T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-variables-and-distribution-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#random-variables&quot; id=&quot;markdown-toc-random-variables&quot;&gt;Random Variables&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#distribution-functions&quot; id=&quot;markdown-toc-distribution-functions&quot;&gt;Distribution Functions&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#cumulative-distribution-function-cdf&quot; id=&quot;markdown-toc-cumulative-distribution-function-cdf&quot;&gt;Cumulative Distribution Function (CDF)&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#continuity&quot; id=&quot;markdown-toc-continuity&quot;&gt;Continuity&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#identically-distributed-random-variables&quot; id=&quot;markdown-toc-identically-distributed-random-variables&quot;&gt;Identically Distributed Random Variables&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;random-variables&quot;&gt;Random Variables&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;random variable&lt;/strong&gt;  is a function that assigns a real number to each outcome in a sample space.
+$X: S \to \mathbb{R}$ is a most common notation for a random variable, where $S$ is the sample space.&lt;/p&gt;
+
+&lt;p&gt;Suppose we have a sample space $S = \set{s_1, s_2, \ldots, s_n}$.
+Then a random variable $X$ can be defined as a function that maps each outcome $s_i$ to a real number.
+\[
+X: S \to \mathbb{R}, X(S) = \mathscr{X} = \set{x_1, x_2, \ldots, x_m}
+\]
+Thus, we get
+\[
+P_X(X=x_i) = P(\set{s_j \in S \mid X(s_j) = x_i})
+\]
+where $P_X$ is the probability measure induced by the random variable $X$.
+It is also called the &lt;strong&gt;(induced) probability function&lt;/strong&gt; on $\mathscr{X}$,
+and we can easily check that it satisfies the Kolmogorov axioms.
+Therefore, in most cases, we simply write $P(X=x_i)$ instead of $P_X(X=x_i)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;distribution-functions&quot;&gt;Distribution Functions&lt;/h2&gt;
+
+&lt;h3 id=&quot;cumulative-distribution-function-cdf&quot;&gt;Cumulative Distribution Function (CDF)&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;cumulative distribution function (CDF)&lt;/strong&gt; $F_X:\mathbb{R} \to [0,1]$ of a random variable $X$ is defined as:
+\[
+F_X(x) = P(X \leq x)
+\]
+F_X can be discontinuous, with jumps at points where the random variable takes specific values.
+The size of a jump at any point is equal to $P(X = x)$, and every jump point has a &lt;em&gt;right-continuity&lt;/em&gt;.
+The function $F(x)$ is a CDF if and only if the following three conditions hold:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;$F_X(x)$ is non-decreasing: $F_X(x_1) \leq F_X(x_2)$ for $x_1 &amp;lt; x_2$.&lt;/li&gt;
+  &lt;li&gt;$\lim_{x \to -\infty} F_X(x) = 0$ and $\lim_{x \to \infty} F_X(x) = 1$.&lt;/li&gt;
+  &lt;li&gt;$F_X(x)$ is right-continuous: $\lim_{x \searrow x_0} F_X(x) = F_X(x_0)$ for all $x$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example, for a probability function $P_X(X=x) = (1-p)^{x-1}p \; (0&amp;lt;p&amp;lt;1)$ for $x\in \mathbb{N}$, the CDF is
+$F_X(x) = 1 - (1-p)^{\lfloor x \rfloor [x\ge0]}$.&lt;/p&gt;
+
+&lt;h3 id=&quot;continuity&quot;&gt;Continuity&lt;/h3&gt;
+
+&lt;p&gt;A random variable $X$ is said to be &lt;strong&gt;continuous&lt;/strong&gt; if its CDF $F_X(x)$ is continuous for all $x \in \mathbb{R}$.
+A random variable is &lt;strong&gt;discrete&lt;/strong&gt; if it is not continuous, meaning that there are points where the CDF has jumps.&lt;/p&gt;
+
+&lt;h3 id=&quot;identically-distributed-random-variables&quot;&gt;Identically Distributed Random Variables&lt;/h3&gt;
+
+&lt;p&gt;Two random variables $X$ and $Y$ are said to be &lt;strong&gt;identically distributed&lt;/strong&gt; if, for every set $A\in \mathscr{B}^1$,
+\[
+P(X \in A) = P(Y \in A)
+\]
+It means that they have the same probability distribution, even if they are defined on different sample spaces.
+However, it is possible for two random variables to be identically distributed but different probability for every outcome.
+This is only true for the smallest sigma algebra $\mathscr{B}^1$ on $\mathbb{R}$, which is just the intervals.
+For those, we can use the CDF to check if two random variables are identically distributed:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$X$ and $Y$ are identically distributed.&lt;/li&gt;
+  &lt;li&gt;$F_X(x) = F_Y(x)$ for all $x \in \mathbb{R}$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The two conditions above are equivalent. The proof is a bit deep, so we will not cover it here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
