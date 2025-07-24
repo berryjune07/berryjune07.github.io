@@ -55,9 +55,9 @@ vector<int> G[V];
 bool visited[V];
 
 void dfs(int now){
-  visited[now] = true;
-  for(int next:G[now]) if(!visited[next])
-    dfs(next);
+    visited[now] = true;
+    for(int next:G[now]) if(!visited[next])
+        dfs(next);
 }
 
 
@@ -66,9 +66,9 @@ vector<vector<int>> G;
 bool visited[V];
 
 void dfs(int now){
-  visited[now] = true;
-  for(int next:G[now]) if(G[now][next] and !visited[next])
-    dfs(next);
+    visited[now] = true;
+    for(int next:G[now]) if(G[now][next] and !visited[next])
+        dfs(next);
 }
 ```
 
@@ -115,17 +115,17 @@ queue<int> Q;
 bool visited[V];
 
 void bfs(int root){
-  Q.push(root);
-  visited[root] = true;
-  
-  while(!Q.empty()){
-    int now = Q.front();
-    Q.pop();
-    for(int next:G[now]) if(!visited[next]){
-      Q.push(next);
-      visited[next] = true;
+    Q.push(root);
+    visited[root] = true;
+    
+    while(!Q.empty()){
+        int now = Q.front();
+        Q.pop();
+        for(int next:G[now]) if(!visited[next]){
+            Q.push(next);
+            visited[next] = true;
+        }
     }
-  }
 }
 
 
@@ -135,17 +135,17 @@ queue<int> Q;
 bool visited[V];
 
 void bfs(int root){
-  Q.push(root);
-  visited[root] = true;
-  
-  while(!Q.empty()){
-    int now = Q.front();
-    Q.pop();
-    for(int next:G[now]) if(G[now][next] and !visited[next]){
-      Q.push(next);
-      visited[next] = true;
+    Q.push(root);
+    visited[root] = true;
+    
+    while(!Q.empty()){
+        int now = Q.front();
+        Q.pop();
+        for(int next:G[now]) if(G[now][next] and !visited[next]){
+            Q.push(next);
+            visited[next] = true;
+        }
     }
-  }
 }
 ```
 

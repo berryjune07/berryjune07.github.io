@@ -1,5 +1,842 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-07-07T12:41:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Exponential Families</title><link href="http://localhost:4000/mathematics/exponential-families.html" rel="alternate" type="text/html" title="Exponential Families" /><published>2025-07-07T00:00:00+09:00</published><updated>2025-07-07T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/exponential-families</id><content type="html" xml:base="http://localhost:4000/mathematics/exponential-families.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Common Discrete and Continuous Distributions</title><link href="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html" rel="alternate" type="text/html" title="Common Discrete and Continuous Distributions" /><published>2025-07-04T00:00:00+09:00</published><updated>2025-07-04T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/common-discrete-and-continuous-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-07-24T19:34:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Minimum Spanning Tree</title><link href="http://localhost:4000/computer-science/minimum-spanning-tree.html" rel="alternate" type="text/html" title="Minimum Spanning Tree" /><published>2025-07-21T00:00:00+09:00</published><updated>2025-07-21T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/minimum-spanning-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/minimum-spanning-tree.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kruskals-algorithm&quot; id=&quot;markdown-toc-kruskals-algorithm&quot;&gt;Kruskal’s Algorithm&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#prims-algorithm&quot; id=&quot;markdown-toc-prims-algorithm&quot;&gt;Prim’s Algorithm&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#explanation-1&quot; id=&quot;markdown-toc-explanation-1&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#complexity-1&quot; id=&quot;markdown-toc-complexity-1&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#code-1&quot; id=&quot;markdown-toc-code-1&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;Minimum Spanning Tree (MST)&lt;/strong&gt; of a connected, undirected graph is a spanning tree that has the minimum possible total edge weight.
+A spanning tree is a subgraph that includes all the vertices of the original graph and is a tree (i.e., it is connected and has no cycles).
+The MST is useful in various applications, such as network design, clustering, and optimization problems.
+There are two popular algorithms to find the MST: &lt;strong&gt;Kruskal’s Algorithm&lt;/strong&gt; and &lt;strong&gt;Prim’s Algorithm&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;kruskals-algorithm&quot;&gt;Kruskal’s Algorithm&lt;/h2&gt;
+
+&lt;p&gt;Kruskal’s Algorithm is a greedy algorithm that finds the MST by adding edges in increasing order of weight, ensuring that no cycles are formed.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Sort all edges in non-decreasing order of their weight.&lt;/li&gt;
+  &lt;li&gt;Initialize an empty forest (a set of trees).&lt;/li&gt;
+  &lt;li&gt;For each edge in the sorted list:
+    &lt;ul&gt;
+      &lt;li&gt;If adding the edge does not form a cycle, add it to the forest.&lt;/li&gt;
+      &lt;li&gt;Use a disjoint-set data structure to efficiently check for cycles.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;Start from the graph and sorted edges below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A));B((B));C((C));D((D));
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    %% linkStyle  stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ E = \Set{(C,D,3), (B,D,4), (A,B,5), (A,C,6), (B,C,6), (A,D,8)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Use a disjoint-set data structure to keep track of connected components.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A));B((B));C((C)):::tree;D((D)):::tree;
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 5 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A));B((B)):::tree;C((C)):::tree;D((D)):::tree;
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 5 stroke:red, stroke-width:2px;
+    linkStyle 3 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The edge with weight 5 is not added because it would form a cycle.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A)):::tree;B((B)):::tree;C((C)):::tree;D((D)):::tree;
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 0 stroke:red, stroke-width:2px;
+    linkStyle 5 stroke:red, stroke-width:2px;
+    linkStyle 3 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;complexity&quot;&gt;Complexity&lt;/h3&gt;
+
+&lt;p&gt;The time complexity of Kruskal’s Algorithm is $O(E \log E)$, where $E$ is the number of edges in the graph.
+The sorting step takes $O(E \log E)$, and the union-find operations take nearly constant time due to path compression and union by rank.&lt;/p&gt;
+
+&lt;h3 id=&quot;code&quot;&gt;Code&lt;/h3&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;V&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Kruskal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;prims-algorithm&quot;&gt;Prim’s Algorithm&lt;/h2&gt;
+
+&lt;p&gt;Prim’s Algorithm is another greedy algorithm that finds the MST by growing the tree one edge at a time, starting from an arbitrary vertex.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Initialize a priority queue (or a min-heap) to store edges.&lt;/li&gt;
+  &lt;li&gt;Start from an arbitrary vertex and add all its edges to the priority queue.&lt;/li&gt;
+  &lt;li&gt;While the priority queue is not empty:
+    &lt;ul&gt;
+      &lt;li&gt;Extract the edge with the minimum weight.&lt;/li&gt;
+      &lt;li&gt;If the edge connects to a vertex not already in the tree, add it to the tree and add its edges to the priority queue.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;explanation-1&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;Start from the node A.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((1));B((2));C((3));D((4));
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    %% linkStyle  stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ \mathrm{pq} = \Set{(A,0)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Add all edges from A to the priority queue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A)):::tree;B((B));C((C));D((D));
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    %%linkStyle 3 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ \mathrm{pq} = \Set{(B,6), (D,8), (C,10)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A)):::tree;B((B)):::tree;C((C));D((D));
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 0 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ \mathrm{pq} = \Set{(D,4), (C,5), (D,8), (C,10)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A)):::tree;B((B)):::tree;C((C));D((D)):::tree;
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 0 stroke:red, stroke-width:2px;
+    linkStyle 3 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ \mathrm{pq} = \Set{(C,3), (C,5), (D,8), (C,10)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((A)):::tree;B((B)):::tree;C((C)):::tree;D((D)):::tree;
+    A ---|6| B;
+    A ---|10| C;
+    A ---|8| D;
+    B ---|4| D;
+    B ---|5| C;
+    C ---|3| D;
+    linkStyle 0 stroke:red, stroke-width:2px;
+    linkStyle 3 stroke:red, stroke-width:2px;
+    linkStyle 5 stroke:red, stroke-width:2px;
+    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$ \mathrm{pq} = \Set{(C,5), (D,8), (C,10)} $
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then pop the priority queue until it is empty.&lt;/p&gt;
+
+&lt;h3 id=&quot;complexity-1&quot;&gt;Complexity&lt;/h3&gt;
+
+&lt;p&gt;The time complexity of Prim’s Algorithm is $O(E \log V)$, where $E$ is the number of edges and $V$ is the number of vertices in the graph.
+Using a priority queue (min-heap) allows us to efficiently extract the minimum edge weight.&lt;/p&gt;
+
+&lt;h3 id=&quot;code-1&quot;&gt;Code&lt;/h3&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Prim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;priority_queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
+
+&lt;p&gt;Minimum Spanning Trees have various applications, including:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Network Design&lt;/strong&gt;: Designing efficient networks with minimum cost, such as telecommunications or transportation networks.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Clustering&lt;/strong&gt;: Grouping data points in clustering algorithms, such as hierarchical clustering.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Optimization Problems&lt;/strong&gt;: Solving problems that require minimizing the total cost of connections, such as in logistics and supply chain management.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">The Derivative of a Function</title><link href="http://localhost:4000/mathematics/the-derivative-of-a-function.html" rel="alternate" type="text/html" title="The Derivative of a Function" /><published>2025-07-21T00:00:00+09:00</published><updated>2025-07-21T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-derivative-of-a-function</id><content type="html" xml:base="http://localhost:4000/mathematics/the-derivative-of-a-function.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 1197] 최소 스패닝 트리</title><link href="http://localhost:4000/computer-science/boj1197.html" rel="alternate" type="text/html" title="[BOJ 1197] 최소 스패닝 트리" /><published>2025-07-21T00:00:00+09:00</published><updated>2025-07-21T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1197</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1197.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1197&quot;&gt;https://www.acmicpc.net/problem/1197&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1197</summary></entry><entry><title type="html">Disjoint-Set Forest</title><link href="http://localhost:4000/computer-science/disjoint-set-forest.html" rel="alternate" type="text/html" title="Disjoint-Set Forest" /><published>2025-07-20T00:00:00+09:00</published><updated>2025-07-20T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/disjoint-set-forest</id><content type="html" xml:base="http://localhost:4000/computer-science/disjoint-set-forest.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;Disjoint-Set Forest&lt;/strong&gt; (&lt;strong&gt;Union-Find Forest&lt;/strong&gt;) is a data structure that keeps track of a partition of a set into disjoint subsets.
+It supports three main operations:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Add&lt;/strong&gt;: Add a new tree to the forest.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Union&lt;/strong&gt;: Merge two trees into one.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Find&lt;/strong&gt;: Determine which tree a particular element belongs to.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This data structure is particularly useful in applications such as network connectivity, clustering, and Kruskal’s algorithm for finding the Minimum Spanning Tree (MST).&lt;/p&gt;
+
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
+
+&lt;p&gt;The Disjoint-Set Forest is implemented using a collection of trees, where each tree represents a disjoint set.
+Let’s denote the union operation as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(x, y)&lt;/code&gt; which merges the sets containing elements &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;y&lt;/code&gt;,
+and the find operation as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find(x)&lt;/code&gt; which returns the representative (or root) of the set containing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;.
+And also let’s denote the node as the form &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value: parent&lt;/code&gt;, where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value&lt;/code&gt; is the element and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;parent&lt;/code&gt; is the parent node in the tree.
+Now we will seek the most efficient way to implement these operations. Consider the forest below:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    A((1:1)):::root;B((2:2)):::root;C((3:3)):::root;
+    D((4:4)):::root;E((5:5)):::root;F((6:6)):::root;G((7:7)):::root;
+
+    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Root nodes of each tree are indicated with a darker color.
+After performing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(1, 2)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(3, 4)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(5, 6)&lt;/code&gt;, the forest becomes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    A((1:1)):::root;B((2:1));C((3:3)):::root;
+    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
+    A---B; C---D; E---F;
+
+    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After performing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(1, 4)&lt;/code&gt;, the forest becomes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    A((1:1)):::root;B((2:1));C((3:1));
+    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
+    A---B; A---C---D; E---F;
+
+    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After performing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union(4, 5)&lt;/code&gt;, the forest becomes:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    A((1:1)):::root;B((2:1));C((3:1));
+    D((4:3));E((5:3));F((6:5));G((7:7)):::root;
+    A---B; A---C---D; E---F; C---E;
+
+    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After performing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find(6)&lt;/code&gt;, we can see that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;6&lt;/code&gt; belongs to the tree with root &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;,
+so we can update the parent of nodes on the path from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;6&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt; to point directly to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD
+    A((1:1)):::root;B((2:1));C((3:1));
+    D((4:3));E((5:1));F((6:1));G((7:7)):::root;
+    A---B &amp;amp; E &amp;amp; F; A---C---D;
+
+    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This process is known as &lt;strong&gt;path compression&lt;/strong&gt; and helps to flatten the structure of the tree, making future &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt; operations faster.&lt;/p&gt;
+
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
+
+&lt;p&gt;The time complexity of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt; operation is nearly constant, specifically $O(α(n))$, where α is the inverse Ackermann function.
+The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt; operation also has a time complexity of $O(α(n))$ when using path compression and union by size or rank,
+since it involves two &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt; operations followed by a constant-time merge.&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We can optimize the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Union&lt;/code&gt; operation further by using &lt;strong&gt;union by size&lt;/strong&gt; or &lt;strong&gt;union by rank&lt;/strong&gt;.
+This means that when we merge two trees, we always attach the smaller tree under the root of the larger tree.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Union by size&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Union by rank&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Union&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;swap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;par&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rank&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
+
+&lt;p&gt;Disjoint-Set Forests are widely used in various applications, including:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Network Connectivity&lt;/strong&gt;: To determine if two nodes are in the same connected component.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Kruskal’s Algorithm&lt;/strong&gt;: To find the Minimum Spanning Tree of a graph.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Image Processing&lt;/strong&gt;: To segment images into connected components.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Probability Inequalities</title><link href="http://localhost:4000/mathematics/probability-inequalities.html" rel="alternate" type="text/html" title="Probability Inequalities" /><published>2025-07-20T00:00:00+09:00</published><updated>2025-07-20T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/probability-inequalities</id><content type="html" xml:base="http://localhost:4000/mathematics/probability-inequalities.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#chebyshevs-inequality&quot; id=&quot;markdown-toc-chebyshevs-inequality&quot;&gt;Chebyshev’s Inequality&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#special-case&quot; id=&quot;markdown-toc-special-case&quot;&gt;Special Case&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tighter-inequality&quot; id=&quot;markdown-toc-tighter-inequality&quot;&gt;Tighter Inequality&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#identities&quot; id=&quot;markdown-toc-identities&quot;&gt;Identities&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#gamma-recursion&quot; id=&quot;markdown-toc-gamma-recursion&quot;&gt;Gamma Recursion&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#steins-lemma&quot; id=&quot;markdown-toc-steins-lemma&quot;&gt;Stein’s Lemma&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#chi-squared-recursion&quot; id=&quot;markdown-toc-chi-squared-recursion&quot;&gt;Chi-Squared Recursion&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#hwangs-recursion&quot; id=&quot;markdown-toc-hwangs-recursion&quot;&gt;Hwang’s Recursion&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;chebyshevs-inequality&quot;&gt;Chebyshev’s Inequality&lt;/h2&gt;
+
+&lt;p&gt;Let $X$ be a random variable and let $g(x)$ be a non-negative function. Then, for any $r&amp;gt;0$,&lt;/p&gt;
+
+&lt;p&gt;\[
+P(g(X) \geq r) \leq \frac{\mathrm{E}[g(X)]}{r}
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+\mathrm{E}[g(X)] &amp;amp;= \int_{-\infty}^\infty g(x) f_X(x) \dd{x} \nl
+&amp;amp;\ge \int_{x:g(x) \geq r} g(x) f_X(x) \dd{x} \nl
+&amp;amp;\geq r \int_{x:g(x) \geq r} f_X(x) \dd{x} \nl
+&amp;amp;= r P(g(X) \geq r)
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;special-case&quot;&gt;Special Case&lt;/h3&gt;
+
+&lt;p&gt;Let $g(x) = (x - \mu)^2/\sigma^2$, where $\mu = \mathrm{E}[X]$ and $\sigma^2 = \mathrm{Var}[X]$.
+For convenience write $r=t^2$. Then&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|X - \mu| \geq t\sigma) \leq \frac{1}{t^2}
+\]&lt;/p&gt;
+
+&lt;p&gt;or equivalently,&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|X - \mu| &amp;lt; t\sigma) \geq 1 - \frac{1}{t^2}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;tighter-inequality&quot;&gt;Tighter Inequality&lt;/h3&gt;
+
+&lt;p&gt;If $Z$ is standard normal, then for all $t&amp;gt; 0$,&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|Z| \geq t) \leq \sqrt{\frac{2}{\pi}} \frac{e^{-t^2/2}}{t}
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+P(Z\geq t) &amp;amp;= \int_t^\infty \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \dd{x} \nl
+&amp;amp;\leq \frac{1}{\sqrt{2\pi}} \int_t^\infty \frac{x}{t} e^{-x^2/2} \dd{x} \nl
+&amp;amp;= \frac{1}{\sqrt{2\pi}} \frac{e^{-t^2/2}}{t}
+\end{align*}
+\]&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;p&gt;There is a more general inequality known as the &lt;strong&gt;Gauss inequality&lt;/strong&gt; which describes the property
+of unimodal distributions. Let $X\sim f$, where $f$ is unimodal with mode $\nu$, and define $\tau^2 = \mathrm{E}\left[(X-\nu)^2 \right]$. Then&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|X - v| &amp;gt; \varepsilon) \leq \begin{cases}
+\dfrac{4\tau^2}{9\varepsilon^2} &amp;amp; ; \varepsilon \ge \dfrac{4}{3} \tau \nl \nl
+1-\dfrac{\varepsilon}{\sqrt{3}\tau} &amp;amp; ; \varepsilon \le \dfrac{4}{3} \tau
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;Although this is a tighter bound than Chebyshev’s inequality, the dependence on the mode $v$ makes it less useful in practice.
+The extension to &lt;strong&gt;Vysochanskij–Petunin inequality&lt;/strong&gt; removes this limitation. Let $X\sim f$ be a unimodal distribution, and define
+$\xi^2 = \mathrm{E}\left[(X - \alpha)^2 \right]$ for an arbitrary $\alpha$. Then&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|X - \alpha| &amp;gt; \varepsilon) \leq \begin{cases}
+\dfrac{4\xi^2}{9\varepsilon^2} &amp;amp; ; \varepsilon \ge \dfrac{8}{3} \xi \nl \nl
+\dfrac{4\xi^2}{9\varepsilon^2} - \dfrac{1}{3} &amp;amp; ; \varepsilon \le \dfrac{8}{3} \xi
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;Taking $\alpha = \mathrm{E}[X]$ and $\varepsilon = 3\sigma$ gives us a &lt;em&gt;three sigma rule&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;\[
+P(|X - \mu| &amp;gt; 3\sigma) \leq \frac{4}{81} &amp;lt; 5\%
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;identities&quot;&gt;Identities&lt;/h2&gt;
+
+&lt;h3 id=&quot;gamma-recursion&quot;&gt;Gamma Recursion&lt;/h3&gt;
+
+&lt;p&gt;Let $X_{\alpha,\beta}\sim \mathrm{Gamma}(\alpha, \beta)$ with pdf $f(x|\alpha, \beta)$, where $\alpha &amp;gt; 1$.
+Then for any constants $a,b$,&lt;/p&gt;
+
+&lt;p&gt;\[
+P(a&amp;lt;X_{\alpha,\beta}&amp;lt;b) = \beta( f(a|\alpha, \beta) - f(b|\alpha, \beta) ) + P(a&amp;lt;X_{\alpha-1,\beta}&amp;lt;b)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;steins-lemma&quot;&gt;Stein’s Lemma&lt;/h3&gt;
+
+&lt;p&gt;Let $X\sim\mathcal{N}(\mu, \sigma^2)$ and $f$ be a differentiable function such that $\mathrm{E}|f’(X)| &amp;lt; \infty$.
+Then,&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}[f(X)(X - \mu)] = \sigma^2 \mathrm{E}[f’(X)]
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;chi-squared-recursion&quot;&gt;Chi-Squared Recursion&lt;/h3&gt;
+
+&lt;p&gt;For any function $f$,&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathrm{E}\left[ f\left(\chi^2_p\right) \right] = p \mathrm{E}\left[ \frac{f(\chi^2_{p+2})}{\chi^2_{p+2}} \right]
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;hwangs-recursion&quot;&gt;Hwang’s Recursion&lt;/h3&gt;
+
+&lt;p&gt;Let $f(x)$ be a function of which mean and $f(-1)$ exists.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If $X\sim\mathrm{Poisson}(\lambda)$,
+\[
+\mathrm{E}[ \lambda f(X) ] = \mathrm{E} [ Xf(X-1) ]
+\]&lt;/li&gt;
+  &lt;li&gt;If $X\sim\mathrm{NB}(r,p)$,
+\[
+\mathrm{E}[(1-p)f(X)] = \mathrm{E}\left[ \frac{X}{r+X-1}f(X-1) \right]
+\]&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Location and Scale Families</title><link href="http://localhost:4000/mathematics/location-and-scale-families.html" rel="alternate" type="text/html" title="Location and Scale Families" /><published>2025-07-20T00:00:00+09:00</published><updated>2025-07-20T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/location-and-scale-families</id><content type="html" xml:base="http://localhost:4000/mathematics/location-and-scale-families.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#locationscale-families&quot; id=&quot;markdown-toc-locationscale-families&quot;&gt;Location–Scale Families&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;locationscale-families&quot;&gt;Location–Scale Families&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;location–scale family&lt;/strong&gt; is a class of probability distributions that can be expressed in the form:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{\sigma} f\left( \frac{x - \mu}{\sigma} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mu$ is the &lt;em&gt;location parameter&lt;/em&gt; and $\sigma &amp;gt; 0$ is the &lt;em&gt;scale parameter&lt;/em&gt;.
+The location parameter $\mu$ shifts the distribution along the x-axis, while the scale parameter $\sigma$ stretches or compresses the distribution.
+Therefore, if the random variable $Z$ has a pdf $f(z)$, then the random variable $X = \sigma Z + \mu$ has a pdf given above.
+Then we have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\mathrm{E}[X] = \sigma \mathrm{E}[Z] + \mu$&lt;/li&gt;
+  &lt;li&gt;$\mathrm{Var}[X] = \sigma^2 \mathrm{Var}[Z]$&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 1753] 최단경로</title><link href="http://localhost:4000/computer-science/boj1753.html" rel="alternate" type="text/html" title="[BOJ 1753] 최단경로" /><published>2025-07-17T00:00:00+09:00</published><updated>2025-07-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1753</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1753.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1753&quot;&gt;https://www.acmicpc.net/problem/1753&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;script src=&quot;https://gist.github.com/berryjune07/9def4e4374532f69549039c39f71abba.js&quot;&gt;&lt;/script&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1753</summary></entry><entry><title type="html">Dijkstra’s Algorithm</title><link href="http://localhost:4000/computer-science/dijkstras-algorithm.html" rel="alternate" type="text/html" title="Dijkstra’s Algorithm" /><published>2025-07-17T00:00:00+09:00</published><updated>2025-07-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/dijkstras-algorithm</id><content type="html" xml:base="http://localhost:4000/computer-science/dijkstras-algorithm.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Dijkstra’s algorithm&lt;/strong&gt; is a classic algorithm for finding the shortest paths between nodes in a graph,
+which may represent, for example, road networks. It is a greedy algorithm that builds the shortest path tree from the source node to all other nodes in the graph.
+The algorithm maintains a &lt;em&gt;priority queue&lt;/em&gt; of nodes to explore, always expanding the node with the smallest known distance from the source.
+Commonly used in routing and navigation systems, Dijkstra’s algorithm is efficient for graphs with non-negative edge weights.&lt;/p&gt;
+
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
+
+&lt;p&gt;⁣1. Initialize the distance to the source node to 0 and all other nodes to infinity. Add the source node to the priority queue.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:\infty$$&quot;)) --&amp;gt;|20| E((&quot;$$E:\infty$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:\infty$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:\infty$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:\infty$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(A,0)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;⁣2. While the priority queue is not empty, do the following:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Extract the node with the smallest distance from the priority queue.&lt;/li&gt;
+  &lt;li&gt;For each neighbor of this node, calculate the distance through this node.&lt;/li&gt;
+  &lt;li&gt;If this distance is smaller than the known distance to the neighbor, update the neighbor’s distance and add it to the priority queue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:\infty$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:30$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:\infty$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+    A:::now;B:::nxt;C:::nxt;D:::nxt;
+
+    classDef now fill:#aaa,stroke:#444,stroke-width:2px;
+    classDef nxt fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(B,10), (D,15), (C,30)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:30$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:30$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:\infty$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+    B:::now;E:::nxt;
+
+    classDef now fill:#aaa,stroke:#444,stroke-width:2px;
+    classDef nxt fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(D,15), (C,30), (E,30)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:30$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:20$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:35$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+    D:::now;C:::nxt;F:::nxt;
+
+    classDef now fill:#aaa,stroke:#444,stroke-width:2px;
+    classDef nxt fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(C,20), (C,30), (E,30), (F,35)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:30$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:20$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:25$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+    C:::now;F:::nxt;
+
+    classDef now fill:#aaa,stroke:#444,stroke-width:2px;
+    classDef nxt fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(F,25), (C,30), (E,30), (F,35)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:30$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:20$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:25$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+    F:::now;
+
+    classDef now fill:#aaa,stroke:#444,stroke-width:2px;
+    classDef nxt fill:#faa,stroke:#f77,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;center&gt;
+$\mathrm{pq} = \Set{(C,30), (E,30), (F,35)}$
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;It remains the same until the priority queue is empty.&lt;/p&gt;
+
+&lt;p&gt;⁣3. The algorithm terminates when all nodes have been processed, and the shortest path from the source to each node is known.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    A((&quot;$$A:0$$&quot;)) --&amp;gt;|10| B((&quot;$$B:10$$&quot;)) --&amp;gt;|20| E((&quot;$$E:30$$&quot;));
+    A --&amp;gt;|30| C((&quot;$$C:20$$&quot;))
+    A --&amp;gt;|15| D((&quot;$$D:15$$&quot;)) --&amp;gt;|5| C --&amp;gt;|5| F
+    E --&amp;gt;|20| F((&quot;$$F:25$$&quot;));
+    F --&amp;gt;|20| D --&amp;gt;|20| F
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
+
+&lt;p&gt;The time complexity of Dijkstra’s algorithm depends on the data structure used for the priority queue.
+Using a binary heap, the time complexity is $O((V + E) \log V)$, where $V$ is the number of vertices and $E$ is the number of edges in the graph.
+Since $E$ can be at most $V(V-1)$ in a dense graph, we can also express the time complexity as $O(E \log V)$.
+If an adjacency list is used, the space complexity is $O(V + E)$ for storing the graph and $O(V)$ for the distance array.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Time Complexity&lt;/strong&gt;: $O(E \log V)$&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Space Complexity&lt;/strong&gt;: $O(V + E)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// D[i] is the shortest distance from the source to node i&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dijkstra&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// K is the source node&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;INF&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;priority_queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;edge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ndist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nxt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Routing and Navigation&lt;/strong&gt;: Used in GPS systems to find the shortest path between locations.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Network Routing Protocols&lt;/strong&gt;: Employed in protocols like OSPF (Open Shortest Path First) to determine the best path for data packets.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Pathfinding in Games&lt;/strong&gt;: Utilized in video games for AI navigation and pathfinding.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Exponential Families</title><link href="http://localhost:4000/mathematics/exponential-families.html" rel="alternate" type="text/html" title="Exponential Families" /><published>2025-07-07T00:00:00+09:00</published><updated>2025-07-07T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/exponential-families</id><content type="html" xml:base="http://localhost:4000/mathematics/exponential-families.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#exponential-families&quot; id=&quot;markdown-toc-exponential-families&quot;&gt;Exponential Families&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#natural-parameter-space&quot; id=&quot;markdown-toc-natural-parameter-space&quot;&gt;Natural Parameter Space&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#curved-exponential-families&quot; id=&quot;markdown-toc-curved-exponential-families&quot;&gt;Curved Exponential Families&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;exponential-families&quot;&gt;Exponential Families&lt;/h2&gt;
+
+&lt;p&gt;An &lt;strong&gt;exponential family&lt;/strong&gt; is a class of probability distributions that can be expressed in a specific form.
+The general form of an exponential family distribution is:&lt;/p&gt;
+
+&lt;p&gt;\[
+f(x \mid \bs{\theta}) = h(x) \exp\left( \bs{\eta}(\bs{\theta})\cdot\mathbf{T}(x) - A(\bs{\theta}) \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Here, $\bs{\theta}$ is the parameter vector and $\bs{\eta}(\bs{\theta})$ is the natural parameter vector.
+For a distribution to be in the exponential family, its support must be independent of the parameters, and the function $h(x)$ must not depend on the parameters.&lt;/p&gt;
+
+&lt;h3 id=&quot;properties&quot;&gt;Properties&lt;/h3&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\mathrm{E}\left[ \pdv{\bs{\eta(\bs{\theta})}}{\theta_i}\cdot\mathbf{T}(X) \right] &amp;amp;= \pdv{A(\bs{\theta})}{\theta_i} \nl
+\mathrm{Var}\left[ \pdv{\bs{\eta}(\bs{\theta})}{\theta_i}\cdot\mathbf{T}(X) \right] &amp;amp;= \pdvn{2}{A(\bs{\theta})}{\theta_i} - 
+\mathrm{E}\left[ \pdvn{2}{\bs{\eta}(\bs{\theta})}{\theta_i}\cdot\mathbf{T}(X) \right]
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;\[
+\begin{align*}
+\mathrm{E}\left[ \pdv{\bs{\eta}(\bs{\theta})}{\theta_i}\cdot\mathbf{T}(X) \right] &amp;amp;=
+\int_X \pdv{\bs{\eta}(\bs{\theta})}{\theta_i}\cdot\mathbf{T}(x) h(x) \exp(\bs{\eta}(\bs{\theta})\cdot \mathbf{T}(x)-A(\bs{\theta})) \dd{x} \nl
+&amp;amp;= \int_X h(x) e^{-A(\bs{\theta})}\pdv{}{\theta_i}\exp(\bs{\eta}(\bs{\theta})\cdot \mathbf{T}(x)) \dd{x} \nl
+&amp;amp;= e^{-A(\bs{\theta})}\pdv{}{\theta_i} \int_X h(x) \exp(\bs{\eta}(\bs{\theta})\cdot \mathbf{T}(x)) \dd{x} \nl
+&amp;amp;= e^{-A(\bs{\theta})}\pdv{}{\theta_i} e^{A(\bs{\theta})} \nl
+&amp;amp;= \pdv{A(\bs{\theta})}{\theta_i}
+\end{align*}
+\]
+where $X$ is the support of the distribution. The second equation can be derived similarly.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;natural-parameter-space&quot;&gt;Natural Parameter Space&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;natural parameter space&lt;/strong&gt; is the set of all possible values of the natural parameter vector $\bs{\eta}(\bs{\theta})$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathscr{H} = \Set{ \bs{\eta} | \int_{-\infty}^\infty h(x) \exp(\bs{\eta} \cdot \mathbf{T}(x)) \dd{x} &amp;lt;  \infty }
+\]&lt;/p&gt;
+
+&lt;p&gt;For the values of $\bs{\eta}\in \mathscr{H}$, we must have:&lt;/p&gt;
+
+&lt;p&gt;\[
+A(\bs{\eta}) = \ln\left( \int_{-\infty}^\infty h(x) \exp(\bs{\eta} \cdot \mathbf{T}(x)) \dd{x} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Natural parameter space has many useful properties, such as being convex.&lt;/p&gt;
+
+&lt;h3 id=&quot;curved-exponential-families&quot;&gt;Curved Exponential Families&lt;/h3&gt;
+
+&lt;p&gt;A &lt;strong&gt;curved exponential family&lt;/strong&gt; is a subset of the exponential family where $\dim(\bs{\theta}) &amp;lt; \dim(\bs{\eta})$.
+A &lt;strong&gt;full exponential family&lt;/strong&gt; is one where $\dim(\bs{\theta}) = \dim(\bs{\eta})$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Common Discrete and Continuous Distributions</title><link href="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html" rel="alternate" type="text/html" title="Common Discrete and Continuous Distributions" /><published>2025-07-04T00:00:00+09:00</published><updated>2025-07-04T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/common-discrete-and-continuous-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/common-discrete-and-continuous-distributions.html">&lt;!--more--&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#common-discrete-distributions&quot; id=&quot;markdown-toc-common-discrete-distributions&quot;&gt;Common Discrete Distributions&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#discrete-uniform-distribution&quot; id=&quot;markdown-toc-discrete-uniform-distribution&quot;&gt;Discrete Uniform Distribution&lt;/a&gt;&lt;/li&gt;
@@ -244,6 +1081,38 @@ X \sim \mathrm{Poisson}(\lambda)
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
+
+&lt;p&gt;The Poisson distribution can be derived from a set of basic assumptions. For each $t\ge 0$, let $N_t$ be
+an integer-valued random variable with the following properties. (Think of $N_t$ as the number of events in the interval $[0, t]$.)&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;$N_0 = 0$
+    &lt;ul&gt;
+      &lt;li&gt;start with no events&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$s&amp;lt;t \implies N_s$ and $N_t - N_s$ are independent.
+    &lt;ul&gt;
+      &lt;li&gt;the number of events in disjoint intervals are independent&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$N_s$ and $N_{t+s}-N_t$ are identically distributed.
+    &lt;ul&gt;
+      &lt;li&gt;the number of events depends only on the length of the interval&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$\dps \lim_{t\to 0} \frac{P(N_t=1)}{t} = \lambda$
+    &lt;ul&gt;
+      &lt;li&gt;event probability is proportional to the length of the interval if the interval is small&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;$\dps \lim_{t\to 0} \frac{P(N_t&amp;gt;1)}{t} = 0$
+    &lt;ul&gt;
+      &lt;li&gt;no simultaneous events&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If $N_t$ satisfies these properties, then $N_t\sim\mathrm{Poisson}(\lambda t)$.&lt;/p&gt;
 
 &lt;h3 id=&quot;negative-binomial-distribution&quot;&gt;Negative Binomial Distribution&lt;/h3&gt;
 
@@ -725,677 +1594,4 @@ $P(X \le x)$ with $P(Y \le x)$, but rather use the &lt;strong&gt;continuity corr
   &lt;li&gt;$P(a \le X \le b) \approx P(a - 0.5 \le Y \le b + 0.5)$&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This correction accounts for the fact that the binomial distribution is discrete while the normal distribution is continuous.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Skewness and Kurtosis</title><link href="http://localhost:4000/mathematics/skewness-and-kurtosis.html" rel="alternate" type="text/html" title="Skewness and Kurtosis" /><published>2025-07-02T00:00:00+09:00</published><updated>2025-07-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/skewness-and-kurtosis</id><content type="html" xml:base="http://localhost:4000/mathematics/skewness-and-kurtosis.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#skewness&quot; id=&quot;markdown-toc-skewness&quot;&gt;Skewness&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#interpretation-of-skewness&quot; id=&quot;markdown-toc-interpretation-of-skewness&quot;&gt;Interpretation of Skewness&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#kurtosis&quot; id=&quot;markdown-toc-kurtosis&quot;&gt;Kurtosis&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#interpretation-of-kurtosis&quot; id=&quot;markdown-toc-interpretation-of-kurtosis&quot;&gt;Interpretation of Kurtosis&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;skewness&quot;&gt;Skewness&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Skewness&lt;/strong&gt; $\gamma_1$ is a measure of the asymmetry of the probability distribution of a real-valued random variable. It can be calculated using the formula:&lt;/p&gt;
-
-&lt;p&gt;\[
-\gamma_1 = \mathrm{E}\left[\left(\frac{X - \mu}{\sigma}\right)^3\right] = \frac{\mu_3}{\sigma^3}
-\]&lt;/p&gt;
-
-&lt;p&gt;where $\mu$ is the mean, $\sigma$ is the standard deviation, and $\mu_3$ is the third central moment of the distribution.&lt;/p&gt;
-
-&lt;h3 id=&quot;interpretation-of-skewness&quot;&gt;Interpretation of Skewness&lt;/h3&gt;
-
-&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Negative_and_positive_skew_diagrams_%28English%29.svg/2560px-Negative_and_positive_skew_diagrams_%28English%29.svg.png&quot; alt=&quot;Skewness&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;figcaption&quot;&gt;Distributions with negative and positive skewness&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Negative Skewness&lt;/strong&gt;: The left tail is longer or fatter than the right tail. The mass of the distribution is concentrated on the right.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Positive Skewness&lt;/strong&gt;: The right tail is longer or fatter than the left tail. The mass of the distribution is concentrated on the left.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Zero Skewness&lt;/strong&gt;: The distribution is symmetric, meaning the left and right tails are balanced.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;kurtosis&quot;&gt;Kurtosis&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Kurtosis&lt;/strong&gt; $\gamma_2$ is a measure of the “tailedness” of the probability distribution of a real-valued random variable. It can be calculated using the formula:&lt;/p&gt;
-
-&lt;p&gt;\[
-\gamma_2 = \mathrm{E}\left[\left(\frac{X - \mu}{\sigma}\right)^4\right] - 3 = \frac{\mu_4}{\sigma^4} - 3
-\]&lt;/p&gt;
-
-&lt;p&gt;where $\mu_4$ is the fourth central moment of the distribution.
-Usually, the value with 3 subtracted is used, so that a normal distribution has a kurtosis of 0,
-and it is called &lt;strong&gt;excess kurtosis&lt;/strong&gt;. Some sources may use the raw kurtosis value without subtracting 3, which would make the normal distribution have a kurtosis of 3.&lt;/p&gt;
-
-&lt;h3 id=&quot;interpretation-of-kurtosis&quot;&gt;Interpretation of Kurtosis&lt;/h3&gt;
-
-&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://res.cloudinary.com/jerrick/image/upload/v1687242449/649146d1744395001d91a13b.jpg&quot; alt=&quot;Kurtosis&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;figcaption&quot;&gt;Distributions with negative, positive, and zero kurtosis&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Negative Kurtosis&lt;/strong&gt;: The distribution has lighter tails than a normal distribution, indicating fewer outliers. It is often referred to as “platykurtic.”&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Zero Kurtosis&lt;/strong&gt;: The distribution has tails similar to a normal distribution, indicating a moderate level of outliers. It is often referred to as “mesokurtic.”&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Positive Kurtosis&lt;/strong&gt;: The distribution has heavier tails than a normal distribution, indicating more outliers. It is often referred to as “leptokurtic.”&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Expected Values</title><link href="http://localhost:4000/mathematics/expected-values.html" rel="alternate" type="text/html" title="Expected Values" /><published>2025-07-01T00:00:00+09:00</published><updated>2025-07-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/expected-values</id><content type="html" xml:base="http://localhost:4000/mathematics/expected-values.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#expected-value&quot; id=&quot;markdown-toc-expected-value&quot;&gt;Expected Value&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#properties-of-expected-value&quot; id=&quot;markdown-toc-properties-of-expected-value&quot;&gt;Properties of Expected Value&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#minimizing-distance&quot; id=&quot;markdown-toc-minimizing-distance&quot;&gt;Minimizing Distance&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;expected-value&quot;&gt;Expected Value&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;expected value&lt;/strong&gt; of a random variable $g(X)$ is a measure of the central tendency of the distribution of $g(X)$.
-It is denoted by $\mathrm{E}[g(X)]$, $\mathbb{E}[g(X)]$, $\mathrm{E}g(X)$, or just simply $\mu_{g(X)}$.
-$\langle g(X) \rangle$ or $\overline{g(X)}$ are also used in some contexts, especially in physics.
-It is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-\mathrm{E}[g(X)] = \begin{cases}
-\dps \int_{-\infty}^{\infty} g(x) f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
-\dps \sum_{x \in \mathscr{X}} g(x) f_X(x) &amp;amp; ; X \text{ is discrete}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;p&gt;, if the integral or the sum is defined, where $f_X(x)$ is the probability density function (PDF) for continuous random variables or the probability mass function (PMF) for discrete random variables.
-If $g=\mathrm{id}$, then $\mathrm{E}[X]$ is called the &lt;strong&gt;expected value&lt;/strong&gt; or &lt;strong&gt;mean&lt;/strong&gt; of $X$.&lt;/p&gt;
-
-&lt;h3 id=&quot;properties-of-expected-value&quot;&gt;Properties of Expected Value&lt;/h3&gt;
-
-&lt;p&gt;The most important property of expected value is its linearity:&lt;/p&gt;
-
-&lt;p&gt;\[
-\mathrm{E}[aX + bY + c] = a \mathrm{E}[X] + b \mathrm{E}[Y] + c
-\]
-where $a$, $b$, and $c$ are constants, and $X$ and $Y$ are random variables.
-It is trivial by its definition, since the integral or sum are also linear operations.
-Following are some other useful properties:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$X\le Y \implies \mathrm{E}[X] \leq \mathrm{E}[Y]$&lt;/li&gt;
-  &lt;li&gt;$a\le X \le b \implies a \leq \mathrm{E}[X] \leq b$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;minimizing-distance&quot;&gt;Minimizing Distance&lt;/h3&gt;
-
-&lt;p&gt;The expected value can be interpreted as the point that minimizes the distance to the random variable.&lt;/p&gt;
-
-&lt;p&gt;\[
-\argmin_{c \in \mathbb{R}} \mathrm{E}[(X - c)^2] = \mathrm{E}[X]
-\]&lt;/p&gt;
-
-&lt;details&gt;
-  &lt;summary&gt;Proof&lt;/summary&gt;
-  &lt;p&gt;\[
-\begin{align*}
-\Expct{(X - c)^2} &amp;amp; = \Expct{ (X-\expct{X} + \expct{X} - c)^2 } \nl
-&amp;amp; = \Expct{ (X-\expct{X})^2 + 2(X-\expct{X})(\expct{X} - c) + (\expct{X} - c)^2 } \nl
-&amp;amp; = \Expct{ (X-\expct{X})^2 } + 2(\expct{X} - c)(\expct{X}-\expct{X}) + (\expct{X} - c)^2 \nl
-&amp;amp; = \Expct{ (X-\expct{X})^2 } + (\expct{X} - c)^2
-\end{align*}
-\]&lt;/p&gt;
-&lt;/details&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Moments and Moment Generating Functions</title><link href="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html" rel="alternate" type="text/html" title="Moments and Moment Generating Functions" /><published>2025-07-01T00:00:00+09:00</published><updated>2025-07-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/moments-and-moment-generating-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#moments&quot; id=&quot;markdown-toc-moments&quot;&gt;Moments&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#variance--standard-deviation&quot; id=&quot;markdown-toc-variance--standard-deviation&quot;&gt;Variance &amp;amp; Standard Deviation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#moment-generating-functions&quot; id=&quot;markdown-toc-moment-generating-functions&quot;&gt;Moment Generating Functions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#unique-determination-of-distribution&quot; id=&quot;markdown-toc-unique-determination-of-distribution&quot;&gt;Unique Determination of Distribution&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#convergence-of-moment-generating-functions&quot; id=&quot;markdown-toc-convergence-of-moment-generating-functions&quot;&gt;Convergence of Moment Generating Functions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#cumulant-generating-functions&quot; id=&quot;markdown-toc-cumulant-generating-functions&quot;&gt;Cumulant Generating Functions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#cumulants&quot; id=&quot;markdown-toc-cumulants&quot;&gt;Cumulants&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#factorial-moment-generating-functions&quot; id=&quot;markdown-toc-factorial-moment-generating-functions&quot;&gt;Factorial Moment Generating Functions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#factorial-moments&quot; id=&quot;markdown-toc-factorial-moments&quot;&gt;Factorial Moments&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#characteristic-functions&quot; id=&quot;markdown-toc-characteristic-functions&quot;&gt;Characteristic Functions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#convergence-of-characteristic-functions&quot; id=&quot;markdown-toc-convergence-of-characteristic-functions&quot;&gt;Convergence of Characteristic Functions&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;moments&quot;&gt;Moments&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;$n$-th moment&lt;/strong&gt; of a random variable $X$ is defined as the expected value of $X^n$:&lt;/p&gt;
-
-&lt;p&gt;\[
-\mu_n^\prime = \mathrm{E}[X^n]
-\]&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;$n$-th central moment&lt;/strong&gt; is defined as the expected value of the deviation of $X$ from its mean raised to the $n$-th power:&lt;/p&gt;
-
-&lt;p&gt;\[
-\mu_n = \mathrm{E}[(X - \mu)^n]
-\]&lt;/p&gt;
-
-&lt;p&gt;where $\mu=\mu_1^\prime = \mathrm{E}[X]$ is the first moment (mean) of $X$.&lt;/p&gt;
-
-&lt;h3 id=&quot;variance--standard-deviation&quot;&gt;Variance &amp;amp; Standard Deviation&lt;/h3&gt;
-
-&lt;p&gt;The &lt;strong&gt;variance&lt;/strong&gt; of a random variable $X$ is the second central moment, and often denoted as
-$\mathrm{Var}(X)$, $\mathbb{V}(X)$, or $\sigma^2$. It is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-\sigma^2 = \mathrm{Var}(X) = \mu_2 = \mathrm{E}[(X - \mu)^2]
-\]&lt;/p&gt;
-
-&lt;p&gt;The positive square root of the variance is called the &lt;strong&gt;standard deviation&lt;/strong&gt;, which is usually denoted by $\sigma$.
-The variance measures the spread of the random variable around its mean. There are two useful formulas for variance:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;$\mathrm{Var}(aX + b) = a^2 \mathrm{Var}(X)$&lt;/li&gt;
-  &lt;li&gt;$\mathrm{Var}(X) = \mathrm{E}[X^2] - \mathrm{E}[X]^2$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;moment-generating-functions&quot;&gt;Moment Generating Functions&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;moment generating function (MGF)&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-M_X(t) = \mathrm{E}[e^{tX}]
-\]&lt;/p&gt;
-
-&lt;p&gt;provided that the expectation exists for $t$ in some neighborhood of $0$. More explicitly, the MGF is given by:&lt;/p&gt;
-
-&lt;p&gt;\[
-M_X(t) = \begin{cases}
-\dps \int_{-\infty}^{\infty} e^{tx} f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
-\dps \sum_{x} e^{tx} f_X(x) &amp;amp; ; X \text{ is discrete}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;p&gt;The MGF is useful because it can be used to find all moments of the random variable $X$.
-If $X$ has mgf $M_X(t)$,&lt;/p&gt;
-
-&lt;p&gt;\[
-\mathrm{E}[X^n] = M_X^{(n)}(0) = \odvn{n}{}{t} M_X(t) \bigg|_{t=0}
-\]&lt;/p&gt;
-
-&lt;details&gt;
-  &lt;summary&gt;Proof&lt;/summary&gt;
-  &lt;p&gt;\[
-\begin{align*}
-\odvn{n}{}{t} M_X(t) &amp;amp;= \odvn{n}{}{t} \int_{-\infty}^{\infty} e^{tx} f_X(x) \dd{x} \nl
-&amp;amp;= \int_{-\infty}^{\infty} \odvn{n}{}{t} e^{tx} f_X(x) \dd{x} \nl
-&amp;amp;= \int_{-\infty}^{\infty} x^n e^{tx} f_X(x) \dd{x} \nl
-&amp;amp;= \mathrm{E}\left[X^n e^{tX}\right]
-\end{align*}
-\]&lt;/p&gt;
-&lt;/details&gt;
-
-&lt;p&gt;The following is a useful property of the MGF, omitting the proof.&lt;/p&gt;
-
-&lt;p&gt;\[
-M_{aX + b}(t) = e^{bt} M_X(at)
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;unique-determination-of-distribution&quot;&gt;Unique Determination of Distribution&lt;/h3&gt;
-
-&lt;p&gt;Since we can find out that the MGF is a &lt;strong&gt;laplace transform&lt;/strong&gt; of the pdf, it is not always defined.
-This is because the infinite sum $\sum_{n=0}^\infty \mu_n^\prime t^n/n!$ may not converge.
-But once it is defined, it uniquely determines the distribution of the random variable $X$.&lt;/p&gt;
-
-&lt;p&gt;Let $F_X(x)$ and $F_Y(y)$ be the cdfs all of whose moments exist.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$X,Y$ have bounded support, then $F_X(u)=F_Y(u) \iff \mu_n^\prime(X) = \mu_n^\prime(Y)$ for all $n\in\mathbb{N}_0$.&lt;/li&gt;
-  &lt;li&gt;If mgfs exists and $M_X(t) = M_Y(t)$ for all $t$ in some neighborhood of $0$, then $F_X(u)=F_Y(u)$.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;convergence-of-moment-generating-functions&quot;&gt;Convergence of Moment Generating Functions&lt;/h3&gt;
-
-&lt;p&gt;Suppose $\set{X_i}_{i\in\mathbb{N}}$ is a sequence of random variables, each with mgf $M_{X_i}(t)$.
-Furthermore, assume that&lt;/p&gt;
-
-&lt;p&gt;\[
-\lim_{i \to \infty} M_{X_i}(t) = M_X(t) \quad t\in\mathcal{N}(0, \epsilon)
-\]&lt;/p&gt;
-
-&lt;p&gt;for some $\epsilon &amp;gt; 0$. $\mathcal{N}(0, \epsilon)$ is a neighborhood of $0$.
-Then, the mgf $M_X(t)$ uniquely determines the distribution of $X$. Specifically, there is a unique
-cdf $F_X(x)$ whose mgf is $M_X(t)$. Convergence of mgf implies convergence in distribution.&lt;/p&gt;
-
-&lt;p&gt;\[
-\lim_{i \to \infty} F_{X_i}(x) = F_X(x)
-\]&lt;/p&gt;
-
-&lt;p&gt;The proof of this statement relies on the theory of Laplace transforms. We’ll not cover it here.&lt;/p&gt;
-
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;Here we introduce an example for nonunique moments.&lt;/p&gt;
-
-&lt;p&gt;\[
-\begin{align*}
-f_1(x) &amp;amp;= \frac{1}{\sqrt{2\pi}x} e^{-(\ln x)^2/2} \quad (x \ge 0) \nl \nl
-f_2(x) &amp;amp;= f_1(x) [1+\sin(2\pi\ln x)] \quad (x \ge 0)
-\end{align*}
-\]&lt;/p&gt;
-
-&lt;p&gt;Try to calculate the moments of $f_1$ and $f_2$, and you will find out that they are the same.&lt;/p&gt;
-
-&lt;h2 id=&quot;cumulant-generating-functions&quot;&gt;Cumulant Generating Functions&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;cumulant generating function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-K(t) = \ln M_X(t) = \ln \mathrm{E}[e^{tX}]
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;cumulants&quot;&gt;Cumulants&lt;/h3&gt;
-
-&lt;p&gt;The &lt;strong&gt;$n$-th cumulant&lt;/strong&gt; of a random variable $X$ is defined as the $n$-th derivative of the cumulant generating function evaluated at $t=0$:&lt;/p&gt;
-
-&lt;p&gt;\[
-\kappa_n = \odvn{n}{}{t} K(t) \bigg|_{t=0}
-\]&lt;/p&gt;
-
-&lt;p&gt;Following are the first few cumulants:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$\kappa_1 = \mu_1^\prime$ (mean)&lt;/li&gt;
-  &lt;li&gt;$\kappa_2 = \mu_2$ (variance)&lt;/li&gt;
-  &lt;li&gt;$\kappa_3 = \mu_3$&lt;/li&gt;
-  &lt;li&gt;$\kappa_4 = \mu_4 - 3\mu_2^2$ (excess kurtosis)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;factorial-moment-generating-functions&quot;&gt;Factorial Moment Generating Functions&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;factorial moment generating function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-FM_X(t) = \mathrm{E}[t^X]
-\]&lt;/p&gt;
-
-&lt;p&gt;provided that the expectation exists for $t$ in some neighborhood of $0$. The factorial moment generating function is useful for discrete random variables.&lt;/p&gt;
-
-&lt;h3 id=&quot;factorial-moments&quot;&gt;Factorial Moments&lt;/h3&gt;
-
-&lt;p&gt;The &lt;strong&gt;$n$-th factorial moment&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-\mathrm{E}[(X)_n] = \mathrm{E}\left[ \binom{X}{n} n! \right] = \odvn{n}{}{t} FM_X(t) \bigg|_{t=1}
-\]&lt;/p&gt;
-
-&lt;p&gt;where $(X)_n$ is the falling factorial.&lt;/p&gt;
-
-&lt;h2 id=&quot;characteristic-functions&quot;&gt;Characteristic Functions&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;characteristic function&lt;/strong&gt; of a random variable $X$ is defined as:&lt;/p&gt;
-
-&lt;p&gt;\[
-\phi_X(t) = \mathrm{E}[e^{itX}] = \begin{cases}
-\dps \int_{-\infty}^{\infty} e^{itx} f_X(x) \dd{x} &amp;amp; ; X \text{ is continuous} \nl \nl
-\dps \sum_{x} e^{itx} f_X(x) &amp;amp; ; X \text{ is discrete}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;p&gt;The characteristic function is the most useful generating function,
-as it exists for all random variables and uniquely determines the distribution of $X$.
-And this is guaranteed by the theory of Fourier transform, since the characteristic function is the Fourier transform of the pdf.&lt;/p&gt;
-
-&lt;h3 id=&quot;convergence-of-characteristic-functions&quot;&gt;Convergence of Characteristic Functions&lt;/h3&gt;
-
-&lt;p&gt;Suppose $\set{X_k}_{k\in\mathbb{N}}$ is a sequence of random variables, each with characteristic function $\phi_{X_k}(t)$.
-Furthermore, assume that&lt;/p&gt;
-
-&lt;p&gt;\[
-\lim_{k \to \infty} \phi_{X_k}(t) = \phi_X(t) \quad t\in\mathcal{N}(0, \epsilon)
-\]&lt;/p&gt;
-
-&lt;p&gt;Then, for all $x$ where $F_X(x)$ is continuous, we have&lt;/p&gt;
-
-&lt;p&gt;\[
-\lim_{k \to \infty} F_{X_k}(x) = F_X(x)
-\]&lt;/p&gt;
-
-&lt;p&gt;The proof of this statement relies on the theory of Fourier transforms. We’ll not cover it here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Distributions of Functions of a Random Variable</title><link href="http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable.html" rel="alternate" type="text/html" title="Distributions of Functions of a Random Variable" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable</id><content type="html" xml:base="http://localhost:4000/mathematics/distributions-of-functions-of-a-random-variable.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#transformation-of-random-variables&quot; id=&quot;markdown-toc-transformation-of-random-variables&quot;&gt;Transformation of Random Variables&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#transformation-of-pdfs&quot; id=&quot;markdown-toc-transformation-of-pdfs&quot;&gt;Transformation of PDFs&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#monotonic-transformations&quot; id=&quot;markdown-toc-monotonic-transformations&quot;&gt;Monotonic Transformations&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#transformation-of-pdfs-1&quot; id=&quot;markdown-toc-transformation-of-pdfs-1&quot;&gt;Transformation of PDFs&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#monotonic-partitions&quot; id=&quot;markdown-toc-monotonic-partitions&quot;&gt;Monotonic Partitions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#probability-integral-transformation&quot; id=&quot;markdown-toc-probability-integral-transformation&quot;&gt;Probability integral transformation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;transformation-of-random-variables&quot;&gt;Transformation of Random Variables&lt;/h2&gt;
-
-&lt;p&gt;If $X$ is a random variable with cdf $F_X(x)$, then any function of $X$, say $Y = g(X)$, is also a random variable.
-We can describe the probabilistic behavior of $Y$ in terms of $X$ and $g$.&lt;/p&gt;
-
-&lt;p&gt;\[
-P(Y \in A) = P( g(X) \in A ) = P(X \in g^{-1}(A))
-\]&lt;/p&gt;
-
-&lt;p&gt;where $g^{-1}(A)$ is the preimage of $A$ under $g$. Formally, if we write $y=g(x)$, the
-function $g$ defines a mapping from the original sample space of $X$, $\mathscr{X}$, to a new sample space,
-$\mathscr{Y}$, the sample space of $Y$. A preimage of a set $A \subseteq \mathscr{Y}$ is the set of all points in $\mathscr{X}$ that map to $A$ under $g$:&lt;/p&gt;
-
-&lt;p&gt;\[
-g^{-1}(A) = \set{ x \in \mathscr{X} \mid g(x) \in A }
-\]&lt;/p&gt;
-
-&lt;p&gt;Basically, $A$ and $g^{-1}(A)$ are sets, but if they are singletons(i.e., sets with one element),
-we can omit the set notation.&lt;/p&gt;
-
-&lt;h3 id=&quot;transformation-of-pdfs&quot;&gt;Transformation of PDFs&lt;/h3&gt;
-
-&lt;p&gt;Suppose that $X$ and $Y$ are discrete r
-If $X$ is a continuous random variable with pdf $f_X(x)$, then the pdf of $Y = g(X)$ can be derived as follows:&lt;/p&gt;
-
-&lt;p&gt;\[
-f_Y(y) = P(Y=y) = \sum_{x \in g^{-1}(y)} P(X=x) = \sum_{x \in g^{-1}(y)} f_X(x)
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;Let $X$ be a uniform random variable on the interval $[0,2\pi]$ with pdf&lt;/p&gt;
-
-&lt;p&gt;\[
-f_X(x) = \begin{cases}
-1/2\pi &amp;amp; ; 0 &amp;lt; x &amp;lt; 2\pi \nl
-0 &amp;amp; ; \text{otherwise}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;p&gt;Let $Y = \sin^2(X)$, then the cdf of $Y$ can be derived as follows:&lt;/p&gt;
-
-&lt;p&gt;\[
-\begin{align*}
-F_Y(y) &amp;amp;= P(Y \leq y) = P(\sin^2(X) \leq y) = P(-\sqrt{y} \leq \sin(X) \leq \sqrt{y}) \nl
-&amp;amp;= 4P(0 \leq X \leq \arcsin\sqrt{y}) \nl
-&amp;amp;= \frac{2\arcsin\sqrt{y}}{\pi}
-\quad (0 \leq y \leq 1)
-\end{align*}
-\]&lt;/p&gt;
-
-&lt;p&gt;Therefore, the whole cdf and pdf is&lt;/p&gt;
-
-&lt;p&gt;\[
-F_Y(y) = \begin{cases}
-0 &amp;amp; ; y &amp;lt; 0 \nl
-\frac{2}{\pi}\arcsin\sqrt{y} &amp;amp; ; 0 \leq y \leq 1 \nl
-1 &amp;amp; ; y &amp;gt; 1
-\end{cases}
-\quad
-f_Y(y) = \odv{}{y} F_Y(y) = \begin{cases}
-0 &amp;amp; ; y \le 0 \nl
-1/\pi\sqrt{y(1-y)} &amp;amp; ; 0 &amp;lt; y &amp;lt; 1 \nl
-0 &amp;amp; ; y \ge 1 \nl
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;h2 id=&quot;monotonic-transformations&quot;&gt;Monotonic Transformations&lt;/h2&gt;
-
-&lt;p&gt;If $g$ is a monotonic function, we can derive the pdf of $Y = g(X)$ more easily. First, we should
-investigate the relationship between the cdf of $Y$ and the cdf of $X$.
-We usually set as $\mathscr{X} = \set{ x \mid f_X(x) &amp;gt; 0 }$, which is called a support, for a convenience so that $g$ becomes one-to-one.
-For $y\in \mathscr{Y} = g(\mathscr{X})$, we have:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$g$ is an increasing function on $\mathscr{X}$: $F_Y(y) = F_X(g^{-1}(y))$&lt;/li&gt;
-  &lt;li&gt;$g$ is a decreasing function on $\mathscr{X}$: $F_Y(y) = 1 - F_X(g^{-1}(y))$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Proof &lt;/summary&gt;
-
-  &lt;p&gt;If $g$ is an increasing function, we have:
-\[
-F_Y(y) = P(X \leq g^{-1}(y)) = \int_{-\infty}^{g^{-1}(y)} f_X(x) \dd{x} = F_X(g^{-1}(y))
-\]&lt;/p&gt;
-
-  &lt;p&gt;If $g$ is a decreasing function, we have:
-\[
-F_Y(y) = P(X \geq g^{-1}(y)) = \int_{g^{-1}(y)}^{\infty} f_X(x) \dd{x} = 1 - F_X(g^{-1}(y))
-\]&lt;/p&gt;
-&lt;/details&gt;
-
-&lt;h3 id=&quot;transformation-of-pdfs-1&quot;&gt;Transformation of PDFs&lt;/h3&gt;
-
-&lt;p&gt;By the theorem above, we can derive the pdf of $Y = g(X)$ as follows:&lt;/p&gt;
-
-&lt;p&gt;\[
-f_Y(y) = \begin{cases}
-\dps f_X(g^{-1}(y)) \abs{ \odv{}{y}g^{-1}(y) } &amp;amp; ; y \in \mathscr{Y} \nl
-0 &amp;amp; ; y \notin \mathscr{Y}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;monotonic-partitions&quot;&gt;Monotonic Partitions&lt;/h3&gt;
-
-&lt;p&gt;Suppose there exists a partition $\set{A_0,A_1,\ldots,A_k}$ of $\mathscr{X}$ such that $P(X\in X_0) = 0$
-and $f_X(x)$ is continuous on each $A_i$. Further, suppose there exist functions
-$g_1(x),\ldots,g_k(x)$ defined on $A_1,\ldots,A_k$ respectively, satisfying&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$g(x)=g_i(x)$ for $x\in A_i$&lt;/li&gt;
-  &lt;li&gt;$g_i$ is monotonic on $A_i$&lt;/li&gt;
-  &lt;li&gt;$g_i^{-1}(y)\in\mathcal{C}^1$ for $y\in g_i(A_i)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Also, let’s write $\mathscr{Y} = g(\mathscr{X}) = \bigcup_{i=1}^k g_i(A_i)$, which is the image of $\mathscr{X}$ under $g$.
-Then the pdf of $Y = g(X)$ can be derived as follows:&lt;/p&gt;
-
-&lt;p&gt;\[
-f_Y(y) = \begin{cases}
-\dps \sum_{i=1}^k f_X(g_i^{-1}(y)) \abs{ \odv{}{y}g_i^{-1}(y) } \mathbf{1}_{g_i(A_i)}(y) &amp;amp; ; y \in \mathscr{Y} \nl
-0 &amp;amp; ; y \notin \mathscr{Y}
-\end{cases}
-\]&lt;/p&gt;
-
-&lt;p&gt;where $\mathbf{1}_{g_i(A_i)}(y)$ is the indicator function of the set $g_i(A_i)$, which is 1 if $y\in g_i(A_i)$ and 0 otherwise.
-Here, $A_0$ is a technical set that is not used in the calculation, but it is necessary to make the partition complete.&lt;/p&gt;
-
-&lt;h3 id=&quot;probability-integral-transformation&quot;&gt;Probability integral transformation&lt;/h3&gt;
-
-&lt;p&gt;The probability integral transformation states that if $X$ is a random variable with continuous cdf $F_X(x)$,
-then the random variable $Y = F_X(X)$ is uniformly distributed on the interval $[0,1]$.&lt;/p&gt;
-
-&lt;p&gt;\[
-F_Y(y) = P(F_X(X) \leq y) = y
-\]&lt;/p&gt;
-
-&lt;p&gt;Before we prove this theorem, we need to introduce the concept of a quantile function.
-The &lt;strong&gt;quantile function&lt;/strong&gt; of a random variable $X$ is defined as the pseudo-inverse of its cdf, i.e.,&lt;/p&gt;
-
-&lt;p&gt;\[
-Q_X(p) = \inf \set{ x \mid F_X(x) \geq p }
-\]&lt;/p&gt;
-
-&lt;p&gt;The quantile function is a non-decreasing function that maps the interval $[0,1]$ to the support of $X$.
-Since $F_X(x)$ is monotonic but not necessarily strictly increasing, the inverse of $F_X(x)$ does not exist,
-so we need the such definition by an infimum.&lt;/p&gt;
-
-&lt;details&gt;
-  &lt;summary&gt; Proof &lt;/summary&gt;
-  &lt;p&gt;\[
-\begin{align*}
-F_Y(y) &amp;amp;= P(F_X(X) \leq y) \nl
-&amp;amp;= P(X \leq Q_X(y)) \nl
-&amp;amp;= F_X(Q_X(y)) \nl
-&amp;amp;= y
-\end{align*}
-\]&lt;/p&gt;
-&lt;/details&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Density and Mass Functions</title><link href="http://localhost:4000/mathematics/density-and-mass-functions.html" rel="alternate" type="text/html" title="Density and Mass Functions" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/density-and-mass-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/density-and-mass-functions.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#prabability-mass-function-pmf&quot; id=&quot;markdown-toc-prabability-mass-function-pmf&quot;&gt;Prabability Mass Function (PMF)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#probability-density-function-pdf&quot; id=&quot;markdown-toc-probability-density-function-pdf&quot;&gt;Probability Density Function (PDF)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;prabability-mass-function-pmf&quot;&gt;Prabability Mass Function (PMF)&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;probability mass function (PMF)&lt;/strong&gt; of a discrete random variable $X$ is given by:
-\[
-f_X(x) = P(X = x)
-\]&lt;/p&gt;
-
-&lt;h2 id=&quot;probability-density-function-pdf&quot;&gt;Probability Density Function (PDF)&lt;/h2&gt;
-
-&lt;p&gt;The &lt;strong&gt;probability density function (PDF)&lt;/strong&gt; of a continuous random variable $X$ is the function that satisfies:
-\[
-F_X(x) = \int_{-\infty}^x f_X(t) \dd{t}
-\]
-for all $x\in\mathbb{R}$, where $F_X(x)$ is the cumulative distribution function (CDF) of $X$.&lt;/p&gt;
-
-&lt;h2 id=&quot;properties&quot;&gt;Properties&lt;/h2&gt;
-&lt;p&gt;A function $f_X(x)$ is a PDF or a PMF of a random variable $X$ if and only if&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$f_X(x) \geq 0$&lt;/li&gt;
-  &lt;li&gt;$\sum_{x} f_X(x) = 1$ (for PMF)&lt;/li&gt;
-  &lt;li&gt;$\int_{-\infty}^{\infty} f_X(x) \dd{x} = 1$ (for PDF)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Limits Involving Infinity</title><link href="http://localhost:4000/mathematics/limits-involving-infinity.html" rel="alternate" type="text/html" title="Limits Involving Infinity" /><published>2025-06-25T00:00:00+09:00</published><updated>2025-06-25T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/limits-involving-infinity</id><content type="html" xml:base="http://localhost:4000/mathematics/limits-involving-infinity.html">&lt;!--more--&gt;
-
-&lt;p&gt;##&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Conditional Probability and Independence</title><link href="http://localhost:4000/mathematics/conditional-probability-and-independence.html" rel="alternate" type="text/html" title="Conditional Probability and Independence" /><published>2025-06-24T00:00:00+09:00</published><updated>2025-06-24T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/conditional-probability-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/conditional-probability-and-independence.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#conditional-probability&quot; id=&quot;markdown-toc-conditional-probability&quot;&gt;Conditional Probability&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#bayes-theorem&quot; id=&quot;markdown-toc-bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#independence&quot; id=&quot;markdown-toc-independence&quot;&gt;Independence&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#mutually-independent-events&quot; id=&quot;markdown-toc-mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conditional-probability&quot;&gt;Conditional Probability&lt;/h2&gt;
-
-&lt;p&gt;If $A$ and $B$ are two events (where $B$ is not an empty event), the &lt;strong&gt;conditional probability&lt;/strong&gt; of $A$ given $B$ is defined as the probability of $A$ occurring under the condition that $B$ has occurred.
-\[
-P(A | B) = \frac{P(A \cap B)}{P(B)}
-\]&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$ P(A| A) = 1$&lt;/li&gt;
-  &lt;li&gt;If $A$ and $B$ are disjoint, $P(A| B) = P(B| A) = 0$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We can obtain the following equation.
-\[
-P(A \cap B) = P(A | B) P(B) = P(B | A) P(A)
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;bayes-theorem&quot;&gt;Bayes’ Theorem&lt;/h3&gt;
-
-&lt;p&gt;Bayes’ theorem relates the conditional probabilities of two events $A$ and $B$.
-\[
-P(A | B) = \frac{P(B | A) P(A)}{P(B)}
-\]&lt;/p&gt;
-
-&lt;p&gt;We can also use its extended form. Let $\set{A_i}_{i\in I}$ be a partition of the sample space, and $B$ be any non-empty event.
-Then,
-\[
-P(A_i | B) = \frac{P(B | A_i) P(A_i)}{\dps \sum_{j \in I} P(B | A_j) P(A_j)}
-\]
-is true. Bayes’ theorem is useful when we want to update our beliefs about the probability of an event based on new evidence.&lt;/p&gt;
-
-&lt;h2 id=&quot;independence&quot;&gt;Independence&lt;/h2&gt;
-&lt;p&gt;Two events $A$ and $B$ are said to be &lt;strong&gt;independent&lt;/strong&gt; if the occurrence of one does not affect the probability of the other.
-This is mathematically defined as:
-\[
-P(A \cap B) = P(A) P(B)
-\]
-If $A$ and $B$ are independent, then:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$P(A | B) = P(A)$&lt;/li&gt;
-  &lt;li&gt;$P(B | A) = P(B)$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Following paris of events are also independent:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$A$ and $B^\complement$&lt;/li&gt;
-  &lt;li&gt;$A^\complement$ and $B$&lt;/li&gt;
-  &lt;li&gt;$A^\complement$ and $B^\complement$&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;mutually-independent-events&quot;&gt;Mutually Independent Events&lt;/h3&gt;
-
-&lt;p&gt;A collection of events $\set{A_i}_{i \in I}$ is said to be &lt;strong&gt;mutually independent&lt;/strong&gt;
-if for every finite subset $J \subseteq I$,
-\[
-P\left(\bigcap_{j \in J} A_j\right) = \prod_{j \in J} P(A_j)
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Variables and Distribution Functions</title><link href="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html" rel="alternate" type="text/html" title="Random Variables and Distribution Functions" /><published>2025-06-24T00:00:00+09:00</published><updated>2025-06-24T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-variables-and-distribution-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/random-variables-and-distribution-functions.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#random-variables&quot; id=&quot;markdown-toc-random-variables&quot;&gt;Random Variables&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#distribution-functions&quot; id=&quot;markdown-toc-distribution-functions&quot;&gt;Distribution Functions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#cumulative-distribution-function-cdf&quot; id=&quot;markdown-toc-cumulative-distribution-function-cdf&quot;&gt;Cumulative Distribution Function (CDF)&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#continuity&quot; id=&quot;markdown-toc-continuity&quot;&gt;Continuity&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#identically-distributed-random-variables&quot; id=&quot;markdown-toc-identically-distributed-random-variables&quot;&gt;Identically Distributed Random Variables&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;random-variables&quot;&gt;Random Variables&lt;/h2&gt;
-
-&lt;p&gt;A &lt;strong&gt;random variable&lt;/strong&gt;  is a function that assigns a real number to each outcome in a sample space.
-$X: S \to \mathbb{R}$ is a most common notation for a random variable, where $S$ is the sample space.&lt;/p&gt;
-
-&lt;p&gt;Suppose we have a sample space $S = \set{s_1, s_2, \ldots, s_n}$.
-Then a random variable $X$ can be defined as a function that maps each outcome $s_i$ to a real number.
-\[
-X: S \to \mathbb{R}, X(S) = \mathscr{X} = \set{x_1, x_2, \ldots, x_m}
-\]
-Thus, we get
-\[
-P_X(X=x_i) = P(\set{s_j \in S \mid X(s_j) = x_i})
-\]
-where $P_X$ is the probability measure induced by the random variable $X$.
-It is also called the &lt;strong&gt;(induced) probability function&lt;/strong&gt; on $\mathscr{X}$,
-and we can easily check that it satisfies the Kolmogorov axioms.
-Therefore, in most cases, we simply write $P(X=x_i)$ instead of $P_X(X=x_i)$.&lt;/p&gt;
-
-&lt;h2 id=&quot;distribution-functions&quot;&gt;Distribution Functions&lt;/h2&gt;
-
-&lt;h3 id=&quot;cumulative-distribution-function-cdf&quot;&gt;Cumulative Distribution Function (CDF)&lt;/h3&gt;
-
-&lt;p&gt;The &lt;strong&gt;cumulative distribution function (CDF)&lt;/strong&gt; $F_X:\mathbb{R} \to [0,1]$ of a random variable $X$ is defined as:
-\[
-F_X(x) = P(X \leq x)
-\]
-F_X can be discontinuous, with jumps at points where the random variable takes specific values.
-The size of a jump at any point is equal to $P(X = x)$, and every jump point has a &lt;em&gt;right-continuity&lt;/em&gt;.
-The function $F(x)$ is a CDF if and only if the following three conditions hold:&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;$F_X(x)$ is non-decreasing: $F_X(x_1) \leq F_X(x_2)$ for $x_1 &amp;lt; x_2$.&lt;/li&gt;
-  &lt;li&gt;$\lim_{x \to -\infty} F_X(x) = 0$ and $\lim_{x \to \infty} F_X(x) = 1$.&lt;/li&gt;
-  &lt;li&gt;$F_X(x)$ is right-continuous: $\lim_{x \searrow x_0} F_X(x) = F_X(x_0)$ for all $x$.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;For example, for a probability function $P_X(X=x) = (1-p)^{x-1}p \; (0&amp;lt;p&amp;lt;1)$ for $x\in \mathbb{N}$, the CDF is
-$F_X(x) = 1 - (1-p)^{\lfloor x \rfloor [x\ge0]}$.&lt;/p&gt;
-
-&lt;h3 id=&quot;continuity&quot;&gt;Continuity&lt;/h3&gt;
-
-&lt;p&gt;A random variable $X$ is said to be &lt;strong&gt;continuous&lt;/strong&gt; if its CDF $F_X(x)$ is continuous for all $x \in \mathbb{R}$.
-A random variable is &lt;strong&gt;discrete&lt;/strong&gt; if it is not continuous, meaning that there are points where the CDF has jumps.&lt;/p&gt;
-
-&lt;h3 id=&quot;identically-distributed-random-variables&quot;&gt;Identically Distributed Random Variables&lt;/h3&gt;
-
-&lt;p&gt;Two random variables $X$ and $Y$ are said to be &lt;strong&gt;identically distributed&lt;/strong&gt; if, for every set $A\in \mathscr{B}^1$,
-\[
-P(X \in A) = P(Y \in A)
-\]
-It means that they have the same probability distribution, even if they are defined on different sample spaces.
-However, it is possible for two random variables to be identically distributed but different probability for every outcome.
-This is only true for the smallest sigma algebra $\mathscr{B}^1$ on $\mathbb{R}$, which is just the intervals.
-For those, we can use the CDF to check if two random variables are identically distributed:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$X$ and $Y$ are identically distributed.&lt;/li&gt;
-  &lt;li&gt;$F_X(x) = F_Y(x)$ for all $x \in \mathbb{R}$.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The two conditions above are equivalent. The proof is a bit deep, so we will not cover it here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
+&lt;p&gt;This correction accounts for the fact that the binomial distribution is discrete while the normal distribution is continuous.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>

@@ -93,6 +93,21 @@ The **Poisson distribution** describes the number of events occurring in a fixed
 | $\lambda>0$ | $\mathbb{N}_0$        | $\dfrac{\lambda^x e^{-\lambda}}{x!}$ | $\dsum_{k=0}^{\lfloor x \rfloor} \dfrac{\lambda^k e^{-\lambda}}{k!}$ | $\lambda$                | $\lambda$                      | $\dfrac{1}{\sqrt{\lambda}}$ | $\dfrac{1}{\lambda}$  | $\exp\[\lambda(e^t-1)\]$ | $\exp\[\lambda(e^{it}-1)\]$ |
 {:.scroll-table}
 
+The Poisson distribution can be derived from a set of basic assumptions. For each $t\ge 0$, let $N_t$ be
+an integer-valued random variable with the following properties. (Think of $N_t$ as the number of events in the interval $[0, t]$.)
+1. $N_0 = 0$
+   * start with no events
+2. $s<t \implies N_s$ and $N_t - N_s$ are independent.
+   * the number of events in disjoint intervals are independent
+3. $N_s$ and $N_{t+s}-N_t$ are identically distributed.
+   * the number of events depends only on the length of the interval
+4. $\dps \lim_{t\to 0} \frac{P(N_t=1)}{t} = \lambda$
+   * event probability is proportional to the length of the interval if the interval is small
+5. $\dps \lim_{t\to 0} \frac{P(N_t>1)}{t} = 0$
+   * no simultaneous events
+
+If $N_t$ satisfies these properties, then $N_t\sim\mathrm{Poisson}(\lambda t)$.
+
 ### Negative Binomial Distribution
 
 \\[
