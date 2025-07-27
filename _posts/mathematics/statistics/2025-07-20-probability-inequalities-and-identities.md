@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Probability Inequalities"
+title: "Probability Inequalities & Identities"
 subtitle: "stat3.4"
 classification: "Statistics 3.4"
 categories: mathematics
@@ -103,11 +103,11 @@ P(a<X_{\alpha,\beta}<b) = \beta( f(a\|\alpha, \beta) - f(b\|\alpha, \beta) ) + P
 
 ### Stein's Lemma
 
-Let $X\sim\mathcal{N}(\mu, \sigma^2)$ and $f$ be a differentiable function such that $\mathrm{E}|f'(X)| < \infty$.
+Let $X\sim\mathcal{N}(\mu, \sigma^2)$ and $f$ be a differentiable function such that $\mathrm{E}|f\'(X)| < \infty$.
 Then,
 
 \\[
-\mathrm{E}\[f(X)(X - \mu)\] = \sigma^2 \mathrm{E}\[f'(X)\]
+\mathrm{E}\[f(X)(X - \mu)\] = \sigma^2 \mathrm{E}\[f\'(X)\]
 \\]
 
 ### Chi-Squared Recursion

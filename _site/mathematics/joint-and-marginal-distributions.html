@@ -19,22 +19,22 @@
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Probability Inequalities | Jiho’s Blog</title>
+<title>Joint and Marginal Distributions | Jiho’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="Probability Inequalities">
+<meta property="og:title" content="Joint and Marginal Distributions">
 <meta name="author" content="Jiho Jun">
 <meta property="og:locale" content="en">
 <meta name="description" content="noting down my thoughts and experiences">
 <meta property="og:description" content="noting down my thoughts and experiences">
-<link rel="canonical" href="http://localhost:4000/mathematics/probability-inequalities.html">
-<meta property="og:url" content="http://localhost:4000/mathematics/probability-inequalities.html">
+<link rel="canonical" href="http://localhost:4000/mathematics/joint-and-marginal-distributions.html">
+<meta property="og:url" content="http://localhost:4000/mathematics/joint-and-marginal-distributions.html">
 <meta property="og:site_name" content="Jiho’s Blog">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2025-07-20T00:00:00+09:00">
+<meta property="article:published_time" content="2025-07-24T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Probability Inequalities">
+<meta property="twitter:title" content="Joint and Marginal Distributions">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-20T00:00:00+09:00","datePublished":"2025-07-20T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Probability Inequalities","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/mathematics/probability-inequalities.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/mathematics/probability-inequalities.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-24T00:00:00+09:00","datePublished":"2025-07-24T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Joint and Marginal Distributions","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/mathematics/joint-and-marginal-distributions.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/mathematics/joint-and-marginal-distributions.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -65,7 +65,7 @@
 
 
 
-<link rel="alternate" href="http://localhost:4000/mathematics/probability-inequalities.html" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/mathematics/joint-and-marginal-distributions.html" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
 
@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-07-24T19:34:14+09:00',
+    INDEX_KEY: 'index--2025-07-28T04:53:17+09:00',
   };
 }(window);</script>
 
@@ -219,7 +219,7 @@
       <li>
         
           <span>/</span>
-          <span>probability-inequalities.html</span>
+          <span>joint-and-marginal-distributions.html</span>
         
       </li>
     
@@ -237,14 +237,14 @@
 
 
 
-<article id="post-mathematics-probability-inequalities" class="page post mb6" role="article">
+<article id="post-mathematics-joint-and-marginal-distributions" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        Probability Inequalities
+        Joint and Marginal Distributions
         
           <br>
-          <span style="font-size:1.5rem;font-style:italic;"> - Statistics 3.4</span>
+          <span style="font-size:1.5rem;font-style:italic;"> - Statistics 4.1</span>
         
       
     </h1>
@@ -252,7 +252,7 @@
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2025-07-20T00:00:00+09:00">20 Jul 2025</time> in <a href="/mathematics/" class="flip-title">Mathematics</a> on <a href="/tag-statistics/" class="flip-title">Statistics</a>
+        <time datetime="2025-07-24T00:00:00+09:00">24 Jul 2025</time> in <a href="/mathematics/" class="flip-title">Mathematics</a> on <a href="/tag-statistics/" class="flip-title">Statistics</a>
       </span>
       
         
@@ -261,7 +261,7 @@
       <span class="additional-info" style="font-size:1rem">
           <!--
         <span class="page-pv">
-          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/mathematics/probability-inequalities.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/mathematics/joint-and-marginal-distributions.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
         </span>
           -->
         ·
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="432 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="295 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   7 min
+   4 min
 </span>
 
       </span>
@@ -304,151 +304,71 @@
   
     <!--more-->
 <ul id="markdown-toc">
-  <li>
-<a href="#chebyshevs-inequality" id="markdown-toc-chebyshevs-inequality">Chebyshev’s Inequality</a>    <ul>
-      <li><a href="#special-case" id="markdown-toc-special-case">Special Case</a></li>
-      <li><a href="#tighter-inequality" id="markdown-toc-tighter-inequality">Tighter Inequality</a></li>
-    </ul>
-  </li>
-  <li>
-<a href="#identities" id="markdown-toc-identities">Identities</a>    <ul>
-      <li><a href="#gamma-recursion" id="markdown-toc-gamma-recursion">Gamma Recursion</a></li>
-      <li><a href="#steins-lemma" id="markdown-toc-steins-lemma">Stein’s Lemma</a></li>
-      <li><a href="#chi-squared-recursion" id="markdown-toc-chi-squared-recursion">Chi-Squared Recursion</a></li>
-      <li><a href="#hwangs-recursion" id="markdown-toc-hwangs-recursion">Hwang’s Recursion</a></li>
-    </ul>
-  </li>
+  <li><a href="#multidimensional-random-variables" id="markdown-toc-multidimensional-random-variables">Multidimensional Random Variables</a></li>
+  <li><a href="#joint-distribution" id="markdown-toc-joint-distribution">Joint Distribution</a></li>
+  <li><a href="#marginal-distribution" id="markdown-toc-marginal-distribution">Marginal Distribution</a></li>
 </ul>
 
-<h2 id="chebyshevs-inequality">Chebyshev’s Inequality</h2>
+<h2 id="multidimensional-random-variables">Multidimensional Random Variables</h2>
 
-<p>Let $X$ be a random variable and let $g(x)$ be a non-negative function. Then, for any $r&gt;0$,</p>
+<p>A <strong>multidimensional random variable</strong> is a vector of random variables, each representing a different dimension or aspect of the data.
+An <em>$n$-dimensional random variable</em> is a vector of $n$ random variables, or interpreted as a function from a sample space to $\mathbb{R}^n$.</p>
 
-<p>\[
-P(g(X) \geq r) \leq \frac{\mathrm{E}[g(X)]}{r}
-\]</p>
+<h2 id="joint-distribution">Joint Distribution</h2>
 
-<details>
-  <summary> Proof </summary>
-  <p>\[
-\begin{align*}
-\mathrm{E}[g(X)] &amp;= \int_{-\infty}^\infty g(x) f_X(x) \dd{x} \nl
-&amp;\ge \int_{x:g(x) \geq r} g(x) f_X(x) \dd{x} \nl
-&amp;\geq r \int_{x:g(x) \geq r} f_X(x) \dd{x} \nl
-&amp;= r P(g(X) \geq r)
-\end{align*}
-\]</p>
-</details>
+<p>The <strong>joint distribution</strong> of a multidimensional random variable is the probability distribution that describes
+the likelihood of different combinations of values for the random variables.</p>
 
-<h3 id="special-case">Special Case</h3>
-
-<p>Let $g(x) = (x - \mu)^2/\sigma^2$, where $\mu = \mathrm{E}[X]$ and $\sigma^2 = \mathrm{Var}[X]$.
-For convenience write $r=t^2$. Then</p>
+<p>If $X_1, \ldots, X_n$ are discrete random variables, the joint probability mass function (PMF) is defined as:</p>
 
 <p>\[
-P(|X - \mu| \geq t\sigma) \leq \frac{1}{t^2}
+f_{X_1, \ldots, X_n}(x_1, \ldots, x_n) = P(X_1 = x_1, \ldots, X_n = x_n)
 \]</p>
 
-<p>or equivalently,</p>
-
-<p>\[
-P(|X - \mu| &lt; t\sigma) \geq 1 - \frac{1}{t^2}
-\]</p>
-
-<h3 id="tighter-inequality">Tighter Inequality</h3>
-
-<p>If $Z$ is standard normal, then for all $t&gt; 0$,</p>
-
-<p>\[
-P(|Z| \geq t) \leq \sqrt{\frac{2}{\pi}} \frac{e^{-t^2/2}}{t}
-\]</p>
-
-<details>
-  <summary> Proof </summary>
-  <p>\[
-\begin{align*}
-P(Z\geq t) &amp;= \int_t^\infty \frac{1}{\sqrt{2\pi}} e^{-x^2/2} \dd{x} \nl
-&amp;\leq \frac{1}{\sqrt{2\pi}} \int_t^\infty \frac{x}{t} e^{-x^2/2} \dd{x} \nl
-&amp;= \frac{1}{\sqrt{2\pi}} \frac{e^{-t^2/2}}{t}
-\end{align*}
-\]</p>
-</details>
-
-<p>There is a more general inequality known as the <strong>Gauss inequality</strong> which describes the property
-of unimodal distributions. Let $X\sim f$, where $f$ is unimodal with mode $\nu$, and define $\tau^2 = \mathrm{E}\left[(X-\nu)^2 \right]$. Then</p>
-
-<p>\[
-P(|X - v| &gt; \varepsilon) \leq \begin{cases}
-\dfrac{4\tau^2}{9\varepsilon^2} &amp; ; \varepsilon \ge \dfrac{4}{3} \tau \nl \nl
-1-\dfrac{\varepsilon}{\sqrt{3}\tau} &amp; ; \varepsilon \le \dfrac{4}{3} \tau
-\end{cases}
-\]</p>
-
-<p>Although this is a tighter bound than Chebyshev’s inequality, the dependence on the mode $v$ makes it less useful in practice.
-The extension to <strong>Vysochanskij–Petunin inequality</strong> removes this limitation. Let $X\sim f$ be a unimodal distribution, and define
-$\xi^2 = \mathrm{E}\left[(X - \alpha)^2 \right]$ for an arbitrary $\alpha$. Then</p>
-
-<p>\[
-P(|X - \alpha| &gt; \varepsilon) \leq \begin{cases}
-\dfrac{4\xi^2}{9\varepsilon^2} &amp; ; \varepsilon \ge \dfrac{8}{3} \xi \nl \nl
-\dfrac{4\xi^2}{9\varepsilon^2} - \dfrac{1}{3} &amp; ; \varepsilon \le \dfrac{8}{3} \xi
-\end{cases}
-\]</p>
-
-<p>Taking $\alpha = \mathrm{E}[X]$ and $\varepsilon = 3\sigma$ gives us a <em>three sigma rule</em>:</p>
-
-<p>\[
-P(|X - \mu| &gt; 3\sigma) \leq \frac{4}{81} &lt; 5\%
-\]</p>
-
-<h2 id="identities">Identities</h2>
-
-<h3 id="gamma-recursion">Gamma Recursion</h3>
-
-<p>Let $X_{\alpha,\beta}\sim \mathrm{Gamma}(\alpha, \beta)$ with pdf $f(x|\alpha, \beta)$, where $\alpha &gt; 1$.
-Then for any constants $a,b$,</p>
-
-<p>\[
-P(a&lt;X_{\alpha,\beta}&lt;b) = \beta( f(a|\alpha, \beta) - f(b|\alpha, \beta) ) + P(a&lt;X_{\alpha-1,\beta}&lt;b)
-\]</p>
-
-<h3 id="steins-lemma">Stein’s Lemma</h3>
-
-<p>Let $X\sim\mathcal{N}(\mu, \sigma^2)$ and $f$ be a differentiable function such that $\mathrm{E}|f’(X)| &lt; \infty$.
-Then,</p>
-
-<p>\[
-\mathrm{E}[f(X)(X - \mu)] = \sigma^2 \mathrm{E}[f’(X)]
-\]</p>
-
-<h3 id="chi-squared-recursion">Chi-Squared Recursion</h3>
-
-<p>For any function $f$,</p>
-
-<p>\[
-\mathrm{E}\left[ f\left(\chi^2_p\right) \right] = p \mathrm{E}\left[ \frac{f(\chi^2_{p+2})}{\chi^2_{p+2}} \right]
-\]</p>
-
-<h3 id="hwangs-recursion">Hwang’s Recursion</h3>
-
-<p>Let $f(x)$ be a function of which mean and $f(-1)$ exists.</p>
-<ul>
-  <li>If $X\sim\mathrm{Poisson}(\lambda)$,
+<p>It has to satisfy:
 \[
-\mathrm{E}[ \lambda f(X) ] = \mathrm{E} [ Xf(X-1) ]
-\]</li>
-  <li>If $X\sim\mathrm{NB}(r,p)$,
+\sum_{x_1, \ldots, x_n} f_{X_1, \ldots, X_n}(x_1, \ldots, x_n) = 1
+\]</p>
+
+<p>For random variables $X_1, \ldots, X_n$, the joint cumulative distribution function (CDF) is defined as:</p>
+
+<p>\[
+F_{X_1, \ldots, X_n}(x_1, \ldots, x_n) = P(X_1 \leq x_1, \ldots, X_n \leq x_n)
+\]</p>
+
+<p>If $X_1, \ldots, X_n$ are continuous random variables, the joint probability density function (PDF) is defined as:</p>
+
+<p>\[
+f_{X_1, \ldots, X_n}(x_1, \ldots, x_n) = \frac{\partial^n F_{X_1, \ldots, X_n}(x_1, \ldots, x_n)}{\partial x_1 \cdots \partial x_n}
+\]</p>
+
+<p>It has to satisfy:
 \[
-\mathrm{E}[(1-p)f(X)] = \mathrm{E}\left[ \frac{X}{r+X-1}f(X-1) \right]
-\]</li>
-</ul>
+\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{X_1, \ldots, X_n}(x_1, \ldots, x_n) \, \dd{x_1} \cdots \dd{x_n} = 1
+\]</p>
+
+<h2 id="marginal-distribution">Marginal Distribution</h2>
+
+<p>The <strong>marginal distribution</strong> of a random variable is the distribution of that variable alone, ignoring the others.</p>
+
+<p>For discrete random variables, the marginal PMF is obtained by summing over the other variables:</p>
+
+<p>\[
+f_{X_i}(x_i) = \sum_{x_1, \ldots, x_{i-1}, x_{i+1}, \ldots, x_n} f_{X_1, \ldots, X_n}(x_1, \ldots, x_n)
+\]</p>
+
+<p>For continuous random variables, the marginal PDF is obtained by integrating over the other variables:</p>
+
+<p>\[
+f_{X_i}(x_i) = \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f_{X_1, \ldots, X_n}(x_1, \ldots, x_n) \, \dd{x_1} \cdots \dd{x_{i-1}} \dd{x_{i+1}} \cdots \dd{x_n}
+\]</p>
 
   
 </article>
 
 
 
-<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/mathematics/probability-inequalities.html">
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/mathematics/joint-and-marginal-distributions.html">
   </applause-button>
 
 
@@ -596,7 +516,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/location-and-scale-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/location-and-scale-families.html" class="flip-title">Location and Scale Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/location-and-scale-families.html" tabindex="-1"><span class="sr-only">Continue reading Location and Scale Families</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/exponential-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/exponential-families.html" class="flip-title">Exponential Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/exponential-families.html" tabindex="-1"><span class="sr-only">Continue reading Exponential Families</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/location-and-scale-families.html" class="flip-title">    <span>              [Statistics 3.3]            Location and Scale Families    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/location-and-scale-families.html"></span>  </li>          <li class="h4">  <a href="/mathematics/exponential-families.html" class="flip-title">    <span>              [Statistics 3.2]            Exponential Families    </span>  </a>      <time class="faded fine" datetime="2025-07-07T00:00:00+09:00">      07 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/exponential-families.html"></span>  </li>      </ul></aside>
+                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/conditional-distributions-and-independence.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/conditional-distributions-and-independence.html" class="flip-title">Conditional Distributions and Independence</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/conditional-distributions-and-independence.html" tabindex="-1"><span class="sr-only">Continue reading Conditional Distributions and Independence</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/probability-inequalities-and-identities.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/probability-inequalities-and-identities.html" class="flip-title">Probability Inequalities & Identities</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/probability-inequalities-and-identities.html" tabindex="-1"><span class="sr-only">Continue reading Probability Inequalities & Identities</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/conditional-distributions-and-independence.html" class="flip-title">    <span>              [Statistics 4.2]            Conditional Distributions and Independence    </span>  </a>      <time class="faded fine" datetime="2025-07-27T00:00:00+09:00">      27 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/conditional-distributions-and-independence.html"></span>  </li>          <li class="h4">  <a href="/mathematics/probability-inequalities-and-identities.html" class="flip-title">    <span>              [Statistics 3.4]            Probability Inequalities &amp; Identities    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/probability-inequalities-and-identities.html"></span>  </li>          <li class="h4">  <a href="/mathematics/location-and-scale-families.html" class="flip-title">    <span>              [Statistics 3.3]            Location and Scale Families    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/location-and-scale-families.html"></span>  </li>      </ul></aside>
 
   
 

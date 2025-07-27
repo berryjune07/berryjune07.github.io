@@ -49,7 +49,7 @@ and thus the sine and cosine functions are defined as:
 x = \cos(\theta), \quad y = \sin(\theta)
 \\]
 
-![image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/1024px-Unit_circle.svg.png)
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/1024px-Unit_circle.svg.png){: width="30%"}
 {: .centered}
 
 Sine and cosine functions on the unit circle
@@ -91,6 +91,13 @@ Graph of the six basic trigonometric functions
 \csc^2 x = 1 + \cot^2 x
 \\]
 
+### Shift Identities
+
+\\[
+\sin\left(x \pm \pi/2\right) = \pm \cos x \quad \cos\left(x \pm \pi/2\right) = \mp \sin x \nl
+\sin(x+ \pi) = -\sin x \quad \cos(x + \pi) = -\cos x
+\\]
+
 ### Angle Addition Identities
 
 \\[
@@ -98,6 +105,11 @@ Graph of the six basic trigonometric functions
 \cos(x + y) = \cos x \cos y - \sin x \sin y \nl
 \tan(x + y) = \frac{\tan x + \tan y}{1 - \tan x \tan y}
 \\]
+
+Proof is replaced by the following image:
+
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Angle_sum.svg/1514px-Angle_sum.svg.png){: width="40%"}
+{: .centered}
 
 ### The Law of Cosines
 
@@ -108,6 +120,20 @@ c^2 = a^2 + b^2 - 2ab \cos C \nl
 a^2 = b^2 + c^2 - 2bc \cos A \nl
 b^2 = c^2 + a^2 - 2ca \cos B
 \\]
+
+<details markdown="1"><summary>Proof</summary>
+It can be proven by combining following identities:
+
+\\[
+c = a \cos B + b \cos A \nl
+a = b \cos C + c \cos B \nl
+b = c \cos A + a \cos C
+\\]
+
+![image](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Triangle-with-cosines.svg/1035px-Triangle-with-cosines.svg.png){: width="40%"}
+{: .centered}
+
+</details>
 
 ### Extra Properties
 

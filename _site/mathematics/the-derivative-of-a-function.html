@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-07-24T19:34:14+09:00',
+    INDEX_KEY: 'index--2025-07-28T04:56:33+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="735 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   12 min
 </span>
 
       </span>
@@ -303,6 +303,156 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li>
+<a href="#derivative-of-a-function" id="markdown-toc-derivative-of-a-function">Derivative of a Function</a>    <ul>
+      <li><a href="#tangent-line" id="markdown-toc-tangent-line">Tangent Line</a></li>
+      <li><a href="#one-sided-derivatives" id="markdown-toc-one-sided-derivatives">One-Sided Derivatives</a></li>
+    </ul>
+  </li>
+  <li><a href="#differentiability-and-continuity" id="markdown-toc-differentiability-and-continuity">Differentiability and Continuity</a></li>
+  <li><a href="#types-of-non-differentiability" id="markdown-toc-types-of-non-differentiability">Types of Non-Differentiability</a></li>
+  <li><a href="#differentiation-rules" id="markdown-toc-differentiation-rules">Differentiation Rules</a></li>
+  <li><a href="#derivative-of-trigonometric-functions" id="markdown-toc-derivative-of-trigonometric-functions">Derivative of Trigonometric Functions</a></li>
+  <li><a href="#higher-order-derivatives" id="markdown-toc-higher-order-derivatives">Higher-Order Derivatives</a></li>
+</ul>
+
+<h2 id="derivative-of-a-function">Derivative of a Function</h2>
+
+<p>The derivative of a function $f(x)$ at a point $x_0$ is defined as the slope of the tangent line to the graph of the function at that point. Mathematically, it is given by:</p>
+
+<p>\[
+f'(x_0) = \lim_{h \to 0} \frac{f(x_0 + h) - f(x_0)}{h} = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0}
+\]</p>
+
+<p>This limit, if it exists, represents the instantaneous rate of change of the function at the point $x_0$.
+If we regard $x_0$ as a variable $x$, we can express the derivative as:</p>
+
+<p>\[
+f'(x) = \odv{f}{x} = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} = \lim_{z \to x} \frac{f(z) - f(x)}{z - x}
+\]</p>
+
+<p>and this is the <strong>derivative</strong> of the function.</p>
+
+<h3 id="tangent-line">Tangent Line</h3>
+
+<p>The tangent line to the graph of the function at the point $(x_0, f(x_0))$ can be expressed as:</p>
+
+<p>\[
+y = f'(x_0)(x - x_0) + f(x_0)
+\]</p>
+
+<p>if the derivative exists. This line represents the best linear approximation to the function at that point.</p>
+
+<h3 id="one-sided-derivatives">One-Sided Derivatives</h3>
+
+<p>If the limit defining the derivative exists only from one side, we can define one-sided derivatives:</p>
+
+<ul>
+  <li>
+<strong>Right-hand derivative</strong> at $x_0$: $f'_+(x_0) = \lim_{h \to 0^+} \frac{f(x_0 + h) - f(x_0)}{h}$</li>
+  <li>
+<strong>Left-hand derivative</strong> at $x_0$: $f'_-(x_0) = \lim_{h \to 0^-} \frac{f(x_0 + h) - f(x_0)}{h}$</li>
+</ul>
+
+<p>If both one-sided derivatives exist and are equal, the two-sided derivative exists and is equal to that common value.
+We say that the function is <strong>differentiable</strong> at on a closed interval $[a, b]$ if it is differentiable at an open interval $(a, b)$,
+and the right-hand derivative at $a$ and the left-hand derivative at $b$ exist.</p>
+
+<h2 id="differentiability-and-continuity">Differentiability and Continuity</h2>
+
+<p>If a function is differentiable at a point $x_0$, it must also be continuous at that point. However, the converse is not true: a function can be continuous at a point but not differentiable there.
+It can be proven by a simple limit law.</p>
+
+<p>\[
+\begin{align*}
+\lim_{x\to x_0} f(x) &amp;= \lim_{x \to x_0} f(x)-f(x_0) + f(x_0) \nl
+&amp;= f(x_0) + \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} \cdot (x - x_0) \nl
+&amp;= f(x_0) + f'(x_0) \cdot 0 \nl
+&amp;= f(x_0)
+\end{align*}
+\]</p>
+
+<h2 id="types-of-non-differentiability">Types of Non-Differentiability</h2>
+
+<p>A function may not be differentiable at a point for several reasons:</p>
+
+<ol>
+  <li>
+<strong>Discontinuity</strong>: This occurs when the function is not continuous at a point.</li>
+  <li>
+<strong>Sharp Corners</strong>: This occurs when the left-hand and right-hand derivatives at a point exist but are not equal.</li>
+  <li>
+<strong>Vertical Tangents</strong>: This occurs when the left-hand and right-hand derivatives at a point both approach infinity or negative infinity.</li>
+  <li>
+<strong>Cusps</strong>: This occurs when the one-sided derivative at a point approaches infinity from one side and negative infinity from the other side.</li>
+  <li>
+<strong>Oscillations</strong>: This occurs when the function oscillates infinitely near a point, preventing the limit from existing.</li>
+</ol>
+
+<h2 id="differentiation-rules">Differentiation Rules</h2>
+
+<p>The derivative of a function can be computed using several rules:</p>
+
+<p>\[
+\begin{align*}
+\bullet \;&amp; \odv{}{x}c = 0 \quad (c \in \mathbb{R}) &amp;
+\bullet \;&amp; \odv{}{x}x = 1 \nl
+\bullet \;&amp; \odv{}{x}x^n = nx^{n-1} \quad (n \in \mathbb{Z}) &amp;
+\bullet \;&amp; \odv{}{x}(cf) = c \odv{}{x}f \quad (c \in \mathbb{R}) \nl
+\bullet \;&amp; \odv{}{x}(f + g) = \odv{f}{x} + \odv{g}{x} &amp;
+\bullet \;&amp; \odv{}{x}(fg) = \odv{f}{x}g + f\odv{g}{x} \nl
+\bullet \;&amp; \odv{}{x}\left(\frac{f}{g}\right) = \frac{\dps \odv{f}{x}g - f\odv{g}{x}}{g^2} \quad (g \neq 0)
+\end{align*}
+\]</p>
+
+<p>These rules allow us to compute the derivatives of many functions without having to rely on the limit definition directly.
+We can derive these rules from the limit definition of the derivative and the properties of limits.</p>
+
+<h2 id="derivative-of-trigonometric-functions">Derivative of Trigonometric Functions</h2>
+
+<p>The derivatives of the basic trigonometric functions are as follows:</p>
+
+<table class="centered">
+  <thead>
+    <tr>
+      <th>$f(x)$</th>
+      <th>$\sin x$</th>
+      <th>$\cos x$</th>
+      <th>$\tan x$</th>
+      <th>$\cot x$</th>
+      <th>$\sec x$</th>
+      <th>$\csc x$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$f^\prime(x)$</td>
+      <td>$\cos x$</td>
+      <td>$-\sin x$</td>
+      <td>$\sec^2 x$</td>
+      <td>$-\csc^2 x$</td>
+      <td>$\sec x \tan x$</td>
+      <td>$-\csc x \cot x$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>It can be proven by the following limits, trigonometrical identities, and the differentiation rules.</p>
+
+<p>\[
+\lim_{x \to 0} \frac{\sin x}{x} = 1, \quad \lim_{x \to 0} \frac{1 - \cos x}{x} = 0
+\]</p>
+
+<p>And the limit above is derived from the properties <a href="/mathematics/periodic-and-trigonometric-functions.html#trigonometrical-identities">here</a>.</p>
+
+<h2 id="higher-order-derivatives">Higher-Order Derivatives</h2>
+
+<p>The derivative of a function can be differentiated again to obtain the second derivative, and this process can be repeated to obtain higher-order derivatives. The $n$-th derivative of a function $f(x)$ is denoted as:</p>
+
+<p>\[
+f^{(n)}(x) = \odvn{n}{f}{x} := \odv{f^{(n-1)}}{x} \quad \left(f^{(0)}(x) := f(x)\right)
+\]</p>
 
   
 </article>
@@ -457,7 +607,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/limits-involving-infinity.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/limits-involving-infinity.html" class="flip-title">Limits Involving Infinity</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/limits-involving-infinity.html" tabindex="-1"><span class="sr-only">Continue reading Limits Involving Infinity</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/continuity-of-a-function.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/continuity-of-a-function.html" class="flip-title">Continuity</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/continuity-of-a-function.html" tabindex="-1"><span class="sr-only">Continue reading Continuity</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/limits-involving-infinity.html" class="flip-title">    <span>              [Calculus 2.4]            Limits Involving Infinity    </span>  </a>      <time class="faded fine" datetime="2025-06-25T00:00:00+09:00">      25 Jun 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/limits-involving-infinity.html"></span>  </li>          <li class="h4">  <a href="/mathematics/continuity-of-a-function.html" class="flip-title">    <span>              [Calculus 2.3]            Continuity    </span>  </a>      <time class="faded fine" datetime="2025-05-26T00:00:00+09:00">      26 May 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/continuity-of-a-function.html"></span>  </li>      </ul></aside>
+                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/linearization-and-differentials.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/linearization-and-differentials.html" class="flip-title">Linearization and Differentials</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/linearization-and-differentials.html" tabindex="-1"><span class="sr-only">Continue reading Linearization and Differentials</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/limits-involving-infinity.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/limits-involving-infinity.html" class="flip-title">Limits Involving Infinity</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/limits-involving-infinity.html" tabindex="-1"><span class="sr-only">Continue reading Limits Involving Infinity</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/linearization-and-differentials.html" class="flip-title">    <span>              [Calculus 3.2]            Linearization and Differentials    </span>  </a>      <time class="faded fine" datetime="2025-07-28T00:00:00+09:00">      28 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/linearization-and-differentials.html"></span>  </li>          <li class="h4">  <a href="/mathematics/limits-involving-infinity.html" class="flip-title">    <span>              [Calculus 2.4]            Limits Involving Infinity    </span>  </a>      <time class="faded fine" datetime="2025-06-25T00:00:00+09:00">      25 Jun 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/limits-involving-infinity.html"></span>  </li>          <li class="h4">  <a href="/mathematics/continuity-of-a-function.html" class="flip-title">    <span>              [Calculus 2.3]            Continuity    </span>  </a>      <time class="faded fine" datetime="2025-05-26T00:00:00+09:00">      26 May 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/continuity-of-a-function.html"></span>  </li>      </ul></aside>
 
   
 
