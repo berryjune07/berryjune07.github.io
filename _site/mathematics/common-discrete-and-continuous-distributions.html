@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-07-28T04:53:17+09:00',
+    INDEX_KEY: 'index--2025-08-07T01:57:00+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1761 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1836 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   29 min
+   30 min
 </span>
 
       </span>
@@ -321,7 +321,11 @@
       <li><a href="#gamma-distribution" id="markdown-toc-gamma-distribution">Gamma Distribution</a></li>
       <li><a href="#chi-squared-distribution" id="markdown-toc-chi-squared-distribution">Chi-Squared Distribution</a></li>
       <li><a href="#exponential-distribution" id="markdown-toc-exponential-distribution">Exponential Distribution</a></li>
-      <li><a href="#normal-distribution" id="markdown-toc-normal-distribution">Normal Distribution</a></li>
+      <li>
+<a href="#normal-distribution" id="markdown-toc-normal-distribution">Normal Distribution</a>        <ul>
+          <li><a href="#standard-normal-distribution" id="markdown-toc-standard-normal-distribution">Standard Normal Distribution</a></li>
+        </ul>
+      </li>
       <li><a href="#beta-distribution" id="markdown-toc-beta-distribution">Beta Distribution</a></li>
       <li><a href="#cauchy-distribution" id="markdown-toc-cauchy-distribution">Cauchy Distribution</a></li>
       <li><a href="#log-normal-distribution" id="markdown-toc-log-normal-distribution">Log-Normal Distribution</a></li>
@@ -866,6 +870,42 @@ It is the most important distribution in statistics, as many statistical tests a
 
 <p>where $\mathrm{erf}(x)$ is the <em>error function</em>.</p>
 
+<h4 id="standard-normal-distribution">Standard Normal Distribution</h4>
+
+<p>The <strong>standard normal distribution</strong> is a special case of the normal distribution with $\mu = 0$ and $\sigma = 1$.
+It is often denoted as $Z \sim \mathcal{N}(0, 1)$.</p>
+
+<table class="scroll-table">
+  <thead>
+    <tr>
+      <th style="text-align: left">Parameters</th>
+      <th style="text-align: left">$\supp f_Z$ (Support)</th>
+      <th style="text-align: left">$f_Z(z)$ (PDF)</th>
+      <th style="text-align: left">$F_Z(z)$ (CDF)</th>
+      <th style="text-align: left">$\mathrm{E}[Z]$ (Mean)</th>
+      <th style="text-align: left">$\mathrm{Var}[Z]$ (Variance)</th>
+      <th style="text-align: left">$\gamma_1$ (Skewness)</th>
+      <th style="text-align: left">$\gamma_2$ (Kurtosis)</th>
+      <th style="text-align: left">$M_Z(t)$ (MGF)</th>
+      <th style="text-align: left">$\phi_Z(t)$ (CF)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">$Z$</td>
+      <td style="text-align: left">$\mathbb{R}$</td>
+      <td style="text-align: left">$\dfrac{1}{\sqrt{2\pi}} \exp\left(-\dfrac{z^2}{2}\right)$</td>
+      <td style="text-align: left">$\dfrac{1}{2} \left[ 1 + \mathrm{erf}\left( \dfrac{z}{\sqrt{2}} \right) \right]$</td>
+      <td style="text-align: left">$0$</td>
+      <td style="text-align: left">$1$</td>
+      <td style="text-align: left">$0$</td>
+      <td style="text-align: left">$0$</td>
+      <td style="text-align: left">$\exp\left( \dfrac{t^2}{2} \right)$</td>
+      <td style="text-align: left">$\exp\left( -\dfrac{t^2}{2} \right)$</td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="beta-distribution">Beta Distribution</h3>
 
 <p>\[
@@ -894,8 +934,8 @@ It is often used to model random variables that are constrained to a finite rang
     <tr>
       <td style="text-align: left">$\alpha,\beta&gt;0$</td>
       <td style="text-align: left">$[0,1]$</td>
-      <td style="text-align: left">$\dfrac{1}{B(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta-1}$</td>
-      <td style="text-align: left">$\dps \dfrac{1}{B(\alpha, \beta)} \int_0^x t^{\alpha-1} (1-t)^{\beta-1} dt$</td>
+      <td style="text-align: left">$\dfrac{1}{\mathrm{B}(\alpha, \beta)} x^{\alpha-1} (1-x)^{\beta-1}$</td>
+      <td style="text-align: left">$\dps \dfrac{1}{\mathrm{B}(\alpha, \beta)} \int_0^x t^{\alpha-1} (1-t)^{\beta-1} dt$</td>
       <td style="text-align: left">$\dfrac{\alpha}{\alpha+\beta}$</td>
       <td style="text-align: left">$\dfrac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta+1)}$</td>
       <td style="text-align: left">$\dfrac{2(\beta-\alpha)\sqrt{\alpha+\beta+1}}{(\alpha+\beta+2)\sqrt{\alpha\beta}}$</td>
@@ -906,7 +946,7 @@ It is often used to model random variables that are constrained to a finite rang
   </tbody>
 </table>
 
-<p>where $B(\alpha, \beta)$ is the <em>Beta function</em>.</p>
+<p>where $\mathrm{B}(\alpha, \beta)$ is the <em>Beta function</em>.</p>
 
 <h3 id="cauchy-distribution">Cauchy Distribution</h3>
 
@@ -983,7 +1023,7 @@ It is often used to model stock prices, income distributions, and other positive
       <td style="text-align: left">$\left(\exp(\sigma^2) +2\right)\sqrt{\exp(\sigma^2)-1}$</td>
       <td style="text-align: left">$\exp(4\sigma^2) +2\exp(3\sigma^2)+3\exp(2\sigma^2) -6$</td>
       <td style="text-align: left">undefined</td>
-      <td style="text-align: left">$\dps \sum_{n=0}^\infty \dfrac{(it)^n}{n!e^{n\mu+n^2\sigma^2/2}$</td>
+      <td style="text-align: left">undefined</td>
     </tr>
   </tbody>
 </table>
@@ -1218,7 +1258,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/location-and-scale-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/location-and-scale-families.html" class="flip-title">Location and Scale Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/location-and-scale-families.html" tabindex="-1"><span class="sr-only">Continue reading Location and Scale Families</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/exponential-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/exponential-families.html" class="flip-title">Exponential Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/exponential-families.html" tabindex="-1"><span class="sr-only">Continue reading Exponential Families</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/location-and-scale-families.html" class="flip-title">    <span>              [Statistics 3.3]            Location and Scale Families    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/location-and-scale-families.html"></span>  </li>          <li class="h4">  <a href="/mathematics/exponential-families.html" class="flip-title">    <span>              [Statistics 3.2]            Exponential Families    </span>  </a>      <time class="faded fine" datetime="2025-07-07T00:00:00+09:00">      07 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/exponential-families.html"></span>  </li>          <li class="h4">  <a href="/mathematics/skewness-and-kurtosis.html" class="flip-title">    <span>              [Statistics 2.4]            Skewness and Kurtosis    </span>  </a>      <time class="faded fine" datetime="2025-07-02T00:00:00+09:00">      02 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/skewness-and-kurtosis.html"></span>  </li>          <li class="h4">  <a href="/mathematics/moments-and-moment-generating-functions.html" class="flip-title">    <span>              [Statistics 2.3]            Moments and Moment Generating Functions    </span>  </a>      <time class="faded fine" datetime="2025-07-01T00:00:00+09:00">      01 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html"></span>  </li>      </ul></aside>
+                                                                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/location-and-scale-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/location-and-scale-families.html" class="flip-title">Location and Scale Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/location-and-scale-families.html" tabindex="-1"><span class="sr-only">Continue reading Location and Scale Families</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/exponential-families.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/exponential-families.html" class="flip-title">Exponential Families</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/exponential-families.html" tabindex="-1"><span class="sr-only">Continue reading Exponential Families</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/location-and-scale-families.html" class="flip-title">    <span>              [Statistics 3.3]            Location and Scale Families    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/location-and-scale-families.html"></span>  </li>          <li class="h4">  <a href="/mathematics/exponential-families.html" class="flip-title">    <span>              [Statistics 3.2]            Exponential Families    </span>  </a>      <time class="faded fine" datetime="2025-07-07T00:00:00+09:00">      07 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/exponential-families.html"></span>  </li>          <li class="h4">  <a href="/mathematics/skewness-and-kurtosis.html" class="flip-title">    <span>              [Statistics 2.4]            Skewness and Kurtosis    </span>  </a>      <time class="faded fine" datetime="2025-07-02T00:00:00+09:00">      02 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/skewness-and-kurtosis.html"></span>  </li>          <li class="h4">  <a href="/mathematics/moments-and-moment-generating-functions.html" class="flip-title">    <span>              [Statistics 2.3]            Moments and Moment Generating Functions    </span>  </a>      <time class="faded fine" datetime="2025-07-01T00:00:00+09:00">      01 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/moments-and-moment-generating-functions.html"></span>  </li>      </ul></aside>
 
   
 
