@@ -1,12 +1,12 @@
 ---
 layout: tag-list
 type: tag
-title: Classical Mechanics
-slug: classical-mechanics
+title: Elementary Physics
+slug: elementary-physics
 category: physics
 sidebar: true
 description: >
-    Classical mechanics
+    Elementary physics
 ---
 \\[ \Huge \fcolorbox{transparent}{transparent}{ $$ \dps
 \b{F}=m\b{a}

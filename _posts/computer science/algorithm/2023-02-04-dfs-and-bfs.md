@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "DFS and BFS"
+title: "DFS & BFS"
 subtitle: "dfs-bfs"
 categories: computer-science
 tags: algorithms

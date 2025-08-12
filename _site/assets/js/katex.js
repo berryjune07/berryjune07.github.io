@@ -28,9 +28,11 @@ function render_KaTeX() {
             "\\abs": "\\left\| #1 \\right\|",
             "\\norm": "\\lVert #1 \\rVert",
             "\\card": "\\abs{#1}",
-            "\\span": "\\mathrm{span}",
+            "\\span": "\\operatorname{span}",
             "\\cross": "\\times",
-            "\\supp": "\\mathrm{supp}",
+            "\\supp": "\\operatorname{supp}",
+            "\\sech": "\\operatorname{sech}",
+            "\\csch": "\\operatorname{csch}",
             /* -- derivatives */
             "\\odv": "\\frac{\\d #1}{\\d #2}",
             "\\odvi": "\\d #1/\\d #2",

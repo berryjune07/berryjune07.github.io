@@ -1,1091 +1,977 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-07T01:57:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Samples and the Statistics</title><link href="http://localhost:4000/mathematics/random-samples-and-the-statistics.html" rel="alternate" type="text/html" title="Random Samples and the Statistics" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-samples-and-the-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/random-samples-and-the-statistics.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#random-samples&quot; id=&quot;markdown-toc-random-samples&quot;&gt;Random Samples&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#statistics&quot; id=&quot;markdown-toc-statistics&quot;&gt;Statistics&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#sample-mean&quot; id=&quot;markdown-toc-sample-mean&quot;&gt;Sample Mean&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sample-variance&quot; id=&quot;markdown-toc-sample-variance&quot;&gt;Sample Variance&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sampling-distribution-of-the-sample-mean&quot; id=&quot;markdown-toc-sampling-distribution-of-the-sample-mean&quot;&gt;Sampling Distribution of the Sample Mean&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-13T06:07:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;random-samples&quot;&gt;Random Samples&lt;/h2&gt;
+##</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Samples and the Statistics</title><link href="http://localhost:4000/mathematics/random-samples-and-the-statistics.html" rel="alternate" type="text/html" title="Random Samples and the Statistics" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-samples-and-the-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/random-samples-and-the-statistics.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;p&gt;The random variables $X_1, \ldots, X_n$ are said to form a &lt;strong&gt;random sample&lt;/strong&gt; if they are &lt;em&gt;independent and identically distributed&lt;/em&gt; (i.i.d.).
+## Random Samples
+
+The random variables $X_1, \ldots, X_n$ are said to form a **random sample** if they are _independent and identically distributed_ (i.i.d.).
 This means that each $X_i$ is drawn from the same probability distribution $f(x)$ and that the values of $X_i$ do not influence each other.
-Here we call $f(x)$ the &lt;strong&gt;population distribution&lt;/strong&gt;. From the definition, the joint distribution of the random sample is given by:&lt;/p&gt;
+Here we call $f(x)$ the **population distribution**. From the definition, the joint distribution of the random sample is given by:
 
-&lt;p&gt;\[
+\\[
 f(x_1, \ldots, x_n) = \prod_{i=1}^n f(x_i)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Provided that the mgf of the population distribution exists, the mgf of the sample mean is:&lt;/p&gt;
+Provided that the mgf of the population distribution exists, the mgf of the sample mean is:
 
-&lt;p&gt;\[
+\\[
 M_{\bar{X}}(t) = \left[ M_X\left(\frac{t}{n}\right) \right]^n
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;It appears the same for the characteristic functions.&lt;/p&gt;
+It appears the same for the characteristic functions.
 
-&lt;h2 id=&quot;statistics&quot;&gt;Statistics&lt;/h2&gt;
+## Statistics
 
-&lt;p&gt;A &lt;strong&gt;statistic&lt;/strong&gt; is a function of the random sample $X_1, \ldots, X_n$ that does not depend on the parameters of the population distribution.
+A **statistic** is a function of the random sample $X_1, \ldots, X_n$ that does not depend on the parameters of the population distribution.
 We can denote a statistic as $T(X_1, \ldots, X_n)$, where $T$ is a function that takes the random sample as input.
-The probability distribution of a statistic is called the &lt;strong&gt;sampling distribution&lt;/strong&gt;.
-A statistic is a random variable that summarizes or describes some aspect of the sample, such as the sample mean, sample variance, or sample median.&lt;/p&gt;
+The probability distribution of a statistic is called the **sampling distribution**.
+A statistic is a random variable that summarizes or describes some aspect of the sample, such as the sample mean, sample variance, or sample median.
 
-&lt;h3 id=&quot;sample-mean&quot;&gt;Sample Mean&lt;/h3&gt;
+### Sample Mean
 
-&lt;p&gt;The &lt;strong&gt;sample mean&lt;/strong&gt; is the arithmetic average of the random sample and is usually denoted as:&lt;/p&gt;
+The **sample mean** is the arithmetic average of the random sample and is usually denoted as:
 
-&lt;p&gt;\[
+\\[
 \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Assuming $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}[X_i] = \sigma^2$ for all $i$, the expected value of the sample mean is given by:&lt;/p&gt;
+Assuming $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}[X_i] = \sigma^2$ for all $i$, the expected value of the sample mean is given by:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[\bar{X}] = \frac{1}{n} \sum_{i=1}^n \mathrm{E}[X_i] = \mu
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;The variance of the sample mean is given by:&lt;/p&gt;
+The variance of the sample mean is given by:
 
-&lt;p&gt;\[
+\\[
 \mathrm{Var}[\bar{X}] = \frac{1}{n^2} \sum_{i=1}^n \mathrm{Var}[X_i] = \frac{\sigma^2}{n}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;sample-variance&quot;&gt;Sample Variance&lt;/h3&gt;
+### Sample Variance
 
-&lt;p&gt;The &lt;strong&gt;sample variance&lt;/strong&gt; is a measure of the spread of the random sample and is usually denoted as:&lt;/p&gt;
+The **sample variance** is a measure of the spread of the random sample and is usually denoted as:
 
-&lt;p&gt;\[
+\\[
 S^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \bar{X}\right)^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;The &lt;strong&gt;sample standard deviation&lt;/strong&gt; is the square root of the sample variance.&lt;/p&gt;
+The **sample standard deviation** is the square root of the sample variance.
 
-&lt;p&gt;The expected value of the sample variance is given by:&lt;/p&gt;
+The expected value of the sample variance is given by:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[S^2] = \sigma^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Why do we divide by $n-1$ instead of $n$? This is because we are estimating the population variance from the sample, and dividing by $n-1$ (the &lt;strong&gt;Bessel’s correction&lt;/strong&gt;) corrects the bias in the estimation.
-Let’s prove this:&lt;/p&gt;
+Why do we divide by $n-1$ instead of $n$? This is because we are estimating the population variance from the sample, and dividing by $n-1$ (the **Bessel&apos;s correction**) corrects the bias in the estimation.
+Let&apos;s prove this:
 
-&lt;p&gt;\[
+\\[
 (n-1)S^2 = \sum_{i=1}^n (X_i - \bar{X})^2 = \sum_{i=1}^n X_i^2 - n\bar{X}^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Using the fact that $\mathrm{E}[X^2]=\mathrm{Var}[X] + \mathrm{E}[X]^2$, we can compute the expected value:&lt;/p&gt;
+Using the fact that $\mathrm{E}[X^2]=\mathrm{Var}[X] + \mathrm{E}[X]^2$, we can compute the expected value:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[(n-1)S^2] = n (\sigma^2 + \mu^2) - n\left( \frac{\sigma^2}{n} + \mu^2 \right) = (n-1)\sigma^2
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;sampling-distribution-of-the-sample-mean&quot;&gt;Sampling Distribution of the Sample Mean&lt;/h3&gt;
+### Sampling Distribution of the Sample Mean
 
-&lt;p&gt;If $X$ and $Y$ are independent random variables with pdfs $f_X(x)$ and $f_Y(y)$, then the pdf of the sum $Z = X + Y$ is given by the convolution of the two pdfs.
-One can prove the theorem directly from the formula derived &lt;a href=&quot;/mathematics/multivariate-transformations.html&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
+If $X$ and $Y$ are independent random variables with pdfs $f_X(x)$ and $f_Y(y)$, then the pdf of the sum $Z = X + Y$ is given by the convolution of the two pdfs.
+One can prove the theorem directly from the formula derived [here](/mathematics/multivariate-transformations.html):
 
-&lt;p&gt;\[
+\\[
 f_Z(z) = \int_{-\infty}^{\infty} f_X(x) f_Y(z - x) \, dx
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can extend this to the case of the sample mean.
-If $X_1, \ldots, X_n$ are independent and identically distributed random variables with pdf $f(x)$, then the pdf of the sample mean $\bar{X}$ is given by:&lt;/p&gt;
+We can extend this to the case of the sample mean.
+If $X_1, \ldots, X_n$ are independent and identically distributed random variables with pdf $f(x)$, then the pdf of the sample mean $\bar{X}$ is given by:
 
-&lt;p&gt;\[
+\\[
 f_{\bar{X}}(\bar{x}) = n \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f\left(n \bar{x} - \sum_{i=1}^{n-1} x_i\right) \prod_{i=1}^{n-1} f(x_i) \, dx_1 \cdots dx_{n-1}
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Sampling from the Normal Distribution</title><link href="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html" rel="alternate" type="text/html" title="Sampling from the Normal Distribution" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/sampling-from-the-normal-distribution</id><content type="html" xml:base="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#statistics-of-the-normal-random-sample&quot; id=&quot;markdown-toc-statistics-of-the-normal-random-sample&quot;&gt;Statistics of the normal random sample&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#chi-squared-distribution&quot; id=&quot;markdown-toc-chi-squared-distribution&quot;&gt;Chi-squared distribution&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof-of-the-sample-variance&quot; id=&quot;markdown-toc-proof-of-the-sample-variance&quot;&gt;Proof of the sample variance&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#independence-of-barx-and-s2&quot; id=&quot;markdown-toc-independence-of-barx-and-s2&quot;&gt;Independence of $\bar{X}$ and $S^2$&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#students-t-distribution&quot; id=&quot;markdown-toc-students-t-distribution&quot;&gt;Student’s t-distribution&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#snedecors-f-distribution&quot; id=&quot;markdown-toc-snedecors-f-distribution&quot;&gt;Snedecor’s F-distribution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Sampling from the Normal Distribution</title><link href="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html" rel="alternate" type="text/html" title="Sampling from the Normal Distribution" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/sampling-from-the-normal-distribution</id><content type="html" xml:base="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;statistics-of-the-normal-random-sample&quot;&gt;Statistics of the normal random sample&lt;/h2&gt;
+## Statistics of the normal random sample
 
-&lt;p&gt;Let $X_1, \ldots, X_n$ be a random sample from the normal distribution with mean $\mu$ and variance $\sigma^2$,
+Let $X_1, \ldots, X_n$ be a random sample from the normal distribution with mean $\mu$ and variance $\sigma^2$,
 i.e., $X_i \sim N(\mu, \sigma^2)$. Let $\bar{X}$ be the sample mean and $S^2$ be the sample variance of the random sample.
-Then the following properties hold:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$\bar{X}$ and $S^2$ are independent random variables.&lt;/li&gt;
-  &lt;li&gt;$\bar{X} \sim N(\mu, \sigma^2/n)$&lt;/li&gt;
-  &lt;li&gt;$(n-1) S^2 / \sigma^2 \sim \chi^2_{n-1}$&lt;/li&gt;
-&lt;/ul&gt;
+Then the following properties hold:
+- $\bar{X}$ and $S^2$ are independent random variables.
+- $\bar{X} \sim N(\mu, \sigma^2/n)$
+- $(n-1) S^2 / \sigma^2 \sim \chi^2_{n-1}$
 
-&lt;p&gt;For the first one, one can show that the variables $\bar{X}$ and $S^2$ are independent so that the two statistics can be treated separately.
-We’ll show it elegantly a bit later.
+For the first one, one can show that the variables $\bar{X}$ and $S^2$ are independent so that the two statistics can be treated separately.
+We&apos;ll show it elegantly a bit later.
 The second one follows from the properties of the normal distribution, which states that the sum of independent normal random variables is also normally distributed.
 The third one follows from the definition of the sample variance and the properties of the chi-squared distribution.
-Let’s prove it directly.&lt;/p&gt;
+Let&apos;s prove it directly.
 
-&lt;h3 id=&quot;chi-squared-distribution&quot;&gt;Chi-squared distribution&lt;/h3&gt;
+### Chi-squared distribution
 
-&lt;p&gt;The &lt;em&gt;chi-squared distribution&lt;/em&gt; with $p$ degrees of freedom is defined as the following distribution:&lt;/p&gt;
+The _chi-squared distribution_ with $p$ degrees of freedom is defined as the following distribution:
 
-&lt;p&gt;\[
-f_{\chi^2_p}(x) = \frac{1}{2^{p/2} \Gamma(p/2)} x^{\frac{p}{2}-1} e^{-x/2}, \quad x &amp;gt; 0
-\]&lt;/p&gt;
+\\[
+f_{\chi^2_p}(x) = \frac{1}{2^{p/2} \Gamma(p/2)} x^{\frac{p}{2}-1} e^{-x/2}, \quad x &gt; 0
+\\]
 
-&lt;p&gt;Chi-squared distribution is also defined as the sum of the squares of $p$ independent standard normal random variables.
-First, we can show that the square of a standard normal random variable is chi-squared distributed with one degree of freedom.&lt;/p&gt;
+Chi-squared distribution is also defined as the sum of the squares of $p$ independent standard normal random variables.
+First, we can show that the square of a standard normal random variable is chi-squared distributed with one degree of freedom.
 
-&lt;p&gt;\[
+\\[
 f_Z(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;\[
-\begin{align*}
-f_{Z^2}(x) &amp;amp;= f_Z(\sqrt{x})\frac{1}{2\sqrt{x}} + f_Z(-\sqrt{x})\frac{1}{2\sqrt{x}} \nl
-&amp;amp;= \frac{1}{\sqrt{2\pi x}} e^{-\frac{x}{2}} \nl
-&amp;amp;= f_{\chi^2_1}(x)
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+f_{Z^2}(x) &amp;= f_Z(\sqrt{x})\frac{1}{2\sqrt{x}} + f_Z(-\sqrt{x})\frac{1}{2\sqrt{x}} \nl
+&amp;= \frac{1}{\sqrt{2\pi x}} e^{-\frac{x}{2}} \nl
+&amp;= f_{\chi^2_1}(x)
+\end{align\*}
+\\]
 
-&lt;p&gt;Now, we can show that the sum of $p$ independent chi-squared distributed random variables with one degree of freedom is chi-squared distributed with $p$ degrees of freedom,
-using the moment generating function (mgf). Referring to &lt;a href=&quot;/mathematics/common-discrete-and-continuous-distributions.html#chi-squared-distribution&quot;&gt;here&lt;/a&gt;, the mgf of the chi-squared distribution is given by:&lt;/p&gt;
+Now, we can show that the sum of $p$ independent chi-squared distributed random variables with one degree of freedom is chi-squared distributed with $p$ degrees of freedom,
+using the moment generating function (mgf). Referring to [here](/mathematics/common-discrete-and-continuous-distributions.html#chi-squared-distribution), the mgf of the chi-squared distribution is given by:
 
-&lt;p&gt;\[
-M_{\chi^2_p}(t) = (1 - 2t)^{-p/2}, \quad t &amp;lt; \frac{1}{2}
-\]&lt;/p&gt;
+\\[
+M_{\chi^2_p}(t) = (1 - 2t)^{-p/2}, \quad t &lt; \frac{1}{2}
+\\]
 
-&lt;p&gt;The mgf of the sum of independent random variables is the product of their individual mgfs.
+The mgf of the sum of independent random variables is the product of their individual mgfs.
 Denote $Y = \sum_{i=1}^p Z_i^2$, where $Z_i$ are independent standard normal random variables.
-Then the mgf of $Y$ is given by:&lt;/p&gt;
+Then the mgf of $Y$ is given by:
 
-&lt;p&gt;\[
+\\[
 M_Y(t) = \prod_{i=1}^p M_{Z_i^2}(t) = (1 - 2t)^{-p/2} = M_{\chi^2_p}(t)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This shows that $Y$ is chi-squared distributed with $p$ degrees of freedom.&lt;/p&gt;
+This shows that $Y$ is chi-squared distributed with $p$ degrees of freedom.
 
-&lt;p&gt;\[
+\\[
 Y \sim \chi^2_p
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Also, similarly we can show the following property of the chi-squared distribution:&lt;/p&gt;
+Also, similarly we can show the following property of the chi-squared distribution:
 
-&lt;p&gt;\[
-X\sim \chi^2_p, \; Y\sim \chi^2_q \implies X \pm Y \sim \chi^2_{p \pm q}
-\]&lt;/p&gt;
+\\[
+X\sim \chi^2\_p, \; Y\sim \chi^2\_q \implies X \pm Y \sim \chi^2\_{p \pm q}
+\\]
 
-&lt;p&gt;Be careful that $X$ and $Y$ must be independent for this property to hold.&lt;/p&gt;
+Be careful that $X$ and $Y$ must be independent for this property to hold.
 
-&lt;h3 id=&quot;proof-of-the-sample-variance&quot;&gt;Proof of the sample variance&lt;/h3&gt;
+### Proof of the sample variance
 
-&lt;p&gt;We know the following equation holds:&lt;/p&gt;
+We know the following equation holds:
 
-&lt;p&gt;\[
+\\[
 (n-1)S^2 = \sum_{i=1}^n (X_i - \bar{X})^2 = \sum_{i=1}^n (X_i - \mu)^2 - n(\bar{X} - \mu)^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\mu$ is the population mean.
-Then we can write as:&lt;/p&gt;
+where $\mu$ is the population mean.
+Then we can write as:
 
-&lt;p&gt;\[
+\\[
 \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - \left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\right)^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Denote $Z_i = (X_i - \mu)/\sigma$ and $Z = (\bar{X} - \mu)/(\sigma/\sqrt{n})$.
-Then we have:&lt;/p&gt;
+Denote $Z_i = (X_i - \mu)/\sigma$ and $Z = (\bar{X} - \mu)/(\sigma/\sqrt{n})$.
+Then we have:
 
-&lt;p&gt;\[
+\\[
 \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n Z_i^2 - Z^2
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and also we know that $Z_i \sim \mathcal{N}(0, 1)$ and $Z \sim \mathcal{N}(0, 1)$, by the properties above.
-Finally, by the property of the chi-squared distribution, we have:&lt;/p&gt;
+and also we know that $Z_i \sim \mathcal{N}(0, 1)$ and $Z \sim \mathcal{N}(0, 1)$, by the properties above.
+Finally, by the property of the chi-squared distribution, we have:
 
-&lt;p&gt;\[
+\\[
 \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;independence-of-barx-and-s2&quot;&gt;Independence of $\bar{X}$ and $S^2$&lt;/h3&gt;
+### Independence of $\bar{X}$ and $S^2$
 
-&lt;p&gt;Let’s prove the following Lemma.&lt;/p&gt;
+Let&apos;s prove the following Lemma.
 
-&lt;p&gt;Let $X_j\sim\mathcal{N}\;(\mu_j,\sigma_j^2) (j=1,\ldots,n)$ which are mutually independent.
-For constants $a_{ij}$ where $i=1,\ldots,n$, define&lt;/p&gt;
+Let $X_j\sim\mathcal{N}\;(\mu_j,\sigma_j^2) (j=1,\ldots,n)$ which are mutually independent.
+For constants $a_{ij}$ where $i=1,\ldots,n$, define
 
-&lt;p&gt;\[
+\\[
 U_i = \sum_{j=1}^n a_{ij} X_j \;(i=1,\ldots,n)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;or write as a vector form:&lt;/p&gt;
+or write as a vector form:
 
-&lt;p&gt;\[
+\\[
 \mathbf{U} = A \mathbf{X}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Then, the random variables $U_i$ and $U_j$ are independent if and only if $\text{Cov}(U_i,U_j)=0$. Furtheremore,&lt;/p&gt;
+Then, the random variables $U_i$ and $U_j$ are independent if and only if $\text{Cov}(U_i,U_j)=0$. Furtheremore,
 
-&lt;p&gt;\[
+\\[
 \text{Cov}(U_i,U_j) = \sum_{j=1}^n a_{ik} a_{jk} \sigma_k^2
-\]&lt;/p&gt;
+\\]
 
-&lt;details&gt;
-  &lt;summary&gt;Proof&lt;/summary&gt;
+&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
 
-  &lt;p&gt;The joint distribution of $\mathbf{X}$ is:&lt;/p&gt;
+The joint distribution of $\mathbf{X}$ is:
 
-  &lt;p&gt;\[
-f_{\mathbf{X}}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i} \exp\left(-\frac{1}{2}\sum_{i=1}^n\left[\frac{x_i-\mu_i}{\sigma_i}\right]^2 \right)
-\]&lt;/p&gt;
+\\[
+f_{\mathbf{X}}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i} \exp\left(-\frac{1}{2}\sum_{i=1}^n\left\[\frac{x_i-\mu_i}{\sigma_i}\right\]^2 \right)
+\\]
 
-  &lt;p&gt;by defining the following constants,&lt;/p&gt;
+by defining the following constants,
 
-  &lt;p&gt;\[
+\\[
 \bs{\mu} = \begin{bmatrix}
 \mu_1 \nl \vdots \nl \mu_n
 \end{bmatrix}, \quad D = \text{diag}(\sigma_1^2, \cdots, \sigma_n^2), \quad
 C = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i}
-\]&lt;/p&gt;
+\\]
 
-  &lt;p&gt;we can also write the distribution as:&lt;/p&gt;
+we can also write the distribution as:
 
-  &lt;p&gt;\[
+\\[
 f_{\mathbf{X}}(\mathbf{x}) = C \exp\left(-\frac{1}{2}(\mathbf{x}-\bs{\mu})^\top D^{-1} (\mathbf{x}-\bs{\mu}) \right)
-\]&lt;/p&gt;
+\\]
 
-  &lt;p&gt;Then the distribution of $\mathbf{U}$ will be:&lt;/p&gt;
+Then the distribution of $\mathbf{U}$ will be:
 
-  &lt;p&gt;\[
+\\[
 f_{\mathbf{U}}(\mathbf{u}) = C \exp\left(-\frac{1}{2}\left(A^{-1}\mathbf{u}-\bs{\mu}\right)^\top D^{-1} \left(A^{-1}\mathbf{u}-\bs{\mu}\right) \right) \lVert A^{-1} \rVert
-\]&lt;/p&gt;
+\\]
 
-  &lt;p&gt;By defining $\bs{\mu}^\prime = A\bs{\mu}$,&lt;/p&gt;
+By defining $\bs{\mu}^\prime = A\bs{\mu}$,
 
-  &lt;p&gt;\[
-\begin{align*}
-f_{\mathbf{U}}(\mathbf{u}) &amp;amp;= C \exp\left(-\frac{1}{2}\left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right)^\top D^{-1} \left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right) \right) \frac{1}{\Vert A \Vert} \nl
-&amp;amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(A^\top\right)^{-1} D^{-1} A^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right) \nl
-&amp;amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(ADA^\top\right)^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right)
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+f_{\mathbf{U}}(\mathbf{u}) &amp;= C \exp\left(-\frac{1}{2}\left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right)^\top D^{-1} \left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right) \right) \frac{1}{\Vert A \Vert} \nl
+&amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(A^\top\right)^{-1} D^{-1} A^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right) \nl
+&amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(ADA^\top\right)^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right)
+\end{align\*}
+\\]
 
-  &lt;p&gt;Referring to &lt;a href=&quot;/covariance-and-correlation.html#multivariate-normal-distribution&quot;&gt;here&lt;/a&gt;, this is the pdf of the multivariate normal distribution, and
+Referring to [here](/covariance-and-correlation.html#multivariate-normal-distribution), this is the pdf of the multivariate normal distribution, and
 $ADA^\top$ is the covariance matrix.
-Therefore, we get $\text{Cov}(U_i,U_j) = \left[ADA^\top\right]_{ij} = \sum_{j=1}^n a_{ik} a_{jk} \sigma_k^2$.
-And then we can induce that $\text{Cov}(U_i,U_j)=0$ implies the independence of $U_i$ and $U_j$, and also the inverse.&lt;/p&gt;
+Therefore, we get $\text{Cov}(U_i,U_j) = \left\[ADA^\top\right\]\_{ij} = \sum\_{j=1}^n a\_{ik} a\_{jk} \sigma\_k^2$.
+And then we can induce that $\text{Cov}(U_i,U_j)=0$ implies the independence of $U_i$ and $U_j$, and also the inverse.
 &lt;/details&gt;
 
-&lt;p&gt;We can transform the sample variance equation as:&lt;/p&gt;
+We can transform the sample variance equation as:
 
-&lt;p&gt;\[
-\begin{align*}
-S^2 &amp;amp;= \frac{1}{n-1} \sum_{i=1}^n \left(X_i-\bar{X}\right)^2 \nl
-&amp;amp;= \frac{1}{n-1} \left( \left[ \sum_{i=2}^n \left(X_i-\bar{X}\right) \right]^2 \sum_{i=2}^n \left(X_i-\bar{X}\right)^2 \right)
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+S^2 &amp;= \frac{1}{n-1} \sum_{i=1}^n \left(X_i-\bar{X}\right)^2 \nl
+&amp;= \frac{1}{n-1} \left( \left\[ \sum_{i=2}^n \left(X_i-\bar{X}\right) \right\]^2 \sum_{i=2}^n \left(X_i-\bar{X}\right)^2 \right)
+\end{align\*}
+\\]
 
-&lt;p&gt;Therefore, $S^2$ is the function only of $\left(X_2-\bar{X},\ldots,X_n-\bar{X}\right)$.
+Therefore, $S^2$ is the function only of $\left(X_2-\bar{X},\ldots,X_n-\bar{X}\right)$.
 So if we show the independence of $\bar{X}$ and $X_j-\bar{X}$s, we can show the independence of $\bar{X}$ and $S^2$.
-As an illustration of the application of the lemma, write:&lt;/p&gt;
+As an illustration of the application of the lemma, write:
 
-&lt;p&gt;\[
-\begin{align*}
-\bar{X} &amp;amp;= \sum_{i=1}^n \frac{1}{n} X_i \nl
-X_j-\bar{X} &amp;amp;= \sum_{i=1}^n \left( \delta_{ij} - \frac{1}{n} \right) X_i
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\bar{X} &amp;= \sum_{i=1}^n \frac{1}{n} X_i \nl
+X_j-\bar{X} &amp;= \sum_{i=1}^n \left( \delta_{ij} - \frac{1}{n} \right) X_i
+\end{align\*}
+\\]
 
-&lt;p&gt;It is then easy to show that&lt;/p&gt;
+It is then easy to show that 
 
-&lt;p&gt;\[
+\\[
 \text{Cov}\left(\bar{X},X_j-\bar{X}\right) = \sum_{i=1}^n \frac{1}{n}\left(\delta_{ij}-\frac{1}{n}\right) \sigma^2 = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;as long as the $X_i$s have the same variance since it’s from the identical population. Thus, the proof is end.&lt;/p&gt;
+as long as the $X_i$s have the same variance since it&apos;s from the identical population. Thus, the proof is end.
 
-&lt;h2 id=&quot;students-t-distribution&quot;&gt;Student’s t-distribution&lt;/h2&gt;
+## Student&apos;s t-distribution
 
-&lt;p&gt;If $X_1,\ldots,X_n$ are a random sample from a $\mathcal{N}(\mu,\sigma^2)$, we know that the quantity&lt;/p&gt;
+If $X_1,\ldots,X_n$ are a random sample from a $\mathcal{N}(\mu,\sigma^2)$, we know that the quantity
 
-&lt;p&gt;\[
+\\[
 \frac{\bar{X}-\mu}{\sigma\sqrt{n}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;is distributed as a $\mathcal{N}(0,1)$ random variable. However, in most cases, the value of $\sigma$ is unknown so that we should use the sample standard deviation $S$.
-Therefore, we should investigate the distribution of the following value:&lt;/p&gt;
+is distributed as a $\mathcal{N}(0,1)$ random variable. However, in most cases, the value of $\sigma$ is unknown so that we should use the sample standard deviation $S$.
+Therefore, we should investigate the distribution of the following value:
 
-&lt;p&gt;\[
+\\[
 \frac{\bar{X}-\mu}{S\sqrt{n}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can write it in a slightly different way.&lt;/p&gt;
+We can write it in a slightly different way.
 
-&lt;p&gt;\[
+\\[
 \frac{\left(\bar{X}-\mu\right)/(\sigma/\sqrt{n})}{\sqrt{S^2/\sigma^2}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Here, the numerator is a $\mathcal{N}(0,1)$ random variable, and the denominator is $\sqrt{\chi^2_{n-1}/(n-1)}$ random variable, and we can infer that these
-two random variables are independent since $\bar{X}$ and $S^2$ are independent which is proved above. Thus, we should find the distribution of:&lt;/p&gt;
+Here, the numerator is a $\mathcal{N}(0,1)$ random variable, and the denominator is $\sqrt{\chi^2_{n-1}/(n-1)}$ random variable, and we can infer that these
+two random variables are independent since $\bar{X}$ and $S^2$ are independent which is proved above. Thus, we should find the distribution of:
 
-&lt;p&gt;\[
+\\[
 T = \frac{Z}{\sqrt{V/\nu}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $Z$ is the standard normal random variable and $V$ is the chi-squared random variable with $\nu$ degrees of freedom.
-And the distribution of this new random variable $T$ is called the &lt;strong&gt;student’s t-distribution&lt;/strong&gt; with $\nu$ degrees of freedom,
-or simply the &lt;strong&gt;t-distribution&lt;/strong&gt;.
-Now let’s derive the actual distribution.&lt;/p&gt;
+where $Z$ is the standard normal random variable and $V$ is the chi-squared random variable with $\nu$ degrees of freedom.
+And the distribution of this new random variable $T$ is called the **student&apos;s t-distribution** with $\nu$ degrees of freedom,
+or simply the **t-distribution**.
+Now let&apos;s derive the actual distribution.
 
-&lt;p&gt;\[
+\\[
 f_{U,V}(u,v) = \frac{1}{\sqrt{2\pi}} e^{-u^2/2} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} v^{\frac{\nu}{2}-1} e^{-v/2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Now make the transformation&lt;/p&gt;
+Now make the transformation
 
-&lt;p&gt;\[
+\\[
 G(u,v) = \left( \frac{u}{\sqrt{v/\nu}}, v \right) = (t,w)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Therefore,&lt;/p&gt;
+Therefore,
 
-&lt;p&gt;\[
-\begin{align*}
-f_T(t) &amp;amp;= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \partial{G^{-1}}{(t,w)} } \,\dd{w} \nl
-&amp;amp;= \frac{1}{\sqrt{2\pi}} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{t^2w}{2\nu}\right) w^{\frac{\nu}{2}-1} e^{-w/2} \sqrt{\frac{w}{\nu}} \, \dd{w} \nl
-&amp;amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{1}{2}\left(1+\frac{t^2}{\nu}\right) w \right) w^{\frac{\nu+1}{2}-1} \,\dd{w} \nl
-&amp;amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \Gamma\left( \frac{\nu+1}{2} \right) \left[ \frac{1+t^2/\nu}{2} \right]^{-(\nu+1)/2} \nl
-&amp;amp;= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+f_T(t) &amp;= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \pdv{G^{-1}}{(t,w)} } \,\dd{w} \nl
+&amp;= \frac{1}{\sqrt{2\pi}} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{t^2w}{2\nu}\right) w^{\frac{\nu}{2}-1} e^{-w/2} \sqrt{\frac{w}{\nu}} \, \dd{w} \nl
+&amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{1}{2}\left(1+\frac{t^2}{\nu}\right) w \right) w^{\frac{\nu+1}{2}-1} \,\dd{w} \nl
+&amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \Gamma\left( \frac{\nu+1}{2} \right) \left\[ \frac{1+t^2/\nu}{2} \right\]^{-(\nu+1)/2} \nl
+&amp;= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
+\end{align\*}
+\\]
 
-&lt;p&gt;This is the PDF of the student’s t-distribution with $\nu$ degrees of freedom:&lt;/p&gt;
+This is the PDF of the student&apos;s t-distribution with $\nu$ degrees of freedom:
 
-&lt;p&gt;\[
+\\[
 f_T(t) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and we know that:&lt;/p&gt;
+and we know that:
 
-&lt;p&gt;\[
+\\[
 \frac{\bar{X}-\mu}{S\sqrt{n}} \sim t_{n-1}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Let’s seek for the properties of the student’s t-distribution.&lt;/p&gt;
+Let&apos;s seek for the properties of the student&apos;s t-distribution.
 
-&lt;table class=&quot;scroll-table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_T$ (Support)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$f_T(x)$ (PDF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$F_T(x)$ (CDF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[T]$ (Mean)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[T]$ (Variance)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$M_T(t)$ (MGF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_T(t)$ (CF)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\nu &amp;gt; 0$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\; \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \dfrac{x^2}{\nu}\right)^{-(\nu+1)/2}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} + x \dfrac{\Gamma\left(\frac{\nu+1}{2}\right) }{\sqrt{\pi\nu} \Gamma\left(\frac{\nu}{2}\right) } {}_2F_1\left[ \begin{matrix} \frac{1}{2}, \frac{\nu+1}{2} \nl \frac{3}{2} \end{matrix} ; -\frac{x^2}{\nu} \right]$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} 0 &amp;amp;; \nu&amp;gt;1 \nl \text{undefined} &amp;amp;; \nu\le 1 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{\nu}{\nu-2} &amp;amp;; \nu&amp;gt;2 \nl \infty &amp;amp;; 1&amp;lt;\nu\le 2 \nl \text{undefined} &amp;amp;; \nu \le 1 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} 0 &amp;amp;; \nu&amp;gt;3 \nl \text{undefined} &amp;amp;; \nu\le 3 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{6}{\nu-4} &amp;amp;; \nu&amp;gt;4 \nl \infty &amp;amp;; 2&amp;lt;\nu\le 4 \nl \text{undefined} &amp;amp;; \nu \le 2 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{ (\sqrt{\nu}\abs{t})^{\nu/2} K_{\nu/2}(\sqrt{\nu}\abs{t})}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2 - 1}}$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+| Parameters | $\supp f_T$ (Support) | $f_T(x)$ (PDF)                                                                                                                                | $F_T(x)$ (CDF)                                                                                                                                                                                                                      | $\mathrm{E}[T]$ (Mean)                                                  | $\mathrm{Var}[T]$ (Variance)                                                                                       | $\gamma_1$ (Skewness)                                                   | $\gamma_2$ (Kurtosis)                                                                                            | $M_T(t)$ (MGF) | $\phi_T(t)$ (CF)                                                                                                    |
+|:-----------|:----------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------|:--------------------------------------------------------------------------------------------------------------------|
+| $\nu &gt; 0$  | $\mathbb{R}$          | $\dfrac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\; \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \dfrac{x^2}{\nu}\right)^{-(\nu+1)/2}$ | $\dfrac{1}{2} + x \dfrac{\Gamma\left(\frac{\nu+1}{2}\right) }{\sqrt{\pi\nu} \Gamma\left(\frac{\nu}{2}\right) } {}_2F_1\left\[ \begin{matrix} \frac{1}{2}, \frac{\nu+1}{2} \nl \frac{3}{2} \end{matrix} ; -\frac{x^2}{\nu} \right\]$ | $\begin{cases} 0 &amp;; \nu&gt;1 \nl \text{undefined} &amp;; \nu\le 1 \end{cases}$ | $\begin{cases} \dfrac{\nu}{\nu-2} &amp;; \nu&gt;2 \nl \infty &amp;; 1&lt;\nu\le 2 \nl \text{undefined} &amp;; \nu \le 1 \end{cases}$ | $\begin{cases} 0 &amp;; \nu&gt;3 \nl \text{undefined} &amp;; \nu\le 3 \end{cases}$ | $\begin{cases} \dfrac{6}{\nu-4} &amp;; \nu&gt;4 \nl \infty &amp;; 2&lt;\nu\le 4 \nl \text{undefined} &amp;; \nu \le 2 \end{cases}$ | undefined      | $\dfrac{ (\sqrt{\nu}\abs{t})^{\nu/2} K_{\nu/2}(\sqrt{\nu}\abs{t})}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2 - 1}}$ |
+{:.scroll-table}
 
-&lt;h2 id=&quot;snedecors-f-distribution&quot;&gt;Snedecor’s F-distribution&lt;/h2&gt;
+## Snedecor&apos;s F-distribution
 
-&lt;p&gt;Let $X_1,\ldots,X_n$ be a random sample from a $\mathcal{N}(\mu_X,\sigma_X^2)$ population, and let
+Let $X_1,\ldots,X_n$ be a random sample from a $\mathcal{N}(\mu_X,\sigma_X^2)$ population, and let
 $Y_1,\ldots,Y_m$ be a random sample from a $\mathcal{N}(\mu_Y,\sigma_Y^2)$ population.
 If we are interested in comparing the variability of the populations, one quantity of interest woul be the ratio $\sigma_X^2/\sigma_Y^2$.
-Information about this ratio is contained in $S_X^2/S_Y^2$, the ratio of sample variances. So, we should investigate the distribution of the following value:&lt;/p&gt;
+Information about this ratio is contained in $S_X^2/S_Y^2$, the ratio of sample variances. So, we should investigate the distribution of the following value:
 
-&lt;p&gt;\[
+\\[
 \frac{S_X^2/S_Y^2}{\sigma_X^2/\sigma_Y^2} = \frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can observe that the numerator and the denominator of the rhs are both proportional to the chi-squared random variable.
-Thus, we should find the distribution of:&lt;/p&gt;
+We can observe that the numerator and the denominator of the rhs are both proportional to the chi-squared random variable.
+Thus, we should find the distribution of:
 
-&lt;p&gt;\[
+\\[
 F = \frac{U/p}{V/q}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $U\sim\chi^2_p$ and $V\sim\chi^2_q$. The distribution of this new random variable is called the &lt;strong&gt;Snedecor’s F-distribution&lt;/strong&gt; with $p$ and $q$ degrees of freedom,
-or simply the &lt;strong&gt;F-distribution&lt;/strong&gt;.&lt;/p&gt;
+where $U\sim\chi^2_p$ and $V\sim\chi^2_q$. The distribution of this new random variable is called the **Snedecor&apos;s F-distribution** with $p$ and $q$ degrees of freedom,
+or simply the **F-distribution**.   
 
-&lt;p&gt;\[
+\\[
 f_{U,V}(u,v) = \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2}} u^{\frac{p}{2}-1} e^{-u/2} \cdot \frac{1}{\Gamma\left(\frac{q}{2}\right) 2^{q/2}} v^{\frac{q}{2}-1} e^{-v/2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Now make the transformation&lt;/p&gt;
+Now make the transformation
 
-&lt;p&gt;\[
+\\[
 G(u,v) = \left( \frac{u/p}{v/q}, v \right) = (x,w)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Therefore,&lt;/p&gt;
+Therefore,
 
-&lt;p&gt;\[
-\begin{align*}
-f_F(x) &amp;amp;= \int_0^\infty f_{U,V}\left( \frac{pxw}{q}, w \right) \abs{ \pdv{G^{-1}}{(x,w)} } \,\dd{w} \nl
-&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2} \Gamma\left(\frac{q}{2}\right) 2^{q/2}} \int_0^\infty \left( \frac{pxw}{q} \right)^{\frac{p}{2}-1} e^{-pxw/2q} w^{\frac{q}{2}-1} e^{-w/2} \cdot \frac{pw}{q} \,\dd{w} \nl
-&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \int_0^\infty w^{\frac{p+q}{2}-1} e^{-\frac{1}{2}\left(1 + \frac{px}{q} \right) w} \,\dd{w} \nl
-&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \Gamma\left(\frac{p+q}{2} \right) \left( \frac{1}{2}\left(1 + \frac{px}{q} \right) \right)^{-(p+q)/2} \nl
-&amp;amp;= \frac{\Gamma\left( \frac{p+q}{2} \right)}{\Gamma\left( \frac{p}{2} \right)\Gamma\left( \frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{px}{q} \right)^{-(p+q)/2} \nl
-&amp;amp;= \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+f_F(x) &amp;= \int_0^\infty f_{U,V}\left( \frac{pxw}{q}, w \right) \abs{ \pdv{G^{-1}}{(x,w)} } \,\dd{w} \nl
+&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2} \Gamma\left(\frac{q}{2}\right) 2^{q/2}} \int_0^\infty \left( \frac{pxw}{q} \right)^{\frac{p}{2}-1} e^{-pxw/2q} w^{\frac{q}{2}-1} e^{-w/2} \cdot \frac{pw}{q} \,\dd{w} \nl
+&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \int_0^\infty w^{\frac{p+q}{2}-1} e^{-\frac{1}{2}\left(1 + \frac{px}{q} \right) w} \,\dd{w} \nl
+&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \Gamma\left(\frac{p+q}{2} \right) \left( \frac{1}{2}\left(1 + \frac{px}{q} \right) \right)^{-(p+q)/2} \nl
+&amp;= \frac{\Gamma\left( \frac{p+q}{2} \right)}{\Gamma\left( \frac{p}{2} \right)\Gamma\left( \frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{px}{q} \right)^{-(p+q)/2} \nl
+&amp;= \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
+\end{align\*}
+\\]
 
-&lt;p&gt;This is the PDF of the F-distribution with $p$ and $q$ degrees of freedom:&lt;/p&gt;
+This is the PDF of the F-distribution with $p$ and $q$ degrees of freedom:
 
-&lt;p&gt;\[
+\\[
 f_F(x) = \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and we know that:&lt;/p&gt;
+and we know that:
 
-&lt;p&gt;\[
+\\[
 \frac{S_X^2/S_Y^2}{\sigma_X^2/\sigma_Y^2} \sim F_{p,q}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Let’s seek for the properties of the F-distribution.&lt;/p&gt;
+Let’s seek for the properties of the F-distribution.
 
-&lt;table class=&quot;scroll-table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_F$ (Support)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$f_F(x)$ (PDF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$F_F(x)$ (CDF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[F]$ (Mean)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[F]$ (Variance)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$M_F(t)$ (MGF)&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_F(t)$ (CF)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$p,q &amp;gt; 0$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \mathbb{R}_{\ge0} &amp;amp;; p\ge 2 \nl \mathbb{R}_+ &amp;amp;; p&amp;lt;2 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \dfrac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \dfrac{p}{q}x \right)^{-(p+q)/2}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$I_{\frac{px}{px+q}} \left(\dfrac{p}{2}, \dfrac{q}{2} \right)$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{q}{q-2} &amp;amp;; q&amp;gt;2 \nl \text{undefined} &amp;amp;; q\le 2 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{2q^2 (p+q-2)}{p(q-2)^2 (q-4)} &amp;amp;; q&amp;gt;4 \nl \text{undefined} &amp;amp;; q \le 4 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{(2p+q- 2) \sqrt{8(q-4)}}{(q-6) \sqrt{p(p+q-2)}} &amp;amp;; q&amp;gt;6 \nl \text{undefined} &amp;amp;; q\le 6 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{12p(5q-22)(p+q-2)+(q-4)(q-2)^2}{p(q-6)(q-8)(p+q-2)} &amp;amp;; q&amp;gt;8 \nl \text{undefined} &amp;amp;; q \le 8 \end{cases}$&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\Gamma{\left(\frac{p+q}{2}\right)}}{\Gamma{\left(\frac{q}{2}\right)}} U \left(\dfrac{p}{2},1-\dfrac{q}{2},-\frac{q}{p} it \right)$&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+| Parameters | $\supp f_F$ (Support)                                                             | $f_F(x)$ (PDF)                                                                                                                                               | $F_F(x)$ (CDF)                                                 | $\mathrm{E}[F]$ (Mean)                                                           | $\mathrm{Var}[F]$ (Variance)                                                                            | $\gamma_1$ (Skewness)                                                                                                    | $\gamma_2$ (Kurtosis)                                                                                                         | $M_F(t)$ (MGF) | $\phi_F(t)$ (CF)                                                                                                                           |
+|:-----------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:---------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
+| $p,q &gt; 0$  | $\begin{cases} \mathbb{R}\_{\ge0} &amp;; p\ge 2 \nl \mathbb{R}\_+ &amp;; p&lt;2 \end{cases}$ | $\dfrac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \dfrac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \dfrac{p}{q}x \right)^{-(p+q)/2}$ | $I_{\frac{px}{px+q}} \left(\dfrac{p}{2}, \dfrac{q}{2} \right)$ | $\begin{cases} \dfrac{q}{q-2} &amp;; q&gt;2 \nl \text{undefined} &amp;; q\le 2 \end{cases}$ | $\begin{cases} \dfrac{2q^2 (p+q-2)}{p(q-2)^2 (q-4)} &amp;; q&gt;4 \nl \text{undefined} &amp;; q \le 4 \end{cases}$ | $\begin{cases} \dfrac{(2p+q- 2) \sqrt{8(q-4)}}{(q-6) \sqrt{p(p+q-2)}} &amp;; q&gt;6 \nl \text{undefined} &amp;; q\le 6 \end{cases}$ | $\begin{cases} \dfrac{12p(5q-22)(p+q-2)+(q-4)(q-2)^2}{p(q-6)(q-8)(p+q-2)} &amp;; q&gt;8 \nl \text{undefined} &amp;; q \le 8 \end{cases}$ | undefined      | $\dfrac{\Gamma{\left(\frac{p+q}{2}\right)}}{\Gamma{\left(\frac{q}{2}\right)}} U \left(\dfrac{p}{2},1-\dfrac{q}{2},-\frac{q}{p} it \right)$ |
+{:.scroll-table}
 
-&lt;ul&gt;
-  &lt;li&gt;$X\sim F_{p,q} \implies 1/X \sim F_{q,p}$&lt;/li&gt;
-  &lt;li&gt;$X\sim t_q \implies X^2 \sim F_{1,q}$&lt;/li&gt;
-  &lt;li&gt;$X\sim F_{p,q} \implies pX/(q+pX) \sim \mathrm{Beta}(p/2,q/2)$&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Probabilistic Inequalities</title><link href="http://localhost:4000/mathematics/probabilistic-inequalities.html" rel="alternate" type="text/html" title="Probabilistic Inequalities" /><published>2025-08-03T00:00:00+09:00</published><updated>2025-08-03T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/probabilistic-inequalities</id><content type="html" xml:base="http://localhost:4000/mathematics/probabilistic-inequalities.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#hölders-inequality&quot; id=&quot;markdown-toc-hölders-inequality&quot;&gt;Hölder’s inequality&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#lemma&quot; id=&quot;markdown-toc-lemma&quot;&gt;Lemma&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof&quot; id=&quot;markdown-toc-proof&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#cauchyschwarz-inequality&quot; id=&quot;markdown-toc-cauchyschwarz-inequality&quot;&gt;Cauchy–Schwarz inequality&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#covariance-and-correlation&quot; id=&quot;markdown-toc-covariance-and-correlation&quot;&gt;Covariance and correlation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#minkowskis-inequality&quot; id=&quot;markdown-toc-minkowskis-inequality&quot;&gt;Minkowski’s inequality&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jensens-inequality&quot; id=&quot;markdown-toc-jensens-inequality&quot;&gt;Jensen’s inequality&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof-1&quot; id=&quot;markdown-toc-proof-1&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#inequality-for-means&quot; id=&quot;markdown-toc-inequality-for-means&quot;&gt;Inequality for means&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#special-values-of-p&quot; id=&quot;markdown-toc-special-values-of-p&quot;&gt;Special values of $p$&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof-2&quot; id=&quot;markdown-toc-proof-2&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+- $X\sim F_{p,q} \implies 1/X \sim F_{q,p}$
+- $X\sim t_q \implies X^2 \sim F_{1,q}$
+- $X\sim F_{p,q} \implies pX/(q+pX) \sim \mathrm{Beta}(p/2,q/2)$</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Probabilistic Inequalities</title><link href="http://localhost:4000/mathematics/probabilistic-inequalities.html" rel="alternate" type="text/html" title="Probabilistic Inequalities" /><published>2025-08-03T00:00:00+09:00</published><updated>2025-08-03T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/probabilistic-inequalities</id><content type="html" xml:base="http://localhost:4000/mathematics/probabilistic-inequalities.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;hölders-inequality&quot;&gt;Hölder’s inequality&lt;/h2&gt;
+## Hölder&apos;s inequality
 
-&lt;p&gt;&lt;strong&gt;Hölder’s inequality&lt;/strong&gt; states that for any random variables $X$ and $Y$ and for any $p, q &amp;gt; 1$ such that&lt;/p&gt;
+**Hölder&apos;s inequality** states that for any random variables $X$ and $Y$ and for any $p, q &gt; 1$ such that
 
-&lt;p&gt;\[
+\\[
 \frac{1}{p} + \frac{1}{q} = 1
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;the following holds:&lt;/p&gt;
+the following holds:
 
-&lt;p&gt;\[
+\\[
 \abs{\mathrm{E}[XY]} \leq \mathrm{E}\abs{XY} \leq \big(\mathrm{E}\abs{X}^p\big)^\frac{1}{p} \big(\mathrm{E}\abs{Y}^q\big)^\frac{1}{q}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;lemma&quot;&gt;Lemma&lt;/h3&gt;
+### Lemma
 
-&lt;p&gt;Let $a$ and $b$ be non-negative real numbers. Then we have:&lt;/p&gt;
+Let $a$ and $b$ be non-negative real numbers. Then we have:
 
-&lt;p&gt;\[
+\\[
 \frac{1}{p} a^p + \frac{1}{q} b^q \geq a b
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;with equality if and only if $a^p = b^q$.&lt;/p&gt;
+with equality if and only if $a^p = b^q$.
 
-&lt;details&gt;
-  &lt;summary&gt; Proof&lt;/summary&gt;
+&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt; Proof&lt;/summary&gt;
 
-  &lt;p&gt;Fix $b$, and consider the function&lt;/p&gt;
+Fix $b$, and consider the function
 
-  &lt;p&gt;\[
+\\[
 f(a) = \frac{1}{p} a^p + \frac{1}{q} b^q - ab
-\]&lt;/p&gt;
+\\]
 
-  &lt;p&gt;The derivative is given by:
-\[
-f&apos;(a) = a^{p-1} - b
-\]&lt;/p&gt;
+The derivative is given by:
+\\[
+f\&apos;(a) = a^{p-1} - b
+\\]
 
-  &lt;p&gt;To minimize $f(a)$, we set $f&apos;(a) = 0$ and get $a = b^{\frac{1}{p-1}} = b^{\frac{q}{p}}$. Substituting this back into $f(a)$ gives:&lt;/p&gt;
+To minimize $f(a)$, we set $f\&apos;(a) = 0$ and get $a = b^{\frac{1}{p-1}} = b^{\frac{q}{p}}$. Substituting this back into $f(a)$ gives:
 
-  &lt;p&gt;\[
+\\[
 f\left(b^{\frac{q}{p}}\right) = \frac{1}{p} b^q + \frac{1}{q} b^q - b^{\frac{q}{p}+1} = b^q - b^q = 0
-\]&lt;/p&gt;
+\\]
 
-  &lt;p&gt;A check of the second derivative confirms that this is indeed a minimum, and thus we prove the lemma.&lt;/p&gt;
+A check of the second derivative confirms that this is indeed a minimum, and thus we prove the lemma.
 &lt;/details&gt;
 
-&lt;h3 id=&quot;proof&quot;&gt;Proof&lt;/h3&gt;
+### Proof
 
-&lt;p&gt;The first inequality simply follows from $-\abs{XY} \le XY \le \abs{XY}$. Now let’s prove the second one. By setting&lt;/p&gt;
+The first inequality simply follows from $-\abs{XY} \le XY \le \abs{XY}$. Now let&apos;s prove the second one. By setting
 
-&lt;p&gt;\[
+\\[
 a = \frac{\abs{X}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}}}, \quad b = \frac{\abs{Y}}{(\mathrm{E}\abs{Y}^q)^{\frac{1}{q}}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and applying the lemma, we have:&lt;/p&gt;
+and applying the lemma, we have:
 
-&lt;p&gt;\[
+\\[
 \frac{1}{p} \frac{\abs{X}^p}{\mathrm{E}\abs{X}^p} + \frac{1}{q} \frac{\abs{Y}^q}{\mathrm{E}\abs{Y}^q} \geq \frac{\abs{XY}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}} (\mathrm{E}\abs{Y}^q)^{\frac{1}{q}}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Taking expectation on both sides yields:&lt;/p&gt;
+Taking expectation on both sides yields:
 
-&lt;p&gt;\[
+\\[
 1 \geq \frac{\mathrm{E}\abs{XY}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}} (\mathrm{E}\abs{Y}^q)^{\frac{1}{q}} }
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and thus we obtain Hölder’s inequality.&lt;/p&gt;
+and thus we obtain Hölder&apos;s inequality.
 
-&lt;h3 id=&quot;cauchyschwarz-inequality&quot;&gt;Cauchy–Schwarz inequality&lt;/h3&gt;
+### Cauchy--Schwarz inequality
 
-&lt;p&gt;&lt;strong&gt;Cauchy–Schwarz inequality&lt;/strong&gt; is a special case of Hölder’s inequality where $p = q = 2$. It states that for any random variables $X$ and $Y$:&lt;/p&gt;
+**Cauchy--Schwarz inequality** is a special case of Hölder&apos;s inequality where $p = q = 2$. It states that for any random variables $X$ and $Y$:
 
-&lt;p&gt;\[
+\\[
 \abs{\mathrm{E}[XY]} \leq \mathrm{E}\abs{XY} \leq \sqrt{\mathrm{E}\abs{X}^2} \sqrt{\mathrm{E}\abs{Y}^2}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;or also written as:&lt;/p&gt;
+or also written as:
 
-&lt;p&gt;\[
+\\[
 (\mathrm{E}[XY])^2 \leq \mathrm{E}\left[X^2\right] \mathrm{E}\left[Y^2\right]
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;covariance-and-correlation&quot;&gt;Covariance and correlation&lt;/h3&gt;
+### Covariance and correlation
 
-&lt;p&gt;If $X$ and $Y$ have means $\mu_X, \mu_Y$ and variances $\sigma_X^2, \sigma_Y^2$, we can apply Cauchy–Schwarz inequality to the centered variables $X - \mu_X$ and $Y - \mu_Y$:&lt;/p&gt;
+If $X$ and $Y$ have means $\mu_X, \mu_Y$ and variances $\sigma_X^2, \sigma_Y^2$, we can apply Cauchy--Schwarz inequality to the centered variables $X - \mu_X$ and $Y - \mu_Y$:
 
-&lt;p&gt;\[
+\\[
 \abs{\mathrm{E}[(X - \mu_X)(Y - \mu_Y)]} \leq \sqrt{\mathrm{E}[(X - \mu_X)^2]} \sqrt{\mathrm{E}[(Y - \mu_Y)^2]}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This leads to the well-known properties of covariance and correlation:&lt;/p&gt;
+This leads to the well-known properties of covariance and correlation:
 
-&lt;p&gt;\[
+\\[
 \abs{\text{Cov}(X, Y)} \leq \sigma_X \sigma_Y
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and&lt;/p&gt;
+and
 
-&lt;p&gt;\[
+\\[
 \abs{\text{Corr}(X, Y)} \leq 1
-\]&lt;/p&gt;
+\\]
 
-&lt;h2 id=&quot;minkowskis-inequality&quot;&gt;Minkowski’s inequality&lt;/h2&gt;
+## Minkowski&apos;s inequality
 
-&lt;p&gt;&lt;strong&gt;Minkowski’s inequality&lt;/strong&gt; is a generalization of the triangle inequality for $L^p$ norms. It states that for any random variables $X$ and $Y$ and for any $p \geq 1$:&lt;/p&gt;
+**Minkowski&apos;s inequality** is a generalization of the triangle inequality for $L^p$ norms. It states that for any random variables $X$ and $Y$ and for any $p \geq 1$:
 
-&lt;p&gt;\[
+\\[
 (\mathrm{E}\abs{X+Y}^p)^{\frac{1}{p}} \leq (\mathrm{E}\abs{X}^p)^{\frac{1}{p}} + (\mathrm{E}\abs{Y}^p)^{\frac{1}{p}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Proof is omitted. It can be done by applying Hölder’s inequality and the basic triangle inequality $\abs{X+Y} \leq \abs{X} + \abs{Y}$.&lt;/p&gt;
+Proof is omitted. It can be done by applying Hölder&apos;s inequality and the basic triangle inequality $\abs{X+Y} \leq \abs{X} + \abs{Y}$.
 
-&lt;h2 id=&quot;jensens-inequality&quot;&gt;Jensen’s inequality&lt;/h2&gt;
+## Jensen&apos;s inequality
 
-&lt;p&gt;&lt;strong&gt;Jensen’s inequality&lt;/strong&gt; states that for any convex function $g$ and any random variable $X$:&lt;/p&gt;
+**Jensen&apos;s inequality** states that for any convex function $g$ and any random variable $X$:
 
-&lt;p&gt;\[
+\\[
 E[g(X)] \geq g(E[X])
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Equality holds if and only if $g$ is linear on the support of $X$. If $g$ is concave, the inequality is reversed:&lt;/p&gt;
+Equality holds if and only if $g$ is linear on the support of $X$. If $g$ is concave, the inequality is reversed:
 
-&lt;p&gt;\[
+\\[
 E[g(X)] \leq g(E[X])
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;proof-1&quot;&gt;Proof&lt;/h3&gt;
+### Proof
 
-&lt;p&gt;Let $l(x)$ be the linear function that is tangent to $g$ at the point $x= E[X]$. Then, by the definition of convexity, we have $g(x) \geq l(x)$ for all $x$. Taking expectation on both sides gives:&lt;/p&gt;
+Let $l(x)$ be the linear function that is tangent to $g$ at the point $x= E[X]$. Then, by the definition of convexity, we have $g(x) \geq l(x)$ for all $x$. Taking expectation on both sides gives:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[g(X)] \geq \mathrm{E}[l(X)] = l(\mathrm{E}[X]) = g(\mathrm{E}[X])
-\]&lt;/p&gt;
+\\]
 
-&lt;h2 id=&quot;inequality-for-means&quot;&gt;Inequality for means&lt;/h2&gt;
+## Inequality for means
 
-&lt;p&gt;Jensen’s inequality can be used to prove an inequality between the three means: arithmetic mean, geometric mean, and harmonic mean.
-We define the &lt;strong&gt;arithmetic mean&lt;/strong&gt; of a positive random variable $X$ as:&lt;/p&gt;
+Jensen&apos;s inequality can be used to prove an inequality between the three means: arithmetic mean, geometric mean, and harmonic mean.
+We define the **arithmetic mean** of a positive random variable $X$ as:
 
-&lt;p&gt;\[
+\\[
 \mathrm{AM}[X] = \mathrm{E}[X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;the &lt;strong&gt;geometric mean&lt;/strong&gt; as:&lt;/p&gt;
+the **geometric mean** as:
 
-&lt;p&gt;\[
+\\[
 \mathrm{GM}[X] = \exp\left(\mathrm{E}[\ln X]\right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and the &lt;strong&gt;harmonic mean&lt;/strong&gt; as:
-\[
+and the **harmonic mean** as:
+\\[
 \mathrm{HM}[X] = \frac{1}{\mathrm{E}[1/X]}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Then $\mathrm{AM}[X] \geq \mathrm{GM}[X] \geq \mathrm{HM}[X]$ for any positive random variable $X$.
-More generally, for any $p\in \mathbb{R}$, we define the &lt;strong&gt;power mean&lt;/strong&gt; as:&lt;/p&gt;
+Then $\mathrm{AM}[X] \geq \mathrm{GM}[X] \geq \mathrm{HM}[X]$ for any positive random variable $X$.
+More generally, for any $p\in \mathbb{R}$, we define the **power mean** as:
 
-&lt;p&gt;\[
+\\[
 M_p[X] = \left(\mathrm{E}[X^p]\right)^{\frac{1}{p}} = \exp\left(\frac{1}{p} \ln \mathrm{E}[X^p]\right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can check that $M_1[X] = \mathrm{AM}[X]$, $M_0[X] = \mathrm{GM}[X]$, and $M_{-1}[X] = \mathrm{HM}[X]$.
+We can check that $M_1[X] = \mathrm{AM}[X]$, $M_0[X] = \mathrm{GM}[X]$, and $M_{-1}[X] = \mathrm{HM}[X]$.
 Also, for $p\to \infty$, we have $M_p[X] \to \max X$ and for $p\to -\infty$, we have $M_p[X] \to \min X$.
-Checking this later, we have the powerful theorem that $M_p[X]$ is an increasing function of $p$ for any positive random variable $X$.&lt;/p&gt;
+Checking this later, we have the powerful theorem that $M_p[X]$ is an increasing function of $p$ for any positive random variable $X$.
 
-&lt;p&gt;\[
+\\[
 \pdv{}{p} M_p[X] \geq 0
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;special-values-of-p&quot;&gt;Special values of $p$&lt;/h3&gt;
+### Special values of $p$
 
-&lt;p&gt;Let’s check that $M_0[X] = \mathrm{GM}[X]$ is indeed the geometric mean.
-By the L’Hôpital’s rule, we have:&lt;/p&gt;
+Let&apos;s check that $M_0[X] = \mathrm{GM}[X]$ is indeed the geometric mean.
+By the L&apos;Hôpital&apos;s rule, we have:
 
-&lt;p&gt;\[
+\\[
 \lim_{p \to 0} \ln M_p[X] = \lim_{p \to 0} \frac{\ln \mathrm{E}[X^p]}{p} = \lim_{p \to 0} \frac{\mathrm{E}[ X^p \ln X]}{\mathrm{E}[X^p]} = \mathrm{E}[\ln X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Thus, we have:&lt;/p&gt;
+Thus, we have:
 
-&lt;p&gt;\[
+\\[
 \lim_{p \to 0} M_p[X] = \exp\left(\mathrm{E}[\ln X]\right) = \mathrm{GM}[X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Let’s also check that $M_\infty[X] = \max X$ is indeed the maximum.
-We can write the power mean as:&lt;/p&gt;
+Let&apos;s also check that $M_\infty[X] = \max X$ is indeed the maximum.
+We can write the power mean as:
 
-&lt;p&gt;\[
+\\[
 M_p[X] = \max X \exp\left(\frac{1}{p} \ln \mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]\right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Also by the L’Hôpital’s rule, we have:&lt;/p&gt;
+Also by the L&apos;Hôpital&apos;s rule, we have:
 
-&lt;p&gt;\[
-\begin{align*}
-\lim_{p \to \infty} \ln \frac{M_p[X]}{\max X} &amp;amp;= \lim_{p \to \infty} \frac{\ln \mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]}{p} \nl
-&amp;amp;= \lim_{p \to \infty} \frac{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p \ln \frac{X}{\max X}\right]}{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]} \nl
-&amp;amp;= \frac{f_X(\max X) \ln 1}{f_X(\max X)} \nl
-&amp;amp;= 0
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\lim_{p \to \infty} \ln \frac{M_p[X]}{\max X} &amp;= \lim_{p \to \infty} \frac{\ln \mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]}{p} \nl
+&amp;= \lim_{p \to \infty} \frac{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p \ln \frac{X}{\max X}\right]}{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]} \nl
+&amp;= \frac{f_X(\max X) \ln 1}{f_X(\max X)} \nl
+&amp;= 0
+\end{align\*}
+\\]
 
-&lt;p&gt;Thus, we have:&lt;/p&gt;
+Thus, we have:
 
-&lt;p&gt;\[
+\\[
 \lim_{p \to \infty} M_p[X] = \max X
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Similarly, we can check that $M_{-\infty}[X] = \min X$ is indeed the minimum.&lt;/p&gt;
+Similarly, we can check that $M_{-\infty}[X] = \min X$ is indeed the minimum.
 
-&lt;h3 id=&quot;proof-2&quot;&gt;Proof&lt;/h3&gt;
+### Proof
 
-&lt;p&gt;First, we have the following property of the power means:&lt;/p&gt;
+First, we have the following property of the power means:
 
-&lt;p&gt;\[
+\\[
 M_p[X] \geq M_q[X] \implies M_{-p}[X] \leq M_{-q}[X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;It is proved by substituting $X$ with $1/X$ in the definition of the power mean.
-Now, we can prove the inequality including the geometric mean:&lt;/p&gt;
+It is proved by substituting $X$ with $1/X$ in the definition of the power mean.
+Now, we can prove the inequality including the geometric mean:
 
-&lt;p&gt;\[
+\\[
 M_{-p}[X] \leq M_0[X] \leq M_p[X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;for any $p&amp;gt; 0$. The proof follows from the Jensen’s inequality applied to the concave function $g(x) = \ln x$:&lt;/p&gt;
+for any $p&gt; 0$. The proof follows from the Jensen&apos;s inequality applied to the concave function $g(x) = \ln x$:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[\ln X] \leq \ln \mathrm{E}[X]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Substituting $X$ with $X^p$ gives:&lt;/p&gt;
+Substituting $X$ with $X^p$ gives:
 
-&lt;p&gt;\[
+\\[
 \exp \mathrm{E} [\ln X] \leq \mathrm{E}[X^p]^{\frac{1}{p}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and substituting $X$ with $1/X$ gives:&lt;/p&gt;
+and substituting $X$ with $1/X$ gives:
 
-&lt;p&gt;\[
+\\[
 \exp \mathrm{E} [\ln X] \geq \mathrm{E}[X^{-p}]^{-\frac{1}{p}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;and the inequality is proved. Showing that $M_p[X]$ is an increasing function at $p&amp;gt;0$, the theorem is automatically proved by the properties proven above.
-For $0&amp;lt;p\leq q$, define $r=q/p$ and apply the Jensen’s inequality to the convex function $g(x) = x^r$:&lt;/p&gt;
+and the inequality is proved. Showing that $M_p[X]$ is an increasing function at $p&gt;0$, the theorem is automatically proved by the properties proven above.
+For $0&lt;p\leq q$, define $r=q/p$ and apply the Jensen&apos;s inequality to the convex function $g(x) = x^r$:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[X]^r \leq \mathrm{E}[X^r]
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Substituting $Y = X^{1/p}$ gives:&lt;/p&gt;
+Substituting $Y = X^{1/p}$ gives:
 
-&lt;p&gt;\[
+\\[
 \mathrm{E}[Y^p]^\frac{1}{p} \leq \mathrm{E}[Y^q]^\frac{1}{q}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Thus, we have:&lt;/p&gt;
+Thus, we have:
 
-&lt;p&gt;\[
-p&amp;lt;q \implies M_p[X] \leq M_q[X]
-\]&lt;/p&gt;
+\\[
+p&lt;q \implies M_p[X] \leq M_q[X]
+\\]
 
-&lt;p&gt;By constructing the probability theory upon the measure theory, we can treat these probabilistic properties more rigorously.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Extreme Values of Functions</title><link href="http://localhost:4000/mathematics/extreme-values-of-functions.html" rel="alternate" type="text/html" title="Extreme Values of Functions" /><published>2025-08-01T00:00:00+09:00</published><updated>2025-08-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/extreme-values-of-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/extreme-values-of-functions.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">The Chain Rule (univariate)</title><link href="http://localhost:4000/mathematics/the-chain-rule-univariate.html" rel="alternate" type="text/html" title="The Chain Rule (univariate)" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-chain-rule-univariate</id><content type="html" xml:base="http://localhost:4000/mathematics/the-chain-rule-univariate.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#the-chain-rule&quot; id=&quot;markdown-toc-the-chain-rule&quot;&gt;The Chain Rule&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof&quot; id=&quot;markdown-toc-proof&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+By constructing the probability theory upon the measure theory, we can treat these probabilistic properties more rigorously.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Extreme Values of Functions</title><link href="http://localhost:4000/mathematics/extreme-values-of-functions.html" rel="alternate" type="text/html" title="Extreme Values of Functions" /><published>2025-08-01T00:00:00+09:00</published><updated>2025-08-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/extreme-values-of-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/extreme-values-of-functions.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">The Chain Rule (univariate)</title><link href="http://localhost:4000/mathematics/the-chain-rule-univariate.html" rel="alternate" type="text/html" title="The Chain Rule (univariate)" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-chain-rule-univariate</id><content type="html" xml:base="http://localhost:4000/mathematics/the-chain-rule-univariate.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;the-chain-rule&quot;&gt;The Chain Rule&lt;/h2&gt;
+## The Chain Rule
 
-&lt;p&gt;The &lt;strong&gt;chain rule&lt;/strong&gt; is a fundamental theorem in calculus that allows us to differentiate composite functions.
-If $f$ and $g$ are functions such that $f$ is differentiable at $g(x)$ and $g$ is differentiable at $x$, then the derivative of the composite function $f(g(x))$ is given by:&lt;/p&gt;
+The **chain rule** is a fundamental theorem in calculus that allows us to differentiate composite functions.
+If $f$ and $g$ are functions such that $f$ is differentiable at $g(x)$ and $g$ is differentiable at $x$, then the derivative of the composite function $f(g(x))$ is given by:
 
-&lt;p&gt;\[
-(f \circ g)&apos;(x) = f&apos;(g(x)) \cdot g&apos;(x)
-\]&lt;/p&gt;
+\\[
+(f \circ g)\&apos;(x) = f\&apos;(g(x)) \cdot g\&apos;(x)
+\\]
 
-&lt;p&gt;Denoting $y=g(x), z=f(y)$, we can express the chain rule as:&lt;/p&gt;
+Denoting $y=g(x), z=f(y)$, we can express the chain rule as:
 
-&lt;p&gt;\[
+\\[
 \odv{z}{x} = \odv{z}{y} \odv{y}{x}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This means that the change in $z$ with respect to $x$ is the product of the change in $z$ with respect to $y$ and the change in $y$ with respect to $x$.
+This means that the change in $z$ with respect to $x$ is the product of the change in $z$ with respect to $y$ and the change in $y$ with respect to $x$.
 This is particularly useful when dealing with functions that are composed of multiple layers, allowing us to break down the differentiation process into manageable parts.
-Applying the chain rule multiple times allows us to differentiate functions with more than one layer of composition.&lt;/p&gt;
+Applying the chain rule multiple times allows us to differentiate functions with more than one layer of composition.
 
-&lt;h3 id=&quot;proof&quot;&gt;Proof&lt;/h3&gt;
+### Proof
 
-&lt;p&gt;To prove the chain rule, we will use the linearization of the function.
-Read &lt;a href=&quot;mathematics/linearization-and-differentials.html#error-in-differential-approximation&quot;&gt;here&lt;/a&gt; for more details.
-Denoting the $y_0 = g(x_0)$,&lt;/p&gt;
+To prove the chain rule, we will use the linearization of the function.
+Read [here](mathematics/linearization-and-differentials.html#error-in-differential-approximation) for more details.
+Denoting the $y_0 = g(x_0)$,
 
-&lt;p&gt;\[
-\Delta y = (g&apos;(x_0) + \varepsilon_1) \Delta x \nl\nl
-\Delta z = (f&apos;(y_0) + \varepsilon_2) \Delta y
-\]&lt;/p&gt;
+\\[
+\Delta y = (g\&apos;(x_0) + \varepsilon_1) \Delta x \nl\nl
+\Delta z = (f\&apos;(y_0) + \varepsilon_2) \Delta y
+\\]
 
-&lt;p&gt;Substituting $\Delta y$ into the equation for $\Delta z$ gives:&lt;/p&gt;
+Substituting $\Delta y$ into the equation for $\Delta z$ gives:
 
-&lt;p&gt;\[
-\Delta z = (f&apos;(y_0) + \varepsilon_2) (g&apos;(x_0) + \varepsilon_1) \Delta x
-\]&lt;/p&gt;
+\\[
+\Delta z = (f\&apos;(y_0) + \varepsilon_2) (g\&apos;(x_0) + \varepsilon_1) \Delta x
+\\]
 
-&lt;p&gt;Taking the limit as $\Delta x \to 0$, we have:&lt;/p&gt;
+Taking the limit as $\Delta x \to 0$, we have:
 
-&lt;p&gt;\[
+\\[
 \lim_{\Delta x \to 0} \varepsilon_1 = 0, \quad \lim_{\Delta x \to 0} \Delta y = 0, \quad \lim_{\Delta y \to 0} \varepsilon_2 = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Thus, we can write:&lt;/p&gt;
+Thus, we can write:
 
-&lt;p&gt;\[
-\odv{z}{x}\bigg|_{x=x_0} = \lim_{\Delta x \to 0} \frac{\Delta z}{\Delta x} = f&apos;(y_0) g&apos;(x_0) = \odv{z}{y}\bigg|_{y=y_0} \odv{y}{x} \bigg|_{x=x_0}
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Covariance and Correlation</title><link href="http://localhost:4000/mathematics/covariance-and-correlation.html" rel="alternate" type="text/html" title="Covariance and Correlation" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/covariance-and-correlation</id><content type="html" xml:base="http://localhost:4000/mathematics/covariance-and-correlation.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#covariance&quot; id=&quot;markdown-toc-covariance&quot;&gt;Covariance&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#properties-of-covariance&quot; id=&quot;markdown-toc-properties-of-covariance&quot;&gt;Properties of Covariance&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#correlation&quot; id=&quot;markdown-toc-correlation&quot;&gt;Correlation&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#properties-of-correlation&quot; id=&quot;markdown-toc-properties-of-correlation&quot;&gt;Properties of Correlation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#multivariate-normal-distribution&quot; id=&quot;markdown-toc-multivariate-normal-distribution&quot;&gt;Multivariate Normal Distribution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+\\[
+\odv{z}{x}\bigg\|\_{x=x_0} = \lim\_{\Delta x \to 0} \frac{\Delta z}{\Delta x} = f\&apos;(y_0) g\&apos;(x_0) = \odv{z}{y}\bigg\|\_{y=y_0} \odv{y}{x} \bigg\|\_{x=x_0}
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Covariance and Correlation</title><link href="http://localhost:4000/mathematics/covariance-and-correlation.html" rel="alternate" type="text/html" title="Covariance and Correlation" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/covariance-and-correlation</id><content type="html" xml:base="http://localhost:4000/mathematics/covariance-and-correlation.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;covariance&quot;&gt;Covariance&lt;/h2&gt;
+## Covariance
 
-&lt;p&gt;&lt;strong&gt;Covariance&lt;/strong&gt; is a measure of how much two random variables change together.
-The covariance between two random variables $X$ and $Y$ is defined as:&lt;/p&gt;
+**Covariance** is a measure of how much two random variables change together.
+The covariance between two random variables $X$ and $Y$ is defined as:
 
-&lt;p&gt;\[
+\\[
 \text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;properties-of-covariance&quot;&gt;Properties of Covariance&lt;/h3&gt;
+### Properties of Covariance
 
-&lt;p&gt;By expanding the expectation and denoting the means as $\mu_X = \mathbb{E}[X]$ and $\mu_Y = \mathbb{E}[Y]$, we can rewrite the covariance as:&lt;/p&gt;
+By expanding the expectation and denoting the means as $\mu_X = \mathbb{E}[X]$ and $\mu_Y = \mathbb{E}[Y]$, we can rewrite the covariance as:
 
-&lt;p&gt;\[
+\\[
 \text{Cov}(X, Y) = \mathbb{E}[XY] - \mu_X \mu_Y
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Also, covariance has the following properties:&lt;/p&gt;
+Also, covariance has the following properties:
 
-&lt;p&gt;\[
+\\[
 \mathrm{Var}(aX + bY) = a^2 \mathrm{Var}(X) + b^2 \mathrm{Var}(Y) + 2ab \text{Cov}(X, Y)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;If $X$ and $Y$ are independent, then:&lt;/p&gt;
+If $X$ and $Y$ are independent, then:
 
-&lt;p&gt;\[
+\\[
 \text{Cov}(X, Y) = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;However, be cautious: a covariance of zero does not imply independence of $X$ and $Y$.&lt;/p&gt;
+However, be cautious: a covariance of zero does not imply independence of $X$ and $Y$.
 
-&lt;h2 id=&quot;correlation&quot;&gt;Correlation&lt;/h2&gt;
+## Correlation
 
-&lt;p&gt;&lt;strong&gt;Correlation&lt;/strong&gt; is a standardized measure of the relationship between two random variables, defined as:&lt;/p&gt;
+**Correlation** is a standardized measure of the relationship between two random variables, defined as:
 
-&lt;p&gt;\[
+\\[
 \rho_{X,Y} = \text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \text{Var}(Y)}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;By denoting the standard deviations as $\sigma_X = \sqrt{\text{Var}(X)}$ and $\sigma_Y = \sqrt{\text{Var}(Y)}$, we can express correlation as:&lt;/p&gt;
+By denoting the standard deviations as $\sigma_X = \sqrt{\text{Var}(X)}$ and $\sigma_Y = \sqrt{\text{Var}(Y)}$, we can express correlation as:
 
-&lt;p&gt;\[
+\\[
 \rho_{X,Y} = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;properties-of-correlation&quot;&gt;Properties of Correlation&lt;/h3&gt;
+### Properties of Correlation
 
-&lt;p&gt;If $X$ and $Y$ are independent, then:&lt;/p&gt;
+If $X$ and $Y$ are independent, then:
 
-&lt;p&gt;\[
+\\[
 \rho_{X,Y} = \frac{0}{\sigma_X \sigma_Y} = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Also, correlation has the following important property:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$-1 \leq \rho_{X,Y} \leq 1$&lt;/li&gt;
-  &lt;li&gt;$\abs{\rho_{X,Y}} = 1$ if and only if there exists $a\neq 0$ such that $Y = aX + b$ for some constant $b$. Then, $\rho_{X,Y} = \text{sgn}\,a$.&lt;/li&gt;
-&lt;/ul&gt;
+Also, correlation has the following important property:
+- $-1 \leq \rho_{X,Y} \leq 1$
+- $\abs{\rho_{X,Y}} = 1$ if and only if there exists $a\neq 0$ such that $Y = aX + b$ for some constant $b$. Then, $\rho_{X,Y} = \text{sgn}\,a$.
 
-&lt;details&gt;
-  &lt;summary&gt;Proof&lt;/summary&gt;
-  &lt;p&gt;\[
-\begin{align*}
-h(t) &amp;amp;:= \mathrm{E}\left[ ((X-\mu_X)t+(Y-\mu_Y))^2  \right] \nl
-&amp;amp;= t^2 \sigma_X^2 + 2t \text{Cov}(X, Y) + \sigma_Y^2 \geq 0 \nl
-\Rightarrow \;\; \text{Disc}_t h &amp;amp;= 4 \text{Cov}(X, Y)^2 - 4 \sigma_X^2 \sigma_Y^2 \leq 0 \nl
-\therefore &amp;amp; -1 \leq \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y} \leq 1
-\end{align*}
-\]&lt;/p&gt;
+&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
+\\[
+\begin{align\*}
+h(t) &amp;:= \mathrm{E}\left[ ((X-\mu_X)t+(Y-\mu_Y))^2  \right] \nl
+&amp;= t^2 \sigma_X^2 + 2t \text{Cov}(X, Y) + \sigma_Y^2 \geq 0 \nl
+\Rightarrow \;\; \text{Disc}_t h &amp;= 4 \text{Cov}(X, Y)^2 - 4 \sigma_X^2 \sigma_Y^2 \leq 0 \nl
+\therefore &amp; -1 \leq \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y} \leq 1
+\end{align\*}
+\\]
 
-  &lt;p&gt;The equality holds if and only if the discriminant is zero, which means $h(t)$ is a perfect square. This implies that there exists a constant $a \neq 0$ such that $Y = aX + b$ for some constant $b$, leading to $\rho_{X,Y} = \text{sgn}\, a$.&lt;/p&gt;
+The equality holds if and only if the discriminant is zero, which means $h(t)$ is a perfect square. This implies that there exists a constant $a \neq 0$ such that $Y = aX + b$ for some constant $b$, leading to $\rho_{X,Y} = \text{sgn}\, a$.
 &lt;/details&gt;
 
-&lt;h2 id=&quot;multivariate-normal-distribution&quot;&gt;Multivariate Normal Distribution&lt;/h2&gt;
+## Multivariate Normal Distribution
 
-&lt;p&gt;The &lt;strong&gt;multivariate normal distribution&lt;/strong&gt; is a generalization of the normal distribution to multiple dimensions. A random vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$ follows a multivariate normal distribution if every linear combination of its components is normally distributed.
-The multivariate normal distribution is characterized by its mean vector $\bs{\mu} = (\mu_1, \mu_2, \ldots, \mu_n)$ and covariance matrix $\bs{\Sigma}$, which is a symmetric positive semi-definite matrix.&lt;/p&gt;
+The **multivariate normal distribution** is a generalization of the normal distribution to multiple dimensions. A random vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$ follows a multivariate normal distribution if every linear combination of its components is normally distributed.
+The multivariate normal distribution is characterized by its mean vector $\bs{\mu} = (\mu_1, \mu_2, \ldots, \mu_n)$ and covariance matrix $\bs{\Sigma}$, which is a symmetric positive semi-definite matrix.
 
-&lt;p&gt;The probability density function of a multivariate normal distribution is given by:&lt;/p&gt;
+The probability density function of a multivariate normal distribution is given by:
 
-&lt;p&gt;\[
+\\[
 f(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^n \det \bs{\Sigma}}} \exp\left(-\frac{1}{2}(\mathbf{x} - \bs{\mu})^\top \bs{\Sigma}^{-1} (\mathbf{x} - \bs{\mu})\right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\mathbf{x}$ is a vector in $\mathbb{R}^n$, $\bs{\mu}$ is the mean vector, and $\bs{\Sigma}$ is the covariance matrix: $\Sigma_{i,j} = \text{Cov}(X_i, X_j)$.
-Then we write as:&lt;/p&gt;
+where $\mathbf{x}$ is a vector in $\mathbb{R}^n$, $\bs{\mu}$ is the mean vector, and $\bs{\Sigma}$ is the covariance matrix: $\Sigma_{i,j} = \text{Cov}(X_i, X_j)$.
+Then we write as:
 
-&lt;p&gt;\[
+\\[
 \mathbf{X} \sim \mathcal{N}(\bs{\mu}, \Sigma)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Let’s check an important property of the multivariate normal distribution:&lt;/p&gt;
+Let&apos;s check an important property of the multivariate normal distribution:
 
-&lt;p&gt;\[
+\\[
 X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\sigma_i^2 = \Sigma_{i,i}$ is the variance of $X_i$ and $\mu_i$ is the mean of $X_i$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Linearization and Differentials</title><link href="http://localhost:4000/mathematics/linearization-and-differentials.html" rel="alternate" type="text/html" title="Linearization and Differentials" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linearization-and-differentials</id><content type="html" xml:base="http://localhost:4000/mathematics/linearization-and-differentials.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#linearization&quot; id=&quot;markdown-toc-linearization&quot;&gt;Linearization&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#differentials&quot; id=&quot;markdown-toc-differentials&quot;&gt;Differentials&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#estimating-changes&quot; id=&quot;markdown-toc-estimating-changes&quot;&gt;Estimating Changes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#error-in-differential-approximation&quot; id=&quot;markdown-toc-error-in-differential-approximation&quot;&gt;Error in Differential Approximation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+where $\sigma_i^2 = \Sigma_{i,i}$ is the variance of $X_i$ and $\mu_i$ is the mean of $X_i$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Linearization and Differentials</title><link href="http://localhost:4000/mathematics/linearization-and-differentials.html" rel="alternate" type="text/html" title="Linearization and Differentials" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linearization-and-differentials</id><content type="html" xml:base="http://localhost:4000/mathematics/linearization-and-differentials.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;linearization&quot;&gt;Linearization&lt;/h2&gt;
+## Linearization
 
-&lt;p&gt;If $f$ is a function that is differentiable at $x = a$, then the &lt;strong&gt;linearization&lt;/strong&gt; of $f$ at $a$ is given by:&lt;/p&gt;
+If $f$ is a function that is differentiable at $x = a$, then the **linearization** of $f$ at $a$ is given by:
 
-&lt;p&gt;\[
-L(x) = f(a) + f&apos;(a)(x - a)
-\]&lt;/p&gt;
+\\[
+L(x) = f(a) + f\&apos;(a)(x - a)
+\\]
 
-&lt;p&gt;This linear function $L(x)$ approximates the value of $f(x)$ near $x = a$. The point $x = a$ is called the &lt;em&gt;center&lt;/em&gt; of the approximation.&lt;/p&gt;
+This linear function $L(x)$ approximates the value of $f(x)$ near $x = a$. The point $x = a$ is called the _center_ of the approximation.
 
-&lt;h2 id=&quot;differentials&quot;&gt;Differentials&lt;/h2&gt;
+## Differentials
 
-&lt;p&gt;The &lt;strong&gt;differential&lt;/strong&gt; of a function $y=f(x)$ at a point $x$ is defined as:&lt;/p&gt;
+The **differential** of a function $y=f(x)$ at a point $x$ is defined as:
 
-&lt;p&gt;\[
-\dd{y} = f&apos;(x) \, \dd{x}
-\]&lt;/p&gt;
+\\[
+\dd{y} = f\&apos;(x) \, \dd{x}
+\\]
 
-&lt;p&gt;Here, $\dd{y}$ represents the change in $y$ corresponding to a small change $\dd{x}$ in $x$. The differential $\dd{y}$ can be thought of as the linear approximation of the change in $y$ when $x$ changes by a small amount.&lt;/p&gt;
+Here, $\dd{y}$ represents the change in $y$ corresponding to a small change $\dd{x}$ in $x$. The differential $\dd{y}$ can be thought of as the linear approximation of the change in $y$ when $x$ changes by a small amount.
 
-&lt;h3 id=&quot;estimating-changes&quot;&gt;Estimating Changes&lt;/h3&gt;
+### Estimating Changes
 
-&lt;p&gt;To estimate the change in $y$ when $x$ changes from $a$ to $a + \Delta x$, we can use the differential:&lt;/p&gt;
+To estimate the change in $y$ when $x$ changes from $a$ to $a + \Delta x$, we can use the differential:
 
-&lt;p&gt;\[
-\Delta y = f(a+\Delta x) -f(a) \approx \dd{y} = f&apos;(a) \, \Delta x
-\]&lt;/p&gt;
+\\[
+\Delta y = f(a+\Delta x) -f(a) \approx \dd{y} = f\&apos;(a) \, \Delta x
+\\]
 
-&lt;p&gt;This approximation is valid when $\Delta x$ is small, allowing us to use the linearization of $f$ at $a$.&lt;/p&gt;
+This approximation is valid when $\Delta x$ is small, allowing us to use the linearization of $f$ at $a$.
 
-&lt;h3 id=&quot;error-in-differential-approximation&quot;&gt;Error in Differential Approximation&lt;/h3&gt;
+### Error in Differential Approximation
 
-&lt;p&gt;Supposing that $\dd{x} = \Delta x$, the approximation error is calculated as:&lt;/p&gt;
+Supposing that $\dd{x} = \Delta x$, the approximation error is calculated as:
 
-&lt;p&gt;\[
-\begin{align*}
-\text{Error} &amp;amp;= \Delta y - \dd{y} \nl
-&amp;amp;= f(a + \Delta x) - f(a) - f&apos;(a) \, \dd{x} \nl
-&amp;amp;= \left( \frac{f(a + \Delta x) - f(a)}{\Delta x} - f&apos;(a) \right) \Delta x \nl
-&amp;amp;= \varepsilon \Delta x
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\text{Error} &amp;= \Delta y - \dd{y} \nl
+&amp;= f(a + \Delta x) - f(a) - f\&apos;(a) \, \dd{x} \nl
+&amp;= \left( \frac{f(a + \Delta x) - f(a)}{\Delta x} - f\&apos;(a) \right) \Delta x \nl
+&amp;= \varepsilon \Delta x
+\end{align\*}
+\\]
 
-&lt;p&gt;where $\varepsilon$ is the error term, which approaches zero as $\Delta x$ approaches zero.&lt;/p&gt;
+where $\varepsilon$ is the error term, which approaches zero as $\Delta x$ approaches zero.
 
-&lt;p&gt;\[
-\lim_{\Delta x \to 0} \varepsilon = f&apos;(a) - f&apos;(a) = 0
-\]&lt;/p&gt;
+\\[
+\lim_{\Delta x \to 0} \varepsilon = f\&apos;(a) - f\&apos;(a) = 0
+\\]
 
-&lt;p&gt;Thus, the error in the differential approximation becomes negligible as $\Delta x$ becomes very small.
-In summary,&lt;/p&gt;
+Thus, the error in the differential approximation becomes negligible as $\Delta x$ becomes very small.
+In summary,
 
-&lt;p&gt;\[
-\Delta y = f&apos;(a) \, \Delta x + \varepsilon \Delta x
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Hierarchical Models and Mixture Distributions</title><link href="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html" rel="alternate" type="text/html" title="Hierarchical Models and Mixture Distributions" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#mixture-distributions&quot; id=&quot;markdown-toc-mixture-distributions&quot;&gt;Mixture Distributions&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+\\[
+\Delta y = f\&apos;(a) \, \Delta x + \varepsilon \Delta x
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Hierarchical Models and Mixture Distributions</title><link href="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html" rel="alternate" type="text/html" title="Hierarchical Models and Mixture Distributions" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;mixture-distributions&quot;&gt;Mixture Distributions&lt;/h2&gt;
+## Mixture Distributions
 
-&lt;p&gt;A random variable $X$ is said to have a &lt;strong&gt;mixture distribution&lt;/strong&gt; if the distribution of $X$ depends on a quantity that is itself a random variable.&lt;/p&gt;
+A random variable $X$ is said to have a **mixture distribution** if the distribution of $X$ depends on a quantity that is itself a random variable.
 
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+### Example
 
-&lt;p&gt;Let $X|Y \sim \mathrm{B}(Y, p)$ and $Y \sim \mathrm{Poisson}(\lambda)$.
-This is called a &lt;strong&gt;hierarchical model&lt;/strong&gt;. By summing over the possible values of $Y$, we can find the marginal distribution of $X$.
-Omitting the details, we can show that $X\sim \mathrm{Poisson}(\lambda p)$.&lt;/p&gt;
+Let $X\|Y \sim \mathrm{B}(Y, p)$ and $Y \sim \mathrm{Poisson}(\lambda)$.
+This is called a **hierarchical model**. By summing over the possible values of $Y$, we can find the marginal distribution of $X$.
+Omitting the details, we can show that $X\sim \mathrm{Poisson}(\lambda p)$.
 
-&lt;p&gt;The level of hierarchy can be extended to more than two levels.
-For example, let $X|Y \sim \mathrm{B}(Y, p)$, $Y|Z \sim \mathrm{Poisson}(Z)$, and $Z \sim \mathrm{Gamma}(\alpha, \beta)$.&lt;/p&gt;
+The level of hierarchy can be extended to more than two levels.
+For example, let $X\|Y \sim \mathrm{B}(Y, p)$, $Y\|Z \sim \mathrm{Poisson}(Z)$, and $Z \sim \mathrm{Gamma}(\alpha, \beta)$.
 
-&lt;h3 id=&quot;properties&quot;&gt;Properties&lt;/h3&gt;
+### Properties
 
-&lt;p&gt;If $X$ an $Y$ are any two random variables, then&lt;/p&gt;
+If $X$ an $Y$ are any two random variables, then
 
-&lt;p&gt;\[
-\mathrm{E}[X] = \mathrm{E}[\mathrm{E}[X|Y]]
-\]&lt;/p&gt;
+\\[
+\mathrm{E}[X] = \mathrm{E}[\mathrm{E}[X\|Y]]
+\\]
 
-&lt;p&gt;provided that the expectations exist. It is known as the &lt;strong&gt;law of total expectation&lt;/strong&gt;.
-We also have&lt;/p&gt;
+provided that the expectations exist. It is known as the **law of total expectation**.
+We also have
 
-&lt;p&gt;\[
-\mathrm{Var}[X] = \mathrm{E}[\mathrm{Var}[X|Y]] + \mathrm{Var}[\mathrm{E}[X|Y]]
-\]&lt;/p&gt;
+\\[
+\mathrm{Var}[X] = \mathrm{E}[\mathrm{Var}[X\|Y]] + \mathrm{Var}[\mathrm{E}[X\|Y]]
+\\]
 
-&lt;p&gt;This is known as the &lt;strong&gt;law of total variance&lt;/strong&gt;. These properties are useful for calculating expectations and variances in hierarchical models.
-We’re omitting the proofs here.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Multivariate Transformations</title><link href="http://localhost:4000/mathematics/multivariate-transformations.html" rel="alternate" type="text/html" title="Multivariate Transformations" /><published>2025-07-27T00:00:00+09:00</published><updated>2025-07-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/multivariate-transformations</id><content type="html" xml:base="http://localhost:4000/mathematics/multivariate-transformations.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#multivariate-transformations&quot; id=&quot;markdown-toc-multivariate-transformations&quot;&gt;Multivariate Transformations&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+This is known as the **law of total variance**. These properties are useful for calculating expectations and variances in hierarchical models.
+We&apos;re omitting the proofs here.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Multivariate Transformations</title><link href="http://localhost:4000/mathematics/multivariate-transformations.html" rel="alternate" type="text/html" title="Multivariate Transformations" /><published>2025-07-27T00:00:00+09:00</published><updated>2025-07-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/multivariate-transformations</id><content type="html" xml:base="http://localhost:4000/mathematics/multivariate-transformations.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;multivariate-transformations&quot;&gt;Multivariate Transformations&lt;/h2&gt;
+## Multivariate Transformations
 
-&lt;p&gt;A &lt;strong&gt;multivariate transformation&lt;/strong&gt; is a function that maps a vector of random variables to another vector of random variables.
+A **multivariate transformation** is a function that maps a vector of random variables to another vector of random variables.
 Let $\mathbf{X} \sim f_{\mathbf{X}}(\mathbf{x})$ be a random vector at $\mathbb{R}^n$ and $\mathbf{Y} = T(\mathbf{X})$ be a transformation of $\mathbf{X}$.
 Here, $T: \mathbb{R}^n \to \mathbb{R}^n$ is one-to-one and differentiable.
-Then the distribution of $\mathbf{Y}$ is given by:&lt;/p&gt;
+Then the distribution of $\mathbf{Y}$ is given by:
 
-&lt;p&gt;\[
+\\[
 f_{\mathbf{Y}}(\mathbf{y}) = f_{\mathbf{X}}\left(T^{-1}(\mathbf{y}) \right) \left| \det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}} \right|
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}}$ is the determinant of the Jacobian matrix of the inverse transformation $T^{-1}$.&lt;/p&gt;
+where $\det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}}$ is the determinant of the Jacobian matrix of the inverse transformation $T^{-1}$.
 
-&lt;details&gt;
-  &lt;summary&gt;Proof&lt;/summary&gt;
-  &lt;p&gt;\[
-\begin{align*}
-P(\mathbf{Y} \in A) &amp;amp;= P(T(\mathbf{X}) \in A) = P(\mathbf{X} \in T^{-1}(A)) \nl
-&amp;amp;= \int_{T^{-1}(A)} f_{\mathbf{X}}(\mathbf{x}) \, \dd{\mathbf{x}} \nl
-&amp;amp;= \int_{A} f_{\mathbf{X}}\left(T^{-1}(\mathbf{y}) \right) \left| \det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}} \right| \, \dd{\mathbf{y}} \nl
-&amp;amp;= \int_{A} f_{\mathbf{Y}}(\mathbf{y}) \, \dd{\mathbf{y}}
-\end{align*}
-\]&lt;/p&gt;
-&lt;/details&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt;Proof&lt;/summary&gt;
+\\[
+\begin{align\*}
+P(\mathbf{Y} \in A) &amp;= P(T(\mathbf{X}) \in A) = P(\mathbf{X} \in T^{-1}(A)) \nl
+&amp;= \int_{T^{-1}(A)} f_{\mathbf{X}}(\mathbf{x}) \, \dd{\mathbf{x}} \nl
+&amp;= \int_{A} f_{\mathbf{X}}\left(T^{-1}(\mathbf{y}) \right) \left| \det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}} \right| \, \dd{\mathbf{y}} \nl
+&amp;= \int_{A} f_{\mathbf{Y}}(\mathbf{y}) \, \dd{\mathbf{y}}
+\end{align\*}
+\\]
+&lt;/details&gt; &lt;br&gt; 
 
-&lt;p&gt;If $T$ is not one-to-one, we can think of the partition of the domain into disjoint sets where $T$ is one-to-one.
+If $T$ is not one-to-one, we can think of the partition of the domain into disjoint sets where $T$ is one-to-one.
 In this case, we can apply the transformation to each partition and sum the contributions.
-We can construct the process just as we did for the &lt;a href=&quot;/mathematics/distributions-of-functions-of-a-random-variable.html#monotonic-partitions&quot;&gt;univariate case&lt;/a&gt;.&lt;/p&gt;
+We can construct the process just as we did for the [univariate case](/mathematics/distributions-of-functions-of-a-random-variable.html#monotonic-partitions).
 
-&lt;p&gt;\[
+\\[
 f_{\mathbf{Y}}(\mathbf{y}) = \begin{cases}
-\dps \sum_{i} f_{\mathbf{X}}\left(T^{-1}_i(\mathbf{y}) \right) \left| \det \pdv{T^{-1}_i(\mathbf{y})}{\mathbf{y}} \right| \mathbf{1}_{T_i(\mathbf{X})} (\mathbf{y}) &amp;amp; ; \mathbf{y} \in \supp f_{\mathbf{Y}} \nl
-0 &amp;amp; ; \mathbf{y} \notin \supp f_{\mathbf{Y}}
+\dps \sum_{i} f_{\mathbf{X}}\left(T^{-1}_i(\mathbf{y}) \right) \left| \det \pdv{T^{-1}_i(\mathbf{y})}{\mathbf{y}} \right| \mathbf{1}_{T_i(\mathbf{X})} (\mathbf{y}) &amp; ; \mathbf{y} \in \supp f_{\mathbf{Y}} \nl
+0 &amp; ; \mathbf{y} \notin \supp f_{\mathbf{Y}}
 \end{cases}
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>

@@ -250,7 +250,7 @@ Therefore,
 
 \\[
 \begin{align\*}
-f_T(t) &= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \partial{G^{-1}}{(t,w)} } \,\dd{w} \nl
+f_T(t) &= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \pdv{G^{-1}}{(t,w)} } \,\dd{w} \nl
 &= \frac{1}{\sqrt{2\pi}} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{t^2w}{2\nu}\right) w^{\frac{\nu}{2}-1} e^{-w/2} \sqrt{\frac{w}{\nu}} \, \dd{w} \nl
 &= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{1}{2}\left(1+\frac{t^2}{\nu}\right) w \right) w^{\frac{\nu+1}{2}-1} \,\dd{w} \nl
 &= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \Gamma\left( \frac{\nu+1}{2} \right) \left\[ \frac{1+t^2/\nu}{2} \right\]^{-(\nu+1)/2} \nl
