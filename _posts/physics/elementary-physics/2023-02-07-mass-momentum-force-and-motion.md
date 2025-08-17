@@ -16,6 +16,7 @@ tags: elementary-physics
 **Mass** is a scalar measure of the amount of matter in an object.
 It is a fundamental property of matter and is invariant under any change of frame of reference.
 Mass of an object is often denoted by the symbol $m$.
+SI unit of mass is the kilogram ($\mathrm{kg}$).
 
 ## Momentum
 
@@ -26,6 +27,8 @@ The momentum $\b{p}$ of an object with mass $m$ and velocity $\b{v}$ is given by
 \bs{p} = m \bs{v}
 \\]
 
+SI unit of momentum is kilogram metre per second ($\mathrm{kg \cdot m/s}$).
+
 ## Force
 
 **Force** is a vector quantity that represents the interaction between objects, causing them to accelerate.
@@ -34,6 +37,8 @@ A force $\b{F}$ acting on an object with momentum $\b{p}$ is defined as the rate
 \\[
 \b{F} = \odv{\b{p}}{t}
 \\]
+
+SI unit of force is the newton ($\mathrm{N}$), which is defined as $\mathrm{N} = \mathrm{kg \cdot m/s^2}$.
 
 ### Free Body Diagram
 
@@ -121,6 +126,18 @@ The magnitude of the tension force $\b{F}_T$ is often denoted as $T$.
 
 where $\hat{\b{l}}$ is the unit vector in the direction of the string or rope.
 
+### Elastic Force
+
+The **elastic force** is the restoring force exerted by a material when it is deformed (stretched or compressed) and tries to return to its original shape.
+The elastic force $\b{F}_e$ of an 1-dimensional elastic material is given by **Hooke's Law**:
+
+\\[
+\b{F}_e = -k \b{x}
+\\]
+
+where $k$ is the spring constant (a measure of the stiffness of the material) and $\b{x}$ is the displacement vector from the equilibrium position.
+The negative sign indicates that the force acts in the opposite direction of the displacement.
+
 ### Frictional Force
 
 The **frictional force** or **dry friction** is the force that opposes the relative motion of two surfaces in contact.
@@ -145,6 +162,7 @@ f = \mu N
 \\]
 
 where $\mu$ is the coefficient of friction and $N$ is the normal force between the surfaces.
+We can observe that the coefficient of friction is a dimensionless scalar quantity.
 See the graph below for the relationship between the frictional force and the external horizontal force applied to the object.
 
 ![Frictional Force Graph](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Friction_graph.svg/1280px-Friction_graph.svg.png){: width="60%" }

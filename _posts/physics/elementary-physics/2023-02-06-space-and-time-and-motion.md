@@ -85,7 +85,8 @@ frame of reference to an observer.
 
 ### Position
 
-**Position** is the location of an object in space at a given time. It is represented as a vector $\b{r}$ in a coordinate system.
+**Position** is the location of an object in space at a given time.
+It is represented as a vector $\b{r}$ in a coordinate system.
 **Displacement** is the change in position of an object.
 These are vector quantities, meaning they have both magnitude and direction.
 
@@ -94,6 +95,7 @@ These are vector quantities, meaning they have both magnitude and direction.
 \\]
 
 where $\b{r}_f$ is the final position and $\b{r}_i$ is the initial position.
+SI unit of position is the metre ($\mathrm{m}$).
 
 ### Velocity
 
@@ -110,6 +112,8 @@ where $\b{v}$ is the velocity vector, $\b{r}$ is the position vector, and $t$ is
 v = \abs{\b{v}}
 \\]
 
+SI unit of velocity is the metre per second ($\mathrm{m/s}$).
+
 ### Acceleration
 
 **Acceleration** is the rate of change of velocity with respect to time.
@@ -119,6 +123,7 @@ v = \abs{\b{v}}
 \\]
 
 where $\b{a}$ is the acceleration vector, $\b{v}$ is the velocity vector, and $t$ is time.
+SI unit of acceleration is the metre per second squared ($\mathrm{m/s^2}$).
 
 ## Projectile Motion
 

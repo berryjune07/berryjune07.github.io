@@ -1,5 +1,539 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-13T06:07:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-18T04:43:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Work and Energy &amp;amp; Conservations</title><link href="http://localhost:4000/physics/work-and-energy-and-conservations.html" rel="alternate" type="text/html" title="Work and Energy &amp;amp; Conservations" /><published>2025-08-14T00:00:00+09:00</published><updated>2025-08-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/work-and-energy-and-conservations</id><content type="html" xml:base="http://localhost:4000/physics/work-and-energy-and-conservations.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Work
+
+**Work** is defined as the product of the force applied to an object and the distance over which that force is applied, in the direction of the force.
+The formula for work is given by:
+
+\\[
+W_{12} = \int_{\b{r}_1}^{\b{r}_2} \b{F} \cdot \dd{\b{s}}
+\\]
+
+It is often denoted as $W$, and its SI unit is the **joule** ($\mathrm{J=N \cdot m= kg \cdot m^2 / s^2}$).
+
+### Power
+
+**Power** is the rate at which work is done or energy is transferred.
+It is defined as:
+
+\\[
+P = \odv{W}{t}
+\\]
+
+Alternatively, power can also be expressed in terms of force and velocity:
+
+\\[
+\begin{align\*}
+P &amp;= \odv{W}{t} \nl
+&amp;= \odv{}{t} \int \b{F} \cdot \odv{\b{s}}{t} \dd{t} \nl
+&amp;= \b{F} \cdot \b{v}
+\end{align\*}
+\\]
+
+It is often denoted as $P$, and its SI unit is the **watt** ($\mathrm{W=J/s= kg \cdot m^2 / s^3}$).
+
+## Kinetic Energy
+
+By the Newton&apos;s second law,
+
+\\[
+\begin{align\*}
+W_{12} &amp;= \int\_{\b{r}\_1}^{\b{r}\_2} \b{F} \cdot \dd{\b{s}} \nl
+&amp;= \int\_{\b{r}\_1}^{\b{r}\_2} m \dot{\b{v}} \cdot \odv{\b{s}}{t} \dd{t} \nl
+&amp;= \int\_{t_1}^{t_2} m \dot{\b{v}} \cdot \dd{\b{v}} \nl
+&amp;= \int\_{\b{v}\_1}^{\b{v}\_2} m \dd{ \left( \frac{1}{2} \abs{\b{v}}^2 \right) } \nl
+&amp;= \frac{1}{2} m (v_2^2 - v_1^2)
+\end{align\*}
+\\]
+
+The **kinetic energy** of an object is defined as:
+
+\\[
+K = \frac{1}{2} m v^2
+\\]
+
+Then we get:
+
+\\[
+W = \Delta K
+\\]
+
+This is known as the **work-energy theorem**.
+We can conclude that energy is something that can be converted into work,
+and work is the transfer of energy.
+
+## Conservative Forces
+
+A force is said to be **conservative** if the work done by the force on an object moving from one point to another is independent of the path taken.
+For conservative forces, the work done is only dependent on the initial and final positions of the object.
+In other words,
+
+\\[
+\oint \b{F}_C \cdot \dd{\b{s}} = 0
+\\]
+
+By the mathematical analysis of the property, a conservative force can be expressed as the negative gradient of some scalar function $U$:
+
+\\[
+\b{F}_C = -\grad U
+\\]
+
+and $U$ is called the **potential energy** by the conservative force.
+
+### Potential Energy
+
+The **potential energy** associated with a conservative force is defined as the work done by the force when moving an object from a reference point to a specific point in space.
+The potential energy is given by:
+
+\\[
+U(\b{r}) = -\int_{\b{r}_0}^{\b{r}} \b{F}_C \cdot \dd{\b{s}}
+\\]
+
+where $\b{r}_0$ is the reference point and can be chosen arbitrarily.
+The work done by the conservative force is then:
+
+\\[
+W = -\Delta U
+\\]
+
+We have some common examples of conservative forces and their associated potential energies:
+- The gravitational force $\;\b{F} = -m g \hat{\b{z}} \;$ has the potential energy $\;U = m g z$.
+- The elastic force of a spring $\;\b{F} = -k \b{x} \;$ has the potential energy $\;U = \frac{1}{2} k x^2$.
+
+### Mechanical Energy
+
+The **mechanical energy** of a system is the sum of its kinetic energy and potential energy:
+
+\\[
+E = K + U
+\\]
+
+## Conservation Theorems
+
+### Linear Momentum Conservation
+
+The **linear momentum** of an object is conserved if the net external force acting on the object is zero.
+
+\\[
+\dot{\b{p}} = \b{F}_{\text{net}}
+\\]
+
+This theorem can be analogized to the conservation of the linear momentum of a system of particles,
+which is trivial by the Newton&apos;s third law.
+
+### Mechanical Energy Conservation
+
+The **mechanical energy** of a system is conserved if the only forces acting on the system are conservative forces.
+In this case, the total mechanical energy remains constant:
+
+\\[
+W = \Delta K = -\Delta U \implies \Delta (K + U) = \Delta E = 0
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Constraints of Coordinates</title><link href="http://localhost:4000/physics/constraints-of-coordinates.html" rel="alternate" type="text/html" title="Constraints of Coordinates" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/constraints-of-coordinates</id><content type="html" xml:base="http://localhost:4000/physics/constraints-of-coordinates.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Constraints
+
+A **constraint** is a condition that restricts the motion of a system.
+For example, a particle constrained to move along a straight line, or a gas confined to a cylinder.
+Constraints can be classified to two main types.
+
+### Holonomic Constraints
+
+A **holonomic constraint** is a constraint that can be expressed as an equation involving the coordinates of the system:
+
+\\[
+f(\b{r}_1, \b{r}_2, \ldots, \b{r}_n, t) = 0
+\\]
+
+where $\b{r}_i$ are the coordinates of the particles in the system.
+The simplest example is a rigid body, where the distance between any two points is constant.
+Holonomic constraints can be classified further into two types again.
+
+#### Rheonomic Constraints
+
+A **rheonomic constraint** is a holonomic constraint that the equation of the constraint explicitly depends on time.
+Mechanical systems with such constraints are called **rheonomous**.
+
+#### Scleronomic Constraints
+
+A **scleronomic constraint** is a holonomic constraint that the equation of the constraint does not explicitly depend on time.
+Mechanical systems with such constraints are called **scleronomous**.
+
+### Non-Holonomic Constraints
+
+A **non-holonomic constraint** is a constraint that cannot be expressed as an equation involving the coordinates of the system.
+A gas confined to a cylinder is an example of a non-holonomic constraint, as the gas can move freely in the cylinder but cannot escape it,
+so that the constraint is expressed in terms of inequalities rather than equations.
+
+## Generalized Coordinates
+
+A **generalized coordinate** system is a coordinate system that describes the configuration of a system in terms of its degrees of freedom.
+A **degree of freedom** is a parameter that can be varied independently to describe the configuration of a system:
+mechanical systems with $N$ particles and $M$ holonomic constraints have $3N - M$ degrees of freedom since
+each particle has 3 degrees of freedom in 3D space, and each holonomic constraint reduces the degrees of freedom by 1.
+By denoting the generalized coordinates as $q_1, q_2, \ldots, q_n$, where $n = 3N - M$,
+
+\\[
+\begin{align\*}
+\b{r}_1 &amp;= \b{r}_1(q_1, q_2, \ldots, q_n, t) \nl
+&amp; \;\; \vdots \nl
+\b{r}_N &amp;= \b{r}_N(q_1, q_2, \ldots, q_n, t)
+\end{align\*}
+\\]
+
+The generalized coordinates can be used to describe the configuration of the system in terms of its degrees of freedom.
+It doesn&apos;t have to be the Cartesian coordinates, even doesn&apos;t have to be the linear or orthogonal coordinates,
+or has the dimension of the space. 
+
+Advantage of generalized coordinates comes from the independence of the coordinates.
+Formal space coordinates are independent of each other only if the system is free of constraints.
+In generalized coordinates, the coordinates are independent of each other even if the system is constrained.
+
+### Pfaffian Constraints
+
+A **Pfaffian constraint** is a non-holonomic constraint that can be expressed as a linear combination of the differentials of the generalized coordinates:
+
+\\[
+\sum_{i=1}^{n} A_{ri} \dd{q_i} + B_r \dd{t} = 0
+\\]
+
+where $A_{ri}$ and $B_r$ are functions of the generalized coordinates and time.
+Suppose that we&apos;re arguing with a holonomic system with the following constraints:
+
+\\[
+f_r(q_1, q_2, \ldots, q_n, t) = 0
+\\]
+
+Then we can differentiate the equation with respect to time:
+
+\\[
+\sum_{i=1}^{n} \pdv{f_r}{q_i} \dd{q_i} + \pdv{f_r}{t} \dd{t} = 0
+\\]
+
+And we see that the form of the equation is the same as the Pfaffian constraint form.
+This means that holonomic constraints can always be expressed in Pfaffian form, but not all Pfaffian constraints are holonomic.
+A Pfaffian constraint is holonomic if and only if the equation can be _integrated_ to yield a holonomic constraint.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">D’Alembert’s Principle and Lagrange’s Equations</title><link href="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html" rel="alternate" type="text/html" title="D’Alembert’s Principle and Lagrange’s Equations" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations</id><content type="html" xml:base="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Mechanics of a System of Particles</title><link href="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html" rel="alternate" type="text/html" title="Mechanics of a System of Particles" /><published>2025-08-12T00:00:00+09:00</published><updated>2025-08-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/mechanics-of-a-system-of-particles</id><content type="html" xml:base="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Mechanics of a Particle
+
+Let $\b{r}$ be the position vector of a particle, then the velocity $\b{v}$ and acceleration $\b{a}$ are given by
+
+\\[
+\begin{align\*}
+\b{v} &amp;= \odv{\b{r}}{t} \nl
+\b{a} &amp;= \odv{\b{v}}{t} = \odvn{2}{ \b{r} }{t}
+\end{align\*}
+\\]
+
+The linear momentum $\b{p}$ of a particle with mass $m$ is defined as
+
+\\[
+\b{p} = m\b{v}
+\\]
+
+The mechanics of the particle is contained in _Newton&apos;s second law of motion_,
+which states that there exists frames of reference in which the motion of a particle is described by
+
+\\[
+\b{F} = \odv{\b{p}}{t}
+\\]
+
+where $\b{F}$ is the net force acting on the particle.
+Such a frame of reference is called an _inertial_ or _Galilean system_.
+If the mass $m$ is constant, we can also write this as
+
+\\[
+\b{F} = m\odv{\b{v}}{t} = m\b{a}
+\\]
+
+Many of the important conclusions of mechanics can be expressed in the form of conservation theorems,
+and the first is the _conservation of linear momentum of a particle_:
+&gt; If $\b{F} = 0$, then $\b{p}$ is conserved.
+
+The angular momentum $\b{L}$ of a particle with respect to a point $\b{O}$ is defined as
+
+\\[
+\b{L} = \b{r} \times \b{p}
+\\]
+
+where $\b{r}$ is the position vector of the particle with respect to the point $\b{O}$.
+The moment of force or torque $\b{N}$ with respect to the point $\b{O}$ is defined as
+
+\\[
+\b{N} = \b{r} \times \b{F}
+\\]
+
+We can also express the angular momentum in terms of the torque:
+
+\\[
+\begin{align\*}
+\odv{\b{L}}{t} &amp;= \odv{}{t} (\b{r} \times \b{p}) \nl
+&amp;= \b{v} \times m\b{v} + \b{r} \times \b{F} \nl
+&amp;= \b{N}
+\end{align\*}
+\\]
+
+And we similarly have the _conservation of angular momentum of a particle_:
+&gt; If $\b{N} = 0$, then $\b{L}$ is conserved.
+
+Next, the work done by a force $\b{F}$ on a particle is defined as
+
+\\[
+W_{12} = \int_1^2 \b{F} \cdot \dd{\b{s}}
+\\]
+
+If the mass $m$ is constant, we can also write this as
+
+\\[
+\begin{align\*}
+W_{12} &amp;= \int_1^2 m\odv{\b{v}}{t} \cdot \odv{\b{r}}{t} \dd{t} \nl
+&amp;= m\int_1^2 \odv{}{t} \left( \frac{v^2}{2} \right) \dd{t} \nl
+&amp;= \frac{m}{2} \left( v_2^2 - v_1^2 \right)
+\end{align\*}
+\\]
+
+Thus we define the _kinetic energy_ $T$ of a particle as
+
+\\[
+T = \frac{1}{2}mv^2
+\\]
+
+and get the _work-energy theorem_:
+
+\\[
+W = \Delta T
+\\]
+
+Let&apos;s talk about the _conservative forces_.
+A force $\b{F}$ is called conservative if the work done by the force from a fixed point to another fixed point is independent of the path taken.
+This is equivalent with:
+
+\\[
+\oint \b{F} \cdot \dd{\b{s}} = 0
+\\]
+
+And by the Stokes theorem, this is equivalent with $\curl \b{F} = 0$.
+Thus, by the Poincaré lemma, we can write the force as the gradient of a scalar function $U$:
+
+\\[
+\b{F} = -\grad U
+\\]
+
+The function $U(\b{r})$ is called the _potential energy_ of the force, and can be
+calculated by setting the potential energy at a fixed point to zero:
+
+\\[
+U(\b{r}) = -\int_{\b{r}_0}^{\b{r}} \b{F} \cdot \dd{\b{s}}
+\\]
+
+By the gradient theorem, we can write the work done by a conservative force as
+
+\\[
+W = -\Delta U
+\\]
+
+Therefore, we can also write the work-energy theorem as
+
+\\[
+\Delta (T + U) = 0
+\\]
+
+This means that the sum of the kinetic energy and potential energy is conserved, and we call this the _total mechanical energy_.
+However, if a force is conservative but depends explicitly on time, then the total mechanical energy is not conserved;
+physically, displacement(path integral) is nonzero only when time flows.
+
+## Mechanics of a System of Particles
+
+In generalizing the mechanics of a particle to a system of particles,
+we must distinguish between the _external forces_ acting on the system and the _internal forces_ acting between the particles of the system.
+The equation of motion for the $i$-th particle is given by:
+
+\\[
+\dot{\b{p}}\_i = \b{F}\_i^\text{ext} + \sum_{j \neq i} \b{F}\_{ij}
+\\]
+
+where $\b{F}\_i^\text{ext}$ is the external force acting on the $i$-th particle,
+and $\b{F}\_{ij}$ is the internal force acting on the $i$-th particle due to the $j$-th particle.
+Summing over all particles, we get the equation of motion for the system:
+
+\\[
+\odvn{2}{}{t} \sum\_i m\_i \b{r}\_i = \sum\_i \b{F}\_i^\text{ext} + \sum\_{i\neq j} \b{F}\_{ij}
+\\]
+
+By the _Newton&apos;s third law of motion_, the internal forces satisfy $\b{F}\_{ij} = -\b{F}\_{ji}$, and thus the sum of the internal forces is zero.
+Writing the total mass of the system as $M = \sum_i m_i$ and the _center of mass_ $\b{R}$ as
+
+\\[
+\b{R} = \frac{1}{M} \sum_i m_i \b{r}_i
+\\]
+
+we can rewrite the equation of motion for the system as
+
+\\[
+M \odvn{2}{}{t} \b{R} = \sum_i \b{F}_i^\text{ext} = \b{F}^\text{ext}
+\\]
+
+This means that the center of mass of the system behaves like a single particle with mass $M$ under the influence of the external forces.
+The total linear momentum of the system is given by
+
+\\[
+\b{P} = \sum_i m_i \odv{\b{r}_i}{t} = M \b{V}
+\\]
+
+where $\b{V} = \odv{\b{R}}{t}$ is the velocity of the center of mass.
+And we have the _conservation of linear momentum of a system of particles_:
+&gt; If $\b{F}^\text{ext} = 0$, then $\b{P}$ is conserved.
+
+The total angular momentum of the system with respect to a point $\b{O}$ is given by
+
+\\[
+\b{L} = \sum_i \b{r}_i \times \b{p}_i
+\\]
+
+Let&apos;s define $\b{r}_{ij} = \b{r}_i - \b{r}_j$ as the position vector of the $i$-th particle with respect to the $j$-th particle.
+
+\\[
+\begin{align\*}
+\odv{\b{L}}{t} &amp;= \sum_i \odv{}{t} (\b{r}\_i \times m_i \odv{\b{r}\_i}{t}) \nl
+&amp;= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i\neq j} \b{r}\_i \times \b{F}\_{ij} \nl
+&amp;= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i &lt; j} \b{r}\_{ij} \times \b{F}\_{ij}
+\end{align\*}
+\\]
+
+If the internal forces between the particles, in addition to being equal and opposite,
+also lie along the line joining the particles -- a condition known as the _strong form of Newton&apos;s third law_ -- then the second term vanishes.
+In this case, we can write the angular momentum of the system as
+
+\\[
+\odv{\b{L}}{t} = \sum_i \b{r}_i \times \b{F}_i^\text{ext} = \b{N}^\text{ext}
+\\]
+
+And we have the _conservation of angular momentum of a system of particles_:
+&gt; If $\b{N}^\text{ext} = 0$, then $\b{L}$ is conserved.
+
+Let&apos;s see the system from the point of view of the center of mass.
+Let&apos;s define
+
+\\[
+\b{r}^\prime_i = \b{r}_i - \b{R} \nl
+\b{v}^\prime_i = \b{v}_i - \b{V}
+\\]
+
+Then we have a good property:
+
+\\[
+\sum_i m_i \b{r}^\prime_i = 0 \nl
+\sum_i m_i \b{v}^\prime_i = 0
+\\]
+
+This means that the center of mass is at the origin in this new coordinate system.
+Using this, we can rewrite the angular momentum of the system as
+
+\\[
+\begin{align\*}
+\b{L} &amp;= \sum_i \left( \b{r}^\prime_i + \b{R} \right) \times m_i \left( \b{v}^\prime_i + \b{V} \right) \nl
+&amp;= \b{R} \times M\b{V} + \sum_i \b{r}^\prime_i \times m_i \b{v}^\prime_i
+\end{align\*}
+\\]
+
+By writing $\b{p}^\prime_i = m_i \b{v}^\prime_i$,
+
+\\[
+\b{L} = \b{R} \times \b{P} + \sum_i \b{r}^\prime_i \times \b{p}^\prime_i
+\\]
+
+This means that the angular momentum of the system can be decomposed into two parts:
+1. The angular momentum of the center of mass
+2. The angular momentum of the particles with respect to the center of mass
+
+This emphasizes that $\b{L}$ depends on the choice of the point $\b{O}$, only through $\b{R}$.
+Only if $b{R}$ is rest with respect to $\b{O}$, $\b{L}$ will be independent of the point of reference.
+
+The total kinetic energy of the system is given by
+
+\\[
+\begin{align\*}
+T &amp;= \sum_i T_i = \sum_i \frac{1}{2} m_i \left\vert \b{v}_i^\prime + \b{V} \right\vert^2 \nl
+&amp;= \sum_i \frac{1}{2} m_i \left( v_i^{\prime 2} + 2\b{v}_i^\prime \cdot \b{V} + V^2 \right) \nl
+&amp;= \frac{1}{2} M V^2 + \sum_i \frac{1}{2} m_i v_i^{\prime 2}
+\end{align\*}
+\\]
+
+This means that the total kinetic energy of the system can also be decomposed into two parts:
+1. The kinetic energy of the center of mass
+2. The kinetic energy of the particles with respect to the center of mass
+
+Now let&apos;s seek for the work done by the forces acting on the system.
+Assume that every force acting on the system is conservative, then
+
+\\[
+\begin{align\*}
+W_{12} &amp;= \sum_i \int_1^2 \b{F}\_i^\text{ext} \cdot \dd{\b{s}}_i + \sum\_{i \neq j} \int_1^2 \b{F}\_{ij} \cdot \dd{\b{s}}\_i \nl
+&amp;= -\sum_i \int_1^2 \grad_i U_i \cdot \dd{\b{s}}\_i - \sum\_{i \neq j} \int_1^2 \grad_i U\_{ij} \cdot \dd{\b{s}}\_i
+\end{align\*}
+\\]
+
+where $U_i$ is the potential energy of the external force acting on the $i$-th particle,
+and $U_{ij}$ is the potential energy of the internal force acting between the $i$-th and $j$-th particles.
+$\grad_i$ means that we take the gradient with respect to the coordinates of the $i$-th particle.
+By the Newton&apos;s third law, we have $\grad_i U_{ij} = -\grad_j U_{ji}$,
+
+\\[
+\begin{align\*}
+W_{12} &amp;= -\sum_i \Delta U_i - \sum_{i &lt; j} \int_1^2 \left( \grad_i U_{ij} \cdot \dd{\b{s}}\_i + \grad_j U_{ji} \cdot \dd{\b{s}}\_j \right) \nl
+&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \int_1^2 \grad_i U\_{ij} \cdot \left( \dd{\b{s}}\_i - \dd{\b{s}}\_j \right) \nl
+&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \int_1^2 \grad_{ij} U\_{ij} \cdot \dd{\b{s}}\_{ij} \nl
+&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \Delta U_{ij}
+\end{align\*}
+\\]
+
+This means that we can write the whole potential energy of the system as
+
+\\[
+U = \sum_i U_i + \sum_{i &lt; j} U_{ij}
+\\]
+
+We often set $U_{ij}=U_{ji}$, so that the potential energy is symmetric with respect to the particles.
+
+\\[
+U = \sum_i U_i + \frac{1}{2} \sum_{i \neq j} U_{ij}
+\\]
+
+Thus, we can write the work done by the forces acting on the system as
+
+\\[
+W = -\Delta U
+\\]
+
+And also get the _conservation of total mechanical energy_:
+
+\\[
+\Delta (T + U) = 0
+\\]
+
+Let&apos;s look for the internal potential energy more closely.
+If it depends only on the distance between the particles, i.e. $U_{ij} = U_{ij}(r_{ij})$,
+then we can write the force as
+
+\\[
+\b{F}\_{ij} = -\grad\_i U\_{ij}(r\_{ij}) = -\pdv{U\_{ij}}{r\_{ij}} \grad\_i r\_{ij} = -\pdv{U\_{ij}}{r\_{ij}} \frac{\b{r}\_{ij}}{r\_{ij}}
+\\]
+
+This means that the internal forces are central forces, and they satisfy the strong form of Newton&apos;s third law.
+Internal potential is generally not zero, and it may vary as the system changes with time.
+However, for rigid bodies, in other words for constant $r\_{ij}$,
+$\dd{\b{s}}\_{ij}$ can only be perpendicular to $\b{r}\_{ij}$, and so for central forces, it is perpendicular to $\b{F}\_{ij}$,
+which means that the work done by the internal forces is zero, resulting in the constant internal potential energy.
+Thus, we can completely disregard the internal potential energy of a rigid body system.
+&gt; $U = \sum_i U_i$ for a rigid body system.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -698,57 +1232,7 @@ p&lt;q \implies M_p[X] \leq M_q[X]
 
 By constructing the probability theory upon the measure theory, we can treat these probabilistic properties more rigorously.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Extreme Values of Functions</title><link href="http://localhost:4000/mathematics/extreme-values-of-functions.html" rel="alternate" type="text/html" title="Extreme Values of Functions" /><published>2025-08-01T00:00:00+09:00</published><updated>2025-08-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/extreme-values-of-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/extreme-values-of-functions.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">The Chain Rule (univariate)</title><link href="http://localhost:4000/mathematics/the-chain-rule-univariate.html" rel="alternate" type="text/html" title="The Chain Rule (univariate)" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-chain-rule-univariate</id><content type="html" xml:base="http://localhost:4000/mathematics/the-chain-rule-univariate.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## The Chain Rule
-
-The **chain rule** is a fundamental theorem in calculus that allows us to differentiate composite functions.
-If $f$ and $g$ are functions such that $f$ is differentiable at $g(x)$ and $g$ is differentiable at $x$, then the derivative of the composite function $f(g(x))$ is given by:
-
-\\[
-(f \circ g)\&apos;(x) = f\&apos;(g(x)) \cdot g\&apos;(x)
-\\]
-
-Denoting $y=g(x), z=f(y)$, we can express the chain rule as:
-
-\\[
-\odv{z}{x} = \odv{z}{y} \odv{y}{x}
-\\]
-
-This means that the change in $z$ with respect to $x$ is the product of the change in $z$ with respect to $y$ and the change in $y$ with respect to $x$.
-This is particularly useful when dealing with functions that are composed of multiple layers, allowing us to break down the differentiation process into manageable parts.
-Applying the chain rule multiple times allows us to differentiate functions with more than one layer of composition.
-
-### Proof
-
-To prove the chain rule, we will use the linearization of the function.
-Read [here](mathematics/linearization-and-differentials.html#error-in-differential-approximation) for more details.
-Denoting the $y_0 = g(x_0)$,
-
-\\[
-\Delta y = (g\&apos;(x_0) + \varepsilon_1) \Delta x \nl\nl
-\Delta z = (f\&apos;(y_0) + \varepsilon_2) \Delta y
-\\]
-
-Substituting $\Delta y$ into the equation for $\Delta z$ gives:
-
-\\[
-\Delta z = (f\&apos;(y_0) + \varepsilon_2) (g\&apos;(x_0) + \varepsilon_1) \Delta x
-\\]
-
-Taking the limit as $\Delta x \to 0$, we have:
-
-\\[
-\lim_{\Delta x \to 0} \varepsilon_1 = 0, \quad \lim_{\Delta x \to 0} \Delta y = 0, \quad \lim_{\Delta y \to 0} \varepsilon_2 = 0
-\\]
-
-Thus, we can write:
-
-\\[
-\odv{z}{x}\bigg\|\_{x=x_0} = \lim\_{\Delta x \to 0} \frac{\Delta z}{\Delta x} = f\&apos;(y_0) g\&apos;(x_0) = \odv{z}{y}\bigg\|\_{y=y_0} \odv{y}{x} \bigg\|\_{x=x_0}
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Covariance and Correlation</title><link href="http://localhost:4000/mathematics/covariance-and-correlation.html" rel="alternate" type="text/html" title="Covariance and Correlation" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/covariance-and-correlation</id><content type="html" xml:base="http://localhost:4000/mathematics/covariance-and-correlation.html">&lt;!--more--&gt;
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Covariance and Correlation</title><link href="http://localhost:4000/mathematics/covariance-and-correlation.html" rel="alternate" type="text/html" title="Covariance and Correlation" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/covariance-and-correlation</id><content type="html" xml:base="http://localhost:4000/mathematics/covariance-and-correlation.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -846,132 +1330,4 @@ Let&apos;s check an important property of the multivariate normal distribution:
 X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)
 \\]
 
-where $\sigma_i^2 = \Sigma_{i,i}$ is the variance of $X_i$ and $\mu_i$ is the mean of $X_i$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Linearization and Differentials</title><link href="http://localhost:4000/mathematics/linearization-and-differentials.html" rel="alternate" type="text/html" title="Linearization and Differentials" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linearization-and-differentials</id><content type="html" xml:base="http://localhost:4000/mathematics/linearization-and-differentials.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Linearization
-
-If $f$ is a function that is differentiable at $x = a$, then the **linearization** of $f$ at $a$ is given by:
-
-\\[
-L(x) = f(a) + f\&apos;(a)(x - a)
-\\]
-
-This linear function $L(x)$ approximates the value of $f(x)$ near $x = a$. The point $x = a$ is called the _center_ of the approximation.
-
-## Differentials
-
-The **differential** of a function $y=f(x)$ at a point $x$ is defined as:
-
-\\[
-\dd{y} = f\&apos;(x) \, \dd{x}
-\\]
-
-Here, $\dd{y}$ represents the change in $y$ corresponding to a small change $\dd{x}$ in $x$. The differential $\dd{y}$ can be thought of as the linear approximation of the change in $y$ when $x$ changes by a small amount.
-
-### Estimating Changes
-
-To estimate the change in $y$ when $x$ changes from $a$ to $a + \Delta x$, we can use the differential:
-
-\\[
-\Delta y = f(a+\Delta x) -f(a) \approx \dd{y} = f\&apos;(a) \, \Delta x
-\\]
-
-This approximation is valid when $\Delta x$ is small, allowing us to use the linearization of $f$ at $a$.
-
-### Error in Differential Approximation
-
-Supposing that $\dd{x} = \Delta x$, the approximation error is calculated as:
-
-\\[
-\begin{align\*}
-\text{Error} &amp;= \Delta y - \dd{y} \nl
-&amp;= f(a + \Delta x) - f(a) - f\&apos;(a) \, \dd{x} \nl
-&amp;= \left( \frac{f(a + \Delta x) - f(a)}{\Delta x} - f\&apos;(a) \right) \Delta x \nl
-&amp;= \varepsilon \Delta x
-\end{align\*}
-\\]
-
-where $\varepsilon$ is the error term, which approaches zero as $\Delta x$ approaches zero.
-
-\\[
-\lim_{\Delta x \to 0} \varepsilon = f\&apos;(a) - f\&apos;(a) = 0
-\\]
-
-Thus, the error in the differential approximation becomes negligible as $\Delta x$ becomes very small.
-In summary,
-
-\\[
-\Delta y = f\&apos;(a) \, \Delta x + \varepsilon \Delta x
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Hierarchical Models and Mixture Distributions</title><link href="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html" rel="alternate" type="text/html" title="Hierarchical Models and Mixture Distributions" /><published>2025-07-28T00:00:00+09:00</published><updated>2025-07-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions</id><content type="html" xml:base="http://localhost:4000/mathematics/hierarchical-models-and-mixture-distributions.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Mixture Distributions
-
-A random variable $X$ is said to have a **mixture distribution** if the distribution of $X$ depends on a quantity that is itself a random variable.
-
-### Example
-
-Let $X\|Y \sim \mathrm{B}(Y, p)$ and $Y \sim \mathrm{Poisson}(\lambda)$.
-This is called a **hierarchical model**. By summing over the possible values of $Y$, we can find the marginal distribution of $X$.
-Omitting the details, we can show that $X\sim \mathrm{Poisson}(\lambda p)$.
-
-The level of hierarchy can be extended to more than two levels.
-For example, let $X\|Y \sim \mathrm{B}(Y, p)$, $Y\|Z \sim \mathrm{Poisson}(Z)$, and $Z \sim \mathrm{Gamma}(\alpha, \beta)$.
-
-### Properties
-
-If $X$ an $Y$ are any two random variables, then
-
-\\[
-\mathrm{E}[X] = \mathrm{E}[\mathrm{E}[X\|Y]]
-\\]
-
-provided that the expectations exist. It is known as the **law of total expectation**.
-We also have
-
-\\[
-\mathrm{Var}[X] = \mathrm{E}[\mathrm{Var}[X\|Y]] + \mathrm{Var}[\mathrm{E}[X\|Y]]
-\\]
-
-This is known as the **law of total variance**. These properties are useful for calculating expectations and variances in hierarchical models.
-We&apos;re omitting the proofs here.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Multivariate Transformations</title><link href="http://localhost:4000/mathematics/multivariate-transformations.html" rel="alternate" type="text/html" title="Multivariate Transformations" /><published>2025-07-27T00:00:00+09:00</published><updated>2025-07-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/multivariate-transformations</id><content type="html" xml:base="http://localhost:4000/mathematics/multivariate-transformations.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Multivariate Transformations
-
-A **multivariate transformation** is a function that maps a vector of random variables to another vector of random variables.
-Let $\mathbf{X} \sim f_{\mathbf{X}}(\mathbf{x})$ be a random vector at $\mathbb{R}^n$ and $\mathbf{Y} = T(\mathbf{X})$ be a transformation of $\mathbf{X}$.
-Here, $T: \mathbb{R}^n \to \mathbb{R}^n$ is one-to-one and differentiable.
-Then the distribution of $\mathbf{Y}$ is given by:
-
-\\[
-f_{\mathbf{Y}}(\mathbf{y}) = f_{\mathbf{X}}\left(T^{-1}(\mathbf{y}) \right) \left| \det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}} \right|
-\\]
-
-where $\det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}}$ is the determinant of the Jacobian matrix of the inverse transformation $T^{-1}$.
-
-&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt;Proof&lt;/summary&gt;
-\\[
-\begin{align\*}
-P(\mathbf{Y} \in A) &amp;= P(T(\mathbf{X}) \in A) = P(\mathbf{X} \in T^{-1}(A)) \nl
-&amp;= \int_{T^{-1}(A)} f_{\mathbf{X}}(\mathbf{x}) \, \dd{\mathbf{x}} \nl
-&amp;= \int_{A} f_{\mathbf{X}}\left(T^{-1}(\mathbf{y}) \right) \left| \det \pdv{T^{-1}(\mathbf{y})}{\mathbf{y}} \right| \, \dd{\mathbf{y}} \nl
-&amp;= \int_{A} f_{\mathbf{Y}}(\mathbf{y}) \, \dd{\mathbf{y}}
-\end{align\*}
-\\]
-&lt;/details&gt; &lt;br&gt; 
-
-If $T$ is not one-to-one, we can think of the partition of the domain into disjoint sets where $T$ is one-to-one.
-In this case, we can apply the transformation to each partition and sum the contributions.
-We can construct the process just as we did for the [univariate case](/mathematics/distributions-of-functions-of-a-random-variable.html#monotonic-partitions).
-
-\\[
-f_{\mathbf{Y}}(\mathbf{y}) = \begin{cases}
-\dps \sum_{i} f_{\mathbf{X}}\left(T^{-1}_i(\mathbf{y}) \right) \left| \det \pdv{T^{-1}_i(\mathbf{y})}{\mathbf{y}} \right| \mathbf{1}_{T_i(\mathbf{X})} (\mathbf{y}) &amp; ; \mathbf{y} \in \supp f_{\mathbf{Y}} \nl
-0 &amp; ; \mathbf{y} \notin \supp f_{\mathbf{Y}}
-\end{cases}
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
+where $\sigma_i^2 = \Sigma_{i,i}$ is the variance of $X_i$ and $\mu_i$ is the mean of $X_i$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
