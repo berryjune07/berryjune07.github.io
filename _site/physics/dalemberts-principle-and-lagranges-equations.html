@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-08-18T04:30:30+09:00',
+    INDEX_KEY: 'index--2025-08-28T03:33:40+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1548 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   25 min
 </span>
 
       </span>
@@ -303,6 +303,350 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#virtual-displacements-and-virtual-work" id="markdown-toc-virtual-displacements-and-virtual-work">Virtual Displacements and Virtual Work</a></li>
+  <li><a href="#dalemberts-principle" id="markdown-toc-dalemberts-principle">D’Alembert’s Principle</a></li>
+  <li><a href="#lagranges-equations" id="markdown-toc-lagranges-equations">Lagrange’s Equations</a></li>
+  <li><a href="#velocity-dependent-potentials" id="markdown-toc-velocity-dependent-potentials">Velocity-Dependent Potentials</a></li>
+  <li><a href="#rayleighs-dissipation-function" id="markdown-toc-rayleighs-dissipation-function">Rayleigh’s Dissipation Function</a></li>
+  <li>
+<a href="#simple-applications" id="markdown-toc-simple-applications">Simple Applications</a>    <ul>
+      <li><a href="#single-particle-in-plane-polar-coordinates" id="markdown-toc-single-particle-in-plane-polar-coordinates">Single Particle in Plane Polar Coordinates</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="virtual-displacements-and-virtual-work">Virtual Displacements and Virtual Work</h2>
+
+<p>In a system of particles, a <strong>virtual displacement</strong> is an infinitesimal change in the configuration of the system
+that is consistent with the constraints at a given instant in time. It does not correspond to an actual motion of the system but rather represents a hypothetical change in position.
+Therefore, to distinguish between actual displacements and virtual displacements, we denote actual displacements by
+$\dd{\b{r}}$ and virtual displacements by $\delta \b{r}$.</p>
+
+<p>Suppose the system is in <em>equilibrium</em>, so that the net force on each particle is zero.
+Then, the total <strong>virtual work</strong> done by the forces during any virtual displacement is zero. This is expressed mathematically as:</p>
+
+<p>\[
+\sum_i \b{F}_i \cdot \delta \b{r}_i = 0
+\]</p>
+
+<p>where $\b{F}_i = 0$ is the net force on particle $i$. Decomposing the forces into applied forces $\b{F}_i^{(a)}$ and constraint forces $\b{f}_i$,</p>
+
+<p>\[
+\b{F}_i = \b{F}_i^{(a)} + \b{f}_i
+\]</p>
+
+<p>the virtual work equation becomes:</p>
+
+<p>\[
+\sum_i \b{F}_i^{(a)} \cdot \delta \b{r}_i + \sum_i \b{f}_i \cdot \delta \b{r}_i = 0
+\]</p>
+
+<p>We now restrict our attention to <strong>ideal constraints</strong>, for which the constraint forces do no virtual work:</p>
+
+<p>\[
+\sum_i \b{f}_i \cdot \delta \b{r}_i = 0
+\]</p>
+
+<p>Thus, the virtual work equation simplifies to:</p>
+
+<p>\[
+\sum_i \b{F}_i^{(a)} \cdot \delta \b{r}_i = 0
+\]</p>
+
+<p>This is the <strong>principle of virtual work</strong> for a system in equilibrium with ideal constraints.</p>
+
+<h2 id="dalemberts-principle">D’Alembert’s Principle</h2>
+
+<p>D’Alembert’s principle extends the principle of virtual work to dynamics.
+We can consider an arbitrary system of particles, not necessarily in equilibrium, as being in equilibrium under the fictitious forces $-\dot{\b{p}}_i$
+acting on each particle $i$.
+Therefore, we similarly have:</p>
+
+<p>\[
+\sum_i \left( \b{F}_i^{(a)} - \dot{\b{p}}_i \right) \cdot \delta \b{r}_i = 0
+\]</p>
+
+<p>This is <strong>D’Alembert’s principle</strong>.</p>
+
+<h2 id="lagranges-equations">Lagrange’s Equations</h2>
+
+<p>The translation from $\b{r}_i$ to generalized coordinates $q_j$ starts with the relation:</p>
+
+<p>\[
+\dd{\b{r}}_i = \sum_k \pdv{\b{r}_i}{q_k} \dd{q}_k + \pdv{\b{r}_i}{t} \dd{t}
+\]</p>
+
+<p>which is just a simple chain rule expansion. We also have:</p>
+
+<p>\[
+\b{v}_i = \sum_k \pdv{\b{r}_i}{q_k} \dot{q}_k + \pdv{\b{r}_i}{t}
+\]</p>
+
+<p>Similarly, the virtual displacement can be connected to the virtual displacement in generalized coordinates:</p>
+
+<p>\[
+\delta \b{r}_i = \sum_j \pdv{\b{r}_i}{q_j} \delta q_j
+\]</p>
+
+<p>Note that the time $t$ is held fixed during a virtual displacement, so there is no $\delta t$ term.
+In terms of generalized coordinates, the virtual work of the $\b{F}_i$ becomes:</p>
+
+<p>\[
+\begin{align*}
+\sum_i \b{F}_i \cdot \delta \b{r}_i &amp;= \sum_{i,j} \b{F}_i \cdot \pdv{\b{r}_i}{q_j} \delta q_j \nl
+&amp;= \sum_j Q_j \delta q_j
+\end{align*}
+\]</p>
+
+<p>where we define the <strong>generalized force</strong> $Q_j$ as:</p>
+
+<p>\[
+Q_j = \sum_i \b{F}_i \cdot \pdv{\b{r}_i}{q_j}
+\]</p>
+
+<p>Similarly, the virtual work of the $\dot{\b{p}}_i$ becomes:</p>
+
+<p>\[
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i = \sum_{i,j} \dot{\b{p}}_i \cdot \pdv{\b{r}_i}{q_j} \delta q_j
+\]</p>
+
+<p>Now by the relations</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{\b{r}_i}{q_j} \right) = \pdv{\b{v}_i}{q_j} \nt
+\pdv{\b{v}_i}{\dot{q}_j} = \pdv{\b{r}_i}{q_j}
+\]</p>
+
+<p>which are easily verified, we have:</p>
+
+<p>\[
+\begin{align*}
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i
+&amp;= \sum_{i,j} \left[ \odv{}{t} \left( m_i \dot{\b{r}}_i \cdot \pdv{\b{r}_i}{q_j} \right) - m_i \dot{\b{r}}_i \cdot \odv{}{t} \left( \pdv{\b{r}_i}{q_j} \right) \right] \delta q_j \nl
+&amp;= \sum_{i,j} \left[ \odv{}{t} \left( m_i \b{v}_i \cdot \pdv{\b{v}_i}{\dot{q}_j} \right) - m_i \b{v}_i \cdot \pdv{\b{v}_i}{q_j} \right] \delta q_j \nl
+&amp;= \sum_j \left\{ \odv{}{t} \left[ \pdv{}{ \dot{q}_j } \left( \sum_i \frac{1}{2} m_i v_i^2 \right) \right] - \pdv{}{ q_j } \left( \sum_i \frac{1}{2} m_i v_i^2 \right) \right\} \delta q_j
+\end{align*}
+\]</p>
+
+<p>The quantity in parentheses is the <strong>kinetic energy</strong> $T$ of the system:</p>
+
+<p>\[
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i = \sum_j \left[ \odv{}{t} \left( \pdv{T}{\dot{q}_j} \right) - \pdv{T}{q_j} \right] \delta q_j
+\]</p>
+
+<p>Substituting these results into D’Alembert’s principle, we have:</p>
+
+<p>\[
+\sum_j \left[ \odv{}{t} \left( \pdv{T}{\dot{q}_j} \right) - \pdv{T}{q_j} - Q_j \right] \delta q_j = 0
+\]</p>
+
+<p>Since under the holonomic constraints we can always find an independent coordinate system $q_j$ such that the $\delta q_j$ are independent,
+the coefficients of each $\delta q_j$ must vanish separately, giving the <strong>Lagrange’s equations</strong>:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{T}{\dot{q_j}} \right) - \pdv{T}{q_j} = Q_j
+\]</p>
+
+<p>These are $n$ differential equations for the $n$ generalized coordinates $q_j$.
+When the forces are derivable from a potential $V(\b{r}_1,\ldots,\b{r}_N,t)$, the generalized forces can be expressed as:</p>
+
+<p>\[
+\begin{align*}
+Q_j &amp;= \sum_i \b{F}_i \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;= -\sum_i \pdv{V}{\b{r}_i} \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;= -\pdv{V}{q_j}
+\end{align*}
+\]</p>
+
+<p>As here defined, the potential $V$ does not depend on the generalized velocities $\dot{q}_j$, so the Lagrange’s equations become:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{(T-V)}{\dot{q}_j} \right) - \pdv{(T-V)}{q_j} = 0
+\]</p>
+
+<p>Defining the <strong>Lagrangian</strong> $L$ as</p>
+
+<p>\[
+L = T - V
+\]</p>
+
+<p>we can write the Lagrange’s equations in the compact form:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{L}{\dot{q_j}} \right) - \pdv{L}{q_j} = 0
+\]</p>
+
+<p>These equations are the foundation of Lagrangian mechanics and provide a powerful method for analyzing the dynamics of systems with constraints.
+Note that the Lagrangian is not unique;</p>
+
+<p>\[
+L^\prime( \b{q}, \dot{\b{q}}, t ) = L( \b{q}, \dot{\b{q}}, t ) + \odv{F( \b{q}, t )}{t}
+\]</p>
+
+<p>leads to the same equations of motion, where $F$ is any differentiable function of the generalized coordinates and time,
+since the added term does not affect the derivatives in Lagrange’s equations.</p>
+
+<h2 id="velocity-dependent-potentials">Velocity-Dependent Potentials</h2>
+
+<p>In some cases, the forces acting on a system may depend on the velocities of the particles.
+The most common example is the <em>Lorentz force</em> acting on a charged particle in an electromagnetic field.</p>
+
+<p>\[
+\b{F} = q \left( \b{E} + \b{v} \times \b{B} \right)
+\]</p>
+
+<p>Since by the electromagnetism we have:</p>
+
+<p>\[
+\b{E} = -\grad \phi - \pdv{\b{A}}{t} \nl
+\b{B} = \curl \b{A}
+\]</p>
+
+<p>Lagrange’s equations can still be applied for velocity-dependent potentials if they provide the generalized forces through:</p>
+
+<p>\[
+Q_j = -\pdv{U}{q_j} + \odv{}{t} \left( \pdv{U}{\dot{q}_j} \right)
+\]</p>
+
+<p>where $U(\b{q}, \dot{\b{q}}, t)$ is the velocity-dependent potential.
+In this case the Lagrangian is defined as $L = T - U$ as before, and Lagrange’s equations retain their form.
+For the Lorentz force, the velocity-dependent potential is given by:</p>
+
+<p>\[
+U = q \left( \phi - \b{A} \cdot \b{v} \right)
+\]</p>
+
+<p>We leave the verification of this as an exercise to the reader.</p>
+
+<h2 id="rayleighs-dissipation-function">Rayleigh’s Dissipation Function</h2>
+
+<p>In some systems, non-conservative forces such as friction or air resistance can be modeled using a dissipation function.
+Note that if not all the forces are derivable from a potential, Lagrange’s equations can be written as:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{L}{\dot{q}_j} \right) - \pdv{L}{q_j} = Q_j^{(nc)}
+\]</p>
+
+<p>where $L$ contains only the potential of the conservative forces, and $Q_j^{(nc)}$ are the generalized non-conservative forces.
+If we can model the frictional forces as:</p>
+
+<p>\[
+F_{f_i,j} = -k_j v_{i,j}
+\]</p>
+
+<p>where $F_{f_i,j}$ is the $j$-th component of the frictional force on particle $i$, $v_{i,j}$ is the corresponding velocity component, and $k_j$ is a constant, then we can define <strong>Rayleigh’s dissipation function</strong> $\mathcal{F}$ as:</p>
+
+<p>\[
+\mathcal{F} = \frac{1}{2} \sum_{i,j} k_j v_{i,j}^2
+\]</p>
+
+<p>From this definition, it follows that:</p>
+
+<p>\[
+F_{f_i,j} = -\pdv{\mathcal{F}}{v_{i,j}}
+\]</p>
+
+<p>or, simply:</p>
+
+<p>\[
+\b{F}_{f_i} = -\pdv{\mathcal{F}}{\b{v}_i} = -\grad_{\b{v}_i} \mathcal{F}
+\]</p>
+
+<p>We can also give a physical interpretation of $\mathcal{F}$.
+The work done by the system against the frictional force is:</p>
+
+<p>\[
+\begin{align*}
+\dd{W_f} &amp;= -\sum_i \b{F}_{f_i} \cdot \b{v}_i \dd{t} \nl
+&amp;= \sum_i \pdv{\mathcal{F}}{\b{v}_i} \cdot \b{v}_i \dd{t} \nl
+&amp;= 2 \mathcal{F} \dd{t}
+\end{align*}
+\]</p>
+
+<p>Hence, $2\mathcal{F}$ is the power dissipated by the frictional forces.
+The components of the generalized forces due to friction are then:</p>
+
+<p>\[
+\begin{align*}
+Q_j &amp;= \sum_i \b{F}_{f_i} \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;= -\sum_i \pdv{\mathcal{F}}{\b{v}_i} \cdot \pdv{\b{v}_i}{\dot{q}_j} \nl
+&amp;= -\pdv{\mathcal{F}}{\dot{q}_j}
+\end{align*}
+\]</p>
+
+<p>Thus, Lagrange’s equations with Rayleigh’s dissipation function become:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{L}{\dot{q}_j} \right) - \pdv{L}{q_j} + \pdv{\mathcal{F}}{\dot{q}_j} = 0
+\]</p>
+
+<h2 id="simple-applications">Simple Applications</h2>
+
+<p>By using generalized coordinates, the kinetic energy is written as:</p>
+
+<p>\[
+\begin{align*}
+T &amp;= \frac{1}{2} \sum_i m_i v_i^2 \nl
+&amp;= \frac{1}{2} \sum_i m_i \left( \sum_j \pdv{\b{r}_i}{q_j} \dot{q}_j + \pdv{\b{r}_i}{t} \right)^2 \nl
+&amp;= M_0 + \sum_j M_j \dot{q}_j + \frac{1}{2} \sum_{j,k} M_{jk} \dot{q}_j \dot{q}_k
+\end{align*}
+\]</p>
+
+<p>where</p>
+
+<p>\[
+\begin{align*}
+M_0 &amp;= \frac{1}{2} \sum_i m_i \left( \pdv{\b{r}_i}{t} \right)^2 \nt
+M_j &amp;= \sum_i m_i \pdv{\b{r}_i}{t} \cdot \pdv{\b{r}_i}{q_j} \nt
+M_{jk} &amp;= \sum_i m_i \pdv{\b{r}_i}{q_j} \cdot \pdv{\b{r}_i}{q_k}
+\end{align*}
+\]</p>
+
+<p>The coefficients $M_{jk}$ form a symmetric matrix called the <strong>mass matrix</strong> of the system.
+If the transformation equations do not depend explicitly on time, as may as occur when the constraints are scleronomic,
+then $M_0$ and $M_j$ vanish, and the kinetic energy is a homogeneous quadratic function of the generalized velocities:</p>
+
+<p>\[
+T = \frac{1}{2} \dot{\b{q}}^\top \b{M} \dot{\b{q}}
+\]</p>
+
+<h3 id="single-particle-in-plane-polar-coordinates">Single Particle in Plane Polar Coordinates</h3>
+
+<p>Consider a single particle of mass $m$ moving in a plane under the force $\b{F}$.
+We have two generalized coordinates, the polar coordinates $r$ and $\theta$.
+The infinitesimal displacement is:</p>
+
+<p>\[
+\dd{\b{r}} = \hat{\b{r}} \dd{r} + r \hat{\b{\theta}} \dd{\theta}
+\]</p>
+
+<p>The kinetic energy is:</p>
+
+<p>\[
+T = \frac{1}{2} m \left( \dot{r}^2 + r^2 \dot{\theta}^2 \right)
+\]</p>
+
+<p>The generalized forces are:</p>
+
+<p>\[
+\begin{align*}
+Q_r &amp;= \b{F} \cdot \pdv{\b{r}}{r} = \b{F} \cdot \hat{\b{r}} = F_r \nt
+Q_\theta &amp;= \b{F} \cdot \pdv{\b{r}}{\theta} = \b{F} \cdot r \hat{\b{\theta}} = r F_\theta
+\end{align*}
+\]</p>
+
+<p>Thus, Lagrange’s equations become:</p>
+
+<p>\[
+\begin{align*}
+m \ddot{r} - m r \dot{\theta}^2 &amp;= F_r \nt
+\odv{}{t} \left( m r^2 \dot{\theta} \right) &amp;= r F_\theta
+\end{align*}
+\]</p>
+
+<p>The first equation is the radial equation of motion, and the second is the angular equation of motion.
+The second term of the first equation is the centripetal force, and the second equation is exactly the relationship between torque and angular momentum.</p>
 
   
 </article>
@@ -457,7 +801,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/constraints-of-coordinates.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/constraints-of-coordinates.html" class="flip-title">Constraints of Coordinates</a>  </h3>      <a class="fill-card no-hover" href="/physics/constraints-of-coordinates.html" tabindex="-1"><span class="sr-only">Continue reading Constraints of Coordinates</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/mechanics-of-a-system-of-particles.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/mechanics-of-a-system-of-particles.html" class="flip-title">Mechanics of a System of Particles</a>  </h3>      <a class="fill-card no-hover" href="/physics/mechanics-of-a-system-of-particles.html" tabindex="-1"><span class="sr-only">Continue reading Mechanics of a System of Particles</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/constraints-of-coordinates.html" class="flip-title">    <span>              [Classical Mechanics 1.2]            Constraints of Coordinates    </span>  </a>      <time class="faded fine" datetime="2025-08-13T00:00:00+09:00">      13 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/constraints-of-coordinates.html"></span>  </li>          <li class="h4">  <a href="/physics/mechanics-of-a-system-of-particles.html" class="flip-title">    <span>              [Classical Mechanics 1.1]            Mechanics of a System of Particles    </span>  </a>      <time class="faded fine" datetime="2025-08-12T00:00:00+09:00">      12 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html"></span>  </li>      </ul></aside>
+                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="flip-title">Conservation Theorems and Symmetry Properties</a>  </h3>      <a class="fill-card no-hover" href="/physics/conservation-theorems-and-symmetry-properties.html" tabindex="-1"><span class="sr-only">Continue reading Conservation Theorems and Symmetry Properties</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="flip-title">Calculus of Variations and Hamilton's Principle</a>  </h3>      <a class="fill-card no-hover" href="/physics/calculus-of-variations-and-hamiltons-principle.html" tabindex="-1"><span class="sr-only">Continue reading Calculus of Variations and Hamilton's Principle</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="flip-title">    <span>              [Classical Mechanics 1.5]            Conservation Theorems and Symmetry Properties    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/conservation-theorems-and-symmetry-properties.html"></span>  </li>          <li class="h4">  <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="flip-title">    <span>              [Classical Mechanics 1.4]            Calculus of Variations and Hamilton's Principle    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle.html"></span>  </li>          <li class="h4">  <a href="/physics/constraints-of-coordinates.html" class="flip-title">    <span>              [Classical Mechanics 1.2]            Constraints of Coordinates    </span>  </a>      <time class="faded fine" datetime="2025-08-13T00:00:00+09:00">      13 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/constraints-of-coordinates.html"></span>  </li>          <li class="h4">  <a href="/physics/mechanics-of-a-system-of-particles.html" class="flip-title">    <span>              [Classical Mechanics 1.1]            Mechanics of a System of Particles    </span>  </a>      <time class="faded fine" datetime="2025-08-12T00:00:00+09:00">      12 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html"></span>  </li>      </ul></aside>
 
   
 

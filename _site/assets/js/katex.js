@@ -46,6 +46,7 @@ function render_KaTeX() {
             "\\pdvsi": "\\partial^2 #1/\\partial #2 \\partial #3",
             "\\fdv": "\\frac{\\delta #1}{\\delta #2}",
             "\\fdvi": "\\delta #1/\\delta #2",
+            "\\eval": "\\left. #1 \\right\\vert",
             /* --vector calculus */
             "\\grad": "\\nabla",
             "\\curl": "\\nabla \\cross",
@@ -76,3 +77,5 @@ function render_KaTeX() {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", render_KaTeX);

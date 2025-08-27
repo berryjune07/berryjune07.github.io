@@ -1,1333 +1,1729 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-18T04:43:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Work and Energy &amp;amp; Conservations</title><link href="http://localhost:4000/physics/work-and-energy-and-conservations.html" rel="alternate" type="text/html" title="Work and Energy &amp;amp; Conservations" /><published>2025-08-14T00:00:00+09:00</published><updated>2025-08-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/work-and-energy-and-conservations</id><content type="html" xml:base="http://localhost:4000/physics/work-and-energy-and-conservations.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-08-28T03:33:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Introduction to the Central Force Problem</title><link href="http://localhost:4000/physics/introduction-to-the-central-force-problem.html" rel="alternate" type="text/html" title="Introduction to the Central Force Problem" /><published>2025-08-20T00:00:00+09:00</published><updated>2025-08-20T00:00:00+09:00</updated><id>http://localhost:4000/physics/introduction-to-the-central-force-problem</id><content type="html" xml:base="http://localhost:4000/physics/introduction-to-the-central-force-problem.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Calculus of Variations and Hamilton’s Principle</title><link href="http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle.html" rel="alternate" type="text/html" title="Calculus of Variations and Hamilton’s Principle" /><published>2025-08-15T00:00:00+09:00</published><updated>2025-08-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle</id><content type="html" xml:base="http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#calculus-of-variations&quot; id=&quot;markdown-toc-calculus-of-variations&quot;&gt;Calculus of Variations&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#fundamental-lemma-of-the-calculus-of-variations&quot; id=&quot;markdown-toc-fundamental-lemma-of-the-calculus-of-variations&quot;&gt;Fundamental Lemma of the Calculus of Variations&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#eulerlagrange-equation&quot; id=&quot;markdown-toc-eulerlagrange-equation&quot;&gt;Euler–Lagrange Equation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#generalization&quot; id=&quot;markdown-toc-generalization&quot;&gt;Generalization&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#delta-notation&quot; id=&quot;markdown-toc-delta-notation&quot;&gt;$\delta$ Notation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hamiltons-principle&quot; id=&quot;markdown-toc-hamiltons-principle&quot;&gt;Hamilton’s Principle&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#systems-with-holonomic-constraints&quot; id=&quot;markdown-toc-systems-with-holonomic-constraints&quot;&gt;Systems with Holonomic Constraints&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#systems-with-semi-holonomic-constraints&quot; id=&quot;markdown-toc-systems-with-semi-holonomic-constraints&quot;&gt;Systems with Semi-Holonomic Constraints&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-## Work
+&lt;h2 id=&quot;calculus-of-variations&quot;&gt;Calculus of Variations&lt;/h2&gt;
 
-**Work** is defined as the product of the force applied to an object and the distance over which that force is applied, in the direction of the force.
-The formula for work is given by:
+&lt;p&gt;&lt;strong&gt;Calculus of variations&lt;/strong&gt; is a field of mathematical analysis that deals with maximizing or minimizing functionals, which are mappings from a set of functions to the real numbers. It is used to find the function that optimizes a given quantity, often subject to certain constraints.&lt;/p&gt;
 
-\\[
+&lt;h3 id=&quot;fundamental-lemma-of-the-calculus-of-variations&quot;&gt;Fundamental Lemma of the Calculus of Variations&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;Fundamental Lemma of the Calculus of Variations&lt;/strong&gt; states that if a function $f$ is continuous on the interval $(a,b)$ satisfies:&lt;/p&gt;
+
+&lt;p&gt;\[
+\int_a^b f(x) h(x) \dd{x} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;for all compactly supported smooth functions $h$ on $(a,b)$, then $f$ must be identically zero.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;Proof&lt;/summary&gt;
+  &lt;p&gt;Suppose $\exists x_0 \in (a,b) : f(x_0) \neq 0$. Without loss of generality, assume $f(x_0) &amp;gt; 0$.
+By the continuity of $f$, there exists a neighborhood around $x_0$, say $(x_0 - \delta, x_0 + \delta) \subset (a,b)$, 
+where $f(x) &amp;gt; 0$ for all $x$ in this neighborhood.
+Now, we can choose a smooth function $h$ that is positive in this neighborhood and zero elsewhere. 
+For example, we can define $h$ as follows:&lt;/p&gt;
+
+  &lt;p&gt;\[
+h(x) = \begin{cases}
+\exp\left(-\frac{1}{(x - x_0)^2 - \delta^2}\right) &amp;amp;; \abs{x - x_0} &amp;lt; \delta \nl
+0 &amp;amp;; \text{otherwise}
+\end{cases}
+\]&lt;/p&gt;
+
+  &lt;p&gt;This function $h$ is smooth and compactly supported in $(a,b)$.
+Then, we have:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\int_a^b f(x) h(x) \dd{x} &amp;gt; 0
+\]&lt;/p&gt;
+
+  &lt;p&gt;which contradicts the assumption. Therefore, $\forall x \in (a,b): f(x) = 0$.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;eulerlagrange-equation&quot;&gt;Euler–Lagrange Equation&lt;/h3&gt;
+
+&lt;p&gt;Given a functional of the form:&lt;/p&gt;
+
+&lt;p&gt;\[
+J[f] = \int_{x_1}^{x_2} F\left(x, f(x), f^\prime(x)\right) \dd{x}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $F$ is a smooth function of $x$, $f(x)$, and the derivative $f^\prime(x)$.
+We wish to find the function $f(x)$ that makes $J[f]$ stationary (i.e., a local minimum or maximum),
+subject to the boundary conditions $f(x_1) = y_1$ and $f(x_2) = y_2$,
+and this can be achieved by solving the &lt;strong&gt;Euler–Lagrange equation&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{F}{f} - \odv{}{x} \left( \pdv{F}{f^\prime} \right) = 0
+\]&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt;Derivation&lt;/summary&gt;
+  &lt;p&gt;To derive the Euler–Lagrange equation, we consider a small perturbation of the function $f(x)$:&lt;/p&gt;
+
+  &lt;p&gt;\[
+f(x) \to f(x) + \varepsilon \eta(x)
+\]&lt;/p&gt;
+
+  &lt;p&gt;where $\varepsilon$ is a small parameter and $\eta(x)$ is an arbitrary smooth function that vanishes at the endpoints: $\eta(x_1) = \eta(x_2) = 0$.
+Then define:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\begin{align*}
+\Phi(\varepsilon) &amp;amp;= J[f + \varepsilon \eta] \nl
+&amp;amp;= \int_{x_1}^{x_2} F\left(x, f(x) + \varepsilon \eta(x), f^\prime(x) + \varepsilon \eta^\prime(x)\right) \dd{x}
+\end{align*}
+\]&lt;/p&gt;
+
+  &lt;p&gt;At a stationary point if set $\varepsilon = 0$, its derivative with respect to $\varepsilon$ must be zero:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\begin{align*}
+\odv{\Phi}{\varepsilon} &amp;amp;= \int_{x_1}^{x_2} \odv{}{\varepsilon} F\left(x, f(x) + \varepsilon \eta(x), f^\prime(x) + \varepsilon \eta^\prime(x)\right) \dd{x} \nl
+&amp;amp;= \int_{x_1}^{x_2} \left[ \eta(x) \pdv{F}{f}(x,f(x)+\varepsilon \eta(x),f^\prime(x)+\varepsilon \eta^\prime(x)) + \eta^\prime(x) \pdv{F}{f^\prime}(x,f(x)+\varepsilon \eta(x),f^\prime(x)+\varepsilon \eta^\prime(x)) \right] \dd{x}
+\end{align*}
+\]&lt;/p&gt;
+
+  &lt;p&gt;\[
+\eval{\odv{\Phi}{\varepsilon}}_{\varepsilon=0} = \int_{x_1}^{x_2} \left[ \eta(x) \pdv{F}{f}(x,f(x),f^\prime(x)) + \eta^\prime(x) \pdv{F}{f^\prime}(x,f(x),f^\prime(x)) \right] \dd{x} = 0
+\]&lt;/p&gt;
+
+  &lt;p&gt;We can integrate the second term by parts, yielding:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\int_{x_1}^{x_2} \left[ \pdv{F}{f} - \odv{}{x} \left( \pdv{F}{f^\prime} \right) \right] \eta(x) \dd{x} + \left[ \eta(x) \pdv{F}{f^\prime} \right]_{x_1}^{x_2} = 0
+\]&lt;/p&gt;
+
+  &lt;p&gt;The boundary term vanishes because $\eta(x_1) = \eta(x_2) = 0$. Since $\eta(x)$ is arbitrary, by the Fundamental Lemma of the Calculus of Variations, we must have:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\pdv{F}{f} - \odv{}{x} \left( \pdv{F}{f^\prime} \right) = 0
+\]&lt;/p&gt;
+
+  &lt;p&gt;This is the Euler–Lagrange equation.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h3 id=&quot;generalization&quot;&gt;Generalization&lt;/h3&gt;
+
+&lt;p&gt;The Euler–Lagrange equation can be generalized to functionals that depend on higher-order derivatives or multiple functions of several variables.
+Consider a functional of the form:&lt;/p&gt;
+
+&lt;p&gt;\[
+I[f_1, \cdots, f_p] = \int_\Omega \mathcal{L}\left(x_1, \cdots, x_m ; f_1, \cdots, f_p ; f_{1,1}, \cdots, f_{p,m} ; \cdots ; f_{1,\underbrace{1\cdots1}_n}, \cdots, f_{p,\underbrace{m\cdots m}_n}\right) \dd{x_1} \cdots \dd{x_m}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\Omega$ is a domain in $\mathbb{R}^m$ and&lt;/p&gt;
+
+&lt;p&gt;\[
+f_{i,\mu_1 \cdots \mu_j} = \frac{\partial^j f_i}{\partial x_{\mu_1} \cdots \partial x_{\mu_j}}
+\]&lt;/p&gt;
+
+&lt;p&gt;Then the Euler–Lagrange equations for this functional are given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\mathcal{L}}{f_i} + \sum_{j=1}^n \sum_{1 \leq \mu_1 \leq \cdots \leq \mu_j \leq m} (-1)^j \frac{\partial^j}{\partial x_{\mu_1} \cdots \partial x_{\mu_j}} \left( \pdv{\mathcal{L}}{f_{i,\mu_1 \cdots \mu_j}} \right) = 0 \quad (i=1,\cdots,p)
+\]&lt;/p&gt;
+
+&lt;p&gt;or more compactly:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{j=0}^n (-1)^j \sum_{\mu\in\text{Inc}([j],[m])} \partial^j_{\mu_1 \cdots \mu_j} \left( \pdv{\mathcal{L}}{f_{i,\mu_1 \cdots \mu_j}} \right) = 0 \quad (i=1,\cdots,p)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;delta-notation&quot;&gt;$\delta$ Notation&lt;/h3&gt;
+
+&lt;p&gt;Sometimes, it is convenient to use the $\delta$ notation to denote variations.&lt;/p&gt;
+
+&lt;p&gt;\[
+\delta \, \circ := \pdv{\,\circ}{\varepsilon} \dd{\varepsilon}
+\]&lt;/p&gt;
+
+&lt;p&gt;Here, $\delta\,\circ$ is called the variation of $\circ$.
+A variation of an arbitrary function $\mathcal{L}(x, f(x), f^\prime(x))$ is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\delta \mathcal{L} &amp;amp;= \pdv{\mathcal{L}}{\varepsilon} \dd{\varepsilon} \nl
+&amp;amp;= \pdv{\mathcal{L}}{f} \pdv{f}{\varepsilon} \dd{\varepsilon} + \pdv{\mathcal{L}}{f^\prime} \pdv{f^\prime}{\varepsilon} \dd{\varepsilon} \nl
+&amp;amp;= \pdv{\mathcal{L}}{f} \delta f + \pdv{\mathcal{L}}{f^\prime} \delta f^\prime
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;so its slightly different from the total differential $\dd{\mathcal{L}}$. Since partial derivatives commute, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\delta f^\prime = (\delta f)^\prime
+\]&lt;/p&gt;
+
+&lt;p&gt;Using this, we can rewrite the variation of the functional $J[f]$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\delta J &amp;amp;= \int_{x_1}^{x_2} \delta F \dd{x} \nl
+&amp;amp;= \int_{x_1}^{x_2} \left[ \pdv{F}{f} \delta f + \pdv{F}{f^\prime} \delta f^\prime \right] \dd{x} \nl
+&amp;amp;= \int_{x_1}^{x_2} \left[ \pdv{F}{f} - \odv{}{x} \left( \pdv{F}{f^\prime} \right) \right] \delta f \dd{x}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;So we can obtain the Euler–Lagrange equation also by such way.&lt;/p&gt;
+
+&lt;h2 id=&quot;hamiltons-principle&quot;&gt;Hamilton’s Principle&lt;/h2&gt;
+
+&lt;p&gt;A configuration of a physical system is described by a set of generalized coordinates $q_i$,
+and so we call the $n$-dimensional space formed by these coordinates the &lt;strong&gt;configuration space&lt;/strong&gt;.
+&lt;strong&gt;Hamilton’s principle&lt;/strong&gt;, also known as the &lt;strong&gt;principle of least action&lt;/strong&gt;,
+states that the actual path taken by a system between two configurations at times $t_1$ and $t_2$ is the one that makes the action functional stationary.
+The &lt;strong&gt;action&lt;/strong&gt; is defined as the time integral of the Lagrangian $L$:&lt;/p&gt;
+
+&lt;p&gt;\[
+S[\b{q}(t)] = \int_{t_1}^{t_2} L\left(t, \b{q}(t), \dot{\b{q}}(t)\right) \dd{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;It is also often denoted as $I$.
+Then, the Hamilton’s principle can be expressed mathematically as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\delta S = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, by the Euler–Lagrange equation, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{L}{q_i} - \odv{}{t} \left(\pdv{L}{\dot{q}_i}\right) = 0 \quad (i=1,\cdots,n)
+\]&lt;/p&gt;
+
+&lt;p&gt;These are exactly the Lagrange equations of motion, derived from D’Alembert’s principle before.
+This shows the equivalence between Hamilton’s principle, D’Alembert’s principle, Lagrange equations of motion, and the Newtonian mechanics.&lt;/p&gt;
+
+&lt;h3 id=&quot;systems-with-holonomic-constraints&quot;&gt;Systems with Holonomic Constraints&lt;/h3&gt;
+
+&lt;p&gt;For systems with holonomic constraints, we can introduce Lagrange multipliers to incorporate the constraints into the action functional.
+Suppose the system is subject to $m$ holonomic constraints of the form:&lt;/p&gt;
+
+&lt;p&gt;\[
+f_\alpha(\b{q},t) = 0 \quad (\alpha=1,\cdots,m)
+\]&lt;/p&gt;
+
+&lt;p&gt;We can modify the action integral by adding terms involving Lagrange multipliers $\lambda_\alpha(t)$:&lt;/p&gt;
+
+&lt;p&gt;\[
+S = \int_{t_1}^{t_2} \left( L + \sum_{\alpha=1}^m \lambda_\alpha f_\alpha \right) \dd{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, applying Hamilton’s principle $\delta S = 0$ leads to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\int_{t_1}^{t_2} \dd{t} \sum_{i=1}^n \left[ \pdv{L}{q_i} - \odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) + \sum_{\alpha=1}^m \lambda_\alpha \pdv{f_\alpha}{q_i} \right] \delta q_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;However, since the variations $\delta q_i$ are not all independent due to the constraints,
+we should choose the $\lambda_\alpha$’s so that $m$ of the equations are satisfied for arbitrary $\delta q_i$,
+and then choose the variations of the $delta q_i$ in the remaining $n-m$ equations independently.
+This leads to the modified equations of motion:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{L}{q_i} - \odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) + \sum_{\alpha=1}^m \lambda_\alpha \pdv{f_\alpha}{q_i} = 0 \quad (i=1,\cdots,n)
+\]&lt;/p&gt;
+
+&lt;p&gt;along with the constraint equations $f_\alpha(\b{q},t) = 0$.
+Therefore, we have $n+m$ equations to solve for the $n$ generalized coordinates $q_i(t)$ and the $m$ Lagrange multipliers $\lambda_\alpha(t)$.
+The equation can be written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{L}{q_i} - \odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) = Q_i \quad (i=1,\cdots,n)
+\]&lt;/p&gt;
+
+&lt;p&gt;where $Q_i$ are the generalized forces of constraint:&lt;/p&gt;
+
+&lt;p&gt;\[
+Q_i = -\sum_{\alpha=1}^m \lambda_\alpha \pdv{f_\alpha}{q_i}
+\]&lt;/p&gt;
+
+&lt;p&gt;However, since the choice of the sign was arbitrary, we can mathematically define only the
+magnitudes of the generalized forces of constraint, not their directions. We should research their directions from the physical meanings of the constraints.&lt;/p&gt;
+
+&lt;h3 id=&quot;systems-with-semi-holonomic-constraints&quot;&gt;Systems with Semi-Holonomic Constraints&lt;/h3&gt;
+
+&lt;p&gt;Non-holonomic constraints are a generalization of holonomic constraints that can be expressed in the form:&lt;/p&gt;
+
+&lt;p&gt;\[
+f_\alpha(\b{q}, \dot{\b{q}}, t) = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;and these simply result to the modification of the equations of motion:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{L}{q_i} - \odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) + \sum_{\alpha=1}^m \lambda_\alpha \left[ \pdv{f_\alpha}{q_i} - \odv{}{t} \left( \pdv{f_\alpha}{\dot{q}_i} \right) \right] = 0 \quad (i=1,\cdots,n)
+\]&lt;/p&gt;
+
+&lt;p&gt;but let’s know deal with the &lt;strong&gt;semi-holonomic one-form constraints&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;\[
+\omega_\alpha = \sum_{k=1}^n a_{\alpha k}(\b{q},t) \dd{q_k} + a_{\alpha 0}(\b{q},t) \dd{t} = 0 \quad (\alpha=1,\cdots,m)
+\]&lt;/p&gt;
+
+&lt;p&gt;It would be expected that the varied paths should satisfy the constraints.
+However, it has been proven no such varied paths can be constructed unless the constraints are integrable, i.e., actually holonomic.
+Correct equations of motion can nonetheless be derived when varied paths are constructed by the actual motion by virtual displacements,
+even if the varied paths do not satisfy the constraints.
+The virtual displacements $\delta q_i$ must satisfy the constraints:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{k=1}^n a_{\alpha k} \delta q_k = 0 \quad (\alpha=1,\cdots,m)
+\]&lt;/p&gt;
+
+&lt;p&gt;Then let’s use the Lagrange multipliers $\mu_\alpha$ as before. Following should also hold:&lt;/p&gt;
+
+&lt;p&gt;\[
+\int_{t_1}^{t_2} \dd{t} \sum_{\alpha=1}^m \mu_\alpha \sum_{k=1}^n a_{\alpha k} \delta q_k = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Combining this with the variation of the action integral, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{L}{q_i} - \odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) + \sum_{\alpha=1}^m \mu_\alpha a_{\alpha i} = 0 \quad (i=1,\cdots,n)
+\]&lt;/p&gt;
+
+&lt;p&gt;with the constraint equations:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{k=1}^n a_{\alpha k} \dot{q}_k + a_{\alpha 0} = 0 \quad (\alpha=1,\cdots,m)
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, we have $n+m$ equations to solve for the $n$ generalized coordinates $q_i(t)$ and the $m$ Lagrange multipliers $\mu_\alpha(t)$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Conservation Theorems and Symmetry Properties</title><link href="http://localhost:4000/physics/conservation-theorems-and-symmetry-properties.html" rel="alternate" type="text/html" title="Conservation Theorems and Symmetry Properties" /><published>2025-08-15T00:00:00+09:00</published><updated>2025-08-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/conservation-theorems-and-symmetry-properties</id><content type="html" xml:base="http://localhost:4000/physics/conservation-theorems-and-symmetry-properties.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Work and Energy &amp;amp; Conservations</title><link href="http://localhost:4000/physics/work-and-energy-and-conservations.html" rel="alternate" type="text/html" title="Work and Energy &amp;amp; Conservations" /><published>2025-08-14T00:00:00+09:00</published><updated>2025-08-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/work-and-energy-and-conservations</id><content type="html" xml:base="http://localhost:4000/physics/work-and-energy-and-conservations.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#work&quot; id=&quot;markdown-toc-work&quot;&gt;Work&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#power&quot; id=&quot;markdown-toc-power&quot;&gt;Power&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kinetic-energy&quot; id=&quot;markdown-toc-kinetic-energy&quot;&gt;Kinetic Energy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conservative-forces&quot; id=&quot;markdown-toc-conservative-forces&quot;&gt;Conservative Forces&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#potential-energy&quot; id=&quot;markdown-toc-potential-energy&quot;&gt;Potential Energy&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mechanical-energy&quot; id=&quot;markdown-toc-mechanical-energy&quot;&gt;Mechanical Energy&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#conservation-theorems&quot; id=&quot;markdown-toc-conservation-theorems&quot;&gt;Conservation Theorems&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#linear-momentum-conservation&quot; id=&quot;markdown-toc-linear-momentum-conservation&quot;&gt;Linear Momentum Conservation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#mechanical-energy-conservation&quot; id=&quot;markdown-toc-mechanical-energy-conservation&quot;&gt;Mechanical Energy Conservation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;work&quot;&gt;Work&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Work&lt;/strong&gt; is defined as the product of the force applied to an object and the distance over which that force is applied, in the direction of the force.
+The formula for work is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
 W_{12} = \int_{\b{r}_1}^{\b{r}_2} \b{F} \cdot \dd{\b{s}}
-\\]
+\]&lt;/p&gt;
 
-It is often denoted as $W$, and its SI unit is the **joule** ($\mathrm{J=N \cdot m= kg \cdot m^2 / s^2}$).
+&lt;p&gt;It is often denoted as $W$, and its SI unit is the &lt;strong&gt;joule&lt;/strong&gt; ($\mathrm{J=N \cdot m= kg \cdot m^2 / s^2}$).&lt;/p&gt;
 
-### Power
+&lt;h3 id=&quot;power&quot;&gt;Power&lt;/h3&gt;
 
-**Power** is the rate at which work is done or energy is transferred.
-It is defined as:
+&lt;p&gt;&lt;strong&gt;Power&lt;/strong&gt; is the rate at which work is done or energy is transferred.
+It is defined as:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 P = \odv{W}{t}
-\\]
+\]&lt;/p&gt;
 
-Alternatively, power can also be expressed in terms of force and velocity:
+&lt;p&gt;Alternatively, power can also be expressed in terms of force and velocity:&lt;/p&gt;
 
-\\[
-\begin{align\*}
-P &amp;= \odv{W}{t} \nl
-&amp;= \odv{}{t} \int \b{F} \cdot \odv{\b{s}}{t} \dd{t} \nl
-&amp;= \b{F} \cdot \b{v}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+P &amp;amp;= \odv{W}{t} \nl
+&amp;amp;= \odv{}{t} \int \b{F} \cdot \odv{\b{s}}{t} \dd{t} \nl
+&amp;amp;= \b{F} \cdot \b{v}
+\end{align*}
+\]&lt;/p&gt;
 
-It is often denoted as $P$, and its SI unit is the **watt** ($\mathrm{W=J/s= kg \cdot m^2 / s^3}$).
+&lt;p&gt;It is often denoted as $P$, and its SI unit is the &lt;strong&gt;watt&lt;/strong&gt; ($\mathrm{W=J/s= kg \cdot m^2 / s^3}$).&lt;/p&gt;
 
-## Kinetic Energy
+&lt;h2 id=&quot;kinetic-energy&quot;&gt;Kinetic Energy&lt;/h2&gt;
 
-By the Newton&apos;s second law,
+&lt;p&gt;By the Newton’s second law,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-W_{12} &amp;= \int\_{\b{r}\_1}^{\b{r}\_2} \b{F} \cdot \dd{\b{s}} \nl
-&amp;= \int\_{\b{r}\_1}^{\b{r}\_2} m \dot{\b{v}} \cdot \odv{\b{s}}{t} \dd{t} \nl
-&amp;= \int\_{t_1}^{t_2} m \dot{\b{v}} \cdot \dd{\b{v}} \nl
-&amp;= \int\_{\b{v}\_1}^{\b{v}\_2} m \dd{ \left( \frac{1}{2} \abs{\b{v}}^2 \right) } \nl
-&amp;= \frac{1}{2} m (v_2^2 - v_1^2)
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+W_{12} &amp;amp;= \int_{\b{r}_1}^{\b{r}_2} \b{F} \cdot \dd{\b{s}} \nl
+&amp;amp;= \int_{\b{r}_1}^{\b{r}_2} m \dot{\b{v}} \cdot \odv{\b{s}}{t} \dd{t} \nl
+&amp;amp;= \int_{t_1}^{t_2} m \dot{\b{v}} \cdot \dd{\b{v}} \nl
+&amp;amp;= \int_{\b{v}_1}^{\b{v}_2} m \dd{ \left( \frac{1}{2} \abs{\b{v}}^2 \right) } \nl
+&amp;amp;= \frac{1}{2} m (v_2^2 - v_1^2)
+\end{align*}
+\]&lt;/p&gt;
 
-The **kinetic energy** of an object is defined as:
+&lt;p&gt;The &lt;strong&gt;kinetic energy&lt;/strong&gt; of an object is defined as:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 K = \frac{1}{2} m v^2
-\\]
+\]&lt;/p&gt;
 
-Then we get:
+&lt;p&gt;Then we get:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = \Delta K
-\\]
+\]&lt;/p&gt;
 
-This is known as the **work-energy theorem**.
+&lt;p&gt;This is known as the &lt;strong&gt;work-energy theorem&lt;/strong&gt;.
 We can conclude that energy is something that can be converted into work,
-and work is the transfer of energy.
+and work is the transfer of energy.&lt;/p&gt;
 
-## Conservative Forces
+&lt;h2 id=&quot;conservative-forces&quot;&gt;Conservative Forces&lt;/h2&gt;
 
-A force is said to be **conservative** if the work done by the force on an object moving from one point to another is independent of the path taken.
+&lt;p&gt;A force is said to be &lt;strong&gt;conservative&lt;/strong&gt; if the work done by the force on an object moving from one point to another is independent of the path taken.
 For conservative forces, the work done is only dependent on the initial and final positions of the object.
-In other words,
+In other words,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \oint \b{F}_C \cdot \dd{\b{s}} = 0
-\\]
+\]&lt;/p&gt;
 
-By the mathematical analysis of the property, a conservative force can be expressed as the negative gradient of some scalar function $U$:
+&lt;p&gt;By the mathematical analysis of the property, a conservative force can be expressed as the negative gradient of some scalar function $U$:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{F}_C = -\grad U
-\\]
+\]&lt;/p&gt;
 
-and $U$ is called the **potential energy** by the conservative force.
+&lt;p&gt;and $U$ is called the &lt;strong&gt;potential energy&lt;/strong&gt; by the conservative force.&lt;/p&gt;
 
-### Potential Energy
+&lt;h3 id=&quot;potential-energy&quot;&gt;Potential Energy&lt;/h3&gt;
 
-The **potential energy** associated with a conservative force is defined as the work done by the force when moving an object from a reference point to a specific point in space.
-The potential energy is given by:
+&lt;p&gt;The &lt;strong&gt;potential energy&lt;/strong&gt; associated with a conservative force is defined as the work done by the force when moving an object from a reference point to a specific point in space.
+The potential energy is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 U(\b{r}) = -\int_{\b{r}_0}^{\b{r}} \b{F}_C \cdot \dd{\b{s}}
-\\]
+\]&lt;/p&gt;
 
-where $\b{r}_0$ is the reference point and can be chosen arbitrarily.
-The work done by the conservative force is then:
+&lt;p&gt;where $\b{r}_0$ is the reference point and can be chosen arbitrarily.
+The work done by the conservative force is then:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = -\Delta U
-\\]
+\]&lt;/p&gt;
 
-We have some common examples of conservative forces and their associated potential energies:
-- The gravitational force $\;\b{F} = -m g \hat{\b{z}} \;$ has the potential energy $\;U = m g z$.
-- The elastic force of a spring $\;\b{F} = -k \b{x} \;$ has the potential energy $\;U = \frac{1}{2} k x^2$.
+&lt;p&gt;We have some common examples of conservative forces and their associated potential energies:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The gravitational force $\;\b{F} = -m g \hat{\b{z}} \;$ has the potential energy $\;U = m g z$.&lt;/li&gt;
+  &lt;li&gt;The elastic force of a spring $\;\b{F} = -k \b{x} \;$ has the potential energy $\;U = \frac{1}{2} k x^2$.&lt;/li&gt;
+&lt;/ul&gt;
 
-### Mechanical Energy
+&lt;h3 id=&quot;mechanical-energy&quot;&gt;Mechanical Energy&lt;/h3&gt;
 
-The **mechanical energy** of a system is the sum of its kinetic energy and potential energy:
+&lt;p&gt;The &lt;strong&gt;mechanical energy&lt;/strong&gt; of a system is the sum of its kinetic energy and potential energy:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 E = K + U
-\\]
+\]&lt;/p&gt;
 
-## Conservation Theorems
+&lt;h2 id=&quot;conservation-theorems&quot;&gt;Conservation Theorems&lt;/h2&gt;
 
-### Linear Momentum Conservation
+&lt;h3 id=&quot;linear-momentum-conservation&quot;&gt;Linear Momentum Conservation&lt;/h3&gt;
 
-The **linear momentum** of an object is conserved if the net external force acting on the object is zero.
+&lt;p&gt;The &lt;strong&gt;linear momentum&lt;/strong&gt; of an object is conserved if the net external force acting on the object is zero.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \dot{\b{p}} = \b{F}_{\text{net}}
-\\]
+\]&lt;/p&gt;
 
-This theorem can be analogized to the conservation of the linear momentum of a system of particles,
-which is trivial by the Newton&apos;s third law.
+&lt;p&gt;This theorem can be analogized to the conservation of the linear momentum of a system of particles,
+which is trivial by the Newton’s third law.&lt;/p&gt;
 
-### Mechanical Energy Conservation
+&lt;h3 id=&quot;mechanical-energy-conservation&quot;&gt;Mechanical Energy Conservation&lt;/h3&gt;
 
-The **mechanical energy** of a system is conserved if the only forces acting on the system are conservative forces.
-In this case, the total mechanical energy remains constant:
+&lt;p&gt;The &lt;strong&gt;mechanical energy&lt;/strong&gt; of a system is conserved if the only forces acting on the system are conservative forces.
+In this case, the total mechanical energy remains constant:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = \Delta K = -\Delta U \implies \Delta (K + U) = \Delta E = 0
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Constraints of Coordinates</title><link href="http://localhost:4000/physics/constraints-of-coordinates.html" rel="alternate" type="text/html" title="Constraints of Coordinates" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/constraints-of-coordinates</id><content type="html" xml:base="http://localhost:4000/physics/constraints-of-coordinates.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">D’Alembert’s Principle and Lagrange’s Equations</title><link href="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html" rel="alternate" type="text/html" title="D’Alembert’s Principle and Lagrange’s Equations" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations</id><content type="html" xml:base="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#virtual-displacements-and-virtual-work&quot; id=&quot;markdown-toc-virtual-displacements-and-virtual-work&quot;&gt;Virtual Displacements and Virtual Work&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dalemberts-principle&quot; id=&quot;markdown-toc-dalemberts-principle&quot;&gt;D’Alembert’s Principle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lagranges-equations&quot; id=&quot;markdown-toc-lagranges-equations&quot;&gt;Lagrange’s Equations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#velocity-dependent-potentials&quot; id=&quot;markdown-toc-velocity-dependent-potentials&quot;&gt;Velocity-Dependent Potentials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#rayleighs-dissipation-function&quot; id=&quot;markdown-toc-rayleighs-dissipation-function&quot;&gt;Rayleigh’s Dissipation Function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#simple-applications&quot; id=&quot;markdown-toc-simple-applications&quot;&gt;Simple Applications&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#single-particle-in-plane-polar-coordinates&quot; id=&quot;markdown-toc-single-particle-in-plane-polar-coordinates&quot;&gt;Single Particle in Plane Polar Coordinates&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-## Constraints
+&lt;h2 id=&quot;virtual-displacements-and-virtual-work&quot;&gt;Virtual Displacements and Virtual Work&lt;/h2&gt;
 
-A **constraint** is a condition that restricts the motion of a system.
+&lt;p&gt;In a system of particles, a &lt;strong&gt;virtual displacement&lt;/strong&gt; is an infinitesimal change in the configuration of the system
+that is consistent with the constraints at a given instant in time. It does not correspond to an actual motion of the system but rather represents a hypothetical change in position.
+Therefore, to distinguish between actual displacements and virtual displacements, we denote actual displacements by
+$\dd{\b{r}}$ and virtual displacements by $\delta \b{r}$.&lt;/p&gt;
+
+&lt;p&gt;Suppose the system is in &lt;em&gt;equilibrium&lt;/em&gt;, so that the net force on each particle is zero.
+Then, the total &lt;strong&gt;virtual work&lt;/strong&gt; done by the forces during any virtual displacement is zero. This is expressed mathematically as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \b{F}_i \cdot \delta \b{r}_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\b{F}_i = 0$ is the net force on particle $i$. Decomposing the forces into applied forces $\b{F}_i^{(a)}$ and constraint forces $\b{f}_i$,&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{F}_i = \b{F}_i^{(a)} + \b{f}_i
+\]&lt;/p&gt;
+
+&lt;p&gt;the virtual work equation becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \b{F}_i^{(a)} \cdot \delta \b{r}_i + \sum_i \b{f}_i \cdot \delta \b{r}_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;We now restrict our attention to &lt;strong&gt;ideal constraints&lt;/strong&gt;, for which the constraint forces do no virtual work:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \b{f}_i \cdot \delta \b{r}_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, the virtual work equation simplifies to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \b{F}_i^{(a)} \cdot \delta \b{r}_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This is the &lt;strong&gt;principle of virtual work&lt;/strong&gt; for a system in equilibrium with ideal constraints.&lt;/p&gt;
+
+&lt;h2 id=&quot;dalemberts-principle&quot;&gt;D’Alembert’s Principle&lt;/h2&gt;
+
+&lt;p&gt;D’Alembert’s principle extends the principle of virtual work to dynamics.
+We can consider an arbitrary system of particles, not necessarily in equilibrium, as being in equilibrium under the fictitious forces $-\dot{\b{p}}_i$
+acting on each particle $i$.
+Therefore, we similarly have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \left( \b{F}_i^{(a)} - \dot{\b{p}}_i \right) \cdot \delta \b{r}_i = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This is &lt;strong&gt;D’Alembert’s principle&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;lagranges-equations&quot;&gt;Lagrange’s Equations&lt;/h2&gt;
+
+&lt;p&gt;The translation from $\b{r}_i$ to generalized coordinates $q_j$ starts with the relation:&lt;/p&gt;
+
+&lt;p&gt;\[
+\dd{\b{r}}_i = \sum_k \pdv{\b{r}_i}{q_k} \dd{q}_k + \pdv{\b{r}_i}{t} \dd{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;which is just a simple chain rule expansion. We also have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{v}_i = \sum_k \pdv{\b{r}_i}{q_k} \dot{q}_k + \pdv{\b{r}_i}{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;Similarly, the virtual displacement can be connected to the virtual displacement in generalized coordinates:&lt;/p&gt;
+
+&lt;p&gt;\[
+\delta \b{r}_i = \sum_j \pdv{\b{r}_i}{q_j} \delta q_j
+\]&lt;/p&gt;
+
+&lt;p&gt;Note that the time $t$ is held fixed during a virtual displacement, so there is no $\delta t$ term.
+In terms of generalized coordinates, the virtual work of the $\b{F}_i$ becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\sum_i \b{F}_i \cdot \delta \b{r}_i &amp;amp;= \sum_{i,j} \b{F}_i \cdot \pdv{\b{r}_i}{q_j} \delta q_j \nl
+&amp;amp;= \sum_j Q_j \delta q_j
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;where we define the &lt;strong&gt;generalized force&lt;/strong&gt; $Q_j$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+Q_j = \sum_i \b{F}_i \cdot \pdv{\b{r}_i}{q_j}
+\]&lt;/p&gt;
+
+&lt;p&gt;Similarly, the virtual work of the $\dot{\b{p}}_i$ becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i = \sum_{i,j} \dot{\b{p}}_i \cdot \pdv{\b{r}_i}{q_j} \delta q_j
+\]&lt;/p&gt;
+
+&lt;p&gt;Now by the relations&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{\b{r}_i}{q_j} \right) = \pdv{\b{v}_i}{q_j} \nt
+\pdv{\b{v}_i}{\dot{q}_j} = \pdv{\b{r}_i}{q_j}
+\]&lt;/p&gt;
+
+&lt;p&gt;which are easily verified, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i
+&amp;amp;= \sum_{i,j} \left[ \odv{}{t} \left( m_i \dot{\b{r}}_i \cdot \pdv{\b{r}_i}{q_j} \right) - m_i \dot{\b{r}}_i \cdot \odv{}{t} \left( \pdv{\b{r}_i}{q_j} \right) \right] \delta q_j \nl
+&amp;amp;= \sum_{i,j} \left[ \odv{}{t} \left( m_i \b{v}_i \cdot \pdv{\b{v}_i}{\dot{q}_j} \right) - m_i \b{v}_i \cdot \pdv{\b{v}_i}{q_j} \right] \delta q_j \nl
+&amp;amp;= \sum_j \left\{ \odv{}{t} \left[ \pdv{}{ \dot{q}_j } \left( \sum_i \frac{1}{2} m_i v_i^2 \right) \right] - \pdv{}{ q_j } \left( \sum_i \frac{1}{2} m_i v_i^2 \right) \right\} \delta q_j
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The quantity in parentheses is the &lt;strong&gt;kinetic energy&lt;/strong&gt; $T$ of the system:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_i \dot{\b{p}}_i \cdot \delta \b{r}_i = \sum_j \left[ \odv{}{t} \left( \pdv{T}{\dot{q}_j} \right) - \pdv{T}{q_j} \right] \delta q_j
+\]&lt;/p&gt;
+
+&lt;p&gt;Substituting these results into D’Alembert’s principle, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_j \left[ \odv{}{t} \left( \pdv{T}{\dot{q}_j} \right) - \pdv{T}{q_j} - Q_j \right] \delta q_j = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Since under the holonomic constraints we can always find an independent coordinate system $q_j$ such that the $\delta q_j$ are independent,
+the coefficients of each $\delta q_j$ must vanish separately, giving the &lt;strong&gt;Lagrange’s equations&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{T}{\dot{q_j}} \right) - \pdv{T}{q_j} = Q_j
+\]&lt;/p&gt;
+
+&lt;p&gt;These are $n$ differential equations for the $n$ generalized coordinates $q_j$.
+When the forces are derivable from a potential $V(\b{r}_1,\ldots,\b{r}_N,t)$, the generalized forces can be expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+Q_j &amp;amp;= \sum_i \b{F}_i \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;amp;= -\sum_i \pdv{V}{\b{r}_i} \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;amp;= -\pdv{V}{q_j}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;As here defined, the potential $V$ does not depend on the generalized velocities $\dot{q}_j$, so the Lagrange’s equations become:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{(T-V)}{\dot{q}_j} \right) - \pdv{(T-V)}{q_j} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Defining the &lt;strong&gt;Lagrangian&lt;/strong&gt; $L$ as&lt;/p&gt;
+
+&lt;p&gt;\[
+L = T - V
+\]&lt;/p&gt;
+
+&lt;p&gt;we can write the Lagrange’s equations in the compact form:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{L}{\dot{q_j}} \right) - \pdv{L}{q_j} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;These equations are the foundation of Lagrangian mechanics and provide a powerful method for analyzing the dynamics of systems with constraints.
+Note that the Lagrangian is not unique;&lt;/p&gt;
+
+&lt;p&gt;\[
+L^\prime( \b{q}, \dot{\b{q}}, t ) = L( \b{q}, \dot{\b{q}}, t ) + \odv{F( \b{q}, t )}{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;leads to the same equations of motion, where $F$ is any differentiable function of the generalized coordinates and time,
+since the added term does not affect the derivatives in Lagrange’s equations.&lt;/p&gt;
+
+&lt;h2 id=&quot;velocity-dependent-potentials&quot;&gt;Velocity-Dependent Potentials&lt;/h2&gt;
+
+&lt;p&gt;In some cases, the forces acting on a system may depend on the velocities of the particles.
+The most common example is the &lt;em&gt;Lorentz force&lt;/em&gt; acting on a charged particle in an electromagnetic field.&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{F} = q \left( \b{E} + \b{v} \times \b{B} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Since by the electromagnetism we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{E} = -\grad \phi - \pdv{\b{A}}{t} \nl
+\b{B} = \curl \b{A}
+\]&lt;/p&gt;
+
+&lt;p&gt;Lagrange’s equations can still be applied for velocity-dependent potentials if they provide the generalized forces through:&lt;/p&gt;
+
+&lt;p&gt;\[
+Q_j = -\pdv{U}{q_j} + \odv{}{t} \left( \pdv{U}{\dot{q}_j} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;where $U(\b{q}, \dot{\b{q}}, t)$ is the velocity-dependent potential.
+In this case the Lagrangian is defined as $L = T - U$ as before, and Lagrange’s equations retain their form.
+For the Lorentz force, the velocity-dependent potential is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+U = q \left( \phi - \b{A} \cdot \b{v} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;We leave the verification of this as an exercise to the reader.&lt;/p&gt;
+
+&lt;h2 id=&quot;rayleighs-dissipation-function&quot;&gt;Rayleigh’s Dissipation Function&lt;/h2&gt;
+
+&lt;p&gt;In some systems, non-conservative forces such as friction or air resistance can be modeled using a dissipation function.
+Note that if not all the forces are derivable from a potential, Lagrange’s equations can be written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{L}{\dot{q}_j} \right) - \pdv{L}{q_j} = Q_j^{(nc)}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $L$ contains only the potential of the conservative forces, and $Q_j^{(nc)}$ are the generalized non-conservative forces.
+If we can model the frictional forces as:&lt;/p&gt;
+
+&lt;p&gt;\[
+F_{f_i,j} = -k_j v_{i,j}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $F_{f_i,j}$ is the $j$-th component of the frictional force on particle $i$, $v_{i,j}$ is the corresponding velocity component, and $k_j$ is a constant, then we can define &lt;strong&gt;Rayleigh’s dissipation function&lt;/strong&gt; $\mathcal{F}$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mathcal{F} = \frac{1}{2} \sum_{i,j} k_j v_{i,j}^2
+\]&lt;/p&gt;
+
+&lt;p&gt;From this definition, it follows that:&lt;/p&gt;
+
+&lt;p&gt;\[
+F_{f_i,j} = -\pdv{\mathcal{F}}{v_{i,j}}
+\]&lt;/p&gt;
+
+&lt;p&gt;or, simply:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{F}_{f_i} = -\pdv{\mathcal{F}}{\b{v}_i} = -\grad_{\b{v}_i} \mathcal{F}
+\]&lt;/p&gt;
+
+&lt;p&gt;We can also give a physical interpretation of $\mathcal{F}$.
+The work done by the system against the frictional force is:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\dd{W_f} &amp;amp;= -\sum_i \b{F}_{f_i} \cdot \b{v}_i \dd{t} \nl
+&amp;amp;= \sum_i \pdv{\mathcal{F}}{\b{v}_i} \cdot \b{v}_i \dd{t} \nl
+&amp;amp;= 2 \mathcal{F} \dd{t}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Hence, $2\mathcal{F}$ is the power dissipated by the frictional forces.
+The components of the generalized forces due to friction are then:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+Q_j &amp;amp;= \sum_i \b{F}_{f_i} \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;amp;= -\sum_i \pdv{\mathcal{F}}{\b{v}_i} \cdot \pdv{\b{v}_i}{\dot{q}_j} \nl
+&amp;amp;= -\pdv{\mathcal{F}}{\dot{q}_j}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, Lagrange’s equations with Rayleigh’s dissipation function become:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{}{t} \left( \pdv{L}{\dot{q}_j} \right) - \pdv{L}{q_j} + \pdv{\mathcal{F}}{\dot{q}_j} = 0
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;simple-applications&quot;&gt;Simple Applications&lt;/h2&gt;
+
+&lt;p&gt;By using generalized coordinates, the kinetic energy is written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+T &amp;amp;= \frac{1}{2} \sum_i m_i v_i^2 \nl
+&amp;amp;= \frac{1}{2} \sum_i m_i \left( \sum_j \pdv{\b{r}_i}{q_j} \dot{q}_j + \pdv{\b{r}_i}{t} \right)^2 \nl
+&amp;amp;= M_0 + \sum_j M_j \dot{q}_j + \frac{1}{2} \sum_{j,k} M_{jk} \dot{q}_j \dot{q}_k
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+M_0 &amp;amp;= \frac{1}{2} \sum_i m_i \left( \pdv{\b{r}_i}{t} \right)^2 \nt
+M_j &amp;amp;= \sum_i m_i \pdv{\b{r}_i}{t} \cdot \pdv{\b{r}_i}{q_j} \nt
+M_{jk} &amp;amp;= \sum_i m_i \pdv{\b{r}_i}{q_j} \cdot \pdv{\b{r}_i}{q_k}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The coefficients $M_{jk}$ form a symmetric matrix called the &lt;strong&gt;mass matrix&lt;/strong&gt; of the system.
+If the transformation equations do not depend explicitly on time, as may as occur when the constraints are scleronomic,
+then $M_0$ and $M_j$ vanish, and the kinetic energy is a homogeneous quadratic function of the generalized velocities:&lt;/p&gt;
+
+&lt;p&gt;\[
+T = \frac{1}{2} \dot{\b{q}}^\top \b{M} \dot{\b{q}}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;single-particle-in-plane-polar-coordinates&quot;&gt;Single Particle in Plane Polar Coordinates&lt;/h3&gt;
+
+&lt;p&gt;Consider a single particle of mass $m$ moving in a plane under the force $\b{F}$.
+We have two generalized coordinates, the polar coordinates $r$ and $\theta$.
+The infinitesimal displacement is:&lt;/p&gt;
+
+&lt;p&gt;\[
+\dd{\b{r}} = \hat{\b{r}} \dd{r} + r \hat{\b{\theta}} \dd{\theta}
+\]&lt;/p&gt;
+
+&lt;p&gt;The kinetic energy is:&lt;/p&gt;
+
+&lt;p&gt;\[
+T = \frac{1}{2} m \left( \dot{r}^2 + r^2 \dot{\theta}^2 \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;The generalized forces are:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+Q_r &amp;amp;= \b{F} \cdot \pdv{\b{r}}{r} = \b{F} \cdot \hat{\b{r}} = F_r \nt
+Q_\theta &amp;amp;= \b{F} \cdot \pdv{\b{r}}{\theta} = \b{F} \cdot r \hat{\b{\theta}} = r F_\theta
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, Lagrange’s equations become:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+m \ddot{r} - m r \dot{\theta}^2 &amp;amp;= F_r \nt
+\odv{}{t} \left( m r^2 \dot{\theta} \right) &amp;amp;= r F_\theta
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The first equation is the radial equation of motion, and the second is the angular equation of motion.
+The second term of the first equation is the centripetal force, and the second equation is exactly the relationship between torque and angular momentum.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Constraints of Coordinates</title><link href="http://localhost:4000/physics/constraints-of-coordinates.html" rel="alternate" type="text/html" title="Constraints of Coordinates" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/constraints-of-coordinates</id><content type="html" xml:base="http://localhost:4000/physics/constraints-of-coordinates.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#constraints&quot; id=&quot;markdown-toc-constraints&quot;&gt;Constraints&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#holonomic-constraints&quot; id=&quot;markdown-toc-holonomic-constraints&quot;&gt;Holonomic Constraints&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#rheonomic-constraints&quot; id=&quot;markdown-toc-rheonomic-constraints&quot;&gt;Rheonomic Constraints&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#scleronomic-constraints&quot; id=&quot;markdown-toc-scleronomic-constraints&quot;&gt;Scleronomic Constraints&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#non-holonomic-constraints&quot; id=&quot;markdown-toc-non-holonomic-constraints&quot;&gt;Non-Holonomic Constraints&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#generalized-coordinates&quot; id=&quot;markdown-toc-generalized-coordinates&quot;&gt;Generalized Coordinates&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#pfaffian-constraints&quot; id=&quot;markdown-toc-pfaffian-constraints&quot;&gt;Pfaffian Constraints&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;constraints&quot;&gt;Constraints&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;constraint&lt;/strong&gt; is a condition that restricts the motion of a system.
 For example, a particle constrained to move along a straight line, or a gas confined to a cylinder.
-Constraints can be classified to two main types.
+Constraints can be classified to two main types.&lt;/p&gt;
 
-### Holonomic Constraints
+&lt;h3 id=&quot;holonomic-constraints&quot;&gt;Holonomic Constraints&lt;/h3&gt;
 
-A **holonomic constraint** is a constraint that can be expressed as an equation involving the coordinates of the system:
+&lt;p&gt;A &lt;strong&gt;holonomic constraint&lt;/strong&gt; is a constraint that can be expressed as an equation involving the coordinates of the system:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f(\b{r}_1, \b{r}_2, \ldots, \b{r}_n, t) = 0
-\\]
+\]&lt;/p&gt;
 
-where $\b{r}_i$ are the coordinates of the particles in the system.
+&lt;p&gt;where $\b{r}_i$ are the coordinates of the particles in the system.
 The simplest example is a rigid body, where the distance between any two points is constant.
-Holonomic constraints can be classified further into two types again.
+Holonomic constraints can be classified further into two types again.&lt;/p&gt;
 
-#### Rheonomic Constraints
+&lt;h4 id=&quot;rheonomic-constraints&quot;&gt;Rheonomic Constraints&lt;/h4&gt;
 
-A **rheonomic constraint** is a holonomic constraint that the equation of the constraint explicitly depends on time.
-Mechanical systems with such constraints are called **rheonomous**.
+&lt;p&gt;A &lt;strong&gt;rheonomic constraint&lt;/strong&gt; is a holonomic constraint that the equation of the constraint explicitly depends on time.
+Mechanical systems with such constraints are called &lt;strong&gt;rheonomous&lt;/strong&gt;.&lt;/p&gt;
 
-#### Scleronomic Constraints
+&lt;h4 id=&quot;scleronomic-constraints&quot;&gt;Scleronomic Constraints&lt;/h4&gt;
 
-A **scleronomic constraint** is a holonomic constraint that the equation of the constraint does not explicitly depend on time.
-Mechanical systems with such constraints are called **scleronomous**.
+&lt;p&gt;A &lt;strong&gt;scleronomic constraint&lt;/strong&gt; is a holonomic constraint that the equation of the constraint does not explicitly depend on time.
+Mechanical systems with such constraints are called &lt;strong&gt;scleronomous&lt;/strong&gt;.&lt;/p&gt;
 
-### Non-Holonomic Constraints
+&lt;h3 id=&quot;non-holonomic-constraints&quot;&gt;Non-Holonomic Constraints&lt;/h3&gt;
 
-A **non-holonomic constraint** is a constraint that cannot be expressed as an equation involving the coordinates of the system.
+&lt;p&gt;A &lt;strong&gt;non-holonomic constraint&lt;/strong&gt; is a constraint that cannot be expressed as an equation involving the coordinates of the system.
 A gas confined to a cylinder is an example of a non-holonomic constraint, as the gas can move freely in the cylinder but cannot escape it,
-so that the constraint is expressed in terms of inequalities rather than equations.
+so that the constraint is expressed in terms of inequalities rather than equations.&lt;/p&gt;
 
-## Generalized Coordinates
+&lt;h2 id=&quot;generalized-coordinates&quot;&gt;Generalized Coordinates&lt;/h2&gt;
 
-A **generalized coordinate** system is a coordinate system that describes the configuration of a system in terms of its degrees of freedom.
-A **degree of freedom** is a parameter that can be varied independently to describe the configuration of a system:
+&lt;p&gt;A &lt;strong&gt;generalized coordinate&lt;/strong&gt; system is a coordinate system that describes the configuration of a system in terms of its degrees of freedom.
+A &lt;strong&gt;degree of freedom&lt;/strong&gt; is a parameter that can be varied independently to describe the configuration of a system:
 mechanical systems with $N$ particles and $M$ holonomic constraints have $3N - M$ degrees of freedom since
 each particle has 3 degrees of freedom in 3D space, and each holonomic constraint reduces the degrees of freedom by 1.
-By denoting the generalized coordinates as $q_1, q_2, \ldots, q_n$, where $n = 3N - M$,
+By denoting the generalized coordinates as $q_1, q_2, \ldots, q_n$, where $n = 3N - M$,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\b{r}_1 &amp;= \b{r}_1(q_1, q_2, \ldots, q_n, t) \nl
-&amp; \;\; \vdots \nl
-\b{r}_N &amp;= \b{r}_N(q_1, q_2, \ldots, q_n, t)
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\b{r}_1 &amp;amp;= \b{r}_1(q_1, q_2, \ldots, q_n, t) \nl
+&amp;amp; \;\; \vdots \nl
+\b{r}_N &amp;amp;= \b{r}_N(q_1, q_2, \ldots, q_n, t)
+\end{align*}
+\]&lt;/p&gt;
 
-The generalized coordinates can be used to describe the configuration of the system in terms of its degrees of freedom.
-It doesn&apos;t have to be the Cartesian coordinates, even doesn&apos;t have to be the linear or orthogonal coordinates,
-or has the dimension of the space. 
+&lt;p&gt;The generalized coordinates can be used to describe the configuration of the system in terms of its degrees of freedom.
+It doesn’t have to be the Cartesian coordinates, even doesn’t have to be the linear or orthogonal coordinates,
+or has the dimension of the space.&lt;/p&gt;
 
-Advantage of generalized coordinates comes from the independence of the coordinates.
+&lt;p&gt;Advantage of generalized coordinates comes from the independence of the coordinates.
 Formal space coordinates are independent of each other only if the system is free of constraints.
-In generalized coordinates, the coordinates are independent of each other even if the system is constrained.
+In generalized coordinates, the coordinates are independent of each other even if the system is constrained.&lt;/p&gt;
 
-### Pfaffian Constraints
+&lt;h3 id=&quot;pfaffian-constraints&quot;&gt;Pfaffian Constraints&lt;/h3&gt;
 
-A **Pfaffian constraint** is a non-holonomic constraint that can be expressed as a linear combination of the differentials of the generalized coordinates:
+&lt;p&gt;A &lt;strong&gt;Pfaffian constraint&lt;/strong&gt; is a non-holonomic constraint that can be expressed as a linear combination of the differentials of the generalized coordinates:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sum_{i=1}^{n} A_{ri} \dd{q_i} + B_r \dd{t} = 0
-\\]
+\]&lt;/p&gt;
 
-where $A_{ri}$ and $B_r$ are functions of the generalized coordinates and time.
-Suppose that we&apos;re arguing with a holonomic system with the following constraints:
+&lt;p&gt;where $A_{ri}$ and $B_r$ are functions of the generalized coordinates and time.
+Suppose that we’re arguing with a holonomic system with the following constraints:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_r(q_1, q_2, \ldots, q_n, t) = 0
-\\]
+\]&lt;/p&gt;
 
-Then we can differentiate the equation with respect to time:
+&lt;p&gt;Then we can differentiate the equation with respect to time:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sum_{i=1}^{n} \pdv{f_r}{q_i} \dd{q_i} + \pdv{f_r}{t} \dd{t} = 0
-\\]
+\]&lt;/p&gt;
 
-And we see that the form of the equation is the same as the Pfaffian constraint form.
+&lt;p&gt;And we see that the form of the equation is the same as the Pfaffian constraint form.
 This means that holonomic constraints can always be expressed in Pfaffian form, but not all Pfaffian constraints are holonomic.
-A Pfaffian constraint is holonomic if and only if the equation can be _integrated_ to yield a holonomic constraint.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">D’Alembert’s Principle and Lagrange’s Equations</title><link href="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html" rel="alternate" type="text/html" title="D’Alembert’s Principle and Lagrange’s Equations" /><published>2025-08-13T00:00:00+09:00</published><updated>2025-08-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations</id><content type="html" xml:base="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Mechanics of a System of Particles</title><link href="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html" rel="alternate" type="text/html" title="Mechanics of a System of Particles" /><published>2025-08-12T00:00:00+09:00</published><updated>2025-08-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/mechanics-of-a-system-of-particles</id><content type="html" xml:base="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+A Pfaffian constraint is holonomic if and only if the equation can be &lt;em&gt;integrated&lt;/em&gt; to yield a holonomic constraint.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Mechanics of a System of Particles</title><link href="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html" rel="alternate" type="text/html" title="Mechanics of a System of Particles" /><published>2025-08-12T00:00:00+09:00</published><updated>2025-08-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/mechanics-of-a-system-of-particles</id><content type="html" xml:base="http://localhost:4000/physics/mechanics-of-a-system-of-particles.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mechanics-of-a-particle&quot; id=&quot;markdown-toc-mechanics-of-a-particle&quot;&gt;Mechanics of a Particle&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mechanics-of-a-system-of-particles&quot; id=&quot;markdown-toc-mechanics-of-a-system-of-particles&quot;&gt;Mechanics of a System of Particles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Mechanics of a Particle
+&lt;h2 id=&quot;mechanics-of-a-particle&quot;&gt;Mechanics of a Particle&lt;/h2&gt;
 
-Let $\b{r}$ be the position vector of a particle, then the velocity $\b{v}$ and acceleration $\b{a}$ are given by
+&lt;p&gt;Let $\b{r}$ be the position vector of a particle, then the velocity $\b{v}$ and acceleration $\b{a}$ are given by&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\b{v} &amp;= \odv{\b{r}}{t} \nl
-\b{a} &amp;= \odv{\b{v}}{t} = \odvn{2}{ \b{r} }{t}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\b{v} &amp;amp;= \odv{\b{r}}{t} \nl
+\b{a} &amp;amp;= \odv{\b{v}}{t} = \odvn{2}{ \b{r} }{t}
+\end{align*}
+\]&lt;/p&gt;
 
-The linear momentum $\b{p}$ of a particle with mass $m$ is defined as
+&lt;p&gt;The linear momentum $\b{p}$ of a particle with mass $m$ is defined as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{p} = m\b{v}
-\\]
+\]&lt;/p&gt;
 
-The mechanics of the particle is contained in _Newton&apos;s second law of motion_,
-which states that there exists frames of reference in which the motion of a particle is described by
+&lt;p&gt;The mechanics of the particle is contained in &lt;em&gt;Newton’s second law of motion&lt;/em&gt;,
+which states that there exists frames of reference in which the motion of a particle is described by&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{F} = \odv{\b{p}}{t}
-\\]
+\]&lt;/p&gt;
 
-where $\b{F}$ is the net force acting on the particle.
-Such a frame of reference is called an _inertial_ or _Galilean system_.
-If the mass $m$ is constant, we can also write this as
+&lt;p&gt;where $\b{F}$ is the net force acting on the particle.
+Such a frame of reference is called an &lt;em&gt;inertial&lt;/em&gt; or &lt;em&gt;Galilean system&lt;/em&gt;.
+If the mass $m$ is constant, we can also write this as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{F} = m\odv{\b{v}}{t} = m\b{a}
-\\]
+\]&lt;/p&gt;
 
-Many of the important conclusions of mechanics can be expressed in the form of conservation theorems,
-and the first is the _conservation of linear momentum of a particle_:
-&gt; If $\b{F} = 0$, then $\b{p}$ is conserved.
+&lt;p&gt;Many of the important conclusions of mechanics can be expressed in the form of conservation theorems,
+and the first is the &lt;em&gt;conservation of linear momentum of a particle&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If $\b{F} = 0$, then $\b{p}$ is conserved.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-The angular momentum $\b{L}$ of a particle with respect to a point $\b{O}$ is defined as
+&lt;p&gt;The angular momentum $\b{L}$ of a particle with respect to a point $\b{O}$ is defined as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{L} = \b{r} \times \b{p}
-\\]
+\]&lt;/p&gt;
 
-where $\b{r}$ is the position vector of the particle with respect to the point $\b{O}$.
-The moment of force or torque $\b{N}$ with respect to the point $\b{O}$ is defined as
+&lt;p&gt;where $\b{r}$ is the position vector of the particle with respect to the point $\b{O}$.
+The moment of force or torque $\b{N}$ with respect to the point $\b{O}$ is defined as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{N} = \b{r} \times \b{F}
-\\]
+\]&lt;/p&gt;
 
-We can also express the angular momentum in terms of the torque:
+&lt;p&gt;We can also express the angular momentum in terms of the torque:&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\odv{\b{L}}{t} &amp;= \odv{}{t} (\b{r} \times \b{p}) \nl
-&amp;= \b{v} \times m\b{v} + \b{r} \times \b{F} \nl
-&amp;= \b{N}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\odv{\b{L}}{t} &amp;amp;= \odv{}{t} (\b{r} \times \b{p}) \nl
+&amp;amp;= \b{v} \times m\b{v} + \b{r} \times \b{F} \nl
+&amp;amp;= \b{N}
+\end{align*}
+\]&lt;/p&gt;
 
-And we similarly have the _conservation of angular momentum of a particle_:
-&gt; If $\b{N} = 0$, then $\b{L}$ is conserved.
+&lt;p&gt;And we similarly have the &lt;em&gt;conservation of angular momentum of a particle&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If $\b{N} = 0$, then $\b{L}$ is conserved.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-Next, the work done by a force $\b{F}$ on a particle is defined as
+&lt;p&gt;Next, the work done by a force $\b{F}$ on a particle is defined as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W_{12} = \int_1^2 \b{F} \cdot \dd{\b{s}}
-\\]
+\]&lt;/p&gt;
 
-If the mass $m$ is constant, we can also write this as
+&lt;p&gt;If the mass $m$ is constant, we can also write this as&lt;/p&gt;
 
-\\[
-\begin{align\*}
-W_{12} &amp;= \int_1^2 m\odv{\b{v}}{t} \cdot \odv{\b{r}}{t} \dd{t} \nl
-&amp;= m\int_1^2 \odv{}{t} \left( \frac{v^2}{2} \right) \dd{t} \nl
-&amp;= \frac{m}{2} \left( v_2^2 - v_1^2 \right)
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+W_{12} &amp;amp;= \int_1^2 m\odv{\b{v}}{t} \cdot \odv{\b{r}}{t} \dd{t} \nl
+&amp;amp;= m\int_1^2 \odv{}{t} \left( \frac{v^2}{2} \right) \dd{t} \nl
+&amp;amp;= \frac{m}{2} \left( v_2^2 - v_1^2 \right)
+\end{align*}
+\]&lt;/p&gt;
 
-Thus we define the _kinetic energy_ $T$ of a particle as
+&lt;p&gt;Thus we define the &lt;em&gt;kinetic energy&lt;/em&gt; $T$ of a particle as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 T = \frac{1}{2}mv^2
-\\]
+\]&lt;/p&gt;
 
-and get the _work-energy theorem_:
+&lt;p&gt;and get the &lt;em&gt;work-energy theorem&lt;/em&gt;:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = \Delta T
-\\]
+\]&lt;/p&gt;
 
-Let&apos;s talk about the _conservative forces_.
+&lt;p&gt;Let’s talk about the &lt;em&gt;conservative forces&lt;/em&gt;.
 A force $\b{F}$ is called conservative if the work done by the force from a fixed point to another fixed point is independent of the path taken.
-This is equivalent with:
+This is equivalent with:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \oint \b{F} \cdot \dd{\b{s}} = 0
-\\]
+\]&lt;/p&gt;
 
-And by the Stokes theorem, this is equivalent with $\curl \b{F} = 0$.
-Thus, by the Poincaré lemma, we can write the force as the gradient of a scalar function $U$:
+&lt;p&gt;And by the Stokes theorem, this is equivalent with $\curl \b{F} = 0$.
+Thus, by the Poincaré lemma, we can write the force as the gradient of a scalar function $U$:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{F} = -\grad U
-\\]
+\]&lt;/p&gt;
 
-The function $U(\b{r})$ is called the _potential energy_ of the force, and can be
-calculated by setting the potential energy at a fixed point to zero:
+&lt;p&gt;The function $U(\b{r})$ is called the &lt;em&gt;potential energy&lt;/em&gt; of the force, and can be
+calculated by setting the potential energy at a fixed point to zero:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 U(\b{r}) = -\int_{\b{r}_0}^{\b{r}} \b{F} \cdot \dd{\b{s}}
-\\]
+\]&lt;/p&gt;
 
-By the gradient theorem, we can write the work done by a conservative force as
+&lt;p&gt;By the gradient theorem, we can write the work done by a conservative force as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = -\Delta U
-\\]
+\]&lt;/p&gt;
 
-Therefore, we can also write the work-energy theorem as
+&lt;p&gt;Therefore, we can also write the work-energy theorem as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \Delta (T + U) = 0
-\\]
+\]&lt;/p&gt;
 
-This means that the sum of the kinetic energy and potential energy is conserved, and we call this the _total mechanical energy_.
+&lt;p&gt;This means that the sum of the kinetic energy and potential energy is conserved, and we call this the &lt;em&gt;total mechanical energy&lt;/em&gt;.
 However, if a force is conservative but depends explicitly on time, then the total mechanical energy is not conserved;
-physically, displacement(path integral) is nonzero only when time flows.
+physically, displacement(path integral) is nonzero only when time flows.&lt;/p&gt;
 
-## Mechanics of a System of Particles
+&lt;h2 id=&quot;mechanics-of-a-system-of-particles&quot;&gt;Mechanics of a System of Particles&lt;/h2&gt;
 
-In generalizing the mechanics of a particle to a system of particles,
-we must distinguish between the _external forces_ acting on the system and the _internal forces_ acting between the particles of the system.
-The equation of motion for the $i$-th particle is given by:
+&lt;p&gt;In generalizing the mechanics of a particle to a system of particles,
+we must distinguish between the &lt;em&gt;external forces&lt;/em&gt; acting on the system and the &lt;em&gt;internal forces&lt;/em&gt; acting between the particles of the system.
+The equation of motion for the $i$-th particle is given by:&lt;/p&gt;
 
-\\[
-\dot{\b{p}}\_i = \b{F}\_i^\text{ext} + \sum_{j \neq i} \b{F}\_{ij}
-\\]
+&lt;p&gt;\[
+\dot{\b{p}}_i = \b{F}_i^\text{ext} + \sum_{j \neq i} \b{F}_{ij}
+\]&lt;/p&gt;
 
-where $\b{F}\_i^\text{ext}$ is the external force acting on the $i$-th particle,
-and $\b{F}\_{ij}$ is the internal force acting on the $i$-th particle due to the $j$-th particle.
-Summing over all particles, we get the equation of motion for the system:
+&lt;p&gt;where $\b{F}_i^\text{ext}$ is the external force acting on the $i$-th particle,
+and $\b{F}_{ij}$ is the internal force acting on the $i$-th particle due to the $j$-th particle.
+Summing over all particles, we get the equation of motion for the system:&lt;/p&gt;
 
-\\[
-\odvn{2}{}{t} \sum\_i m\_i \b{r}\_i = \sum\_i \b{F}\_i^\text{ext} + \sum\_{i\neq j} \b{F}\_{ij}
-\\]
+&lt;p&gt;\[
+\odvn{2}{}{t} \sum_i m_i \b{r}_i = \sum_i \b{F}_i^\text{ext} + \sum_{i\neq j} \b{F}_{ij}
+\]&lt;/p&gt;
 
-By the _Newton&apos;s third law of motion_, the internal forces satisfy $\b{F}\_{ij} = -\b{F}\_{ji}$, and thus the sum of the internal forces is zero.
-Writing the total mass of the system as $M = \sum_i m_i$ and the _center of mass_ $\b{R}$ as
+&lt;p&gt;By the &lt;em&gt;Newton’s third law of motion&lt;/em&gt;, the internal forces satisfy $\b{F}_{ij} = -\b{F}_{ji}$, and thus the sum of the internal forces is zero.
+Writing the total mass of the system as $M = \sum_i m_i$ and the &lt;em&gt;center of mass&lt;/em&gt; $\b{R}$ as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{R} = \frac{1}{M} \sum_i m_i \b{r}_i
-\\]
+\]&lt;/p&gt;
 
-we can rewrite the equation of motion for the system as
+&lt;p&gt;we can rewrite the equation of motion for the system as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 M \odvn{2}{}{t} \b{R} = \sum_i \b{F}_i^\text{ext} = \b{F}^\text{ext}
-\\]
+\]&lt;/p&gt;
 
-This means that the center of mass of the system behaves like a single particle with mass $M$ under the influence of the external forces.
-The total linear momentum of the system is given by
+&lt;p&gt;This means that the center of mass of the system behaves like a single particle with mass $M$ under the influence of the external forces.
+The total linear momentum of the system is given by&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{P} = \sum_i m_i \odv{\b{r}_i}{t} = M \b{V}
-\\]
+\]&lt;/p&gt;
 
-where $\b{V} = \odv{\b{R}}{t}$ is the velocity of the center of mass.
-And we have the _conservation of linear momentum of a system of particles_:
-&gt; If $\b{F}^\text{ext} = 0$, then $\b{P}$ is conserved.
+&lt;p&gt;where $\b{V} = \odv{\b{R}}{t}$ is the velocity of the center of mass.
+And we have the &lt;em&gt;conservation of linear momentum of a system of particles&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If $\b{F}^\text{ext} = 0$, then $\b{P}$ is conserved.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-The total angular momentum of the system with respect to a point $\b{O}$ is given by
+&lt;p&gt;The total angular momentum of the system with respect to a point $\b{O}$ is given by&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{L} = \sum_i \b{r}_i \times \b{p}_i
-\\]
+\]&lt;/p&gt;
 
-Let&apos;s define $\b{r}_{ij} = \b{r}_i - \b{r}_j$ as the position vector of the $i$-th particle with respect to the $j$-th particle.
+&lt;p&gt;Let’s define $\b{r}_{ij} = \b{r}_i - \b{r}_j$ as the position vector of the $i$-th particle with respect to the $j$-th particle.&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\odv{\b{L}}{t} &amp;= \sum_i \odv{}{t} (\b{r}\_i \times m_i \odv{\b{r}\_i}{t}) \nl
-&amp;= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i\neq j} \b{r}\_i \times \b{F}\_{ij} \nl
-&amp;= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i &lt; j} \b{r}\_{ij} \times \b{F}\_{ij}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\odv{\b{L}}{t} &amp;amp;= \sum_i \odv{}{t} (\b{r}_i \times m_i \odv{\b{r}_i}{t}) \nl
+&amp;amp;= \sum_i \b{r}_i \times \b{F}_i^\text{ext} + \sum_{i\neq j} \b{r}_i \times \b{F}_{ij} \nl
+&amp;amp;= \sum_i \b{r}_i \times \b{F}_i^\text{ext} + \sum_{i &amp;lt; j} \b{r}_{ij} \times \b{F}_{ij}
+\end{align*}
+\]&lt;/p&gt;
 
-If the internal forces between the particles, in addition to being equal and opposite,
-also lie along the line joining the particles -- a condition known as the _strong form of Newton&apos;s third law_ -- then the second term vanishes.
-In this case, we can write the angular momentum of the system as
+&lt;p&gt;If the internal forces between the particles, in addition to being equal and opposite,
+also lie along the line joining the particles – a condition known as the &lt;em&gt;strong form of Newton’s third law&lt;/em&gt; – then the second term vanishes.
+In this case, we can write the angular momentum of the system as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \odv{\b{L}}{t} = \sum_i \b{r}_i \times \b{F}_i^\text{ext} = \b{N}^\text{ext}
-\\]
+\]&lt;/p&gt;
 
-And we have the _conservation of angular momentum of a system of particles_:
-&gt; If $\b{N}^\text{ext} = 0$, then $\b{L}$ is conserved.
+&lt;p&gt;And we have the &lt;em&gt;conservation of angular momentum of a system of particles&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;If $\b{N}^\text{ext} = 0$, then $\b{L}$ is conserved.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-Let&apos;s see the system from the point of view of the center of mass.
-Let&apos;s define
+&lt;p&gt;Let’s see the system from the point of view of the center of mass.
+Let’s define&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{r}^\prime_i = \b{r}_i - \b{R} \nl
 \b{v}^\prime_i = \b{v}_i - \b{V}
-\\]
+\]&lt;/p&gt;
 
-Then we have a good property:
+&lt;p&gt;Then we have a good property:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sum_i m_i \b{r}^\prime_i = 0 \nl
 \sum_i m_i \b{v}^\prime_i = 0
-\\]
+\]&lt;/p&gt;
 
-This means that the center of mass is at the origin in this new coordinate system.
-Using this, we can rewrite the angular momentum of the system as
+&lt;p&gt;This means that the center of mass is at the origin in this new coordinate system.
+Using this, we can rewrite the angular momentum of the system as&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\b{L} &amp;= \sum_i \left( \b{r}^\prime_i + \b{R} \right) \times m_i \left( \b{v}^\prime_i + \b{V} \right) \nl
-&amp;= \b{R} \times M\b{V} + \sum_i \b{r}^\prime_i \times m_i \b{v}^\prime_i
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\b{L} &amp;amp;= \sum_i \left( \b{r}^\prime_i + \b{R} \right) \times m_i \left( \b{v}^\prime_i + \b{V} \right) \nl
+&amp;amp;= \b{R} \times M\b{V} + \sum_i \b{r}^\prime_i \times m_i \b{v}^\prime_i
+\end{align*}
+\]&lt;/p&gt;
 
-By writing $\b{p}^\prime_i = m_i \b{v}^\prime_i$,
+&lt;p&gt;By writing $\b{p}^\prime_i = m_i \b{v}^\prime_i$,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{L} = \b{R} \times \b{P} + \sum_i \b{r}^\prime_i \times \b{p}^\prime_i
-\\]
+\]&lt;/p&gt;
 
-This means that the angular momentum of the system can be decomposed into two parts:
-1. The angular momentum of the center of mass
-2. The angular momentum of the particles with respect to the center of mass
+&lt;p&gt;This means that the angular momentum of the system can be decomposed into two parts:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The angular momentum of the center of mass&lt;/li&gt;
+  &lt;li&gt;The angular momentum of the particles with respect to the center of mass&lt;/li&gt;
+&lt;/ol&gt;
 
-This emphasizes that $\b{L}$ depends on the choice of the point $\b{O}$, only through $\b{R}$.
-Only if $b{R}$ is rest with respect to $\b{O}$, $\b{L}$ will be independent of the point of reference.
+&lt;p&gt;This emphasizes that $\b{L}$ depends on the choice of the point $\b{O}$, only through $\b{R}$.
+Only if $b{R}$ is rest with respect to $\b{O}$, $\b{L}$ will be independent of the point of reference.&lt;/p&gt;
 
-The total kinetic energy of the system is given by
+&lt;p&gt;The total kinetic energy of the system is given by&lt;/p&gt;
 
-\\[
-\begin{align\*}
-T &amp;= \sum_i T_i = \sum_i \frac{1}{2} m_i \left\vert \b{v}_i^\prime + \b{V} \right\vert^2 \nl
-&amp;= \sum_i \frac{1}{2} m_i \left( v_i^{\prime 2} + 2\b{v}_i^\prime \cdot \b{V} + V^2 \right) \nl
-&amp;= \frac{1}{2} M V^2 + \sum_i \frac{1}{2} m_i v_i^{\prime 2}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+T &amp;amp;= \sum_i T_i = \sum_i \frac{1}{2} m_i \left\vert \b{v}_i^\prime + \b{V} \right\vert^2 \nl
+&amp;amp;= \sum_i \frac{1}{2} m_i \left( v_i^{\prime 2} + 2\b{v}_i^\prime \cdot \b{V} + V^2 \right) \nl
+&amp;amp;= \frac{1}{2} M V^2 + \sum_i \frac{1}{2} m_i v_i^{\prime 2}
+\end{align*}
+\]&lt;/p&gt;
 
-This means that the total kinetic energy of the system can also be decomposed into two parts:
-1. The kinetic energy of the center of mass
-2. The kinetic energy of the particles with respect to the center of mass
+&lt;p&gt;This means that the total kinetic energy of the system can also be decomposed into two parts:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;The kinetic energy of the center of mass&lt;/li&gt;
+  &lt;li&gt;The kinetic energy of the particles with respect to the center of mass&lt;/li&gt;
+&lt;/ol&gt;
 
-Now let&apos;s seek for the work done by the forces acting on the system.
-Assume that every force acting on the system is conservative, then
+&lt;p&gt;Now let’s seek for the work done by the forces acting on the system.
+Assume that every force acting on the system is conservative, then&lt;/p&gt;
 
-\\[
-\begin{align\*}
-W_{12} &amp;= \sum_i \int_1^2 \b{F}\_i^\text{ext} \cdot \dd{\b{s}}_i + \sum\_{i \neq j} \int_1^2 \b{F}\_{ij} \cdot \dd{\b{s}}\_i \nl
-&amp;= -\sum_i \int_1^2 \grad_i U_i \cdot \dd{\b{s}}\_i - \sum\_{i \neq j} \int_1^2 \grad_i U\_{ij} \cdot \dd{\b{s}}\_i
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+W_{12} &amp;amp;= \sum_i \int_1^2 \b{F}_i^\text{ext} \cdot \dd{\b{s}}_i + \sum_{i \neq j} \int_1^2 \b{F}_{ij} \cdot \dd{\b{s}}_i \nl
+&amp;amp;= -\sum_i \int_1^2 \grad_i U_i \cdot \dd{\b{s}}_i - \sum_{i \neq j} \int_1^2 \grad_i U_{ij} \cdot \dd{\b{s}}_i
+\end{align*}
+\]&lt;/p&gt;
 
-where $U_i$ is the potential energy of the external force acting on the $i$-th particle,
+&lt;p&gt;where $U_i$ is the potential energy of the external force acting on the $i$-th particle,
 and $U_{ij}$ is the potential energy of the internal force acting between the $i$-th and $j$-th particles.
 $\grad_i$ means that we take the gradient with respect to the coordinates of the $i$-th particle.
-By the Newton&apos;s third law, we have $\grad_i U_{ij} = -\grad_j U_{ji}$,
+By the Newton’s third law, we have $\grad_i U_{ij} = -\grad_j U_{ji}$,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-W_{12} &amp;= -\sum_i \Delta U_i - \sum_{i &lt; j} \int_1^2 \left( \grad_i U_{ij} \cdot \dd{\b{s}}\_i + \grad_j U_{ji} \cdot \dd{\b{s}}\_j \right) \nl
-&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \int_1^2 \grad_i U\_{ij} \cdot \left( \dd{\b{s}}\_i - \dd{\b{s}}\_j \right) \nl
-&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \int_1^2 \grad_{ij} U\_{ij} \cdot \dd{\b{s}}\_{ij} \nl
-&amp;= -\sum_i \Delta U_i - \sum\_{i &lt; j} \Delta U_{ij}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+W_{12} &amp;amp;= -\sum_i \Delta U_i - \sum_{i &amp;lt; j} \int_1^2 \left( \grad_i U_{ij} \cdot \dd{\b{s}}_i + \grad_j U_{ji} \cdot \dd{\b{s}}_j \right) \nl
+&amp;amp;= -\sum_i \Delta U_i - \sum_{i &amp;lt; j} \int_1^2 \grad_i U_{ij} \cdot \left( \dd{\b{s}}_i - \dd{\b{s}}_j \right) \nl
+&amp;amp;= -\sum_i \Delta U_i - \sum_{i &amp;lt; j} \int_1^2 \grad_{ij} U_{ij} \cdot \dd{\b{s}}_{ij} \nl
+&amp;amp;= -\sum_i \Delta U_i - \sum_{i &amp;lt; j} \Delta U_{ij}
+\end{align*}
+\]&lt;/p&gt;
 
-This means that we can write the whole potential energy of the system as
+&lt;p&gt;This means that we can write the whole potential energy of the system as&lt;/p&gt;
 
-\\[
-U = \sum_i U_i + \sum_{i &lt; j} U_{ij}
-\\]
+&lt;p&gt;\[
+U = \sum_i U_i + \sum_{i &amp;lt; j} U_{ij}
+\]&lt;/p&gt;
 
-We often set $U_{ij}=U_{ji}$, so that the potential energy is symmetric with respect to the particles.
+&lt;p&gt;We often set $U_{ij}=U_{ji}$, so that the potential energy is symmetric with respect to the particles.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 U = \sum_i U_i + \frac{1}{2} \sum_{i \neq j} U_{ij}
-\\]
+\]&lt;/p&gt;
 
-Thus, we can write the work done by the forces acting on the system as
+&lt;p&gt;Thus, we can write the work done by the forces acting on the system as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 W = -\Delta U
-\\]
+\]&lt;/p&gt;
 
-And also get the _conservation of total mechanical energy_:
+&lt;p&gt;And also get the &lt;em&gt;conservation of total mechanical energy&lt;/em&gt;:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \Delta (T + U) = 0
-\\]
+\]&lt;/p&gt;
 
-Let&apos;s look for the internal potential energy more closely.
+&lt;p&gt;Let’s look for the internal potential energy more closely.
 If it depends only on the distance between the particles, i.e. $U_{ij} = U_{ij}(r_{ij})$,
-then we can write the force as
+then we can write the force as&lt;/p&gt;
 
-\\[
-\b{F}\_{ij} = -\grad\_i U\_{ij}(r\_{ij}) = -\pdv{U\_{ij}}{r\_{ij}} \grad\_i r\_{ij} = -\pdv{U\_{ij}}{r\_{ij}} \frac{\b{r}\_{ij}}{r\_{ij}}
-\\]
+&lt;p&gt;\[
+\b{F}_{ij} = -\grad_i U_{ij}(r_{ij}) = -\pdv{U_{ij}}{r_{ij}} \grad_i r_{ij} = -\pdv{U_{ij}}{r_{ij}} \frac{\b{r}_{ij}}{r_{ij}}
+\]&lt;/p&gt;
 
-This means that the internal forces are central forces, and they satisfy the strong form of Newton&apos;s third law.
+&lt;p&gt;This means that the internal forces are central forces, and they satisfy the strong form of Newton’s third law.
 Internal potential is generally not zero, and it may vary as the system changes with time.
-However, for rigid bodies, in other words for constant $r\_{ij}$,
-$\dd{\b{s}}\_{ij}$ can only be perpendicular to $\b{r}\_{ij}$, and so for central forces, it is perpendicular to $\b{F}\_{ij}$,
+However, for rigid bodies, in other words for constant $r_{ij}$,
+$\dd{\b{s}}_{ij}$ can only be perpendicular to $\b{r}_{ij}$, and so for central forces, it is perpendicular to $\b{F}_{ij}$,
 which means that the work done by the internal forces is zero, resulting in the constant internal potential energy.
-Thus, we can completely disregard the internal potential energy of a rigid body system.
-&gt; $U = \sum_i U_i$ for a rigid body system.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+Thus, we can completely disregard the internal potential energy of a rigid body system.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;$U = \sum_i U_i$ for a rigid body system.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Order Statistics</title><link href="http://localhost:4000/mathematics/order-statistics.html" rel="alternate" type="text/html" title="Order Statistics" /><published>2025-08-06T00:00:00+09:00</published><updated>2025-08-06T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/order-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/order-statistics.html">&lt;!--more--&gt;
 
-##</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Samples and the Statistics</title><link href="http://localhost:4000/mathematics/random-samples-and-the-statistics.html" rel="alternate" type="text/html" title="Random Samples and the Statistics" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-samples-and-the-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/random-samples-and-the-statistics.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;p&gt;##&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Random Samples and the Statistics</title><link href="http://localhost:4000/mathematics/random-samples-and-the-statistics.html" rel="alternate" type="text/html" title="Random Samples and the Statistics" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/random-samples-and-the-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/random-samples-and-the-statistics.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#random-samples&quot; id=&quot;markdown-toc-random-samples&quot;&gt;Random Samples&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#statistics&quot; id=&quot;markdown-toc-statistics&quot;&gt;Statistics&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#sample-mean&quot; id=&quot;markdown-toc-sample-mean&quot;&gt;Sample Mean&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sample-variance&quot; id=&quot;markdown-toc-sample-variance&quot;&gt;Sample Variance&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sampling-distribution-of-the-sample-mean&quot; id=&quot;markdown-toc-sampling-distribution-of-the-sample-mean&quot;&gt;Sampling Distribution of the Sample Mean&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-## Random Samples
+&lt;h2 id=&quot;random-samples&quot;&gt;Random Samples&lt;/h2&gt;
 
-The random variables $X_1, \ldots, X_n$ are said to form a **random sample** if they are _independent and identically distributed_ (i.i.d.).
+&lt;p&gt;The random variables $X_1, \ldots, X_n$ are said to form a &lt;strong&gt;random sample&lt;/strong&gt; if they are &lt;em&gt;independent and identically distributed&lt;/em&gt; (i.i.d.).
 This means that each $X_i$ is drawn from the same probability distribution $f(x)$ and that the values of $X_i$ do not influence each other.
-Here we call $f(x)$ the **population distribution**. From the definition, the joint distribution of the random sample is given by:
+Here we call $f(x)$ the &lt;strong&gt;population distribution&lt;/strong&gt;. From the definition, the joint distribution of the random sample is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f(x_1, \ldots, x_n) = \prod_{i=1}^n f(x_i)
-\\]
+\]&lt;/p&gt;
 
-Provided that the mgf of the population distribution exists, the mgf of the sample mean is:
+&lt;p&gt;Provided that the mgf of the population distribution exists, the mgf of the sample mean is:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 M_{\bar{X}}(t) = \left[ M_X\left(\frac{t}{n}\right) \right]^n
-\\]
+\]&lt;/p&gt;
 
-It appears the same for the characteristic functions.
+&lt;p&gt;It appears the same for the characteristic functions.&lt;/p&gt;
 
-## Statistics
+&lt;h2 id=&quot;statistics&quot;&gt;Statistics&lt;/h2&gt;
 
-A **statistic** is a function of the random sample $X_1, \ldots, X_n$ that does not depend on the parameters of the population distribution.
+&lt;p&gt;A &lt;strong&gt;statistic&lt;/strong&gt; is a function of the random sample $X_1, \ldots, X_n$ that does not depend on the parameters of the population distribution.
 We can denote a statistic as $T(X_1, \ldots, X_n)$, where $T$ is a function that takes the random sample as input.
-The probability distribution of a statistic is called the **sampling distribution**.
-A statistic is a random variable that summarizes or describes some aspect of the sample, such as the sample mean, sample variance, or sample median.
+The probability distribution of a statistic is called the &lt;strong&gt;sampling distribution&lt;/strong&gt;.
+A statistic is a random variable that summarizes or describes some aspect of the sample, such as the sample mean, sample variance, or sample median.&lt;/p&gt;
 
-### Sample Mean
+&lt;h3 id=&quot;sample-mean&quot;&gt;Sample Mean&lt;/h3&gt;
 
-The **sample mean** is the arithmetic average of the random sample and is usually denoted as:
+&lt;p&gt;The &lt;strong&gt;sample mean&lt;/strong&gt; is the arithmetic average of the random sample and is usually denoted as:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
-\\]
+\]&lt;/p&gt;
 
-Assuming $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}[X_i] = \sigma^2$ for all $i$, the expected value of the sample mean is given by:
+&lt;p&gt;Assuming $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}[X_i] = \sigma^2$ for all $i$, the expected value of the sample mean is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{E}[\bar{X}] = \frac{1}{n} \sum_{i=1}^n \mathrm{E}[X_i] = \mu
-\\]
+\]&lt;/p&gt;
 
-The variance of the sample mean is given by:
+&lt;p&gt;The variance of the sample mean is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Var}[\bar{X}] = \frac{1}{n^2} \sum_{i=1}^n \mathrm{Var}[X_i] = \frac{\sigma^2}{n}
-\\]
+\]&lt;/p&gt;
 
-### Sample Variance
+&lt;h3 id=&quot;sample-variance&quot;&gt;Sample Variance&lt;/h3&gt;
 
-The **sample variance** is a measure of the spread of the random sample and is usually denoted as:
+&lt;p&gt;The &lt;strong&gt;sample variance&lt;/strong&gt; is a measure of the spread of the random sample and is usually denoted as:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 S^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \bar{X}\right)^2
-\\]
+\]&lt;/p&gt;
 
-The **sample standard deviation** is the square root of the sample variance.
+&lt;p&gt;The &lt;strong&gt;sample standard deviation&lt;/strong&gt; is the square root of the sample variance.&lt;/p&gt;
 
-The expected value of the sample variance is given by:
+&lt;p&gt;The expected value of the sample variance is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{E}[S^2] = \sigma^2
-\\]
+\]&lt;/p&gt;
 
-Why do we divide by $n-1$ instead of $n$? This is because we are estimating the population variance from the sample, and dividing by $n-1$ (the **Bessel&apos;s correction**) corrects the bias in the estimation.
-Let&apos;s prove this:
+&lt;p&gt;Why do we divide by $n-1$ instead of $n$? This is because we are estimating the population variance from the sample, and dividing by $n-1$ (the &lt;strong&gt;Bessel’s correction&lt;/strong&gt;) corrects the bias in the estimation.
+Let’s prove this:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 (n-1)S^2 = \sum_{i=1}^n (X_i - \bar{X})^2 = \sum_{i=1}^n X_i^2 - n\bar{X}^2
-\\]
+\]&lt;/p&gt;
 
-Using the fact that $\mathrm{E}[X^2]=\mathrm{Var}[X] + \mathrm{E}[X]^2$, we can compute the expected value:
+&lt;p&gt;Using the fact that $\mathrm{E}[X^2]=\mathrm{Var}[X] + \mathrm{E}[X]^2$, we can compute the expected value:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{E}[(n-1)S^2] = n (\sigma^2 + \mu^2) - n\left( \frac{\sigma^2}{n} + \mu^2 \right) = (n-1)\sigma^2
-\\]
+\]&lt;/p&gt;
 
-### Sampling Distribution of the Sample Mean
+&lt;h3 id=&quot;sampling-distribution-of-the-sample-mean&quot;&gt;Sampling Distribution of the Sample Mean&lt;/h3&gt;
 
-If $X$ and $Y$ are independent random variables with pdfs $f_X(x)$ and $f_Y(y)$, then the pdf of the sum $Z = X + Y$ is given by the convolution of the two pdfs.
-One can prove the theorem directly from the formula derived [here](/mathematics/multivariate-transformations.html):
+&lt;p&gt;If $X$ and $Y$ are independent random variables with pdfs $f_X(x)$ and $f_Y(y)$, then the pdf of the sum $Z = X + Y$ is given by the convolution of the two pdfs.
+One can prove the theorem directly from the formula derived &lt;a href=&quot;/mathematics/multivariate-transformations.html&quot;&gt;here&lt;/a&gt;:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_Z(z) = \int_{-\infty}^{\infty} f_X(x) f_Y(z - x) \, dx
-\\]
+\]&lt;/p&gt;
 
-We can extend this to the case of the sample mean.
-If $X_1, \ldots, X_n$ are independent and identically distributed random variables with pdf $f(x)$, then the pdf of the sample mean $\bar{X}$ is given by:
+&lt;p&gt;We can extend this to the case of the sample mean.
+If $X_1, \ldots, X_n$ are independent and identically distributed random variables with pdf $f(x)$, then the pdf of the sample mean $\bar{X}$ is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_{\bar{X}}(\bar{x}) = n \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f\left(n \bar{x} - \sum_{i=1}^{n-1} x_i\right) \prod_{i=1}^{n-1} f(x_i) \, dx_1 \cdots dx_{n-1}
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Sampling from the Normal Distribution</title><link href="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html" rel="alternate" type="text/html" title="Sampling from the Normal Distribution" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/sampling-from-the-normal-distribution</id><content type="html" xml:base="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Sampling from the Normal Distribution</title><link href="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html" rel="alternate" type="text/html" title="Sampling from the Normal Distribution" /><published>2025-08-05T00:00:00+09:00</published><updated>2025-08-05T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/sampling-from-the-normal-distribution</id><content type="html" xml:base="http://localhost:4000/mathematics/sampling-from-the-normal-distribution.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#statistics-of-the-normal-random-sample&quot; id=&quot;markdown-toc-statistics-of-the-normal-random-sample&quot;&gt;Statistics of the normal random sample&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#chi-squared-distribution&quot; id=&quot;markdown-toc-chi-squared-distribution&quot;&gt;Chi-squared distribution&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#proof-of-the-sample-variance&quot; id=&quot;markdown-toc-proof-of-the-sample-variance&quot;&gt;Proof of the sample variance&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#independence-of-barx-and-s2&quot; id=&quot;markdown-toc-independence-of-barx-and-s2&quot;&gt;Independence of $\bar{X}$ and $S^2$&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#students-t-distribution&quot; id=&quot;markdown-toc-students-t-distribution&quot;&gt;Student’s t-distribution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#snedecors-f-distribution&quot; id=&quot;markdown-toc-snedecors-f-distribution&quot;&gt;Snedecor’s F-distribution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Statistics of the normal random sample
+&lt;h2 id=&quot;statistics-of-the-normal-random-sample&quot;&gt;Statistics of the normal random sample&lt;/h2&gt;
 
-Let $X_1, \ldots, X_n$ be a random sample from the normal distribution with mean $\mu$ and variance $\sigma^2$,
+&lt;p&gt;Let $X_1, \ldots, X_n$ be a random sample from the normal distribution with mean $\mu$ and variance $\sigma^2$,
 i.e., $X_i \sim N(\mu, \sigma^2)$. Let $\bar{X}$ be the sample mean and $S^2$ be the sample variance of the random sample.
-Then the following properties hold:
-- $\bar{X}$ and $S^2$ are independent random variables.
-- $\bar{X} \sim N(\mu, \sigma^2/n)$
-- $(n-1) S^2 / \sigma^2 \sim \chi^2_{n-1}$
+Then the following properties hold:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$\bar{X}$ and $S^2$ are independent random variables.&lt;/li&gt;
+  &lt;li&gt;$\bar{X} \sim N(\mu, \sigma^2/n)$&lt;/li&gt;
+  &lt;li&gt;$(n-1) S^2 / \sigma^2 \sim \chi^2_{n-1}$&lt;/li&gt;
+&lt;/ul&gt;
 
-For the first one, one can show that the variables $\bar{X}$ and $S^2$ are independent so that the two statistics can be treated separately.
-We&apos;ll show it elegantly a bit later.
+&lt;p&gt;For the first one, one can show that the variables $\bar{X}$ and $S^2$ are independent so that the two statistics can be treated separately.
+We’ll show it elegantly a bit later.
 The second one follows from the properties of the normal distribution, which states that the sum of independent normal random variables is also normally distributed.
 The third one follows from the definition of the sample variance and the properties of the chi-squared distribution.
-Let&apos;s prove it directly.
+Let’s prove it directly.&lt;/p&gt;
 
-### Chi-squared distribution
+&lt;h3 id=&quot;chi-squared-distribution&quot;&gt;Chi-squared distribution&lt;/h3&gt;
 
-The _chi-squared distribution_ with $p$ degrees of freedom is defined as the following distribution:
+&lt;p&gt;The &lt;em&gt;chi-squared distribution&lt;/em&gt; with $p$ degrees of freedom is defined as the following distribution:&lt;/p&gt;
 
-\\[
-f_{\chi^2_p}(x) = \frac{1}{2^{p/2} \Gamma(p/2)} x^{\frac{p}{2}-1} e^{-x/2}, \quad x &gt; 0
-\\]
+&lt;p&gt;\[
+f_{\chi^2_p}(x) = \frac{1}{2^{p/2} \Gamma(p/2)} x^{\frac{p}{2}-1} e^{-x/2}, \quad x &amp;gt; 0
+\]&lt;/p&gt;
 
-Chi-squared distribution is also defined as the sum of the squares of $p$ independent standard normal random variables.
-First, we can show that the square of a standard normal random variable is chi-squared distributed with one degree of freedom.
+&lt;p&gt;Chi-squared distribution is also defined as the sum of the squares of $p$ independent standard normal random variables.
+First, we can show that the square of a standard normal random variable is chi-squared distributed with one degree of freedom.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_Z(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{z^2}{2}}
-\\]
+\]&lt;/p&gt;
 
-\\[
-\begin{align\*}
-f_{Z^2}(x) &amp;= f_Z(\sqrt{x})\frac{1}{2\sqrt{x}} + f_Z(-\sqrt{x})\frac{1}{2\sqrt{x}} \nl
-&amp;= \frac{1}{\sqrt{2\pi x}} e^{-\frac{x}{2}} \nl
-&amp;= f_{\chi^2_1}(x)
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+f_{Z^2}(x) &amp;amp;= f_Z(\sqrt{x})\frac{1}{2\sqrt{x}} + f_Z(-\sqrt{x})\frac{1}{2\sqrt{x}} \nl
+&amp;amp;= \frac{1}{\sqrt{2\pi x}} e^{-\frac{x}{2}} \nl
+&amp;amp;= f_{\chi^2_1}(x)
+\end{align*}
+\]&lt;/p&gt;
 
-Now, we can show that the sum of $p$ independent chi-squared distributed random variables with one degree of freedom is chi-squared distributed with $p$ degrees of freedom,
-using the moment generating function (mgf). Referring to [here](/mathematics/common-discrete-and-continuous-distributions.html#chi-squared-distribution), the mgf of the chi-squared distribution is given by:
+&lt;p&gt;Now, we can show that the sum of $p$ independent chi-squared distributed random variables with one degree of freedom is chi-squared distributed with $p$ degrees of freedom,
+using the moment generating function (mgf). Referring to &lt;a href=&quot;/mathematics/common-discrete-and-continuous-distributions.html#chi-squared-distribution&quot;&gt;here&lt;/a&gt;, the mgf of the chi-squared distribution is given by:&lt;/p&gt;
 
-\\[
-M_{\chi^2_p}(t) = (1 - 2t)^{-p/2}, \quad t &lt; \frac{1}{2}
-\\]
+&lt;p&gt;\[
+M_{\chi^2_p}(t) = (1 - 2t)^{-p/2}, \quad t &amp;lt; \frac{1}{2}
+\]&lt;/p&gt;
 
-The mgf of the sum of independent random variables is the product of their individual mgfs.
+&lt;p&gt;The mgf of the sum of independent random variables is the product of their individual mgfs.
 Denote $Y = \sum_{i=1}^p Z_i^2$, where $Z_i$ are independent standard normal random variables.
-Then the mgf of $Y$ is given by:
+Then the mgf of $Y$ is given by:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 M_Y(t) = \prod_{i=1}^p M_{Z_i^2}(t) = (1 - 2t)^{-p/2} = M_{\chi^2_p}(t)
-\\]
+\]&lt;/p&gt;
 
-This shows that $Y$ is chi-squared distributed with $p$ degrees of freedom.
+&lt;p&gt;This shows that $Y$ is chi-squared distributed with $p$ degrees of freedom.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 Y \sim \chi^2_p
-\\]
+\]&lt;/p&gt;
 
-Also, similarly we can show the following property of the chi-squared distribution:
+&lt;p&gt;Also, similarly we can show the following property of the chi-squared distribution:&lt;/p&gt;
 
-\\[
-X\sim \chi^2\_p, \; Y\sim \chi^2\_q \implies X \pm Y \sim \chi^2\_{p \pm q}
-\\]
+&lt;p&gt;\[
+X\sim \chi^2_p, \; Y\sim \chi^2_q \implies X \pm Y \sim \chi^2_{p \pm q}
+\]&lt;/p&gt;
 
-Be careful that $X$ and $Y$ must be independent for this property to hold.
+&lt;p&gt;Be careful that $X$ and $Y$ must be independent for this property to hold.&lt;/p&gt;
 
-### Proof of the sample variance
+&lt;h3 id=&quot;proof-of-the-sample-variance&quot;&gt;Proof of the sample variance&lt;/h3&gt;
 
-We know the following equation holds:
+&lt;p&gt;We know the following equation holds:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 (n-1)S^2 = \sum_{i=1}^n (X_i - \bar{X})^2 = \sum_{i=1}^n (X_i - \mu)^2 - n(\bar{X} - \mu)^2
-\\]
+\]&lt;/p&gt;
 
-where $\mu$ is the population mean.
-Then we can write as:
+&lt;p&gt;where $\mu$ is the population mean.
+Then we can write as:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n \left(\frac{X_i - \mu}{\sigma}\right)^2 - \left(\frac{\bar{X} - \mu}{\sigma/\sqrt{n}}\right)^2
-\\]
+\]&lt;/p&gt;
 
-Denote $Z_i = (X_i - \mu)/\sigma$ and $Z = (\bar{X} - \mu)/(\sigma/\sqrt{n})$.
-Then we have:
+&lt;p&gt;Denote $Z_i = (X_i - \mu)/\sigma$ and $Z = (\bar{X} - \mu)/(\sigma/\sqrt{n})$.
+Then we have:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{(n-1)S^2}{\sigma^2} = \sum_{i=1}^n Z_i^2 - Z^2
-\\]
+\]&lt;/p&gt;
 
-and also we know that $Z_i \sim \mathcal{N}(0, 1)$ and $Z \sim \mathcal{N}(0, 1)$, by the properties above.
-Finally, by the property of the chi-squared distribution, we have:
+&lt;p&gt;and also we know that $Z_i \sim \mathcal{N}(0, 1)$ and $Z \sim \mathcal{N}(0, 1)$, by the properties above.
+Finally, by the property of the chi-squared distribution, we have:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}
-\\]
+\]&lt;/p&gt;
 
-### Independence of $\bar{X}$ and $S^2$
+&lt;h3 id=&quot;independence-of-barx-and-s2&quot;&gt;Independence of $\bar{X}$ and $S^2$&lt;/h3&gt;
 
-Let&apos;s prove the following Lemma.
+&lt;p&gt;Let’s prove the following Lemma.&lt;/p&gt;
 
-Let $X_j\sim\mathcal{N}\;(\mu_j,\sigma_j^2) (j=1,\ldots,n)$ which are mutually independent.
-For constants $a_{ij}$ where $i=1,\ldots,n$, define
+&lt;p&gt;Let $X_j\sim\mathcal{N}\;(\mu_j,\sigma_j^2) (j=1,\ldots,n)$ which are mutually independent.
+For constants $a_{ij}$ where $i=1,\ldots,n$, define&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 U_i = \sum_{j=1}^n a_{ij} X_j \;(i=1,\ldots,n)
-\\]
+\]&lt;/p&gt;
 
-or write as a vector form:
+&lt;p&gt;or write as a vector form:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathbf{U} = A \mathbf{X}
-\\]
+\]&lt;/p&gt;
 
-Then, the random variables $U_i$ and $U_j$ are independent if and only if $\text{Cov}(U_i,U_j)=0$. Furtheremore,
+&lt;p&gt;Then, the random variables $U_i$ and $U_j$ are independent if and only if $\text{Cov}(U_i,U_j)=0$. Furtheremore,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \text{Cov}(U_i,U_j) = \sum_{j=1}^n a_{ik} a_{jk} \sigma_k^2
-\\]
+\]&lt;/p&gt;
 
-&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
+&lt;details&gt;
+  &lt;summary&gt;Proof&lt;/summary&gt;
 
-The joint distribution of $\mathbf{X}$ is:
+  &lt;p&gt;The joint distribution of $\mathbf{X}$ is:&lt;/p&gt;
 
-\\[
-f_{\mathbf{X}}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i} \exp\left(-\frac{1}{2}\sum_{i=1}^n\left\[\frac{x_i-\mu_i}{\sigma_i}\right\]^2 \right)
-\\]
+  &lt;p&gt;\[
+f_{\mathbf{X}}(\mathbf{x}) = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i} \exp\left(-\frac{1}{2}\sum_{i=1}^n\left[\frac{x_i-\mu_i}{\sigma_i}\right]^2 \right)
+\]&lt;/p&gt;
 
-by defining the following constants,
+  &lt;p&gt;by defining the following constants,&lt;/p&gt;
 
-\\[
+  &lt;p&gt;\[
 \bs{\mu} = \begin{bmatrix}
 \mu_1 \nl \vdots \nl \mu_n
 \end{bmatrix}, \quad D = \text{diag}(\sigma_1^2, \cdots, \sigma_n^2), \quad
 C = \frac{1}{(2\pi)^{n/2}\prod_{i=1}^n \sigma_i}
-\\]
+\]&lt;/p&gt;
 
-we can also write the distribution as:
+  &lt;p&gt;we can also write the distribution as:&lt;/p&gt;
 
-\\[
+  &lt;p&gt;\[
 f_{\mathbf{X}}(\mathbf{x}) = C \exp\left(-\frac{1}{2}(\mathbf{x}-\bs{\mu})^\top D^{-1} (\mathbf{x}-\bs{\mu}) \right)
-\\]
+\]&lt;/p&gt;
 
-Then the distribution of $\mathbf{U}$ will be:
+  &lt;p&gt;Then the distribution of $\mathbf{U}$ will be:&lt;/p&gt;
 
-\\[
+  &lt;p&gt;\[
 f_{\mathbf{U}}(\mathbf{u}) = C \exp\left(-\frac{1}{2}\left(A^{-1}\mathbf{u}-\bs{\mu}\right)^\top D^{-1} \left(A^{-1}\mathbf{u}-\bs{\mu}\right) \right) \lVert A^{-1} \rVert
-\\]
+\]&lt;/p&gt;
 
-By defining $\bs{\mu}^\prime = A\bs{\mu}$,
+  &lt;p&gt;By defining $\bs{\mu}^\prime = A\bs{\mu}$,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-f_{\mathbf{U}}(\mathbf{u}) &amp;= C \exp\left(-\frac{1}{2}\left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right)^\top D^{-1} \left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right) \right) \frac{1}{\Vert A \Vert} \nl
-&amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(A^\top\right)^{-1} D^{-1} A^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right) \nl
-&amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(ADA^\top\right)^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right)
-\end{align\*}
-\\]
+  &lt;p&gt;\[
+\begin{align*}
+f_{\mathbf{U}}(\mathbf{u}) &amp;amp;= C \exp\left(-\frac{1}{2}\left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right)^\top D^{-1} \left(A^{-1}(\mathbf{u}-\bs{\mu}^\prime)\right) \right) \frac{1}{\Vert A \Vert} \nl
+&amp;amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(A^\top\right)^{-1} D^{-1} A^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right) \nl
+&amp;amp;= \frac{C}{\Vert A \Vert} \exp\left(-\frac{1}{2}\left(\mathbf{u}-\bs{\mu}^\prime\right)^\top \left(ADA^\top\right)^{-1} \left(\mathbf{u}-\bs{\mu}^\prime\right) \right)
+\end{align*}
+\]&lt;/p&gt;
 
-Referring to [here](/covariance-and-correlation.html#multivariate-normal-distribution), this is the pdf of the multivariate normal distribution, and
+  &lt;p&gt;Referring to &lt;a href=&quot;/covariance-and-correlation.html#multivariate-normal-distribution&quot;&gt;here&lt;/a&gt;, this is the pdf of the multivariate normal distribution, and
 $ADA^\top$ is the covariance matrix.
-Therefore, we get $\text{Cov}(U_i,U_j) = \left\[ADA^\top\right\]\_{ij} = \sum\_{j=1}^n a\_{ik} a\_{jk} \sigma\_k^2$.
-And then we can induce that $\text{Cov}(U_i,U_j)=0$ implies the independence of $U_i$ and $U_j$, and also the inverse.
+Therefore, we get $\text{Cov}(U_i,U_j) = \left[ADA^\top\right]_{ij} = \sum_{j=1}^n a_{ik} a_{jk} \sigma_k^2$.
+And then we can induce that $\text{Cov}(U_i,U_j)=0$ implies the independence of $U_i$ and $U_j$, and also the inverse.&lt;/p&gt;
 &lt;/details&gt;
 
-We can transform the sample variance equation as:
+&lt;p&gt;We can transform the sample variance equation as:&lt;/p&gt;
 
-\\[
-\begin{align\*}
-S^2 &amp;= \frac{1}{n-1} \sum_{i=1}^n \left(X_i-\bar{X}\right)^2 \nl
-&amp;= \frac{1}{n-1} \left( \left\[ \sum_{i=2}^n \left(X_i-\bar{X}\right) \right\]^2 \sum_{i=2}^n \left(X_i-\bar{X}\right)^2 \right)
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+S^2 &amp;amp;= \frac{1}{n-1} \sum_{i=1}^n \left(X_i-\bar{X}\right)^2 \nl
+&amp;amp;= \frac{1}{n-1} \left( \left[ \sum_{i=2}^n \left(X_i-\bar{X}\right) \right]^2 \sum_{i=2}^n \left(X_i-\bar{X}\right)^2 \right)
+\end{align*}
+\]&lt;/p&gt;
 
-Therefore, $S^2$ is the function only of $\left(X_2-\bar{X},\ldots,X_n-\bar{X}\right)$.
+&lt;p&gt;Therefore, $S^2$ is the function only of $\left(X_2-\bar{X},\ldots,X_n-\bar{X}\right)$.
 So if we show the independence of $\bar{X}$ and $X_j-\bar{X}$s, we can show the independence of $\bar{X}$ and $S^2$.
-As an illustration of the application of the lemma, write:
+As an illustration of the application of the lemma, write:&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\bar{X} &amp;= \sum_{i=1}^n \frac{1}{n} X_i \nl
-X_j-\bar{X} &amp;= \sum_{i=1}^n \left( \delta_{ij} - \frac{1}{n} \right) X_i
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\bar{X} &amp;amp;= \sum_{i=1}^n \frac{1}{n} X_i \nl
+X_j-\bar{X} &amp;amp;= \sum_{i=1}^n \left( \delta_{ij} - \frac{1}{n} \right) X_i
+\end{align*}
+\]&lt;/p&gt;
 
-It is then easy to show that 
+&lt;p&gt;It is then easy to show that&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \text{Cov}\left(\bar{X},X_j-\bar{X}\right) = \sum_{i=1}^n \frac{1}{n}\left(\delta_{ij}-\frac{1}{n}\right) \sigma^2 = 0
-\\]
+\]&lt;/p&gt;
 
-as long as the $X_i$s have the same variance since it&apos;s from the identical population. Thus, the proof is end.
+&lt;p&gt;as long as the $X_i$s have the same variance since it’s from the identical population. Thus, the proof is end.&lt;/p&gt;
 
-## Student&apos;s t-distribution
+&lt;h2 id=&quot;students-t-distribution&quot;&gt;Student’s t-distribution&lt;/h2&gt;
 
-If $X_1,\ldots,X_n$ are a random sample from a $\mathcal{N}(\mu,\sigma^2)$, we know that the quantity
+&lt;p&gt;If $X_1,\ldots,X_n$ are a random sample from a $\mathcal{N}(\mu,\sigma^2)$, we know that the quantity&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\bar{X}-\mu}{\sigma\sqrt{n}}
-\\]
+\]&lt;/p&gt;
 
-is distributed as a $\mathcal{N}(0,1)$ random variable. However, in most cases, the value of $\sigma$ is unknown so that we should use the sample standard deviation $S$.
-Therefore, we should investigate the distribution of the following value:
+&lt;p&gt;is distributed as a $\mathcal{N}(0,1)$ random variable. However, in most cases, the value of $\sigma$ is unknown so that we should use the sample standard deviation $S$.
+Therefore, we should investigate the distribution of the following value:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\bar{X}-\mu}{S\sqrt{n}}
-\\]
+\]&lt;/p&gt;
 
-We can write it in a slightly different way.
+&lt;p&gt;We can write it in a slightly different way.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\left(\bar{X}-\mu\right)/(\sigma/\sqrt{n})}{\sqrt{S^2/\sigma^2}}
-\\]
+\]&lt;/p&gt;
 
-Here, the numerator is a $\mathcal{N}(0,1)$ random variable, and the denominator is $\sqrt{\chi^2_{n-1}/(n-1)}$ random variable, and we can infer that these
-two random variables are independent since $\bar{X}$ and $S^2$ are independent which is proved above. Thus, we should find the distribution of:
+&lt;p&gt;Here, the numerator is a $\mathcal{N}(0,1)$ random variable, and the denominator is $\sqrt{\chi^2_{n-1}/(n-1)}$ random variable, and we can infer that these
+two random variables are independent since $\bar{X}$ and $S^2$ are independent which is proved above. Thus, we should find the distribution of:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 T = \frac{Z}{\sqrt{V/\nu}}
-\\]
+\]&lt;/p&gt;
 
-where $Z$ is the standard normal random variable and $V$ is the chi-squared random variable with $\nu$ degrees of freedom.
-And the distribution of this new random variable $T$ is called the **student&apos;s t-distribution** with $\nu$ degrees of freedom,
-or simply the **t-distribution**.
-Now let&apos;s derive the actual distribution.
+&lt;p&gt;where $Z$ is the standard normal random variable and $V$ is the chi-squared random variable with $\nu$ degrees of freedom.
+And the distribution of this new random variable $T$ is called the &lt;strong&gt;student’s t-distribution&lt;/strong&gt; with $\nu$ degrees of freedom,
+or simply the &lt;strong&gt;t-distribution&lt;/strong&gt;.
+Now let’s derive the actual distribution.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_{U,V}(u,v) = \frac{1}{\sqrt{2\pi}} e^{-u^2/2} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} v^{\frac{\nu}{2}-1} e^{-v/2}
-\\]
+\]&lt;/p&gt;
 
-Now make the transformation
+&lt;p&gt;Now make the transformation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 G(u,v) = \left( \frac{u}{\sqrt{v/\nu}}, v \right) = (t,w)
-\\]
+\]&lt;/p&gt;
 
-Therefore,
+&lt;p&gt;Therefore,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-f_T(t) &amp;= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \pdv{G^{-1}}{(t,w)} } \,\dd{w} \nl
-&amp;= \frac{1}{\sqrt{2\pi}} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{t^2w}{2\nu}\right) w^{\frac{\nu}{2}-1} e^{-w/2} \sqrt{\frac{w}{\nu}} \, \dd{w} \nl
-&amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{1}{2}\left(1+\frac{t^2}{\nu}\right) w \right) w^{\frac{\nu+1}{2}-1} \,\dd{w} \nl
-&amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \Gamma\left( \frac{\nu+1}{2} \right) \left\[ \frac{1+t^2/\nu}{2} \right\]^{-(\nu+1)/2} \nl
-&amp;= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+f_T(t) &amp;amp;= \int_0^\infty f_{U,V} \left(t\sqrt{\frac{w}{\nu}} ,w \right) \abs{ \pdv{G^{-1}}{(t,w)} } \,\dd{w} \nl
+&amp;amp;= \frac{1}{\sqrt{2\pi}} \frac{1}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{t^2w}{2\nu}\right) w^{\frac{\nu}{2}-1} e^{-w/2} \sqrt{\frac{w}{\nu}} \, \dd{w} \nl
+&amp;amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \int_0^\infty \exp\left( -\frac{1}{2}\left(1+\frac{t^2}{\nu}\right) w \right) w^{\frac{\nu+1}{2}-1} \,\dd{w} \nl
+&amp;amp;= \frac{1}{\sqrt{2\pi\nu}\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2}} \Gamma\left( \frac{\nu+1}{2} \right) \left[ \frac{1+t^2/\nu}{2} \right]^{-(\nu+1)/2} \nl
+&amp;amp;= \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
+\end{align*}
+\]&lt;/p&gt;
 
-This is the PDF of the student&apos;s t-distribution with $\nu$ degrees of freedom:
+&lt;p&gt;This is the PDF of the student’s t-distribution with $\nu$ degrees of freedom:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_T(t) = \frac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\pi\nu}\Gamma\left(\frac{\nu}{2}\right)} \left( 1+\frac{t^2}{\nu} \right)^{-(\nu+1)/2}
-\\]
+\]&lt;/p&gt;
 
-and we know that:
+&lt;p&gt;and we know that:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\bar{X}-\mu}{S\sqrt{n}} \sim t_{n-1}
-\\]
+\]&lt;/p&gt;
 
-Let&apos;s seek for the properties of the student&apos;s t-distribution.
+&lt;p&gt;Let’s seek for the properties of the student’s t-distribution.&lt;/p&gt;
 
-| Parameters | $\supp f_T$ (Support) | $f_T(x)$ (PDF)                                                                                                                                | $F_T(x)$ (CDF)                                                                                                                                                                                                                      | $\mathrm{E}[T]$ (Mean)                                                  | $\mathrm{Var}[T]$ (Variance)                                                                                       | $\gamma_1$ (Skewness)                                                   | $\gamma_2$ (Kurtosis)                                                                                            | $M_T(t)$ (MGF) | $\phi_T(t)$ (CF)                                                                                                    |
-|:-----------|:----------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------------|:--------------------------------------------------------------------------------------------------------------------|
-| $\nu &gt; 0$  | $\mathbb{R}$          | $\dfrac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\; \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \dfrac{x^2}{\nu}\right)^{-(\nu+1)/2}$ | $\dfrac{1}{2} + x \dfrac{\Gamma\left(\frac{\nu+1}{2}\right) }{\sqrt{\pi\nu} \Gamma\left(\frac{\nu}{2}\right) } {}_2F_1\left\[ \begin{matrix} \frac{1}{2}, \frac{\nu+1}{2} \nl \frac{3}{2} \end{matrix} ; -\frac{x^2}{\nu} \right\]$ | $\begin{cases} 0 &amp;; \nu&gt;1 \nl \text{undefined} &amp;; \nu\le 1 \end{cases}$ | $\begin{cases} \dfrac{\nu}{\nu-2} &amp;; \nu&gt;2 \nl \infty &amp;; 1&lt;\nu\le 2 \nl \text{undefined} &amp;; \nu \le 1 \end{cases}$ | $\begin{cases} 0 &amp;; \nu&gt;3 \nl \text{undefined} &amp;; \nu\le 3 \end{cases}$ | $\begin{cases} \dfrac{6}{\nu-4} &amp;; \nu&gt;4 \nl \infty &amp;; 2&lt;\nu\le 4 \nl \text{undefined} &amp;; \nu \le 2 \end{cases}$ | undefined      | $\dfrac{ (\sqrt{\nu}\abs{t})^{\nu/2} K_{\nu/2}(\sqrt{\nu}\abs{t})}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2 - 1}}$ |
-{:.scroll-table}
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_T$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_T(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_T(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[T]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[T]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_T(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_T(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\nu &amp;gt; 0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\mathbb{R}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\Gamma\left(\frac{\nu+1}{2}\right)}{\sqrt{\nu\pi}\; \Gamma\left(\frac{\nu}{2}\right)} \left(1 + \dfrac{x^2}{\nu}\right)^{-(\nu+1)/2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{2} + x \dfrac{\Gamma\left(\frac{\nu+1}{2}\right) }{\sqrt{\pi\nu} \Gamma\left(\frac{\nu}{2}\right) } {}_2F_1\left[ \begin{matrix} \frac{1}{2}, \frac{\nu+1}{2} \nl \frac{3}{2} \end{matrix} ; -\frac{x^2}{\nu} \right]$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} 0 &amp;amp;; \nu&amp;gt;1 \nl \text{undefined} &amp;amp;; \nu\le 1 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{\nu}{\nu-2} &amp;amp;; \nu&amp;gt;2 \nl \infty &amp;amp;; 1&amp;lt;\nu\le 2 \nl \text{undefined} &amp;amp;; \nu \le 1 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} 0 &amp;amp;; \nu&amp;gt;3 \nl \text{undefined} &amp;amp;; \nu\le 3 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{6}{\nu-4} &amp;amp;; \nu&amp;gt;4 \nl \infty &amp;amp;; 2&amp;lt;\nu\le 4 \nl \text{undefined} &amp;amp;; \nu \le 2 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{ (\sqrt{\nu}\abs{t})^{\nu/2} K_{\nu/2}(\sqrt{\nu}\abs{t})}{\Gamma\left(\frac{\nu}{2}\right) 2^{\nu/2 - 1}}$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
-## Snedecor&apos;s F-distribution
+&lt;h2 id=&quot;snedecors-f-distribution&quot;&gt;Snedecor’s F-distribution&lt;/h2&gt;
 
-Let $X_1,\ldots,X_n$ be a random sample from a $\mathcal{N}(\mu_X,\sigma_X^2)$ population, and let
+&lt;p&gt;Let $X_1,\ldots,X_n$ be a random sample from a $\mathcal{N}(\mu_X,\sigma_X^2)$ population, and let
 $Y_1,\ldots,Y_m$ be a random sample from a $\mathcal{N}(\mu_Y,\sigma_Y^2)$ population.
 If we are interested in comparing the variability of the populations, one quantity of interest woul be the ratio $\sigma_X^2/\sigma_Y^2$.
-Information about this ratio is contained in $S_X^2/S_Y^2$, the ratio of sample variances. So, we should investigate the distribution of the following value:
+Information about this ratio is contained in $S_X^2/S_Y^2$, the ratio of sample variances. So, we should investigate the distribution of the following value:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{S_X^2/S_Y^2}{\sigma_X^2/\sigma_Y^2} = \frac{S_X^2/\sigma_X^2}{S_Y^2/\sigma_Y^2}
-\\]
+\]&lt;/p&gt;
 
-We can observe that the numerator and the denominator of the rhs are both proportional to the chi-squared random variable.
-Thus, we should find the distribution of:
+&lt;p&gt;We can observe that the numerator and the denominator of the rhs are both proportional to the chi-squared random variable.
+Thus, we should find the distribution of:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 F = \frac{U/p}{V/q}
-\\]
+\]&lt;/p&gt;
 
-where $U\sim\chi^2_p$ and $V\sim\chi^2_q$. The distribution of this new random variable is called the **Snedecor&apos;s F-distribution** with $p$ and $q$ degrees of freedom,
-or simply the **F-distribution**.   
+&lt;p&gt;where $U\sim\chi^2_p$ and $V\sim\chi^2_q$. The distribution of this new random variable is called the &lt;strong&gt;Snedecor’s F-distribution&lt;/strong&gt; with $p$ and $q$ degrees of freedom,
+or simply the &lt;strong&gt;F-distribution&lt;/strong&gt;.&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_{U,V}(u,v) = \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2}} u^{\frac{p}{2}-1} e^{-u/2} \cdot \frac{1}{\Gamma\left(\frac{q}{2}\right) 2^{q/2}} v^{\frac{q}{2}-1} e^{-v/2}
-\\]
+\]&lt;/p&gt;
 
-Now make the transformation
+&lt;p&gt;Now make the transformation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 G(u,v) = \left( \frac{u/p}{v/q}, v \right) = (x,w)
-\\]
+\]&lt;/p&gt;
 
-Therefore,
+&lt;p&gt;Therefore,&lt;/p&gt;
 
-\\[
-\begin{align\*}
-f_F(x) &amp;= \int_0^\infty f_{U,V}\left( \frac{pxw}{q}, w \right) \abs{ \pdv{G^{-1}}{(x,w)} } \,\dd{w} \nl
-&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2} \Gamma\left(\frac{q}{2}\right) 2^{q/2}} \int_0^\infty \left( \frac{pxw}{q} \right)^{\frac{p}{2}-1} e^{-pxw/2q} w^{\frac{q}{2}-1} e^{-w/2} \cdot \frac{pw}{q} \,\dd{w} \nl
-&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \int_0^\infty w^{\frac{p+q}{2}-1} e^{-\frac{1}{2}\left(1 + \frac{px}{q} \right) w} \,\dd{w} \nl
-&amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \Gamma\left(\frac{p+q}{2} \right) \left( \frac{1}{2}\left(1 + \frac{px}{q} \right) \right)^{-(p+q)/2} \nl
-&amp;= \frac{\Gamma\left( \frac{p+q}{2} \right)}{\Gamma\left( \frac{p}{2} \right)\Gamma\left( \frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{px}{q} \right)^{-(p+q)/2} \nl
-&amp;= \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+f_F(x) &amp;amp;= \int_0^\infty f_{U,V}\left( \frac{pxw}{q}, w \right) \abs{ \pdv{G^{-1}}{(x,w)} } \,\dd{w} \nl
+&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) 2^{p/2} \Gamma\left(\frac{q}{2}\right) 2^{q/2}} \int_0^\infty \left( \frac{pxw}{q} \right)^{\frac{p}{2}-1} e^{-pxw/2q} w^{\frac{q}{2}-1} e^{-w/2} \cdot \frac{pw}{q} \,\dd{w} \nl
+&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \int_0^\infty w^{\frac{p+q}{2}-1} e^{-\frac{1}{2}\left(1 + \frac{px}{q} \right) w} \,\dd{w} \nl
+&amp;amp;= \frac{1}{\Gamma\left(\frac{p}{2}\right) \Gamma\left(\frac{q}{2}\right) 2^{(p+q)/2}} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \Gamma\left(\frac{p+q}{2} \right) \left( \frac{1}{2}\left(1 + \frac{px}{q} \right) \right)^{-(p+q)/2} \nl
+&amp;amp;= \frac{\Gamma\left( \frac{p+q}{2} \right)}{\Gamma\left( \frac{p}{2} \right)\Gamma\left( \frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{px}{q} \right)^{-(p+q)/2} \nl
+&amp;amp;= \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
+\end{align*}
+\]&lt;/p&gt;
 
-This is the PDF of the F-distribution with $p$ and $q$ degrees of freedom:
+&lt;p&gt;This is the PDF of the F-distribution with $p$ and $q$ degrees of freedom:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_F(x) = \frac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \frac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \frac{p}{q}x \right)^{-(p+q)/2}
-\\]
+\]&lt;/p&gt;
 
-and we know that:
+&lt;p&gt;and we know that:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{S_X^2/S_Y^2}{\sigma_X^2/\sigma_Y^2} \sim F_{p,q}
-\\]
-
-Let’s seek for the properties of the F-distribution.
-
-| Parameters | $\supp f_F$ (Support)                                                             | $f_F(x)$ (PDF)                                                                                                                                               | $F_F(x)$ (CDF)                                                 | $\mathrm{E}[F]$ (Mean)                                                           | $\mathrm{Var}[F]$ (Variance)                                                                            | $\gamma_1$ (Skewness)                                                                                                    | $\gamma_2$ (Kurtosis)                                                                                                         | $M_F(t)$ (MGF) | $\phi_F(t)$ (CF)                                                                                                                           |
-|:-----------|:----------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------|:---------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|:---------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
-| $p,q &gt; 0$  | $\begin{cases} \mathbb{R}\_{\ge0} &amp;; p\ge 2 \nl \mathbb{R}\_+ &amp;; p&lt;2 \end{cases}$ | $\dfrac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \dfrac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \dfrac{p}{q}x \right)^{-(p+q)/2}$ | $I_{\frac{px}{px+q}} \left(\dfrac{p}{2}, \dfrac{q}{2} \right)$ | $\begin{cases} \dfrac{q}{q-2} &amp;; q&gt;2 \nl \text{undefined} &amp;; q\le 2 \end{cases}$ | $\begin{cases} \dfrac{2q^2 (p+q-2)}{p(q-2)^2 (q-4)} &amp;; q&gt;4 \nl \text{undefined} &amp;; q \le 4 \end{cases}$ | $\begin{cases} \dfrac{(2p+q- 2) \sqrt{8(q-4)}}{(q-6) \sqrt{p(p+q-2)}} &amp;; q&gt;6 \nl \text{undefined} &amp;; q\le 6 \end{cases}$ | $\begin{cases} \dfrac{12p(5q-22)(p+q-2)+(q-4)(q-2)^2}{p(q-6)(q-8)(p+q-2)} &amp;; q&gt;8 \nl \text{undefined} &amp;; q \le 8 \end{cases}$ | undefined      | $\dfrac{\Gamma{\left(\frac{p+q}{2}\right)}}{\Gamma{\left(\frac{q}{2}\right)}} U \left(\dfrac{p}{2},1-\dfrac{q}{2},-\frac{q}{p} it \right)$ |
-{:.scroll-table}
-
-- $X\sim F_{p,q} \implies 1/X \sim F_{q,p}$
-- $X\sim t_q \implies X^2 \sim F_{1,q}$
-- $X\sim F_{p,q} \implies pX/(q+pX) \sim \mathrm{Beta}(p/2,q/2)$</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Probabilistic Inequalities</title><link href="http://localhost:4000/mathematics/probabilistic-inequalities.html" rel="alternate" type="text/html" title="Probabilistic Inequalities" /><published>2025-08-03T00:00:00+09:00</published><updated>2025-08-03T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/probabilistic-inequalities</id><content type="html" xml:base="http://localhost:4000/mathematics/probabilistic-inequalities.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Hölder&apos;s inequality
-
-**Hölder&apos;s inequality** states that for any random variables $X$ and $Y$ and for any $p, q &gt; 1$ such that
-
-\\[
-\frac{1}{p} + \frac{1}{q} = 1
-\\]
-
-the following holds:
-
-\\[
-\abs{\mathrm{E}[XY]} \leq \mathrm{E}\abs{XY} \leq \big(\mathrm{E}\abs{X}^p\big)^\frac{1}{p} \big(\mathrm{E}\abs{Y}^q\big)^\frac{1}{q}
-\\]
-
-### Lemma
-
-Let $a$ and $b$ be non-negative real numbers. Then we have:
-
-\\[
-\frac{1}{p} a^p + \frac{1}{q} b^q \geq a b
-\\]
-
-with equality if and only if $a^p = b^q$.
-
-&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt; Proof&lt;/summary&gt;
-
-Fix $b$, and consider the function
-
-\\[
-f(a) = \frac{1}{p} a^p + \frac{1}{q} b^q - ab
-\\]
-
-The derivative is given by:
-\\[
-f\&apos;(a) = a^{p-1} - b
-\\]
-
-To minimize $f(a)$, we set $f\&apos;(a) = 0$ and get $a = b^{\frac{1}{p-1}} = b^{\frac{q}{p}}$. Substituting this back into $f(a)$ gives:
-
-\\[
-f\left(b^{\frac{q}{p}}\right) = \frac{1}{p} b^q + \frac{1}{q} b^q - b^{\frac{q}{p}+1} = b^q - b^q = 0
-\\]
-
-A check of the second derivative confirms that this is indeed a minimum, and thus we prove the lemma.
-&lt;/details&gt;
-
-### Proof
-
-The first inequality simply follows from $-\abs{XY} \le XY \le \abs{XY}$. Now let&apos;s prove the second one. By setting
-
-\\[
-a = \frac{\abs{X}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}}}, \quad b = \frac{\abs{Y}}{(\mathrm{E}\abs{Y}^q)^{\frac{1}{q}}}
-\\]
-
-and applying the lemma, we have:
-
-\\[
-\frac{1}{p} \frac{\abs{X}^p}{\mathrm{E}\abs{X}^p} + \frac{1}{q} \frac{\abs{Y}^q}{\mathrm{E}\abs{Y}^q} \geq \frac{\abs{XY}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}} (\mathrm{E}\abs{Y}^q)^{\frac{1}{q}}}
-\\]
-
-Taking expectation on both sides yields:
-
-\\[
-1 \geq \frac{\mathrm{E}\abs{XY}}{(\mathrm{E}\abs{X}^p)^{\frac{1}{p}} (\mathrm{E}\abs{Y}^q)^{\frac{1}{q}} }
-\\]
-
-and thus we obtain Hölder&apos;s inequality.
-
-### Cauchy--Schwarz inequality
-
-**Cauchy--Schwarz inequality** is a special case of Hölder&apos;s inequality where $p = q = 2$. It states that for any random variables $X$ and $Y$:
-
-\\[
-\abs{\mathrm{E}[XY]} \leq \mathrm{E}\abs{XY} \leq \sqrt{\mathrm{E}\abs{X}^2} \sqrt{\mathrm{E}\abs{Y}^2}
-\\]
-
-or also written as:
-
-\\[
-(\mathrm{E}[XY])^2 \leq \mathrm{E}\left[X^2\right] \mathrm{E}\left[Y^2\right]
-\\]
-
-### Covariance and correlation
-
-If $X$ and $Y$ have means $\mu_X, \mu_Y$ and variances $\sigma_X^2, \sigma_Y^2$, we can apply Cauchy--Schwarz inequality to the centered variables $X - \mu_X$ and $Y - \mu_Y$:
-
-\\[
-\abs{\mathrm{E}[(X - \mu_X)(Y - \mu_Y)]} \leq \sqrt{\mathrm{E}[(X - \mu_X)^2]} \sqrt{\mathrm{E}[(Y - \mu_Y)^2]}
-\\]
-
-This leads to the well-known properties of covariance and correlation:
-
-\\[
-\abs{\text{Cov}(X, Y)} \leq \sigma_X \sigma_Y
-\\]
-
-and
-
-\\[
-\abs{\text{Corr}(X, Y)} \leq 1
-\\]
-
-## Minkowski&apos;s inequality
-
-**Minkowski&apos;s inequality** is a generalization of the triangle inequality for $L^p$ norms. It states that for any random variables $X$ and $Y$ and for any $p \geq 1$:
-
-\\[
-(\mathrm{E}\abs{X+Y}^p)^{\frac{1}{p}} \leq (\mathrm{E}\abs{X}^p)^{\frac{1}{p}} + (\mathrm{E}\abs{Y}^p)^{\frac{1}{p}}
-\\]
-
-Proof is omitted. It can be done by applying Hölder&apos;s inequality and the basic triangle inequality $\abs{X+Y} \leq \abs{X} + \abs{Y}$.
-
-## Jensen&apos;s inequality
-
-**Jensen&apos;s inequality** states that for any convex function $g$ and any random variable $X$:
-
-\\[
-E[g(X)] \geq g(E[X])
-\\]
-
-Equality holds if and only if $g$ is linear on the support of $X$. If $g$ is concave, the inequality is reversed:
-
-\\[
-E[g(X)] \leq g(E[X])
-\\]
-
-### Proof
-
-Let $l(x)$ be the linear function that is tangent to $g$ at the point $x= E[X]$. Then, by the definition of convexity, we have $g(x) \geq l(x)$ for all $x$. Taking expectation on both sides gives:
-
-\\[
-\mathrm{E}[g(X)] \geq \mathrm{E}[l(X)] = l(\mathrm{E}[X]) = g(\mathrm{E}[X])
-\\]
-
-## Inequality for means
-
-Jensen&apos;s inequality can be used to prove an inequality between the three means: arithmetic mean, geometric mean, and harmonic mean.
-We define the **arithmetic mean** of a positive random variable $X$ as:
-
-\\[
-\mathrm{AM}[X] = \mathrm{E}[X]
-\\]
-
-the **geometric mean** as:
-
-\\[
-\mathrm{GM}[X] = \exp\left(\mathrm{E}[\ln X]\right)
-\\]
-
-and the **harmonic mean** as:
-\\[
-\mathrm{HM}[X] = \frac{1}{\mathrm{E}[1/X]}
-\\]
-
-Then $\mathrm{AM}[X] \geq \mathrm{GM}[X] \geq \mathrm{HM}[X]$ for any positive random variable $X$.
-More generally, for any $p\in \mathbb{R}$, we define the **power mean** as:
-
-\\[
-M_p[X] = \left(\mathrm{E}[X^p]\right)^{\frac{1}{p}} = \exp\left(\frac{1}{p} \ln \mathrm{E}[X^p]\right)
-\\]
-
-We can check that $M_1[X] = \mathrm{AM}[X]$, $M_0[X] = \mathrm{GM}[X]$, and $M_{-1}[X] = \mathrm{HM}[X]$.
-Also, for $p\to \infty$, we have $M_p[X] \to \max X$ and for $p\to -\infty$, we have $M_p[X] \to \min X$.
-Checking this later, we have the powerful theorem that $M_p[X]$ is an increasing function of $p$ for any positive random variable $X$.
-
-\\[
-\pdv{}{p} M_p[X] \geq 0
-\\]
-
-### Special values of $p$
-
-Let&apos;s check that $M_0[X] = \mathrm{GM}[X]$ is indeed the geometric mean.
-By the L&apos;Hôpital&apos;s rule, we have:
-
-\\[
-\lim_{p \to 0} \ln M_p[X] = \lim_{p \to 0} \frac{\ln \mathrm{E}[X^p]}{p} = \lim_{p \to 0} \frac{\mathrm{E}[ X^p \ln X]}{\mathrm{E}[X^p]} = \mathrm{E}[\ln X]
-\\]
-
-Thus, we have:
-
-\\[
-\lim_{p \to 0} M_p[X] = \exp\left(\mathrm{E}[\ln X]\right) = \mathrm{GM}[X]
-\\]
-
-Let&apos;s also check that $M_\infty[X] = \max X$ is indeed the maximum.
-We can write the power mean as:
-
-\\[
-M_p[X] = \max X \exp\left(\frac{1}{p} \ln \mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]\right)
-\\]
-
-Also by the L&apos;Hôpital&apos;s rule, we have:
-
-\\[
-\begin{align\*}
-\lim_{p \to \infty} \ln \frac{M_p[X]}{\max X} &amp;= \lim_{p \to \infty} \frac{\ln \mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]}{p} \nl
-&amp;= \lim_{p \to \infty} \frac{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p \ln \frac{X}{\max X}\right]}{\mathrm{E}\left[\left(\frac{X}{\max X}\right)^p\right]} \nl
-&amp;= \frac{f_X(\max X) \ln 1}{f_X(\max X)} \nl
-&amp;= 0
-\end{align\*}
-\\]
-
-Thus, we have:
-
-\\[
-\lim_{p \to \infty} M_p[X] = \max X
-\\]
-
-Similarly, we can check that $M_{-\infty}[X] = \min X$ is indeed the minimum.
-
-### Proof
-
-First, we have the following property of the power means:
-
-\\[
-M_p[X] \geq M_q[X] \implies M_{-p}[X] \leq M_{-q}[X]
-\\]
-
-It is proved by substituting $X$ with $1/X$ in the definition of the power mean.
-Now, we can prove the inequality including the geometric mean:
-
-\\[
-M_{-p}[X] \leq M_0[X] \leq M_p[X]
-\\]
-
-for any $p&gt; 0$. The proof follows from the Jensen&apos;s inequality applied to the concave function $g(x) = \ln x$:
-
-\\[
-\mathrm{E}[\ln X] \leq \ln \mathrm{E}[X]
-\\]
-
-Substituting $X$ with $X^p$ gives:
-
-\\[
-\exp \mathrm{E} [\ln X] \leq \mathrm{E}[X^p]^{\frac{1}{p}}
-\\]
-
-and substituting $X$ with $1/X$ gives:
-
-\\[
-\exp \mathrm{E} [\ln X] \geq \mathrm{E}[X^{-p}]^{-\frac{1}{p}}
-\\]
-
-and the inequality is proved. Showing that $M_p[X]$ is an increasing function at $p&gt;0$, the theorem is automatically proved by the properties proven above.
-For $0&lt;p\leq q$, define $r=q/p$ and apply the Jensen&apos;s inequality to the convex function $g(x) = x^r$:
-
-\\[
-\mathrm{E}[X]^r \leq \mathrm{E}[X^r]
-\\]
-
-Substituting $Y = X^{1/p}$ gives:
-
-\\[
-\mathrm{E}[Y^p]^\frac{1}{p} \leq \mathrm{E}[Y^q]^\frac{1}{q}
-\\]
-
-Thus, we have:
-
-\\[
-p&lt;q \implies M_p[X] \leq M_q[X]
-\\]
-
-By constructing the probability theory upon the measure theory, we can treat these probabilistic properties more rigorously.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Extreme Values of Functions</title><link href="http://localhost:4000/mathematics/extreme-values-of-functions.html" rel="alternate" type="text/html" title="Extreme Values of Functions" /><published>2025-08-01T00:00:00+09:00</published><updated>2025-08-01T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/extreme-values-of-functions</id><content type="html" xml:base="http://localhost:4000/mathematics/extreme-values-of-functions.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Covariance and Correlation</title><link href="http://localhost:4000/mathematics/covariance-and-correlation.html" rel="alternate" type="text/html" title="Covariance and Correlation" /><published>2025-07-29T00:00:00+09:00</published><updated>2025-07-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/covariance-and-correlation</id><content type="html" xml:base="http://localhost:4000/mathematics/covariance-and-correlation.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Covariance
-
-**Covariance** is a measure of how much two random variables change together.
-The covariance between two random variables $X$ and $Y$ is defined as:
-
-\\[
-\text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])]
-\\]
-
-### Properties of Covariance
-
-By expanding the expectation and denoting the means as $\mu_X = \mathbb{E}[X]$ and $\mu_Y = \mathbb{E}[Y]$, we can rewrite the covariance as:
-
-\\[
-\text{Cov}(X, Y) = \mathbb{E}[XY] - \mu_X \mu_Y
-\\]
-
-Also, covariance has the following properties:
-
-\\[
-\mathrm{Var}(aX + bY) = a^2 \mathrm{Var}(X) + b^2 \mathrm{Var}(Y) + 2ab \text{Cov}(X, Y)
-\\]
-
-If $X$ and $Y$ are independent, then:
-
-\\[
-\text{Cov}(X, Y) = 0
-\\]
-
-However, be cautious: a covariance of zero does not imply independence of $X$ and $Y$.
-
-## Correlation
-
-**Correlation** is a standardized measure of the relationship between two random variables, defined as:
-
-\\[
-\rho_{X,Y} = \text{Corr}(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \text{Var}(Y)}}
-\\]
-
-By denoting the standard deviations as $\sigma_X = \sqrt{\text{Var}(X)}$ and $\sigma_Y = \sqrt{\text{Var}(Y)}$, we can express correlation as:
-
-\\[
-\rho_{X,Y} = \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y}
-\\]
-
-### Properties of Correlation
-
-If $X$ and $Y$ are independent, then:
-
-\\[
-\rho_{X,Y} = \frac{0}{\sigma_X \sigma_Y} = 0
-\\]
-
-Also, correlation has the following important property:
-- $-1 \leq \rho_{X,Y} \leq 1$
-- $\abs{\rho_{X,Y}} = 1$ if and only if there exists $a\neq 0$ such that $Y = aX + b$ for some constant $b$. Then, $\rho_{X,Y} = \text{sgn}\,a$.
-
-&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
-\\[
-\begin{align\*}
-h(t) &amp;:= \mathrm{E}\left[ ((X-\mu_X)t+(Y-\mu_Y))^2  \right] \nl
-&amp;= t^2 \sigma_X^2 + 2t \text{Cov}(X, Y) + \sigma_Y^2 \geq 0 \nl
-\Rightarrow \;\; \text{Disc}_t h &amp;= 4 \text{Cov}(X, Y)^2 - 4 \sigma_X^2 \sigma_Y^2 \leq 0 \nl
-\therefore &amp; -1 \leq \frac{\text{Cov}(X, Y)}{\sigma_X \sigma_Y} \leq 1
-\end{align\*}
-\\]
-
-The equality holds if and only if the discriminant is zero, which means $h(t)$ is a perfect square. This implies that there exists a constant $a \neq 0$ such that $Y = aX + b$ for some constant $b$, leading to $\rho_{X,Y} = \text{sgn}\, a$.
-&lt;/details&gt;
-
-## Multivariate Normal Distribution
-
-The **multivariate normal distribution** is a generalization of the normal distribution to multiple dimensions. A random vector $\mathbf{X} = (X_1, X_2, \ldots, X_n)$ follows a multivariate normal distribution if every linear combination of its components is normally distributed.
-The multivariate normal distribution is characterized by its mean vector $\bs{\mu} = (\mu_1, \mu_2, \ldots, \mu_n)$ and covariance matrix $\bs{\Sigma}$, which is a symmetric positive semi-definite matrix.
-
-The probability density function of a multivariate normal distribution is given by:
-
-\\[
-f(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^n \det \bs{\Sigma}}} \exp\left(-\frac{1}{2}(\mathbf{x} - \bs{\mu})^\top \bs{\Sigma}^{-1} (\mathbf{x} - \bs{\mu})\right)
-\\]
-
-where $\mathbf{x}$ is a vector in $\mathbb{R}^n$, $\bs{\mu}$ is the mean vector, and $\bs{\Sigma}$ is the covariance matrix: $\Sigma_{i,j} = \text{Cov}(X_i, X_j)$.
-Then we write as:
-
-\\[
-\mathbf{X} \sim \mathcal{N}(\bs{\mu}, \Sigma)
-\\]
-
-Let&apos;s check an important property of the multivariate normal distribution:
-
-\\[
-X_i \sim \mathcal{N}(\mu_i, \sigma_i^2)
-\\]
-
-where $\sigma_i^2 = \Sigma_{i,i}$ is the variance of $X_i$ and $\mu_i$ is the mean of $X_i$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s seek for the properties of the F-distribution.&lt;/p&gt;
+
+&lt;table class=&quot;scroll-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Parameters&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\supp f_F$ (Support)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$f_F(x)$ (PDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$F_F(x)$ (CDF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{E}[F]$ (Mean)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\mathrm{Var}[F]$ (Variance)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_1$ (Skewness)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\gamma_2$ (Kurtosis)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$M_F(t)$ (MGF)&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;$\phi_F(t)$ (CF)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$p,q &amp;gt; 0$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \mathbb{R}_{\ge0} &amp;amp;; p\ge 2 \nl \mathbb{R}_+ &amp;amp;; p&amp;lt;2 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{1}{\mathrm{B}\left( \frac{p}{2},\frac{q}{2} \right)} \left( \dfrac{p}{q} \right)^{p/2} x^{\frac{p}{2}-1} \left(1 + \dfrac{p}{q}x \right)^{-(p+q)/2}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$I_{\frac{px}{px+q}} \left(\dfrac{p}{2}, \dfrac{q}{2} \right)$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{q}{q-2} &amp;amp;; q&amp;gt;2 \nl \text{undefined} &amp;amp;; q\le 2 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{2q^2 (p+q-2)}{p(q-2)^2 (q-4)} &amp;amp;; q&amp;gt;4 \nl \text{undefined} &amp;amp;; q \le 4 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{(2p+q- 2) \sqrt{8(q-4)}}{(q-6) \sqrt{p(p+q-2)}} &amp;amp;; q&amp;gt;6 \nl \text{undefined} &amp;amp;; q\le 6 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\begin{cases} \dfrac{12p(5q-22)(p+q-2)+(q-4)(q-2)^2}{p(q-6)(q-8)(p+q-2)} &amp;amp;; q&amp;gt;8 \nl \text{undefined} &amp;amp;; q \le 8 \end{cases}$&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;undefined&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;$\dfrac{\Gamma{\left(\frac{p+q}{2}\right)}}{\Gamma{\left(\frac{q}{2}\right)}} U \left(\dfrac{p}{2},1-\dfrac{q}{2},-\frac{q}{p} it \right)$&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;$X\sim F_{p,q} \implies 1/X \sim F_{q,p}$&lt;/li&gt;
+  &lt;li&gt;$X\sim t_q \implies X^2 \sim F_{1,q}$&lt;/li&gt;
+  &lt;li&gt;$X\sim F_{p,q} \implies pX/(q+pX) \sim \mathrm{Beta}(p/2,q/2)$&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry></feed>
