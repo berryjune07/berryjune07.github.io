@@ -216,9 +216,9 @@ comments:
 # https://giscus.vercel.app/
 giscus:
   repo: berryjune07/berryjune07.github.io_comments            # <gh-username>/<repo>
-  repo_id: R_kgDOJI7E3g
+  repo_id: R_kgDOIzH5VQ
   category: General
-  category_id: DIC_kwDOJI7E3s4CU11p
+  category_id: DIC_kwDOIzH5Vc4CUUyX
   mapping: pathname      # optional, default to 'pathname'
   strict: 0
   reactions_enabled: 1   # optional, default to the value of `1`

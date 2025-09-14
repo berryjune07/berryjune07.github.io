@@ -44,6 +44,7 @@ function render_KaTeX() {
             "\\pdvni": "\\partial^{#1} #2/\\partial #3^{#1}",
             "\\pdvs": "\\frac{\\partial^2 #1}{\\partial #2 \\partial #3}",
             "\\pdvsi": "\\partial^2 #1/\\partial #2 \\partial #3",
+            "\\mdv": "\\frac{\\mathrm{D} #1}{\\mathrm{D} t}",
             "\\fdv": "\\frac{\\delta #1}{\\delta #2}",
             "\\fdvi": "\\delta #1/\\delta #2",
             "\\eval": "\\left. #1 \\right\\vert",

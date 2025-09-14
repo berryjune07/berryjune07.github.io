@@ -111,6 +111,16 @@ We have some common examples of conservative forces and their associated potenti
 - The gravitational force $\;\b{F} = -m g \hat{\b{z}} \;$ has the potential energy $\;U = m g z$.
 - The elastic force of a spring $\;\b{F} = -k \b{x} \;$ has the potential energy $\;U = \frac{1}{2} k x^2$.
 
+Equilibrium points can be found by setting the gradient of the potential energy to zero:
+
+\\[
+\grad U = 0
+\\]
+
+The nature of the equilibrium point can be determined by examining the second derivative (or Hessian matrix in multiple dimensions) of the potential energy.
+If the point is a local minimum, it is a _stable equilibrium_; if it is a local maximum, it is an _unstable equilibrium_.
+If it is a saddle point, it is called an _astable equilibrium_.
+
 ### Mechanical Energy
 
 The **mechanical energy** of a system is the sum of its kinetic energy and potential energy:

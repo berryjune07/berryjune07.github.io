@@ -33,7 +33,7 @@ Applying the chain rule multiple times allows us to differentiate functions with
 ### Proof
 
 To prove the chain rule, we will use the linearization of the function.
-Read [here](mathematics/linearization-and-differentials.html#error-in-differential-approximation) for more details.
+Read [here](linearization-and-differentials.html#error-in-differential-approximation) for more details.
 Denoting the $y_0 = g(x_0)$,
 
 \\[
@@ -58,3 +58,6 @@ Thus, we can write:
 \\[
 \odv{z}{x}\bigg\|\_{x=x_0} = \lim\_{\Delta x \to 0} \frac{\Delta z}{\Delta x} = f\'(y_0) g\'(x_0) = \odv{z}{y}\bigg\|\_{y=y_0} \odv{y}{x} \bigg\|\_{x=x_0}
 \\]
+
+
+This completes the proof of the chain rule.
