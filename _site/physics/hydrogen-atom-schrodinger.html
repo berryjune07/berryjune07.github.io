@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Hydrogen Atom | Jiho’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Hydrogen Atom">
+<meta name="author" content="Jiho Jun">
+<meta property="og:locale" content="en">
+<meta name="description" content="from 「Modern Quantum Mechanics」: Sakurai, J. J. A naive but quite accurate model of hydrogen.">
+<meta property="og:description" content="from 「Modern Quantum Mechanics」: Sakurai, J. J. A naive but quite accurate model of hydrogen.">
+<link rel="canonical" href="http://localhost:4000/physics/hydrogen-atom-schrodinger.html">
+<meta property="og:url" content="http://localhost:4000/physics/hydrogen-atom-schrodinger.html">
+<meta property="og:site_name" content="Jiho’s Blog">
+<meta property="og:image" content="http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-02-15T00:00:00+09:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg">
+<meta property="twitter:title" content="Hydrogen Atom">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2023-02-15T00:00:00+09:00","datePublished":"2023-02-15T00:00:00+09:00","description":"from 「Modern Quantum Mechanics」: Sakurai, J. J. A naive but quite accurate model of hydrogen.","headline":"Hydrogen Atom","image":"http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/physics/hydrogen-atom-schrodinger.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/physics/hydrogen-atom-schrodinger.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="Development,C++,Rust,Jekyll">
+  
+
+
+
+  <meta name="theme-color" content="rgb(31,55,75)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jiho's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Jiho's Blog">
+
+<meta name="generator" content="Hydejack v9.1.6">
+
+
+
+<link rel="alternate" href="http://localhost:4000/physics/hydrogen-atom-schrodinger.html" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
+
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+  <link rel="dns-prefetch" href="/assets/js/search-worker-9.1.6.js" as="worker" id="_hrefSearch">
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
+  <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+
+<!-- For sidebar folder -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+  <link rel="stylesheet" href="/assets/css/lightbox.css">
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-VMBTN8BX5P"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        gtag('js', new Date());
+        gtag('config', 'G-VMBTN8BX5P');
+    });
+</script>
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script"),e=(n.src=e,t&&a(n,"load",t,{once:!0}),c.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._advertise = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2025-09-16T03:31:00+09:00',
+  };
+}(window);</script>
+
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mathtex-script-type.min.js"></script>
+
+<script src="/assets/js/katex.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    render_KaTeX();
+  });
+</script>
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.6.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans+KR%7CJetBrains+Mono%7CNanum+Gothic+Coding&amp;display=swap" id="_fontsPreload">
+
+
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="no-break-layout no-large-headings">
+  
+<script>
+  window._sunrise = 6;
+  window._sunset =  18;
+  !function(e,s){var d="light-mode",o="dark-mode",a=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(a=a<=e._sunrise||a>=e._sunset?o:d)==o?d:o,s.body.classList.add(a),s.body.classList.remove(e))}(window,document);
+
+</script>
+
+
+
+<hy-push-state id="_pushState" replace-selector="#_main" link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)" script-selector="script" duration="500" hashchange>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden>
+
+  <main id="_main" class="content layout-post" role="main">
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/physics/">physics</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>hydrogen-atom-schrodinger.html</span>
+        
+      </li>
+    
+  
+</ul></nav>
+
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-physics-hydrogen-atom-schrodinger" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Hydrogen Atom
+        
+          <br>
+          <span style="font-size:1.5rem;font-style:italic;"> - Quantum Mechanics Unclassified</span>
+        
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2023-02-15T00:00:00+09:00">15 Feb 2023</time> in <a href="/physics/" class="flip-title">Physics</a> on <a href="/tag-quantum-mechanics/" class="flip-title">Quantum Mechanics</a>
+      </span>
+      
+        
+      
+
+      <span class="additional-info" style="font-size:1rem">
+          <!--
+        <span class="page-pv">
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/physics/hydrogen-atom-schrodinger.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+        </span>
+          -->
+        ·
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="842 words">
+  <i class="fa-regular fa-hourglass-half"></i>
+   14 min
+</span>
+
+      </span>
+    </div>
+
+    
+    
+      
+        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
+          
+
+
+<img src="/assets/img/physics/quantum-mechanics/Sakurai.svg" alt="Hydrogen Atom" width="864" height="486" loading="lazy">
+
+        </div>
+      
+      
+    
+
+    
+
+
+
+  
+
+
+  </header>
+
+  
+    <p class="figcaption">from <strong>「Modern Quantum Mechanics」</strong>: <em>Sakurai, J. J.</em></p>
+
+<blockquote>
+  <p>A naive but quite accurate model of hydrogen.</p>
+</blockquote>
+
+<!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#schr%C3%B6dinger-equation" id="markdown-toc-schrödinger-equation">Schrödinger equation</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The Schrödinger equation allows one to calculate the stationary states and also the time evolution of quantum systems.
+Exact analytical answers are available for the non-relativistic <strong>hydrogen atoms</strong> and also for the <strong>hydrogen-like atoms</strong>
+(atom or ion consisting an only electron), such as $\ce{H}$, $\ce{He+}$, $\ce{Li^2+}$, $\ce{Be^3+}$, etc.</p>
+
+<h2 id="schrödinger-equation">Schrödinger equation</h2>
+
+<p>The Hamiltonian of a <em>hydrogen-like atom</em> with the atomic number $Z$ is the radial kinetic energy operator and Coulomb attraction force
+between $Z$ positive protons and a negative electron. Using the time-independent Schrödinger equation, ignoring all spin-coupling interactions, and using the reduced mass
+$ \mu=\dfrac{m_em_N}{m_e+m_N} $, the equation is written as:</p>
+
+<p>\[ \left( -\frac{\hbar^2}{2\mu}\laplacian-\frac{Ze^2}{4\pi\vpmt r} \right)\psi = E\psi\]</p>
+
+<p>Expanding the Laplacian in spherical coordinates:</p>
+
+<p>\[ \left[ -\frac{\hbar^2}{2\mu}\left\{ \frac{1}{r^2}\pdv{ }{r}\left(r^2\pdv{ }{r}\right) +
+\frac{1}{r^2\sin\theta}\pdv{ }{\theta}\left(\sin\theta\pdv{ }{\theta}\right) +
+\frac{1}{r^2\sin^2\theta}\pdvn{2}{ }{\varphi} \right\} - \frac{Ze^2}{4\pi\vpmt r} \right] \psi = E\psi  \]</p>
+
+<p>This is a separable, partial differential equation that can be solved in terms of special functions. When the wavefunction is separated as a product of functions
+$R(r)$, $\Theta(\theta)$ and $\Phi(\varphi)$ three independent differential functions appears:</p>
+
+<p>\[ \psi(r,\theta,\varphi) = CR(r)Y(\theta,\varphi)=CR(r)\Theta(\theta)\Phi(\varphi) \]</p>
+
+<p>\[ \frac{1}{R}\odv{ }{r}\left(r^2\odv{R}{r}\right) - \frac{2\mu r^2}{\hbar^2}\left(-\frac{Ze^2}{4\pi\vpmt r}-E\right) = 
+-\frac{1}{Y}\left[ \frac{1}{\sin\theta}\pdv{ }{\theta}\left(\sin\theta\pdv{Y}{\theta}\right) + 
+\frac{1}{\sin^2\theta}\pdvn{2}{Y}{\varphi} \right]  \]</p>
+
+<p>Since the left and right sides consist of only variables respectively, the whole term is constant. Let’s put it $l(l+1)$.</p>
+
+<p>\[ \frac{1}{\Theta}\left[\sin\theta\odv{ }{\theta}\left(\sin\theta\odv{\Theta}{\theta}\right)\right] + l(l+1)\sin^2\theta = 
+-\frac{1}{\Phi}\odvn{2}{\Phi}{\varphi} \]</p>
+
+<p>With the same logic, let’s put the whole term $m_l^2$. Remark that $l$ and $m_l$ are complex numbers. We finally get three differential equations:</p>
+
+<p>\[ \therefore \begin{cases}
+\dps \frac{1}{R}\odv{ }{r}\left(r^2\odv{R}{r}\right) - \frac{2\mu r^2}{\hbar^2}\left(-\frac{Ze^2}{4\pi\vpmt r}-E\right) = l(l+1) \nl\nl
+\dps \frac{1}{\Theta}\left[\sin\theta\odv{ }{\theta}\left(\sin\theta\odv{\Theta}{\theta}\right)\right] + l(l+1)\sin^2\theta = m_l^2 \nl\nl
+\dps \frac{1}{\Phi}\odvn{2}{\Phi}{\varphi} = -m_l^2
+\end{cases} \]</p>
+
+<p>We know the solution for $\Phi$ and $\Theta$, where $P_l^{m_l}$ is the <strong>associated Legendre function</strong>.</p>
+
+<p>\[ \begin{align*}
+\Phi(\varphi) &amp;\propto e^{im_l\phi} \nl
+\Theta(\theta) &amp;\propto P_l^{m_l}(\cos\theta)
+\end{align*} \]</p>
+
+<p>We also get the condition for $m_l$ and $l$.</p>
+
+<p>\[ \begin{align*}
+&amp;\bullet\; m_l\in\Z ,\; \abs{m_l} \le l \nl
+&amp;\bullet\; l\in\Z ,\; l\ge0
+\end{align*} \]</p>
+
+<p>Therefore, $Y(\theta,\varphi)$ becomes the <strong>spherical harmonic function</strong> by setting appropriate coefficients.</p>
+
+<p>\[ \therefore Y(\theta,\varphi) = DP_l^{m_l}(\cos\theta)e^{im_l\varphi} = Y_l^{m_l}(\theta,\varphi) \]</p>
+
+<p>Let’s then take a look at $R$.</p>
+
+<p>\[ \odv{ }{r}\left(r^2\odv{R}{r}\right) - \frac{2\mu r^2}{\hbar^2}\left( -\frac{Ze^2}{4\pi\vpmt r} -E\right)R = l(l+1)R  \]</p>
+
+<p>Let’s define a new function $u(r) \coloneqq rR(r)$:</p>
+
+<p>\[ -\frac{\hbar^2}{2\mu}\odvn{2}{u}{r} + \left[ -\frac{Ze^2}{4\pi\vpmt r}+\frac{\hbar^2}{2\mu}\frac{l(l+1)}{r^2} \right]u = Eu \]</p>
+
+<p>We can simplify the equation by <em>nondimensionalization</em>:</p>
+
+<p>\[ \begin{align*}
+\kappa &amp;\coloneqq \frac{\sqrt{-2\mu E}}{\hbar} \nl
+\lambda &amp;\coloneqq \frac{Z\mu e^2}{2\pi\vpmt\hbar^2\kappa} \nl
+\rho &amp; \coloneqq \kappa r
+\end{align*} \]</p>
+
+<p>\[ \Rightarrow \odvn{2}{u}{\rho} = \left[ 1-\frac{\lambda}{\rho}+\frac{l(l+1)}{\rho^2} \right]u \]</p>
+
+<p>It is hard to solve this differential equation directly; let’s try an <em>asymptotic analysis</em>.
+We should find converging solutions.</p>
+
+<p>\[ \begin{cases}
+\rho\to\infty &amp;: u\rq\rq \approx u &amp;\Rightarrow u \approx k_1e^{-\rho} \nl
+\rho\to0 &amp;: u\rq\rq \approx l(l+1)\rho^{-2}u &amp;\Rightarrow u \approx k_2\rho^{l+1}
+\end{cases} \]</p>
+
+<p>Therefore, it is possible to reset $u$ using a new function $L(\rho)$.</p>
+
+<p>\[ u \equiv \rho^{l+1}e^{-\rho}L(\rho) \]</p>
+
+<p>We then get a differential equation of $L$.</p>
+
+<p>\[ \rho\odvn{2}{L}{\rho} + 2(l+1-\rho)\odv{L}{\rho} + \left\{\lambda-2(l+1)\right\}L = 0 \]</p>
+
+<p>Let’s use the <em>Frobenius method</em> to solve this equation.</p>
+
+<p>\[ L=\sum_{j=0}^\infty c_j\rho^j \]</p>
+
+<p>\[ \sum_{j=0}^\infty \Big[ j(j+1)c_{j+1} + 2(l+1)(j+1)c_j - 2jc_j + \left\{\lambda-2(l+1)\right\}c_j \Big]\rho^j = 0 \]</p>
+
+<p>\[ \Rightarrow c_{j+1} = \frac{2(j+l+1)-\lambda}{(j+1)(j+2l+2)}c_j \]</p>
+
+<p>It seems to be good to use an asymptotic analysis again.</p>
+
+<p>\[ \begin{align*} j\to\infty \;:\; c_{j+1} \approx \frac{2}{j}c_j
+&amp;\Rightarrow c_j \approx \frac{2^j}{j!}c_0 \nl
+&amp;\Rightarrow L \approx c_0\sum_{j=0}^\infty \frac{2^j}{j!}\rho^j = c_0e^{2\rho} \nl
+&amp;\Rightarrow c_0\rho^{l+1}e^\rho
+\end{align*} \]</p>
+
+<p>The solution diverges, so it cannot be the right function describing the system.
+Therefore, we could guess that the recurrence relation has to be <strong><em>cut off</em></strong>, after a particular term.
+This implies the condition for $\lambda$.</p>
+
+<p>\[ \begin{align*}
+\lambda &amp;= 2(j+l+1) \nl
+&amp;= 2n \;(n\in\N)
+\end{align*} \]</p>
+
+<p>Let’s get back to the differential equation. By changing the variable as $x \coloneqq 2\rho$:</p>
+
+<p>\[ x\odvn{2}{L}{x} + (2l+2-x)\odv{L}{x} + (n-l-1)L = 0 \]</p>
+
+<p>This is the equation for <strong>generalized Laguerre function</strong>.</p>
+
+<p>\[ L \propto L_{n-l-1}^{2l+1}(x) \]</p>
+
+<p>We finally get the entire solution of $R$.</p>
+
+<p>\[ R \propto \frac{1}{r}\rho^{l+1}e^{-\rho}L_{n-l-1}^{2l+1}(2\rho) \]</p>
+
+<p>Remember that $\lambda$ was a nondimensionalizing variable, we can write $R$ as a function of $r$ where $a_0$ is <strong>Bohr radius</strong>.</p>
+
+<p>\[ \begin{align*}
+\rho &amp;= \frac{r}{\kappa} \nl
+&amp;= \frac{Z\mu e^2}{2\pi\vpmt\hbar^2}\cdot\frac{r}{\lambda} = \frac{Z\mu e^2}{4\pi\vpmt\hbar^2}\cdot\frac{r}{n} \nl
+&amp;= \frac{Zr}{na_0} \;\left( a_0 \coloneqq \frac{4\pi\vpmt\hbar^2}{\mu e^2} \right)
+\end{align*} \]</p>
+
+<p>\[ \therefore R(r) = \left(\frac{2Zr}{na_0}\right)^l \exp\left(-\frac{Zr}{na_0}\right) L_{n-l-1}^{2l+1}\left(\frac{2Zr}{na_0}\right)  \]</p>
+
+<p>It’s almost done.</p>
+
+<p>\[ \psi = C\left(\frac{2Zr}{na_0}\right)^l \exp\left(-\frac{Zr}{na_0}\right) L_{n-l-1}^{2l+1}\left(\frac{2Zr}{na_0}\right) Y_l^{m_l}(\theta,\varphi) \]</p>
+
+<p>We should normalize the wavefunction. By some complex calculations, we get:</p>
+
+<p>\[ \oint_{\Omega}\int_0^\infty \abs{\psi}^2 r^2 \,\d r\d\Omega = 1 \]</p>
+
+<p>\[ \begin{align*}
+\therefore \psi_{nlm_l}(r,\theta,\varphi) &amp;= \sqrt{\left(\frac{2Z}{na_0}\right)^3 \frac{(n-l-1)!}{2n \cdot (n+l)!}}
+\left(\frac{2Zr}{na_0}\right)^l \exp\left(-\frac{Zr}{na_0}\right) L_{n-l-1}^{2l+1}\left(\frac{2Zr}{na_0}\right) Y_l^{m_l}(\theta,\varphi) \nl
+&amp;= \ket{n,l,m_l}
+\end{align*} \]</p>
+
+<p>Now we should calculate energy, the eigenvalue of the Hamiltonian.</p>
+
+<p>Remember that $\kappa$ contained $E$:</p>
+
+<p>\[ E=-\frac{\hbar^2\kappa^2}{2\mu},\; \kappa = \frac{2Z}{\lambda a_0} \]</p>
+
+<p>We finally get the energy, where $\RydE$ is the <strong>Rydberg unit of energy</strong>.</p>
+
+<p>\[ \begin{align*}
+\therefore E_n &amp;= -\frac{\hbar^2}{2\mu}\frac{Z^2}{n^2a_0^2} \nl
+&amp;= -\frac{Z^2}{n^2}\RydE \;\left( \RydE \coloneqq \frac{e^2}{8\pi\vpmt a_0} \right)
+\end{align*} \]</p>
+
+<p>Let’s summarize.</p>
+
+<p>\[ \psi_{nlm_l}(r,\theta,\varphi) = \sqrt{\left(\frac{2Z}{na_0}\right)^3 \frac{(n-l-1)!}{2n \cdot (n+l)!}}
+\left(\frac{2Zr}{na_0}\right)^l \exp\left(-\frac{Zr}{na_0}\right) L_{n-l-1}^{2l+1}\left(\frac{2Zr}{na_0}\right) Y_l^{m_l}(\theta,\varphi) \]</p>
+
+<p>\[ E_n = -\frac{Z^2}{n^2}\RydE \]</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Hydrogen_Density_Plots.png" alt="Hello"></p>
+
+<p><img src="https://live.staticflickr.com/65535/49963063667_ff1d1e2504_o.png" alt="Hydrogen 1"></p>
+
+  
+</article>
+
+
+
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/physics/hydrogen-atom-schrodinger.html">
+  </applause-button>
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img src="/assets/img/piano.png" alt="Jiho Jun" class="avatar" width="120" height="120" loading="lazy">
+
+  
+
+  
+  
+  <h2 class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>Hello. <br>
+Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
+
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/fine-structure-of-hydrogen-atom.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/physics/quantum-mechanics/Sakurai.svg"        sizes="(min-width:86em)27.5rem,(min-width:54em)24.5rem,(min-width:42em)21.5rem,42rem"    alt="Fine Structure of Hydrogen Atom"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/fine-structure-of-hydrogen-atom.html" class="flip-title">Fine Structure of Hydrogen Atom</a>  </h3>      <a class="fill-card no-hover" href="/physics/fine-structure-of-hydrogen-atom.html" tabindex="-1"><span class="sr-only">Continue reading Fine Structure of Hydrogen Atom</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/kramers-relation-and-expectation-value.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/physics/quantum-mechanics/Sakurai.svg"        sizes="(min-width:86em)27.5rem,(min-width:54em)24.5rem,(min-width:42em)21.5rem,42rem"    alt="Kramers' Relation and Expectation Values of Hydrogen Atom"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/kramers-relation-and-expectation-value.html" class="flip-title">Kramers' Relation and Expectation Values of Hydrogen Atom</a>  </h3>      <a class="fill-card no-hover" href="/physics/kramers-relation-and-expectation-value.html" tabindex="-1"><span class="sr-only">Continue reading Kramers' Relation and Expectation Values of Hydrogen Atom</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/fine-structure-of-hydrogen-atom.html" class="flip-title">    <span>              [Quantum Mechanics Unclassified]            Fine Structure of Hydrogen Atom    </span>  </a>      <time class="faded fine" datetime="2023-02-17T00:00:00+09:00">      17 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/fine-structure-of-hydrogen-atom.html"></span>  </li>          <li class="h4">  <a href="/physics/kramers-relation-and-expectation-value.html" class="flip-title">    <span>              [Quantum Mechanics Unclassified]            Kramers' Relation and Expectation Values of Hydrogen Atom    </span>  </a>      <time class="faded fine" datetime="2023-02-16T00:00:00+09:00">      16 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/kramers-relation-and-expectation-value.html"></span>  </li>          <li class="h4">  <a href="/physics/quantum-harmonic-oscillator.html" class="flip-title">    <span>              [Quantum Mechanics 2.3]            Quantum Harmonic Oscillator    </span>  </a>      <time class="faded fine" datetime="2023-02-14T00:00:00+09:00">      14 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/quantum-harmonic-oscillator.html"></span>  </li>          <li class="h4">  <a href="/physics/particle-in-a-box.html" class="flip-title">    <span>              [Quantum Mechanics 2.2]            A Particle in a Box    </span>  </a>      <time class="faded fine" datetime="2023-02-14T00:00:00+09:00">      14 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/particle-in-a-box.html"></span>  </li>      </ul></aside>
+
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <!--
+    <script type="text/javascript">
+      $(function () {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark_dimmed";
+
+        let giscusAttributes = {
+          "src": "https://giscus.app/client.js",
+          "data-repo": "berryjune07/berryjune07.github.io",
+          "data-repo-id": "",
+          "data-category": "General",
+          "data-category-id": "",
+          "data-mapping": "pathname",
+          "data-strict": "0",
+          "data-reactions-enabled": "",
+          "data-emit-metadata": "0",
+          "data-input-position": "",
+          "data-theme": "light",
+          "data-lang": "en",
+          "data-loading": "lazy",
+          "crossorigin": "anonymous",
+          "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+          if (event.source === window && event.data &&
+                  event.data.direction === ModeToggle.ID) {
+            /* global theme mode changed */
+            const mode = event.data.message;
+            const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+            const message = {
+              setConfig: {
+                theme: theme
+              }
+            };
+            const giscus = document.querySelector(iframe).contentWindow;
+            giscus.postMessage({ giscus: message }, origin);
+          }
+        });
+      });
+    </script>
+    -->
+
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+  
+<footer class="content" role="contentinfo">
+  <hr>
+  
+    <p><small class="copyright">© 2023. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/licenses/">LICENSES</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/cookies-policy/">COOKIES POLICY</a>
+      
+    
+    </small></nav>
+  
+  
+  <hr class="sr-only">
+</footer>
+
+
+</main>
+
+  <hy-drawer id="_drawer" class="" side="left" threshold="10" noscroll>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg " style="background:center / cover url(/assets/img/note.jpg)"></div>
+
+    <div class="sidebar-sticky no-fouc">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/berry.jpg" class="avatar" alt="Jiho's Blog" width="120" height="120" loading="lazy">
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">Jiho's Blog</h2></a>
+    
+    
+      <p class="">
+        <em>Appassionato</em>
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/about/" class="sidebar-nav-item">About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-10">
+          
+          <div class="list-wrapper">
+            <a href="/mathematics/" class="sidebar-nav-item">Mathematics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(10)">
+                <label id="spread-icon-10" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-statistics/">Statistics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-number-theory/">Number Theory</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-linear-algebra/">Linear Algebra</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-calculus/">Calculus</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-topology/">Topology</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-differential-geometry/">Differential Geometry</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-11">
+          
+          <div class="list-wrapper">
+            <a href="/physics/" class="sidebar-nav-item">Physics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(11)">
+                <label id="spread-icon-11" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-mechanics/">Classical Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-quantum-mechanics/">Quantum Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-fluid-mechanics/">Fluid Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-electromagnetism/">Classical Electromagnetism</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-elementary-physics/">Elementary Physics</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-12">
+          
+          <div class="list-wrapper">
+            <a href="/computer-science/" class="sidebar-nav-item">Computer Science</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(12)">
+                <label id="spread-icon-12" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-problem-solving/">Problem Solving</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-algorithms/">Algorithms</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-13">
+          
+          <div class="list-wrapper">
+            <a href="/classical-music/" class="sidebar-nav-item">Classical Music</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(13)">
+                <label id="spread-icon-13" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-ravel/">Ravel</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-rachmaninoff/">Rachmaninoff</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/posts.html" class="sidebar-nav-item">Posts</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/tags/" class="sidebar-nav-item">Tags</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/gallery.html" class="sidebar-nav-item">Gallery</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/resume/" class="sidebar-nav-item">Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+
+  <!--
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false"/>
+  -->
+
+</div>
+
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden>
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+<script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+<script src="/assets/js/hydejack-9.1.6.js" type="module"></script>
+<script src="/assets/js/LEGACY-hydejack-9.1.6.js" nomodule defer></script>
+<script src="/assets/js/sidebar-folder.js"></script>
+<script src="/assets/js/clap-button.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+  <script src="/assets/js/lightbox.js"></script>
+
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  let config = {
+    startOnLoad: true,
+    fontFamily: "JetBrains Mono",
+    theme: "neutral"
+  };
+  mermaid.initialize(config);
+  mermaid.run({ querySelector: ".language-mermaid" });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      mermaid.run({ querySelector: ".language-mermaid" });
+    });
+</script>
+
+<script>
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-load", function () {
+      get_clap_count();
+      apply_lightbox();
+    });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      render_KaTeX();
+    });
+</script>
+
+
+  <script>!function(w, d) {
+    w.ga=w.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    /**/
+      if (navigator.CookiesOK) {
+        ga('create', 'G-VMBTN8BX5P', 'auto');
+      } else if (d.cookie.indexOf("hy--cookies-ok=true") > -1) {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none',
+          'clientId': localStorage ? localStorage.getItem('ga--client-id') : undefined
+        });
+      } else {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none'
+        });
+        ga('set', 'forceSSL', true);
+        ga('set', 'anonymizeIp', true);
+      }
+    /**/
+
+    var pushStateEl = d.getElementById('_pushState');
+    var timeoutId;
+    pushStateEl.addEventListener('hy-push-state-load', function() {
+      w.clearTimeout(timeoutId);
+      timeoutId = w.setTimeout(function() {
+        ga('set', 'page', w.location.pathname);
+        ga('send', 'pageview');
+      }, 500);
+    });
+
+    d.addEventListener('hy--cookies-ok', function () {
+      w.ga(function(tracker) {
+        w.ga("set", "anonymizeIp", undefined);
+        localStorage && localStorage.setItem("ga--client-id", tracker.get("clientId"));
+      });
+    });
+
+    w.loadJSDeferred('https://www.google-analytics.com/analytics.js');
+  }(window, document);</script>
+
+
+<script type="module">
+  if ('serviceWorker' in navigator) {
+    /**/
+    navigator.serviceWorker.getRegistration()
+      .then(r => r.unregister())
+      .catch(() => {});
+    /**/
+  }
+</script>
+<!--<![endif]-->
+
+  
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_cookies-banner-template">
+  <div id="_cookies-banner" class="navbar fixed-bottom CookiesOK">
+    <div class="content">
+      <div class="nav-btn-bar">
+        <small class="faded">
+          <span>This site uses cookies. <a href="/cookies-policy/">Cookies Policy</a>.
+</span>
+          <button id="_cookies-ok" class="btn btn-primary btn-sm">Okay</button>
+        </small>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover">
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+  
+    <template id="_search-template">
+  <button id="_search" class="nav-btn no-hover">
+    <label class="sr-only" for="_search-input">Search</label>
+    <span class="icon-search"></span>
+  </button>
+  <div id="_search-box">
+    <div class="nav-btn">
+      <span class="icon-search"></span>
+    </div>
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <button type="reset" class="nav-btn no-hover">
+      <span class="sr-only">Close</span>
+      <span class="icon-cross"></span>
+    </button>
+  </div>
+  <div id="_hits"></div>
+</template>
+
+  
+</div>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-72805aa7-c85a-4e3d-ac49-24dba36d6185" data-elfsight-app-lazy></div>
+</body>
+</html>

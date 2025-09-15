@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-09-16T03:31:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Incompressible Fluids</title><link href="http://localhost:4000/physics/incompressible-fluids.html" rel="alternate" type="text/html" title="Incompressible Fluids" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/incompressible-fluids</id><content type="html" xml:base="http://localhost:4000/physics/incompressible-fluids.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Bernoulli’s Equation</title><link href="http://localhost:4000/physics/bernoullis-equation.html" rel="alternate" type="text/html" title="Bernoulli’s Equation" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/bernoullis%20equation</id><content type="html" xml:base="http://localhost:4000/physics/bernoullis-equation.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Potential Flow</title><link href="http://localhost:4000/physics/potential-flow.html" rel="alternate" type="text/html" title="Potential Flow" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/potential-flow</id><content type="html" xml:base="http://localhost:4000/physics/potential-flow.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Kelvin’s Circulation Theorem</title><link href="http://localhost:4000/physics/kelvins-circulation-theorem.html" rel="alternate" type="text/html" title="Kelvin’s Circulation Theorem" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/kelvins-circulation-theorem</id><content type="html" xml:base="http://localhost:4000/physics/kelvins-circulation-theorem.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Streamlines, Pathlines, and Streaklines</title><link href="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html" rel="alternate" type="text/html" title="Streamlines, Pathlines, and Streaklines" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/streamlines-pathlines-and-streaklines</id><content type="html" xml:base="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Euler’s Equation and Hydrostatics</title><link href="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html" rel="alternate" type="text/html" title="Euler’s Equation and Hydrostatics" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/eulers-equation-and-hydrostatics</id><content type="html" xml:base="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#eulers-equation&quot; id=&quot;markdown-toc-eulers-equation&quot;&gt;Euler’s Equation&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#thermodynamic-analysis&quot; id=&quot;markdown-toc-thermodynamic-analysis&quot;&gt;Thermodynamic Analysis&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hydrostatics&quot; id=&quot;markdown-toc-hydrostatics&quot;&gt;Hydrostatics&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#constant-density&quot; id=&quot;markdown-toc-constant-density&quot;&gt;Constant Density&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#varying-density&quot; id=&quot;markdown-toc-varying-density&quot;&gt;Varying Density&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#astronomical-case&quot; id=&quot;markdown-toc-astronomical-case&quot;&gt;Astronomical Case&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#condition-that-convection-be-absent&quot; id=&quot;markdown-toc-condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;eulers-equation&quot;&gt;Euler’s Equation&lt;/h2&gt;
+
+&lt;p&gt;In fluid dynamics, Euler’s equation describes the motion of an ideal fluid.
+We’ll use the equations derived in the &lt;a href=&quot;ideal-fluids-and-the-equation-of-continuity.html&quot;&gt;previous section&lt;/a&gt; to arrive at Euler’s equation.&lt;/p&gt;
+
+&lt;p&gt;First, from the continuity equation for mass, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\rho} = -\rho \div \b{v}
+\]&lt;/p&gt;
+
+&lt;p&gt;Next, we consider the momentum equation for an ideal fluid.&lt;/p&gt;
+
+&lt;p&gt;\[
+\rho \mdv{\b{v}} = -\grad p + \b{f}
+\]&lt;/p&gt;
+
+&lt;p&gt;Here, $\b{f}$ represents the body force per unit volume acting on the fluid, such as gravity.
+Dividing through by $\rho$, we get:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\b{v}} = -\frac{\grad p}{\rho} + \b{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\b{a} = \frac{\b{f}}{\rho}$ is the acceleration due to body forces.
+Finally, let’s bring the energy equation into the picture.&lt;/p&gt;
+
+&lt;p&gt;\[
+\rho \mdv{} \left( \frac{1}{2} v^2 + \varepsilon \right) = - \div (p \b{v}) + \b{v} \cdot \b{f}
+\]&lt;/p&gt;
+
+&lt;p&gt;Substituting the material derivative of velocity from the momentum equation, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\varepsilon} = -\frac{p}{\rho} \div \b{v}
+\]&lt;/p&gt;
+
+&lt;p&gt;We can observe that the change in internal energy per unit mass is irrelevant to the external forces acting on the fluid.
+Summarizing, we have the following set of equations for an ideal fluid:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\mdv{\rho} &amp;amp;= -\rho \div \b{v} \nl
+\mdv{\b{v}} &amp;amp;= -\frac{\grad p}{\rho} + \b{a} \nl
+\mdv{\varepsilon} &amp;amp;= -\frac{p}{\rho} \div \b{v}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;These equations are known as &lt;strong&gt;Euler’s equations&lt;/strong&gt; for an ideal fluid.&lt;/p&gt;
+
+&lt;h3 id=&quot;thermodynamic-analysis&quot;&gt;Thermodynamic Analysis&lt;/h3&gt;
+
+&lt;p&gt;Let’s think of the familiar thermodynamic relation:&lt;/p&gt;
+
+&lt;p&gt;\[
+\dd{w} = T \dd{s} + \frac{1}{\rho} \dd{p}
+\]&lt;/p&gt;
+
+&lt;p&gt;Since an ideal fluid is adiabatic, we have $\dd{s} = 0$.
+Thus, we can write:&lt;/p&gt;
+
+&lt;p&gt;\[
+\grad w = \frac{1}{\rho} \grad p
+\]&lt;/p&gt;
+
+&lt;p&gt;Substituting this into the momentum equation, we get:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad w + \b{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;Using a well-known formula from vector calculus:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{2} \grad v^2 = \b{v} \times (\curl \b{v}) + (\b{v} \cdot \grad) \b{v}
+\]&lt;/p&gt;
+
+&lt;p&gt;we can rewrite the momentum equation as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;This form of Euler’s equation is particularly useful for analyzing fluid flow in various scenarios.
+If we take the curl of both sides, we obtain:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{}{t} (\curl \b{v}) = \curl [ \b{v} \times (\curl \b{v}) ] + \curl \b{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;if $\b{a}$ is a conservative force field, the last term vanishes.&lt;/p&gt;
+
+&lt;h2 id=&quot;hydrostatics&quot;&gt;Hydrostatics&lt;/h2&gt;
+
+&lt;p&gt;For a fluid at rest in a uniform gravitational field, we have $\b{v} = 0$ and $\b{a} = -g \hat{\b{z}}$.
+Substituting these into the momentum equation, we get:&lt;/p&gt;
+
+&lt;p&gt;\[
+\grad p = -\rho g \hat{\b{z}}
+\]&lt;/p&gt;
+
+&lt;p&gt;It then follows that the density is also a function of $z$ only.&lt;/p&gt;
+
+&lt;p&gt;\[
+\rho = -\frac{1}{g} \odv{p}{z}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;constant-density&quot;&gt;Constant Density&lt;/h3&gt;
+
+&lt;p&gt;Let’s assume that the fluid density $\rho$ is constant throughout the fluid.
+Then from the condition $p = p_0$ at $z = h$, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+p = p_0 + \rho g (h - z)
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;varying-density&quot;&gt;Varying Density&lt;/h3&gt;
+
+&lt;p&gt;However, for large masses of fluid, the density may vary with depth due to compressibility effects.
+If the fluid is close to thermodynamically perfect gas, we can use the ideal gas law:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{p}{z} = -\frac{gM}{R T} p
+\]&lt;/p&gt;
+
+&lt;p&gt;where $R$ is the specific gas constant and $T$ is the temperature.
+Assuming $T$ is constant with depth, we can integrate this equation to find:&lt;/p&gt;
+
+&lt;p&gt;\[
+p = p_0 \exp \left[ -\frac{gM}{R T} z \right]
+\]&lt;/p&gt;
+
+&lt;p&gt;where $p_0$ is the pressure at $z = 0$.
+If the temperature varies with depth, we can still integrate the equation if we know the temperature profile $T(z)$.
+The most important example is the linear temperature profile such as the troposphere.&lt;/p&gt;
+
+&lt;p&gt;\[
+T(z) = T_0 - L z
+\]&lt;/p&gt;
+
+&lt;p&gt;Here, $T_0$ is the temperature at $z = 0$ and $L$ is the lapse rate.
+Integrating the pressure gradient equation with this temperature profile, we find:&lt;/p&gt;
+
+&lt;p&gt;\[
+p = p_0 \left( 1 - \frac{L z}{T_0} \right)^{gM/RL}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;astronomical-case&quot;&gt;Astronomical Case&lt;/h3&gt;
+
+&lt;p&gt;Finally, let’s consider the case of a spherically symmetric gravitational field, such as a star.
+Let $\Phi$ be the gravitational potential, which satisfies Poisson’s equation:&lt;/p&gt;
+
+&lt;p&gt;\[
+\laplacian \Phi = 4 \pi G \rho
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, the hydrostatic equilibrium condition becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\grad p = -\rho \grad \Phi
+\]&lt;/p&gt;
+
+&lt;p&gt;Dividing through by $\rho$ and taking the divergence of both sides, we obtain:&lt;/p&gt;
+
+&lt;p&gt;\[
+\div \left( \frac{1}{\rho} \grad p \right) = -4 \pi G \rho
+\]&lt;/p&gt;
+
+&lt;p&gt;If the body is not rotating, we can assume spherical symmetry.
+Then, the equation simplifies to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{r^2} \odv{}{r} \left( \frac{r^2}{\rho} \odv{p}{r} \right) = -4 \pi G \rho
+\]&lt;/p&gt;
+
+&lt;p&gt;This equation is fundamental in astrophysics for modeling the structure of stars and planets.&lt;/p&gt;
+
+&lt;h2 id=&quot;condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/h2&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Convergence Concepts in Statistics</title><link href="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html" rel="alternate" type="text/html" title="Convergence Concepts in Statistics" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convergence-concepts-in-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Rotational Motions and Angular Quantities</title><link href="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html" rel="alternate" type="text/html" title="Rotational Motions and Angular Quantities" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/rotational-motions-and-angular-quantities</id><content type="html" xml:base="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Impulse and Collision</title><link href="http://localhost:4000/physics/impulse-and-collision.html" rel="alternate" type="text/html" title="Impulse and Collision" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/impulse-and-collision</id><content type="html" xml:base="http://localhost:4000/physics/impulse-and-collision.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#impulse&quot; id=&quot;markdown-toc-impulse&quot;&gt;Impulse&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#center-of-mass&quot; id=&quot;markdown-toc-center-of-mass&quot;&gt;Center of Mass&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#collisions&quot; id=&quot;markdown-toc-collisions&quot;&gt;Collisions&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#systems-with-varying-mass&quot; id=&quot;markdown-toc-systems-with-varying-mass&quot;&gt;Systems with Varying Mass&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#tsiolkovsky-rocket-equation&quot; id=&quot;markdown-toc-tsiolkovsky-rocket-equation&quot;&gt;Tsiolkovsky Rocket Equation&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;impulse&quot;&gt;Impulse&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Impulse&lt;/strong&gt; is defined as the change in momentum of an object when a force is applied over a time interval. Mathematically, impulse $J$ can be expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{J} = \int_{t_1}^{t_2} \b{F}(t) \, \dd{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;Its units are Newton seconds ($\text{N} \cdot \text{s}$) or kilogram meters per second ($\text{kg} \cdot \text{m/s}$), 
+which are equivalent to the units of momentum.
+This is not a coincidence, as impulse is directly related to the change in momentum of an object.&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{J} = \int_{t_1}^{t_2} \odv{\b{p}}{t} \, \dd{t} = \Delta \b{p}
+\]&lt;/p&gt;
+
+&lt;p&gt;This relationship is known as the &lt;strong&gt;impulse-momentum theorem&lt;/strong&gt;.
+Impulse is particularly useful in analyzing situations where forces act over very short time intervals, such as collisions or impacts.
+In such cases, the exact nature of the force may be complex or unknown, but the overall effect on the object’s momentum can be determined using impulse and the average force during the interaction.&lt;/p&gt;
+
+&lt;h2 id=&quot;center-of-mass&quot;&gt;Center of Mass&lt;/h2&gt;
+
+&lt;p&gt;The &lt;strong&gt;center of mass&lt;/strong&gt; (COM) of a system of particles is the point at which the total mass of the system can be considered to be concentrated for the purpose of analyzing translational motion.
+For a discrete system of particles,&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{R} = \frac{1}{M} \sum_{i} m_i \b{r}_i
+\]&lt;/p&gt;
+
+&lt;p&gt;where $M = \sum_i m_i$ is the total mass of the system, $m_i$ is the mass of the $i$-th particle, and $\b{r}_i$ is its position vector.
+For a continuous mass distribution, the center of mass is given by&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{R} = \frac{1}{M} \int \b{r} \, \dd{m}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\dd{m} = \rho(\b{r}) \, \dd{V}$, with $\rho(\b{r})$ being the &lt;strong&gt;mass density&lt;/strong&gt; at position $\b{r}$ and $\dd{V}$ the volume element.
+The SI unit of mass density is kilograms per cubic meter ($\text{kg/m}^3$).
+The center of mass is a crucial concept in mechanics, as it simplifies the analysis of motion and dynamics of systems of particles or rigid bodies.
+The motion of the COM is governed by the net external force acting on the system, according to Newton’s second law.&lt;/p&gt;
+
+&lt;h2 id=&quot;collisions&quot;&gt;Collisions&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;collision&lt;/strong&gt; is an event where two or more bodies exert forces on each other in a relatively short time.
+Collisions can be classified into two main types based on the conservation of kinetic energy:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Elastic Collisions&lt;/strong&gt;: Both momentum and kinetic energy are conserved.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Inelastic Collisions&lt;/strong&gt;: Momentum is conserved, but kinetic energy is not. In perfectly inelastic collisions, the colliding bodies stick together after the collision.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We can guess that the velocity of the COM will remain unchanged after the collision, since there are no external forces acting on the system.
+Let’s analyze a one-dimensional collision between two masses $m_1$ and $m_2$ with initial velocities $v_1$ and $v_2$, respectively.
+We can simplify the problem by transforming to the center of mass frame, where the total momentum is zero.&lt;/p&gt;
+
+&lt;p&gt;\[
+V = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} \nl
+\tilde{v}_1 = v_1 - V \nl
+\tilde{v}_2 = v_2 - V
+\]&lt;/p&gt;
+
+&lt;p&gt;where $V$ is the velocity of the COM. Let’s denote the velocities after the collision with primes.
+In the COM frame, the total momentum is zero, so&lt;/p&gt;
+
+&lt;p&gt;\[
+m_1 \tilde{v}_1 + m_2 \tilde{v}_2 = 0 \nl
+m_1 \tilde{v}^\prime_1 + m_2 \tilde{v}^\prime_2 = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;By the analysis &lt;a href=&quot;mechanics-of-a-system-of-particles.html#mechanics-of-a-system-of-particles&quot;&gt;here&lt;/a&gt;,&lt;/p&gt;
+
+&lt;p&gt;\[
+K = \frac{1}{2}M V^2 + \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2
+\]&lt;/p&gt;
+
+&lt;p&gt;The first term is unchanged by the collision, so we only need to consider the second term.
+Since the kinetic energy cannot increase by the collision, we have that $\abs{\tilde{v}}$ should decrease.
+By the observation, we can introduce a &lt;em&gt;coefficient of restitution&lt;/em&gt; $e$ ($0 \leq e \leq 1$) to describe the ratio of relative speeds after and before the collision.&lt;/p&gt;
+
+&lt;p&gt;\[
+e = -\frac{\tilde{v}^\prime_1}{\tilde{v}_1} = -\frac{\tilde{v}_2}{\tilde{v}^\prime_2}
+\]&lt;/p&gt;
+
+&lt;p&gt;The negative sign arises because the velocities change their direction after the collision.
+Using the componendo and dividendo theorem, it can also be expressed as&lt;/p&gt;
+
+&lt;p&gt;\[
+e = -\frac{\tilde{v}^\prime_1 - \tilde{v}^\prime_2}{\tilde{v}_1 - \tilde{v}_2} = -\frac{v^\prime_1 - v^\prime_2}{v_1 - v_2}
+\]&lt;/p&gt;
+
+&lt;p&gt;Now we have two equations: one from momentum conservation and one from the coefficient of restitution.
+We can solve for the final velocities $v^\prime_1$ and $v^\prime_2$ in terms of the initial velocities $v_1$ and $v_2$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+v^\prime_1 &amp;amp;= \frac{m_1 - e m_2}{m_1 + m_2} v_1 + \frac{(1 + e) m_2}{m_1 + m_2} v_2 \nl
+v^\prime_2 &amp;amp;= \frac{(1 + e) m_1}{m_1 + m_2} v_1 + \frac{m_2 - e m_1}{m_1 + m_2} v_2
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Also, the kinetic energy after the collision can be expressed as&lt;/p&gt;
+
+&lt;p&gt;\[
+K^\prime = \frac{1}{2} M V^2 + e^2 \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2
+\]&lt;/p&gt;
+
+&lt;p&gt;From this expression, we can see that the kinetic energy after the collision is reduced by a factor of $e^2$ compared to the kinetic energy before the collision in the COM frame.
+This reduction in kinetic energy is due to the inelastic nature of the collision, where some of the kinetic energy is converted into other forms of energy, such as heat or deformation.
+The change in kinetic energy due to the collision can be expressed as&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\Delta K &amp;amp;= -(1 - e^2) \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2 \nl
+&amp;amp;= -(1 - e^2) \frac{1}{2} \mu (v_1 - v_2)^2
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\mu = \frac{m_1 m_2}{m_1 + m_2}$ is the &lt;strong&gt;reduced mass&lt;/strong&gt; of the system.
+Therefore, we can conclude that $e = 1$ corresponds to a perfectly elastic collision, where no kinetic energy is lost, and $e = 0$ corresponds to a perfectly inelastic collision, where the maximum amount of kinetic energy is lost.
+$0 &amp;lt; e &amp;lt; 1$ represents partially inelastic collisions, where some kinetic energy is lost but not all.&lt;/p&gt;
+
+&lt;h2 id=&quot;systems-with-varying-mass&quot;&gt;Systems with Varying Mass&lt;/h2&gt;
+
+&lt;p&gt;In systems where the mass of an object changes over time, such as a rocket expelling fuel, we need to modify our approach to account for the changing mass.
+Let’s denote the mass of the object as $m$ which can vary with time, and its velocity as $\b{v}$.
+The momentum of the object is given by $\b{p} = m \b{v}$.
+After a small time interval $\dd{t}$, the mass changes by $\dd{m}$ and the velocity changes by $\dd{\b{v}}$.
+The mass ejected (or added) during this time interval has a velocity $\b{u}$ relative to the object.&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{p} + \dd{\b{p}} = (m + \dd{m})(\b{v} + \dd{\b{v}}) + (-\dd{m})(\b{v} + \b{u})
+\]&lt;/p&gt;
+
+&lt;p&gt;Expanding and simplifying, we get&lt;/p&gt;
+
+&lt;p&gt;\[
+\dd{\b{p}} = m \dd{\b{v}} - \b{u} \dd{m} + \dd{m} \dd{\b{v}}
+\]&lt;/p&gt;
+
+&lt;p&gt;Neglecting the second-order small term $\dd{m} \dd{\b{v}}$ and dividing by $\dd{t}$, we obtain&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{F}_\text{ext} + \b{u} \odv{m}{t} = m \odv{\b{v}}{t}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;tsiolkovsky-rocket-equation&quot;&gt;Tsiolkovsky Rocket Equation&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;Tsiolkovsky rocket equation&lt;/strong&gt; describes the motion of a rocket as it expels mass (fuel) to generate thrust.
+Assuming one-dimensional motion and that the external force $\b{F}_\text{ext}$ is negligible, we have&lt;/p&gt;
+
+&lt;p&gt;\[
+-u \odv{m}{t} = m \odv{v}{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $u$ is the exhaust velocity of the expelled mass relative to the rocket.
+The left side is sometimes called the &lt;strong&gt;thrust&lt;/strong&gt;.
+Rearranging and integrating from the initial mass $m_0$ to the final mass $m$, we get the equation for the rocket’s velocity change:&lt;/p&gt;
+
+&lt;p&gt;\[
+\Delta v = u \ln \frac{m_0}{m}
+\]&lt;/p&gt;
+
+&lt;p&gt;This is called the &lt;em&gt;Tsiolkovsky rocket equation&lt;/em&gt;.
+It shows that the change in velocity of the rocket depends on the exhaust velocity and the ratio of the initial to final mass.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Introduction to the Central Force Problem</title><link href="http://localhost:4000/physics/introduction-to-the-central-force-problem.html" rel="alternate" type="text/html" title="Introduction to the Central Force Problem" /><published>2025-08-20T00:00:00+09:00</published><updated>2025-08-20T00:00:00+09:00</updated><id>http://localhost:4000/physics/introduction-to-the-central-force-problem</id><content type="html" xml:base="http://localhost:4000/physics/introduction-to-the-central-force-problem.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry></feed>
