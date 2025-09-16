@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-09-16T03:31:00+09:00',
+    INDEX_KEY: 'index--2025-09-17T01:45:48+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="548 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   9 min
 </span>
 
       </span>
@@ -303,6 +303,122 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#canonical-momentum" id="markdown-toc-canonical-momentum">Canonical Momentum</a></li>
+  <li>
+<a href="#symmetry-and-conservation-laws" id="markdown-toc-symmetry-and-conservation-laws">Symmetry and Conservation Laws</a>    <ul>
+      <li><a href="#conservation-of-linear-momentum" id="markdown-toc-conservation-of-linear-momentum">Conservation of Linear Momentum</a></li>
+      <li><a href="#conservation-of-angular-momentum" id="markdown-toc-conservation-of-angular-momentum">Conservation of Angular Momentum</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="canonical-momentum">Canonical Momentum</h2>
+
+<p>The canonical momentum associated with a coordinate $q_i$ is defined as:</p>
+
+<p>\[
+p_i = \pdv{L}{\dot{q}_i}
+\]</p>
+
+<p>$p_i$ does not necessarily have the dimensions of linear momentum. For example, in spherical coordinates, the canonical momentum associated with the angular coordinate $\phi$ is $p_\phi = m r^2 \sin^2\theta \dot{\phi}$, which has dimensions of angular momentum.
+For an example of particles in electromagnetic fields,</p>
+
+<p>\[
+\b{p}_i = m_i \dot{\b{r}}_i + q_i \b{A}(\b{r}_i, t)
+\]</p>
+
+<p>where $q_i$ is the charge of the $i$-th particle and $\b{A}$ is the vector potential.</p>
+
+<p>Let’s think of the Lagrange equation of motion:</p>
+
+<p>\[
+\odv{}{t} \left( \pdv{L}{\dot{q}_i} \right) - \pdv{L}{q_i} = 0
+\]</p>
+
+<p>This can be rewritten as:</p>
+
+<p>\[
+\dot{p}_i = \pdv{L}{q_i}
+\]</p>
+
+<p>So that if the Lagrangian does not depend on a particular coordinate $q_i$, called <strong>cyclic</strong> or <strong>ignorable</strong>, then the corresponding canonical momentum $p_i$ is conserved.
+Note that the $q_i$s here should be independent coordinates.</p>
+
+<h2 id="symmetry-and-conservation-laws">Symmetry and Conservation Laws</h2>
+
+<h3 id="conservation-of-linear-momentum">Conservation of Linear Momentum</h3>
+
+<p>We first consider a generalized coordinated $q_j$, for which a change $\dd{q_j}$
+represents a translation of the system in some direction.
+Then clearly $q_j$ cannot appear in $T$. Further, we assume that the potential energy $V$ is not a function of $\dot{q}_j$.
+Then the Lagrangian equation of motion reduces to:</p>
+
+<p>\[
+\dot{p}_j = -\pdv{V}{q_j} = Q_j
+\]</p>
+
+<p>Denoting as $\b{n} = \pdv{\b{r}_i}{q_j}$ we have:</p>
+
+<p>\[
+Q_j = \sum_i \b{F}_i \cdot \b{n} = \b{n} \cdot \b{F}
+\]</p>
+
+<p>where $\b{F}$ is the total force on the system.
+The conjugate momentum is:</p>
+
+<p>\[
+\begin{align*}
+p_j &amp;= \pdv{T}{\dot{q}_j} = \sum_i m_i \dot{\b{r}}_i \cdot \pdv{\dot{\b{r}}_i}{\dot{q}_j} \nl
+&amp;= \sum_i m_i \b{v}_i \cdot \pdv{\b{r}_i}{q_j} \nl
+&amp;= \b{n} \cdot \b{P}
+\end{align*}
+\]</p>
+
+<p>where $\b{P}$ is the total linear momentum of the system.
+Thus, if the potential does not depend on $q_j$, then the $Q_j = 0$ and the component of the total linear momentum in the direction of $\b{n}$ is conserved.</p>
+
+<h3 id="conservation-of-angular-momentum">Conservation of Angular Momentum</h3>
+
+<p>In a similar fashion, it can be shown that if a cyclic coordinate $q_j$ is such that
+$\dd{q_j}$ corresponds to a rotation of the system about some axis, then the conserved conjugate momentum $p_j$ is the component of the total angular momentum $\b{L}$ along that axis.
+By the same argument as before, $T$ does not depend on $q_j$, and we assume that $V$ does not depend on $\dot{q}_j$.
+Then the Lagrange equation of motion reduces to:</p>
+
+<p>\[
+\dot{p}_j = -\pdv{V}{q_j} = Q_j
+\]</p>
+
+<p>as before. Setting $\b{n}$ as the unit vector along the axis of rotation, we have:</p>
+
+<p>\[
+\pdv{\b{r}_i}{q_j} = \b{n} \times \b{r}_i
+\]</p>
+
+<p>Thus,</p>
+
+<p>\[
+\begin{align*}
+Q_j &amp;= \sum_i \b{F}_i \cdot (\b{n} \times \b{r}_i) \nl
+&amp;= \b{n} \cdot \sum_i (\b{r}_i \times \b{F}_i) \nl
+&amp;= \b{n} \cdot \b{N}
+\end{align*}
+\]</p>
+
+<p>where $\b{N}$ is the total torque on the system.
+Similarly, the conjugate momentum is:</p>
+
+<p>\[
+\begin{align*}
+p_j &amp;= \pdv{T}{\dot{q}_j} = \sum_i m_i \dot{\b{r}}_i \cdot \pdv{\dot{\b{r}}_i}{\dot{q}_j} \nl
+&amp;= \sum_i m_i \b{v}_i \cdot (\b{n} \times \b{r}_i) \nl
+&amp;= \b{n} \cdot \sum_i (\b{r}_i \times m_i \b{v}_i) \nl
+&amp;= \b{n} \cdot \b{L}
+\end{align*}
+\]</p>
+
+<p>where $\b{L}$ is the total angular momentum of the system.
+Thus, if the potential does not depend on $q_j$, then $Q_j = 0$ and the component of the total angular momentum along the axis of rotation is conserved.</p>
 
   
 </article>
@@ -457,7 +573,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/introduction-to-the-central-force-problem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/introduction-to-the-central-force-problem.html" class="flip-title">Introduction to the Central Force Problem</a>  </h3>      <a class="fill-card no-hover" href="/physics/introduction-to-the-central-force-problem.html" tabindex="-1"><span class="sr-only">Continue reading Introduction to the Central Force Problem</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="flip-title">Calculus of Variations and Hamilton's Principle</a>  </h3>      <a class="fill-card no-hover" href="/physics/calculus-of-variations-and-hamiltons-principle.html" tabindex="-1"><span class="sr-only">Continue reading Calculus of Variations and Hamilton's Principle</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/introduction-to-the-central-force-problem.html" class="flip-title">    <span>              [Classical Mechanics 2.1]            Introduction to the Central Force Problem    </span>  </a>      <time class="faded fine" datetime="2025-08-20T00:00:00+09:00">      20 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/introduction-to-the-central-force-problem.html"></span>  </li>          <li class="h4">  <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="flip-title">    <span>              [Classical Mechanics 1.4]            Calculus of Variations and Hamilton's Principle    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle.html"></span>  </li>          <li class="h4">  <a href="/physics/dalemberts-principle-and-lagranges-equations.html" class="flip-title">    <span>              [Classical Mechanics 1.3]            D'Alembert's Principle and Lagrange's Equations    </span>  </a>      <time class="faded fine" datetime="2025-08-13T00:00:00+09:00">      13 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html"></span>  </li>      </ul></aside>
+                                          <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/introduction-to-the-central-force-problem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/introduction-to-the-central-force-problem.html" class="flip-title">Introduction to the Central Force Problem</a>  </h3>      <a class="fill-card no-hover" href="/physics/introduction-to-the-central-force-problem.html" tabindex="-1"><span class="sr-only">Continue reading Introduction to the Central Force Problem</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="flip-title">Energy Function and the Conservation of Energy</a>  </h3>      <a class="fill-card no-hover" href="/physics/energy-function-and-the-conservation-of-energy.html" tabindex="-1"><span class="sr-only">Continue reading Energy Function and the Conservation of Energy</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/introduction-to-the-central-force-problem.html" class="flip-title">    <span>              [Classical Mechanics 2.1]            Introduction to the Central Force Problem    </span>  </a>      <time class="faded fine" datetime="2025-08-20T00:00:00+09:00">      20 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/introduction-to-the-central-force-problem.html"></span>  </li>          <li class="h4">  <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="flip-title">    <span>              [Classical Mechanics 1.6]            Energy Function and the Conservation of Energy    </span>  </a>      <time class="faded fine" datetime="2025-08-17T00:00:00+09:00">      17 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-function-and-the-conservation-of-energy.html"></span>  </li>          <li class="h4">  <a href="/physics/calculus-of-variations-and-hamiltons-principle.html" class="flip-title">    <span>              [Classical Mechanics 1.4]            Calculus of Variations and Hamilton's Principle    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/calculus-of-variations-and-hamiltons-principle.html"></span>  </li>          <li class="h4">  <a href="/physics/dalemberts-principle-and-lagranges-equations.html" class="flip-title">    <span>              [Classical Mechanics 1.3]            D'Alembert's Principle and Lagrange's Equations    </span>  </a>      <time class="faded fine" datetime="2025-08-13T00:00:00+09:00">      13 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/dalemberts-principle-and-lagranges-equations.html"></span>  </li>      </ul></aside>
 
   
 

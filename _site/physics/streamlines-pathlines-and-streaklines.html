@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-09-16T03:31:00+09:00',
+    INDEX_KEY: 'index--2025-09-17T01:45:48+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="357 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   5 min
 </span>
 
       </span>
@@ -303,6 +303,59 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#streamlines" id="markdown-toc-streamlines">Streamlines</a></li>
+  <li><a href="#pathlines" id="markdown-toc-pathlines">Pathlines</a></li>
+  <li><a href="#streaklines" id="markdown-toc-streaklines">Streaklines</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>In fluid mechanics, understanding the motion of fluid particles is crucial. Three fundamental concepts that help describe this motion are streamlines, pathlines, and streaklines. Each of these concepts provides a different perspective on how fluid particles move and interact within a flow field.</p>
+
+<h2 id="streamlines">Streamlines</h2>
+
+<p>Streamlines are imaginary lines that represent the instantaneous direction of the fluid flow at a given moment in time. They are tangent to the velocity vector of the fluid at every point along the line. In steady flows, streamlines remain constant over time, while in unsteady flows, they can change.
+Mathematically, streamlines $\b{r}(l)$ are defined by:</p>
+
+<p>\[
+\odv{\b{r}}{l} \cross \b{v}(\b{r}(l), t) = 0
+\]</p>
+
+<p>where $l$ is the parameter along the streamline, and $\b{v}$ is the velocity field.
+Here $t$ is a fixed time.</p>
+
+<h2 id="pathlines">Pathlines</h2>
+
+<p>Pathlines trace the actual trajectory of individual fluid particles over time. They show the path that a specific fluid particle follows as it moves through the flow field.
+Pathlines $\b{r}(t)$ are defined by:</p>
+
+<p>\[
+\odv{\b{r}}{t} = \b{v}(\b{r}(t), t)
+\]</p>
+
+<p>where $\b{r}(t)$ is the position vector of the fluid particle at time $t$.
+Initial conditions are given by $\b{r}(t_0) = \b{r}_0$.</p>
+
+<h2 id="streaklines">Streaklines</h2>
+
+<p>Streaklines are formed by the continuous release of fluid particles from a specific point in the flow field over time. They represent the locus of all particles that have passed through a particular point.
+It is easier to visualize streaklines in experiments, as they can be observed by injecting dye or smoke into the flow at a fixed point.
+Streaklines $\b{r}(t,t_0)$ are defined by:</p>
+
+<p>\[
+\pdv{\b{r}}{t} = \b{v}(\b{r}(t,t_0), t)
+\]</p>
+
+<p>where $t_0$ is the time when the particles were released, and $t$ is the current time.
+Initial conditions are given by $\b{r}(t_0, t_0) = \b{r}_0$.
+For a fixed $t$ which we are observing, $t_0 \in [t_i, t]$ becomes a variable parameterizing the streakline where $t_i$ is the initial time when the flow started (or when the dye injection started).</p>
+
+<p class="centered"><img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Streaklines_and_pathlines_animation.gif" alt="Streamlines, Pathlines, and Streaklines"></p>
+<p class="figcaption">An animation showing the streamlines, pathlines, and streaklines.
+The velocity field is given by $\b{v} = (1,xt)$.
+Streamlines are the dashed lines, pathlines are the red lines, and streaklines are the blue lines.</p>
 
   
 </article>
@@ -457,7 +510,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/kelvins-circulation-theorem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/kelvins-circulation-theorem.html" class="flip-title">Kelvin's Circulation Theorem</a>  </h3>      <a class="fill-card no-hover" href="/physics/kelvins-circulation-theorem.html" tabindex="-1"><span class="sr-only">Continue reading Kelvin's Circulation Theorem</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/bernoullis-equation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/bernoullis-equation.html" class="flip-title">Bernoulli's Equation</a>  </h3>      <a class="fill-card no-hover" href="/physics/bernoullis-equation.html" tabindex="-1"><span class="sr-only">Continue reading Bernoulli's Equation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/kelvins-circulation-theorem.html" class="flip-title">    <span>              [Fluid Mechanics 1.6]            Kelvin's Circulation Theorem    </span>  </a>      <time class="faded fine" datetime="2025-09-15T00:00:00+09:00">      15 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/kelvins-circulation-theorem.html"></span>  </li>          <li class="h4">  <a href="/physics/bernoullis-equation.html" class="flip-title">    <span>              [Fluid Mechanics 1.5]            Bernoulli's Equation    </span>  </a>      <time class="faded fine" datetime="2025-09-15T00:00:00+09:00">      15 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/bernoullis-equation.html"></span>  </li>          <li class="h4">  <a href="/physics/eulers-equation-and-hydrostatics.html" class="flip-title">    <span>              [Fluid Mechanics 1.3]            Euler's Equation and Hydrostatics    </span>  </a>      <time class="faded fine" datetime="2025-09-14T00:00:00+09:00">      14 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html"></span>  </li>          <li class="h4">  <a href="/physics/ideal-fluids-and-the-equation-of-continuity.html" class="flip-title">    <span>              [Fluid Mechanics 1.2]            Ideal Fluids and the Equation of Continuity    </span>  </a>      <time class="faded fine" datetime="2023-04-05T00:00:00+09:00">      05 Apr 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/ideal-fluids-and-the-equation-of-continuity.html"></span>  </li>      </ul></aside>
+                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/kelvins-circulation-theorem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/kelvins-circulation-theorem.html" class="flip-title">Kelvin's Circulation Theorem</a>  </h3>      <a class="fill-card no-hover" href="/physics/kelvins-circulation-theorem.html" tabindex="-1"><span class="sr-only">Continue reading Kelvin's Circulation Theorem</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/bernoullis-equation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/bernoullis-equation.html" class="flip-title">Bernoulli's Equation</a>  </h3>      <a class="fill-card no-hover" href="/physics/bernoullis-equation.html" tabindex="-1"><span class="sr-only">Continue reading Bernoulli's Equation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/kelvins-circulation-theorem.html" class="flip-title">    <span>              [Fluid Mechanics 1.6]            Kelvin's Circulation Theorem    </span>  </a>      <time class="faded fine" datetime="2025-09-15T00:00:00+09:00">      15 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/kelvins-circulation-theorem.html"></span>  </li>          <li class="h4">  <a href="/physics/bernoullis-equation.html" class="flip-title">    <span>              [Fluid Mechanics 1.5]            Bernoulli's Equation    </span>  </a>      <time class="faded fine" datetime="2025-09-15T00:00:00+09:00">      15 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/bernoullis-equation.html"></span>  </li>          <li class="h4">  <a href="/physics/eulers-equation-and-hydrostatics.html" class="flip-title">    <span>              [Fluid Mechanics 1.3]            Euler's Equation and Hydrostatics    </span>  </a>      <time class="faded fine" datetime="2025-09-14T00:00:00+09:00">      14 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html"></span>  </li>          <li class="h4">  <a href="/physics/ideal-fluids-and-the-equation-of-continuity.html" class="flip-title">    <span>              [Fluid Mechanics 1.2]            Ideal Fluids and the Equation of Continuity    </span>  </a>      <time class="faded fine" datetime="2023-04-05T00:00:00+09:00">      05 Apr 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/ideal-fluids-and-the-equation-of-continuity.html"></span>  </li>      </ul></aside>
 
   
 

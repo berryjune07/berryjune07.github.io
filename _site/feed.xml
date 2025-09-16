@@ -1,5 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-09-16T03:31:00+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Incompressible Fluids</title><link href="http://localhost:4000/physics/incompressible-fluids.html" rel="alternate" type="text/html" title="Incompressible Fluids" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/incompressible-fluids</id><content type="html" xml:base="http://localhost:4000/physics/incompressible-fluids.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Bernoulli’s Equation</title><link href="http://localhost:4000/physics/bernoullis-equation.html" rel="alternate" type="text/html" title="Bernoulli’s Equation" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/bernoullis%20equation</id><content type="html" xml:base="http://localhost:4000/physics/bernoullis-equation.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Potential Flow</title><link href="http://localhost:4000/physics/potential-flow.html" rel="alternate" type="text/html" title="Potential Flow" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/potential-flow</id><content type="html" xml:base="http://localhost:4000/physics/potential-flow.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Kelvin’s Circulation Theorem</title><link href="http://localhost:4000/physics/kelvins-circulation-theorem.html" rel="alternate" type="text/html" title="Kelvin’s Circulation Theorem" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/kelvins-circulation-theorem</id><content type="html" xml:base="http://localhost:4000/physics/kelvins-circulation-theorem.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Streamlines, Pathlines, and Streaklines</title><link href="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html" rel="alternate" type="text/html" title="Streamlines, Pathlines, and Streaklines" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/streamlines-pathlines-and-streaklines</id><content type="html" xml:base="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Euler’s Equation and Hydrostatics</title><link href="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html" rel="alternate" type="text/html" title="Euler’s Equation and Hydrostatics" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/eulers-equation-and-hydrostatics</id><content type="html" xml:base="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-09-17T01:45:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Gravity Waves</title><link href="http://localhost:4000/physics/gravity-waves.html" rel="alternate" type="text/html" title="Gravity Waves" /><published>2025-09-17T00:00:00+09:00</published><updated>2025-09-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/gravity-waves.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Incompressible Fluids</title><link href="http://localhost:4000/physics/incompressible-fluids.html" rel="alternate" type="text/html" title="Incompressible Fluids" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/incompressible-fluids</id><content type="html" xml:base="http://localhost:4000/physics/incompressible-fluids.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Drag Force in Potential Flow Past a Body</title><link href="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html" rel="alternate" type="text/html" title="The Drag Force in Potential Flow Past a Body" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body</id><content type="html" xml:base="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Potential Flow</title><link href="http://localhost:4000/physics/potential-flow.html" rel="alternate" type="text/html" title="Potential Flow" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/potential-flow</id><content type="html" xml:base="http://localhost:4000/physics/potential-flow.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Kelvin’s Circulation Theorem</title><link href="http://localhost:4000/physics/kelvins-circulation-theorem.html" rel="alternate" type="text/html" title="Kelvin’s Circulation Theorem" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/kelvins-circulation-theorem</id><content type="html" xml:base="http://localhost:4000/physics/kelvins-circulation-theorem.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#vorticity-and-circulation&quot; id=&quot;markdown-toc-vorticity-and-circulation&quot;&gt;Vorticity and Circulation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kelvins-circulation-theorem&quot; id=&quot;markdown-toc-kelvins-circulation-theorem&quot;&gt;Kelvin’s Circulation Theorem&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#proof&quot; id=&quot;markdown-toc-proof&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;vorticity-and-circulation&quot;&gt;Vorticity and Circulation&lt;/h2&gt;
+
+&lt;p&gt;In fluid dynamics, &lt;strong&gt;vorticity&lt;/strong&gt; is a measure of the local rotation of fluid elements. It is defined mathematically as the curl of the velocity field:&lt;/p&gt;
+
+&lt;p&gt;\[
+\bs{\omega} = \curl \b{v}
+\]&lt;/p&gt;
+
+&lt;p&gt;Circulation, on the other hand, is a measure of the total “twisting” or “rotational” motion of the fluid around a closed loop. It is defined as the line integral of the velocity field around a closed curve $C$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\Gamma = \oint_C \b{v} \cdot \dd{\b{l}}
+\]&lt;/p&gt;
+
+&lt;p&gt;By the Stokes’ theorem, circulation can also be related to vorticity through the surface integral of vorticity over a surface $S$ bounded by the curve $C$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\Gamma = \iint_S \bs{\omega} \cdot \dd{\b{S}}
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;kelvins-circulation-theorem&quot;&gt;Kelvin’s Circulation Theorem&lt;/h2&gt;
+
+&lt;p&gt;In fluid mechanics, Kelvin’s circulation theorem states:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In a barotropic, ideal fluid with conservative body forces, the circulation around a closed curve (which encloses the same fluid elements) moving with the fluid remains constant with time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Mathematically, this can be expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\Gamma} = 0
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;proof&quot;&gt;Proof&lt;/h3&gt;
+
+&lt;p&gt;\[
+\mdv{\Gamma} = \oint_C \mdv{\b{v}} \cdot \dd{\b{l}} + \oint_C \b{v} \cdot \mdv{\dd{\b{l}}}
+\]&lt;/p&gt;
+
+&lt;p&gt;From the Euler equation for an ideal fluid:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\b{v}} = -\frac{1}{\rho} \grad p + \grad \Phi
+\]&lt;/p&gt;
+
+&lt;p&gt;Substituting this,&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\oint_C \mdv{\b{v}} \cdot \dd{\b{l}} &amp;amp;= \oint_C \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{l}} \nl
+&amp;amp;= \iint_S \curl \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{S}} \nl
+&amp;amp;= \iint_S \frac{1}{\rho^2} (\grad \rho \times \grad p) \cdot \dd{\b{S}}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;since $\curl(\grad f) = 0$ for any scalar function $f$.
+For a barotropic fluid, $p = p(\rho)$, so $\grad p=\pdv{p}{\rho}\grad \rho$, and thus $\grad \rho \times \grad p = 0$.
+Therefore, the first term vanishes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\oint_C \mdv{\b{v}} \cdot \dd{\b{l}} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Now, consider the second term. Let’s parametrize the curve $C$ by a parameter $a$ such that $\b{l} = \b{l}(a, t)$, where $a$ is constant for a given fluid element.
+Then,&lt;/p&gt;
+
+&lt;p&gt;\[
+\dd{\b{l}(a,t)} = \b{l}(a + \dd{a}, t) - \b{l}(a, t) = \pdv{\b{l}(a,t)}{a} \dd{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;Taking the material derivative,&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\mdv{\dd{\b{l}}} &amp;amp;= \pdv{\b{v}(\b{l}(a,t), t)}{a} \dd{a} = \pdv{\b{v}}{\b{l}} \cdot \pdv{\b{l}}{a} \dd{a} \nl
+&amp;amp;= (\dd{\b{l}} \cdot \grad) \b{v}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, the second term becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\oint_C \b{v} \cdot \mdv{\dd{\b{l}}} &amp;amp;= \oint_C \b{v} \cdot (\dd{\b{l}} \cdot \grad) \b{v} \nl
+&amp;amp;= \frac{1}{2} \oint_C \grad(v^2) \cdot \dd{\b{l}} \nl
+&amp;amp;= 0
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;by the gradient theorem. Since both terms vanish, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\Gamma} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;It, of course, holds for ideal fluids; because the barotropic condition is more general than the isentropic (adiabatic) condition.
+The conservation of circulation can be intuitively interpreted as meaning that the vorticity moves with the fluid elements.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Bernoulli’s Equation</title><link href="http://localhost:4000/physics/bernoullis-equation.html" rel="alternate" type="text/html" title="Bernoulli’s Equation" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/bernoullis%20equation</id><content type="html" xml:base="http://localhost:4000/physics/bernoullis-equation.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#bernoullis-equation&quot; id=&quot;markdown-toc-bernoullis-equation&quot;&gt;Bernoulli’s Equation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;bernoullis-equation&quot;&gt;Bernoulli’s Equation&lt;/h2&gt;
+
+&lt;p&gt;Let’s recall the &lt;a href=&quot;eulers-equation-and-hydrostatics.html#thermodynamic-analysis&quot;&gt;Euler equation&lt;/a&gt; for an ideal fluid:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $w$ is the specific enthalpy and $\b{a}$ represents body forces per unit mass (e.g., gravity).
+For &lt;strong&gt;steady flow&lt;/strong&gt;, the time derivative term vanishes. If the body forces are conservative, i.e. $\b{a} = -\grad \Phi$, we can rewrite the equation as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{v} \times (\curl \b{v}) = \grad \left( w + \frac{1}{2} v^2 + \Phi \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Now let’s imagine a fluid particle moving along a particular streamline.
+We’ll think the velocity direction component of the vector equation above.
+The left-hand side becomes zero because the cross product of the velocity vector with itself is zero.
+Thus, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{}{l} \left( w + \frac{1}{2} v^2 + \Phi \right) = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;where $l$ is the variable parameterizing the streamline.
+This implies that the quantity inside the parentheses is constant along a streamline:&lt;/p&gt;
+
+&lt;p&gt;\[
+w + \frac{1}{2} v^2 + \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;This is known as &lt;strong&gt;Bernoulli’s equation&lt;/strong&gt; for ideal fluids.
+It states that the sum of the specific enthalpy, kinetic energy per unit mass, and potential energy per unit mass remains constant along a streamline.
+We can also write it as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{2} v^2 + \varepsilon + \frac{p}{\rho} + \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;For gravity, $\Phi = gz$ where $z$ is the height above a reference level.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Euler’s Equation and Hydrostatics</title><link href="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html" rel="alternate" type="text/html" title="Euler’s Equation and Hydrostatics" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/eulers-equation-and-hydrostatics</id><content type="html" xml:base="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html">&lt;!--more--&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#eulers-equation&quot; id=&quot;markdown-toc-eulers-equation&quot;&gt;Euler’s Equation&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#thermodynamic-analysis&quot; id=&quot;markdown-toc-thermodynamic-analysis&quot;&gt;Thermodynamic Analysis&lt;/a&gt;&lt;/li&gt;
@@ -191,178 +340,112 @@ Then, the equation simplifies to:&lt;/p&gt;
 
 &lt;p&gt;This equation is fundamental in astrophysics for modeling the structure of stars and planets.&lt;/p&gt;
 
-&lt;h2 id=&quot;condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/h2&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Convergence Concepts in Statistics</title><link href="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html" rel="alternate" type="text/html" title="Convergence Concepts in Statistics" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convergence-concepts-in-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Rotational Motions and Angular Quantities</title><link href="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html" rel="alternate" type="text/html" title="Rotational Motions and Angular Quantities" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/rotational-motions-and-angular-quantities</id><content type="html" xml:base="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Impulse and Collision</title><link href="http://localhost:4000/physics/impulse-and-collision.html" rel="alternate" type="text/html" title="Impulse and Collision" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/impulse-and-collision</id><content type="html" xml:base="http://localhost:4000/physics/impulse-and-collision.html">&lt;!--more--&gt;
+&lt;h2 id=&quot;condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/h2&gt;
+
+&lt;p&gt;In a gravitational field, a fluid can become unstable to convection if the temperature gradient is too steep.
+Let us consider a fluid element at height $z$, having a specific volume $V(p,s)$ where $p,s$ are the pressure and entropy at an equilibrium state.
+If we displace this element adiabatically to a new height $z + \dd{z}$, it will have a new specific volume $V(p + \dd{p}, s)$, since the entropy remains constant during the adiabatic process.
+The surrounding fluid at the new height has a specific volume $V(p + \dd{p}, s + \dd{s})$.
+For the fluid to be stable against convection, the displaced element must be denser than the surrounding fluid, which translates to:&lt;/p&gt;
+
+&lt;p&gt;\[
+V(p + \dd{p}, s+ \dd{s}) - V(p + \dd{p}, s) &amp;gt; 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Expanding this to the first order in $\dd{s}$, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\left( \pdv{V}{s} \right)_p \odv{s}{z} \dd{z} &amp;gt; 0
+\]&lt;/p&gt;
+
+&lt;p&gt;The formula of thermodynamics gives us:&lt;/p&gt;
+
+&lt;p&gt;\[
+\left( \pdv{V}{s} \right)_p = \frac{T}{c_p} \left( \pdv{V}{T} \right)_p
+\]&lt;/p&gt;
+
+&lt;p&gt;where $c_p$ is the specific heat at constant pressure.
+Since $c_p &amp;gt; 0$ and $\left( \pdv{V}{T} \right)_p &amp;gt; 0$ for most substances, the condition for stability against convection simplifies to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{s}{z} &amp;gt; 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s expand the total derivative by the chain rule.
+Reminding Maxwell’s relations and that under a small-scale system with uniform gravity we have $\odv{p}{z} = -\rho g$, we get:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\odv{s}{z} &amp;amp;= \left( \pdv{s}{T} \right)_p \odv{T}{z} + \left( \pdv{s}{p} \right)_T \odv{p}{z} \nl
+&amp;amp;= \frac{c_p}{T} \odv{T}{z} + \left( \pdv{V}{T} \right)_p \frac{g}{V} \nl
+&amp;amp;= \frac{c_p}{T} \odv{T}{z} + \beta g \nl
+&amp;amp;&amp;gt; 0
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\beta$ is the coefficient of thermal expansion.
+Thus, the condition for stability against convection can be expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{T}{z} &amp;gt; -\frac{g \beta T}{c_p}
+\]&lt;/p&gt;
+
+&lt;p&gt;This inequality indicates that the temperature should increase by rising, or if it decreases, it should not decrease too rapidly.
+In the case of an ideal gas, where $\beta = 1/T$, the condition simplifies to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{T}{z} &amp;gt; -\frac{g}{c_p}
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Streamlines, Pathlines, and Streaklines</title><link href="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html" rel="alternate" type="text/html" title="Streamlines, Pathlines, and Streaklines" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/streamlines-pathlines-and-streaklines</id><content type="html" xml:base="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html">&lt;!--more--&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#impulse&quot; id=&quot;markdown-toc-impulse&quot;&gt;Impulse&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#center-of-mass&quot; id=&quot;markdown-toc-center-of-mass&quot;&gt;Center of Mass&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#collisions&quot; id=&quot;markdown-toc-collisions&quot;&gt;Collisions&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#systems-with-varying-mass&quot; id=&quot;markdown-toc-systems-with-varying-mass&quot;&gt;Systems with Varying Mass&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#tsiolkovsky-rocket-equation&quot; id=&quot;markdown-toc-tsiolkovsky-rocket-equation&quot;&gt;Tsiolkovsky Rocket Equation&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#streamlines&quot; id=&quot;markdown-toc-streamlines&quot;&gt;Streamlines&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#pathlines&quot; id=&quot;markdown-toc-pathlines&quot;&gt;Pathlines&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#streaklines&quot; id=&quot;markdown-toc-streaklines&quot;&gt;Streaklines&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;impulse&quot;&gt;Impulse&lt;/h2&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;Impulse&lt;/strong&gt; is defined as the change in momentum of an object when a force is applied over a time interval. Mathematically, impulse $J$ can be expressed as:&lt;/p&gt;
+&lt;p&gt;In fluid mechanics, understanding the motion of fluid particles is crucial. Three fundamental concepts that help describe this motion are streamlines, pathlines, and streaklines. Each of these concepts provides a different perspective on how fluid particles move and interact within a flow field.&lt;/p&gt;
 
-&lt;p&gt;\[
-\b{J} = \int_{t_1}^{t_2} \b{F}(t) \, \dd{t}
-\]&lt;/p&gt;
+&lt;h2 id=&quot;streamlines&quot;&gt;Streamlines&lt;/h2&gt;
 
-&lt;p&gt;Its units are Newton seconds ($\text{N} \cdot \text{s}$) or kilogram meters per second ($\text{kg} \cdot \text{m/s}$), 
-which are equivalent to the units of momentum.
-This is not a coincidence, as impulse is directly related to the change in momentum of an object.&lt;/p&gt;
+&lt;p&gt;Streamlines are imaginary lines that represent the instantaneous direction of the fluid flow at a given moment in time. They are tangent to the velocity vector of the fluid at every point along the line. In steady flows, streamlines remain constant over time, while in unsteady flows, they can change.
+Mathematically, streamlines $\b{r}(l)$ are defined by:&lt;/p&gt;
 
 &lt;p&gt;\[
-\b{J} = \int_{t_1}^{t_2} \odv{\b{p}}{t} \, \dd{t} = \Delta \b{p}
+\odv{\b{r}}{l} \cross \b{v}(\b{r}(l), t) = 0
 \]&lt;/p&gt;
 
-&lt;p&gt;This relationship is known as the &lt;strong&gt;impulse-momentum theorem&lt;/strong&gt;.
-Impulse is particularly useful in analyzing situations where forces act over very short time intervals, such as collisions or impacts.
-In such cases, the exact nature of the force may be complex or unknown, but the overall effect on the object’s momentum can be determined using impulse and the average force during the interaction.&lt;/p&gt;
+&lt;p&gt;where $l$ is the parameter along the streamline, and $\b{v}$ is the velocity field.
+Here $t$ is a fixed time.&lt;/p&gt;
 
-&lt;h2 id=&quot;center-of-mass&quot;&gt;Center of Mass&lt;/h2&gt;
+&lt;h2 id=&quot;pathlines&quot;&gt;Pathlines&lt;/h2&gt;
 
-&lt;p&gt;The &lt;strong&gt;center of mass&lt;/strong&gt; (COM) of a system of particles is the point at which the total mass of the system can be considered to be concentrated for the purpose of analyzing translational motion.
-For a discrete system of particles,&lt;/p&gt;
+&lt;p&gt;Pathlines trace the actual trajectory of individual fluid particles over time. They show the path that a specific fluid particle follows as it moves through the flow field.
+Pathlines $\b{r}(t)$ are defined by:&lt;/p&gt;
 
 &lt;p&gt;\[
-\b{R} = \frac{1}{M} \sum_{i} m_i \b{r}_i
+\odv{\b{r}}{t} = \b{v}(\b{r}(t), t)
 \]&lt;/p&gt;
 
-&lt;p&gt;where $M = \sum_i m_i$ is the total mass of the system, $m_i$ is the mass of the $i$-th particle, and $\b{r}_i$ is its position vector.
-For a continuous mass distribution, the center of mass is given by&lt;/p&gt;
+&lt;p&gt;where $\b{r}(t)$ is the position vector of the fluid particle at time $t$.
+Initial conditions are given by $\b{r}(t_0) = \b{r}_0$.&lt;/p&gt;
+
+&lt;h2 id=&quot;streaklines&quot;&gt;Streaklines&lt;/h2&gt;
+
+&lt;p&gt;Streaklines are formed by the continuous release of fluid particles from a specific point in the flow field over time. They represent the locus of all particles that have passed through a particular point.
+It is easier to visualize streaklines in experiments, as they can be observed by injecting dye or smoke into the flow at a fixed point.
+Streaklines $\b{r}(t,t_0)$ are defined by:&lt;/p&gt;
 
 &lt;p&gt;\[
-\b{R} = \frac{1}{M} \int \b{r} \, \dd{m}
+\pdv{\b{r}}{t} = \b{v}(\b{r}(t,t_0), t)
 \]&lt;/p&gt;
 
-&lt;p&gt;where $\dd{m} = \rho(\b{r}) \, \dd{V}$, with $\rho(\b{r})$ being the &lt;strong&gt;mass density&lt;/strong&gt; at position $\b{r}$ and $\dd{V}$ the volume element.
-The SI unit of mass density is kilograms per cubic meter ($\text{kg/m}^3$).
-The center of mass is a crucial concept in mechanics, as it simplifies the analysis of motion and dynamics of systems of particles or rigid bodies.
-The motion of the COM is governed by the net external force acting on the system, according to Newton’s second law.&lt;/p&gt;
+&lt;p&gt;where $t_0$ is the time when the particles were released, and $t$ is the current time.
+Initial conditions are given by $\b{r}(t_0, t_0) = \b{r}_0$.
+For a fixed $t$ which we are observing, $t_0 \in [t_i, t]$ becomes a variable parameterizing the streakline where $t_i$ is the initial time when the flow started (or when the dye injection started).&lt;/p&gt;
 
-&lt;h2 id=&quot;collisions&quot;&gt;Collisions&lt;/h2&gt;
-
-&lt;p&gt;A &lt;strong&gt;collision&lt;/strong&gt; is an event where two or more bodies exert forces on each other in a relatively short time.
-Collisions can be classified into two main types based on the conservation of kinetic energy:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Elastic Collisions&lt;/strong&gt;: Both momentum and kinetic energy are conserved.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Inelastic Collisions&lt;/strong&gt;: Momentum is conserved, but kinetic energy is not. In perfectly inelastic collisions, the colliding bodies stick together after the collision.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;We can guess that the velocity of the COM will remain unchanged after the collision, since there are no external forces acting on the system.
-Let’s analyze a one-dimensional collision between two masses $m_1$ and $m_2$ with initial velocities $v_1$ and $v_2$, respectively.
-We can simplify the problem by transforming to the center of mass frame, where the total momentum is zero.&lt;/p&gt;
-
-&lt;p&gt;\[
-V = \frac{m_1 v_1 + m_2 v_2}{m_1 + m_2} \nl
-\tilde{v}_1 = v_1 - V \nl
-\tilde{v}_2 = v_2 - V
-\]&lt;/p&gt;
-
-&lt;p&gt;where $V$ is the velocity of the COM. Let’s denote the velocities after the collision with primes.
-In the COM frame, the total momentum is zero, so&lt;/p&gt;
-
-&lt;p&gt;\[
-m_1 \tilde{v}_1 + m_2 \tilde{v}_2 = 0 \nl
-m_1 \tilde{v}^\prime_1 + m_2 \tilde{v}^\prime_2 = 0
-\]&lt;/p&gt;
-
-&lt;p&gt;By the analysis &lt;a href=&quot;mechanics-of-a-system-of-particles.html#mechanics-of-a-system-of-particles&quot;&gt;here&lt;/a&gt;,&lt;/p&gt;
-
-&lt;p&gt;\[
-K = \frac{1}{2}M V^2 + \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2
-\]&lt;/p&gt;
-
-&lt;p&gt;The first term is unchanged by the collision, so we only need to consider the second term.
-Since the kinetic energy cannot increase by the collision, we have that $\abs{\tilde{v}}$ should decrease.
-By the observation, we can introduce a &lt;em&gt;coefficient of restitution&lt;/em&gt; $e$ ($0 \leq e \leq 1$) to describe the ratio of relative speeds after and before the collision.&lt;/p&gt;
-
-&lt;p&gt;\[
-e = -\frac{\tilde{v}^\prime_1}{\tilde{v}_1} = -\frac{\tilde{v}_2}{\tilde{v}^\prime_2}
-\]&lt;/p&gt;
-
-&lt;p&gt;The negative sign arises because the velocities change their direction after the collision.
-Using the componendo and dividendo theorem, it can also be expressed as&lt;/p&gt;
-
-&lt;p&gt;\[
-e = -\frac{\tilde{v}^\prime_1 - \tilde{v}^\prime_2}{\tilde{v}_1 - \tilde{v}_2} = -\frac{v^\prime_1 - v^\prime_2}{v_1 - v_2}
-\]&lt;/p&gt;
-
-&lt;p&gt;Now we have two equations: one from momentum conservation and one from the coefficient of restitution.
-We can solve for the final velocities $v^\prime_1$ and $v^\prime_2$ in terms of the initial velocities $v_1$ and $v_2$.&lt;/p&gt;
-
-&lt;p&gt;\[
-\begin{align*}
-v^\prime_1 &amp;amp;= \frac{m_1 - e m_2}{m_1 + m_2} v_1 + \frac{(1 + e) m_2}{m_1 + m_2} v_2 \nl
-v^\prime_2 &amp;amp;= \frac{(1 + e) m_1}{m_1 + m_2} v_1 + \frac{m_2 - e m_1}{m_1 + m_2} v_2
-\end{align*}
-\]&lt;/p&gt;
-
-&lt;p&gt;Also, the kinetic energy after the collision can be expressed as&lt;/p&gt;
-
-&lt;p&gt;\[
-K^\prime = \frac{1}{2} M V^2 + e^2 \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2
-\]&lt;/p&gt;
-
-&lt;p&gt;From this expression, we can see that the kinetic energy after the collision is reduced by a factor of $e^2$ compared to the kinetic energy before the collision in the COM frame.
-This reduction in kinetic energy is due to the inelastic nature of the collision, where some of the kinetic energy is converted into other forms of energy, such as heat or deformation.
-The change in kinetic energy due to the collision can be expressed as&lt;/p&gt;
-
-&lt;p&gt;\[
-\begin{align*}
-\Delta K &amp;amp;= -(1 - e^2) \sum_{i=1}^2 \frac{1}{2} m_i \tilde{v}_i^2 \nl
-&amp;amp;= -(1 - e^2) \frac{1}{2} \mu (v_1 - v_2)^2
-\end{align*}
-\]&lt;/p&gt;
-
-&lt;p&gt;where $\mu = \frac{m_1 m_2}{m_1 + m_2}$ is the &lt;strong&gt;reduced mass&lt;/strong&gt; of the system.
-Therefore, we can conclude that $e = 1$ corresponds to a perfectly elastic collision, where no kinetic energy is lost, and $e = 0$ corresponds to a perfectly inelastic collision, where the maximum amount of kinetic energy is lost.
-$0 &amp;lt; e &amp;lt; 1$ represents partially inelastic collisions, where some kinetic energy is lost but not all.&lt;/p&gt;
-
-&lt;h2 id=&quot;systems-with-varying-mass&quot;&gt;Systems with Varying Mass&lt;/h2&gt;
-
-&lt;p&gt;In systems where the mass of an object changes over time, such as a rocket expelling fuel, we need to modify our approach to account for the changing mass.
-Let’s denote the mass of the object as $m$ which can vary with time, and its velocity as $\b{v}$.
-The momentum of the object is given by $\b{p} = m \b{v}$.
-After a small time interval $\dd{t}$, the mass changes by $\dd{m}$ and the velocity changes by $\dd{\b{v}}$.
-The mass ejected (or added) during this time interval has a velocity $\b{u}$ relative to the object.&lt;/p&gt;
-
-&lt;p&gt;\[
-\b{p} + \dd{\b{p}} = (m + \dd{m})(\b{v} + \dd{\b{v}}) + (-\dd{m})(\b{v} + \b{u})
-\]&lt;/p&gt;
-
-&lt;p&gt;Expanding and simplifying, we get&lt;/p&gt;
-
-&lt;p&gt;\[
-\dd{\b{p}} = m \dd{\b{v}} - \b{u} \dd{m} + \dd{m} \dd{\b{v}}
-\]&lt;/p&gt;
-
-&lt;p&gt;Neglecting the second-order small term $\dd{m} \dd{\b{v}}$ and dividing by $\dd{t}$, we obtain&lt;/p&gt;
-
-&lt;p&gt;\[
-\b{F}_\text{ext} + \b{u} \odv{m}{t} = m \odv{\b{v}}{t}
-\]&lt;/p&gt;
-
-&lt;h3 id=&quot;tsiolkovsky-rocket-equation&quot;&gt;Tsiolkovsky Rocket Equation&lt;/h3&gt;
-
-&lt;p&gt;The &lt;strong&gt;Tsiolkovsky rocket equation&lt;/strong&gt; describes the motion of a rocket as it expels mass (fuel) to generate thrust.
-Assuming one-dimensional motion and that the external force $\b{F}_\text{ext}$ is negligible, we have&lt;/p&gt;
-
-&lt;p&gt;\[
--u \odv{m}{t} = m \odv{v}{t}
-\]&lt;/p&gt;
-
-&lt;p&gt;where $u$ is the exhaust velocity of the expelled mass relative to the rocket.
-The left side is sometimes called the &lt;strong&gt;thrust&lt;/strong&gt;.
-Rearranging and integrating from the initial mass $m_0$ to the final mass $m$, we get the equation for the rocket’s velocity change:&lt;/p&gt;
-
-&lt;p&gt;\[
-\Delta v = u \ln \frac{m_0}{m}
-\]&lt;/p&gt;
-
-&lt;p&gt;This is called the &lt;em&gt;Tsiolkovsky rocket equation&lt;/em&gt;.
-It shows that the change in velocity of the rocket depends on the exhaust velocity and the ratio of the initial to final mass.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry><entry><title type="html">Introduction to the Central Force Problem</title><link href="http://localhost:4000/physics/introduction-to-the-central-force-problem.html" rel="alternate" type="text/html" title="Introduction to the Central Force Problem" /><published>2025-08-20T00:00:00+09:00</published><updated>2025-08-20T00:00:00+09:00</updated><id>http://localhost:4000/physics/introduction-to-the-central-force-problem</id><content type="html" xml:base="http://localhost:4000/physics/introduction-to-the-central-force-problem.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="classical-mechanics" /><summary type="html"></summary></entry></feed>
+&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/1/13/Streaklines_and_pathlines_animation.gif&quot; alt=&quot;Streamlines, Pathlines, and Streaklines&quot; /&gt;&lt;/p&gt;
+&lt;p class=&quot;figcaption&quot;&gt;An animation showing the streamlines, pathlines, and streaklines.
+The velocity field is given by $\b{v} = (1,xt)$.
+Streamlines are the dashed lines, pathlines are the red lines, and streaklines are the blue lines.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Convergence Concepts in Statistics</title><link href="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html" rel="alternate" type="text/html" title="Convergence Concepts in Statistics" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convergence-concepts-in-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Rotational Motions and Angular Quantities</title><link href="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html" rel="alternate" type="text/html" title="Rotational Motions and Angular Quantities" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/rotational-motions-and-angular-quantities</id><content type="html" xml:base="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry></feed>

@@ -190,3 +190,57 @@ This equation is fundamental in astrophysics for modeling the structure of stars
 
 ## Condition that Convection be Absent
 
+In a gravitational field, a fluid can become unstable to convection if the temperature gradient is too steep.
+Let us consider a fluid element at height $z$, having a specific volume $V(p,s)$ where $p,s$ are the pressure and entropy at an equilibrium state.
+If we displace this element adiabatically to a new height $z + \dd{z}$, it will have a new specific volume $V(p + \dd{p}, s)$, since the entropy remains constant during the adiabatic process.
+The surrounding fluid at the new height has a specific volume $V(p + \dd{p}, s + \dd{s})$.
+For the fluid to be stable against convection, the displaced element must be denser than the surrounding fluid, which translates to:
+
+\\[
+V(p + \dd{p}, s+ \dd{s}) - V(p + \dd{p}, s) > 0
+\\]
+
+Expanding this to the first order in $\dd{s}$, we have:
+
+\\[
+\left( \pdv{V}{s} \right)_p \odv{s}{z} \dd{z} > 0
+\\]
+
+The formula of thermodynamics gives us:
+
+\\[
+\left( \pdv{V}{s} \right)_p = \frac{T}{c_p} \left( \pdv{V}{T} \right)_p
+\\]
+
+where $c_p$ is the specific heat at constant pressure.
+Since $c_p > 0$ and $\left( \pdv{V}{T} \right)_p > 0$ for most substances, the condition for stability against convection simplifies to:
+
+\\[
+\odv{s}{z} > 0
+\\]
+
+Let's expand the total derivative by the chain rule.
+Reminding Maxwell's relations and that under a small-scale system with uniform gravity we have $\odv{p}{z} = -\rho g$, we get:
+
+\\[
+\begin{align\*}
+\odv{s}{z} &= \left( \pdv{s}{T} \right)_p \odv{T}{z} + \left( \pdv{s}{p} \right)_T \odv{p}{z} \nl
+&= \frac{c_p}{T} \odv{T}{z} + \left( \pdv{V}{T} \right)_p \frac{g}{V} \nl
+&= \frac{c_p}{T} \odv{T}{z} + \beta g \nl
+&> 0
+\end{align\*}
+\\]
+
+where $\beta$ is the coefficient of thermal expansion.
+Thus, the condition for stability against convection can be expressed as:
+
+\\[
+\odv{T}{z} > -\frac{g \beta T}{c_p}
+\\]
+
+This inequality indicates that the temperature should increase by rising, or if it decreases, it should not decrease too rapidly.
+In the case of an ideal gas, where $\beta = 1/T$, the condition simplifies to:
+
+\\[
+\odv{T}{z} > -\frac{g}{c_p}
+\\]
