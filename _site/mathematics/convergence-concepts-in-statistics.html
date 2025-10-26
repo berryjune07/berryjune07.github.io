@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-09-17T01:45:48+09:00',
+    INDEX_KEY: 'index--2025-10-27T03:13:15+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1317 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   21 min
 </span>
 
       </span>
@@ -303,6 +303,338 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li>
+<a href="#convergence-in-probability" id="markdown-toc-convergence-in-probability">Convergence in Probability</a>    <ul>
+      <li><a href="#weak-law-of-large-numbers-wlln" id="markdown-toc-weak-law-of-large-numbers-wlln">Weak Law of Large Numbers (WLLN)</a></li>
+      <li><a href="#consistency-of-s2-and-s" id="markdown-toc-consistency-of-s2-and-s">Consistency of $S^2$ and $S$</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#almost-sure-convergence" id="markdown-toc-almost-sure-convergence">Almost Sure Convergence</a>    <ul>
+      <li><a href="#strong-law-of-large-numbers-slln" id="markdown-toc-strong-law-of-large-numbers-slln">Strong Law of Large Numbers (SLLN)</a></li>
+    </ul>
+  </li>
+  <li><a href="#convergence-in-distribution" id="markdown-toc-convergence-in-distribution">Convergence in Distribution</a></li>
+  <li><a href="#continuous-mapping-theorem" id="markdown-toc-continuous-mapping-theorem">Continuous Mapping Theorem</a></li>
+  <li>
+<a href="#central-limit-theorem-clt" id="markdown-toc-central-limit-theorem-clt">Central Limit Theorem (CLT)</a>    <ul>
+      <li><a href="#proof" id="markdown-toc-proof">Proof</a></li>
+    </ul>
+  </li>
+  <li><a href="#slutskys-theorem" id="markdown-toc-slutskys-theorem">Slutsky’s Theorem</a></li>
+  <li>
+<a href="#delta-method" id="markdown-toc-delta-method">Delta Method</a>    <ul>
+      <li><a href="#second-order-delta-method" id="markdown-toc-second-order-delta-method">Second Order Delta Method</a></li>
+      <li><a href="#multivariate-delta-method" id="markdown-toc-multivariate-delta-method">Multivariate Delta Method</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="convergence-in-probability">Convergence in Probability</h2>
+
+<p>A sequence of random variables $X_n$ <strong>converges in probability</strong> to a random variable $X$
+if for every $\epsilon &gt; 0$,</p>
+
+<p>\[
+\lim_{n \to \infty} P(|X_n - X| \geq \epsilon) = 0
+\]</p>
+
+<p>or equivalently,</p>
+
+<p>\[
+\lim_{n \to \infty} P(|X_n - X| &lt; \epsilon) = 1
+\]</p>
+
+<p>We denote this as</p>
+
+<p>\[
+X_n \xrightarrow{p} X
+\]</p>
+
+<p>The $X_n$ are typically not independent and identically distributed random variables, as in a random sample.</p>
+
+<h3 id="weak-law-of-large-numbers-wlln">Weak Law of Large Numbers (WLLN)</h3>
+
+<p>The <strong>Weak Law of Large Numbers</strong> states that the sample mean converges in probability to the population mean.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$.
+Then, for any $\epsilon &gt; 0$,</p>
+
+<p>\[
+\lim_{n \to \infty} P\left(\abs{\bar{X}_n - \mu} &lt; \epsilon \right) = 1
+\]</p>
+
+<p>that is $\bar{X}_n \xrightarrow{p} \mu$.
+The property summarized by WLLN, that a sequence of the same statistic
+approaches a constant as the sample size increases, is called <strong>consistency</strong>.</p>
+
+<details>
+  <summary>Proof</summary>
+  <p>By Chebyshev’s inequality,</p>
+
+  <p>\[
+\begin{align*}
+P\left(\abs{\bar{X}_n - \mu} \geq \epsilon\right) &amp;= P\left( (\bar{X}_n - \mu)^2 \geq \epsilon^2 \right) \nl
+&amp; \leq \frac{\mathrm{Var}\left(\bar{X}_n\right)}{\epsilon^2} \nl
+&amp;= \frac{\sigma^2/n}{\epsilon^2}
+\end{align*}
+\]</p>
+
+  <p>This is equivalent to:</p>
+
+  <p>\[
+1 - \frac{\sigma^2}{n \epsilon^2} \leq P\left(|\bar{X}_n - \mu| &lt; \epsilon\right) \leq 1
+\]</p>
+
+  <p>Taking the limit as $n \to \infty$, by the Squeeze Theorem,</p>
+
+  <p>\[
+\lim_{n \to \infty} P\left(|\bar{X}_n - \mu| &lt; \epsilon\right) = 1
+\]</p>
+
+  <p>There are more general versions of WLLN, where we need assume onlt that the mean is finite, not the variance.</p>
+</details>
+
+<h3 id="consistency-of-s2-and-s">Consistency of $S^2$ and $S$</h3>
+
+<p>Using Chebyshev’s inequality, we have:</p>
+
+<p>\[
+P(\abs{S_n^2 - \sigma^2} \geq \epsilon) \leq \frac{\mathrm{Var}(S_n^2)}{\epsilon^2}
+\]</p>
+
+<p>Therefore, the condition for $S_n^2$ to be a consistent estimator of $\sigma^2$ is that:</p>
+
+<p>\[
+S_n^2 \xrightarrow{p} \sigma^2 \iff \lim_{n \to \infty} \mathrm{Var}(S_n^2) = 0
+\]</p>
+
+<p>Now let’s have a look for $S_n$. We have the following identity:</p>
+
+<p>\[
+\mathrm{E}[S_n] = \sqrt{\mathrm{E}[S_n^2] - \mathrm{Var}(S_n)}
+\]</p>
+
+<p>Therefore, in general, $S_n$ is a biased estimator of $\sigma$.
+However, if $\mathrm{Var}(S_n^2) \to 0$ as $n \to \infty$, then $\mathrm{Var}(S_n) \to 0$ as well, and $S_n$ is a consistent estimator of $\sigma$.
+This is also a consequence of the properties of limit of continuous functions, since $S_n = \sqrt{S_n^2}$.</p>
+
+<h2 id="almost-sure-convergence">Almost Sure Convergence</h2>
+
+<p>A sequence of random variables $X_n$ <strong>converges almost surely</strong> (a.s.) or <strong>with probability 1</strong> to a random variable $X$
+if for every $\epsilon &gt; 0$,</p>
+
+<p>\[
+P\left( \lim_{n \to \infty} |X_n - X| &lt; \epsilon \right) = 1
+\]</p>
+
+<p>We denote this as</p>
+
+<p>\[
+X_n \xrightarrow{\text{a.s.}} X
+\]</p>
+
+<p>Almost sure convergence is a stronger condition than convergence in probability.</p>
+
+<ul>
+  <li>$X_n \xrightarrow{\text{a.s.}} X \implies X_n \xrightarrow{p} X$</li>
+</ul>
+
+<p>The following is a counterexample showing that the converse is not true.
+Consider the sequence of random variables defined on the interval $[0,1]$ by:</p>
+
+<p>\[
+X_n(\omega) = \mathbf{1}_{\left[ k/2^m, (k+1)/2^m \right)}(\omega)
+\]</p>
+
+<p>where $n = 2^m + k$ with $0 \le k &lt; 2^m$ and $\omega \in [0,1]$.
+Then we can find that $X_n \xrightarrow{p} 0$ but $X_n \not\xrightarrow{\text{a.s.}} 0$.</p>
+
+<h3 id="strong-law-of-large-numbers-slln">Strong Law of Large Numbers (SLLN)</h3>
+
+<p>The <strong>Strong Law of Large Numbers</strong> states that the sample mean converges almost surely to the population mean.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}[X_i] = \mu$ and $\mathrm{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$.
+Then, for any $\epsilon &gt; 0$,</p>
+
+<p>\[
+P\left( \lim_{n \to \infty} \abs{\bar{X}_n - \mu} &lt; \epsilon \right) = 1
+\]</p>
+
+<p>that is $\bar{X}_n \xrightarrow{\text{a.s.}} \mu$.
+The proof is more involved than that of WLLN, and we will not present it here.</p>
+
+<h2 id="convergence-in-distribution">Convergence in Distribution</h2>
+
+<p>A sequence of random variables $X_n$ <strong>converges in distribution</strong> to a random variable $X$
+if for every point $x$ at which the cumulative distribution function (CDF) $F_X(x)$ is continuous,</p>
+
+<p>\[
+\lim_{n \to \infty} F_{X_n}(x) = F_X(x)
+\]</p>
+
+<p>We denote this as</p>
+
+<p>\[
+X_n \xrightarrow{d} X
+\]</p>
+
+<p>Convergence in distribution is a weaker condition than convergence in probability.</p>
+
+<ul>
+  <li>$X_n \xrightarrow{p} X \implies X_n \xrightarrow{d} X$</li>
+  <li>$X_n \xrightarrow{p} c \iff X_n \xrightarrow{d} c$ for a constant $c$</li>
+</ul>
+
+<h2 id="continuous-mapping-theorem">Continuous Mapping Theorem</h2>
+
+<p><strong>Continuous mapping theorem</strong> states that for a function $g$ with a set of discontinuities of measure zero,
+the following holds:</p>
+
+<p>\[
+X_n \xrightarrow{d} X \implies g(X_n) \xrightarrow{d} g(X) \nl
+X_n \xrightarrow{p} X \implies g(X_n) \xrightarrow{p} g(X) \nl
+X_n \xrightarrow{\text{a.s.}} X \implies g(X_n) \xrightarrow{\text{a.s.}} g(X)
+\]</p>
+
+<p>The proof is omitted here.</p>
+
+<h2 id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h2>
+
+<p>The <strong>Central Limit Theorem</strong> states that the standardized sample mean converges in distribution to a standard normal distribution.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}[X_i] = \mu$ and $0 &lt; \text{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i$. Then,</p>
+
+<p>\[
+\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1)
+\]</p>
+
+<p>This means that any sample mean $\bar{X}_n$ can be approximated by a normal distribution with mean $\mu$ and variance $\sigma^2/n$ when $n$ is large,
+regardless of the original distribution of $X_i$.</p>
+
+<h3 id="proof">Proof</h3>
+
+<p>We can prove CLT using characteristic functions.
+The characteristic function of $X$ is defined as:</p>
+
+<p>\[
+\phi_X(t) = \mathrm{E}[\exp(itX)]
+\]</p>
+
+<p>Let $Z_i = \frac{X_i - \mu}{\sigma}$, then $\mathrm{E}[Z_i] = 0$ and $\mathrm{Var}(Z_i) = 1$.</p>
+
+<p>\[
+\begin{align*}
+\phi_{\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}}}(t) &amp;= \phi_{\frac{1}{\sqrt{n}} \sum_{i=1}^n Z_i}(t) \nl
+&amp;= \prod_{i=1}^n \phi_{Z_i}\left(\frac{t}{\sqrt{n}}\right) \nl
+&amp;= \left[ \phi_Z\left(\frac{t}{\sqrt{n}}\right) \right]^n
+\end{align*}
+\]</p>
+
+<p>Take logarithm on both sides and let $n \to \infty$. Using l’Hôpital’s rule, we have:</p>
+
+<p>\[
+\begin{align*}
+\lim_{n \to \infty} \ln \phi_{\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}}}(t) &amp;= \lim_{n \to \infty} n \ln \phi_Z\left(\frac{t}{\sqrt{n}}\right) \nl
+&amp;= \lim_{h \to 0^+} \frac{\ln \phi_Z(th)}{h^2} \nl
+&amp;= \lim_{h \to 0^+} \frac{t \phi_Z^\prime(th)}{2h \phi_Z(th)} \nl
+&amp;= \frac{t}{2} \lim_{h \to 0^+} \frac{\phi_Z^\prime(th)}{h} \nl
+&amp;= \frac{t^2}{2} \lim_{h \to 0^+} \phi_Z^{\prime\prime}(th) \nl
+&amp;= \frac{t^2}{2} i^2 \mathrm{E}[Z^2] \nl
+&amp;= -\frac{t^2}{2} \left( \mathrm{Var}(Z) + \mathrm{E}[Z]^2 \right) \nl
+&amp;= -\frac{t^2}{2}
+\end{align*}
+\]</p>
+
+<p>which is valid since $\phi_Z(0) = 1$ and $\phi_Z^\prime(0) = i \mathrm{E}[Z] = 0$.
+Exponentiating both sides, we get:</p>
+
+<p>\[
+\lim_{n \to \infty} \phi_{\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}}}(t) = \exp\left(-\frac{t^2}{2}\right)
+\]</p>
+
+<p>This is the characteristic function of the standard normal distribution $\mathcal{N}(0,1)$.
+By the property of characteristic functions, we conclude that:</p>
+
+<p>\[
+\lim_{n \to \infty} F_{\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}}}(x) = \Phi(x)
+\]</p>
+
+<p>where $\Phi(x)$ is the CDF of $\mathcal{N}(0,1)$.
+This completes the proof.</p>
+
+<h2 id="slutskys-theorem">Slutsky’s Theorem</h2>
+
+<p>If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{p} a$ for some constant $a$, then:</p>
+
+<ul>
+  <li>$X_n + Y_n \xrightarrow{d} X + a$</li>
+  <li>$X_n Y_n \xrightarrow{d} aX$</li>
+</ul>
+
+<p>The proof is omitted here.</p>
+
+<h2 id="delta-method">Delta Method</h2>
+
+<p>The <strong>Delta method</strong> is a technique used to derive the asymptotic distribution of a function of an estimator.
+Let $X_n$ be a sequence of random variables such that:</p>
+
+<p>\[
+\sqrt{n}(X_n - \theta) \xrightarrow{d} \mathcal{N}(0, \sigma^2)
+\]</p>
+
+<p>For a function $g$ that is differentiable and $g^\prime(\theta) \neq 0$, we have:</p>
+
+<p>\[
+\sqrt{n}\left[g(X_n) - g(\theta)\right] \xrightarrow{d} \mathcal{N}\left(0, \sigma^2 \left[g^\prime(\theta)\right]^2\right)
+\]</p>
+
+<details>
+  <summary>Proof</summary>
+  <p>By Taylor’s theorem, we have:</p>
+
+  <p>\[
+g(X_n) = g(\theta) + g^\prime(\tilde{\theta}_n)(X_n - \theta)
+\]</p>
+
+  <p>for some $\tilde{\theta}_n$ between $X_n$ and $\theta$.
+From the condition, we know that $X_n \xrightarrow{p} \theta$, yielding $\tilde{\theta}_n \xrightarrow{p} \theta$ as well.
+By the continuous mapping theorem, we have $g^\prime(\tilde{\theta}_n) \xrightarrow{p} g^\prime(\theta)$.
+The equation can be restated as:</p>
+
+  <p>\[
+\sqrt{n}\left[g(X_n) - g(\theta)\right] = g^\prime(\tilde{\theta}_n) \sqrt{n}(X_n - \theta)
+\]</p>
+
+  <p>By Slutsky’s theorem, we conclude that:</p>
+
+  <p>\[
+\sqrt{n}\left[g(X_n) - g(\theta)\right] \xrightarrow{d} g^\prime(\theta) \, \mathcal{N}(0, \sigma^2) = \mathcal{N}\left(0, \sigma^2 \left[g^\prime(\theta)\right]^2\right)
+\]</p>
+</details>
+
+<h3 id="second-order-delta-method">Second Order Delta Method</h3>
+
+<p>If $g^\prime(\theta) = 0$ but $g^{\prime\prime}(\theta) \neq 0$, then we similarly have:</p>
+
+<p>\[
+\sqrt{n}\left[g(X_n) - g(\theta)\right] \xrightarrow{d} \sigma^2 \frac{g^{\prime\prime}(\theta)}{2} \chi^2_1
+\]</p>
+
+<h3 id="multivariate-delta-method">Multivariate Delta Method</h3>
+
+<p>The multivariate version of the Delta method states that if $\b{X}_n$ is a sequence of random vectors such that:</p>
+
+<p>\[
+\sqrt{n}(\b{X}_n - \bs{\theta}) \xrightarrow{d} \mathcal{N}(\b{0}, \bs{\Sigma})
+\]</p>
+
+<p>Then for a function $g$ that is differentiable at $\bs{\theta}$, we have:</p>
+
+<p>\[
+\sqrt{n}\left[g(\b{X}_n) - g(\bs{\theta})\right] \xrightarrow{d} \mathcal{N}\left(0, \grad g(\bs{\theta})^\top \cdot \bs{\Sigma} \cdot \grad g(\b{\theta})\right)
+\]</p>
 
   
 </article>
@@ -647,6 +979,10 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
   
     
       
+    
+  
+    
+      
         
         
         <li>
@@ -736,7 +1072,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
           
             <ul class="list-body">
                 <li>
-                  <a class="sidebar-nav-subitem" href="/tag-classical-mechanics/">Classical Mechanics</a>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-electromagnetism/">Classical Electromagnetism</a>
                 </li>
             
           
@@ -754,7 +1090,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
           
             
                 <li>
-                  <a class="sidebar-nav-subitem" href="/tag-classical-electromagnetism/">Classical Electromagnetism</a>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-mechanics/">Classical Mechanics</a>
                 </li>
             
           
@@ -794,6 +1130,12 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
             
                 <li>
                   <a class="sidebar-nav-subitem" href="/tag-algorithms/">Algorithms</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-artificial-intelligence/">Artificial Intelligence</a>
                 </li>
             </ul>
           

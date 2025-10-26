@@ -1,451 +1,1006 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-09-17T01:45:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Gravity Waves</title><link href="http://localhost:4000/physics/gravity-waves.html" rel="alternate" type="text/html" title="Gravity Waves" /><published>2025-09-17T00:00:00+09:00</published><updated>2025-09-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/gravity-waves.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Incompressible Fluids</title><link href="http://localhost:4000/physics/incompressible-fluids.html" rel="alternate" type="text/html" title="Incompressible Fluids" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/incompressible-fluids</id><content type="html" xml:base="http://localhost:4000/physics/incompressible-fluids.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Drag Force in Potential Flow Past a Body</title><link href="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html" rel="alternate" type="text/html" title="The Drag Force in Potential Flow Past a Body" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body</id><content type="html" xml:base="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Potential Flow</title><link href="http://localhost:4000/physics/potential-flow.html" rel="alternate" type="text/html" title="Potential Flow" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/potential-flow</id><content type="html" xml:base="http://localhost:4000/physics/potential-flow.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Kelvin’s Circulation Theorem</title><link href="http://localhost:4000/physics/kelvins-circulation-theorem.html" rel="alternate" type="text/html" title="Kelvin’s Circulation Theorem" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/kelvins-circulation-theorem</id><content type="html" xml:base="http://localhost:4000/physics/kelvins-circulation-theorem.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#vorticity-and-circulation&quot; id=&quot;markdown-toc-vorticity-and-circulation&quot;&gt;Vorticity and Circulation&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#kelvins-circulation-theorem&quot; id=&quot;markdown-toc-kelvins-circulation-theorem&quot;&gt;Kelvin’s Circulation Theorem&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#proof&quot; id=&quot;markdown-toc-proof&quot;&gt;Proof&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-10-27T03:16:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Internal Waves in an Incompressible Fluid</title><link href="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Internal Waves in an Incompressible Fluid" /><published>2025-10-26T00:00:00+09:00</published><updated>2025-10-26T00:00:00+09:00</updated><id>http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Gravity Waves</title><link href="http://localhost:4000/physics/gravity-waves.html" rel="alternate" type="text/html" title="Gravity Waves" /><published>2025-09-17T00:00:00+09:00</published><updated>2025-09-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/gravity-waves.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Irrotational and Incompressible Flow</title><link href="http://localhost:4000/physics/irrotational-and-incompressible-flow.html" rel="alternate" type="text/html" title="Irrotational and Incompressible Flow" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/irrotational-and-incompressible-flow</id><content type="html" xml:base="http://localhost:4000/physics/irrotational-and-incompressible-flow.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;vorticity-and-circulation&quot;&gt;Vorticity and Circulation&lt;/h2&gt;
+## Irrotational Flow
 
-&lt;p&gt;In fluid dynamics, &lt;strong&gt;vorticity&lt;/strong&gt; is a measure of the local rotation of fluid elements. It is defined mathematically as the curl of the velocity field:&lt;/p&gt;
+A flow is said to be **irrotational** if the curl of the velocity field is zero everywhere:
 
-&lt;p&gt;\[
+\\[
+\nabla \times \mathbf{v} = 0
+\\]
+
+This implies that there is no local rotation of fluid elements in the flow.
+It is also called a **potential flow** because the velocity field can be expressed as the gradient of a scalar **velocity potential** function $\phi$:
+
+\\[
+\b{v} = \nabla \phi
+\\]
+
+### Properties
+
+Writing Euler&apos;s equation as [here](bernoullis-equation.html#bernoullis-equation),
+
+\\[
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + w + \Phi\right)
+\\]
+
+and substituting $\b{v} = \grad \phi$ gives:
+
+\\[
+\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi \right) = 0
+\\]
+
+This implies:
+
+\\[
+\pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi = f(t)
+\\]
+
+where $f(t)$ is an arbitrary function of time.
+However, since potentials are not uniquely defined, we can absorb $f(t)$ into $\phi$ by redefining the potential, i.e. set $f(t) = 0$ without loss of generality.
+Thus, for irrotational and steady flow, Bernoulli&apos;s equation holds throughout the entire flow field, not just along streamlines:
+
+\\[
+\frac{1}{2} v^2 + w + \Phi = \text{const.}
+\\]
+
+Also, since the vorticity $\b{\omega} = \curl \b{v}$ is zero everywhere, the velocity circulation $\Gamma$ around any closed curve $C$ is zero.
+
+### Examples
+
+For a steady flow, the velocity field is constant in space at infinity, so that the curl is zero.
+A steady flow past any object is irrotational outside the boundary layer, where viscous effects are negligible.
+Another important case of potential flow occurs for small oscillations of a body immersed in fluid.
+If the amplitude $a$ of the oscillations is small compared to the characteristic length $l$ of the body, i.e. $a \ll l$, the flow can be treated as irrotational.
+
+&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt; Proof &lt;/summary&gt;
+Let&apos;s estimate the order of magnitude of terms in Euler&apos;s equation.
+
+\\[
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (w + \Phi)
+\\]
+
+The velocity changes markedly (by an amount of the same order as $u$, the velocity of the oscillating body)
+over a distance of order $l$ and a time of order $1/\omega$, where $\omega$ is the angular frequency of oscillation.
+Thus, we can estimate:
+
+\\[
+\pdv{\b{v}}{t} \sim \omega u, \quad (\b{v} \cdot \grad) \b{v} \sim \frac{u^2}{l}
+\\]
+
+Since $\omega \sim u/a$, we have:
+
+\\[
+\frac{(\b{v} \cdot \grad) \b{v}}{\pdv{\b{v}}{t}} \sim \frac{u^2/l}{\omega u} \sim \frac{a}{l} \ll 1
+\\]
+
+Therefore, the nonlinear term $(\b{v} \cdot \grad) \b{v}$ can be neglected compared to the unsteady term $\pdv{\b{v}}{t}$.
+Thus, taking the curl of both sides gives:
+
+\\[
+\pdv{(\curl \b{v})}{t} = 0
+\\]
+
+This implies $\curl \b{v} = \text{const.}$
+In oscillatory motion, the time-averaged velocity is zero, so the constant must be zero.
+Hence, the flow is irrotational.
+&lt;/details&gt;
+
+## Incompressible Flow
+
+A flow is said to be **incompressible** if the density $\rho$ of the fluid remains constant along fluid particle trajectories.
+Mathematically, this is expressed as:
+
+\\[
+\mdv{\rho}{t} = 0
+\\]
+
+Reminding the [Euler&apos;s equation](eulers-equation-and-hydrostatics.html#eulers-equation),
+it can be shown that incompressibility is equivalent to the zero divergence of the velocity field:
+
+\\[
+\div \b{v} = 0
+\\]
+
+### Properties
+
+Zero divergence of the velocity also implies:
+
+\\[
+\mdv{\varepsilon} = 0
+\\]
+
+where $\varepsilon$ is the internal energy per unit mass, which is also the result from the Euler&apos;s equation.
+Therefore, for a streamline in an incompressible steady flow of an ideal fluid, Bernoulli&apos;s equation reduces to:
+
+\\[
+\frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
+\\]
+
+or also often written as:
+
+\\[
+p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
+\\]
+
+### Two-Dimensional Incompressible Flow
+
+In two-dimensional incompressible flow, the velocity field can be expressed in terms of a **stream function** $\psi(x,y,t)$ as:
+
+\\[
+v_x = \pdv{\psi}{y}, \quad v_y = -\pdv{\psi}{x}
+\\]
+
+so that it automatically satisfies the incompressibility condition $\div \b{v} = 0$.
+From the equation of $\b{v}$ [here](eulers-equation-and-hydrostatics.html#thermodynamic-analysis),
+we obtain the differential equation for $\psi$:
+
+\\[
+\pdv{}{t} \laplacian \psi - \pdv{\psi}{x} \pdv{}{y} \laplacian \psi + \pdv{\psi}{y} \pdv{}{x} \laplacian \psi = 0
+\\]
+
+If we know the stream function $\psi$, we can immediately determine the form of streamlines.
+The equation of a streamline is:
+
+\\[
+\frac{\dd{x}}{v_x} = \frac{\dd{y}}{v_y}
+\\]
+
+Substituting the expressions for $v_x$ and $v_y$ in terms of $\psi$, we have:
+
+\\[
+\pdv{\psi}{x} \dd{x} + \pdv{\psi}{y} \dd{y} = \dd{\psi} = 0
+\\]
+
+This shows that the stream function $\psi$ is constant along a streamline.
+In other words, the value of $\psi$ uniquely identifies each streamline in the flow field.
+
+If we draw a curve between two points $A$ and $B$ in the xy-plane,
+the mass flux $Q$ across this curve is given by the difference in the stream function values at these points:
+
+\\[
+\begin{align\*}
+Q &amp;= \int_A^B \rho v_n \dd{l} = \rho \int_A^B \left( -v_y \dd{x} + v_x \dd{y} \right) \nl
+&amp;= \rho \int_A^B \dd{\psi} = \rho \left( \psi_B - \psi_A \right)
+\end{align\*}
+\\]
+
+### Examples
+
+When the pressure changes adiabatically by $\Delta p$, the density changes by $\Delta \rho = \left( \pdv{\rho}{p} \right)_s \Delta p$.
+According to the Bernoulli&apos;s equation, $\Delta p \sim \rho v^2$.
+We shall show further that $\left( \pdv{p}{\rho} \right)_s = c^2$, where $c$ is the speed of sound in the fluid.
+Thus, we have $\Delta \rho / \rho \sim v^2 / c^2$.
+If the fluid velocity $v$ is much smaller than the speed of sound $c$, i.e. $v \ll c$,
+the change in density is negligible, and the flow can be treated as incompressible.
+
+Let&apos;s extend this argument to unsteady flow.
+Let $\tau$ and $l$ be the characteristic time and length scales of the flow, respectively.
+By Euler&apos;s equation, the pressure changes by an amount $\Delta p \sim \rho l v / \tau$ over a time interval of order $\tau$,
+and the corresponding change in density is $\Delta \rho \sim \rho l v / (c^2 \tau)$.
+Now substituting this to the continuity equation, we have $\tau \gg l/c$ for $\Delta \rho / \rho \ll 1$.
+
+If the both conditions $v \ll c$ and $\tau \gg l/c$ are satisfied,
+the flow can be treated as incompressible.
+
+## Irrotational and Incompressible Flow
+
+If a flow is both irrotational and incompressible, the velocity field is governed by both conditions:
+
+\\[
+\div \b{v} = 0, \quad \curl \b{v} = 0
+\\]
+
+This implies that the velocity potential $\phi$ satisfies Laplace&apos;s equation:
+
+\\[
+\laplacian \phi = 0
+\\]
+
+### Properties
+
+For the flow to be irrotational and incompressible, we can use the results about Bernoulli&apos;s equation from both irrotational and incompressible flow sections.
+Thus, Bernoulli&apos;s equation written as follows holds throughout the entire flow field:
+
+\\[
+p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
+\\]
+
+This means that the pressure distribution in the flow can be determined directly from the velocity field.
+The greatest pressure occurs where the velocity is minimum, and vice versa. If a body is immersed
+in such a flow and there exists a _stagnation point_ on the body&apos;s surface where the fluid velocity is zero, the pressure at that point is given by:
+
+\\[
+p_\text{max} = p_\infty + \frac{1}{2} \rho v_\infty^2
+\\]
+
+### Two-Dimensional Irrotational and Incompressible Flow
+
+There are powerful methods of solving problems of two-dimensional incompressible flow of an incompressible fluid
+past bodies of various profiles, involving the application of complex variable theory.
+The velocity potential $\phi$ and the stream function $\psi$ are related to the velocity components as follows:
+
+\\[
+v_x = \pdv{\phi}{x} = \pdv{\psi}{y}, \quad v_y = \pdv{\phi}{y} = -\pdv{\psi}{x}
+\\]
+
+These relations between $\phi$ and $\psi$ are known as the _Cauchy-Riemann equations_
+for a complex function $w=\phi + i \psi$ to be an analytic function of the complex variable $z = x + iy$.
+This means that $w(z)$ has a well-defined derivative at every point in the flow field.
+
+\\[
+\odv{w}{z} = \pdv{\phi}{x} + i \pdv{\psi}{x} = v_x - i v_y
+\\]
+
+The function $w(z)$ is called the **complex potential**, and $\odv{w}{z}$ is the **complex velocity**.
+
+\\[
+\odv{w}{z} = v e^{-i \theta}
+\\]
+
+where $v$ is the magnitude of the velocity and $\theta$ is the angle between the velocity vector and the x-axis.
+At a solid surface, the stream function $\psi$ is constant, since no fluid can cross the boundary.
+Thus, the body surface corresponds to a streamline in the flow (\psi = const.), and the problem reduces to finding an analytic function $w(z)$
+that satisfies the real boundary conditions on the body surface and the appropriate conditions at infinity.
+
+The integral of the complex velocity around a closed curve $C$ is given by:
+
+\\[
+\begin{align\*}
+\oint_C \odv{w}{z} \dd{z} &amp;= \oint_C (v_x - i v_y)(\dd{x} + i \dd{y}) \nl
+&amp;= \oint_C (v_x \dd{x} + v_y \dd{y}) + i \oint_C (-v_y \dd{x} + v_x \dd{y}) \nl
+&amp;= \Gamma + i Q/\rho
+\end{align\*}
+\\]
+
+where $Q$ is the mass flux across the curve $C$, and $\Gamma$ is the circulation around $C$.
+By the _residue theorem_ from complex variable theory,
+
+\\[
+\oint_C \odv{w}{z} \dd{z} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
+\\]
+
+where the sum is over all singularities $z_k$ of $\odv{w}{z}$ inside the curve $C$.
+This shows that both the circulation $\Gamma$ and the mass flux $Q$ are determined by the singularities of the complex velocity within the curve $C$.
+
+\\[
+\Gamma + i \frac{Q}{\rho} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Drag Force in Potential Flow Past a Body</title><link href="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html" rel="alternate" type="text/html" title="The Drag Force in Potential Flow Past a Body" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body</id><content type="html" xml:base="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Kelvin’s Circulation Theorem</title><link href="http://localhost:4000/physics/kelvins-circulation-theorem.html" rel="alternate" type="text/html" title="Kelvin’s Circulation Theorem" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/kelvins-circulation-theorem</id><content type="html" xml:base="http://localhost:4000/physics/kelvins-circulation-theorem.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Vorticity and Circulation
+
+In fluid dynamics, **vorticity** is a measure of the local rotation of fluid elements. It is defined mathematically as the curl of the velocity field:
+
+\\[
 \bs{\omega} = \curl \b{v}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Circulation, on the other hand, is a measure of the total “twisting” or “rotational” motion of the fluid around a closed loop. It is defined as the line integral of the velocity field around a closed curve $C$:&lt;/p&gt;
+Circulation, on the other hand, is a measure of the total &quot;twisting&quot; or &quot;rotational&quot; motion of the fluid around a closed loop. It is defined as the line integral of the velocity field around a closed curve $C$:
 
-&lt;p&gt;\[
+\\[
 \Gamma = \oint_C \b{v} \cdot \dd{\b{l}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;By the Stokes’ theorem, circulation can also be related to vorticity through the surface integral of vorticity over a surface $S$ bounded by the curve $C$:&lt;/p&gt;
+By the Stokes&apos; theorem, circulation can also be related to vorticity through the surface integral of vorticity over a surface $S$ bounded by the curve $C$:
 
-&lt;p&gt;\[
+\\[
 \Gamma = \iint_S \bs{\omega} \cdot \dd{\b{S}}
-\]&lt;/p&gt;
+\\]
 
-&lt;h2 id=&quot;kelvins-circulation-theorem&quot;&gt;Kelvin’s Circulation Theorem&lt;/h2&gt;
+## Kelvin&apos;s Circulation Theorem
 
-&lt;p&gt;In fluid mechanics, Kelvin’s circulation theorem states:&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;In a barotropic, ideal fluid with conservative body forces, the circulation around a closed curve (which encloses the same fluid elements) moving with the fluid remains constant with time.&lt;/p&gt;
-&lt;/blockquote&gt;
+In fluid mechanics, Kelvin&apos;s circulation theorem states:
+&gt; In a barotropic, ideal fluid with conservative body forces, the circulation around a closed curve (which encloses the same fluid elements) moving with the fluid remains constant with time.
 
-&lt;p&gt;Mathematically, this can be expressed as:&lt;/p&gt;
+Mathematically, this can be expressed as:
 
-&lt;p&gt;\[
+\\[
 \mdv{\Gamma} = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;proof&quot;&gt;Proof&lt;/h3&gt;
+### Proof
 
-&lt;p&gt;\[
+\\[
 \mdv{\Gamma} = \oint_C \mdv{\b{v}} \cdot \dd{\b{l}} + \oint_C \b{v} \cdot \mdv{\dd{\b{l}}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;From the Euler equation for an ideal fluid:&lt;/p&gt;
+From the Euler equation for an ideal fluid:
 
-&lt;p&gt;\[
+\\[
 \mdv{\b{v}} = -\frac{1}{\rho} \grad p + \grad \Phi
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Substituting this,&lt;/p&gt;
+Substituting this,
 
-&lt;p&gt;\[
-\begin{align*}
-\oint_C \mdv{\b{v}} \cdot \dd{\b{l}} &amp;amp;= \oint_C \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{l}} \nl
-&amp;amp;= \iint_S \curl \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{S}} \nl
-&amp;amp;= \iint_S \frac{1}{\rho^2} (\grad \rho \times \grad p) \cdot \dd{\b{S}}
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\oint_C \mdv{\b{v}} \cdot \dd{\b{l}} &amp;= \oint_C \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{l}} \nl
+&amp;= \iint_S \curl \left( -\frac{1}{\rho} \grad p + \grad \Phi \right) \cdot \dd{\b{S}} \nl
+&amp;= \iint_S \frac{1}{\rho^2} (\grad \rho \times \grad p) \cdot \dd{\b{S}}
+\end{align\*}
+\\]
 
-&lt;p&gt;since $\curl(\grad f) = 0$ for any scalar function $f$.
+since $\curl(\grad f) = 0$ for any scalar function $f$.
 For a barotropic fluid, $p = p(\rho)$, so $\grad p=\pdv{p}{\rho}\grad \rho$, and thus $\grad \rho \times \grad p = 0$.
-Therefore, the first term vanishes:&lt;/p&gt;
+Therefore, the first term vanishes:
 
-&lt;p&gt;\[
+\\[
 \oint_C \mdv{\b{v}} \cdot \dd{\b{l}} = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Now, consider the second term. Let’s parametrize the curve $C$ by a parameter $a$ such that $\b{l} = \b{l}(a, t)$, where $a$ is constant for a given fluid element.
-Then,&lt;/p&gt;
+Now, consider the second term. Let&apos;s parametrize the curve $C$ by a parameter $a$ such that $\b{l} = \b{l}(a, t)$, where $a$ is constant for a given fluid element.
+Then,
 
-&lt;p&gt;\[
+\\[
 \dd{\b{l}(a,t)} = \b{l}(a + \dd{a}, t) - \b{l}(a, t) = \pdv{\b{l}(a,t)}{a} \dd{a}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Taking the material derivative,&lt;/p&gt;
+Taking the material derivative,
 
-&lt;p&gt;\[
-\begin{align*}
-\mdv{\dd{\b{l}}} &amp;amp;= \pdv{\b{v}(\b{l}(a,t), t)}{a} \dd{a} = \pdv{\b{v}}{\b{l}} \cdot \pdv{\b{l}}{a} \dd{a} \nl
-&amp;amp;= (\dd{\b{l}} \cdot \grad) \b{v}
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\mdv{\dd{\b{l}}} &amp;= \pdv{\b{v}(\b{l}(a,t), t)}{a} \dd{a} = \pdv{\b{v}}{\b{l}} \cdot \pdv{\b{l}}{a} \dd{a} \nl
+&amp;= (\dd{\b{l}} \cdot \grad) \b{v}
+\end{align\*}
+\\]
 
-&lt;p&gt;Thus, the second term becomes:&lt;/p&gt;
+Thus, the second term becomes:
 
-&lt;p&gt;\[
-\begin{align*}
-\oint_C \b{v} \cdot \mdv{\dd{\b{l}}} &amp;amp;= \oint_C \b{v} \cdot (\dd{\b{l}} \cdot \grad) \b{v} \nl
-&amp;amp;= \frac{1}{2} \oint_C \grad(v^2) \cdot \dd{\b{l}} \nl
-&amp;amp;= 0
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\oint_C \b{v} \cdot \mdv{\dd{\b{l}}} &amp;= \oint_C \b{v} \cdot (\dd{\b{l}} \cdot \grad) \b{v} \nl
+&amp;= \frac{1}{2} \oint_C \grad(v^2) \cdot \dd{\b{l}} \nl
+&amp;= 0
+\end{align\*}
+\\]
 
-&lt;p&gt;by the gradient theorem. Since both terms vanish, we have:&lt;/p&gt;
+by the gradient theorem. Since both terms vanish, we have:
 
-&lt;p&gt;\[
+\\[
 \mdv{\Gamma} = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;It, of course, holds for ideal fluids; because the barotropic condition is more general than the isentropic (adiabatic) condition.
-The conservation of circulation can be intuitively interpreted as meaning that the vorticity moves with the fluid elements.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Bernoulli’s Equation</title><link href="http://localhost:4000/physics/bernoullis-equation.html" rel="alternate" type="text/html" title="Bernoulli’s Equation" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/bernoullis%20equation</id><content type="html" xml:base="http://localhost:4000/physics/bernoullis-equation.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#bernoullis-equation&quot; id=&quot;markdown-toc-bernoullis-equation&quot;&gt;Bernoulli’s Equation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+It, of course, holds for ideal fluids; because the barotropic condition is more general than the isentropic (adiabatic) condition.
+The conservation of circulation can be intuitively interpreted as meaning that the vorticity moves with the fluid elements.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Bernoulli’s Equation</title><link href="http://localhost:4000/physics/bernoullis-equation.html" rel="alternate" type="text/html" title="Bernoulli’s Equation" /><published>2025-09-15T00:00:00+09:00</published><updated>2025-09-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/bernoullis%20equation</id><content type="html" xml:base="http://localhost:4000/physics/bernoullis-equation.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;bernoullis-equation&quot;&gt;Bernoulli’s Equation&lt;/h2&gt;
+## Bernoulli&apos;s Equation
 
-&lt;p&gt;Let’s recall the &lt;a href=&quot;eulers-equation-and-hydrostatics.html#thermodynamic-analysis&quot;&gt;Euler equation&lt;/a&gt; for an ideal fluid:&lt;/p&gt;
+Let&apos;s recall the [Euler equation](eulers-equation-and-hydrostatics.html#thermodynamic-analysis) for an ideal fluid:
 
-&lt;p&gt;\[
+\\[
 \pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $w$ is the specific enthalpy and $\b{a}$ represents body forces per unit mass (e.g., gravity).
-For &lt;strong&gt;steady flow&lt;/strong&gt;, the time derivative term vanishes. If the body forces are conservative, i.e. $\b{a} = -\grad \Phi$, we can rewrite the equation as:&lt;/p&gt;
+where $w$ is the specific enthalpy and $\b{a}$ represents body forces per unit mass (e.g., gravity).
+For **steady flow**, the time derivative term vanishes. If the body forces are conservative, i.e. $\b{a} = -\grad \Phi$, we can rewrite the equation as:
 
-&lt;p&gt;\[
+\\[
 \b{v} \times (\curl \b{v}) = \grad \left( w + \frac{1}{2} v^2 + \Phi \right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Now let’s imagine a fluid particle moving along a particular streamline.
-We’ll think the velocity direction component of the vector equation above.
+Now let&apos;s imagine a fluid particle moving along a particular streamline.
+We&apos;ll think the velocity direction component of the vector equation above.
 The left-hand side becomes zero because the cross product of the velocity vector with itself is zero.
-Thus, we have:&lt;/p&gt;
+Thus, we have:
 
-&lt;p&gt;\[
+\\[
 \pdv{}{l} \left( w + \frac{1}{2} v^2 + \Phi \right) = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $l$ is the variable parameterizing the streamline.
-This implies that the quantity inside the parentheses is constant along a streamline:&lt;/p&gt;
+where $l$ is the variable parameterizing the streamline.
+This implies that the quantity inside the parentheses is constant along a streamline:
 
-&lt;p&gt;\[
+\\[
 w + \frac{1}{2} v^2 + \Phi = \text{const.}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This is known as &lt;strong&gt;Bernoulli’s equation&lt;/strong&gt; for ideal fluids.
+This is known as **Bernoulli&apos;s equation** for ideal fluids.
 It states that the sum of the specific enthalpy, kinetic energy per unit mass, and potential energy per unit mass remains constant along a streamline.
-We can also write it as:&lt;/p&gt;
+We can also write it as:
 
-&lt;p&gt;\[
+\\[
 \frac{1}{2} v^2 + \varepsilon + \frac{p}{\rho} + \Phi = \text{const.}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;For gravity, $\Phi = gz$ where $z$ is the height above a reference level.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Euler’s Equation and Hydrostatics</title><link href="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html" rel="alternate" type="text/html" title="Euler’s Equation and Hydrostatics" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/eulers-equation-and-hydrostatics</id><content type="html" xml:base="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#eulers-equation&quot; id=&quot;markdown-toc-eulers-equation&quot;&gt;Euler’s Equation&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#thermodynamic-analysis&quot; id=&quot;markdown-toc-thermodynamic-analysis&quot;&gt;Thermodynamic Analysis&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#hydrostatics&quot; id=&quot;markdown-toc-hydrostatics&quot;&gt;Hydrostatics&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#constant-density&quot; id=&quot;markdown-toc-constant-density&quot;&gt;Constant Density&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#varying-density&quot; id=&quot;markdown-toc-varying-density&quot;&gt;Varying Density&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#astronomical-case&quot; id=&quot;markdown-toc-astronomical-case&quot;&gt;Astronomical Case&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#condition-that-convection-be-absent&quot; id=&quot;markdown-toc-condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+For gravity, $\Phi = gz$ where $z$ is the height above a reference level.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Euler’s Equation and Hydrostatics</title><link href="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html" rel="alternate" type="text/html" title="Euler’s Equation and Hydrostatics" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/eulers-equation-and-hydrostatics</id><content type="html" xml:base="http://localhost:4000/physics/eulers-equation-and-hydrostatics.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;eulers-equation&quot;&gt;Euler’s Equation&lt;/h2&gt;
+## Euler&apos;s Equation
 
-&lt;p&gt;In fluid dynamics, Euler’s equation describes the motion of an ideal fluid.
-We’ll use the equations derived in the &lt;a href=&quot;ideal-fluids-and-the-equation-of-continuity.html&quot;&gt;previous section&lt;/a&gt; to arrive at Euler’s equation.&lt;/p&gt;
+In fluid dynamics, Euler&apos;s equation describes the motion of an ideal fluid.
+We&apos;ll use the equations derived in the [previous section](ideal-fluids-and-the-equation-of-continuity.html) to arrive at Euler&apos;s equation.
 
-&lt;p&gt;First, from the continuity equation for mass, we have:&lt;/p&gt;
+First, from the continuity equation for mass, we have:
 
-&lt;p&gt;\[
+\\[
 \mdv{\rho} = -\rho \div \b{v}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Next, we consider the momentum equation for an ideal fluid.&lt;/p&gt;
+Next, we consider the momentum equation for an ideal fluid.
 
-&lt;p&gt;\[
+\\[
 \rho \mdv{\b{v}} = -\grad p + \b{f}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Here, $\b{f}$ represents the body force per unit volume acting on the fluid, such as gravity.
-Dividing through by $\rho$, we get:&lt;/p&gt;
+Here, $\b{f}$ represents the body force per unit volume acting on the fluid, such as gravity.
+Dividing through by $\rho$, we get:
 
-&lt;p&gt;\[
+\\[
 \mdv{\b{v}} = -\frac{\grad p}{\rho} + \b{a}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\b{a} = \frac{\b{f}}{\rho}$ is the acceleration due to body forces.
-Finally, let’s bring the energy equation into the picture.&lt;/p&gt;
+where $\b{a} = \frac{\b{f}}{\rho}$ is the acceleration due to body forces.
+Finally, let&apos;s bring the energy equation into the picture.
 
-&lt;p&gt;\[
+\\[
 \rho \mdv{} \left( \frac{1}{2} v^2 + \varepsilon \right) = - \div (p \b{v}) + \b{v} \cdot \b{f}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Substituting the material derivative of velocity from the momentum equation, we have:&lt;/p&gt;
+Substituting the material derivative of velocity from the momentum equation, we have:
 
-&lt;p&gt;\[
+\\[
 \mdv{\varepsilon} = -\frac{p}{\rho} \div \b{v}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can observe that the change in internal energy per unit mass is irrelevant to the external forces acting on the fluid.
-Summarizing, we have the following set of equations for an ideal fluid:&lt;/p&gt;
+We can observe that the change in internal energy per unit mass is irrelevant to the external forces acting on the fluid.
+Summarizing, we have the following set of equations for an ideal fluid:
 
-&lt;p&gt;\[
-\begin{align*}
-\mdv{\rho} &amp;amp;= -\rho \div \b{v} \nl
-\mdv{\b{v}} &amp;amp;= -\frac{\grad p}{\rho} + \b{a} \nl
-\mdv{\varepsilon} &amp;amp;= -\frac{p}{\rho} \div \b{v}
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\mdv{\rho} &amp;= -\rho \div \b{v} \nl
+\mdv{\b{v}} &amp;= -\frac{\grad p}{\rho} + \b{a} \nl
+\mdv{\varepsilon} &amp;= -\frac{p}{\rho} \div \b{v}
+\end{align\*}
+\\]
 
-&lt;p&gt;These equations are known as &lt;strong&gt;Euler’s equations&lt;/strong&gt; for an ideal fluid.&lt;/p&gt;
+These equations are known as **Euler&apos;s equations** for an ideal fluid.
 
-&lt;h3 id=&quot;thermodynamic-analysis&quot;&gt;Thermodynamic Analysis&lt;/h3&gt;
+### Thermodynamic Analysis
 
-&lt;p&gt;Let’s think of the familiar thermodynamic relation:&lt;/p&gt;
+Let&apos;s think of the familiar thermodynamic relation:
 
-&lt;p&gt;\[
+\\[
 \dd{w} = T \dd{s} + \frac{1}{\rho} \dd{p}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Since an ideal fluid is adiabatic, we have $\dd{s} = 0$.
-Thus, we can write:&lt;/p&gt;
+Since an ideal fluid is adiabatic, we have $\dd{s} = 0$.
+Thus, we can write:
 
-&lt;p&gt;\[
+\\[
 \grad w = \frac{1}{\rho} \grad p
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Substituting this into the momentum equation, we get:&lt;/p&gt;
+Substituting this into the momentum equation, we get:
 
-&lt;p&gt;\[
+\\[
 \pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad w + \b{a}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Using a well-known formula from vector calculus:&lt;/p&gt;
+Using a well-known formula from vector calculus:
 
-&lt;p&gt;\[
+\\[
 \frac{1}{2} \grad v^2 = \b{v} \times (\curl \b{v}) + (\b{v} \cdot \grad) \b{v}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;we can rewrite the momentum equation as:&lt;/p&gt;
+we can rewrite the momentum equation as:
 
-&lt;p&gt;\[
+\\[
 \pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This form of Euler’s equation is particularly useful for analyzing fluid flow in various scenarios.
-If we take the curl of both sides, we obtain:&lt;/p&gt;
+This form of Euler&apos;s equation is particularly useful for analyzing fluid flow in various scenarios.
+If we take the curl of both sides, we obtain:
 
-&lt;p&gt;\[
-\pdv{}{t} (\curl \b{v}) = \curl [ \b{v} \times (\curl \b{v}) ] + \curl \b{a}
-\]&lt;/p&gt;
+\\[
+\pdv{}{t} (\curl \b{v}) = \curl \[ \b{v} \times (\curl \b{v}) \] + \curl \b{a}
+\\]
 
-&lt;p&gt;if $\b{a}$ is a conservative force field, the last term vanishes.&lt;/p&gt;
+if $\b{a}$ is a conservative force field, the last term vanishes.
 
-&lt;h2 id=&quot;hydrostatics&quot;&gt;Hydrostatics&lt;/h2&gt;
+## Hydrostatics
 
-&lt;p&gt;For a fluid at rest in a uniform gravitational field, we have $\b{v} = 0$ and $\b{a} = -g \hat{\b{z}}$.
-Substituting these into the momentum equation, we get:&lt;/p&gt;
+For a fluid at rest in a uniform gravitational field, we have $\b{v} = 0$ and $\b{a} = -g \hat{\b{z}}$.
+Substituting these into the momentum equation, we get:
 
-&lt;p&gt;\[
+\\[
 \grad p = -\rho g \hat{\b{z}}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;It then follows that the density is also a function of $z$ only.&lt;/p&gt;
+It then follows that the density is also a function of $z$ only.
 
-&lt;p&gt;\[
+\\[
 \rho = -\frac{1}{g} \odv{p}{z}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;constant-density&quot;&gt;Constant Density&lt;/h3&gt;
+### Constant Density
 
-&lt;p&gt;Let’s assume that the fluid density $\rho$ is constant throughout the fluid.
-Then from the condition $p = p_0$ at $z = h$, we have:&lt;/p&gt;
+Let&apos;s assume that the fluid density $\rho$ is constant throughout the fluid.
+Then from the condition $p = p_0$ at $z = h$, we have:
 
-&lt;p&gt;\[
+\\[
 p = p_0 + \rho g (h - z)
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;varying-density&quot;&gt;Varying Density&lt;/h3&gt;
+### Varying Density
 
-&lt;p&gt;However, for large masses of fluid, the density may vary with depth due to compressibility effects.
-If the fluid is close to thermodynamically perfect gas, we can use the ideal gas law:&lt;/p&gt;
+However, for large masses of fluid, the density may vary with depth due to compressibility effects.
+If the fluid is close to thermodynamically perfect gas, we can use the ideal gas law:
 
-&lt;p&gt;\[
+\\[
 \odv{p}{z} = -\frac{gM}{R T} p
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $R$ is the specific gas constant and $T$ is the temperature.
-Assuming $T$ is constant with depth, we can integrate this equation to find:&lt;/p&gt;
+where $R$ is the specific gas constant and $T$ is the temperature, and $M$ is the molar mass of the gas.
+Assuming $T$ is constant with depth, we can integrate this equation to find:
 
-&lt;p&gt;\[
-p = p_0 \exp \left[ -\frac{gM}{R T} z \right]
-\]&lt;/p&gt;
+\\[
+p = p_0 \exp \left\[ -\frac{gM}{R T} z \right\]
+\\]
 
-&lt;p&gt;where $p_0$ is the pressure at $z = 0$.
+where $p_0$ is the pressure at $z = 0$.
 If the temperature varies with depth, we can still integrate the equation if we know the temperature profile $T(z)$.
-The most important example is the linear temperature profile such as the troposphere.&lt;/p&gt;
+The most important example is the linear temperature profile such as the troposphere.
 
-&lt;p&gt;\[
+\\[
 T(z) = T_0 - L z
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Here, $T_0$ is the temperature at $z = 0$ and $L$ is the lapse rate.
-Integrating the pressure gradient equation with this temperature profile, we find:&lt;/p&gt;
+Here, $T_0$ is the temperature at $z = 0$ and $L$ is the lapse rate.
+Integrating the pressure gradient equation with this temperature profile, we find:
 
-&lt;p&gt;\[
+\\[
 p = p_0 \left( 1 - \frac{L z}{T_0} \right)^{gM/RL}
-\]&lt;/p&gt;
+\\]
 
-&lt;h3 id=&quot;astronomical-case&quot;&gt;Astronomical Case&lt;/h3&gt;
+### Astronomical Case
 
-&lt;p&gt;Finally, let’s consider the case of a spherically symmetric gravitational field, such as a star.
-Let $\Phi$ be the gravitational potential, which satisfies Poisson’s equation:&lt;/p&gt;
+Finally, let&apos;s consider the case of a spherically symmetric gravitational field, such as a star.
+Let $\Phi$ be the gravitational potential, which satisfies Poisson&apos;s equation:
 
-&lt;p&gt;\[
+\\[
 \laplacian \Phi = 4 \pi G \rho
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Then, the hydrostatic equilibrium condition becomes:&lt;/p&gt;
+Then, the hydrostatic equilibrium condition becomes:
 
-&lt;p&gt;\[
+\\[
 \grad p = -\rho \grad \Phi
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Dividing through by $\rho$ and taking the divergence of both sides, we obtain:&lt;/p&gt;
+Dividing through by $\rho$ and taking the divergence of both sides, we obtain:
 
-&lt;p&gt;\[
+\\[
 \div \left( \frac{1}{\rho} \grad p \right) = -4 \pi G \rho
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;If the body is not rotating, we can assume spherical symmetry.
-Then, the equation simplifies to:&lt;/p&gt;
+If the body is not rotating, we can assume spherical symmetry.
+Then, the equation simplifies to:
 
-&lt;p&gt;\[
+\\[
 \frac{1}{r^2} \odv{}{r} \left( \frac{r^2}{\rho} \odv{p}{r} \right) = -4 \pi G \rho
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;This equation is fundamental in astrophysics for modeling the structure of stars and planets.&lt;/p&gt;
+This equation is fundamental in astrophysics for modeling the structure of stars and planets.
 
-&lt;h2 id=&quot;condition-that-convection-be-absent&quot;&gt;Condition that Convection be Absent&lt;/h2&gt;
+## Condition that Convection be Absent
 
-&lt;p&gt;In a gravitational field, a fluid can become unstable to convection if the temperature gradient is too steep.
+In a gravitational field, a fluid can become unstable to convection if the temperature gradient is too steep.
 Let us consider a fluid element at height $z$, having a specific volume $V(p,s)$ where $p,s$ are the pressure and entropy at an equilibrium state.
 If we displace this element adiabatically to a new height $z + \dd{z}$, it will have a new specific volume $V(p + \dd{p}, s)$, since the entropy remains constant during the adiabatic process.
 The surrounding fluid at the new height has a specific volume $V(p + \dd{p}, s + \dd{s})$.
-For the fluid to be stable against convection, the displaced element must be denser than the surrounding fluid, which translates to:&lt;/p&gt;
+For the fluid to be stable against convection, the displaced element must be denser than the surrounding fluid, which translates to:
 
-&lt;p&gt;\[
-V(p + \dd{p}, s+ \dd{s}) - V(p + \dd{p}, s) &amp;gt; 0
-\]&lt;/p&gt;
+\\[
+V(p + \dd{p}, s+ \dd{s}) - V(p + \dd{p}, s) &gt; 0
+\\]
 
-&lt;p&gt;Expanding this to the first order in $\dd{s}$, we have:&lt;/p&gt;
+Expanding this to the first order in $\dd{s}$, we have:
 
-&lt;p&gt;\[
-\left( \pdv{V}{s} \right)_p \odv{s}{z} \dd{z} &amp;gt; 0
-\]&lt;/p&gt;
+\\[
+\left( \pdv{V}{s} \right)_p \odv{s}{z} \dd{z} &gt; 0
+\\]
 
-&lt;p&gt;The formula of thermodynamics gives us:&lt;/p&gt;
+The formula of thermodynamics gives us:
 
-&lt;p&gt;\[
+\\[
 \left( \pdv{V}{s} \right)_p = \frac{T}{c_p} \left( \pdv{V}{T} \right)_p
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $c_p$ is the specific heat at constant pressure.
-Since $c_p &amp;gt; 0$ and $\left( \pdv{V}{T} \right)_p &amp;gt; 0$ for most substances, the condition for stability against convection simplifies to:&lt;/p&gt;
+where $c_p$ is the specific heat at constant pressure.
+Since $c_p &gt; 0$ and $\left( \pdv{V}{T} \right)_p &gt; 0$ for most substances, the condition for stability against convection simplifies to:
 
-&lt;p&gt;\[
-\odv{s}{z} &amp;gt; 0
-\]&lt;/p&gt;
+\\[
+\odv{s}{z} &gt; 0
+\\]
 
-&lt;p&gt;Let’s expand the total derivative by the chain rule.
-Reminding Maxwell’s relations and that under a small-scale system with uniform gravity we have $\odv{p}{z} = -\rho g$, we get:&lt;/p&gt;
+Let&apos;s expand the total derivative by the chain rule.
+Reminding Maxwell&apos;s relations and that under a small-scale system with uniform gravity we have $\odv{p}{z} = -\rho g$, we get:
 
-&lt;p&gt;\[
-\begin{align*}
-\odv{s}{z} &amp;amp;= \left( \pdv{s}{T} \right)_p \odv{T}{z} + \left( \pdv{s}{p} \right)_T \odv{p}{z} \nl
-&amp;amp;= \frac{c_p}{T} \odv{T}{z} + \left( \pdv{V}{T} \right)_p \frac{g}{V} \nl
-&amp;amp;= \frac{c_p}{T} \odv{T}{z} + \beta g \nl
-&amp;amp;&amp;gt; 0
-\end{align*}
-\]&lt;/p&gt;
+\\[
+\begin{align\*}
+\odv{s}{z} &amp;= \left( \pdv{s}{T} \right)_p \odv{T}{z} + \left( \pdv{s}{p} \right)_T \odv{p}{z} \nl
+&amp;= \frac{c_p}{T} \odv{T}{z} + \left( \pdv{V}{T} \right)_p \frac{g}{V} \nl
+&amp;= \frac{c_p}{T} \odv{T}{z} + \beta g \nl
+&amp;&gt; 0
+\end{align\*}
+\\]
 
-&lt;p&gt;where $\beta$ is the coefficient of thermal expansion.
-Thus, the condition for stability against convection can be expressed as:&lt;/p&gt;
+where $\beta$ is the coefficient of thermal expansion.
+Thus, the condition for stability against convection can be expressed as:
 
-&lt;p&gt;\[
-\odv{T}{z} &amp;gt; -\frac{g \beta T}{c_p}
-\]&lt;/p&gt;
+\\[
+\odv{T}{z} &gt; -\frac{g \beta T}{c_p}
+\\]
 
-&lt;p&gt;This inequality indicates that the temperature should increase by rising, or if it decreases, it should not decrease too rapidly.
-In the case of an ideal gas, where $\beta = 1/T$, the condition simplifies to:&lt;/p&gt;
+This inequality indicates that the temperature should increase by rising, or if it decreases, it should not decrease too rapidly.
+In the case of an ideal gas, where $\beta = 1/T$, the condition simplifies to:
 
-&lt;p&gt;\[
-\odv{T}{z} &amp;gt; -\frac{g}{c_p}
-\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Streamlines, Pathlines, and Streaklines</title><link href="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html" rel="alternate" type="text/html" title="Streamlines, Pathlines, and Streaklines" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/streamlines-pathlines-and-streaklines</id><content type="html" xml:base="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#streamlines&quot; id=&quot;markdown-toc-streamlines&quot;&gt;Streamlines&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#pathlines&quot; id=&quot;markdown-toc-pathlines&quot;&gt;Pathlines&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#streaklines&quot; id=&quot;markdown-toc-streaklines&quot;&gt;Streaklines&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+\\[
+\odv{T}{z} &gt; -\frac{g}{c_p}
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Streamlines, Pathlines, and Streaklines</title><link href="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html" rel="alternate" type="text/html" title="Streamlines, Pathlines, and Streaklines" /><published>2025-09-14T00:00:00+09:00</published><updated>2025-09-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/streamlines-pathlines-and-streaklines</id><content type="html" xml:base="http://localhost:4000/physics/streamlines-pathlines-and-streaklines.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+## Introduction
 
-&lt;p&gt;In fluid mechanics, understanding the motion of fluid particles is crucial. Three fundamental concepts that help describe this motion are streamlines, pathlines, and streaklines. Each of these concepts provides a different perspective on how fluid particles move and interact within a flow field.&lt;/p&gt;
+In fluid mechanics, understanding the motion of fluid particles is crucial. Three fundamental concepts that help describe this motion are streamlines, pathlines, and streaklines. Each of these concepts provides a different perspective on how fluid particles move and interact within a flow field.
 
-&lt;h2 id=&quot;streamlines&quot;&gt;Streamlines&lt;/h2&gt;
+## Streamlines
 
-&lt;p&gt;Streamlines are imaginary lines that represent the instantaneous direction of the fluid flow at a given moment in time. They are tangent to the velocity vector of the fluid at every point along the line. In steady flows, streamlines remain constant over time, while in unsteady flows, they can change.
-Mathematically, streamlines $\b{r}(l)$ are defined by:&lt;/p&gt;
+Streamlines are imaginary lines that represent the instantaneous direction of the fluid flow at a given moment in time. They are tangent to the velocity vector of the fluid at every point along the line. In steady flows, streamlines remain constant over time, while in unsteady flows, they can change.
+Mathematically, streamlines $\b{r}(l)$ are defined by:
 
-&lt;p&gt;\[
+\\[
 \odv{\b{r}}{l} \cross \b{v}(\b{r}(l), t) = 0
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $l$ is the parameter along the streamline, and $\b{v}$ is the velocity field.
-Here $t$ is a fixed time.&lt;/p&gt;
+where $l$ is the parameter along the streamline, and $\b{v}$ is the velocity field.
+Here $t$ is a fixed time.
 
-&lt;h2 id=&quot;pathlines&quot;&gt;Pathlines&lt;/h2&gt;
+## Pathlines
 
-&lt;p&gt;Pathlines trace the actual trajectory of individual fluid particles over time. They show the path that a specific fluid particle follows as it moves through the flow field.
-Pathlines $\b{r}(t)$ are defined by:&lt;/p&gt;
+Pathlines trace the actual trajectory of individual fluid particles over time. They show the path that a specific fluid particle follows as it moves through the flow field.
+Pathlines $\b{r}(t)$ are defined by:
 
-&lt;p&gt;\[
+\\[
 \odv{\b{r}}{t} = \b{v}(\b{r}(t), t)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $\b{r}(t)$ is the position vector of the fluid particle at time $t$.
-Initial conditions are given by $\b{r}(t_0) = \b{r}_0$.&lt;/p&gt;
+where $\b{r}(t)$ is the position vector of the fluid particle at time $t$.
+Initial conditions are given by $\b{r}(t_0) = \b{r}_0$.
 
-&lt;h2 id=&quot;streaklines&quot;&gt;Streaklines&lt;/h2&gt;
+## Streaklines
 
-&lt;p&gt;Streaklines are formed by the continuous release of fluid particles from a specific point in the flow field over time. They represent the locus of all particles that have passed through a particular point.
+Streaklines are formed by the continuous release of fluid particles from a specific point in the flow field over time. They represent the locus of all particles that have passed through a particular point.
 It is easier to visualize streaklines in experiments, as they can be observed by injecting dye or smoke into the flow at a fixed point.
-Streaklines $\b{r}(t,t_0)$ are defined by:&lt;/p&gt;
+Streaklines $\b{r}(t,t_0)$ are defined by:
 
-&lt;p&gt;\[
+\\[
 \pdv{\b{r}}{t} = \b{v}(\b{r}(t,t_0), t)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $t_0$ is the time when the particles were released, and $t$ is the current time.
+where $t_0$ is the time when the particles were released, and $t$ is the current time.
 Initial conditions are given by $\b{r}(t_0, t_0) = \b{r}_0$.
-For a fixed $t$ which we are observing, $t_0 \in [t_i, t]$ becomes a variable parameterizing the streakline where $t_i$ is the initial time when the flow started (or when the dye injection started).&lt;/p&gt;
+For a fixed $t$ which we are observing, $t_0 \in \[t_i, t\]$ becomes a variable parameterizing the streakline where $t_i$ is the initial time when the flow started (or when the dye injection started).
 
-&lt;p class=&quot;centered&quot;&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/1/13/Streaklines_and_pathlines_animation.gif&quot; alt=&quot;Streamlines, Pathlines, and Streaklines&quot; /&gt;&lt;/p&gt;
-&lt;p class=&quot;figcaption&quot;&gt;An animation showing the streamlines, pathlines, and streaklines.
+![Streamlines, Pathlines, and Streaklines](https://upload.wikimedia.org/wikipedia/commons/1/13/Streaklines_and_pathlines_animation.gif)
+{:.centered}
+An animation showing the streamlines, pathlines, and streaklines.
 The velocity field is given by $\b{v} = (1,xt)$.
-Streamlines are the dashed lines, pathlines are the red lines, and streaklines are the blue lines.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Convergence Concepts in Statistics</title><link href="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html" rel="alternate" type="text/html" title="Convergence Concepts in Statistics" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convergence-concepts-in-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Rotational Motions and Angular Quantities</title><link href="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html" rel="alternate" type="text/html" title="Rotational Motions and Angular Quantities" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/rotational-motions-and-angular-quantities</id><content type="html" xml:base="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry></feed>
+Streamlines are the dashed lines, pathlines are the red lines, and streaklines are the blue lines.
+{:.figcaption}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Convergence Concepts in Statistics</title><link href="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html" rel="alternate" type="text/html" title="Convergence Concepts in Statistics" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convergence-concepts-in-statistics</id><content type="html" xml:base="http://localhost:4000/mathematics/convergence-concepts-in-statistics.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Convergence in Probability
+
+A sequence of random variables $X_n$ **converges in probability** to a random variable $X$
+if for every $\epsilon &gt; 0$,
+
+\\[
+\lim_{n \to \infty} P(|X_n - X| \geq \epsilon) = 0
+\\]
+
+or equivalently,
+
+\\[
+\lim_{n \to \infty} P(|X_n - X| &lt; \epsilon) = 1
+\\]
+
+We denote this as
+
+\\[
+X_n \xrightarrow{p} X
+\\]
+
+The $X_n$ are typically not independent and identically distributed random variables, as in a random sample.
+
+### Weak Law of Large Numbers (WLLN)
+
+The **Weak Law of Large Numbers** states that the sample mean converges in probability to the population mean.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}\[X_i\] = \mu$ and $\mathrm{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}\_n = \frac{1}{n} \sum\_{i=1}^n X_i$.
+Then, for any $\epsilon &gt; 0$,
+
+\\[
+\lim_{n \to \infty} P\left(\abs{\bar{X}_n - \mu} &lt; \epsilon \right) = 1
+\\]
+
+that is $\bar{X}\_n \xrightarrow{p} \mu$.
+The property summarized by WLLN, that a sequence of the same statistic
+approaches a constant as the sample size increases, is called **consistency**.
+
+&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
+By Chebyshev&apos;s inequality,
+
+\\[
+\begin{align\*}
+P\left(\abs{\bar{X}_n - \mu} \geq \epsilon\right) &amp;= P\left( (\bar{X}_n - \mu)^2 \geq \epsilon^2 \right) \nl
+&amp; \leq \frac{\mathrm{Var}\left(\bar{X}_n\right)}{\epsilon^2} \nl
+&amp;= \frac{\sigma^2/n}{\epsilon^2}
+\end{align\*}
+\\]
+
+This is equivalent to:
+
+\\[
+1 - \frac{\sigma^2}{n \epsilon^2} \leq P\left(|\bar{X}_n - \mu| &lt; \epsilon\right) \leq 1
+\\]
+
+Taking the limit as $n \to \infty$, by the Squeeze Theorem,
+
+\\[
+\lim_{n \to \infty} P\left(|\bar{X}_n - \mu| &lt; \epsilon\right) = 1
+\\]
+
+There are more general versions of WLLN, where we need assume onlt that the mean is finite, not the variance.
+&lt;/details&gt;
+
+### Consistency of $S^2$ and $S$
+
+Using Chebyshev&apos;s inequality, we have:
+
+\\[
+P(\abs{S_n^2 - \sigma^2} \geq \epsilon) \leq \frac{\mathrm{Var}(S_n^2)}{\epsilon^2}
+\\]
+
+Therefore, the condition for $S_n^2$ to be a consistent estimator of $\sigma^2$ is that:
+
+\\[
+S_n^2 \xrightarrow{p} \sigma^2 \iff \lim_{n \to \infty} \mathrm{Var}(S_n^2) = 0
+\\]
+
+Now let&apos;s have a look for $S_n$. We have the following identity:
+
+\\[
+\mathrm{E}\[S_n] = \sqrt{\mathrm{E}\[S_n^2] - \mathrm{Var}(S_n)}
+\\]
+
+Therefore, in general, $S_n$ is a biased estimator of $\sigma$.
+However, if $\mathrm{Var}(S_n^2) \to 0$ as $n \to \infty$, then $\mathrm{Var}(S_n) \to 0$ as well, and $S_n$ is a consistent estimator of $\sigma$.
+This is also a consequence of the properties of limit of continuous functions, since $S_n = \sqrt{S_n^2}$.
+
+## Almost Sure Convergence
+
+A sequence of random variables $X_n$ **converges almost surely** (a.s.) or **with probability 1** to a random variable $X$
+if for every $\epsilon &gt; 0$,
+
+\\[
+P\left( \lim_{n \to \infty} |X_n - X| &lt; \epsilon \right) = 1
+\\]
+
+We denote this as
+
+\\[
+X_n \xrightarrow{\text{a.s.}} X
+\\]
+
+Almost sure convergence is a stronger condition than convergence in probability.
+
+* $X_n \xrightarrow{\text{a.s.}} X \implies X_n \xrightarrow{p} X$
+
+The following is a counterexample showing that the converse is not true.
+Consider the sequence of random variables defined on the interval $[0,1]$ by:
+
+\\[
+X_n(\omega) = \mathbf{1}_{\left\[ k/2^m, (k+1)/2^m \right)}(\omega)
+\\]
+
+where $n = 2^m + k$ with $0 \le k &lt; 2^m$ and $\omega \in [0,1]$.
+Then we can find that $X_n \xrightarrow{p} 0$ but $X_n \not\xrightarrow{\text{a.s.}} 0$.
+
+
+### Strong Law of Large Numbers (SLLN)
+
+The **Strong Law of Large Numbers** states that the sample mean converges almost surely to the population mean.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}\[X_i\] = \mu$ and $\mathrm{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}\_n = \frac{1}{n} \sum\_{i=1}^n X_i$.
+Then, for any $\epsilon &gt; 0$,
+
+\\[
+P\left( \lim_{n \to \infty} \abs{\bar{X}_n - \mu} &lt; \epsilon \right) = 1
+\\]
+
+that is $\bar{X}\_n \xrightarrow{\text{a.s.}} \mu$.
+The proof is more involved than that of WLLN, and we will not present it here.
+
+## Convergence in Distribution
+
+A sequence of random variables $X_n$ **converges in distribution** to a random variable $X$
+if for every point $x$ at which the cumulative distribution function (CDF) $F_X(x)$ is continuous,
+
+\\[
+\lim_{n \to \infty} F_{X_n}(x) = F_X(x)
+\\]
+
+We denote this as
+
+\\[
+X_n \xrightarrow{d} X
+\\]
+
+Convergence in distribution is a weaker condition than convergence in probability.
+
+* $X_n \xrightarrow{p} X \implies X_n \xrightarrow{d} X$
+* $X_n \xrightarrow{p} c \iff X_n \xrightarrow{d} c$ for a constant $c$
+
+## Continuous Mapping Theorem
+
+**Continuous mapping theorem** states that for a function $g$ with a set of discontinuities of measure zero,
+the following holds:
+
+\\[
+X_n \xrightarrow{d} X \implies g(X_n) \xrightarrow{d} g(X) \nl
+X_n \xrightarrow{p} X \implies g(X_n) \xrightarrow{p} g(X) \nl
+X_n \xrightarrow{\text{a.s.}} X \implies g(X_n) \xrightarrow{\text{a.s.}} g(X)
+\\]
+
+The proof is omitted here.
+
+## Central Limit Theorem (CLT)
+
+The **Central Limit Theorem** states that the standardized sample mean converges in distribution to a standard normal distribution.
+Let $X_1,\cdots$ be i.i.d. random variables with $\mathrm{E}\[X_i\] = \mu$ and $0 &lt; \text{Var}(X_i) = \sigma^2 &lt; \infty$.
+Define the sample mean as $\bar{X}\_n = \frac{1}{n} \sum\_{i=1}^n X_i$. Then,
+
+\\[
+\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1)
+\\]
+
+This means that any sample mean $\bar{X}\_n$ can be approximated by a normal distribution with mean $\mu$ and variance $\sigma^2/n$ when $n$ is large,
+regardless of the original distribution of $X_i$.
+
+### Proof
+
+We can prove CLT using characteristic functions.
+The characteristic function of $X$ is defined as:
+
+\\[
+\phi_X(t) = \mathrm{E}\[\exp(itX)\]
+\\]
+
+Let $Z_i = \frac{X_i - \mu}{\sigma}$, then $\mathrm{E}\[Z_i\] = 0$ and $\mathrm{Var}(Z_i) = 1$.
+
+\\[
+\begin{align\*}
+\phi_{\frac{\bar{X}\_n - \mu}{\sigma/\sqrt{n}}}(t) &amp;= \phi_{\frac{1}{\sqrt{n}} \sum_{i=1}^n Z_i}(t) \nl
+&amp;= \prod_{i=1}^n \phi_{Z_i}\left(\frac{t}{\sqrt{n}}\right) \nl
+&amp;= \left\[ \phi_Z\left(\frac{t}{\sqrt{n}}\right) \right\]^n
+\end{align\*}
+\\]
+
+Take logarithm on both sides and let $n \to \infty$. Using l&apos;Hôpital&apos;s rule, we have:
+
+\\[
+\begin{align\*}
+\lim_{n \to \infty} \ln \phi_{\frac{\bar{X}\_n - \mu}{\sigma/\sqrt{n}}}(t) &amp;= \lim_{n \to \infty} n \ln \phi_Z\left(\frac{t}{\sqrt{n}}\right) \nl
+&amp;= \lim_{h \to 0^+} \frac{\ln \phi_Z(th)}{h^2} \nl
+&amp;= \lim_{h \to 0^+} \frac{t \phi_Z^\prime(th)}{2h \phi_Z(th)} \nl
+&amp;= \frac{t}{2} \lim_{h \to 0^+} \frac{\phi_Z^\prime(th)}{h} \nl
+&amp;= \frac{t^2}{2} \lim_{h \to 0^+} \phi_Z^{\prime\prime}(th) \nl
+&amp;= \frac{t^2}{2} i^2 \mathrm{E}\[Z^2\] \nl
+&amp;= -\frac{t^2}{2} \left( \mathrm{Var}(Z) + \mathrm{E}\[Z\]^2 \right) \nl
+&amp;= -\frac{t^2}{2}
+\end{align\*}
+\\]
+
+which is valid since $\phi_Z(0) = 1$ and $\phi_Z^\prime(0) = i \mathrm{E}\[Z\] = 0$.
+Exponentiating both sides, we get:
+
+\\[
+\lim_{n \to \infty} \phi_{\frac{\bar{X}\_n - \mu}{\sigma/\sqrt{n}}}(t) = \exp\left(-\frac{t^2}{2}\right)
+\\]
+
+This is the characteristic function of the standard normal distribution $\mathcal{N}(0,1)$.
+By the property of characteristic functions, we conclude that:
+
+\\[
+\lim_{n \to \infty} F_{\frac{\bar{X}\_n - \mu}{\sigma/\sqrt{n}}}(x) = \Phi(x)
+\\]
+
+where $\Phi(x)$ is the CDF of $\mathcal{N}(0,1)$.
+This completes the proof.
+
+## Slutsky&apos;s Theorem
+
+If $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{p} a$ for some constant $a$, then:
+
+* $X_n + Y_n \xrightarrow{d} X + a$
+* $X_n Y_n \xrightarrow{d} aX$
+
+The proof is omitted here.
+
+## Delta Method
+
+The **Delta method** is a technique used to derive the asymptotic distribution of a function of an estimator.
+Let $X_n$ be a sequence of random variables such that:
+
+\\[
+\sqrt{n}(X_n - \theta) \xrightarrow{d} \mathcal{N}(0, \sigma^2)
+\\]
+
+For a function $g$ that is differentiable and $g^\prime(\theta) \neq 0$, we have:
+
+\\[
+\sqrt{n}\left\[g(X_n) - g(\theta)\right\] \xrightarrow{d} \mathcal{N}\left(0, \sigma^2 \left\[g^\prime(\theta)\right\]^2\right)
+\\]
+
+&lt;details markdown=&quot;1&quot;&gt;&lt;summary&gt;Proof&lt;/summary&gt;
+By Taylor&apos;s theorem, we have:
+
+\\[
+g(X_n) = g(\theta) + g^\prime(\tilde{\theta}_n)(X_n - \theta)
+\\]
+
+for some $\tilde{\theta}_n$ between $X_n$ and $\theta$.
+From the condition, we know that $X_n \xrightarrow{p} \theta$, yielding $\tilde{\theta}_n \xrightarrow{p} \theta$ as well.
+By the continuous mapping theorem, we have $g^\prime(\tilde{\theta}_n) \xrightarrow{p} g^\prime(\theta)$.
+The equation can be restated as:
+
+\\[
+\sqrt{n}\left\[g(X_n) - g(\theta)\right\] = g^\prime(\tilde{\theta}_n) \sqrt{n}(X_n - \theta)
+\\]
+
+By Slutsky&apos;s theorem, we conclude that:
+
+\\[
+\sqrt{n}\left\[g(X_n) - g(\theta)\right\] \xrightarrow{d} g^\prime(\theta) \, \mathcal{N}(0, \sigma^2) = \mathcal{N}\left(0, \sigma^2 \left\[g^\prime(\theta)\right\]^2\right)
+\\]
+&lt;/details&gt;
+
+### Second Order Delta Method
+
+If $g^\prime(\theta) = 0$ but $g^{\prime\prime}(\theta) \neq 0$, then we similarly have:
+
+\\[
+\sqrt{n}\left\[g(X_n) - g(\theta)\right\] \xrightarrow{d} \sigma^2 \frac{g^{\prime\prime}(\theta)}{2} \chi^2_1
+\\]
+
+### Multivariate Delta Method
+
+The multivariate version of the Delta method states that if $\b{X}_n$ is a sequence of random vectors such that:
+
+\\[
+\sqrt{n}(\b{X}_n - \bs{\theta}) \xrightarrow{d} \mathcal{N}(\b{0}, \bs{\Sigma})
+\\]
+
+Then for a function $g$ that is differentiable at $\bs{\theta}$, we have:
+
+\\[
+\sqrt{n}\left\[g(\b{X}_n) - g(\bs{\theta})\right\] \xrightarrow{d} \mathcal{N}\left(0, \grad g(\bs{\theta})^\top \cdot \bs{\Sigma} \cdot \grad g(\b{\theta})\right)
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="statistics" /><summary type="html"></summary></entry><entry><title type="html">Rotational Motions and Angular Quantities</title><link href="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html" rel="alternate" type="text/html" title="Rotational Motions and Angular Quantities" /><published>2025-09-12T00:00:00+09:00</published><updated>2025-09-12T00:00:00+09:00</updated><id>http://localhost:4000/physics/rotational-motions-and-angular-quantities</id><content type="html" xml:base="http://localhost:4000/physics/rotational-motions-and-angular-quantities.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="elementary-physics" /><summary type="html"></summary></entry></feed>

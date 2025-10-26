@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Gravity Waves"
-subtitle: "fl1.10"
-classification: "Fluid Mechanics 1.10"
+subtitle: "fl1.9"
+classification: "Fluid Mechanics 1.9"
 categories: physics
 tags: fluid-mechanics
 ---

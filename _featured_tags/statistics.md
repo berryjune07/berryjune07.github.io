@@ -10,5 +10,5 @@ description: >
 ---
 
 \\[ \Huge \fcolorbox{transparent}{transparent}{ $$ \dps
-\sqrt{n}\left(\bar{X}_n - \mu\right) \mathrel{\overset{d}{\longrightarrow}} \mathcal{N}\left(0,\sigma^2\right)
+\frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1)
 $$ }\\]

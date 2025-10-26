@@ -96,7 +96,7 @@ where $\mathbf{x}$ is a vector in $\mathbb{R}^n$, $\bs{\mu}$ is the mean vector,
 Then we write as:
 
 \\[
-\mathbf{X} \sim \mathcal{N}(\bs{\mu}, \Sigma)
+\mathbf{X} \sim \mathcal{N}(\bs{\mu}, \bs{\Sigma})
 \\]
 
 Let's check an important property of the multivariate normal distribution:

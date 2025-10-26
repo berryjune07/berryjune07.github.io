@@ -136,7 +136,7 @@ If the fluid is close to thermodynamically perfect gas, we can use the ideal gas
 \odv{p}{z} = -\frac{gM}{R T} p
 \\]
 
-where $R$ is the specific gas constant and $T$ is the temperature.
+where $R$ is the specific gas constant and $T$ is the temperature, and $M$ is the molar mass of the gas.
 Assuming $T$ is constant with depth, we can integrate this equation to find:
 
 \\[
