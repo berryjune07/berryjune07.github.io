@@ -48,10 +48,10 @@ This implies:
 
 where $f(t)$ is an arbitrary function of time.
 However, since potentials are not uniquely defined, we can absorb $f(t)$ into $\phi$ by redefining the potential, i.e. set $f(t) = 0$ without loss of generality.
-Thus, for irrotational and steady flow, Bernoulli's equation holds throughout the entire flow field, not just along streamlines:
+Thus, for irrotational flow, Bernoulli's equation holds throughout the entire flow field, not just along streamlines:
 
 \\[
-\frac{1}{2} v^2 + w + \Phi = \text{const.}
+\pdv{\phi}{t} + \frac{1}{2} v^2 + \varepsilon + \frac{p}{\rho} + \Phi = \text{const.}
 \\]
 
 Also, since the vorticity $\b{\omega} = \curl \b{v}$ is zero everywhere, the velocity circulation $\Gamma$ around any closed curve $C$ is zero.
@@ -211,6 +211,12 @@ This implies that the velocity potential $\phi$ satisfies Laplace's equation:
 
 For the flow to be irrotational and incompressible, we can use the results about Bernoulli's equation from both irrotational and incompressible flow sections.
 Thus, Bernoulli's equation written as follows holds throughout the entire flow field:
+
+\\[
+\pdv{\phi}{t} + \frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
+\\]
+
+For a steady flow, this reduces to:
 
 \\[
 p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
