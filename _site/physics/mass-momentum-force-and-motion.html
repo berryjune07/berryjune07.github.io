@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Mass, Momentum, Force and Motion | Jiho’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Mass, Momentum, Force and Motion">
+<meta name="author" content="Jiho Jun">
+<meta property="og:locale" content="en">
+<meta name="description" content="noting down my thoughts and experiences">
+<meta property="og:description" content="noting down my thoughts and experiences">
+<link rel="canonical" href="http://localhost:4000/physics/mass-momentum-force-and-motion.html">
+<meta property="og:url" content="http://localhost:4000/physics/mass-momentum-force-and-motion.html">
+<meta property="og:site_name" content="Jiho’s Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-02-07T00:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Mass, Momentum, Force and Motion">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2023-02-07T00:00:00+09:00","datePublished":"2023-02-07T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Mass, Momentum, Force and Motion","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/physics/mass-momentum-force-and-motion.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/physics/mass-momentum-force-and-motion.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="Development,C++,Rust,Jekyll">
+  
+
+
+
+  <meta name="theme-color" content="rgb(31,55,75)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jiho's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Jiho's Blog">
+
+<meta name="generator" content="Hydejack v9.1.6">
+
+
+
+<link rel="alternate" href="http://localhost:4000/physics/mass-momentum-force-and-motion.html" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
+
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+  <link rel="dns-prefetch" href="/assets/js/search-worker-9.1.6.js" as="worker" id="_hrefSearch">
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
+  <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+
+<!-- For sidebar folder -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+  <link rel="stylesheet" href="/assets/css/lightbox.css">
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-VMBTN8BX5P"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        gtag('js', new Date());
+        gtag('config', 'G-VMBTN8BX5P');
+    });
+</script>
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script"),e=(n.src=e,t&&a(n,"load",t,{once:!0}),c.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._advertise = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2025-11-12T04:09:41+09:00',
+  };
+}(window);</script>
+
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mathtex-script-type.min.js"></script>
+
+<script src="/assets/js/katex.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    render_KaTeX();
+  });
+</script>
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.6.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans+KR%7CJetBrains+Mono%7CNanum+Gothic+Coding&amp;display=swap" id="_fontsPreload">
+
+
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="no-break-layout no-large-headings">
+  
+<script>
+  window._sunrise = 6;
+  window._sunset =  18;
+  !function(e,s){var d="light-mode",o="dark-mode",a=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(a=a<=e._sunrise||a>=e._sunset?o:d)==o?d:o,s.body.classList.add(a),s.body.classList.remove(e))}(window,document);
+
+</script>
+
+
+
+<hy-push-state id="_pushState" replace-selector="#_main" link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)" script-selector="script" duration="500" hashchange>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden>
+
+  <main id="_main" class="content layout-post" role="main">
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/physics/">physics</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>mass-momentum-force-and-motion.html</span>
+        
+      </li>
+    
+  
+</ul></nav>
+
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-physics-mass-momentum-force-and-motion" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Mass, Momentum, Force and Motion
+        
+          <br>
+          <span style="font-size:1.5rem;font-style:italic;"> - Elementary Physics 4</span>
+        
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2023-02-07T00:00:00+09:00">07 Feb 2023</time> in <a href="/physics/" class="flip-title">Physics</a> on <a href="/tag-elementary-physics/" class="flip-title">Elementary Physics</a>
+      </span>
+      
+        
+      
+
+      <span class="additional-info" style="font-size:1rem">
+          <!--
+        <span class="page-pv">
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/physics/mass-momentum-force-and-motion.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+        </span>
+          -->
+        ·
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2480 words">
+  <i class="fa-regular fa-hourglass-half"></i>
+   41 min
+</span>
+
+      </span>
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#mass" id="markdown-toc-mass">Mass</a></li>
+  <li><a href="#momentum" id="markdown-toc-momentum">Momentum</a></li>
+  <li>
+<a href="#force" id="markdown-toc-force">Force</a>    <ul>
+      <li><a href="#free-body-diagram" id="markdown-toc-free-body-diagram">Free Body Diagram</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#newtons-laws-of-motion" id="markdown-toc-newtons-laws-of-motion">Newton’s Laws of Motion</a>    <ul>
+      <li><a href="#first-law-law-of-inertia" id="markdown-toc-first-law-law-of-inertia">First Law (Law of Inertia)</a></li>
+      <li><a href="#second-law-law-of-acceleration" id="markdown-toc-second-law-law-of-acceleration">Second Law (Law of Acceleration)</a></li>
+      <li><a href="#third-law-action-and-reaction" id="markdown-toc-third-law-action-and-reaction">Third Law (Action and Reaction)</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#particular-forces" id="markdown-toc-particular-forces">Particular Forces</a>    <ul>
+      <li><a href="#gravitational-force" id="markdown-toc-gravitational-force">Gravitational Force</a></li>
+      <li><a href="#normal-force" id="markdown-toc-normal-force">Normal Force</a></li>
+      <li><a href="#tension-force" id="markdown-toc-tension-force">Tension Force</a></li>
+      <li><a href="#elastic-force" id="markdown-toc-elastic-force">Elastic Force</a></li>
+      <li>
+<a href="#frictional-force" id="markdown-toc-frictional-force">Frictional Force</a>        <ul>
+          <li><a href="#block-on-a-ramp" id="markdown-toc-block-on-a-ramp">Block on a Ramp</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#drag-force" id="markdown-toc-drag-force">Drag Force</a>        <ul>
+          <li><a href="#stokes-drag" id="markdown-toc-stokes-drag">Stokes Drag</a></li>
+          <li><a href="#newton-drag" id="markdown-toc-newton-drag">Newton Drag</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="mass">Mass</h2>
+
+<p><strong>Mass</strong> is a scalar measure of the amount of matter in an object.
+It is a fundamental property of matter and is invariant under any change of frame of reference.
+Mass of an object is often denoted by the symbol $m$.
+SI unit of mass is the kilogram ($\mathrm{kg}$).</p>
+
+<h2 id="momentum">Momentum</h2>
+
+<p><strong>Momentum</strong> is a vector quantity defined as the product of an object’s mass and its velocity.
+The momentum $\b{p}$ of an object with mass $m$ and velocity $\b{v}$ is given by:</p>
+
+<p>\[
+\bs{p} = m \bs{v}
+\]</p>
+
+<p>SI unit of momentum is kilogram metre per second ($\mathrm{kg \cdot m/s}$).</p>
+
+<h2 id="force">Force</h2>
+
+<p><strong>Force</strong> is a vector quantity that represents the interaction between objects, causing them to accelerate.
+A force $\b{F}$ acting on an object with momentum $\b{p}$ is defined as the rate of change of momentum with respect to time:</p>
+
+<p>\[
+\b{F} = \odv{\b{p}}{t}
+\]</p>
+
+<p>SI unit of force is the newton ($\mathrm{N}$), which is defined as $\mathrm{N} = \mathrm{kg \cdot m/s^2}$.</p>
+
+<h3 id="free-body-diagram">Free Body Diagram</h3>
+
+<p>A <strong>free body diagram</strong> is a graphical representation used to visualize the forces acting on an object.
+It shows the object as a point and the forces acting on it as arrows pointing in the direction of the force.
+Let’s see the example later.</p>
+
+<h2 id="newtons-laws-of-motion">Newton’s Laws of Motion</h2>
+
+<p>Newton’s three laws of motion describe the relationship between the motion of an object and the forces acting on it.</p>
+
+<h3 id="first-law-law-of-inertia">First Law (Law of Inertia)</h3>
+
+<blockquote>
+  <p>Every object perseveres in its state of rest, or of uniform motion in a right line, unless it is compelled to change that state by forces impressed thereon.</p>
+</blockquote>
+
+<p>This implies that an <strong>inertial frame of reference</strong> is one in which Newton’s first law holds true,
+and a <strong>non-inertial frame of reference</strong> is one in which it does not.</p>
+
+<h3 id="second-law-law-of-acceleration">Second Law (Law of Acceleration)</h3>
+
+<blockquote>
+  <p>The change of motion of an object is proportional to the force impressed; and is made in the direction of the straight line in which the force is impressed.</p>
+</blockquote>
+
+<p>This law can be expressed mathematically as:</p>
+
+<p>\[
+\b{F} = \odv{\b{p}}{t} = m \odv{\b{v}}{t} = m \b{a}
+\]</p>
+
+<p>Here, $\b{F}$ is the <strong>net force</strong> acting on the object, the sum of all forces acting on it.</p>
+
+<h3 id="third-law-action-and-reaction">Third Law (Action and Reaction)</h3>
+
+<blockquote>
+  <p>To every action, there is always opposed an equal reaction; or, the mutual actions of two bodies upon each other are always equal, and directed to contrary parts.</p>
+</blockquote>
+
+<p>This law states that for every action force, there is an equal and opposite reaction force.</p>
+
+<p>\[
+\b{F}_{12} = -\b{F}_{21}
+\]</p>
+
+<p>where $\b{F}_{12}$ is the force applied to object 1 by object 2, and $\b{F}_{21}$ is the force applied to object 2 by object 1.</p>
+
+<h2 id="particular-forces">Particular Forces</h2>
+
+<h3 id="gravitational-force">Gravitational Force</h3>
+
+<p>The <strong>gravitational force</strong> at the surface of the Earth is given by:</p>
+
+<p>\[
+\b{F}_g = -m g \hat{\b{z}}
+\]</p>
+
+<p>where $g$ is the acceleration due to gravity (approximately $9.81 \, \text{m/s}^2$) and $\hat{\b{z}}$ is the unit vector in the vertical direction.
+A body in free fall or the motion of a projectile is subject to this force.
+Detailed discussions are <a href="/physics/space-and-time-and-motion.html#projectile-motion">here</a>.</p>
+
+<p>The <em>weight</em> of an object is the magnitude of the gravitational force acting on it.</p>
+
+<h3 id="normal-force">Normal Force</h3>
+
+<p>The <strong>normal force</strong> is the force exerted by a surface, perpendicular to the surface, that supports the external load on the object.</p>
+
+<p class="centered"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Incline.svg/1280px-Incline.svg.png" alt="Normal Force Diagram" width="50%"></p>
+<p class="figcaption">Normal force</p>
+
+<p>The magnitude of the normal force $\b{F}_N$ is often denoted as $N$.</p>
+
+<p>\[
+\b{F}_N = N \hat{\b{n}}
+\]</p>
+
+<p>where $\hat{\b{n}}$ is the unit vector normal to the surface.</p>
+
+<h3 id="tension-force">Tension Force</h3>
+
+<p>The <strong>tension force</strong> is the force transmitted through a string, rope, or cable when it is pulled tight by forces acting from opposite ends.
+Tension is always directed along the length of the string or rope and pulls equally on both ends.
+The magnitude of the tension force $\b{F}_T$ is often denoted as $T$.</p>
+
+<p>\[
+\b{F}_T = T \hat{\b{l}}
+\]</p>
+
+<p>where $\hat{\b{l}}$ is the unit vector in the direction of the string or rope.</p>
+
+<h3 id="elastic-force">Elastic Force</h3>
+
+<p>The <strong>elastic force</strong> is the restoring force exerted by a material when it is deformed (stretched or compressed) and tries to return to its original shape.
+The elastic force $\b{F}_e$ of an 1-dimensional elastic material is given by <strong>Hooke’s Law</strong>:</p>
+
+<p>\[
+\b{F}_e = -k \b{x}
+\]</p>
+
+<p>where $k$ is the spring constant (a measure of the stiffness of the material) and $\b{x}$ is the displacement vector from the equilibrium position.
+The negative sign indicates that the force acts in the opposite direction of the displacement.</p>
+
+<h3 id="frictional-force">Frictional Force</h3>
+
+<p>The <strong>frictional force</strong> or <strong>dry friction</strong> is the force that opposes the relative motion of two surfaces in contact.
+The magnitude of the frictional force $\b{F}_f$ is often denoted as $f$.</p>
+
+<p>\[
+\b{F}_f = -f\hat{\b{v}}
+\]</p>
+
+<p>where $\hat{\b{v}}$ is the unit vector in the direction of the relative motion between the surfaces.
+In microsopic terms, it is caused by the interactions between the microscopic irregularities of the surfaces in contact.
+Let’s take a look for the three laws of dry friction:</p>
+
+<ol>
+  <li>
+<strong>Amontons’ First Law</strong>: The force of friction is directly proportional to the applied load.</li>
+  <li>
+<strong>Amontons’ Second Law</strong>: The force of friction is independent of the apparent area of contact.</li>
+  <li>
+<strong>Coulomb’s Law of Friction</strong>: Kinetic friction is independent of the sliding velocity.</li>
+</ol>
+
+<p>By the laws of dry friction, we can model the frictional force as:</p>
+
+<p>\[
+f = \mu N
+\]</p>
+
+<p>where $\mu$ is the coefficient of friction and $N$ is the normal force between the surfaces.
+We can observe that the coefficient of friction is a dimensionless scalar quantity.
+See the graph below for the relationship between the frictional force and the external horizontal force applied to the object.</p>
+
+<p class="centered"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Friction_graph.svg/1280px-Friction_graph.svg.png" alt="Frictional Force Graph" width="60%"></p>
+<p class="figcaption">Relationship between frictional force and external horizontal force</p>
+
+<p>This is proven by numerous experiments, and it is a good approximation for many materials.
+Here, the normal force $N$ is assumed to be constant.
+By the graph, we can see that the frictional force is equal to the external horizontal force applied to the object until it reaches certain threshold.
+Until that threshold, the object is at rest since the net force acting on it is zero, so we call the friction at this state <strong>static friction</strong>.
+Upon reaching the threshold, the object starts to move, and the frictional force decreases to a constant value, which is called <strong>kinetic friction</strong>.</p>
+
+<p>\[
+f_s = \mu_s N \nl
+f_k = \mu_k N
+\]</p>
+
+<p>where $f_s$ is the static frictional force, $f_k$ is the kinetic frictional force, $\mu_s$ is the coefficient of static friction, and $\mu_k$ is the coefficient of kinetic friction.
+The coefficient of static friction represents the maximum static frictional force before the object starts to move, and is usually greater than the coefficient of kinetic friction.</p>
+
+<h4 id="block-on-a-ramp">Block on a Ramp</h4>
+
+<p>When a block is placed on a ramp, the frictional force can be analyzed in terms of the angle of the ramp and the normal force.
+Let’s see the free body diagram of a block on a ramp:</p>
+
+<p class="centered"><img src="https://homework.study.com/cimages/multimages/16/201909235906910577521937152.png" alt="Free Body Diagram of Block on Ramp"></p>
+<p class="figcaption">Free body diagram of a block on a ramp</p>
+
+<p>Let’s set the x-axis along the ramp and the y-axis perpendicular to the ramp.
+The forces acting on the block are the gravitational force, the normal force, and the frictional force.
+The gravitational force can be decomposed into two components: one parallel to the ramp and one perpendicular to the ramp.
+By the y-axis, the body will not move, so the net force in the y-direction is zero.</p>
+
+<p>\[
+\sum F_y = N - mg \cos \theta = 0 \implies N = mg \cos \theta
+\]</p>
+
+<p>The frictional force acts in the opposite direction of the component of the gravitational force parallel to the ramp.</p>
+
+<p>\[
+\sum F_x = mg \sin \theta - f
+\]</p>
+
+<p>Let’s seek for the condition for the block to be at rest.</p>
+
+<p>\[
+0 = mg \sin \theta - f \geq mg \sin \theta - \mu_s N \nl
+\mu_s mg \cos \theta \geq mg \sin \theta \nl
+\therefore \; \theta \leq \tan^{-1} \mu_s
+\]</p>
+
+<p>If the angle of the ramp $\theta$ is less than $\tan^{-1} \mu_s$, the block will not slide down the ramp.
+If not, the block will slide down the ramp, and the kinetic frictional force will act on the block.</p>
+
+<p>\[
+ma_x = mg \sin \theta - \mu_k N = mg \sin \theta - \mu_k mg \cos \theta \nl
+\therefore \; a_x = g (\sin \theta - \mu_k \cos \theta)
+\]</p>
+
+<p>The block will slide down the ramp with an constant acceleration $a_x$.</p>
+
+<h3 id="drag-force">Drag Force</h3>
+
+<p>The <strong>drag force</strong> is the resistance force experienced by an object moving through a fluid (liquid or gas).
+It acts in the opposite direction of the object’s velocity, and it makes the object reach a <strong>terminal velocity</strong> when the drag force equals the external force acting on the object.
+There are two main types of drag forces: <strong>Stokes drag</strong> and <strong>Newton drag</strong>.</p>
+
+<h4 id="stokes-drag">Stokes Drag</h4>
+
+<p><strong>Stokes drag</strong> is the drag force experienced by an object moving slowly through a viscous fluid.
+The Stokes drag force $\b{F}_d$ is given by:</p>
+
+<p>\[
+\b{F}_d = -k \b{v}
+\]</p>
+
+<p>where $k$ is the Stokes drag coefficient, and $\b{v}$ is the velocity vector of the object.
+Let’s solve the equation of motion for an object experiencing Stokes drag and gravity.</p>
+
+<p>\[
+m \odv{}{t}
+\begin{bmatrix}
+v_x \nl v_y
+\end{bmatrix} = \begin{bmatrix}
+-k v_x \nl -mg -k v_y
+\end{bmatrix}
+\]</p>
+
+<p>By substituting $\mu = k/m$, we can write the solution as:</p>
+
+<p>\[
+\begin{bmatrix}
+v_x \nl v_y
+\end{bmatrix} = \begin{bmatrix}
+v_{x0} e^{-\mu t} \nt
+-\dfrac{g}{\mu} + \left(v_{y0} + \dfrac{g}{\mu}\right) e^{-\mu t}
+\end{bmatrix}
+\]</p>
+
+<p>\[
+\begin{bmatrix}
+x \nl y
+\end{bmatrix} = \begin{bmatrix}
+\dfrac{v_{x0}}{\mu} \left(1 - e^{-\mu t}\right) \nt
+-\dfrac{g}{\mu}t + \dfrac{1}{\mu} \left(v_{y0} + \dfrac{g}{\mu}\right) \left(1 - e^{-\mu t}\right)
+\end{bmatrix}
+\]</p>
+
+<p>where $v_{x0}$ and $v_{y0}$ are the initial velocities in the x and y directions, respectively.
+The terminal velocity is:</p>
+
+<p>\[
+\b{v}_t = -\frac{g}{\mu} \hat{\b{y}}
+\]</p>
+
+<h4 id="newton-drag">Newton Drag</h4>
+
+<p><strong>Newton drag</strong> is the drag force experienced by an object moving at high speeds through a fluid.
+The Newton drag force $\b{F}_d$ is given by:</p>
+
+<p>\[
+\b{F}_d = -kv \b{v} = -k \b{v}^2 \hat{\b{v}}
+\]</p>
+
+<p>where $k$ is the drag coefficient. Unlike Stokes drag, the drag force is proportional to the square of the velocity.
+Let’s solve the equation of motion for an object experiencing Newton drag and gravity.</p>
+
+<p>\[
+m \odv{}{t}
+\begin{bmatrix}
+v_x \nl v_y
+\end{bmatrix} = \begin{bmatrix}
+-k v_x \sqrt{v_x^2 + v_y^2} \nl -mg -k v_y \sqrt{v_x^2 + v_y^2}
+\end{bmatrix}
+\]</p>
+
+<p>However, this equation is nonlinear and cannot be solved analytically.
+Instead, let’s solve for some special cases. We’ll use $\mu = k/m$ for simplicity.</p>
+
+<p>⁣1. Nearly horizontal motion</p>
+
+<p>Here we suppose that $v_x &gt; 0$.
+When the object is moving nearly horizontally, i.e. $\abs{v_x} \gg \abs{v_y}$, we can write the equation approximately as:</p>
+
+<p>\[
+\begin{align*}
+\odv{v_x}{t} &amp;= -\mu v_x^2 \nl
+\odv{v_y}{t} &amp;= -g - \mu v_x v_y
+\end{align*}
+\]</p>
+
+<p>The solution is:</p>
+
+<p>\[
+v_x = \frac{1}{1/v_{x0} + \mu t} \nt
+x = \frac{1}{\mu} \ln(1 + \mu v_{x0} t)
+\]</p>
+
+<p>However, this solution is only valid while $v_y$ is negligible compared to $v_x$,
+implying that for large $t$, the error in the solution will grow.
+Let’s keep solving the equation for $v_y$.</p>
+
+<p>\[
+\odv{v_y}{t} = -g - v_y \frac{\mu v_{x0}}{1 + \mu v_{x0} t}
+\]</p>
+
+<p>The solution is:</p>
+
+<p>\[
+v_y = \left(v_{y0} + \frac{g}{2\mu v_{x0}} \right) \frac{1}{1 + \mu v_{x0} t} - \frac{g}{2\mu v_{x0}} (1+ \mu v_{x0} t) \nt
+y = \frac{1}{\mu v_{x0}} \left( v_{y0} + \frac{g}{2\mu v_{x0}} \right) \ln(1 + \mu v_{x0} t) - \frac{g}{4\mu^2 v_{x0}} \left[ (1 + \mu v_{x0} t)^2 -1 \right]
+\]</p>
+
+<p>⁣2. Vertical motion upwards</p>
+
+<p>We can write the equation as:</p>
+
+<p>\[
+\odv{v_y}{t} = -g - \mu v_y^2
+\]</p>
+
+<p>The solution is:</p>
+
+<p>\[
+v_y = -\sqrt{\frac{g}{\mu}} \tan \left[ \sqrt{\mu g} t - \tan^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+y = \frac{1}{2\mu} \ln \left( 1 + \frac{\mu}{g} v_{y0}^2 \right) + \frac{1}{\mu} \ln \cos \left[ \sqrt{\mu g} t - \tan^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right]
+\]</p>
+
+<p>This solution is valid until the object reaches its maximum height, $t = \dfrac{1}{\sqrt{\mu g}} \tan^{-1} \sqrt{\dfrac{\mu}{g}} v_{y0}$.
+When $v_x$ is not zero but still $\abs{v_y} \gg \abs{v_x}$, we can write the equation approximately as:</p>
+
+<p>\[
+\begin{align*}
+\odv{v_x}{t} &amp;= -\mu v_x v_y \nl
+\odv{v_y}{t} &amp;= -g - \mu v_y^2
+\end{align*}
+\]</p>
+
+<p>Here, the equation for $v_y$ is still the same as above, so the equation for $v_x$ is:</p>
+
+<p>\[
+v_x = v_{x0} \, e^{-\mu y}
+\]</p>
+
+<p>The solution is:</p>
+
+<p>\[
+v_x = \frac{v_{x0}}{\sqrt{1 + \dfrac{\mu}{g} v_{y0}^2}} \sec \left[\sqrt{\mu g} t - \tan^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+x = \frac{v_{x0}}{\sqrt{ \mu g + \mu^2 v_{y0}^2 }} \ln \left\vert \frac{ \sec \left[\sqrt{\mu g} t - \tan^{-1} \left( \sqrt{\dfrac{\mu}{g}} v_{y0} \right) \right] + \tan \left[\sqrt{\mu g} t - \tan^{-1} \left( \sqrt{\dfrac{\mu}{g}} v_{y0} \right) \right] }{ \sqrt{\dfrac{\mu}{g}v_{y0}^2+1} - \sqrt{\dfrac{\mu}{g}} v_{y0} } \right\vert
+\]</p>
+
+<p>This solution is valid when $t \ll \dfrac{1}{\sqrt{\mu g}} \tan^{-1} \sqrt{\dfrac{\mu}{g}} v_{y0}$.</p>
+
+<p>⁣3. Vertical motion downwards</p>
+
+<p>We can write the equation as:</p>
+
+<p>\[
+\odv{v_y}{t} = -g + \mu v_y^2
+\]</p>
+
+<p>In this case, the object will eventually reach a terminal velocity, which is given by:</p>
+
+<p>\[
+\b{v}_t = -\sqrt{\frac{g}{\mu}} \hat{\b{y}}
+\]</p>
+
+<p>The solution is:</p>
+
+<ul>
+  <li>$\abs{v_{y0}} &lt; \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_y = -\sqrt{\frac{g}{\mu}} \tanh \left[ \sqrt{\mu g} t - \tanh^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+y = \frac{1}{2\mu} \ln \left( 1 - \frac{\mu}{g} v_{y0}^2 \right) - \frac{1}{\mu} \ln \cosh \left[ \sqrt{\mu g} t - \tanh^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right]
+\]</p>
+
+<ul>
+  <li>$\abs{v_{y0}} = \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_y = -\sqrt{\frac{g}{\mu}} \nt
+y = -\sqrt{\frac{g}{\mu}} t
+\]</p>
+
+<ul>
+  <li>$\abs{v_{y0}} &gt; \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_y = -\sqrt{\frac{g}{\mu}} \coth \left[ \sqrt{\mu g} t - \coth^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+y = \frac{1}{2\mu} \ln \left( \frac{\mu}{g} v_{y0}^2 - 1 \right) - \frac{1}{\mu} \ln \sinh \left[ \sqrt{\mu g} t - \coth^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right]
+\]</p>
+
+<p>When $v_x$ is not zero but still $\abs{v_y} \gg \abs{v_x}$, we can do the same thing as in the previous case.</p>
+
+<p>\[
+v_x = v_{x0} \, e^{\mu y}
+\]</p>
+
+<p>The solution is:</p>
+
+<ul>
+  <li>$\abs{v_{y0}} &lt; \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_x = \frac{v_{x0}}{\sqrt{1 - \dfrac{\mu}{g} v_{y0}^2}} \sech \left[\sqrt{\mu g} t - \tanh^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+x = \frac{v_{x0}}{\sqrt{ \mu g - \mu^2 v_{y0}^2 }}\Bigg[ \sin^{-1}\left(\sqrt{\frac{\mu}{g}}v_{y0}\right) +  \sin^{-1} \tanh \left[\sqrt{\mu g} t - \tanh^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \Bigg]
+\]</p>
+
+<ul>
+  <li>$\abs{v_{y0}} = \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_x = v_{x0} \, e^{-\sqrt{\mu g} t} \nt
+x = \frac{v_{x0}}{\sqrt{\mu g}} \left( 1 - e^{-\sqrt{\mu g} t} \right)
+\]</p>
+
+<ul>
+  <li>$\abs{v_{y0}} &gt; \abs{\b{v}_t}$</li>
+</ul>
+
+<p>\[
+v_x = \frac{v_{x0}}{\sqrt{\dfrac{\mu}{g} v_{y0}^2-1}} \csch \left[\sqrt{\mu g} t - \coth^{-1} \left( \sqrt{\frac{\mu}{g}} v_{y0} \right) \right] \nt
+x = \frac{v_{x0}}{\sqrt{ \mu^2 v_{y0}^2 - \mu g }} \ln \left\vert \frac{\coth\left[\sqrt{\mu g} t - \coth^{-1} \left( \sqrt{\dfrac{\mu}{g}} v_{y0} \right) \right] - \csch \left[\sqrt{\mu g} t - \coth^{-1} \left( \sqrt{\dfrac{\mu}{g}} v_{y0} \right) \right]}{ \sqrt{\dfrac{\mu}{g}}v_{y0} + \sqrt{\dfrac{\mu}{g} v_{y0}^2-1} } \right\vert
+\]</p>
+
+  
+</article>
+
+
+
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/physics/mass-momentum-force-and-motion.html">
+  </applause-button>
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img src="/assets/img/piano.png" alt="Jiho Jun" class="avatar" width="120" height="120" loading="lazy">
+
+  
+
+  
+  
+  <h2 class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>Hello. <br>
+Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
+
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/impulse-and-collision.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/impulse-and-collision.html" class="flip-title">Impulse and Collision</a>  </h3>      <a class="fill-card no-hover" href="/physics/impulse-and-collision.html" tabindex="-1"><span class="sr-only">Continue reading Impulse and Collision</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/work-and-energy-and-conservations.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/work-and-energy-and-conservations.html" class="flip-title">Work and Energy & Conservations</a>  </h3>      <a class="fill-card no-hover" href="/physics/work-and-energy-and-conservations.html" tabindex="-1"><span class="sr-only">Continue reading Work and Energy & Conservations</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/impulse-and-collision.html" class="flip-title">    <span>              [Elementary Physics 6]            Impulse and Collision    </span>  </a>      <time class="faded fine" datetime="2025-09-12T00:00:00+09:00">      12 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/impulse-and-collision.html"></span>  </li>          <li class="h4">  <a href="/physics/work-and-energy-and-conservations.html" class="flip-title">    <span>              [Elementary Physics 5]            Work and Energy &amp; Conservations    </span>  </a>      <time class="faded fine" datetime="2025-08-14T00:00:00+09:00">      14 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/work-and-energy-and-conservations.html"></span>  </li>          <li class="h4">  <a href="/physics/space-and-time-and-motion.html" class="flip-title">    <span>              [Elementary Physics 3]            Space and Time &amp; Motion of a Body    </span>  </a>      <time class="faded fine" datetime="2023-02-06T00:00:00+09:00">      06 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/space-and-time-and-motion.html"></span>  </li>          <li class="h4">  <a href="/physics/measurements-and-significant-figures.html" class="flip-title">    <span>              [Elementary Physics 2]            Measurements and Significant Figures    </span>  </a>      <time class="faded fine" datetime="2023-02-06T00:00:00+09:00">      06 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/measurements-and-significant-figures.html"></span>  </li>      </ul></aside>
+
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <!--
+    <script type="text/javascript">
+      $(function () {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark_dimmed";
+
+        let giscusAttributes = {
+          "src": "https://giscus.app/client.js",
+          "data-repo": "berryjune07/berryjune07.github.io",
+          "data-repo-id": "",
+          "data-category": "General",
+          "data-category-id": "",
+          "data-mapping": "pathname",
+          "data-strict": "0",
+          "data-reactions-enabled": "",
+          "data-emit-metadata": "0",
+          "data-input-position": "",
+          "data-theme": "light",
+          "data-lang": "en",
+          "data-loading": "lazy",
+          "crossorigin": "anonymous",
+          "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+          if (event.source === window && event.data &&
+                  event.data.direction === ModeToggle.ID) {
+            /* global theme mode changed */
+            const mode = event.data.message;
+            const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+            const message = {
+              setConfig: {
+                theme: theme
+              }
+            };
+            const giscus = document.querySelector(iframe).contentWindow;
+            giscus.postMessage({ giscus: message }, origin);
+          }
+        });
+      });
+    </script>
+    -->
+
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+  
+<footer class="content" role="contentinfo">
+  <hr>
+  
+    <p><small class="copyright">© 2023. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/licenses/">LICENSES</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/cookies-policy/">COOKIES POLICY</a>
+      
+    
+    </small></nav>
+  
+  
+  <hr class="sr-only">
+</footer>
+
+
+</main>
+
+  <hy-drawer id="_drawer" class="" side="left" threshold="10" noscroll>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg " style="background:center / cover url(/assets/img/note.jpg)"></div>
+
+    <div class="sidebar-sticky no-fouc">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/berry.jpg" class="avatar" alt="Jiho's Blog" width="120" height="120" loading="lazy">
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">Jiho's Blog</h2></a>
+    
+    
+      <p class="">
+        <em>Appassionato</em>
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/about/" class="sidebar-nav-item">About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-10">
+          
+          <div class="list-wrapper">
+            <a href="/mathematics/" class="sidebar-nav-item">Mathematics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(10)">
+                <label id="spread-icon-10" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-statistics/">Statistics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-number-theory/">Number Theory</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-linear-algebra/">Linear Algebra</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-calculus/">Calculus</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-topology/">Topology</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-differential-geometry/">Differential Geometry</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-11">
+          
+          <div class="list-wrapper">
+            <a href="/physics/" class="sidebar-nav-item">Physics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(11)">
+                <label id="spread-icon-11" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-electromagnetism/">Classical Electromagnetism</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-quantum-mechanics/">Quantum Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-fluid-mechanics/">Fluid Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-mechanics/">Classical Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-elementary-physics/">Elementary Physics</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-12">
+          
+          <div class="list-wrapper">
+            <a href="/computer-science/" class="sidebar-nav-item">Computer Science</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(12)">
+                <label id="spread-icon-12" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-problem-solving/">Problem Solving</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-algorithms/">Algorithms</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-artificial-intelligence/">Artificial Intelligence</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-13">
+          
+          <div class="list-wrapper">
+            <a href="/classical-music/" class="sidebar-nav-item">Classical Music</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(13)">
+                <label id="spread-icon-13" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-ravel/">Ravel</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-rachmaninoff/">Rachmaninoff</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/posts.html" class="sidebar-nav-item">Posts</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/tags/" class="sidebar-nav-item">Tags</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/gallery.html" class="sidebar-nav-item">Gallery</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/resume/" class="sidebar-nav-item">Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+
+  <!--
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false"/>
+  -->
+
+</div>
+
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden>
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+<script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+<script src="/assets/js/hydejack-9.1.6.js" type="module"></script>
+<script src="/assets/js/LEGACY-hydejack-9.1.6.js" nomodule defer></script>
+<script src="/assets/js/sidebar-folder.js"></script>
+<script src="/assets/js/clap-button.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+  <script src="/assets/js/lightbox.js"></script>
+
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  let config = {
+    startOnLoad: true,
+    fontFamily: "JetBrains Mono",
+    theme: "neutral"
+  };
+  mermaid.initialize(config);
+  mermaid.run({ querySelector: ".language-mermaid" });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      mermaid.run({ querySelector: ".language-mermaid" });
+    });
+</script>
+
+<script>
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-load", function () {
+      get_clap_count();
+      apply_lightbox();
+    });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      render_KaTeX();
+    });
+</script>
+
+
+  <script>!function(w, d) {
+    w.ga=w.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    /**/
+      if (navigator.CookiesOK) {
+        ga('create', 'G-VMBTN8BX5P', 'auto');
+      } else if (d.cookie.indexOf("hy--cookies-ok=true") > -1) {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none',
+          'clientId': localStorage ? localStorage.getItem('ga--client-id') : undefined
+        });
+      } else {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none'
+        });
+        ga('set', 'forceSSL', true);
+        ga('set', 'anonymizeIp', true);
+      }
+    /**/
+
+    var pushStateEl = d.getElementById('_pushState');
+    var timeoutId;
+    pushStateEl.addEventListener('hy-push-state-load', function() {
+      w.clearTimeout(timeoutId);
+      timeoutId = w.setTimeout(function() {
+        ga('set', 'page', w.location.pathname);
+        ga('send', 'pageview');
+      }, 500);
+    });
+
+    d.addEventListener('hy--cookies-ok', function () {
+      w.ga(function(tracker) {
+        w.ga("set", "anonymizeIp", undefined);
+        localStorage && localStorage.setItem("ga--client-id", tracker.get("clientId"));
+      });
+    });
+
+    w.loadJSDeferred('https://www.google-analytics.com/analytics.js');
+  }(window, document);</script>
+
+
+<script type="module">
+  if ('serviceWorker' in navigator) {
+    /**/
+    navigator.serviceWorker.getRegistration()
+      .then(r => r.unregister())
+      .catch(() => {});
+    /**/
+  }
+</script>
+<!--<![endif]-->
+
+  
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_cookies-banner-template">
+  <div id="_cookies-banner" class="navbar fixed-bottom CookiesOK">
+    <div class="content">
+      <div class="nav-btn-bar">
+        <small class="faded">
+          <span>This site uses cookies. <a href="/cookies-policy/">Cookies Policy</a>.
+</span>
+          <button id="_cookies-ok" class="btn btn-primary btn-sm">Okay</button>
+        </small>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover">
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+  
+    <template id="_search-template">
+  <button id="_search" class="nav-btn no-hover">
+    <label class="sr-only" for="_search-input">Search</label>
+    <span class="icon-search"></span>
+  </button>
+  <div id="_search-box">
+    <div class="nav-btn">
+      <span class="icon-search"></span>
+    </div>
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <button type="reset" class="nav-btn no-hover">
+      <span class="sr-only">Close</span>
+      <span class="icon-cross"></span>
+    </button>
+  </div>
+  <div id="_hits"></div>
+</template>
+
+  
+</div>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-72805aa7-c85a-4e3d-ac49-24dba36d6185" data-elfsight-app-lazy></div>
+</body>
+</html>

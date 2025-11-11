@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-11-12T04:09:41+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Mertens Trick</title><link href="http://localhost:4000/computer-science/mertens-trick.html" rel="alternate" type="text/html" title="Mertens Trick" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mertens-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/mertens-trick.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 32240] 비로소 서로소</title><link href="http://localhost:4000/computer-science/boj32240.html" rel="alternate" type="text/html" title="[BOJ 32240] 비로소 서로소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj32240</id><content type="html" xml:base="http://localhost:4000/computer-science/boj32240.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/32240&quot;&gt;https://www.acmicpc.net/problem/32240&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#solution&quot; id=&quot;markdown-toc-solution&quot;&gt;Solution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#optimization&quot; id=&quot;markdown-toc-optimization&quot;&gt;Optimization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;
+
+&lt;p&gt;Compute:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) [\gcd(i,j) = 1]
+\]&lt;/p&gt;
+
+&lt;p&gt;for given integer $N$.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Computing directly would take more than $O(N^2)$ time, which is too slow for large $N$.
+Instead, we transform the sum as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+&amp;amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) [\gcd(i,j) = 1] \nl
+=&amp;amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d | \gcd(i,j)} \mu(d)
+= \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d=1}^{\min(i,j)} \mu(d) [d | i] [d | j] \nl
+=&amp;amp; \sum_{d=1}^{N} \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (di + dj)
+= \sum_{d=1}^{N} d \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (i + j) \nl
+=&amp;amp; \sum_{d=1}^{N} d \mu(d) \left\lfloor \frac{N}{d} \right\rfloor^2 \left( \left\lfloor \frac{N}{d} \right\rfloor + 1 \right)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Computing this transformed sum takes $O(N \log \log N)$ time to precompute the Möbius function values and $O(N)$ time to
+compute the final sum. However, this is not enough for the given constraints.&lt;/p&gt;
+
+&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+
+&lt;p&gt;Let’s optimize the summation by grouping terms with the same value of $\left\lfloor \frac{N}{d} \right\rfloor$.
+Denote $d_0 = 1$ and $a_i = \left\lfloor \frac{N}{d_i} \right\rfloor$.&lt;/p&gt;
+
+&lt;p&gt;\[
+d_{i+1} = \left\lfloor \frac{N}{a_i} \right\rfloor + 1
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, we can rewrite the sum as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i:d_i \le N} \left( \sum_{j=d_i}^{d_{i+1}-1} d \mu(d) \right) a_i^2 (a_i + 1)
+\]&lt;/p&gt;
+
+&lt;p&gt;This reduces the number of terms in the summation to $O(\sqrt{N})$.
+Next, we have to efficiently compute the inner sum $\sum_{j=d_i}^{d_{i+1}-1} d \mu(d)$.
+Precomputing $\mu(d)$ naively takes $O(N \log \log N)$ time, which is still too slow.
+Instead, we can use the &lt;a href=&quot;/computer-science/mertens-trick.html&quot;&gt;&lt;strong&gt;Mertens trick&lt;/strong&gt;&lt;/a&gt; to compute the inner sum in $O\left(N^{2/3}\right)$ time.
+Let $f(n) = n \mu(n)$ and we should compute $S_f(n)$ quickly.
+We should find a function $g(n)$ such that $S_g(n)$ and $S_{f * g}(n)$ can be computed in almost $O(1)$ time.
+We can choose $g = \text{Id}$, so that $f * g = \varepsilon$.
+Then, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+S_f(n) &amp;amp;= \frac{1}{g(1)} \left( S_{f * g}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_g(d_{i+1}-1) - S_g(d_i-1) \right) \right) \nl
+&amp;amp;= 1 - \sum_{i:2\le d_i \le n} S_f\left( a_i \right)
+\frac{(d_{i+1}-1)d_{i+1}-d_i(d_i-1)}{2}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Using memoization, we can compute $S_f(n)$ in $O\left(N^{2/3}\right)$ time.
+The final sum is written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i:d_i \le N} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) a_i^2 (a_i + 1)
+\]&lt;/p&gt;
+
+&lt;p&gt;The overall time complexity is $O\left(N^{2/3}+\sqrt{N}\right)=O\left(N^{2/3}\right)$, which is efficient enough for the given constraints.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/32240</summary></entry><entry><title type="html">[BOJ 19549] 레이저 연구소</title><link href="http://localhost:4000/computer-science/boj19549.html" rel="alternate" type="text/html" title="[BOJ 19549] 레이저 연구소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj19549</id><content type="html" xml:base="http://localhost:4000/computer-science/boj19549.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/19549&quot;&gt;https://www.acmicpc.net/problem/19549&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/19549</summary></entry><entry><title type="html">[BOJ 16164] Möbius Madness</title><link href="http://localhost:4000/computer-science/boj16164.html" rel="alternate" type="text/html" title="[BOJ 16164] Möbius Madness" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj16164</id><content type="html" xml:base="http://localhost:4000/computer-science/boj16164.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/16164&quot;&gt;https://www.acmicpc.net/problem/16164&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#solution&quot; id=&quot;markdown-toc-solution&quot;&gt;Solution&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;
+
+&lt;p&gt;Compute:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{d=1}^{N} \mu(Ld) \left\lfloor \frac{N}{d} \right\rfloor^{K}
+\]&lt;/p&gt;
+
+&lt;p&gt;for given integers $N$, $K$, and $L$.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;First, we observe that if $\mu(L) = 0$, the entire sum becomes zero.
+Thus, we only need to consider the case where $\mu(L) \neq 0$.
+In this case, we can factor out $\mu(L)$ from the sum:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mu(L) \sum_{d=1}^{N} \frac{\mu(Ld)}{\mu(L)} \left\lfloor \frac{N}{d} \right\rfloor^{K}
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s denote as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mu_L(d) = \frac{\mu(Ld)}{\mu(L)} = \mu(d) [ \gcd(d, L) = 1 ]
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, our task reduces to computing:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mu(L) \sum_{i:d_i \le N} \left( S_{\mu_L}(d_{i+1}-1) - S_{\mu_L}(d_i - 1) \right) a_i^{K}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $d_0 = 1$, $a_i = \left\lfloor \frac{N}{d_i} \right\rfloor$, and $d_{i+1} = \left\lfloor \frac{N}{a_i} \right\rfloor + 1$.
+To compute this efficiently, we need to find a way to compute $S_{\mu_L}(n) = \sum_{i=1}^{n} \mu_L(i)$ quickly.
+Let’s use the &lt;a href=&quot;/computer-science/mertens-trick.html&quot;&gt;&lt;strong&gt;Mertens trick&lt;/strong&gt;&lt;/a&gt;.
+We can verify that $\mu_L(d)$ is a multiplicative function.
+Specifically, for a prime $p$:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If $p | L$, then $\mu_L(p) = 0$.&lt;/li&gt;
+  &lt;li&gt;If $p \nmid L$, then $\mu_L(p) = -1$&lt;/li&gt;
+  &lt;li&gt;$\mu_L(1) = 1$&lt;/li&gt;
+  &lt;li&gt;$\mu_L(p^k) = 0$ for $k \ge 2$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Remining that $\mu_L * 1$ is also multiplicative, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+(\mu_L * 1)(n) = \prod_{p^k | n} (1 + \mu_L(p))
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s denote $P(n) = \Set{p \in \mathbb{P} | p | n}$.
+Then, we can express $(\mu_L * 1)(n)$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+(\mu_L * 1)(n) = [ P(n) \subseteq P(L) ]
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus, the recursion for $S_{\mu_L}(n)$ becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+S_{\mu_L}(n) &amp;amp;= \frac{1}{1(1)} \left( S_{\mu_L * 1}(n) - \sum_{i:2\le d_i \le n} S_{\mu_L}(a_i) \left( S_1(d_{i+1}-1) - S_1(d_i-1) \right) \right) \nl
+&amp;amp;= S_{\mu_L * 1}(n) - \sum_{i:2\le d_i \le n} S_{\mu_L}(a_i) \left( d_{i+1}-d_i \right)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;We need to compute $S_{\mu_L * 1}(n)$ efficiently.&lt;/p&gt;
+
+&lt;p&gt;\[
+S_{\mu_L * 1}(n) = \sum_{i=1}^{n} [ P(i) \subseteq P(L) ]
+\]&lt;/p&gt;
+
+&lt;p&gt;which counts the integers up to $n$ whose prime factors are all in $P(L)$.
+We can compute this using a depth-first search (DFS) approach.
+Starting from 1, we can multiply by each prime in $P(L)$ and generate all valid integers up to $n$.&lt;/p&gt;
+
+&lt;p&gt;\[
+V = \Set{ n \le N | P(n) \subseteq P(L) }
+\]&lt;/p&gt;
+
+&lt;p&gt;After generating these integers, counting integers less than or equal to $n$ can be done using binary search.
+Here, we can estimate as $|V| = O\left((\log N)^{c}\right)$ for some small constant $c$.
+Computing $S_{\mu_L * 1}$ at each step takes $O(\log |V|) = O(\log \log N)$ time due to binary search.
+Precomputing $S_{\mu_L}(n)$ up to $M$ takes $O(M \log \log M)$ time.
+Thus, the overall time complexity for computing $S_{\mu_L}(N)$ becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( M \log \log M + \frac{2N}{\sqrt{M}} + \frac{N}{M} \log \log N \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Choosing $M \approx N^{2/3}$ balances the terms, leading to an optimized complexity of:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( N^{2/3} \log \log N \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;Factorizing $L$ requires $O(L^{1/4})$ time using Pollard’s rho algorithm.
+Conducting the DFS takes $O(|V| \cdot |P(L)|) &amp;lt; O\left((\log N)^{c} \log L\right)$ time.
+Calculating the final sum takes $O(\sqrt{N} \log K)$ time.
+Thus, the overall time complexity is:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( N^{2/3} \log \log N + L^{1/4} + (\log N)^c \log L + \sqrt{N} \log K \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;which is efficient enough for the given constraints.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/16164</summary></entry><entry><title type="html">[BOJ 1792] 공약수</title><link href="http://localhost:4000/computer-science/boj1792.html" rel="alternate" type="text/html" title="[BOJ 1792] 공약수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1792</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1792.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/1792&quot;&gt;https://www.acmicpc.net/problem/1792&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#solution&quot; id=&quot;markdown-toc-solution&quot;&gt;Solution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#optimization&quot; id=&quot;markdown-toc-optimization&quot;&gt;Optimization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;
+
+&lt;p&gt;Compute:&lt;/p&gt;
+
+&lt;p&gt;\[
+\abs{ \Set{ (x,y) | 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } }
+\]&lt;/p&gt;
+
+&lt;p&gt;for $N$ queries $(a,b,c)$.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;\[
+\Set{ (x,y) | 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } \nl
+= \Set{ (x^\prime, y^\prime) | 1 \leq x^\prime \leq \left\lfloor a/c \right\rfloor, \; 1 \leq y^\prime \leq \left\lfloor b/c \right\rfloor, \; \gcd(x^\prime,y^\prime) = 1 }
+\]&lt;/p&gt;
+
+&lt;p&gt;Denote $A = \left\lfloor a/c \right\rfloor$ and $B = \left\lfloor b/c \right\rfloor$.&lt;/p&gt;
+
+&lt;p&gt;Since $\sum_{d | n} \mu(d) = [n = 1]$, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{d | \gcd(x^\prime,y^\prime)} \mu(d) = [\gcd(x^\prime,y^\prime) = 1]
+\]&lt;/p&gt;
+
+&lt;p&gt;Thus:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+&amp;amp; \abs{ \Set{ (x^\prime, y^\prime) | 1 \leq x^\prime \leq A, \; 1 \leq y^\prime \leq B, \; \gcd(x^\prime,y^\prime) = 1 } } \nl
+= &amp;amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} [\gcd(x^\prime,y^\prime) = 1]
+= \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d | \gcd(x^\prime,y^\prime)} \mu(d) \nl
+= &amp;amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \ge 1} \mu(d) [d | x^\prime ] [d | y^\prime ] \nl
+= &amp;amp; \sum_{d \ge 1} \mu(d) \sum_{x^\prime=1}^{A} [d | x^\prime] \sum_{y^\prime=1}^{B} [d | y^\prime ]
+= \sum_{d \ge 1} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor \nl
+= &amp;amp; \sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Therefore, the answer for each query is:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;optimization&quot;&gt;Optimization&lt;/h2&gt;
+
+&lt;p&gt;Precomputing the Mobius function up to $\text{MAX}$ can be done in $O(\text{MAX} \log \log \text{MAX})$ time using a sieve method.
+If we compute each query naively, the time complexity is:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( N \min(A,B) \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;and this is too slow. To optimize, we can group the terms with the same value of $\left\lfloor A/d \right\rfloor$ and $\left\lfloor B/d \right\rfloor$.
+Let $p(d) = \left\lfloor A/d \right\rfloor$ and $q(d) = \left\lfloor B/d \right\rfloor$.
+Denote $d_0 = 1$ and let $d_1, \ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.
+Relation between $d_i$ and $d_{i+1}$ is:&lt;/p&gt;
+
+&lt;p&gt;\[
+d_{i+1} = \min\left( \left\lfloor \frac{A}{p(d_i)} \right\rfloor, \; \left\lfloor \frac{B}{q(d_i)} \right\rfloor \right) + 1
+\]&lt;/p&gt;
+
+&lt;p&gt;If we denote $M(n) = \sum_{k=1}^{n} \mu(k)$, then the answer can be computed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i: d_i \leq \min(A,B)} \left( M(d_{i+1}-1) - M(d_i-1) \right) p(d_i) q(d_i)
+\]&lt;/p&gt;
+
+&lt;p&gt;The complexity of this approach is:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( N \sqrt{\min(A,B)} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;This is efficient enough for the given constraints.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1792</summary></entry><entry><title type="html">[BOJ 13714] 약수의 개수</title><link href="http://localhost:4000/computer-science/boj13714.html" rel="alternate" type="text/html" title="[BOJ 13714] 약수의 개수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj13714</id><content type="html" xml:base="http://localhost:4000/computer-science/boj13714.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/13714&quot;&gt;https://www.acmicpc.net/problem/13714&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#solution&quot; id=&quot;markdown-toc-solution&quot;&gt;Solution&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;
+
+&lt;p&gt;Compute:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk)
+\]&lt;/p&gt;
+
+&lt;p&gt;for given integers $a$, $b$, and $c$, where $\tau(n)$ is the number of divisors of $n$.&lt;/p&gt;
+
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Computing directly is inefficient.
+Instead, we observe that:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) = 
+\sum_{m=1}^{ab} \abs{ \Set{ (i,j) | 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } }
+\sum_{k=1}^{c} \tau(mk)
+\]&lt;/p&gt;
+
+&lt;p&gt;Denote:&lt;/p&gt;
+
+&lt;p&gt;\[
+f(m) = \abs{ \Set{ (i,j) | 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } } \nl
+S(m) = \sum_{k=1}^{c} \tau(mk)
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) = 
+\sum_{m=1}^{ab} f(m) S(m)
+\]&lt;/p&gt;
+
+&lt;p&gt;Computing $f(m)$ up to $ab$ can be done naively in $O(ab)$ time.
+Let’s focus on computing $S(m)$ efficiently.&lt;/p&gt;
+
+&lt;p&gt;\[
+S(m) = \sum_{k=1}^{c} \sum_{t | mk} 1 = \sum_{t=1}^{mc} \abs{ \Set{ k | 1 \leq k \leq c, \; t | mk } }
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s denote $u=\gcd(t,m)$ and $t=us, m=uq$.
+Then, $t | mk$ is equivalent to $s | k$.
+Thus, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\abs{ \Set{ k | 1 \leq k \leq c, \; t | mk } } =
+\abs{ \Set{ k | 1 \leq k \leq c, \; s | k } } = \left\lfloor \frac{c}{s} \right\rfloor
+\]&lt;/p&gt;
+
+&lt;p&gt;Therefore, we can rewrite $S(m)$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+S(m) = \sum_{q | m} \sum_{\substack{1 \leq s \leq c \nl \gcd(s,q) = 1}} \left\lfloor \frac{c}{s} \right\rfloor
+\]&lt;/p&gt;
+
+&lt;p&gt;Let’s denote:&lt;/p&gt;
+
+&lt;p&gt;\[
+G(q) = \sum_{\substack{1 \leq s \leq c \nl \gcd(s,q) = 1}} \left\lfloor \frac{c}{s} \right\rfloor
+\]&lt;/p&gt;
+
+&lt;p&gt;Then, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+S(m) = \sum_{q | m} G(q)
+\]&lt;/p&gt;
+
+&lt;p&gt;Now we need to compute $G(q)$ efficiently. Using the property of the Mobius function, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+G(q) &amp;amp;= \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor [\gcd(s,q) = 1] \nl
+&amp;amp;= \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor \sum_{d | \gcd(s,q)} \mu(d) \nl
+&amp;amp;= \sum_{d | q} \mu(d) \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor [d | s] \nl
+&amp;amp;= \sum_{d | q} \mu(d) \sum_{s^\prime=1}^{\left\lfloor c/d \right\rfloor} \left\lfloor \frac{c}{d s^\prime} \right\rfloor
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The inner sum only depends on $d$, so let’s denote it as $A(d)$.
+Summarizing, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+f(m) &amp;amp;= \abs{ \Set{ (i,j) | 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } } \nl
+A(d) &amp;amp;= \sum_{s^\prime=1}^{\left\lfloor c/d \right\rfloor} \left\lfloor \frac{c}{d s^\prime} \right\rfloor \nl
+G(q) &amp;amp;= \sum_{d | q} \mu(d) A(d) \nl
+S(m) &amp;amp;= \sum_{q | m} G(q) \nl
+\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) &amp;amp;= 
+\sum_{m=1}^{ab} f(m) S(m)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
+
+&lt;p&gt;Precomputing the Mobius function up to $ab$ can be done in $O(ab \log \log ab)$ time using a sieve method.
+Computing $f(m)$ up to $ab$ takes $O(ab)$ time.
+Computing $A(d)$ up to $c$ takes $O(c \log c)$ time.
+Computing $G(q)$ up to $ab$ takes $O(ab \log c)$ time.
+Computing $S(m)$ up to $ab$ takes $O(ab \log ab)$ time.
+Finally, computing the final sum takes $O(ab)$ time.
+Constraints are given as $1 \leq a, b, c \leq N$.
+Thus, the overall time complexity is:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( N^2 \log N \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;This is efficient enough for the given constraints.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/13714</summary></entry><entry><title type="html">Internal Waves in an Incompressible Fluid</title><link href="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Internal Waves in an Incompressible Fluid" /><published>2025-10-26T00:00:00+09:00</published><updated>2025-10-26T00:00:00+09:00</updated><id>http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Gravity Waves</title><link href="http://localhost:4000/physics/gravity-waves.html" rel="alternate" type="text/html" title="Gravity Waves" /><published>2025-09-17T00:00:00+09:00</published><updated>2025-09-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/gravity-waves.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The free surface of a liquid in equilibrium in a gravitational field is horizontal.
+If, under the action of external perturbation, the surface is displaced from its equilibrium position, and this motion will be propagated as waves on the surface of the liquid.
+&lt;strong&gt;Gravity waves&lt;/strong&gt; are waves that occur on the surface of a fluid, such as water, where the restoring force is gravity.
+These waves are commonly observed in oceans, lakes, and other bodies of water.
+Gravity waves appear mainly on the surface of liquids; they affect the interior also but to a much smaller extent.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Irrotational and Incompressible Flow</title><link href="http://localhost:4000/physics/irrotational-and-incompressible-flow.html" rel="alternate" type="text/html" title="Irrotational and Incompressible Flow" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/irrotational-and-incompressible-flow</id><content type="html" xml:base="http://localhost:4000/physics/irrotational-and-incompressible-flow.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#irrotational-flow&quot; id=&quot;markdown-toc-irrotational-flow&quot;&gt;Irrotational Flow&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties&quot; id=&quot;markdown-toc-properties&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#examples&quot; id=&quot;markdown-toc-examples&quot;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#incompressible-flow&quot; id=&quot;markdown-toc-incompressible-flow&quot;&gt;Incompressible Flow&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties-1&quot; id=&quot;markdown-toc-properties-1&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#two-dimensional-incompressible-flow&quot; id=&quot;markdown-toc-two-dimensional-incompressible-flow&quot;&gt;Two-Dimensional Incompressible Flow&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#examples-1&quot; id=&quot;markdown-toc-examples-1&quot;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#irrotational-and-incompressible-flow&quot; id=&quot;markdown-toc-irrotational-and-incompressible-flow&quot;&gt;Irrotational and Incompressible Flow&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#properties-2&quot; id=&quot;markdown-toc-properties-2&quot;&gt;Properties&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#two-dimensional-irrotational-and-incompressible-flow&quot; id=&quot;markdown-toc-two-dimensional-irrotational-and-incompressible-flow&quot;&gt;Two-Dimensional Irrotational and Incompressible Flow&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;irrotational-flow&quot;&gt;Irrotational Flow&lt;/h2&gt;
+
+&lt;p&gt;A flow is said to be &lt;strong&gt;irrotational&lt;/strong&gt; if the curl of the velocity field is zero everywhere:&lt;/p&gt;
+
+&lt;p&gt;\[
+\nabla \times \mathbf{v} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This implies that there is no local rotation of fluid elements in the flow.
+It is also called a &lt;strong&gt;potential flow&lt;/strong&gt; because the velocity field can be expressed as the gradient of a scalar &lt;strong&gt;velocity potential&lt;/strong&gt; function $\phi$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{v} = \nabla \phi
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;properties&quot;&gt;Properties&lt;/h3&gt;
+
+&lt;p&gt;Writing Euler’s equation as &lt;a href=&quot;bernoullis-equation.html#bernoullis-equation&quot;&gt;here&lt;/a&gt;,&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + w + \Phi\right)
+\]&lt;/p&gt;
+
+&lt;p&gt;and substituting $\b{v} = \grad \phi$ gives:&lt;/p&gt;
+
+&lt;p&gt;\[
+\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi \right) = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This implies:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi = f(t)
+\]&lt;/p&gt;
+
+&lt;p&gt;where $f(t)$ is an arbitrary function of time.
+However, since potentials are not uniquely defined, we can absorb $f(t)$ into $\phi$ by redefining the potential, i.e. set $f(t) = 0$ without loss of generality.
+Thus, for irrotational flow, Bernoulli’s equation holds throughout the entire flow field, not just along streamlines:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\phi}{t} + \frac{1}{2} v^2 + \varepsilon + \frac{p}{\rho} + \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;Also, since the vorticity $\b{\omega} = \curl \b{v}$ is zero everywhere, the velocity circulation $\Gamma$ around any closed curve $C$ is zero.&lt;/p&gt;
+
+&lt;h3 id=&quot;examples&quot;&gt;Examples&lt;/h3&gt;
+
+&lt;p&gt;For a steady flow, the velocity field is constant in space at infinity, so that the curl is zero.
+A steady flow past any object is irrotational outside the boundary layer, where viscous effects are negligible.
+Another important case of potential flow occurs for small oscillations of a body immersed in fluid.
+If the amplitude $a$ of the oscillations is small compared to the characteristic length $l$ of the body, i.e. $a \ll l$, the flow can be treated as irrotational.&lt;/p&gt;
+
+&lt;details&gt;
+  &lt;summary&gt; Proof &lt;/summary&gt;
+  &lt;p&gt;Let’s estimate the order of magnitude of terms in Euler’s equation.&lt;/p&gt;
+
+  &lt;p&gt;\[
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (w + \Phi)
+\]&lt;/p&gt;
+
+  &lt;p&gt;The velocity changes markedly (by an amount of the same order as $u$, the velocity of the oscillating body)
+over a distance of order $l$ and a time of order $1/\omega$, where $\omega$ is the angular frequency of oscillation.
+Thus, we can estimate:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\pdv{\b{v}}{t} \sim \omega u, \quad (\b{v} \cdot \grad) \b{v} \sim \frac{u^2}{l}
+\]&lt;/p&gt;
+
+  &lt;p&gt;Since $\omega \sim u/a$, we have:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\frac{(\b{v} \cdot \grad) \b{v}}{\pdv{\b{v}}{t}} \sim \frac{u^2/l}{\omega u} \sim \frac{a}{l} \ll 1
+\]&lt;/p&gt;
+
+  &lt;p&gt;Therefore, the nonlinear term $(\b{v} \cdot \grad) \b{v}$ can be neglected compared to the unsteady term $\pdv{\b{v}}{t}$.
+Thus, taking the curl of both sides gives:&lt;/p&gt;
+
+  &lt;p&gt;\[
+\pdv{(\curl \b{v})}{t} = 0
+\]&lt;/p&gt;
+
+  &lt;p&gt;This implies $\curl \b{v} = \text{const.}$
+In oscillatory motion, the time-averaged velocity is zero, so the constant must be zero.
+Hence, the flow is irrotational.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&quot;incompressible-flow&quot;&gt;Incompressible Flow&lt;/h2&gt;
+
+&lt;p&gt;A flow is said to be &lt;strong&gt;incompressible&lt;/strong&gt; if the density $\rho$ of the fluid remains constant along fluid particle trajectories.
+Mathematically, this is expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\rho}{t} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Reminding the &lt;a href=&quot;eulers-equation-and-hydrostatics.html#eulers-equation&quot;&gt;Euler’s equation&lt;/a&gt;,
+it can be shown that incompressibility is equivalent to the zero divergence of the velocity field:&lt;/p&gt;
+
+&lt;p&gt;\[
+\div \b{v} = 0
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;properties-1&quot;&gt;Properties&lt;/h3&gt;
+
+&lt;p&gt;Zero divergence of the velocity also implies:&lt;/p&gt;
+
+&lt;p&gt;\[
+\mdv{\varepsilon} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;where $\varepsilon$ is the internal energy per unit mass, which is also the result from the Euler’s equation.
+Therefore, for a streamline in an incompressible steady flow of an ideal fluid, Bernoulli’s equation reduces to:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;or also often written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;two-dimensional-incompressible-flow&quot;&gt;Two-Dimensional Incompressible Flow&lt;/h3&gt;
+
+&lt;p&gt;In two-dimensional incompressible flow, the velocity field can be expressed in terms of a &lt;strong&gt;stream function&lt;/strong&gt; $\psi(x,y,t)$ as:&lt;/p&gt;
+
+&lt;p&gt;\[
+v_x = \pdv{\psi}{y}, \quad v_y = -\pdv{\psi}{x}
+\]&lt;/p&gt;
+
+&lt;p&gt;so that it automatically satisfies the incompressibility condition $\div \b{v} = 0$.
+From the equation of $\b{v}$ &lt;a href=&quot;eulers-equation-and-hydrostatics.html#thermodynamic-analysis&quot;&gt;here&lt;/a&gt;,
+we obtain the differential equation for $\psi$:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{}{t} \laplacian \psi - \pdv{\psi}{x} \pdv{}{y} \laplacian \psi + \pdv{\psi}{y} \pdv{}{x} \laplacian \psi = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;If we know the stream function $\psi$, we can immediately determine the form of streamlines.
+The equation of a streamline is:&lt;/p&gt;
+
+&lt;p&gt;\[
+\frac{\dd{x}}{v_x} = \frac{\dd{y}}{v_y}
+\]&lt;/p&gt;
+
+&lt;p&gt;Substituting the expressions for $v_x$ and $v_y$ in terms of $\psi$, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\psi}{x} \dd{x} + \pdv{\psi}{y} \dd{y} = \dd{\psi} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This shows that the stream function $\psi$ is constant along a streamline.
+In other words, the value of $\psi$ uniquely identifies each streamline in the flow field.&lt;/p&gt;
+
+&lt;p&gt;If we draw a curve between two points $A$ and $B$ in the xy-plane,
+the mass flux $Q$ across this curve is given by the difference in the stream function values at these points:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+Q &amp;amp;= \int_A^B \rho v_n \dd{l} = \rho \int_A^B \left( -v_y \dd{x} + v_x \dd{y} \right) \nl
+&amp;amp;= \rho \int_A^B \dd{\psi} = \rho \left( \psi_B - \psi_A \right)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;examples-1&quot;&gt;Examples&lt;/h3&gt;
+
+&lt;p&gt;When the pressure changes adiabatically by $\Delta p$, the density changes by $\Delta \rho = \left( \pdv{\rho}{p} \right)_s \Delta p$.
+According to the Bernoulli’s equation, $\Delta p \sim \rho v^2$.
+We shall show further that $\left( \pdv{p}{\rho} \right)_s = c^2$, where $c$ is the speed of sound in the fluid.
+Thus, we have $\Delta \rho / \rho \sim v^2 / c^2$.
+If the fluid velocity $v$ is much smaller than the speed of sound $c$, i.e. $v \ll c$,
+the change in density is negligible, and the flow can be treated as incompressible.&lt;/p&gt;
+
+&lt;p&gt;Let’s extend this argument to unsteady flow.
+Let $\tau$ and $l$ be the characteristic time and length scales of the flow, respectively.
+By Euler’s equation, the pressure changes by an amount $\Delta p \sim \rho l v / \tau$ over a time interval of order $\tau$,
+and the corresponding change in density is $\Delta \rho \sim \rho l v / (c^2 \tau)$.
+Now substituting this to the continuity equation, we have $\tau \gg l/c$ for $\Delta \rho / \rho \ll 1$.&lt;/p&gt;
+
+&lt;p&gt;If the both conditions $v \ll c$ and $\tau \gg l/c$ are satisfied,
+the flow can be treated as incompressible.&lt;/p&gt;
+
+&lt;h2 id=&quot;irrotational-and-incompressible-flow&quot;&gt;Irrotational and Incompressible Flow&lt;/h2&gt;
+
+&lt;p&gt;If a flow is both irrotational and incompressible, the velocity field is governed by both conditions:&lt;/p&gt;
+
+&lt;p&gt;\[
+\div \b{v} = 0, \quad \curl \b{v} = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;This implies that the velocity potential $\phi$ satisfies Laplace’s equation:&lt;/p&gt;
+
+&lt;p&gt;\[
+\laplacian \phi = 0
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;properties-2&quot;&gt;Properties&lt;/h3&gt;
+
+&lt;p&gt;For the flow to be irrotational and incompressible, we can use the results about Bernoulli’s equation from both irrotational and incompressible flow sections.
+Thus, Bernoulli’s equation written as follows holds throughout the entire flow field:&lt;/p&gt;
+
+&lt;p&gt;\[
+\pdv{\phi}{t} + \frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;For a steady flow, this reduces to:&lt;/p&gt;
+
+&lt;p&gt;\[
+p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
+\]&lt;/p&gt;
+
+&lt;p&gt;This means that the pressure distribution in the flow can be determined directly from the velocity field.
+The greatest pressure occurs where the velocity is minimum, and vice versa. If a body is immersed
+in such a flow and there exists a &lt;em&gt;stagnation point&lt;/em&gt; on the body’s surface where the fluid velocity is zero, the pressure at that point is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+p_\text{max} = p_\infty + \frac{1}{2} \rho v_\infty^2
+\]&lt;/p&gt;
+
+&lt;h3 id=&quot;two-dimensional-irrotational-and-incompressible-flow&quot;&gt;Two-Dimensional Irrotational and Incompressible Flow&lt;/h3&gt;
+
+&lt;p&gt;There are powerful methods of solving problems of two-dimensional incompressible flow of an incompressible fluid
+past bodies of various profiles, involving the application of complex variable theory.
+The velocity potential $\phi$ and the stream function $\psi$ are related to the velocity components as follows:&lt;/p&gt;
+
+&lt;p&gt;\[
+v_x = \pdv{\phi}{x} = \pdv{\psi}{y}, \quad v_y = \pdv{\phi}{y} = -\pdv{\psi}{x}
+\]&lt;/p&gt;
+
+&lt;p&gt;These relations between $\phi$ and $\psi$ are known as the &lt;em&gt;Cauchy-Riemann equations&lt;/em&gt;
+for a complex function $w=\phi + i \psi$ to be an analytic function of the complex variable $z = x + iy$.
+This means that $w(z)$ has a well-defined derivative at every point in the flow field.&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{w}{z} = \pdv{\phi}{x} + i \pdv{\psi}{x} = v_x - i v_y
+\]&lt;/p&gt;
+
+&lt;p&gt;The function $w(z)$ is called the &lt;strong&gt;complex potential&lt;/strong&gt;, and $\odv{w}{z}$ is the &lt;strong&gt;complex velocity&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;\[
+\odv{w}{z} = v e^{-i \theta}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $v$ is the magnitude of the velocity and $\theta$ is the angle between the velocity vector and the x-axis.
+At a solid surface, the stream function $\psi$ is constant, since no fluid can cross the boundary.
+Thus, the body surface corresponds to a streamline in the flow (\psi = const.), and the problem reduces to finding an analytic function $w(z)$
+that satisfies the real boundary conditions on the body surface and the appropriate conditions at infinity.&lt;/p&gt;
+
+&lt;p&gt;The integral of the complex velocity around a closed curve $C$ is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\oint_C \odv{w}{z} \dd{z} &amp;amp;= \oint_C (v_x - i v_y)(\dd{x} + i \dd{y}) \nl
+&amp;amp;= \oint_C (v_x \dd{x} + v_y \dd{y}) + i \oint_C (-v_y \dd{x} + v_x \dd{y}) \nl
+&amp;amp;= \Gamma + i Q/\rho
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $Q$ is the mass flux across the curve $C$, and $\Gamma$ is the circulation around $C$.
+By the &lt;em&gt;residue theorem&lt;/em&gt; from complex variable theory,&lt;/p&gt;
+
+&lt;p&gt;\[
+\oint_C \odv{w}{z} \dd{z} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
+\]&lt;/p&gt;
+
+&lt;p&gt;where the sum is over all singularities $z_k$ of $\odv{w}{z}$ inside the curve $C$.
+This shows that both the circulation $\Gamma$ and the mass flux $Q$ are determined by the singularities of the complex velocity within the curve $C$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\Gamma + i \frac{Q}{\rho} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Drag Force in Potential Flow Past a Body</title><link href="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html" rel="alternate" type="text/html" title="The Drag Force in Potential Flow Past a Body" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body</id><content type="html" xml:base="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#governing-equations&quot; id=&quot;markdown-toc-governing-equations&quot;&gt;Governing Equations&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#drag-force-and-lift-force&quot; id=&quot;markdown-toc-drag-force-and-lift-force&quot;&gt;Drag Force and Lift force&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#dalemberts-paradox&quot; id=&quot;markdown-toc-dalemberts-paradox&quot;&gt;D’Alembert’s Paradox&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#oscillating-bodies&quot; id=&quot;markdown-toc-oscillating-bodies&quot;&gt;Oscillating Bodies&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Let’s consider the problem of irrotational, incompressible and ideal fluid flow past a stationary body.
+By shifting to a reference where body is moving with a constant velocity through a fluid at rest at infinity, we can analyze the flow characteristics around the body.
+In this scenario, we denote the velocity of the body as $\b{u}$ and the fluid velocity as $\b{v}$.&lt;/p&gt;
+
+&lt;h2 id=&quot;governing-equations&quot;&gt;Governing Equations&lt;/h2&gt;
+
+&lt;p&gt;As we know, the velocity potential $\phi$ satisfies Laplace’s equation in the fluid domain:&lt;/p&gt;
+
+&lt;p&gt;\[
+\laplacian \phi = 0
+\]&lt;/p&gt;
+
+&lt;p&gt;Taking the origin somewhere inside the moving body, the general form of the potential at great distances from the body is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\phi = - \frac{a}{r} + \b{A} \cdot \frac{\b{r}}{r^3} + O\left( \frac{1}{r^3} \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;However, since the fluid is incompressible so that $\div \b{v} = 0$, we have $a = 0$.
+Thus, by approximating the potential at large distances, we have the velocity field as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{v} = \grad \phi = \frac{3(\b{A} \cdot \hat{\b{r}}) \hat{\b{r}} - \b{A}}{r^3}
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;drag-force-and-lift-force&quot;&gt;Drag Force and Lift force&lt;/h2&gt;
+
+&lt;p&gt;To find the total force $\b{F}$ exerted by the fluid on the body,
+we first calculate the total energy $E$ of the entire fluid.
+Denote $V_0$ as the volume occupied by the body and $S_0$ as its surface.
+Let $V$ be the volume of the large sphere enclosing both the body and the fluid, and $S$ be its surface.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+E &amp;amp;= \frac{1}{2} \rho \int v^2 \, \dd{V} \nl
+&amp;amp;= \frac{1}{2} \rho \left[ \int u^2 \, \dd{V} + \int (\b{v} + \b{u})\cdot(\b{v} - \b{u}) \, \dd{V} \right] \nl
+&amp;amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \int \div [ (\phi + \b{u} \cdot \b{r})(\b{v} - \b{u}) ] \, \dd{V} \nl
+&amp;amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \oint_{S_0+S} (\phi + \b{u} \cdot \b{r})(\b{v} - \b{u}) \cdot \dd{A}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;On the surface of body, we have the boundary condition $(\b{v}-\b{u}) \cdot \dd{A} = 0$.&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+E &amp;amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \oint_{S} \left( -\frac{\b{A} \cdot \hat{\b{r}}}{r^2} + \b{u} \cdot \b{r} \right) \left( \frac{3(\b{A} \cdot \hat{\b{r}}) \hat{\b{r}} - \b{A}}{r^3} - \b{u} \right) \cdot \hat{\b{r}} R^2 \, \dd{\Omega} \nl
+&amp;amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \int \left( -\b{A} \cdot \hat{\b{r}} + \b{u} \cdot \hat{\b{r}} R^3 \right) \left( \frac{2(\b{A} \cdot \hat{\b{r}})}{R^3} - \b{u} \cdot \hat{\b{r}} \right) \, \dd{\Omega} \nl
+&amp;amp;= \frac{1}{2} \rho u^2 \left( \frac{4}{3} \pi R^3 - V_0 \right) + \frac{1}{2} \rho \int \left[ 3(\b{A} \cdot \hat{\b{r}})(\b{u} \cdot \hat{\b{r}}) - (\b{u} \cdot \hat{\b{r}})^2 R^3 - \frac{2(\b{A} \cdot \hat{\b{r}})^2}{R^3} \right] \, \dd{\Omega}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;Neglecting the terms that vanish as $R \to \infty$, we have:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+E &amp;amp;= \frac{1}{2} \rho u^2 \left( \frac{4}{3} \pi R^3 - V_0 \right) + \frac{1}{2} \rho \left( \b{A} \cdot \b{u} - u^2 R^3 \right) 4 \pi \nl
+&amp;amp;= \frac{1}{2} \rho \left( 4 \pi \b{A} \cdot \b{u} - V_0 u^2 \right)
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The exact calculation of the vector $\b{A}$ depends on the shape of the body,
+but we call still observe that the general nature of the dependence of $\b{A}$ on $\b{u}$ is linear,
+since the boundary condition on the body surface is linear in $\b{u}$ and the governing equation is linear as well.&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{A} = \b{C} \cdot \b{u}
+\]&lt;/p&gt;
+
+&lt;p&gt;for some constant tensor $\b{C}$ that depends on the shape of the body.
+Thus, we have the energy expressed as:&lt;/p&gt;
+
+&lt;p&gt;\[
+E = \frac{1}{2} \b{u}^\top \b{m} \b{u}
+\]&lt;/p&gt;
+
+&lt;p&gt;where the symmetric tensor $\b{m}$, which is called the induced mass tensor, is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{m} = 4 \pi \rho \b{C} - \rho V_0 \b{I}
+\]&lt;/p&gt;
+
+&lt;p&gt;It follows from this that the total momentum $\b{P}$ of the fluid is given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\begin{align*}
+\b{P} &amp;amp;= \pdv{E}{\b{u}} = \b{m} \cdot \b{u} \nl
+&amp;amp;= 4\pi \rho \b{A} - \rho V_0 \b{u}
+\end{align*}
+\]&lt;/p&gt;
+
+&lt;p&gt;The force $\b{F}$ exerted by the fluid on the body is given by the time rate of change of the total momentum of the fluid:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{F} = - \odv{\b{P}}{t}
+\]&lt;/p&gt;
+
+&lt;p&gt;The component of the force in the direction of motion of the body is called the &lt;strong&gt;drag force&lt;/strong&gt;,
+and the component perpendicular to the direction of motion is called the &lt;strong&gt;lift force&lt;/strong&gt;.
+However, it must be emphasized that if the fluid has a free surface,
+a body moving through the fluid will create waves on the free surface,
+and the generation of these waves will result in a drag force on the body.
+This form of drag is known as &lt;strong&gt;wave drag&lt;/strong&gt;, and it is not accounted for in the potential flow theory discussed here.&lt;/p&gt;
+
+&lt;h3 id=&quot;dalemberts-paradox&quot;&gt;D’Alembert’s Paradox&lt;/h3&gt;
+
+&lt;p&gt;If it were possible to have potential flow past a body moving uniformly through in an ideal fluid,
+we should have $\b{P} = \text{const.}$ and hence $\b{F} = 0$.
+This means that there would be no drag force acting on the body.
+This result is known as &lt;strong&gt;D’Alembert’s paradox&lt;/strong&gt;.
+This is only available in ideal fluids: in ideal fluids by definition there is no dissipation of energy,
+and hence no mechanism for the fluid to exert a drag force on the body.
+In real fluids, viscosity leads to the formation of boundary layers on the surface of the body,
+and the separation of these boundary layers results in the generation of vortices in the wake of the body.
+The presence of these vortices leads to a pressure difference between the front and back of the body,
+resulting in a non-zero drag force.&lt;/p&gt;
+
+&lt;h3 id=&quot;oscillating-bodies&quot;&gt;Oscillating Bodies&lt;/h3&gt;
+
+&lt;p&gt;Suppose that the body is oscillating under an external force $\b{f}$.
+We than have:&lt;/p&gt;
+
+&lt;p&gt;\[
+M \odv{u}{t} = - \odv{P}{t} + \b{f}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $M$ is the mass of the body. It can be alson written as:&lt;/p&gt;
+
+&lt;p&gt;\[
+\left( M \b{I} + \b{m} \right) \cdot \odv{\b{u}}{t} = \b{f}
+\]&lt;/p&gt;
+
+&lt;p&gt;Now let $\b{v}$ be what the fluid velocity at the position of the body would be if the body were absent;
+i.e. unperturbed fluid velocity.
+The force $\b{f}$ required to produce the motion of the body is then given by:&lt;/p&gt;
+
+&lt;p&gt;\[
+\b{f} = \rho V_0 \odv{\b{v}}{t} - \b{m} \cdot \odv{}{t} (\b{u} - \b{v})
+\]&lt;/p&gt;
+
+&lt;p&gt;where the first term on the right-hand side represents the force required to accelerate the fluid that would occupy the volume of the body if it were absent,
+and the second term represents the additional force required to overcome the inertia of the fluid induced by the motion of the body relative to the fluid.
+Using $\b{f}= M \odv{\b{u}}{t}$, by integrating the equation we obtain:&lt;/p&gt;
+
+&lt;p&gt;\[
+\left( M \b{I} + \b{m} \right) \cdot \b{u} = (\b{m} + \rho V_0 \b{I}) \cdot \b{v}
+\]&lt;/p&gt;
+
+&lt;p&gt;The constant of integration is zero because when $\b{u} = 0$, we must have $\b{v} = 0$ as well.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>
