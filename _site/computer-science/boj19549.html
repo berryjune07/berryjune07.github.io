@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-11-12T04:09:41+09:00',
+    INDEX_KEY: 'index--2025-11-12T16:30:08+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="670 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   11 min
 </span>
 
       </span>
@@ -304,9 +304,129 @@
 <!--more-->
 <ul id="markdown-toc">
   <li><a href="#task" id="markdown-toc-task">Task</a></li>
+  <li><a href="#solution" id="markdown-toc-solution">Solution</a></li>
 </ul>
 
 <h2 id="task">Task</h2>
+
+<p>We have an $N\times M$ grid of unit squares:</p>
+<ul>
+  <li>$(N+1)(M+1)$ buildings at grid points</li>
+  <li>$2NM + N + M$ walls on edges</li>
+</ul>
+
+<p>A laser is fired between <strong>every pair of buildings</strong> (not parallel to x/y axes).<br>
+Each shot burns:</p>
+<ul>
+  <li>all buildings on the line (cost $A$ each)</li>
+  <li>all crossed walls (cost $B$ each)</li>
+</ul>
+
+<p>After every shot, everything is repaired.<br>
+Find the <strong>total repair cost</strong> for all valid laser shots.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Suppose firing a laser from building $(0,0)$ to $(n,m)$.</p>
+<ul>
+  <li>It burns $\gcd(n,m) + 1$ buildings.</li>
+  <li>It crosses $(n-\gcd(n,m)) + (m-\gcd(n,m)) = n+m-2\gcd(n,m)$ walls.</li>
+</ul>
+
+<p>Thus, the cost for this shot is:</p>
+
+<p>\[
+A + (n+m)B + \gcd(n,m)(A - 2B)
+\]</p>
+
+<p>To find the total cost, we sum over all pairs of buildings.
+There are $(N+1-n)(M+1-m)$ pairs of buildings with relative position $(n,m)$.
+Also, we can fire lasers in four distinct ways for each pair, since there are two diagonals and two directions for each rectangle.
+Thus, the total cost is:</p>
+
+<p>\[
+4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) \left( A + (i+j)B + \gcd(i,j)(A - 2B) \right)
+\]</p>
+
+<p>We can sum up the first two terms easily.</p>
+
+<p>\[
+4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) A = 4 \sum_{i=1}^{N} \sum_{j=1}^{M} Aij = AN(N+1)M(M+1) \nl
+\]</p>
+
+<p>\[
+\begin{aligned}
+&amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \nl
+= &amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} i(N+1-i)jB + 4 \sum_{i=1}^{N} \sum_{j=1}^{M} j(N+1-i)jB \nl
+= &amp; 4 \cdot \frac{N(N+1)(N+2)}{6} \cdot \frac{M(M+1)}{2} B + 4 \cdot \frac{M(M+1)(M+2)}{6} \cdot \frac{N(N+1)}{2} B \nl
+= &amp; \frac{BN(N+1)M(M+1)(N+M+4)}{3}
+\end{aligned}
+\]</p>
+
+<p>To compute the last term, let’s define a sum:</p>
+
+<p>\[
+S_{ab} = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j)
+\]</p>
+
+<p>Then, we can express the last term as:</p>
+
+<p>\[
+4(A - 2B) \left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right]
+\]</p>
+
+<p>Then, the total cost is:</p>
+
+<p>\[
+N(N+1)M(M+1) \left( A + \frac{B(N+M+4)}{3} \right) + 4(A - 2B) \left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right]
+\]</p>
+
+<p>Now, we need to compute $S_{ab}$ efficiently.
+Let’s transform the sum by grouping terms with the same gcd.</p>
+
+<p>\[
+\begin{aligned}
+S_{ab} &amp; = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j) \nl
+&amp; = \sum_{i=1}^N \sum_{j=1}^M i^a j^b \sum_{d=1}^{\min(i,j)} d \cdot [\gcd(i,j) = d] \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} (di)^a (dj)^b d \cdot [\gcd(i,j) = 1] \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} d^{a+b+1} i^a j^b \sum_{t|i,j} \mu(t) \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} \sum_{j=1}^{\lfloor M/dt \rfloor} (it)^a (jt)^b \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} t^{a+b} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} i^a \sum_{j=1}^{\lfloor M/dt \rfloor} j^b \nl
+&amp; = \sum_{k=1}^{\min(N,M)} \sum_{t|k} \frac{k^{a+b+1}}{t} \mu(t) \sum_{i=1}^{\lfloor N/k \rfloor} i^a \sum_{j=1}^{\lfloor M/k \rfloor} j^b \nl
+&amp; = \sum_{k=1}^{\min(N,M)} k^{a+b+1} \cdot \frac{\phi(k)}{k} \cdot S_{\text{Id}_a}\left(\left\lfloor \frac{N}{k} \right\rfloor\right) S_{\text{Id}_b}\left(\left\lfloor \frac{M}{k} \right\rfloor\right) \nl
+&amp; = \sum_{d=1}^{\min(N,M)} d^{a+b} \phi(d) S_{\text{Id}_a}\left(\left\lfloor \frac{N}{d} \right\rfloor\right) S_{\text{Id}_b}\left(\left\lfloor \frac{M}{d} \right\rfloor\right)
+\end{aligned}
+\]</p>
+
+<p>where $S_{\text{Id}_k}(n) = \sum_{d=1}^{n} d^k$.
+We can compute $S_{\text{Id}_k}(n)$ in $O(1)$ time using the formulas for sums of powers.
+Grouping by values of $\lfloor N/d \rfloor$ and $\lfloor M/d \rfloor$, we can reduce the
+number of terms in the sum to $O(\sqrt{N} + \sqrt{M})$.
+By denoting as $d_0 = 1$, $p_i = \lfloor N/d_i \rfloor$, $q_i = \lfloor M/d_i \rfloor$, and</p>
+
+<p>\[
+d_{i+1} = \min\left(\left\lfloor \frac{N}{p_i} \right\rfloor, \left\lfloor \frac{M}{q_i} \right\rfloor\right) + 1
+\]</p>
+
+<p>By defining $f(d) = d^{a+b} \phi(d)$, the sum can be computed as:</p>
+
+<p>\[
+\sum_{i:d_i \le \min(N,M)} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) S_{\text{Id}_a}(p_i) S_{\text{Id}_b}(q_i)
+\]</p>
+
+<p>Now what remains is to compute $S_f$ efficiently.
+By using the <a href="/computer-science/mertens-trick.html"><strong>Mertens trick</strong></a>, we can compute $S_f(n)$ in $O\left(n^{2/3}\right)$ time.
+Using the relationship $f * \text{Id}_{a+b} = \text{Id}_{a+b+1}$, we have:</p>
+
+<p>\[
+\begin{aligned}
+S_f(n) &amp; = \frac{1}{\text{Id}_{a+b}(1)} \left( S_{\text{Id}_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right) \right) \nl
+&amp; = S_{\text{Id}_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right)
+\end{aligned}
+\]</p>
+
+<p>Since $S_{\text{Id}_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\left(N^{2/3}+M^{2/3}\right)$ time.
+Thus, the overall time complexity is $O\left(N^{2/3}+M^{2/3}+\sqrt{N}+\sqrt{M}\right) = O\left(N^{2/3}+M^{2/3}\right)$, which is efficient enough for the given constraints.</p>
 
   
 </article>
