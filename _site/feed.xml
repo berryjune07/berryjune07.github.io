@@ -1,7 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-11-12T16:30:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Mertens Trick</title><link href="http://localhost:4000/computer-science/mertens-trick.html" rel="alternate" type="text/html" title="Mertens Trick" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mertens-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/mertens-trick.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-11-20T15:47:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Merge Sort Tree</title><link href="http://localhost:4000/computer-science/merge-sort-tree.html" rel="alternate" type="text/html" title="Merge Sort Tree" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/merge-sort-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/merge-sort-tree.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 32240] 비로소 서로소</title><link href="http://localhost:4000/computer-science/boj32240.html" rel="alternate" type="text/html" title="[BOJ 32240] 비로소 서로소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj32240</id><content type="html" xml:base="http://localhost:4000/computer-science/boj32240.html">[https://www.acmicpc.net/problem/32240](https://www.acmicpc.net/problem/32240)
+{:toc}
+
+## Introduction
+
+A **merge sort tree** is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
+It usually does not support updates efficiently.
+
+## Merge Sort Tree
+
+### Explanation
+
+A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
+The tree is constructed by recursively dividing the array into segments and merging the sorted lists of child nodes.
+Each node in the merge sort tree is a _multiset_ (or sorted array), and the merge sort tree can only efficiently answer range queries that satisfy the following condition:
+
+- For the query function $F$, multisets $S_1,S_2$, and a query result combiner function $G(\cdot,\cdot)$,
+
+\\[
+F(S_1 \cup S_2) = G(F(S_1), F(S_2))
+\\]
+
+This means that the result of the query on the union of two multisets can be computed by combining the results of the queries on each individual multiset,
+and $F$ only depends on the order statistics of the array.
+
+For example, for an array $[4,3,7,1,2,1,2,5]$, the merge sort tree would be built as follows:
+
+```mermaid
+graph TD;
+    A1[1,1,2,2,3,4,5,7];
+    B1[1,3,4,7]; B2[1,2,2,5];
+    C1[3,4]; C2[1,7]; C3[1,2]; C4[2,5];
+    D1[4]; D2[3]; D3[7]; D4[1]; D5[2]; D6[1]; D7[2]; D8[5];
+    
+    A1 --&gt; B1; A1 --&gt; B2;
+    B1 --&gt; C1; B1 --&gt; C2;
+    B2 --&gt; C3; B2 --&gt; C4;
+    C1 --&gt; D1; C1 --&gt; D2;
+    C2 --&gt; D3; C2 --&gt; D4;
+    C3 --&gt; D5; C3 --&gt; D6;
+    C4 --&gt; D7; C4 --&gt; D8;
+```
+
+### Complexity
+
+Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.
+
+\1. **Build**: $O(N \log N)$
+
+It takes $O(A+B)$ time to merge two sorted lists of sizes $A$ and $B$.
+Since the size of array is $N$ and at each level of the segment tree we merge $N$ elements,
+it takes $O(N)$ time per level.
+The height of the segment tree is $O(\log N)$, so the total time complexity for building the merge sort tree is $O(N \log N)$.
+
+\2. **Query**: $O(T(N) \log N)$
+
+From [here](/computer-science/segment-tree.html), we know that for each range query, we visit $O(\log N)$ nodes in the segment tree.
+At each visited node, we perform a query on the sorted list stored in that node, which takes $O(T(N))$ time.
+Therefore, the total time complexity for a range query is $O(T(N) \log N)$.
+
+\3. **Space Complexity**: $O(N \log N)$
+
+The space complexity of a merge sort tree is $O(N \log N)$ because each level of the segment tree stores $N$ elements in sorted lists, and there are $O(\log N)$ levels in the tree.
+
+## Code
+
+Let’s see the sample code.
+```cpp
+#define all(v) v.begin(),v.end()
+
+const int N;
+const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
+using vec = vector&lt;data&gt;; // orderable data type
+
+data A[N];
+struct Node{
+    vec v; // sorted array
+    // other members if needed
+} tree[TREE_SIZE];
+
+Node merge_Node(Node a,Node b){
+    Node res;
+    res.v.resize(a.v.size()+b.v.size());
+    merge(all(a.v), all(b.v), res.v.begin());
+    // other member merges if needed
+    return res;
+}
+
+Node conv(data a){
+    Node res;
+    res.v = {a};
+    // other member initializations if needed
+    return res;
+}
+
+q F(Node nd); // query function on a node
+q G(q a,q b); // query result combiner function
+q identity(); // return identity query result
+
+Node init(int l,int r,int nd){
+    if(l==r) return tree[nd] = conv(A[l]);
+    int m = (l+r)/2;
+    return tree[nd] = merge_Node(init(l,m,nd*2),init(m+1,r,nd*2+1));
+}
+
+q Query(int l,int r,int nd,int s,int e){
+    if(e&lt;l or r&lt;s) return identity();
+    if(s&lt;=l and r&lt;=e) return F(tree[nd]);
+    int m = (l+r)/2;
+    return G(Query(l,m,nd*2,s,e),Query(m+1,r,nd*2+1,s,e));
+}
+```
+
+### Example
+
+Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.
+
+```cpp
+int A[N];
+struct Node{
+    vec v;
+} tree[TREE_SIZE];
+
+q F(Node nd, int K){
+    return upper_bound(all(nd.v), K) - nd.v.begin();
+}
+q G(q a,q b){
+    return a + b;
+}
+q identity(){
+    return 0;
+}
+```
+
+In this example, time complexity of the query function $F$ is $T(N) = O(\log N)$ due to the binary search performed by `upper_bound`.
+Thus, the overall time complexity for a range query becomes $O(\log^2 N)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mo’s Algorithm</title><link href="http://localhost:4000/computer-science/mos-algorithm.html" rel="alternate" type="text/html" title="Mo’s Algorithm" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mos-algorithm</id><content type="html" xml:base="http://localhost:4000/computer-science/mos-algorithm.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+##</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 32240] 비로소 서로소</title><link href="http://localhost:4000/computer-science/boj32240.html" rel="alternate" type="text/html" title="[BOJ 32240] 비로소 서로소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj32240</id><content type="html" xml:base="http://localhost:4000/computer-science/boj32240.html">[https://www.acmicpc.net/problem/32240](https://www.acmicpc.net/problem/32240)
 
 &lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -75,134 +213,126 @@ The final sum is written as:
 \sum_{i:d_i \le N} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) a_i^2 (a_i + 1)
 \\]
 
-The overall time complexity is $O\left(N^{2/3}+\sqrt{N}\right)=O\left(N^{2/3}\right)$, which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/32240</summary></entry><entry><title type="html">[BOJ 19549] 레이저 연구소</title><link href="http://localhost:4000/computer-science/boj19549.html" rel="alternate" type="text/html" title="[BOJ 19549] 레이저 연구소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj19549</id><content type="html" xml:base="http://localhost:4000/computer-science/boj19549.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/19549&quot;&gt;https://www.acmicpc.net/problem/19549&lt;/a&gt;&lt;/p&gt;
+The overall time complexity is $O\left(N^{2/3}+\sqrt{N}\right)=O\left(N^{2/3}\right)$, which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/32240</summary></entry><entry><title type="html">[BOJ 19549] 레이저 연구소</title><link href="http://localhost:4000/computer-science/boj19549.html" rel="alternate" type="text/html" title="[BOJ 19549] 레이저 연구소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj19549</id><content type="html" xml:base="http://localhost:4000/computer-science/boj19549.html">[https://www.acmicpc.net/problem/19549](https://www.acmicpc.net/problem/19549)
 
 &lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#task&quot; id=&quot;markdown-toc-task&quot;&gt;Task&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#solution&quot; id=&quot;markdown-toc-solution&quot;&gt;Solution&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;task&quot;&gt;Task&lt;/h2&gt;
+## Task
 
-&lt;p&gt;We have an $N\times M$ grid of unit squares:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$(N+1)(M+1)$ buildings at grid points&lt;/li&gt;
-  &lt;li&gt;$2NM + N + M$ walls on edges&lt;/li&gt;
-&lt;/ul&gt;
+We have an $N\times M$ grid of unit squares:
+- $(N+1)(M+1)$ buildings at grid points
+- $2NM + N + M$ walls on edges
 
-&lt;p&gt;A laser is fired between &lt;strong&gt;every pair of buildings&lt;/strong&gt; (not parallel to x/y axes).&lt;br /&gt;
-Each shot burns:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;all buildings on the line (cost $A$ each)&lt;/li&gt;
-  &lt;li&gt;all crossed walls (cost $B$ each)&lt;/li&gt;
-&lt;/ul&gt;
+A laser is fired between **every pair of buildings** (not parallel to x/y axes).  
+Each shot burns:
+- all buildings on the line (cost $A$ each)
+- all crossed walls (cost $B$ each)
 
-&lt;p&gt;After every shot, everything is repaired.&lt;br /&gt;
-Find the &lt;strong&gt;total repair cost&lt;/strong&gt; for all valid laser shots.&lt;/p&gt;
+After every shot, everything is repaired.  
+Find the **total repair cost** for all valid laser shots.
 
-&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+## Solution
 
-&lt;p&gt;Suppose firing a laser from building $(0,0)$ to $(n,m)$.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;It burns $\gcd(n,m) + 1$ buildings.&lt;/li&gt;
-  &lt;li&gt;It crosses $(n-\gcd(n,m)) + (m-\gcd(n,m)) = n+m-2\gcd(n,m)$ walls.&lt;/li&gt;
-&lt;/ul&gt;
+Suppose firing a laser from building $(0,0)$ to $(n,m)$.
+- It burns $\gcd(n,m) + 1$ buildings.
+- It crosses $(n-\gcd(n,m)) + (m-\gcd(n,m)) = n+m-2\gcd(n,m)$ walls.
 
-&lt;p&gt;Thus, the cost for this shot is:&lt;/p&gt;
+Thus, the cost for this shot is:
 
-&lt;p&gt;\[
+\\[
 A + (n+m)B + \gcd(n,m)(A - 2B)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;To find the total cost, we sum over all pairs of buildings.
+To find the total cost, we sum over all pairs of buildings.
 There are $(N+1-n)(M+1-m)$ pairs of buildings with relative position $(n,m)$.
 Also, we can fire lasers in four distinct ways for each pair, since there are two diagonals and two directions for each rectangle.
-Thus, the total cost is:&lt;/p&gt;
+Thus, the total cost is:
 
-&lt;p&gt;\[
+\\[
 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) \left( A + (i+j)B + \gcd(i,j)(A - 2B) \right)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;We can sum up the first two terms easily.&lt;/p&gt;
+We can sum up the first two terms easily.
 
-&lt;p&gt;\[
+\\[
 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) A = 4 \sum_{i=1}^{N} \sum_{j=1}^{M} Aij = AN(N+1)M(M+1) \nl
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;\[
+\\[
 \begin{aligned}
-&amp;amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \nl
-= &amp;amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} i(N+1-i)jB + 4 \sum_{i=1}^{N} \sum_{j=1}^{M} j(N+1-i)jB \nl
-= &amp;amp; 4 \cdot \frac{N(N+1)(N+2)}{6} \cdot \frac{M(M+1)}{2} B + 4 \cdot \frac{M(M+1)(M+2)}{6} \cdot \frac{N(N+1)}{2} B \nl
-= &amp;amp; \frac{BN(N+1)M(M+1)(N+M+4)}{3}
+&amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \nl
+= &amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} i(N+1-i)jB + 4 \sum_{i=1}^{N} \sum_{j=1}^{M} j(N+1-i)jB \nl
+= &amp; 4 \cdot \frac{N(N+1)(N+2)}{6} \cdot \frac{M(M+1)}{2} B + 4 \cdot \frac{M(M+1)(M+2)}{6} \cdot \frac{N(N+1)}{2} B \nl
+= &amp; \frac{BN(N+1)M(M+1)(N+M+4)}{3}
 \end{aligned}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;To compute the last term, let’s define a sum:&lt;/p&gt;
+To compute the last term, let&apos;s define a sum:
 
-&lt;p&gt;\[
+\\[
 S_{ab} = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j)
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Then, we can express the last term as:&lt;/p&gt;
+Then, we can express the last term as:
 
-&lt;p&gt;\[
-4(A - 2B) \left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right]
-\]&lt;/p&gt;
+\\[
+4(A - 2B) \left\[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right\]
+\\]
 
-&lt;p&gt;Then, the total cost is:&lt;/p&gt;
+Then, the total cost is:
 
-&lt;p&gt;\[
-N(N+1)M(M+1) \left( A + \frac{B(N+M+4)}{3} \right) + 4(A - 2B) \left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right]
-\]&lt;/p&gt;
+\\[
+N(N+1)M(M+1) \left( A + \frac{B(N+M+4)}{3} \right) + 4(A - 2B) \left\[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right\]
+\\]
 
-&lt;p&gt;Now, we need to compute $S_{ab}$ efficiently.
-Let’s transform the sum by grouping terms with the same gcd.&lt;/p&gt;
+Now, we need to compute $S_{ab}$ efficiently.
+Let&apos;s transform the sum by grouping terms with the same gcd.
 
-&lt;p&gt;\[
+\\[
 \begin{aligned}
-S_{ab} &amp;amp; = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j) \nl
-&amp;amp; = \sum_{i=1}^N \sum_{j=1}^M i^a j^b \sum_{d=1}^{\min(i,j)} d \cdot [\gcd(i,j) = d] \nl
-&amp;amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} (di)^a (dj)^b d \cdot [\gcd(i,j) = 1] \nl
-&amp;amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} d^{a+b+1} i^a j^b \sum_{t|i,j} \mu(t) \nl
-&amp;amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} \sum_{j=1}^{\lfloor M/dt \rfloor} (it)^a (jt)^b \nl
-&amp;amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} t^{a+b} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} i^a \sum_{j=1}^{\lfloor M/dt \rfloor} j^b \nl
-&amp;amp; = \sum_{k=1}^{\min(N,M)} \sum_{t|k} \frac{k^{a+b+1}}{t} \mu(t) \sum_{i=1}^{\lfloor N/k \rfloor} i^a \sum_{j=1}^{\lfloor M/k \rfloor} j^b \nl
-&amp;amp; = \sum_{k=1}^{\min(N,M)} k^{a+b+1} \cdot \frac{\phi(k)}{k} \cdot S_{\text{Id}_a}\left(\left\lfloor \frac{N}{k} \right\rfloor\right) S_{\text{Id}_b}\left(\left\lfloor \frac{M}{k} \right\rfloor\right) \nl
-&amp;amp; = \sum_{d=1}^{\min(N,M)} d^{a+b} \phi(d) S_{\text{Id}_a}\left(\left\lfloor \frac{N}{d} \right\rfloor\right) S_{\text{Id}_b}\left(\left\lfloor \frac{M}{d} \right\rfloor\right)
+S_{ab} &amp; = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j) \nl
+&amp; = \sum_{i=1}^N \sum_{j=1}^M i^a j^b \sum_{d=1}^{\min(i,j)} d \cdot \[\gcd(i,j) = d\] \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} (di)^a (dj)^b d \cdot \[\gcd(i,j) = 1\] \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} d^{a+b+1} i^a j^b \sum_{t|i,j} \mu(t) \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} \sum_{j=1}^{\lfloor M/dt \rfloor} (it)^a (jt)^b \nl
+&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} t^{a+b} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} i^a \sum_{j=1}^{\lfloor M/dt \rfloor} j^b \nl
+&amp; = \sum_{k=1}^{\min(N,M)} \sum_{t|k} \frac{k^{a+b+1}}{t} \mu(t) \sum_{i=1}^{\lfloor N/k \rfloor} i^a \sum_{j=1}^{\lfloor M/k \rfloor} j^b \nl
+&amp; = \sum_{k=1}^{\min(N,M)} k^{a+b+1} \cdot \frac{\phi(k)}{k} \cdot S_{\text{Id}\_a}\left(\left\lfloor \frac{N}{k} \right\rfloor\right) S_{\text{Id}\_b}\left(\left\lfloor \frac{M}{k} \right\rfloor\right) \nl
+&amp; = \sum_{d=1}^{\min(N,M)} d^{a+b} \phi(d) S_{\text{Id}\_a}\left(\left\lfloor \frac{N}{d} \right\rfloor\right) S_{\text{Id}\_b}\left(\left\lfloor \frac{M}{d} \right\rfloor\right)
 \end{aligned}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;where $S_{\text{Id}_k}(n) = \sum_{d=1}^{n} d^k$.
-We can compute $S_{\text{Id}_k}(n)$ in $O(1)$ time using the formulas for sums of powers.
+where $S_{\text{Id}\_k}(n) = \sum_{d=1}^{n} d^k$.
+We can compute $S_{\text{Id}\_k}(n)$ in $O(1)$ time using the formulas for sums of powers.
 Grouping by values of $\lfloor N/d \rfloor$ and $\lfloor M/d \rfloor$, we can reduce the
 number of terms in the sum to $O(\sqrt{N} + \sqrt{M})$.
-By denoting as $d_0 = 1$, $p_i = \lfloor N/d_i \rfloor$, $q_i = \lfloor M/d_i \rfloor$, and&lt;/p&gt;
+By denoting as $d_0 = 1$, $p_i = \lfloor N/d_i \rfloor$, $q_i = \lfloor M/d_i \rfloor$, and
 
-&lt;p&gt;\[
+\\[
 d_{i+1} = \min\left(\left\lfloor \frac{N}{p_i} \right\rfloor, \left\lfloor \frac{M}{q_i} \right\rfloor\right) + 1
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;By defining $f(d) = d^{a+b} \phi(d)$, the sum can be computed as:&lt;/p&gt;
+By defining $f(d) = d^{a+b} \phi(d)$, the sum can be computed as:
 
-&lt;p&gt;\[
-\sum_{i:d_i \le \min(N,M)} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) S_{\text{Id}_a}(p_i) S_{\text{Id}_b}(q_i)
-\]&lt;/p&gt;
+\\[
+\sum_{i:d_i \le \min(N,M)} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) S_{\text{Id}\_a}(p_i) S_{\text{Id}\_b}(q_i)
+\\]
 
-&lt;p&gt;Now what remains is to compute $S_f$ efficiently.
-By using the &lt;a href=&quot;/computer-science/mertens-trick.html&quot;&gt;&lt;strong&gt;Mertens trick&lt;/strong&gt;&lt;/a&gt;, we can compute $S_f(n)$ in $O\left(n^{2/3}\right)$ time.
-Using the relationship $f * \text{Id}_{a+b} = \text{Id}_{a+b+1}$, we have:&lt;/p&gt;
+Now what remains is to compute $S_f$ efficiently.
+By using the [**Mertens trick**](/computer-science/mertens-trick.html), we can compute $S_f(n)$ in $O\left(n^{2/3}\right)$ time.
+Using the relationship $f * \text{Id}\_{a+b} = \text{Id}\_{a+b+1}$, we have:
 
-&lt;p&gt;\[
+\\[
 \begin{aligned}
-S_f(n) &amp;amp; = \frac{1}{\text{Id}_{a+b}(1)} \left( S_{\text{Id}_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right) \right) \nl
-&amp;amp; = S_{\text{Id}_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right)
+S_f(n) &amp; = \frac{1}{\text{Id}\_{a+b}(1)} \left( S_{\text{Id}\_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}\_{a+b}}(d_{i+1}-1) - S_{\text{Id}\_{a+b}}(d_i-1) \right) \right) \nl
+&amp; = S_{\text{Id}\_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}\_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right)
 \end{aligned}
-\]&lt;/p&gt;
+\\]
 
-&lt;p&gt;Since $S_{\text{Id}_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\left(N^{2/3}+M^{2/3}\right)$ time.
-Thus, the overall time complexity is $O\left(N^{2/3}+M^{2/3}+\sqrt{N}+\sqrt{M}\right) = O\left(N^{2/3}+M^{2/3}\right)$, which is efficient enough for the given constraints.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/19549</summary></entry><entry><title type="html">[BOJ 16164] Möbius Madness</title><link href="http://localhost:4000/computer-science/boj16164.html" rel="alternate" type="text/html" title="[BOJ 16164] Möbius Madness" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj16164</id><content type="html" xml:base="http://localhost:4000/computer-science/boj16164.html">[https://www.acmicpc.net/problem/16164](https://www.acmicpc.net/problem/16164)
+Since $S_{\text{Id}\_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\left(N^{2/3}+M^{2/3}\right)$ time.
+Thus, the overall time complexity is $O\left(N^{2/3}+M^{2/3}+\sqrt{N}+\sqrt{M}\right) = O\left(N^{2/3}+M^{2/3}\right)$, which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/19549</summary></entry><entry><title type="html">[BOJ 16164] Möbius Madness</title><link href="http://localhost:4000/computer-science/boj16164.html" rel="alternate" type="text/html" title="[BOJ 16164] Möbius Madness" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj16164</id><content type="html" xml:base="http://localhost:4000/computer-science/boj16164.html">[https://www.acmicpc.net/problem/16164](https://www.acmicpc.net/problem/16164)
 
 &lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -311,88 +441,11 @@ Thus, the overall time complexity is:
 O\left( N^{2/3} \log \log N + L^{1/4} + (\log N)^c \log L + \sqrt{N} \log K \right)
 \\]
 
-which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/16164</summary></entry><entry><title type="html">[BOJ 1792] 공약수</title><link href="http://localhost:4000/computer-science/boj1792.html" rel="alternate" type="text/html" title="[BOJ 1792] 공약수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1792</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1792.html">[https://www.acmicpc.net/problem/1792](https://www.acmicpc.net/problem/1792)
-
-&lt;!--more--&gt;
+which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/16164</summary></entry><entry><title type="html">Sqrt Decomposition</title><link href="http://localhost:4000/computer-science/sqrt-decomposition.html" rel="alternate" type="text/html" title="Sqrt Decomposition" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/sqrt-decomposition</id><content type="html" xml:base="http://localhost:4000/computer-science/sqrt-decomposition.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-Compute:
-
-\\[
-\abs{ \Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } }
-\\]
-
-for $N$ queries $(a,b,c)$.
-
-## Solution
-
-\\[
-\Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } \nl
-= \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq \left\lfloor a/c \right\rfloor, \; 1 \leq y^\prime \leq \left\lfloor b/c \right\rfloor, \; \gcd(x^\prime,y^\prime) = 1 }
-\\]
-
-Denote $A = \left\lfloor a/c \right\rfloor$ and $B = \left\lfloor b/c \right\rfloor$.
-
-Since $\sum_{d \| n} \mu(d) = [n = 1]$, we have:
-
-\\[
-\sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) = \[\gcd(x^\prime,y^\prime) = 1\]
-\\]
-
-Thus:
-
-\\[
-\begin{align\*}
-&amp; \abs{ \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq A, \; 1 \leq y^\prime \leq B, \; \gcd(x^\prime,y^\prime) = 1 } } \nl
-= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \[\gcd(x^\prime,y^\prime) = 1\]
-= \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) \nl
-= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \ge 1} \mu(d) \[d \| x^\prime \] \[d \| y^\prime \] \nl
-= &amp; \sum_{d \ge 1} \mu(d) \sum_{x^\prime=1}^{A} \[d \| x^\prime\] \sum_{y^\prime=1}^{B} \[d \| y^\prime \]
-= \sum_{d \ge 1} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor \nl
-= &amp; \sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
-\end{align\*}
-\\]
-
-Therefore, the answer for each query is:
-
-\\[
-\sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
-\\]
-
-## Optimization
-
-Precomputing the Mobius function up to $\text{MAX}$ can be done in $O(\text{MAX} \log \log \text{MAX})$ time using a sieve method.
-If we compute each query naively, the time complexity is:
-
-\\[
-O\left( N \min(A,B) \right)
-\\]
-
-and this is too slow. To optimize, we can group the terms with the same value of $\left\lfloor A/d \right\rfloor$ and $\left\lfloor B/d \right\rfloor$.
-Let $p(d) = \left\lfloor A/d \right\rfloor$ and $q(d) = \left\lfloor B/d \right\rfloor$.
-Denote $d_0 = 1$ and let $d_1, \ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.
-Relation between $d_i$ and $d_{i+1}$ is:
-
-\\[
-d_{i+1} = \min\left( \left\lfloor \frac{A}{p(d_i)} \right\rfloor, \; \left\lfloor \frac{B}{q(d_i)} \right\rfloor \right) + 1
-\\]
-
-If we denote $M(n) = \sum_{k=1}^{n} \mu(k)$, then the answer can be computed as:
-
-\\[
-\sum_{i: d_i \leq \min(A,B)} \left( M(d_{i+1}-1) - M(d_i-1) \right) p(d_i) q(d_i)
-\\]
-
-The complexity of this approach is:
-
-\\[
-O\left( N \sqrt{\min(A,B)} \right)
-\\]
-
-This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1792</summary></entry><entry><title type="html">[BOJ 13714] 약수의 개수</title><link href="http://localhost:4000/computer-science/boj13714.html" rel="alternate" type="text/html" title="[BOJ 13714] 약수의 개수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj13714</id><content type="html" xml:base="http://localhost:4000/computer-science/boj13714.html">[https://www.acmicpc.net/problem/13714](https://www.acmicpc.net/problem/13714)
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mertens Trick</title><link href="http://localhost:4000/computer-science/mertens-trick.html" rel="alternate" type="text/html" title="Mertens Trick" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mertens-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/mertens-trick.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 13714] 약수의 개수</title><link href="http://localhost:4000/computer-science/boj13714.html" rel="alternate" type="text/html" title="[BOJ 13714] 약수의 개수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj13714</id><content type="html" xml:base="http://localhost:4000/computer-science/boj13714.html">[https://www.acmicpc.net/problem/13714](https://www.acmicpc.net/problem/13714)
 
 &lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -507,443 +560,87 @@ Thus, the overall time complexity is:
 O\left( N^2 \log N \right)
 \\]
 
-This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/13714</summary></entry><entry><title type="html">Internal Waves in an Incompressible Fluid</title><link href="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Internal Waves in an Incompressible Fluid" /><published>2025-10-26T00:00:00+09:00</published><updated>2025-10-26T00:00:00+09:00</updated><id>http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Gravity Waves</title><link href="http://localhost:4000/physics/gravity-waves.html" rel="alternate" type="text/html" title="Gravity Waves" /><published>2025-09-17T00:00:00+09:00</published><updated>2025-09-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/gravity-waves.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/13714</summary></entry><entry><title type="html">[BOJ 1792] 공약수</title><link href="http://localhost:4000/computer-science/boj1792.html" rel="alternate" type="text/html" title="[BOJ 1792] 공약수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1792</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1792.html">[https://www.acmicpc.net/problem/1792](https://www.acmicpc.net/problem/1792)
 
-## Introduction
-
-The free surface of a liquid in equilibrium in a gravitational field is horizontal.
-If, under the action of external perturbation, the surface is displaced from its equilibrium position, and this motion will be propagated as waves on the surface of the liquid.
-**Gravity waves** are waves that occur on the surface of a fluid, such as water, where the restoring force is gravity.
-These waves are commonly observed in oceans, lakes, and other bodies of water.
-Gravity waves appear mainly on the surface of liquids; they affect the interior also but to a much smaller extent.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Irrotational and Incompressible Flow</title><link href="http://localhost:4000/physics/irrotational-and-incompressible-flow.html" rel="alternate" type="text/html" title="Irrotational and Incompressible Flow" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/irrotational-and-incompressible-flow</id><content type="html" xml:base="http://localhost:4000/physics/irrotational-and-incompressible-flow.html">&lt;!--more--&gt;
+&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-## Irrotational Flow
+## Task
 
-A flow is said to be **irrotational** if the curl of the velocity field is zero everywhere:
-
-\\[
-\nabla \times \mathbf{v} = 0
-\\]
-
-This implies that there is no local rotation of fluid elements in the flow.
-It is also called a **potential flow** because the velocity field can be expressed as the gradient of a scalar **velocity potential** function $\phi$:
+Compute:
 
 \\[
-\b{v} = \nabla \phi
+\abs{ \Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } }
 \\]
 
-### Properties
+for $N$ queries $(a,b,c)$.
 
-Writing Euler&apos;s equation as [here](bernoullis-equation.html#bernoullis-equation),
+## Solution
 
 \\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + w + \Phi\right)
+\Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } \nl
+= \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq \left\lfloor a/c \right\rfloor, \; 1 \leq y^\prime \leq \left\lfloor b/c \right\rfloor, \; \gcd(x^\prime,y^\prime) = 1 }
 \\]
 
-and substituting $\b{v} = \grad \phi$ gives:
+Denote $A = \left\lfloor a/c \right\rfloor$ and $B = \left\lfloor b/c \right\rfloor$.
+
+Since $\sum_{d \| n} \mu(d) = [n = 1]$, we have:
 
 \\[
-\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi \right) = 0
+\sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) = \[\gcd(x^\prime,y^\prime) = 1\]
 \\]
 
-This implies:
-
-\\[
-\pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi = f(t)
-\\]
-
-where $f(t)$ is an arbitrary function of time.
-However, since potentials are not uniquely defined, we can absorb $f(t)$ into $\phi$ by redefining the potential, i.e. set $f(t) = 0$ without loss of generality.
-Thus, for irrotational flow, Bernoulli&apos;s equation holds throughout the entire flow field, not just along streamlines:
-
-\\[
-\pdv{\phi}{t} + \frac{1}{2} v^2 + \varepsilon + \frac{p}{\rho} + \Phi = \text{const.}
-\\]
-
-Also, since the vorticity $\b{\omega} = \curl \b{v}$ is zero everywhere, the velocity circulation $\Gamma$ around any closed curve $C$ is zero.
-
-### Examples
-
-For a steady flow, the velocity field is constant in space at infinity, so that the curl is zero.
-A steady flow past any object is irrotational outside the boundary layer, where viscous effects are negligible.
-Another important case of potential flow occurs for small oscillations of a body immersed in fluid.
-If the amplitude $a$ of the oscillations is small compared to the characteristic length $l$ of the body, i.e. $a \ll l$, the flow can be treated as irrotational.
-
-&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt; Proof &lt;/summary&gt;
-Let&apos;s estimate the order of magnitude of terms in Euler&apos;s equation.
-
-\\[
-\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (w + \Phi)
-\\]
-
-The velocity changes markedly (by an amount of the same order as $u$, the velocity of the oscillating body)
-over a distance of order $l$ and a time of order $1/\omega$, where $\omega$ is the angular frequency of oscillation.
-Thus, we can estimate:
-
-\\[
-\pdv{\b{v}}{t} \sim \omega u, \quad (\b{v} \cdot \grad) \b{v} \sim \frac{u^2}{l}
-\\]
-
-Since $\omega \sim u/a$, we have:
-
-\\[
-\frac{(\b{v} \cdot \grad) \b{v}}{\pdv{\b{v}}{t}} \sim \frac{u^2/l}{\omega u} \sim \frac{a}{l} \ll 1
-\\]
-
-Therefore, the nonlinear term $(\b{v} \cdot \grad) \b{v}$ can be neglected compared to the unsteady term $\pdv{\b{v}}{t}$.
-Thus, taking the curl of both sides gives:
-
-\\[
-\pdv{(\curl \b{v})}{t} = 0
-\\]
-
-This implies $\curl \b{v} = \text{const.}$
-In oscillatory motion, the time-averaged velocity is zero, so the constant must be zero.
-Hence, the flow is irrotational.
-&lt;/details&gt;
-
-## Incompressible Flow
-
-A flow is said to be **incompressible** if the density $\rho$ of the fluid remains constant along fluid particle trajectories.
-Mathematically, this is expressed as:
-
-\\[
-\mdv{\rho}{t} = 0
-\\]
-
-Reminding the [Euler&apos;s equation](eulers-equation-and-hydrostatics.html#eulers-equation),
-it can be shown that incompressibility is equivalent to the zero divergence of the velocity field:
-
-\\[
-\div \b{v} = 0
-\\]
-
-### Properties
-
-Zero divergence of the velocity also implies:
-
-\\[
-\mdv{\varepsilon} = 0
-\\]
-
-where $\varepsilon$ is the internal energy per unit mass, which is also the result from the Euler&apos;s equation.
-Therefore, for a streamline in an incompressible steady flow of an ideal fluid, Bernoulli&apos;s equation reduces to:
-
-\\[
-\frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
-\\]
-
-or also often written as:
-
-\\[
-p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
-\\]
-
-### Two-Dimensional Incompressible Flow
-
-In two-dimensional incompressible flow, the velocity field can be expressed in terms of a **stream function** $\psi(x,y,t)$ as:
-
-\\[
-v_x = \pdv{\psi}{y}, \quad v_y = -\pdv{\psi}{x}
-\\]
-
-so that it automatically satisfies the incompressibility condition $\div \b{v} = 0$.
-From the equation of $\b{v}$ [here](eulers-equation-and-hydrostatics.html#thermodynamic-analysis),
-we obtain the differential equation for $\psi$:
-
-\\[
-\pdv{}{t} \laplacian \psi - \pdv{\psi}{x} \pdv{}{y} \laplacian \psi + \pdv{\psi}{y} \pdv{}{x} \laplacian \psi = 0
-\\]
-
-If we know the stream function $\psi$, we can immediately determine the form of streamlines.
-The equation of a streamline is:
-
-\\[
-\frac{\dd{x}}{v_x} = \frac{\dd{y}}{v_y}
-\\]
-
-Substituting the expressions for $v_x$ and $v_y$ in terms of $\psi$, we have:
-
-\\[
-\pdv{\psi}{x} \dd{x} + \pdv{\psi}{y} \dd{y} = \dd{\psi} = 0
-\\]
-
-This shows that the stream function $\psi$ is constant along a streamline.
-In other words, the value of $\psi$ uniquely identifies each streamline in the flow field.
-
-If we draw a curve between two points $A$ and $B$ in the xy-plane,
-the mass flux $Q$ across this curve is given by the difference in the stream function values at these points:
+Thus:
 
 \\[
 \begin{align\*}
-Q &amp;= \int_A^B \rho v_n \dd{l} = \rho \int_A^B \left( -v_y \dd{x} + v_x \dd{y} \right) \nl
-&amp;= \rho \int_A^B \dd{\psi} = \rho \left( \psi_B - \psi_A \right)
+&amp; \abs{ \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq A, \; 1 \leq y^\prime \leq B, \; \gcd(x^\prime,y^\prime) = 1 } } \nl
+= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \[\gcd(x^\prime,y^\prime) = 1\]
+= \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) \nl
+= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \ge 1} \mu(d) \[d \| x^\prime \] \[d \| y^\prime \] \nl
+= &amp; \sum_{d \ge 1} \mu(d) \sum_{x^\prime=1}^{A} \[d \| x^\prime\] \sum_{y^\prime=1}^{B} \[d \| y^\prime \]
+= \sum_{d \ge 1} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor \nl
+= &amp; \sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
 \end{align\*}
 \\]
 
-### Examples
-
-When the pressure changes adiabatically by $\Delta p$, the density changes by $\Delta \rho = \left( \pdv{\rho}{p} \right)_s \Delta p$.
-According to the Bernoulli&apos;s equation, $\Delta p \sim \rho v^2$.
-We shall show further that $\left( \pdv{p}{\rho} \right)_s = c^2$, where $c$ is the speed of sound in the fluid.
-Thus, we have $\Delta \rho / \rho \sim v^2 / c^2$.
-If the fluid velocity $v$ is much smaller than the speed of sound $c$, i.e. $v \ll c$,
-the change in density is negligible, and the flow can be treated as incompressible.
-
-Let&apos;s extend this argument to unsteady flow.
-Let $\tau$ and $l$ be the characteristic time and length scales of the flow, respectively.
-By Euler&apos;s equation, the pressure changes by an amount $\Delta p \sim \rho l v / \tau$ over a time interval of order $\tau$,
-and the corresponding change in density is $\Delta \rho \sim \rho l v / (c^2 \tau)$.
-Now substituting this to the continuity equation, we have $\tau \gg l/c$ for $\Delta \rho / \rho \ll 1$.
-
-If the both conditions $v \ll c$ and $\tau \gg l/c$ are satisfied,
-the flow can be treated as incompressible.
-
-## Irrotational and Incompressible Flow
-
-If a flow is both irrotational and incompressible, the velocity field is governed by both conditions:
+Therefore, the answer for each query is:
 
 \\[
-\div \b{v} = 0, \quad \curl \b{v} = 0
+\sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
 \\]
 
-This implies that the velocity potential $\phi$ satisfies Laplace&apos;s equation:
+## Optimization
+
+Precomputing the Mobius function up to $\text{MAX}$ can be done in $O(\text{MAX} \log \log \text{MAX})$ time using a sieve method.
+If we compute each query naively, the time complexity is:
 
 \\[
-\laplacian \phi = 0
+O\left( N \min(A,B) \right)
 \\]
 
-### Properties
-
-For the flow to be irrotational and incompressible, we can use the results about Bernoulli&apos;s equation from both irrotational and incompressible flow sections.
-Thus, Bernoulli&apos;s equation written as follows holds throughout the entire flow field:
+and this is too slow. To optimize, we can group the terms with the same value of $\left\lfloor A/d \right\rfloor$ and $\left\lfloor B/d \right\rfloor$.
+Let $p(d) = \left\lfloor A/d \right\rfloor$ and $q(d) = \left\lfloor B/d \right\rfloor$.
+Denote $d_0 = 1$ and let $d_1, \ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.
+Relation between $d_i$ and $d_{i+1}$ is:
 
 \\[
-\pdv{\phi}{t} + \frac{1}{2} v^2 + \frac{p}{\rho} + \Phi = \text{const.}
+d_{i+1} = \min\left( \left\lfloor \frac{A}{p(d_i)} \right\rfloor, \; \left\lfloor \frac{B}{q(d_i)} \right\rfloor \right) + 1
 \\]
 
-For a steady flow, this reduces to:
+If we denote $M(n) = \sum_{k=1}^{n} \mu(k)$, then the answer can be computed as:
 
 \\[
-p + \frac{1}{2} \rho v^2 + \rho \Phi = \text{const.}
+\sum_{i: d_i \leq \min(A,B)} \left( M(d_{i+1}-1) - M(d_i-1) \right) p(d_i) q(d_i)
 \\]
 
-This means that the pressure distribution in the flow can be determined directly from the velocity field.
-The greatest pressure occurs where the velocity is minimum, and vice versa. If a body is immersed
-in such a flow and there exists a _stagnation point_ on the body&apos;s surface where the fluid velocity is zero, the pressure at that point is given by:
+The complexity of this approach is:
 
 \\[
-p_\text{max} = p_\infty + \frac{1}{2} \rho v_\infty^2
+O\left( N \sqrt{\min(A,B)} \right)
 \\]
 
-### Two-Dimensional Irrotational and Incompressible Flow
-
-There are powerful methods of solving problems of two-dimensional incompressible flow of an incompressible fluid
-past bodies of various profiles, involving the application of complex variable theory.
-The velocity potential $\phi$ and the stream function $\psi$ are related to the velocity components as follows:
-
-\\[
-v_x = \pdv{\phi}{x} = \pdv{\psi}{y}, \quad v_y = \pdv{\phi}{y} = -\pdv{\psi}{x}
-\\]
-
-These relations between $\phi$ and $\psi$ are known as the _Cauchy-Riemann equations_
-for a complex function $w=\phi + i \psi$ to be an analytic function of the complex variable $z = x + iy$.
-This means that $w(z)$ has a well-defined derivative at every point in the flow field.
-
-\\[
-\odv{w}{z} = \pdv{\phi}{x} + i \pdv{\psi}{x} = v_x - i v_y
-\\]
-
-The function $w(z)$ is called the **complex potential**, and $\odv{w}{z}$ is the **complex velocity**.
-
-\\[
-\odv{w}{z} = v e^{-i \theta}
-\\]
-
-where $v$ is the magnitude of the velocity and $\theta$ is the angle between the velocity vector and the x-axis.
-At a solid surface, the stream function $\psi$ is constant, since no fluid can cross the boundary.
-Thus, the body surface corresponds to a streamline in the flow (\psi = const.), and the problem reduces to finding an analytic function $w(z)$
-that satisfies the real boundary conditions on the body surface and the appropriate conditions at infinity.
-
-The integral of the complex velocity around a closed curve $C$ is given by:
-
-\\[
-\begin{align\*}
-\oint_C \odv{w}{z} \dd{z} &amp;= \oint_C (v_x - i v_y)(\dd{x} + i \dd{y}) \nl
-&amp;= \oint_C (v_x \dd{x} + v_y \dd{y}) + i \oint_C (-v_y \dd{x} + v_x \dd{y}) \nl
-&amp;= \Gamma + i Q/\rho
-\end{align\*}
-\\]
-
-where $Q$ is the mass flux across the curve $C$, and $\Gamma$ is the circulation around $C$.
-By the _residue theorem_ from complex variable theory,
-
-\\[
-\oint_C \odv{w}{z} \dd{z} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
-\\]
-
-where the sum is over all singularities $z_k$ of $\odv{w}{z}$ inside the curve $C$.
-This shows that both the circulation $\Gamma$ and the mass flux $Q$ are determined by the singularities of the complex velocity within the curve $C$.
-
-\\[
-\Gamma + i \frac{Q}{\rho} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Drag Force in Potential Flow Past a Body</title><link href="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html" rel="alternate" type="text/html" title="The Drag Force in Potential Flow Past a Body" /><published>2025-09-16T00:00:00+09:00</published><updated>2025-09-16T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body</id><content type="html" xml:base="http://localhost:4000/physics/the-drag-force-in-potential-flow-past-a-body.html">&lt;!--more--&gt;
+This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1792</summary></entry><entry><title type="html">Internal Waves in an Incompressible Fluid</title><link href="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Internal Waves in an Incompressible Fluid" /><published>2025-10-26T00:00:00+09:00</published><updated>2025-10-26T00:00:00+09:00</updated><id>http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}
-
-## Introduction
-
-Let&apos;s consider the problem of irrotational, incompressible and ideal fluid flow past a stationary body.
-By shifting to a reference where body is moving with a constant velocity through a fluid at rest at infinity, we can analyze the flow characteristics around the body.
-In this scenario, we denote the velocity of the body as $\b{u}$ and the fluid velocity as $\b{v}$.
-
-## Governing Equations
-
-As we know, the velocity potential $\phi$ satisfies Laplace&apos;s equation in the fluid domain:
-
-\\[
-\laplacian \phi = 0
-\\]
-
-Taking the origin somewhere inside the moving body, the general form of the potential at great distances from the body is given by:
-
-\\[
-\phi = - \frac{a}{r} + \b{A} \cdot \frac{\b{r}}{r^3} + O\left( \frac{1}{r^3} \right)
-\\]
-
-However, since the fluid is incompressible so that $\div \b{v} = 0$, we have $a = 0$.
-Thus, by approximating the potential at large distances, we have the velocity field as:
-
-\\[
-\b{v} = \grad \phi = \frac{3(\b{A} \cdot \hat{\b{r}}) \hat{\b{r}} - \b{A}}{r^3}
-\\]
-
-## Drag Force and Lift force
-
-To find the total force $\b{F}$ exerted by the fluid on the body,
-we first calculate the total energy $E$ of the entire fluid.
-Denote $V_0$ as the volume occupied by the body and $S_0$ as its surface.
-Let $V$ be the volume of the large sphere enclosing both the body and the fluid, and $S$ be its surface.
-
-\\[
-\begin{align\*}
-E &amp;= \frac{1}{2} \rho \int v^2 \, \dd{V} \nl
-&amp;= \frac{1}{2} \rho \left\[ \int u^2 \, \dd{V} + \int (\b{v} + \b{u})\cdot(\b{v} - \b{u}) \, \dd{V} \right\] \nl
-&amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \int \div \[ (\phi + \b{u} \cdot \b{r})(\b{v} - \b{u}) \] \, \dd{V} \nl
-&amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \oint_{S_0+S} (\phi + \b{u} \cdot \b{r})(\b{v} - \b{u}) \cdot \dd{A}
-\end{align\*}
-\\]
-
-On the surface of body, we have the boundary condition $(\b{v}-\b{u}) \cdot \dd{A} = 0$.
-
-\\[
-\begin{align\*}
-E &amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \oint_{S} \left( -\frac{\b{A} \cdot \hat{\b{r}}}{r^2} + \b{u} \cdot \b{r} \right) \left( \frac{3(\b{A} \cdot \hat{\b{r}}) \hat{\b{r}} - \b{A}}{r^3} - \b{u} \right) \cdot \hat{\b{r}} R^2 \, \dd{\Omega} \nl
-&amp;= \frac{1}{2} \rho u^2 (V - V_0) + \frac{1}{2} \rho \int \left( -\b{A} \cdot \hat{\b{r}} + \b{u} \cdot \hat{\b{r}} R^3 \right) \left( \frac{2(\b{A} \cdot \hat{\b{r}})}{R^3} - \b{u} \cdot \hat{\b{r}} \right) \, \dd{\Omega} \nl
-&amp;= \frac{1}{2} \rho u^2 \left( \frac{4}{3} \pi R^3 - V_0 \right) + \frac{1}{2} \rho \int \left\[ 3(\b{A} \cdot \hat{\b{r}})(\b{u} \cdot \hat{\b{r}}) - (\b{u} \cdot \hat{\b{r}})^2 R^3 - \frac{2(\b{A} \cdot \hat{\b{r}})^2}{R^3} \right\] \, \dd{\Omega}
-\end{align\*}
-\\]
-
-Neglecting the terms that vanish as $R \to \infty$, we have:
-
-\\[
-\begin{align\*}
-E &amp;= \frac{1}{2} \rho u^2 \left( \frac{4}{3} \pi R^3 - V_0 \right) + \frac{1}{2} \rho \left( \b{A} \cdot \b{u} - u^2 R^3 \right) 4 \pi \nl
-&amp;= \frac{1}{2} \rho \left( 4 \pi \b{A} \cdot \b{u} - V_0 u^2 \right)
-\end{align\*}
-\\]
-
-The exact calculation of the vector $\b{A}$ depends on the shape of the body,
-but we call still observe that the general nature of the dependence of $\b{A}$ on $\b{u}$ is linear,
-since the boundary condition on the body surface is linear in $\b{u}$ and the governing equation is linear as well.
-
-\\[
-\b{A} = \b{C} \cdot \b{u}
-\\]
-
-for some constant tensor $\b{C}$ that depends on the shape of the body.
-Thus, we have the energy expressed as:
-
-\\[
-E = \frac{1}{2} \b{u}^\top \b{m} \b{u}
-\\]
-
-where the symmetric tensor $\b{m}$, which is called the induced mass tensor, is given by:
-
-\\[
-\b{m} = 4 \pi \rho \b{C} - \rho V_0 \b{I}
-\\]
-
-It follows from this that the total momentum $\b{P}$ of the fluid is given by:
-
-\\[
-\begin{align\*}
-\b{P} &amp;= \pdv{E}{\b{u}} = \b{m} \cdot \b{u} \nl
-&amp;= 4\pi \rho \b{A} - \rho V_0 \b{u}
-\end{align\*}
-\\]
-
-The force $\b{F}$ exerted by the fluid on the body is given by the time rate of change of the total momentum of the fluid:
-
-\\[
-\b{F} = - \odv{\b{P}}{t}
-\\]
-
-The component of the force in the direction of motion of the body is called the **drag force**,
-and the component perpendicular to the direction of motion is called the **lift force**.
-However, it must be emphasized that if the fluid has a free surface,
-a body moving through the fluid will create waves on the free surface,
-and the generation of these waves will result in a drag force on the body.
-This form of drag is known as **wave drag**, and it is not accounted for in the potential flow theory discussed here.
-
-### D&apos;Alembert&apos;s Paradox
-
-If it were possible to have potential flow past a body moving uniformly through in an ideal fluid,
-we should have $\b{P} = \text{const.}$ and hence $\b{F} = 0$.
-This means that there would be no drag force acting on the body.
-This result is known as **D&apos;Alembert&apos;s paradox**.
-This is only available in ideal fluids: in ideal fluids by definition there is no dissipation of energy,
-and hence no mechanism for the fluid to exert a drag force on the body.
-In real fluids, viscosity leads to the formation of boundary layers on the surface of the body,
-and the separation of these boundary layers results in the generation of vortices in the wake of the body.
-The presence of these vortices leads to a pressure difference between the front and back of the body,
-resulting in a non-zero drag force.
-
-### Oscillating Bodies
-
-Suppose that the body is oscillating under an external force $\b{f}$.
-We than have:
-
-\\[
-M \odv{u}{t} = - \odv{P}{t} + \b{f}
-\\]
-
-where $M$ is the mass of the body. It can be alson written as:
-
-\\[
-\left( M \b{I} + \b{m} \right) \cdot \odv{\b{u}}{t} = \b{f}
-\\]
-
-Now let $\b{v}$ be what the fluid velocity at the position of the body would be if the body were absent;
-i.e. unperturbed fluid velocity.
-The force $\b{f}$ required to produce the motion of the body is then given by:
-
-\\[
-\b{f} = \rho V_0 \odv{\b{v}}{t} - \b{m} \cdot \odv{}{t} (\b{u} - \b{v})
-\\]
-
-where the first term on the right-hand side represents the force required to accelerate the fluid that would occupy the volume of the body if it were absent,
-and the second term represents the additional force required to overcome the inertia of the fluid induced by the motion of the body relative to the fluid.
-Using $\b{f}= M \odv{\b{u}}{t}$, by integrating the equation we obtain:
-
-\\[
-\left( M \b{I} + \b{m} \right) \cdot \b{u} = (\b{m} + \rho V_0 \b{I}) \cdot \b{v}
-\\]
-
-The constant of integration is zero because when $\b{u} = 0$, we must have $\b{v} = 0$ as well.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>

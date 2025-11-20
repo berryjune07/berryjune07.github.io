@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-11-12T04:09:41+09:00',
+    INDEX_KEY: 'index--2025-11-20T08:41:12+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="797 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1861 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   13 min
+   31 min
 </span>
 
       </span>
@@ -305,10 +305,11 @@
   <li>
 <a href="#segment-tree" id="markdown-toc-segment-tree">Segment Tree</a>    <ul>
       <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
-      <li><a href="#code" id="markdown-toc-code">Code</a></li>
-      <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+      <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
     </ul>
   </li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
@@ -318,22 +319,33 @@ There are many applications of segment trees: calculating the sum of all element
 <h2 id="segment-tree">Segment Tree</h2>
 
 <h3 id="explanation">Explanation</h3>
-<p>Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
-(Read more about monoids <a href="https://en.wikipedia.org/wiki/Monoid">here</a>.)</p>
+<p>Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.</p>
 
-<p>Given an array $A=[a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l,r]$ of the array.
+<p>Given an array $A = [a_1,\cdots,a_N]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l:r]$ of the array.
 Each node stores the result of applying the operation $\ast$ to all elements in the interval it represents, i.e. $a_l \ast \cdots \ast a_r$.
 The root node represents the entire array $[1:N]$, and each leaf node represents a single element of the array.
 Every parent node has left and right children, which represent the left and right halves of the parent’s interval.
-You can see that the segment tree is a <em>full binary tree</em>.</p>
+You can see that the segment tree is a <em>full</em> and <em>complete binary tree</em>.</p>
 
 <p>Segment tree can carry out two types of queries in $O(\log N)$ time complexity:</p>
 <ol>
   <li>
-<strong>Range query</strong>: Given a range $[l,r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.</li>
+<strong>Range query</strong>: Given a range $[l:r]$, find the result of applying the operation $\ast$ to all elements in the range. In other words, calculate $a_l \ast a_{l+1} \ast \cdots \ast a_r$.</li>
   <li>
 <strong>Point update</strong>: Given an index $i$ and a new value $v$, update the element $a_i$ to $v$.</li>
 </ol>
+
+<p>The tree can be technically implemented as an array,
+where the node with binary number index $\overline{i}_2$ has two child nodes with index
+$\overline{i0}_2$ (left child) and $\overline{i1}_2$ (right child). The root node has index $1$.
+If a node represents an interval $[l,r]$, then by defining $m=\left\lfloor\frac{l+r}{2}\right\rfloor$,
+the left child node represents the interval $[l,m]$ and the right child node represents the interval $[m+1,r]$.
+The leaf nodes represent individual array elements.</p>
+
+<p>There are two main ways to implement the tree.
+The first one is to construct only $N$ leaf nodes, for which we usually use recursive methods.
+The second one is to construct a complete binary tree, thinking of the array as being padded with identity elements up to the next power of two.
+We can use simple iterative methods for the second one. Let’s see the example for the first approach.</p>
 
 <pre><code class="language-mermaid">graph TD
     f1("1 &lt;br&gt; [1:11]"); f2("2 &lt;br&gt; [1:6]");
@@ -406,7 +418,7 @@ When we update the 5th element of the array, the segment tree will be updated as
     f21("21 &lt;br&gt; [5]"); f24("24 &lt;br&gt; [7]");
     f25("25 &lt;br&gt; [8]");
 
-    f1---f2 &amp; f3;`
+    f1---f2 &amp; f3;
     f2---f4 &amp; f5;
     f3---f6 &amp; f7;
     f4---f8 &amp; f9;
@@ -420,17 +432,170 @@ When we update the 5th element of the array, the segment tree will be updated as
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
 </code></pre>
 
-<h3 id="code">Code</h3>
-<p>Let’s see the sample code.</p>
+<h3 id="complexity">Complexity</h3>
+
+<p>Let’s assume that merging two nodes takes $O(T)$ time.
+In general, it takes constant time $O(1)$, but in specific cases $T$ can be a function of the array size $N$.
+Also, let’s assume that the tree is a complete binary tree, i.e., we’re taking the second approach which we discussed earlier.</p>
+
+<p>⁣1. <strong>Build</strong>: $O(TN)$</p>
+
+<p>Since the tree is a full and complete binary tree, its height is:</p>
+
+<p>\[
+H = \lceil \log_2 N \rceil
+\]</p>
+
+<p>Building the tree requires visiting every node and merging them.
+There are $2^{H+1}-1$ nodes in the tree (perfect binary tree).</p>
+
+<p>\[
+2^{H+1}-1 \le 2^{\log_2 N + 2} -1 = 4N-1
+\]</p>
+
+<p>Therefore, the build time is $O(TN)$.</p>
+
+<p>⁣2. <strong>Range query</strong>: $O(T\log N)$</p>
+
+<p>First, we should prove that at each height level of the tree, an arbitrary range query visits at most two nodes.
+At level $l$, the tree has $2^l$ nodes, which are equipartitioned intervals of the array.</p>
+
+<p>\[
+I_{t,k} = \left[ (k-1) \cdot 2^t + 1, k \cdot 2^t \right] \quad (1 \le k \le 2^h, 0 \le t \le H)
+\]</p>
+
+<p>Leaves correspond to $t=0$, length $1$. The root corresponds to $t=H$, length $m=2^H$.
+What we should do is to get the upper bound of the number of intervals to cover an arbitrary range query $[l,r] \subseteq [1,m]$.</p>
+
+<p>\[
+[l,r] = \bigsqcup_{j=1}^q I_{t_j,k_j}
+\]</p>
+
+<p>Let $\mathcal{D} = \Set{I_{t_j,k_j} | j \in \mathcal{J} }$ be the canonical dyadic decomposition of the range $[l,r]$.
+For fixed $t$, define $\mathcal{D}_t = \Set{I_{t,k} \in \mathcal{D}}$.
+Let’s think from the bottom. Introduce the following notations for an arbitrary range $I$,</p>
+
+<p>\[
+f(I,t) = \Set{ I_{t,k} \subseteq I } , \quad
+g(I,t) = \Set{ I_{t,k} \in f(I,t) | \left( \min I \in I_{t,k} \land 2\mid k \right) \lor \left( \max I \in I_{t,k} \land 2\nmid k \right) } \nt
+U(S) = \bigsqcup_{p \in S} p , \quad
+I_0 = [l_0,r_0], \quad I_{i+1} = I_i \setminus U(g(I_i,i))
+\]</p>
+
+<p>This means that, we remove the leftmost and rightmost intervals at each height if
+they cannot be merged to form a larger interval. Let’s prove the following lemma inductively.</p>
+
+<p>\[
+\min I_t \equiv 1, \; \max I_t \equiv 0 \pmod{2^t}
+\]</p>
+
+<p>if $I_t \neq \emptyset$.</p>
+
+<details>
+  <summary> Proof </summary>
+
+  <p>The statement is obviously true for $t=0$. Assume that it’s true for some fixed $t$.
+Then we can simply know that $I_t$ can be equipartitioned into intervals of length $2^t$ which are dyadic intervals.</p>
+
+  <p>\[
+I_t = U(f(I_t,t))
+\]</p>
+
+  <p>Let’s sort $f(I_t,t)$ in ascending order of $k$ as follows.</p>
+
+  <p>\[
+f(I_t,t) = \Set{ I_{t,k} | l_t \le k \le r_t }
+\]</p>
+
+  <p>Then we have:</p>
+
+  <p>\[
+\min I_t = (l_t-1) \cdot 2^t + 1, \; \max I_t = r_t \cdot 2^t
+\]</p>
+
+  <p>Assume that $I_{t+1} \neq \emptyset$. We should look for two cases for $\min I_t$.</p>
+
+  <ul>
+    <li>$\min I_t \equiv 1 \pmod{2^{t+1}} \Rightarrow 2 \nmid l_t \Rightarrow I_{t,l_t} \nsubseteq g(I_t,t)
+\Rightarrow \min I_{t+1} = \min I_t \equiv 1 \pmod{2^{t+1}}$</li>
+    <li>$\min I_t \equiv 2^t + 1 \pmod{2^{t+1}} \Rightarrow 2 \mid l_t \Rightarrow I_{t,l_t} \subseteq g(I_t,t)
+\Rightarrow \min I_{t+1} = \min I_t + 2^t \equiv 1 \pmod{2^{t+1}}$</li>
+  </ul>
+
+  <p>We should also look for two cases for $\max I_t$.</p>
+
+  <ul>
+    <li>$\max I_t \equiv 0 \pmod{2^{t+1}} \Rightarrow 2 \mid r_t \Rightarrow I_{t,r_t} \nsubseteq g(I_t,t)
+\Rightarrow \max I_{t+1} = \max I_t \equiv 0 \pmod{2^{t+1}}$</li>
+    <li>$\max I_t \equiv 2^t \pmod{2^{t+1}} \Rightarrow 2 \nmid r_t \Rightarrow I_{t,r_t} \subseteq g(I_t,t)
+\Rightarrow \max I_{t+1} = \max I_t + 2^t \equiv 0 \pmod{2^{t+1}}$</li>
+  </ul>
+
+  <p>Thus, the statement also holds for $t+1$ for both cases.</p>
+</details>
+
+<p>By the lemma, we have</p>
+
+<p>\[
+I_t = U(f(I_t,t)) \quad \Rightarrow \quad 2^t \mid \abs{I_t}
+\]</p>
+
+<p>for all $t$. Also, it is trivial by definition that $U(g(I_t,t)) \subseteq I_t$, it implies that</p>
+
+<p>\[
+I_{t+1} \sqcup U(g(I_t,t)) = I_t
+\]</p>
+
+<p>Since the size of $I_t$ is finite and also decreases with $t$,
+there always exists a constant $q$ such that $\abs{I_q} &lt; 2^q$.
+We got that $2^q \mid \abs{I_q}$, so $\abs{I_q} = 0$ and $I_q = \emptyset$,
+which implies that we could always fully cover the given range by this method.
+Therefore, by the expression above, we have:</p>
+
+<p>\[
+I_0 = \bigsqcup_{t=0}^{q-1} U(g(I_t,t)) = U\left( \bigsqcup_{t=0}^{q-1} g(I_t,t) \right)
+\]</p>
+
+<p>We finally got the expression for the canonical dyadic decomposition $\mathcal{D}$.</p>
+
+<p>\[
+\mathcal{D}_t = g(I_t,t), \quad \mathcal{D} = \bigsqcup_{t=0}^{q-1} \mathcal{D}_t
+\]</p>
+
+<p>Now the problem reduces to finding the nodes of $\mathcal{D}$.
+By definition, we easily have:</p>
+
+<p>\[
+\abs{\mathcal{D}_t} \le 2
+\]</p>
+
+<p>The upper bound of $q$ is the height of the tree $H$, $q \le H$.</p>
+
+<p>\[
+\abs{\mathcal{D}} = \sum_{t=0}^{q-1} \abs{\mathcal{D}_t} \le 2q \le 2 \lceil \log_2 N \rceil
+\]</p>
+
+<p>In conclusion, the update query visits at most $O(\log N)$ nodes,
+so the time complexity is $O(T\log N)$.</p>
+
+<p>⁣3. <strong>Point update</strong>: $O(T\log N)$</p>
+
+<p>When we update a single element, we need to update all nodes containing the element.
+There is always one node containing the element for each level of the tree.
+Therefore, we just need to visit all nodes on the path from the leaf to the root.
+The time complexity is $O(TH) = O(T\log N)$.</p>
+
+<h2 id="code">Code</h2>
+<p>Let’s see the sample code implemented with a recursive approach first.</p>
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
 <span class="k">const</span> <span class="kt">int</span> <span class="n">TREE_SIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 
 <span class="n">data</span> <span class="n">A</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
 <span class="n">Node</span> <span class="n">tree</span><span class="p">[</span><span class="n">TREE_SIZE</span><span class="p">];</span>
 
-<span class="n">Node</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Node</span> <span class="n">a</span><span class="p">,</span><span class="n">Node</span> <span class="n">b</span><span class="p">){</span> <span class="cm">/* merge two nodes */</span> <span class="p">}</span>
-<span class="n">Node</span> <span class="nf">conv</span><span class="p">(</span><span class="n">data</span> <span class="n">a</span><span class="p">){</span> <span class="cm">/* convert data to node */</span> <span class="p">}</span>
-<span class="n">Node</span> <span class="nf">identity</span><span class="p">(){</span> <span class="cm">/* return identity node */</span> <span class="p">}</span>
+<span class="n">Node</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Node</span> <span class="n">a</span><span class="p">,</span><span class="n">Node</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// merge two nodes</span>
+<span class="n">Node</span> <span class="nf">conv</span><span class="p">(</span><span class="n">data</span> <span class="n">a</span><span class="p">);</span> <span class="c1">// convert data to node</span>
+<span class="n">Node</span> <span class="nf">identity</span><span class="p">();</span> <span class="c1">// return identity node</span>
 
 <span class="n">Node</span> <span class="nf">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">){</span>
     <span class="k">if</span><span class="p">(</span><span class="n">l</span><span class="o">==</span><span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">l</span><span class="p">]);</span>
@@ -455,9 +620,38 @@ When we update the 5th element of the array, the segment tree will be updated as
 
 <p>So here, the data type <strong>Node</strong> should be the monoid structure $(M, \ast)$.
 Commonly, we store data in the array $A$ in another data type(<strong>data</strong>, such as integer etc.), because it’s easy and intuitive.
-If such data type is different with the node, you should convert the data to the node structure in the function <strong>conv</strong>.</p>
+If such the data type is different with the node, you should convert the data to the node structure in the function <strong>conv</strong>.</p>
 
-<h3 id="applications">Applications</h3>
+<p>Now let’s see the sample code implemented with an iterative approach.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">tree</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">TREE_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">TREE_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="n">tree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">],</span><span class="n">tree</span><span class="p">[</span><span class="n">i</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="o">|</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">,</span><span class="n">data</span> <span class="n">val</span><span class="p">){</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="n">TREE_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">tree</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">val</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">idx</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">){</span>
+        <span class="n">idx</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">tree</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">],</span><span class="n">tree</span><span class="p">[</span><span class="n">idx</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="o">|</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Node</span> <span class="nf">Query</span><span class="p">(</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="kt">int</span> <span class="n">e</span><span class="p">){</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">TREE_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">e</span> <span class="o">+=</span> <span class="n">TREE_SIZE</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">Node</span> <span class="n">res</span> <span class="o">=</span> <span class="n">identity</span><span class="p">();</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="n">e</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">tree</span><span class="p">[</span><span class="n">s</span><span class="o">++</span><span class="p">]);</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">e</span><span class="o">&amp;</span><span class="mi">1</span><span class="p">))</span> <span class="n">res</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">tree</span><span class="p">[</span><span class="n">e</span><span class="o">--</span><span class="p">]);</span>
+        <span class="n">s</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">e</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>It is faster to use bitwise operations to access the nodes.</p>
+
+<h2 id="applications">Applications</h2>
 
 <ul>
   <li>Range sum query</li>
@@ -618,7 +812,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/dijkstras-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">Dijkstra's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/dijkstras-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Dijkstra's Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/lazy-propagation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/lazy-propagation.html" class="flip-title">Lazy Propagation</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/lazy-propagation.html" tabindex="-1"><span class="sr-only">Continue reading Lazy Propagation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dfs-and-bfs.html" class="flip-title">    <span>            DFS &amp; BFS    </span>  </a>      <time class="faded fine" datetime="2023-02-04T00:00:00+09:00">      04 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dfs-and-bfs.html"></span>  </li>      </ul></aside>
+                                                                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/dijkstras-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">Dijkstra's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/dijkstras-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Dijkstra's Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/lazy-propagation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/lazy-propagation.html" class="flip-title">Lazy Propagation</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/lazy-propagation.html" tabindex="-1"><span class="sr-only">Continue reading Lazy Propagation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dfs-and-bfs.html" class="flip-title">    <span>            DFS &amp; BFS    </span>  </a>      <time class="faded fine" datetime="2023-02-04T00:00:00+09:00">      04 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dfs-and-bfs.html"></span>  </li>      </ul></aside>
 
   
 

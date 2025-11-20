@@ -174,7 +174,13 @@ graph TD
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
 ```
 
-### Code
+### Complexity
+
+Suppose that merging two tree nodes or lazy nodes, applying a lazy node to a tree node takes $O(T)$ time.
+Then, both range query and range update take $O(T\log N)$ time.
+We can prove this as we did [here](/computer-science/segment-tree.html).
+
+## Code
 Let's see the sample code.
 ```cpp
 const int N;
@@ -184,12 +190,12 @@ data A[N];
 Node tree[TREE_SIZE];
 Node_lazy lazy[TREE_SIZE];
 
-Node merge(Node a,Node b){ /* merge two nodes */ }
-Node conv(data a){ /* convert data to node */ }
-Node identity(){ /* return identity node */ }
-Node_lazy merge_lazy(Node_lazy a,Node_lazy b){ /* merge two lazy nodes */ }
-Node_lazy identity_lazy(){ /* return identity lazy node */ }
-Node apply_lazy(Node nd,Node_lazy lz){ /* apply lazy node to the node */ }
+Node merge(Node a,Node b); // merge two nodes
+Node conv(data a); // convert data to node
+Node identity(); // return identity node
+Node_lazy merge_lazy(Node_lazy a,Node_lazy b); // merge two lazy nodes
+Node_lazy identity_lazy(); // return identity lazy node
+Node apply_lazy(Node nd,Node_lazy lz); // apply lazy node to the node
 
 Node init(int nd,int l,int r){
     if(l==r) return tree[nd] = conv(A[l]);
