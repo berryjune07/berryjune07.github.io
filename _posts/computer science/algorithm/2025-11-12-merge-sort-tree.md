@@ -130,13 +130,13 @@ struct Node{
     vec v;
 } tree[TREE_SIZE];
 
-q F(Node nd, int K){
-    return upper_bound(all(nd.v), K) - nd.v.begin();
+int F(Node nd, int K){
+    return upper_bound(all(nd.v), K)-nd.v.begin();
 }
-q G(q a,q b){
+int G(int a,int b){
     return a + b;
 }
-q identity(){
+int identity(){
     return 0;
 }
 ```

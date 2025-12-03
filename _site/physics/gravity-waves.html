@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-11-19T19:44:41+09:00',
+    INDEX_KEY: 'index--2025-12-03T23:28:18+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="99 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1956 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   32 min
 </span>
 
       </span>
@@ -305,6 +305,18 @@
     <!--more-->
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#governing-equations" id="markdown-toc-governing-equations">Governing Equations</a></li>
+  <li>
+<a href="#airy-wave-theory" id="markdown-toc-airy-wave-theory">Airy Wave Theory</a>    <ul>
+      <li><a href="#deep-water-and-shallow-water-limits" id="markdown-toc-deep-water-and-shallow-water-limits">Deep Water and Shallow Water Limits</a></li>
+      <li><a href="#stokes-drift" id="markdown-toc-stokes-drift">Stokes Drift</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#stokes-wave-theory" id="markdown-toc-stokes-wave-theory">Stokes Wave Theory</a>    <ul>
+      <li><a href="#ursell-number" id="markdown-toc-ursell-number">Ursell Number</a></li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
@@ -314,6 +326,350 @@ If, under the action of external perturbation, the surface is displaced from its
 <strong>Gravity waves</strong> are waves that occur on the surface of a fluid, such as water, where the restoring force is gravity.
 These waves are commonly observed in oceans, lakes, and other bodies of water.
 Gravity waves appear mainly on the surface of liquids; they affect the interior also but to a much smaller extent.</p>
+
+<h2 id="governing-equations">Governing Equations</h2>
+
+<p>To analyze gravity waves, we start with the assumptions of an incompressible and irrotational ideal fluid.
+The governing equations are the Laplace equation for the velocity potential $\phi$ and the boundary conditions at the free surface and the bottom of the fluid.
+Let’s set up a coordinate system with the $x$-axis along the undisturbed free surface and the $z$-axis pointing upwards, with $z=0$ at the still water level(SWL), $z=\eta(x,t)$ at the free surface, and $z=-h$ at the bottom of the fluid.
+The SWL differs from the mean water level(MWL) by the time-averaged value of $\eta(x,t)$: $\eta_0$.
+First, the Laplace equation for $\phi(x,z,t)$ is given by:</p>
+
+<p>\[
+\pdvn{2}{\phi}{x} + \pdvn{2}{\phi}{z} = 0 \quad (- h \leq z \leq \eta)
+\]</p>
+
+<p>The boundary conditions to be satisfied are the free surface kinematic boundary condition</p>
+
+<p>\[
+\mdv{\eta} = \pdv{\phi}{z} = \pdv{\eta}{t} + \pdv{\eta}{x} \pdv{\phi}{x} \quad (z = \eta),
+\]</p>
+
+<p>the free surface dynamic boundary condition</p>
+
+<p>\[
+\pdv{\phi}{t} + \frac{1}{2} \left( \left( \pdv{\phi}{x} \right)^2 + \left( \pdv{\phi}{z} \right)^2 \right) + g \eta = gz_0 \quad (z = \eta),
+\]</p>
+
+<p>where $z_0$ is a constant reference level called mean energy level(MEL), and the bottom boundary condition</p>
+
+<p>\[
+\pdv{\phi}{z} = 0 \quad (z = -h)
+\]</p>
+
+<p>since the bottom is assumed to be rigid and impermeable.
+Assume the potential function $\phi$ as a traveling wave solution of the form:</p>
+
+<p>\[
+\phi(x,z,t) = \phi(\theta,z)
+\]</p>
+
+<p>where $\theta = kx - \omega t$, $k$ is the wave number, and $\omega$ is the angular frequency.
+By separating variables as $\phi(\theta,z) = \Theta(\theta) Z(z)$ and assuming that $\Theta(\theta)$ is periodic,
+we can solve the equation as:</p>
+
+<p>\[
+k^2 \frac{\odvni{2}{\Theta}{\theta}}{\Theta} = - \frac{\odvni{2}{Z}{z}}{Z} = -k^2n^2
+\]</p>
+
+<p>so that $\phi$ becomes a periodic wave with wave number $k$, where $n$ is for higher modes at Fourier series expansion.
+The general solution is:</p>
+
+<p>\[
+\Theta(\theta) = \sin(n \theta), \quad Z(z) = \cosh(nk(z+h))
+\]</p>
+
+<p>where $Z$ has been determined by the bottom boundary condition.
+Thus, the potential function can be expressed as:</p>
+
+<p>\[
+\phi(\theta,z) = \frac{\omega}{k^2} \sum_{n=1}^{\infty} \phi_n \cosh[nk(z+h)] \sin(n \theta)
+\]</p>
+
+<p>where $\phi_n$ are dimensionless coefficients to be determined by the free surface boundary conditions.
+Traveling wave assumption also gives that $\eta(x,t) = \eta(\theta)$.
+Substituting this expression into the free surface kinematic boundary condition gives:</p>
+
+<p>\[
+\frac{\omega}{k} \sum_{n=1}^{\infty} n \phi_n \sinh[nk(h+\eta)] \sin(n \theta) = -\omega \pdv{\eta}{\theta} + k \pdv{\eta}{\theta} \frac{\omega}{k} \sum_{n=1}^{\infty} \phi_n \cosh[nk(h+\eta)] \cos(n \theta)
+\]</p>
+
+<p>Rearranging this equation and integrating with respect to $\theta$ gives:</p>
+
+<p>\[
+\sum_{n=1}^{\infty} \phi_n \sinh[nk(h+\eta)] \cos(n \theta) = k\eta + C
+\]</p>
+
+<p>where $C$ is an integration constant. For the primary no wave circumstance, we can set $C=0$.</p>
+
+<p>\[
+\begin{equation}
+\sum_{n=1}^{\infty} \phi_n \sinh[nk(h+\eta)] \cos(n \theta) = k\eta
+\end{equation}
+\]</p>
+
+<p>Substituting the expression of $\phi$ into the free surface dynamic boundary condition gives:</p>
+
+<p>\[
+-\frac{\omega^2}{k^2} \left[ \sum_{n=1}^{\infty} n\phi_n \cosh[nk(h+\eta)] \cos(n \theta)
++\frac{1}{2} \left\{ \sum_{n=1}^{\infty} n\phi_n \cosh[nk(h+\eta)] \cos(n \theta) \right\}^2 
++\frac{1}{2} \left\{ \sum_{n=1}^{\infty} n\phi_n \sinh[nk(h+\eta)] \sin(n \theta) \right\}^2 \right] + g \eta = g z_0
+\]</p>
+
+<p>We can nondimensionalize $\omega^2$ by $gk$, i.e. $\omega^2 = gk \Omega$, so that the equation becomes:</p>
+
+<p>\[
+\begin{equation}
+\begin{aligned}
+&amp; - \Omega \sum_{n=1}^{\infty} n\phi_n \cosh[nk(h+\eta)] \cos(n \theta) \nl
+&amp; + \frac{\Omega}{2} \left\{ \sum_{n=1}^{\infty} n\phi_n \cosh[nk(h+\eta)] \cos(n \theta) \right\}^2 \nl
+&amp; + \frac{\Omega}{2} \left\{ \sum_{n=1}^{\infty} n\phi_n \sinh[nk(h+\eta)] \sin(n \theta) \right\}^2 + k \eta = k z_0
+\end{aligned}
+\end{equation}
+\]</p>
+
+<p>The free surface could also be expressed in Fourier series as:</p>
+
+<p>\[
+\eta = \eta_0 + \sum_{n=1}^{\infty} \eta_n \cos(n \theta)
+\]</p>
+
+<p>What remains is to determine the Fourier coefficients $\phi_n$ and $\eta_n$.
+This can be done by iteratively expanding the hyperbolic functions in equations $(1)$ and $(2)$ as Taylor series about $\eta=0$ and equating the coefficients of $\cos(n \theta)$ on both sides of the equations.</p>
+
+<p>\[
+\cosh[nk(h+\eta)] = \sum_{j=0}^{\infty} \frac{(nk)^j}{j!} \begin{Bmatrix} \cosh(nkh) &amp;; 2 \mid j \nl \sinh(nkh) &amp;; 2 \nmid j \end{Bmatrix} \eta^j \nt
+\sinh[nk(h+\eta)] = \sum_{j=0}^{\infty} \frac{(nk)^j}{j!} \begin{Bmatrix} \sinh(nkh) &amp;; 2 \mid j \nl \cosh(nkh) &amp;; 2 \nmid j \end{Bmatrix} \eta^j
+\]</p>
+
+<p>After that, we can obtain a set of nonlinear algebraic equations for $\phi_n$, $\eta_n$, $\omega$, and $z_0$,
+which could be solved using the perturbation method.</p>
+
+<p>\[
+\eta_n = \sum_{j=1}^{\infty} \varepsilon^j \eta_n^{(j)}, \quad
+\phi_n = \sum_{j=1}^{\infty} \varepsilon^j \phi_n^{(j)}, \quad
+\Omega = \sum_{j=0}^{\infty} \varepsilon^j \Omega^{(j)}
+\]</p>
+
+<p>where $\varepsilon$ is a small global perturbation parameter associated with the wave height that is equal to zero when the wave height is zero.
+It is obvious that $\eta_n^{(j)} = \phi_n^{(j)} = 0$ for $j &lt; n$ since physically the $n$-th harmonic cannot appear before the $n$-th order of perturbation.
+Owing to the fact that the number of unknown coefficients is more than the number of equations,
+we will normalize $k\eta_1^{(1)}$ to be unit, i.e. $k\eta_1^{(1)} = 1$ and leave $\eta_1^{(j)}$ for $j \geq 2$ not to be determined.
+Assuming $\varepsilon \ll 1$ and considering only the first-order terms of $\varepsilon$, we get:</p>
+
+<p>\[
+k\eta = \varepsilon \cos \theta + O\left( \varepsilon^2 \right)
+\]</p>
+
+<p>which means that $\varepsilon/k$ represents the wave amplitude.
+Let’s denote the amplitude of the linear wave as $a$, so that $\varepsilon = ka$.</p>
+
+<h2 id="airy-wave-theory">Airy Wave Theory</h2>
+
+<p>By retaining only the first-order terms of $\varepsilon$ in equations $(1)$ and $(2)$, we obtain:</p>
+
+<p>\[
+\Omega^{(0)} = \tanh(kh) \nl
+\eta_0 = 0 \nl
+\phi_1^{(1)} = \frac{1}{\sinh(kh)}
+\]</p>
+
+<p>Substituting these results back into the expressions for $\phi$ and $\eta$, we get the linear wave solution, also known as <strong>Airy wave theory</strong>:</p>
+
+<p>\[
+\eta = a \cos \theta, \qquad
+\phi = \frac{a\omega}{k} \frac{\cosh[k(z+h)]}{\sinh(kh)} \sin \theta, \qquad
+\omega = \sqrt{gk \tanh(kh)}
+\]</p>
+
+<p>The wave height is $H = 2a$. Phase velocity $c_p$ and group velocity $c_g$ can be derived as:</p>
+
+<p>\[
+c_p = \sqrt{\frac{g}{k} \tanh(kh)}, \qquad
+c_g = \frac{1}{2} c_p \left[ 1 + \frac{2kh}{\sinh(2kh)} \right]
+\]</p>
+
+<p>Velocity components can be derived from the potential function as:</p>
+
+<p>\[
+v_x = a \omega \frac{\cosh[k(z+h)]}{\sinh(kh)} \cos \theta, \qquad
+v_z = a \omega \frac{\sinh[k(z+h)]}{\sinh(kh)} \sin \theta
+\]</p>
+
+<p>Let’s also derive the particle trajectory $(x_p, z_p)$.
+We have:</p>
+
+<p>\[
+\odv{x_p}{t} = v_x(x_p, z_p, t), \qquad
+\odv{z_p}{t} = v_z(x_p, z_p, t)
+\]</p>
+
+<p>Assuming that the particle is slightly displaced from its mean position $(x_0, z_0)$, we can express the particle trajectory as:</p>
+
+<p>\[
+x_p = x_0 + \Delta x(x_0, z_0, t), \qquad
+z_p = z_0 + \Delta z(x_0, z_0, t)
+\]</p>
+
+<p>Assuming that the displacements $\Delta x$ and $\Delta z$ are small, we can approximate the velocity components at the particle position by their values at the mean position.
+Then, we have:</p>
+
+<p>\[
+\Delta x = - a \frac{\cosh[k(z_0+h)]}{\sinh(kh)} \sin(kx_0 - \omega t), \qquad
+\Delta z = a \frac{\sinh[k(z_0+h)]}{\sinh(kh)} \cos(kx_0 - \omega t)
+\]</p>
+
+<p>This shows that the particle motion under a gravity wave is approximately elliptical, with the major axis in the horizontal direction.
+The size of the ellipse decreases exponentially with depth, indicating that the wave motion is most pronounced near the surface and diminishes with depth.</p>
+
+<h3 id="deep-water-and-shallow-water-limits">Deep Water and Shallow Water Limits</h3>
+
+<p>In the deep water limit ($kh \gg 1$) and shallow water limit ($kh \ll 1$), the solutions simplify to:</p>
+
+<table class="scroll-table">
+  <thead>
+    <tr>
+      <th> </th>
+      <th>$\phi$</th>
+      <th>$\omega$</th>
+      <th>$c_p$</th>
+      <th>$c_g$</th>
+      <th>$v_x$</th>
+      <th>$v_z$</th>
+      <th>$\Delta x$</th>
+      <th>$\Delta z$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Deep Water</td>
+      <td>$\dps \frac{a\omega}{k} e^{kz} \sin \theta$</td>
+      <td>$\sqrt{gk}$</td>
+      <td>$\dps \sqrt{\frac{g}{k}}$</td>
+      <td>$\dps \frac{1}{2} c_p$</td>
+      <td>$a\omega e^{kz} \cos \theta$</td>
+      <td>$a\omega e^{kz} \sin \theta$</td>
+      <td>$-a e^{kz} \sin\theta$</td>
+      <td>$a e^{kz} \cos \theta$</td>
+    </tr>
+    <tr>
+      <td>Shallow Water</td>
+      <td>$\dps \frac{a\omega}{k} \frac{1}{kh} \sin \theta$</td>
+      <td>$k \sqrt{gh}$</td>
+      <td>$\sqrt{gh}$</td>
+      <td>$c_p$</td>
+      <td>$\dps a\omega \frac{1}{kh} \cos \theta$</td>
+      <td>$\dps a\omega \frac{z+h}{h} \sin \theta$</td>
+      <td>$\dps -a \frac{1}{kh} \sin\theta$</td>
+      <td>$\dps a \frac{z+h}{h} \cos \theta$</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Practically, these approximations are usually valid when $h &gt; \dfrac{1}{2} \lambda$ for deep water and $h &lt; \dfrac{1}{20} \lambda$ for shallow water, where $\lambda$ is the wavelength.</p>
+
+<h3 id="stokes-drift">Stokes Drift</h3>
+
+<p>In addition to the oscillatory motion, particles in a gravity wave also experience a net drift known as <strong>Stokes drift</strong>.
+To derive the Stokes drift, we consider the Taylor expansion of the velocity components about the mean position up to the first order in displacements.
+Let’s denote $v_x^0 = v_x(x_0, z_0, t)$ for convenience.</p>
+
+<p>\[
+v_x(x_p, z_p, t) = v_x^0 + \pdv{v_x}{x} \Delta x + \pdv{v_x}{z} \Delta z + O\left( \Delta x^2 + \Delta z^2 \right)
+\]</p>
+
+<p>Taking the time average over one wave period $T = \dfrac{2\pi}{\omega}$, we find that $\overline{v_x^0} = 0$.</p>
+
+<p>\[
+\begin{align*}
+\overline{v_x} &amp;= \overline{\pdv{v_x}{x} \Delta x + \pdv{v_x}{z} \Delta z} \nl
+&amp;= \frac{a^2 \omega k}{\sinh^2(kh)} \overline{\cosh^2[k(z+h)] \sin^2\theta + \sinh^2[k(z+h)] \cos^2\theta} \nl
+&amp;= \frac{1}{2} \varepsilon a \omega \frac{\cosh[2k(z+h)]}{\sinh^2(kh)}
+\end{align*}
+\]</p>
+
+<p>Thus, the Stokes drift velocity is given by:</p>
+
+<p>\[
+\bar{u}_\text{S} = \frac{1}{2} \varepsilon a \omega \frac{\cosh[2k(z+h)]}{\sinh^2(kh)}
+\]</p>
+
+<p>This shows that the Stokes drift velocity has a magnitude of $O(\varepsilon)$, and most of the drift occurs near the free surface, decreasing with depth.</p>
+
+<h2 id="stokes-wave-theory">Stokes Wave Theory</h2>
+
+<p><strong>Stokes wave theory</strong> extends the analysis of gravity waves to include nonlinear effects by considering higher-order terms in the perturbation expansion.
+By retaining terms up to the third order in $\varepsilon$, we obtain corrections to the surface elevation, potential function, and wave frequency.
+Let’s denote $\tilde{\eta}_n^{(j)} = k \eta_n^{(j)}$ for convenience.
+Omitting the complicated calculations of the coefficients, the third-order Stokes wave solution is given by:</p>
+
+<p>\[
+\eta = a \left[ \frac{\varepsilon}{2\sigma} + \left( 1 + \varepsilon \tilde{\eta}_1^{(2)} + \varepsilon^2 \tilde{\eta}_1^{(3)} \right) \cos \theta
++\varepsilon \frac{3-\sigma^2}{4\sigma^3} \left( 1+ 2\varepsilon \tilde{\eta}_1^{(2)} \right) \cos 2\theta
++\varepsilon^2 \frac{3\left( 8+(1-\sigma^2)^3 \right)}{64 \sigma^6} \cos 3\theta \right]
+\]</p>
+
+<p>\[
+\phi = \frac{a\omega}{k} \left[ \frac{ 1+\varepsilon \tilde{\eta}_1^{(2)} + \varepsilon^2 \left[ \tilde{\eta}_1^{(3)} - 3\left(2+\sigma^2\right)/8\sigma^4 \right] }{\sinh(kh)} \cosh[k(z+h)] \sin \theta
++\varepsilon \frac{3\left(1+2\varepsilon \tilde{\eta}_1^{(2)}\right)}{8\sinh^4(kh)} \cosh[2k(z+h)] \sin 2\theta
++\varepsilon^2 \frac{9-4\sinh^2(kh)}{64 \sinh^7(kh)} \cosh[3k(z+h)] \sin 3\theta \right]
+\]</p>
+
+<p>\[
+\omega^2 = gk\sigma \left[ 1 + \varepsilon^2 \frac{9 - 6\sigma^2 + 5\sigma^4}{8\sigma^4} \right]
+\]</p>
+
+<p>\[
+z_0 = \varepsilon a \frac{3-\sigma^2}{4\sigma}
+\]</p>
+
+<p>\[
+H = 2a \left[ 1 + \varepsilon \tilde{\eta}_1^{(2)} + \varepsilon^2 \left\{\tilde{\eta}_1^{(3)} + \frac{3\left(8+(1-\sigma^2)^3\right)}{64 \sigma^6} \right\} \right]
+\]</p>
+
+<p>where $\sigma = \tanh(kh)$.</p>
+
+<p>These higher-order corrections account for the nonlinear interactions between wave components, leading to phenomena such as wave steepening and the generation of higher harmonics.
+Stokes showed that the crest becomes nondifferentiable, forming a sharp angle of $120^\circ$ when the wave height reaches a critical value.</p>
+
+<h3 id="ursell-number">Ursell Number</h3>
+
+<p>Let’s take a look at the ratio of the free-surface amplitude at second order to that at first order.
+Assume $\tilde{\eta}_1^{(2)}=0$ for simplicity.</p>
+
+<p>\[
+\mathcal{S} = \varepsilon \frac{3-\sigma^2}{4\sigma^3}
+\]</p>
+
+<p>In deep water, it becomes:</p>
+
+<p>\[
+\lim_{kh \to \infty} \mathcal{S} = \frac{1}{2} \varepsilon
+\]</p>
+
+<p>In shallow water, it simplifies to:</p>
+
+<p>\[
+\lim_{kh \to 0} \mathcal{S} = \frac{3}{4} \frac{\varepsilon}{(kh)^3} = \frac{3}{4} \frac{a}{k^2 h^3}
+\]</p>
+
+<p>In terms of wave height $H = 2a$ and wavelength $\lambda = 2\pi/k$, it can be expressed as:</p>
+
+<p>\[
+\lim_{kh \to 0} \mathcal{S} = \frac{3}{32\pi^2} \frac{H \lambda^2}{h^3} = \frac{3}{32\pi^2} \mathcal{U}
+\]</p>
+
+<p>where $\mathcal{U}$ is the <strong>Ursell number</strong>, defined as:</p>
+
+<p>\[
+\mathcal{U} = \frac{H \lambda^2}{h^3}
+\]</p>
+
+<p>The Ursell number is a dimensionless parameter that characterizes the relative importance of nonlinear effects in shallow water waves.
+When $\mathcal{U} \ll 32\pi^2/3 \approx 100$, linear wave theory is adequate.
+It is known that fifth-order Stokes wave theory provides a good approximation when $\mathcal{U} &lt; 40$.
+For larger Ursell numbers, more sophisticated nonlinear wave theories, such as cnoidal wave theory or fifth-order stream function theory, are required to accurately describe the wave behavior.
+Refer to <em>Korteweg–de Vries equation</em> or <em>Boussinesq equation</em> for more information on shallow water wave theories.</p>
 
   
 </article>
@@ -1040,7 +1396,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 
 
 <script type="module">
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
   let config = {
     startOnLoad: true,
     fontFamily: "JetBrains Mono",

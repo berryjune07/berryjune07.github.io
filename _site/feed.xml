@@ -1,646 +1,342 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-11-20T15:47:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Merge Sort Tree</title><link href="http://localhost:4000/computer-science/merge-sort-tree.html" rel="alternate" type="text/html" title="Merge Sort Tree" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/merge-sort-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/merge-sort-tree.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-12-03T23:28:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Antiderivatives</title><link href="http://localhost:4000/mathematics/antiderivatives.html" rel="alternate" type="text/html" title="Antiderivatives" /><published>2025-11-30T00:00:00+09:00</published><updated>2025-11-30T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/antiderivatives</id><content type="html" xml:base="http://localhost:4000/mathematics/antiderivatives.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Convexity of a Function and the Second Derivative Test</title><link href="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html" rel="alternate" type="text/html" title="Convexity of a Function and the Second Derivative Test" /><published>2025-11-29T00:00:00+09:00</published><updated>2025-11-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Strongly Connected Components</title><link href="http://localhost:4000/computer-science/strongly-connected-components.html" rel="alternate" type="text/html" title="Strongly Connected Components" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/strongly-connected-components</id><content type="html" xml:base="http://localhost:4000/computer-science/strongly-connected-components.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Monotonic Functions and the First Derivative Test</title><link href="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html" rel="alternate" type="text/html" title="Monotonic Functions and the First Derivative Test" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Topological Sorting</title><link href="http://localhost:4000/computer-science/topological-sorting.html" rel="alternate" type="text/html" title="Topological Sorting" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/topological-sorting</id><content type="html" xml:base="http://localhost:4000/computer-science/topological-sorting.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">The Mean Value Theorem</title><link href="http://localhost:4000/mathematics/the-mean-value-theorem.html" rel="alternate" type="text/html" title="The Mean Value Theorem" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-mean-value-theorem</id><content type="html" xml:base="http://localhost:4000/mathematics/the-mean-value-theorem.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#rolles-theorem&quot; id=&quot;markdown-toc-rolles-theorem&quot;&gt;Rolle’s Theorem&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Introduction
+&lt;h2 id=&quot;rolles-theorem&quot;&gt;Rolle’s Theorem&lt;/h2&gt;
 
-A **merge sort tree** is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
-It usually does not support updates efficiently.
+&lt;p&gt;&lt;strong&gt;Rolle’s Theorem&lt;/strong&gt; is a Lemma that serves as a foundation for the Mean Value Theorem.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Let $f$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$.
+If $f(a) = f(b)$, then there exists at least one point $c \in (a, b)$ such that $f^\prime(c) = 0$.&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Euler Tour Technique</title><link href="http://localhost:4000/computer-science/euler-tour-technique.html" rel="alternate" type="text/html" title="Euler Tour Technique" /><published>2025-11-26T00:00:00+09:00</published><updated>2025-11-26T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/euler-tour-technique</id><content type="html" xml:base="http://localhost:4000/computer-science/euler-tour-technique.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Merge Sort Tree</title><link href="http://localhost:4000/computer-science/merge-sort-tree.html" rel="alternate" type="text/html" title="Merge Sort Tree" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/merge-sort-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/merge-sort-tree.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#merge-sort-tree&quot; id=&quot;markdown-toc-merge-sort-tree&quot;&gt;Merge Sort Tree&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-## Merge Sort Tree
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-### Explanation
+&lt;p&gt;A &lt;strong&gt;merge sort tree&lt;/strong&gt; is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
+It usually does not support updates efficiently.&lt;/p&gt;
 
-A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
+&lt;h2 id=&quot;merge-sort-tree&quot;&gt;Merge Sort Tree&lt;/h2&gt;
+
+&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+
+&lt;p&gt;A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
 The tree is constructed by recursively dividing the array into segments and merging the sorted lists of child nodes.
-Each node in the merge sort tree is a _multiset_ (or sorted array), and the merge sort tree can only efficiently answer range queries that satisfy the following condition:
+Each node in the merge sort tree is a &lt;em&gt;multiset&lt;/em&gt; (or sorted array), and the merge sort tree can only efficiently answer range queries that satisfy the following condition:&lt;/p&gt;
 
-- For the query function $F$, multisets $S_1,S_2$, and a query result combiner function $G(\cdot,\cdot)$,
+&lt;ul&gt;
+  &lt;li&gt;For the query function $F$, multisets $S_1,S_2$, and a query result combiner function $G(\cdot,\cdot)$,&lt;/li&gt;
+&lt;/ul&gt;
 
-\\[
+&lt;p&gt;\[
 F(S_1 \cup S_2) = G(F(S_1), F(S_2))
-\\]
+\]&lt;/p&gt;
 
-This means that the result of the query on the union of two multisets can be computed by combining the results of the queries on each individual multiset,
-and $F$ only depends on the order statistics of the array.
+&lt;p&gt;This means that the result of the query on the union of two multisets can be computed by combining the results of the queries on each individual multiset,
+and $F$ only depends on the order statistics of the array.&lt;/p&gt;
 
-For example, for an array $[4,3,7,1,2,1,2,5]$, the merge sort tree would be built as follows:
+&lt;p&gt;For example, for an array $[4,3,7,1,2,1,2,5]$, the merge sort tree would be built as follows:&lt;/p&gt;
 
-```mermaid
-graph TD;
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD;
     A1[1,1,2,2,3,4,5,7];
     B1[1,3,4,7]; B2[1,2,2,5];
     C1[3,4]; C2[1,7]; C3[1,2]; C4[2,5];
     D1[4]; D2[3]; D3[7]; D4[1]; D5[2]; D6[1]; D7[2]; D8[5];
     
-    A1 --&gt; B1; A1 --&gt; B2;
-    B1 --&gt; C1; B1 --&gt; C2;
-    B2 --&gt; C3; B2 --&gt; C4;
-    C1 --&gt; D1; C1 --&gt; D2;
-    C2 --&gt; D3; C2 --&gt; D4;
-    C3 --&gt; D5; C3 --&gt; D6;
-    C4 --&gt; D7; C4 --&gt; D8;
-```
+    A1 --&amp;gt; B1; A1 --&amp;gt; B2;
+    B1 --&amp;gt; C1; B1 --&amp;gt; C2;
+    B2 --&amp;gt; C3; B2 --&amp;gt; C4;
+    C1 --&amp;gt; D1; C1 --&amp;gt; D2;
+    C2 --&amp;gt; D3; C2 --&amp;gt; D4;
+    C3 --&amp;gt; D5; C3 --&amp;gt; D6;
+    C4 --&amp;gt; D7; C4 --&amp;gt; D8;
+&lt;/code&gt;&lt;/pre&gt;
 
-### Complexity
+&lt;h3 id=&quot;complexity&quot;&gt;Complexity&lt;/h3&gt;
 
-Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.
+&lt;p&gt;Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.&lt;/p&gt;
 
-\1. **Build**: $O(N \log N)$
+&lt;p&gt;⁣1. &lt;strong&gt;Build&lt;/strong&gt;: $O(N \log N)$&lt;/p&gt;
 
-It takes $O(A+B)$ time to merge two sorted lists of sizes $A$ and $B$.
+&lt;p&gt;It takes $O(A+B)$ time to merge two sorted lists of sizes $A$ and $B$.
 Since the size of array is $N$ and at each level of the segment tree we merge $N$ elements,
 it takes $O(N)$ time per level.
-The height of the segment tree is $O(\log N)$, so the total time complexity for building the merge sort tree is $O(N \log N)$.
+The height of the segment tree is $O(\log N)$, so the total time complexity for building the merge sort tree is $O(N \log N)$.&lt;/p&gt;
 
-\2. **Query**: $O(T(N) \log N)$
+&lt;p&gt;⁣2. &lt;strong&gt;Query&lt;/strong&gt;: $O(T(N) \log N)$&lt;/p&gt;
 
-From [here](/computer-science/segment-tree.html), we know that for each range query, we visit $O(\log N)$ nodes in the segment tree.
+&lt;p&gt;From &lt;a href=&quot;/computer-science/segment-tree.html&quot;&gt;here&lt;/a&gt;, we know that for each range query, we visit $O(\log N)$ nodes in the segment tree.
 At each visited node, we perform a query on the sorted list stored in that node, which takes $O(T(N))$ time.
-Therefore, the total time complexity for a range query is $O(T(N) \log N)$.
-
-\3. **Space Complexity**: $O(N \log N)$
-
-The space complexity of a merge sort tree is $O(N \log N)$ because each level of the segment tree stores $N$ elements in sorted lists, and there are $O(\log N)$ levels in the tree.
-
-## Code
-
-Let’s see the sample code.
-```cpp
-#define all(v) v.begin(),v.end()
-
-const int N;
-const int TREE_SIZE = 1 &lt;&lt; ((int)ceil(log2(N)) + 1);
-using vec = vector&lt;data&gt;; // orderable data type
-
-data A[N];
-struct Node{
-    vec v; // sorted array
-    // other members if needed
-} tree[TREE_SIZE];
-
-Node merge_Node(Node a,Node b){
-    Node res;
-    res.v.resize(a.v.size()+b.v.size());
-    merge(all(a.v), all(b.v), res.v.begin());
-    // other member merges if needed
-    return res;
-}
-
-Node conv(data a){
-    Node res;
-    res.v = {a};
-    // other member initializations if needed
-    return res;
-}
-
-q F(Node nd); // query function on a node
-q G(q a,q b); // query result combiner function
-q identity(); // return identity query result
-
-Node init(int l,int r,int nd){
-    if(l==r) return tree[nd] = conv(A[l]);
-    int m = (l+r)/2;
-    return tree[nd] = merge_Node(init(l,m,nd*2),init(m+1,r,nd*2+1));
-}
-
-q Query(int l,int r,int nd,int s,int e){
-    if(e&lt;l or r&lt;s) return identity();
-    if(s&lt;=l and r&lt;=e) return F(tree[nd]);
-    int m = (l+r)/2;
-    return G(Query(l,m,nd*2,s,e),Query(m+1,r,nd*2+1,s,e));
-}
-```
-
-### Example
-
-Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.
-
-```cpp
-int A[N];
-struct Node{
-    vec v;
-} tree[TREE_SIZE];
-
-q F(Node nd, int K){
-    return upper_bound(all(nd.v), K) - nd.v.begin();
-}
-q G(q a,q b){
-    return a + b;
-}
-q identity(){
-    return 0;
-}
-```
-
-In this example, time complexity of the query function $F$ is $T(N) = O(\log N)$ due to the binary search performed by `upper_bound`.
-Thus, the overall time complexity for a range query becomes $O(\log^2 N)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mo’s Algorithm</title><link href="http://localhost:4000/computer-science/mos-algorithm.html" rel="alternate" type="text/html" title="Mo’s Algorithm" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mos-algorithm</id><content type="html" xml:base="http://localhost:4000/computer-science/mos-algorithm.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-##</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 32240] 비로소 서로소</title><link href="http://localhost:4000/computer-science/boj32240.html" rel="alternate" type="text/html" title="[BOJ 32240] 비로소 서로소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj32240</id><content type="html" xml:base="http://localhost:4000/computer-science/boj32240.html">[https://www.acmicpc.net/problem/32240](https://www.acmicpc.net/problem/32240)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-Compute:
-
-\\[
-\sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \[\gcd(i,j) = 1\]
-\\]
-
-for given integer $N$.
-
-## Solution
-
-Computing directly would take more than $O(N^2)$ time, which is too slow for large $N$.
-Instead, we transform the sum as follows:
-
-\\[
-\begin{align\*}
-&amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \[\gcd(i,j) = 1\] \nl
-=&amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d \| \gcd(i,j)} \mu(d)
-= \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d=1}^{\min(i,j)} \mu(d) \[d \| i\] \[d \| j\] \nl
-=&amp; \sum_{d=1}^{N} \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (di + dj)
-= \sum_{d=1}^{N} d \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (i + j) \nl
-=&amp; \sum_{d=1}^{N} d \mu(d) \left\lfloor \frac{N}{d} \right\rfloor^2 \left( \left\lfloor \frac{N}{d} \right\rfloor + 1 \right)
-\end{align\*}
-\\]
-
-Computing this transformed sum takes $O(N \log \log N)$ time to precompute the Möbius function values and $O(N)$ time to
-compute the final sum. However, this is not enough for the given constraints.
-
-## Optimization
-
-Let&apos;s optimize the summation by grouping terms with the same value of $\left\lfloor \frac{N}{d} \right\rfloor$.
-Denote $d_0 = 1$ and $a_i = \left\lfloor \frac{N}{d_i} \right\rfloor$.
-
-\\[
-d_{i+1} = \left\lfloor \frac{N}{a_i} \right\rfloor + 1
-\\]
-
-Then, we can rewrite the sum as follows:
-
-\\[
-\sum_{i:d_i \le N} \left( \sum_{j=d_i}^{d_{i+1}-1} d \mu(d) \right) a_i^2 (a_i + 1)
-\\]
-
-This reduces the number of terms in the summation to $O(\sqrt{N})$.
-Next, we have to efficiently compute the inner sum $\sum_{j=d_i}^{d_{i+1}-1} d \mu(d)$.
-Precomputing $\mu(d)$ naively takes $O(N \log \log N)$ time, which is still too slow.
-Instead, we can use the [**Mertens trick**](/computer-science/mertens-trick.html) to compute the inner sum in $O\left(N^{2/3}\right)$ time.
-Let $f(n) = n \mu(n)$ and we should compute $S_f(n)$ quickly.
-We should find a function $g(n)$ such that $S_g(n)$ and $S_{f * g}(n)$ can be computed in almost $O(1)$ time.
-We can choose $g = \text{Id}$, so that $f * g = \varepsilon$.
-Then, we have:
-
-\\[
-\begin{align\*}
-S_f(n) &amp;= \frac{1}{g(1)} \left( S_{f * g}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_g(d_{i+1}-1) - S_g(d_i-1) \right) \right) \nl
-&amp;= 1 - \sum_{i:2\le d_i \le n} S_f\left( a_i \right)
-\frac{(d_{i+1}-1)d_{i+1}-d_i(d_i-1)}{2}
-\end{align\*}
-\\]
-
-Using memoization, we can compute $S_f(n)$ in $O\left(N^{2/3}\right)$ time.
-The final sum is written as:
-
-\\[
-\sum_{i:d_i \le N} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) a_i^2 (a_i + 1)
-\\]
-
-The overall time complexity is $O\left(N^{2/3}+\sqrt{N}\right)=O\left(N^{2/3}\right)$, which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/32240</summary></entry><entry><title type="html">[BOJ 19549] 레이저 연구소</title><link href="http://localhost:4000/computer-science/boj19549.html" rel="alternate" type="text/html" title="[BOJ 19549] 레이저 연구소" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj19549</id><content type="html" xml:base="http://localhost:4000/computer-science/boj19549.html">[https://www.acmicpc.net/problem/19549](https://www.acmicpc.net/problem/19549)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-We have an $N\times M$ grid of unit squares:
-- $(N+1)(M+1)$ buildings at grid points
-- $2NM + N + M$ walls on edges
-
-A laser is fired between **every pair of buildings** (not parallel to x/y axes).  
-Each shot burns:
-- all buildings on the line (cost $A$ each)
-- all crossed walls (cost $B$ each)
-
-After every shot, everything is repaired.  
-Find the **total repair cost** for all valid laser shots.
-
-## Solution
-
-Suppose firing a laser from building $(0,0)$ to $(n,m)$.
-- It burns $\gcd(n,m) + 1$ buildings.
-- It crosses $(n-\gcd(n,m)) + (m-\gcd(n,m)) = n+m-2\gcd(n,m)$ walls.
-
-Thus, the cost for this shot is:
-
-\\[
-A + (n+m)B + \gcd(n,m)(A - 2B)
-\\]
-
-To find the total cost, we sum over all pairs of buildings.
-There are $(N+1-n)(M+1-m)$ pairs of buildings with relative position $(n,m)$.
-Also, we can fire lasers in four distinct ways for each pair, since there are two diagonals and two directions for each rectangle.
-Thus, the total cost is:
-
-\\[
-4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) \left( A + (i+j)B + \gcd(i,j)(A - 2B) \right)
-\\]
-
-We can sum up the first two terms easily.
-
-\\[
-4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) A = 4 \sum_{i=1}^{N} \sum_{j=1}^{M} Aij = AN(N+1)M(M+1) \nl
-\\]
-
-\\[
-\begin{aligned}
-&amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \nl
-= &amp; 4 \sum_{i=1}^{N} \sum_{j=1}^{M} i(N+1-i)jB + 4 \sum_{i=1}^{N} \sum_{j=1}^{M} j(N+1-i)jB \nl
-= &amp; 4 \cdot \frac{N(N+1)(N+2)}{6} \cdot \frac{M(M+1)}{2} B + 4 \cdot \frac{M(M+1)(M+2)}{6} \cdot \frac{N(N+1)}{2} B \nl
-= &amp; \frac{BN(N+1)M(M+1)(N+M+4)}{3}
-\end{aligned}
-\\]
-
-To compute the last term, let&apos;s define a sum:
-
-\\[
-S_{ab} = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j)
-\\]
-
-Then, we can express the last term as:
-
-\\[
-4(A - 2B) \left\[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right\]
-\\]
-
-Then, the total cost is:
-
-\\[
-N(N+1)M(M+1) \left( A + \frac{B(N+M+4)}{3} \right) + 4(A - 2B) \left\[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \right\]
-\\]
-
-Now, we need to compute $S_{ab}$ efficiently.
-Let&apos;s transform the sum by grouping terms with the same gcd.
-
-\\[
-\begin{aligned}
-S_{ab} &amp; = \sum_{i=1}^{N} \sum_{j=1}^{M} i^a j^b \gcd(i,j) \nl
-&amp; = \sum_{i=1}^N \sum_{j=1}^M i^a j^b \sum_{d=1}^{\min(i,j)} d \cdot \[\gcd(i,j) = d\] \nl
-&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} (di)^a (dj)^b d \cdot \[\gcd(i,j) = 1\] \nl
-&amp; = \sum_{d=1}^{\min(N,M)} \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor M/d \rfloor} d^{a+b+1} i^a j^b \sum_{t|i,j} \mu(t) \nl
-&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} \sum_{j=1}^{\lfloor M/dt \rfloor} (it)^a (jt)^b \nl
-&amp; = \sum_{d=1}^{\min(N,M)} \sum_{t\ge 1} d^{a+b+1} t^{a+b} \mu(t) \sum_{i=1}^{\lfloor N/dt \rfloor} i^a \sum_{j=1}^{\lfloor M/dt \rfloor} j^b \nl
-&amp; = \sum_{k=1}^{\min(N,M)} \sum_{t|k} \frac{k^{a+b+1}}{t} \mu(t) \sum_{i=1}^{\lfloor N/k \rfloor} i^a \sum_{j=1}^{\lfloor M/k \rfloor} j^b \nl
-&amp; = \sum_{k=1}^{\min(N,M)} k^{a+b+1} \cdot \frac{\phi(k)}{k} \cdot S_{\text{Id}\_a}\left(\left\lfloor \frac{N}{k} \right\rfloor\right) S_{\text{Id}\_b}\left(\left\lfloor \frac{M}{k} \right\rfloor\right) \nl
-&amp; = \sum_{d=1}^{\min(N,M)} d^{a+b} \phi(d) S_{\text{Id}\_a}\left(\left\lfloor \frac{N}{d} \right\rfloor\right) S_{\text{Id}\_b}\left(\left\lfloor \frac{M}{d} \right\rfloor\right)
-\end{aligned}
-\\]
-
-where $S_{\text{Id}\_k}(n) = \sum_{d=1}^{n} d^k$.
-We can compute $S_{\text{Id}\_k}(n)$ in $O(1)$ time using the formulas for sums of powers.
-Grouping by values of $\lfloor N/d \rfloor$ and $\lfloor M/d \rfloor$, we can reduce the
-number of terms in the sum to $O(\sqrt{N} + \sqrt{M})$.
-By denoting as $d_0 = 1$, $p_i = \lfloor N/d_i \rfloor$, $q_i = \lfloor M/d_i \rfloor$, and
-
-\\[
-d_{i+1} = \min\left(\left\lfloor \frac{N}{p_i} \right\rfloor, \left\lfloor \frac{M}{q_i} \right\rfloor\right) + 1
-\\]
-
-By defining $f(d) = d^{a+b} \phi(d)$, the sum can be computed as:
-
-\\[
-\sum_{i:d_i \le \min(N,M)} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) S_{\text{Id}\_a}(p_i) S_{\text{Id}\_b}(q_i)
-\\]
-
-Now what remains is to compute $S_f$ efficiently.
-By using the [**Mertens trick**](/computer-science/mertens-trick.html), we can compute $S_f(n)$ in $O\left(n^{2/3}\right)$ time.
-Using the relationship $f * \text{Id}\_{a+b} = \text{Id}\_{a+b+1}$, we have:
-
-\\[
-\begin{aligned}
-S_f(n) &amp; = \frac{1}{\text{Id}\_{a+b}(1)} \left( S_{\text{Id}\_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}\_{a+b}}(d_{i+1}-1) - S_{\text{Id}\_{a+b}}(d_i-1) \right) \right) \nl
-&amp; = S_{\text{Id}\_{a+b+1}}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_{\text{Id}\_{a+b}}(d_{i+1}-1) - S_{\text{Id}_{a+b}}(d_i-1) \right)
-\end{aligned}
-\\]
-
-Since $S_{\text{Id}\_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\left(N^{2/3}+M^{2/3}\right)$ time.
-Thus, the overall time complexity is $O\left(N^{2/3}+M^{2/3}+\sqrt{N}+\sqrt{M}\right) = O\left(N^{2/3}+M^{2/3}\right)$, which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/19549</summary></entry><entry><title type="html">[BOJ 16164] Möbius Madness</title><link href="http://localhost:4000/computer-science/boj16164.html" rel="alternate" type="text/html" title="[BOJ 16164] Möbius Madness" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj16164</id><content type="html" xml:base="http://localhost:4000/computer-science/boj16164.html">[https://www.acmicpc.net/problem/16164](https://www.acmicpc.net/problem/16164)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-Compute:
-
-\\[
-\sum_{d=1}^{N} \mu(Ld) \left\lfloor \frac{N}{d} \right\rfloor^{K}
-\\]
-
-for given integers $N$, $K$, and $L$.
-
-## Solution
-
-First, we observe that if $\mu(L) = 0$, the entire sum becomes zero.
-Thus, we only need to consider the case where $\mu(L) \neq 0$.
-In this case, we can factor out $\mu(L)$ from the sum:
-
-\\[
-\mu(L) \sum_{d=1}^{N} \frac{\mu(Ld)}{\mu(L)} \left\lfloor \frac{N}{d} \right\rfloor^{K}
-\\]
-
-Let&apos;s denote as:
-
-\\[
-\mu_L(d) = \frac{\mu(Ld)}{\mu(L)} = \mu(d) \[ \gcd(d, L) = 1 \]
-\\]
-
-Then, our task reduces to computing:
-
-\\[
-\mu(L) \sum_{i:d_i \le N} \left( S_{\mu_L}(d_{i+1}-1) - S_{\mu_L}(d_i - 1) \right) a_i^{K}
-\\]
-
-where $d_0 = 1$, $a_i = \left\lfloor \frac{N}{d_i} \right\rfloor$, and $d_{i+1} = \left\lfloor \frac{N}{a_i} \right\rfloor + 1$.
-To compute this efficiently, we need to find a way to compute $S_{\mu_L}(n) = \sum_{i=1}^{n} \mu_L(i)$ quickly.
-Let&apos;s use the [**Mertens trick**](/computer-science/mertens-trick.html).
-We can verify that $\mu_L(d)$ is a multiplicative function.
-Specifically, for a prime $p$:
-- If $p \| L$, then $\mu_L(p) = 0$.
-- If $p \nmid L$, then $\mu_L(p) = -1$
-- $\mu_L(1) = 1$
-- $\mu_L(p^k) = 0$ for $k \ge 2$.
-
-Remining that $\mu_L * 1$ is also multiplicative, we have:
-
-\\[
-(\mu_L * 1)(n) = \prod_{p^k \| n} (1 + \mu_L(p))
-\\]
-
-Let&apos;s denote $P(n) = \Set{p \in \mathbb{P} \| p \| n}$.
-Then, we can express $(\mu_L * 1)(n)$ as:
-
-\\[
-(\mu_L * 1)(n) = \[ P(n) \subseteq P(L) \]
-\\]
-
-Thus, the recursion for $S_{\mu_L}(n)$ becomes:
-
-\\[
-\begin{align\*}
-S_{\mu_L}(n) &amp;= \frac{1}{1(1)} \left( S_{\mu_L * 1}(n) - \sum_{i:2\le d_i \le n} S_{\mu_L}(a_i) \left( S_1(d_{i+1}-1) - S_1(d_i-1) \right) \right) \nl
-&amp;= S_{\mu_L * 1}(n) - \sum_{i:2\le d_i \le n} S_{\mu_L}(a_i) \left( d_{i+1}-d_i \right)
-\end{align\*}
-\\]
-
-We need to compute $S_{\mu_L * 1}(n)$ efficiently.
-
-\\[
-S_{\mu_L * 1}(n) = \sum_{i=1}^{n} \[ P(i) \subseteq P(L) \]
-\\]
-
-which counts the integers up to $n$ whose prime factors are all in $P(L)$.
-We can compute this using a depth-first search (DFS) approach.
-Starting from 1, we can multiply by each prime in $P(L)$ and generate all valid integers up to $n$.
-
-\\[
-V = \Set{ n \le N \| P(n) \subseteq P(L) }
-\\]
-
-After generating these integers, counting integers less than or equal to $n$ can be done using binary search.
-Here, we can estimate as $|V| = O\left((\log N)^{c}\right)$ for some small constant $c$.
-Computing $S_{\mu_L * 1}$ at each step takes $O(\log |V|) = O(\log \log N)$ time due to binary search.
-Precomputing $S_{\mu_L}(n)$ up to $M$ takes $O(M \log \log M)$ time.
-Thus, the overall time complexity for computing $S_{\mu_L}(N)$ becomes:
-
-\\[
-O\left( M \log \log M + \frac{2N}{\sqrt{M}} + \frac{N}{M} \log \log N \right)
-\\]
-
-Choosing $M \approx N^{2/3}$ balances the terms, leading to an optimized complexity of:
-
-\\[
-O\left( N^{2/3} \log \log N \right)
-\\]
-
-Factorizing $L$ requires $O(L^{1/4})$ time using Pollard&apos;s rho algorithm.
-Conducting the DFS takes $O(|V| \cdot |P(L)|) &lt; O\left((\log N)^{c} \log L\right)$ time.
-Calculating the final sum takes $O(\sqrt{N} \log K)$ time.
-Thus, the overall time complexity is:
-
-\\[
-O\left( N^{2/3} \log \log N + L^{1/4} + (\log N)^c \log L + \sqrt{N} \log K \right)
-\\]
-
-which is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/16164</summary></entry><entry><title type="html">Sqrt Decomposition</title><link href="http://localhost:4000/computer-science/sqrt-decomposition.html" rel="alternate" type="text/html" title="Sqrt Decomposition" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/sqrt-decomposition</id><content type="html" xml:base="http://localhost:4000/computer-science/sqrt-decomposition.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mertens Trick</title><link href="http://localhost:4000/computer-science/mertens-trick.html" rel="alternate" type="text/html" title="Mertens Trick" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mertens-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/mertens-trick.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 13714] 약수의 개수</title><link href="http://localhost:4000/computer-science/boj13714.html" rel="alternate" type="text/html" title="[BOJ 13714] 약수의 개수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj13714</id><content type="html" xml:base="http://localhost:4000/computer-science/boj13714.html">[https://www.acmicpc.net/problem/13714](https://www.acmicpc.net/problem/13714)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-Compute:
-
-\\[
-\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk)
-\\]
-
-for given integers $a$, $b$, and $c$, where $\tau(n)$ is the number of divisors of $n$.
-
-## Solution
-
-Computing directly is inefficient.
-Instead, we observe that:
-
-\\[
-\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) = 
-\sum_{m=1}^{ab} \abs{ \Set{ (i,j) \| 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } }
-\sum_{k=1}^{c} \tau(mk)
-\\]
-
-Denote:
-
-\\[
-f(m) = \abs{ \Set{ (i,j) \| 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } } \nl
-S(m) = \sum_{k=1}^{c} \tau(mk)
-\\]
-
-Then, we have:
-
-\\[
-\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) = 
-\sum_{m=1}^{ab} f(m) S(m)
-\\]
-
-Computing $f(m)$ up to $ab$ can be done naively in $O(ab)$ time.
-Let&apos;s focus on computing $S(m)$ efficiently.
-
-\\[
-S(m) = \sum_{k=1}^{c} \sum_{t \| mk} 1 = \sum_{t=1}^{mc} \abs{ \Set{ k \| 1 \leq k \leq c, \; t \| mk } }
-\\]
-
-Let&apos;s denote $u=\gcd(t,m)$ and $t=us, m=uq$.
-Then, $t \| mk$ is equivalent to $s \| k$.
-Thus, we have:
-
-\\[
-\abs{ \Set{ k \| 1 \leq k \leq c, \; t \| mk } } =
-\abs{ \Set{ k \| 1 \leq k \leq c, \; s \| k } } = \left\lfloor \frac{c}{s} \right\rfloor
-\\]
-
-Therefore, we can rewrite $S(m)$ as:
-
-\\[
-S(m) = \sum_{q \| m} \sum_{\substack{1 \leq s \leq c \nl \gcd(s,q) = 1}} \left\lfloor \frac{c}{s} \right\rfloor
-\\]
-
-Let&apos;s denote:
-
-\\[
-G(q) = \sum_{\substack{1 \leq s \leq c \nl \gcd(s,q) = 1}} \left\lfloor \frac{c}{s} \right\rfloor
-\\]
-
-Then, we have:
-
-\\[
-S(m) = \sum_{q \| m} G(q)
-\\]
-
-Now we need to compute $G(q)$ efficiently. Using the property of the Mobius function, we have:
-
-\\[
-\begin{align\*}
-G(q) &amp;= \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor \[\gcd(s,q) = 1\] \nl
-&amp;= \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor \sum_{d \| \gcd(s,q)} \mu(d) \nl
-&amp;= \sum_{d \| q} \mu(d) \sum_{s=1}^{c} \left\lfloor \frac{c}{s} \right\rfloor \[d \| s\] \nl
-&amp;= \sum_{d \| q} \mu(d) \sum_{s^\prime=1}^{\left\lfloor c/d \right\rfloor} \left\lfloor \frac{c}{d s^\prime} \right\rfloor
-\end{align\*}
-\\]
-
-The inner sum only depends on $d$, so let&apos;s denote it as $A(d)$.
-Summarizing, we have:
-
-\\[
-\begin{align\*}
-f(m) &amp;= \abs{ \Set{ (i,j) \| 1 \leq i \leq a, \; 1 \leq j \leq b, \; ij = m } } \nl
-A(d) &amp;= \sum_{s^\prime=1}^{\left\lfloor c/d \right\rfloor} \left\lfloor \frac{c}{d s^\prime} \right\rfloor \nl
-G(q) &amp;= \sum_{d \| q} \mu(d) A(d) \nl
-S(m) &amp;= \sum_{q \| m} G(q) \nl
-\sum_{i=1}^{a}\sum_{j=1}^{b}\sum_{k=1}^{c} \tau(ijk) &amp;= 
-\sum_{m=1}^{ab} f(m) S(m)
-\end{align\*}
-\\]
-
-## Complexity
-
-Precomputing the Mobius function up to $ab$ can be done in $O(ab \log \log ab)$ time using a sieve method.
-Computing $f(m)$ up to $ab$ takes $O(ab)$ time.
-Computing $A(d)$ up to $c$ takes $O(c \log c)$ time.
-Computing $G(q)$ up to $ab$ takes $O(ab \log c)$ time.
-Computing $S(m)$ up to $ab$ takes $O(ab \log ab)$ time.
-Finally, computing the final sum takes $O(ab)$ time.
-Constraints are given as $1 \leq a, b, c \leq N$.
-Thus, the overall time complexity is:
-
-\\[
-O\left( N^2 \log N \right)
-\\]
-
-This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/13714</summary></entry><entry><title type="html">[BOJ 1792] 공약수</title><link href="http://localhost:4000/computer-science/boj1792.html" rel="alternate" type="text/html" title="[BOJ 1792] 공약수" /><published>2025-11-03T00:00:00+09:00</published><updated>2025-11-03T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj1792</id><content type="html" xml:base="http://localhost:4000/computer-science/boj1792.html">[https://www.acmicpc.net/problem/1792](https://www.acmicpc.net/problem/1792)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Task
-
-Compute:
-
-\\[
-\abs{ \Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } }
-\\]
-
-for $N$ queries $(a,b,c)$.
-
-## Solution
-
-\\[
-\Set{ (x,y) \| 1 \leq x \leq a, \; 1 \leq y \leq b, \; \gcd(x,y) = c } \nl
-= \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq \left\lfloor a/c \right\rfloor, \; 1 \leq y^\prime \leq \left\lfloor b/c \right\rfloor, \; \gcd(x^\prime,y^\prime) = 1 }
-\\]
-
-Denote $A = \left\lfloor a/c \right\rfloor$ and $B = \left\lfloor b/c \right\rfloor$.
-
-Since $\sum_{d \| n} \mu(d) = [n = 1]$, we have:
-
-\\[
-\sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) = \[\gcd(x^\prime,y^\prime) = 1\]
-\\]
-
-Thus:
-
-\\[
-\begin{align\*}
-&amp; \abs{ \Set{ (x^\prime, y^\prime) \| 1 \leq x^\prime \leq A, \; 1 \leq y^\prime \leq B, \; \gcd(x^\prime,y^\prime) = 1 } } \nl
-= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \[\gcd(x^\prime,y^\prime) = 1\]
-= \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \| \gcd(x^\prime,y^\prime)} \mu(d) \nl
-= &amp; \sum_{x^\prime=1}^{A} \sum_{y^\prime=1}^{B} \sum_{d \ge 1} \mu(d) \[d \| x^\prime \] \[d \| y^\prime \] \nl
-= &amp; \sum_{d \ge 1} \mu(d) \sum_{x^\prime=1}^{A} \[d \| x^\prime\] \sum_{y^\prime=1}^{B} \[d \| y^\prime \]
-= \sum_{d \ge 1} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor \nl
-= &amp; \sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
-\end{align\*}
-\\]
-
-Therefore, the answer for each query is:
-
-\\[
-\sum_{d=1}^{\min(A,B)} \mu(d) \left\lfloor \frac{A}{d} \right\rfloor \left\lfloor \frac{B}{d} \right\rfloor
-\\]
-
-## Optimization
-
-Precomputing the Mobius function up to $\text{MAX}$ can be done in $O(\text{MAX} \log \log \text{MAX})$ time using a sieve method.
-If we compute each query naively, the time complexity is:
-
-\\[
-O\left( N \min(A,B) \right)
-\\]
-
-and this is too slow. To optimize, we can group the terms with the same value of $\left\lfloor A/d \right\rfloor$ and $\left\lfloor B/d \right\rfloor$.
-Let $p(d) = \left\lfloor A/d \right\rfloor$ and $q(d) = \left\lfloor B/d \right\rfloor$.
-Denote $d_0 = 1$ and let $d_1, \ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.
-Relation between $d_i$ and $d_{i+1}$ is:
-
-\\[
-d_{i+1} = \min\left( \left\lfloor \frac{A}{p(d_i)} \right\rfloor, \; \left\lfloor \frac{B}{q(d_i)} \right\rfloor \right) + 1
-\\]
-
-If we denote $M(n) = \sum_{k=1}^{n} \mu(k)$, then the answer can be computed as:
-
-\\[
-\sum_{i: d_i \leq \min(A,B)} \left( M(d_{i+1}-1) - M(d_i-1) \right) p(d_i) q(d_i)
-\\]
-
-The complexity of this approach is:
-
-\\[
-O\left( N \sqrt{\min(A,B)} \right)
-\\]
-
-This is efficient enough for the given constraints.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/1792</summary></entry><entry><title type="html">Internal Waves in an Incompressible Fluid</title><link href="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Internal Waves in an Incompressible Fluid" /><published>2025-10-26T00:00:00+09:00</published><updated>2025-10-26T00:00:00+09:00</updated><id>http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>
+Therefore, the total time complexity for a range query is $O(T(N) \log N)$.&lt;/p&gt;
+
+&lt;p&gt;⁣3. &lt;strong&gt;Space Complexity&lt;/strong&gt;: $O(N \log N)$&lt;/p&gt;
+
+&lt;p&gt;The space complexity of a merge sort tree is $O(N \log N)$ because each level of the segment tree stores $N$ elements in sorted lists, and there are $O(\log N)$ levels in the tree.&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define all(v) v.begin(),v.end()
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// orderable data type&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// sorted array&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// other members if needed&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// other member merges if needed&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// other member initializations if needed&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// query function on a node&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// query result combiner function&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// return identity query result&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upper_bound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this example, time complexity of the query function $F$ is $T(N) = O(\log N)$ due to the binary search performed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upper_bound&lt;/code&gt;.
+Thus, the overall time complexity for a range query becomes $O(\log^2 N)$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mo’s Algorithm</title><link href="http://localhost:4000/computer-science/mos-algorithm.html" rel="alternate" type="text/html" title="Mo’s Algorithm" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mos-algorithm</id><content type="html" xml:base="http://localhost:4000/computer-science/mos-algorithm.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Mo’s Algorithm&lt;/strong&gt; is an offline algorithm optimization technique to answer multiple range queries on a static array.
+It employs an idea from the &lt;strong&gt;&lt;a href=&quot;/computer-science/sqrt-decomposition.html&quot;&gt;sqrt-decomposition&lt;/a&gt;&lt;/strong&gt; technique, 
+enabling us to answer each query averagely in $O\left( \sqrt{N} \right)$ time.&lt;/p&gt;
+
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
+
+&lt;p&gt;Mo’s Algorithm can handle multiple range queries on a static array sorting the queries.
+The queries should be able to be computed by adding or removing elements from the current range so that 
+we can move the start and end pointers of the range to answer each query. We here use an idea from
+the sqrt-decomposition technique; dividing the array into blocks of size approximately $\sqrt{N}$, and sorting the queries
+first by the block of their start position, and then by their end position.&lt;/p&gt;
+
+&lt;p&gt;Mathematically speaking, we can answer a query $F([l,r])=F_s(f([l,r]))$ for an array $A=[a_1,\cdots,a_N]$ of size $N$ if $f$ satisfies the following properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$f([l,r+1]) = U_{\rm r}(f([l,r]), a_{r+1})$&lt;/li&gt;
+  &lt;li&gt;$f([l,r-1]) = D_{\rm r}(f([l,r]), a_r)$&lt;/li&gt;
+  &lt;li&gt;$f([l-1,r]) = U_{\rm l}(f([l,r]), a_{l-1})$&lt;/li&gt;
+  &lt;li&gt;$f([l+1,r]) = D_{\rm l}(f([l,r]), a_l)$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;where $U_{\rm r}$ and $D_{\rm r}$ are right adding and removing functions, $U_{\rm l}$ and $D_{\rm l}$ are left adding and removing functions respectively.
+$f$ is a function that maps an range $[l,r]$ to a latent result, and $F_s$ is a function that maps the latent result to the final answer.
+The functions should satisfy the following properties:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$D_{\rm r}(U_{\rm r}(f([l,r]), a_{r+1}), a_{r+1}) = U_{\rm r}(D_{\rm r}(f([l,r]), a_r), a_r) = f([l,r])$&lt;/li&gt;
+  &lt;li&gt;$D_{\rm l}(U_{\rm l}(f([l,r]), a_{l-1}), a_{l-1}) = U_{\rm l}(D_{\rm l}(f([l,r]), a_l), a_l) = f([l,r])$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In other words, for all $x$,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$U_{\rm r}(\cdot,x) = (D_{\rm r}(\cdot,x))^{-1}$&lt;/li&gt;
+  &lt;li&gt;$U_{\rm l}(\cdot,x) = (D_{\rm l}(\cdot,x))^{-1}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This means, after computing $f([l_1,r_1])$, we can compute $f([l_2,r_2])$ by applying
+$U_{\rm l}$ or $D_{\rm l}$ $\abs{l_2-l_1}$ times and $U_{\rm r}$ or $D_{\rm r}$ $\abs{r_2-r_1}$ times.
+For the whole set of $Q$ queries, we should minimize the sum of the shifts:&lt;/p&gt;
+
+&lt;p&gt;\[
+\sum_{q=1}^{Q-1} \abs{l_q-l_{q+1}} + \abs{r_q-r_{q+1}}
+\]&lt;/p&gt;
+
+&lt;p&gt;and this can be done by a “proper” sorting of the queries explained above.&lt;/p&gt;
+
+&lt;p&gt;\[
+(l_1,r_1) &amp;lt; (l_2,r_2) \;\Leftrightarrow\; \begin{cases}
+\dps \left\lfloor \frac{l_1}{B} \right\rfloor &amp;lt; \left\lfloor \frac{l_2}{B} \right\rfloor &amp;amp;\nl
+r_1 &amp;lt; r_2 &amp;amp; \text{if } \dps \left\lfloor \frac{l_1}{B} \right\rfloor = \left\lfloor \frac{l_2}{B} \right\rfloor
+\end{cases}
+\]&lt;/p&gt;
+
+&lt;p&gt;where $B = \left\lceil \sqrt{N} \right\rceil$ is the block size.
+Let’s look at an example. For the following range queries,&lt;/p&gt;
+
+&lt;p&gt;\[
+\Set{(4,6),(5,9),(2,7),(3,4)}
+\]&lt;/p&gt;
+
+&lt;p&gt;we process them in the following order:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR
+    subgraph A[&quot;Block 1&quot;]
+        direction LR;
+        A1((1)); A2((2)); A3((3));
+    end
+    subgraph B[&quot;Block 2&quot;]
+        direction LR;
+        B1((4)); B2((5)); B3((6));
+    end
+    subgraph C[&quot;Block 3&quot;]
+        direction LR;
+        C1((7)); C2((8)); C3((9));
+    end
+    A1 --- A2 --- A3 --- B1 --- B2 --- B3 --- C1 --- C2 --- C3;
+    A3 --&amp;gt; A2 --&amp;gt; B1 --&amp;gt; B2;
+    B1 -.-&amp;gt; C1 -.-&amp;gt; B3 -.-&amp;gt; C3;
+    linkStyle 0,1,2,3,4,5,6,7 stroke:transparent;
+    A2:::q1; C1:::q1;
+    A3:::q2; B1:::q2;
+    B3:::q3;
+    B2:::q4; C3:::q4;
+    classDef q1 fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef q2 fill:#9bf,stroke:#333,stroke-width:2px;
+    classDef q3 fill:#fdb,stroke:#333,stroke-width:2px;
+    classDef q4 fill:#faa,stroke:#333,stroke-width:2px;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The solid lines are the shift of left pointers, and the dotted lines are the shift of right pointers.
+Though it is not the global optimal minimum of the shifts, this method gives enough time complexity to handle lots of queries.&lt;/p&gt;
+
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
+
+&lt;p&gt;Denote $S(N)$ as the time complexity to shift the pointers by one position ($U_{\rm l}$, $D_{\rm l}$, $U_{\rm r}$, $D_{\rm r}$),
+$T(N)$ as the time complexity to compute $F_s$ from the latent result.&lt;/p&gt;
+
+&lt;p&gt;⁣1. Sorting the queries: $O(Q \log Q)$&lt;/p&gt;
+
+&lt;p&gt;⁣2. Shifting the pointers: $O\left((N + Q) \sqrt{N} S(N)\right)$&lt;/p&gt;
+
+&lt;p&gt;Let’s think of two cases: when successive queries have their start positions in the same block, and when they are in different blocks.
+When they are in the same block, the left pointer shifts at most $B$ times, and the right pointer shifts at most $N$ times in total for all such queries since they are monotonically increasing.
+Thus, the total shift number is $O\left( BQ + N \cdot \frac{N}{B} \right) = O\left( (N+Q) \sqrt{N} \right)$.
+When they are in different blocks, the left and right pointers shift at most $N$ times each.
+This case only occurs $O\left( \frac{N}{B} \right)$ times, so the total shift number is $O\left( N \cdot \frac{N}{B} \right) = O\left( N \sqrt{N} \right)$.
+Therefore, the overall time complexity is $O\left( (N+Q) \sqrt{N} S(N) \right)$.&lt;/p&gt;
+
+&lt;p&gt;⁣3. Computing answers: $O(Q T(N))$&lt;/p&gt;
+
+&lt;p&gt;Thus, the overall time complexity is:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( Q\log Q + (N+Q) \sqrt{N} S(N) + Q T(N) \right)
+\]&lt;/p&gt;
+
+&lt;p&gt;We usually use Mo’s Algorithm for problems with $S(N) \approx O(1), T(N) \le O\left( \sqrt{N} \right)$
+so that the overall time complexity becomes:&lt;/p&gt;
+
+&lt;p&gt;\[
+O\left( (N+Q) \sqrt{N} \right)
+\]&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+
+&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// block size&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Query&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;latent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// add A[x] to the current range if(dir) right, else left, and update f&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// remove A[x] from the current range if(dir) right, else left, and update f&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAnswer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// compute the final answer from f&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Mo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GetAnswer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GetAnswer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Consider counting the number of distinct elements in a range.&lt;/p&gt;
+
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RANGE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RANGE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Remove&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetAnswer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distinct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Mertens Trick</title><link href="http://localhost:4000/computer-science/mertens-trick.html" rel="alternate" type="text/html" title="Mertens Trick" /><published>2025-11-11T00:00:00+09:00</published><updated>2025-11-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/mertens-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/mertens-trick.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>

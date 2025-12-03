@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-11-19T19:44:41+09:00',
+    INDEX_KEY: 'index--2025-12-03T23:28:18+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="543 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   9 min
 </span>
 
       </span>
@@ -303,6 +303,89 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#extreme-values" id="markdown-toc-extreme-values">Extreme Values</a></li>
+  <li><a href="#extreme-value-theorem" id="markdown-toc-extreme-value-theorem">Extreme Value Theorem</a></li>
+  <li>
+<a href="#local-extreme-values" id="markdown-toc-local-extreme-values">Local Extreme Values</a>    <ul>
+      <li><a href="#the-first-derivative-test-for-local-extreme-values" id="markdown-toc-the-first-derivative-test-for-local-extreme-values">The First Derivative Test for Local Extreme Values</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#critical-points" id="markdown-toc-critical-points">Critical Points</a>    <ul>
+      <li><a href="#finding-extreme-values-on-a-closed-interval" id="markdown-toc-finding-extreme-values-on-a-closed-interval">Finding Extreme Values on a Closed Interval</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="extreme-values">Extreme Values</h2>
+
+<p>Let $f$ be a function with domain $D$. Then $f$ has an <strong>absolute maximum</strong> value on $D$ at a point $c$ if 
+$f(x) \le f(c)$ for all $x \in D$. Similarly, $f$ has an <strong>absolute minimum</strong> value on $D$ at a point $c$ if 
+$f(x) \ge f(c)$ for all $x \in D$. Maximum and minimum values are collectively referred to as <strong>extreme values</strong>.
+Absolute maxima and minima are also called <strong>global</strong> maxima and minima.</p>
+
+<h2 id="extreme-value-theorem">Extreme Value Theorem</h2>
+
+<p>The <strong>extreme value theorem(EVT)</strong> states that:</p>
+
+<blockquote>
+  <p>Let $f$ be a continuous function on a closed interval $I$, then $f$ always has global maximum and minimum values on $I$.</p>
+</blockquote>
+
+<p>This means that on a closed interval $I$, we can define the notations $\min$ and $\max$ as:</p>
+
+<p>\[
+\min_{t \in I} f(t) \le f(x) \le \max_{t \in I} f(t)
+\]</p>
+
+<p>which holds for all $x \in I$. Also, we can introduce the notation $\argmin$ and $\argmax$ as:</p>
+
+<p>\[
+\argmin_{x \in I} f(x) = \Set{ x \in I | f(x) = \min_{t \in I} f(t) } \nt
+\argmax_{x \in I} f(x) = \Set{ x \in I | f(x) = \max_{t \in I} f(t) }
+\]</p>
+
+<p>If argmin and argmax are singletons, we rather define them as the unique elements of those sets.
+We can define these functions more generally in <em>real analysis</em> using $\sup$ and $\inf$, but omitting them here.
+The proof of the EVT also requires knowledge from real analysis, also omitted here.</p>
+
+<h2 id="local-extreme-values">Local Extreme Values</h2>
+
+<p>A function $f$ has a <strong>local maximum</strong> at a point $c$ within its domain $D$ if
+there exists a neighborhood $N \in \mathcal{N}_c \subset D$ such that $f(x) \le f(c)$ for all $x \in N$.
+Similarly, a function $f$ has a <strong>local minimum</strong> at a point $c$ within its domain $D$ if
+there exists a neighborhood $N \in \mathcal{N}_c \subset D$ such that $f(x) \ge f(c)$ for all $x \in N$.</p>
+
+<h3 id="the-first-derivative-test-for-local-extreme-values">The First Derivative Test for Local Extreme Values</h3>
+
+<blockquote>
+  <p>If $f$ has a local maximum or minimum at an internal point $c$ of its domain and $f^\prime(c)$ exists, then $f^\prime(c) = 0$.</p>
+</blockquote>
+
+<p>To prove that $f^\prime(c) = 0$, we show that $f^\prime(c) \le 0$ and then that $f^\prime(c) \ge 0$.
+To begin, suppose that $f$ has a local maximum at $c$ so that $f(x) - f(c) \le 0$ for all $x \in N \in \mathcal{N}_c$ for some neighborhood $N$ of $c$.
+Then we have:</p>
+
+<p>\[
+f^\prime(c) = \lim_{x \to c^+} \frac{f(x) - f(c)}{x - c} \le 0 \nt
+f^\prime(c) = \lim_{x \to c^-} \frac{f(x) - f(c)}{x - c} \ge 0
+\]</p>
+
+<p>Thus, we conclude that $f^\prime(c) = 0$.
+The proof for a local minimum is similar.</p>
+
+<h2 id="critical-points">Critical Points</h2>
+
+<p>A point $c$ in the domain of a function $f$ is called a <strong>critical point</strong> of $f$ if either $f^\prime(c) = 0$ or $f^\prime(c)$ does not exist.</p>
+
+<h3 id="finding-extreme-values-on-a-closed-interval">Finding Extreme Values on a Closed Interval</h3>
+
+<ol>
+  <li>Find all critical points of $f$ in the closed interval.</li>
+  <li>Evaluate $f$ at each critical point and at the endpoints of the interval.</li>
+  <li>Take the largest and smallest of these values as the absolute maximum and minimum values of $f$ on the interval.</li>
+</ol>
 
   
 </article>
@@ -457,7 +540,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/the-chain-rule-univariate.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/the-chain-rule-univariate.html" class="flip-title">The Chain Rule (univariate)</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/the-chain-rule-univariate.html" tabindex="-1"><span class="sr-only">Continue reading The Chain Rule (univariate)</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/linearization-and-differentials.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/linearization-and-differentials.html" class="flip-title">Linearization and Differentials</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/linearization-and-differentials.html" tabindex="-1"><span class="sr-only">Continue reading Linearization and Differentials</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/the-chain-rule-univariate.html" class="flip-title">    <span>              [Calculus 3.3]            The Chain Rule (univariate)    </span>  </a>      <time class="faded fine" datetime="2025-07-29T00:00:00+09:00">      29 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/the-chain-rule-univariate.html"></span>  </li>          <li class="h4">  <a href="/mathematics/linearization-and-differentials.html" class="flip-title">    <span>              [Calculus 3.2]            Linearization and Differentials    </span>  </a>      <time class="faded fine" datetime="2025-07-28T00:00:00+09:00">      28 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/linearization-and-differentials.html"></span>  </li>      </ul></aside>
+                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/monotonic-functions-and-the-first-derivative-test.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/monotonic-functions-and-the-first-derivative-test.html" class="flip-title">Monotonic Functions and the First Derivative Test</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/monotonic-functions-and-the-first-derivative-test.html" tabindex="-1"><span class="sr-only">Continue reading Monotonic Functions and the First Derivative Test</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/the-mean-value-theorem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/the-mean-value-theorem.html" class="flip-title">The Mean Value Theorem</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/the-mean-value-theorem.html" tabindex="-1"><span class="sr-only">Continue reading The Mean Value Theorem</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/monotonic-functions-and-the-first-derivative-test.html" class="flip-title">    <span>              [Calculus 3.6]            Monotonic Functions and the First Derivative Test    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html"></span>  </li>          <li class="h4">  <a href="/mathematics/the-mean-value-theorem.html" class="flip-title">    <span>              [Calculus 3.5]            The Mean Value Theorem    </span>  </a>      <time class="faded fine" datetime="2025-11-27T00:00:00+09:00">      27 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/the-mean-value-theorem.html"></span>  </li>          <li class="h4">  <a href="/mathematics/the-chain-rule-univariate.html" class="flip-title">    <span>              [Calculus 3.3]            The Chain Rule (univariate)    </span>  </a>      <time class="faded fine" datetime="2025-07-29T00:00:00+09:00">      29 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/the-chain-rule-univariate.html"></span>  </li>          <li class="h4">  <a href="/mathematics/linearization-and-differentials.html" class="flip-title">    <span>              [Calculus 3.2]            Linearization and Differentials    </span>  </a>      <time class="faded fine" datetime="2025-07-28T00:00:00+09:00">      28 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/linearization-and-differentials.html"></span>  </li>      </ul></aside>
 
   
 
@@ -1029,7 +1112,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 
 
 <script type="module">
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
   let config = {
     startOnLoad: true,
     fontFamily: "JetBrains Mono",

@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-11-19T19:44:41+09:00',
+    INDEX_KEY: 'index--2025-12-03T23:28:18+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="577 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   9 min
 </span>
 
       </span>
@@ -300,6 +300,150 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+  <li>
+<a href="#code" id="markdown-toc-code">Code</a>    <ul>
+      <li><a href="#example" id="markdown-toc-example">Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>Sqrt decomposition</strong> (also called <strong>block decomposition</strong>) is a powerful algorithmic technique used to optimize query and update operations on arrays or sequences.
+The idea is to divide the array into blocks of size approximately $\sqrt{N}$ and perform operations on each block independently.
+In most cases it is slower than using a segment tree, but in some cases it can be faster than a segment tree.</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Sqrt decomposition is a data structure for monoids $(M,\ast)$.
+Given an array $A=[a_1,\cdots,a_N]$ of size $N$, we can define a block decomposition of $A$ as follows:</p>
+
+<ol>
+  <li>Choose a block size $B = \left\lceil \sqrt{N} \right\rceil$.</li>
+  <li>Divide the array $A$ into $\lceil N/B \rceil$ blocks, where each block contains up to $B$ elements.</li>
+  <li>Precompute the aggregate value of each block using the monoid operation $\ast$.</li>
+</ol>
+
+<p>Then, we can perform following operations on the array $A$ in $O\left(\sqrt{N}\right)$ time:</p>
+
+<ol>
+  <li>
+<strong>Range Query</strong>: Given a range $[l,r]$ of the array, return the aggregate value of the elements in the range.</li>
+  <li>
+<strong>Update</strong>: Given an index $i$ and a value $x$, update the element at index $i$ to $x$.</li>
+</ol>
+
+<pre><code class="language-mermaid">graph LR
+    subgraph A["Block 1"]
+        A1(1); A2(2); A3(3);
+    end
+    subgraph B["Block 2"]
+        B1(4); B2(5); B3(6);
+    end
+    subgraph C["Block 3"]
+        C1(7); C2(8);
+    end
+    A --- B --- C;
+    linkStyle 0,1 stroke:transparent;
+</code></pre>
+
+<h2 id="complexity">Complexity</h2>
+
+<p>⁣1. <strong>Build</strong>: $O(N)$</p>
+
+<p>It is necessary to compute the aggregate value for each block.</p>
+
+<p>⁣2. <strong>Range Query</strong>: $O\left(\sqrt{N}\right)$</p>
+
+<p>In the worst case, we should iterate through all blocks to compute the aggregate value for the range.</p>
+
+<p>\[
+O\left( \frac{N}{B} + 2B \right) = O\left(\sqrt{N}\right)
+\]</p>
+
+<p>⁣3. <strong>Update</strong>: $O\left(\sqrt{N}\right)$</p>
+
+<p>We should update the aggregate value of the block containing the updated element naively,
+thus the time complexity is $O(B)=$ $O\left(\sqrt{N}\right)$.
+However, if the data is an abelian group, i.e., the operation is commutative and has an inverse,
+we can update the aggregate value of the block just by applying the inverse operation to the old value and the operation to the new value,
+which only requires $O(1)$ time.</p>
+
+<p>In some cases, a factor $T(N)$ can be multiplied to the time complexity of the algorithm depending on the type of the query.</p>
+
+<h2 id="code">Code</h2>
+
+<p>Let’s see the sample code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="nf">identity</span><span class="p">();</span> <span class="c1">// identity element of the monoid</span>
+<span class="n">data</span> <span class="nf">op</span><span class="p">(</span><span class="n">data</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// operation of the monoid</span>
+
+<span class="k">struct</span> <span class="nc">SqrtDecomposition</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">num_blocks</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">data</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span><span class="n">agg</span><span class="p">;</span>
+    <span class="k">explicit</span> <span class="n">SqrtDecomposition</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">data</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">init</span><span class="p">)</span> <span class="o">:</span> <span class="n">N</span><span class="p">(</span><span class="n">init</span><span class="p">.</span><span class="n">size</span><span class="p">()),</span><span class="n">B</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">N</span><span class="p">))),</span><span class="n">num_blocks</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">B</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">a</span><span class="p">(</span><span class="n">init</span><span class="p">),</span><span class="n">agg</span><span class="p">(</span><span class="n">num_blocks</span><span class="p">,</span><span class="n">identity</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">build</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">build</span><span class="p">(){</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">agg</span><span class="p">[</span><span class="n">i</span><span class="o">/</span><span class="n">B</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">i</span><span class="o">/</span><span class="n">B</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">data</span> <span class="n">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">){</span>
+        <span class="n">data</span> <span class="n">res</span> <span class="o">=</span> <span class="n">identity</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">bl</span> <span class="o">=</span> <span class="n">l</span><span class="o">/</span><span class="n">B</span><span class="p">,</span> <span class="n">br</span> <span class="o">=</span> <span class="n">r</span><span class="o">/</span><span class="n">B</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">bl</span><span class="o">==</span><span class="n">br</span><span class="p">){</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="n">bl</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">b</span><span class="o">=</span><span class="n">bl</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> <span class="n">b</span><span class="o">&lt;</span><span class="n">br</span><span class="p">;</span> <span class="n">b</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">agg</span><span class="p">[</span><span class="n">b</span><span class="p">]);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">br</span><span class="o">*</span><span class="n">B</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">,</span><span class="n">data</span> <span class="n">val</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">bidx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">/</span><span class="n">B</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">l</span> <span class="o">=</span> <span class="n">bidx</span><span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">min</span><span class="p">((</span><span class="n">bidx</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">B</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">l</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">r</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>If the data is an abelian group, we can use the following code:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span> <span class="nf">inverse</span><span class="p">(</span><span class="n">data</span> <span class="n">x</span><span class="p">);</span> <span class="c1">// inverse of the operation of the monoid</span>
+
+<span class="k">struct</span> <span class="nc">SqrtDecomposition</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">,</span><span class="n">data</span> <span class="n">val</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">bidx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">/</span><span class="n">B</span><span class="p">;</span>
+        <span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">],</span><span class="n">inverse</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]));</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">;</span>
+        <span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">]</span> <span class="o">=</span> <span class="n">op</span><span class="p">(</span><span class="n">agg</span><span class="p">[</span><span class="n">bidx</span><span class="p">],</span><span class="n">a</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="example">Example</h3>
+
+<p>Consider calculating the remainder of the range product with modulo $p$.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">identity</span><span class="p">(){</span> <span class="k">return</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="nf">op</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">){</span> <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">%</span><span class="n">p</span><span class="p">;</span> <span class="p">}</span>
+<span class="kt">int</span> <span class="nf">inverse</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span> <span class="k">return</span> <span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">p</span><span class="p">);</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="applications">Applications</h2>
+
+<ul>
+  <li>Range sum/min/max</li>
+  <li>Counting elements less/greater than a value (more efficient than segment tree)</li>
+  <li>Mo’s algorithm</li>
+</ul>
 
   
 </article>
@@ -454,7 +598,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                          <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mos-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mos-algorithm.html" class="flip-title">Mo's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mos-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Mo's Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/merge-sort-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/merge-sort-tree.html" class="flip-title">Merge Sort Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/merge-sort-tree.html" tabindex="-1"><span class="sr-only">Continue reading Merge Sort Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/merge-sort-tree.html" class="flip-title">    <span>            Merge Sort Tree    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/merge-sort-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>      </ul></aside>
+                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mos-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mos-algorithm.html" class="flip-title">Mo's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mos-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Mo's Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/merge-sort-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/merge-sort-tree.html" class="flip-title">Merge Sort Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/merge-sort-tree.html" tabindex="-1"><span class="sr-only">Continue reading Merge Sort Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/merge-sort-tree.html" class="flip-title">    <span>            Merge Sort Tree    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/merge-sort-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>      </ul></aside>
 
   
 
@@ -1026,7 +1170,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 
 
 <script type="module">
-  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
   let config = {
     startOnLoad: true,
     fontFamily: "JetBrains Mono",
