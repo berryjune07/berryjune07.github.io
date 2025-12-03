@@ -21,6 +21,19 @@ layout: page
 
 {% assign posts = site.tags[page.slug] %}
 
+{% if page.category %}
+  {% assign category_meta = site.featured_categories | where:"slug", page.category | first %}
+  {% assign category_title = category_meta.title | default:page.category | capitalize %}
+  {% assign category_url = category_meta.url %}
+  {% unless category_url %}
+    {% assign category_url = '/' | append:page.category | append:'/' %}
+  {% endunless %}
+  <a class="tag-category-return" href="{{ category_url | relative_url }}">
+    <span class="tag-category-return__icon" aria-hidden="true">←</span>
+    <span class="tag-category-return__text">return to {{ category_title }}</span>
+  </a>
+{% endif %}
+
 {% assign date_formats  = site.data.strings.date_formats               %}
 {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
 {% assign list_entry    = date_formats.list_entry    | default:"%d %b" %}
