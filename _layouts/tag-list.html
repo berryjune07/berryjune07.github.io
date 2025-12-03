@@ -23,13 +23,23 @@ layout: page
 
 {% if page.category %}
   {% assign category_meta = site.featured_categories | where:"slug", page.category | first %}
-  {% assign category_title = category_meta.title | default:page.category | capitalize %}
+  {% assign category_title = category_meta.title %}
   {% assign category_url = category_meta.url %}
   {% unless category_url %}
     {% assign category_url = '/' | append:page.category | append:'/' %}
   {% endunless %}
+  {% unless category_title %}
+    {% assign category_words = page.category | replace:'-',' ' | split:' ' %}
+    {% capture category_title %}
+      {% for word in category_words %}
+        {% assign cap_word = word | capitalize %}
+        {{ cap_word }}{% unless forloop.last %} {% endunless %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign category_title = category_title | strip %}
+  {% endunless %}
   <a class="tag-category-return" href="{{ category_url | relative_url }}">
-    <span class="tag-category-return__icon" aria-hidden="true">←</span>
+    <span class="tag-category-return__icon" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
     <span class="tag-category-return__text">return to {{ category_title }}</span>
   </a>
 {% endif %}

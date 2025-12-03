@@ -31,8 +31,18 @@ layout: page
       <div class="category-tag-cloud__list">
         {% for tag_slug in category_tags %}
           {% assign tag_meta = site.featured_tags | where:"slug", tag_slug | first %}
-          {% assign tag_title = tag_meta.title | default:tag_slug | capitalize %}
+          {% assign tag_title = tag_meta.title %}
           {% assign tag_slugified = tag_slug | strip | slugify %}
+          {% unless tag_title %}
+            {% assign tag_words = tag_slugified | replace:'-',' ' | split:' ' %}
+            {% capture tag_title %}
+              {% for word in tag_words %}
+                {% assign cap_word = word | capitalize %}
+                {{ cap_word }}{% unless forloop.last %} {% endunless %}
+              {% endfor %}
+            {% endcapture %}
+            {% assign tag_title = tag_title | strip %}
+          {% endunless %}
           {% assign tag_url = tag_meta.url %}
           {% unless tag_url %}
             {% assign tag_url = '/tag-' | append:tag_slugified | append:'/' %}
