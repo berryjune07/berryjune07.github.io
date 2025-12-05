@@ -14,9 +14,7 @@ tags: algorithms
 A **segment tree** is a tree data structure for storing intervals, or segments. It allows to perform queries and updates on the intervals in very efficient manner.
 There are many applications of segment trees: calculating the sum of all elements in a range, finding the minimum or maximum element in a range, etc.
 
-## Segment Tree
-
-### Explanation
+## Explanation
 Segment tree is a data structure for monoids $(M, \ast)$, where $M$ is a set with an identity element $e$ and an associative binary operation $\ast$.
 
 Given an array $A = \[a_1,\cdots,a_N\]$ of size $N$, a segment tree is a binary tree where each node represents an interval $[l:r]$ of the array.
@@ -129,7 +127,7 @@ graph TD
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
 ```
 
-### Complexity
+## Complexity
 
 Let's assume that merging two nodes takes $O(T)$ time.
 In general, it takes constant time $O(1)$, but in specific cases $T$ can be a function of the array size $N$.
@@ -165,7 +163,7 @@ Leaves correspond to $t=0$, length $1$. The root corresponds to $t=H$, length $m
 What we should do is to get the upper bound of the number of intervals to cover an arbitrary range query $[l,r] \subseteq [1,m]$.
 
 \\[
-\[l,r\] = \bigsqcup_{j=1}^q I_{t_j,k_j}
+\[l,r\] = \bigsqcup_{j\in\mathcal{J}} I_{t_j,k_j}
 \\]
 
 Let $\mathcal{D} = \Set{I_{t_j,k_j} | j \in \mathcal{J} }$ be the canonical dyadic decomposition of the range $[l,r]$.

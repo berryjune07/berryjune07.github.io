@@ -13,9 +13,7 @@ tags: algorithms
 ## Introduction
 **Lazy propagation** is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.
 
-## Lazy Propagation
-
-### Explanation
+## Explanation
 Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
 $F \subset M^M$ which satisfies the following property:
 - $\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$
@@ -174,7 +172,7 @@ graph TD
     classDef highlight fill:#888,stroke:#444,stroke-width:2px;
 ```
 
-### Complexity
+## Complexity
 
 Suppose that merging two tree nodes or lazy nodes, applying a lazy node to a tree node takes $O(T)$ time.
 Then, both range query and range update take $O(T\log N)$ time.

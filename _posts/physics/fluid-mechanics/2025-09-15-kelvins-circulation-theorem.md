@@ -33,7 +33,7 @@ By the Stokes' theorem, circulation can also be related to vorticity through the
 
 ## Kelvin's Circulation Theorem
 
-In fluid mechanics, Kelvin's circulation theorem states:
+In fluid mechanics, **Kelvin's circulation** theorem states:
 > In a barotropic, ideal fluid with conservative body forces, the circulation around a closed curve (which encloses the same fluid elements) moving with the fluid remains constant with time.
 
 Mathematically, this can be expressed as:

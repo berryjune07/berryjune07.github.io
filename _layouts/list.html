@@ -27,7 +27,7 @@ layout: page
 
   {% if category_tags.size > 0 %}
     <div class="category-tag-cloud">
-      <div class="category-tag-cloud__title">Tags</div>
+      <div class="category-tag-cloud__title">Subtags</div>
       <div class="category-tag-cloud__list">
         {% for tag_slug in category_tags %}
           {% assign tag_meta = site.featured_tags | where:"slug", tag_slug | first %}

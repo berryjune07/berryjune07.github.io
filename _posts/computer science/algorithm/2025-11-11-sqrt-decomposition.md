@@ -10,164 +10,133 @@ tags: algorithms
 * this unordered seed list will be replaced by the toc
 {:toc}
 
+
 ## Introduction
 
-**Sqrt decomposition** (also called **block decomposition**) is a technique for answering range queries and processing updates on arrays in about $O(\sqrt{N})$ time per operation. The idea is to split the array into blocks of length $B \approx \sqrt{N}$, maintain an aggregate for each block, and only scan the boundary elements explicitly.
+**Sqrt decomposition** (also called **block decomposition**) is a powerful algorithmic technique used to optimize query and update operations on arrays or sequences.
+The idea is to divide the array into blocks of size approximately $\sqrt{N}$ and perform operations on each block independently.
+In most cases it is slower than using a segment tree, but in some cases it can be faster than a segment tree.
 
-This pattern is a light-weight alternative to segment trees or Fenwick trees when:
-- The operation is associative (sum, min, max, gcd, xor, etc.).
-- Updates are simple (often point updates, sometimes uniform range updates).
-- Memory overhead and implementation complexity need to stay low.
+## Explanation
 
-## Block Decomposition
+Sqrt decomposition is a data structure for monoids $(M,\ast)$.
+Given an array $A=[a_1,\cdots,a_N]$ of size $N$, we can define a block decomposition of $A$ as follows:
 
-Consider an array $A = [a_1, a_2, \dots, a_N]$ (1-indexed). Pick
+1. Choose a block size $B = \left\lceil \sqrt{N} \right\rceil$.
+2. Divide the array $A$ into $\lceil N/B \rceil$ blocks, where each block contains up to $B$ elements.
+3. Precompute the aggregate value of each block using the monoid operation $\ast$.
 
-\[
-B = \left\lceil \sqrt{N} \right\rceil , \quad \text{num\_blocks} = \left\lceil \frac{N}{B} \right\rceil .
-\]
+Then, we can perform following operations on the array $A$ in $O\left(\sqrt{N}\right)$ time:
 
-Define the block of index $i$ as
+1. **Range Query**: Given a range $[l,r]$ of the array, return the aggregate value of the elements in the range.
+2. **Update**: Given an index $i$ and a value $x$, update the element at index $i$ to $x$.
 
-\[
-\text{blk}(i) = \left\lfloor \frac{i-1}{B} \right\rfloor \quad (1 \le i \le N),
-\]
-
-so block $k$ covers indices
-
-\[
-I_k = [kB+1,\, \min\{(k+1)B,\, N\}] , \quad 0 \le k < \text{num\_blocks} .
-\]
-
-For each block, store an aggregate such as the sum or minimum:
-
-\[
-\text{agg}[k] = a_{kB+1} \ast a_{kB+2} \ast \cdots \ast a_{\min\{(k+1)B, N\}}
-\]
-
-where $\ast$ is the associative operation with identity element $e$. The array of block aggregates has size $O(\sqrt{N})$.
-
-```text
-Index:  1  2  3  4 | 5  6  7  8 | 9 10
-Value:  5  2  7  1 | 6  3  4  8 | 9  0
-Block: [0-------3] | [4-------7] | [8--9]
+```mermaid
+graph LR
+    subgraph A["Block 1"]
+        A1(1); A2(2); A3(3);
+    end
+    subgraph B["Block 2"]
+        B1(4); B2(5); B3(6);
+    end
+    subgraph C["Block 3"]
+        C1(7); C2(8);
+    end
+    A --- B --- C;
+    linkStyle 0,1 stroke:transparent;
 ```
 
-## Build
+## Complexity
 
-Building the structure is linear. For each position $i$, add $a_i$ to its block aggregate:
+\1. **Build**: $O(N)$
 
-```text
-for i in 1..N:
-    agg[blk(i)] <- agg[blk(i)] ⊛ a_i
-```
+It is necessary to compute the aggregate value for each block.
 
-Here ⊛ is the same as $\ast$, but the notation emphasizes "update the stored aggregate". Total time is $O(N)$.
+\2. **Range Query**: $O\left(\sqrt{N}\right)$
 
-## Range Query
+In the worst case, we should iterate through all blocks to compute the aggregate value for the range.
 
-Given a query range $[l,r]$:
-1. Let $b_l = \text{blk}(l)$ and $b_r = \text{blk}(r)$.
-2. If $b_l = b_r$, the whole range lies inside one block; scan $a_l,\dots,a_r$ directly.
-3. Otherwise:
-   - Scan the suffix of the left block $[l, (b_l+1)B]$.
-   - Use precomputed block aggregates for every full block strictly between $b_l$ and $b_r$.
-   - Scan the prefix of the right block $[b_r B + 1, r]$.
+\\[
+O\left( \frac{N}{B} + 2B \right) = O\left(\sqrt{N}\right)
+\\]
 
-The boundary scans visit at most $2B$ elements. The middle section touches at most $\text{num\_blocks} - 2 \le \lceil N/B \rceil$ blocks. With $B = \Theta(\sqrt{N})$, the total is $O(\sqrt{N})$ operations.
+\3. **Update**: $O\left(\sqrt{N}\right)$
 
-### Example (Range Sum)
+We should update the aggregate value of the block containing the updated element naively,
+thus the time complexity is $O(B)=$ $O\left(\sqrt{N}\right)$.
+However, if the data is an abelian group, i.e., the operation is commutative and has an inverse,
+we can update the aggregate value of the block just by applying the inverse operation to the old value and the operation to the new value,
+which only requires $O(1)$ time.
 
-For the array above with $B = 4$, querying $[3,9]$ proceeds as:
-- Left boundary: iterate indices $3,4$.
-- Full blocks: add aggregate of block 1 (indices $5..8$).
-- Right boundary: iterate index $9$.
+In some cases, a factor $T(N)$ can be multiplied to the time complexity of the algorithm depending on the type of the query.
 
-Only $2B = 8$ boundary elements are examined in the worst case, plus at most one full block here.
 
-## Updates
+## Code
 
-### Point Update
-
-To set $a_i \leftarrow v$:
-
-1. Let $k = \text{blk}(i)$.
-2. Update the block aggregate by removing the old value and inserting the new one. For sums, `agg[k] += v - a[i]`; for min/max, recompute that block in $O(B)$ if the updated element was responsible for the previous aggregate.
-3. Write `a[i] = v`.
-
-This costs $O(1)$ for additive aggregates and $O(B)$ for aggregates that need a small rebuild.
-
-### Uniform Range Update
-
-If an operation distributes nicely over $\ast$ (e.g., adding a constant to every element for range-sum queries), keep a lazy tag per block:
-
-- Store `lazy[k]` meaning "pending operation for every element of block $k$".
-- Push the tag to elements when scanning a boundary block.
-- Update `agg[k]` directly using block length without touching individual entries.
-
-This mirrors the lazy idea from segment trees but stays block-scoped.
-
-## Complexity Analysis
-
-Assume the per-element operation costs $O(T)$ (usually $T=1$).
-
-- **Build:** $O(TN)$ — visit each element once.
-- **Range query:** Two partial blocks ($\le 2B$ elements) plus up to $\lceil N/B \rceil$ full blocks. Choosing $B = \lceil \sqrt{N} \rceil$ gives
-
-\[
-O\bigl(T(2B + N/B)\bigr) = O\bigl(T \sqrt{N}\bigr).
-\]
-
-- **Point update:** $O(T)$ for additive aggregates; $O(TB)$ if a block rebuild is required.
-- **Memory:** $O(N + N/B) = O(N + \sqrt{N})$ for the array and block aggregates (plus optional lazy tags).
-
-Compared with segment trees:
-- Sqrt decomposition has higher query complexity ($\Theta(\sqrt{N})$ vs. $\Theta(\log N)$) but simpler code and smaller constants.
-- It excels when $N$ is moderate (e.g., up to $10^5$) and operations are straightforward.
-
-## Reference Implementation (Range Sum)
+Let's see the sample code.
 
 ```cpp
-struct SqrtDecomp {
-    int n, B, num_blocks;
-    vector<long long> a, agg;  // agg[k] is the sum of block k
+data identity(); // identity element of the monoid
+data op(data a, data b); // operation of the monoid
 
-    explicit SqrtDecomp(const vector<long long>& init) {
-        n = (int)init.size();
-        B = (int)ceil(sqrt((double)n));
-        num_blocks = (n + B - 1) / B;
-        a = init;
-        agg.assign(num_blocks, 0);
-        for (int i = 0; i < n; ++i) agg[i / B] += a[i];
+struct SqrtDecomposition {
+    int N,B,num_blocks;
+    vector<data> a,agg;
+    explicit SqrtDecomposition(const vector<data> &init) : N(init.size()),B(ceil(sqrt(N))),num_blocks(N/B+1),a(init),agg(num_blocks,identity()) {
+        build();
     }
-
-    void point_update(int idx, long long val) {
-        int k = idx / B;
-        agg[k] += val - a[idx];
-        a[idx] = val;
+    void build(){
+        for(int i=0; i<N; i++) agg[i/B] = op(agg[i/B],a[i]);
     }
-
-    long long range_sum(int l, int r) const {  // inclusive indices, 0-based
-        long long res = 0;
-        int bl = l / B, br = r / B;
-        if (bl == br) {
-            for (int i = l; i <= r; ++i) res += a[i];
+    data query(int l,int r){
+        data res = identity();
+        int bl = l/B, br = r/B;
+        if(bl==br){
+            for(int i=l; i<=r; i++) res = op(res,a[i]);
             return res;
         }
-        int lend = (bl + 1) * B - 1;
-        for (int i = l; i <= lend; ++i) res += a[i];
-        for (int b = bl + 1; b < br; ++b) res += agg[b];
-        for (int i = br * B; i <= r; ++i) res += a[i];
+        for(int i=l; i<(bl+1)*B; i++) res = op(res,a[i]);
+        for(int b=bl+1; b<br; b++) res = op(res,agg[b]);
+        for(int i=br*B; i<=r; i++) res = op(res,a[i]);
         return res;
+    }
+    void update(int idx,data val){
+        int bidx = idx/B;
+        int l = bidx*B, r = min((bidx+1)*B-1,N-1);
+        a[idx] = val;
+        for(int i=l; i<=r; i++) agg[bidx] = op(agg[bidx],a[i]);
     }
 };
 ```
 
-## Tips and Pitfalls
+If the data is an abelian group, we can use the following code:
 
-- Pick $B$ with a ceiling so the last block never underflows; the exact constant (e.g., $B = \sqrt{N} + 1$) rarely matters.
-- For min/max aggregates, an updated element might invalidate the block value; rebuild that block instead of trying to "undo" the old value.
-- When mixing range updates and queries, prefer block-level lazy tags to avoid scanning entire blocks for each update.
-- If the operation is not associative (e.g., subtraction), sqrt decomposition will not work reliably.
+```cpp
+data inverse(data x); // inverse of the operation of the monoid
 
-Sqrt decomposition sits between prefix sums and tree-based structures: it keeps code concise while still cutting query time from $O(N)$ to roughly $O(\sqrt{N})$.
+struct SqrtDecomposition {
+    ...
+    void update(int idx,data val){
+        int bidx = idx/B;
+        agg[bidx] = op(agg[bidx],inverse(a[idx]));
+        a[idx] = val;
+        agg[bidx] = op(agg[bidx],a[idx]);
+    }
+};
+```
+
+### Example
+
+Consider calculating the remainder of the range product with modulo $p$.
+
+```cpp
+int identity(){ return 1; }
+int op(int a,int b){ return a*b%p; }
+int inverse(int x){ return pow(x,p-2,p); }
+```
+
+## Applications
+
+ - Range sum/min/max
+ - Counting elements less/greater than a value (more efficient than segment tree)
+ - Mo's algorithm

@@ -39,8 +39,8 @@ layout: page
     {% assign category_title = category_title | strip %}
   {% endunless %}
   <a class="tag-category-return" href="{{ category_url | relative_url }}">
-    <span class="tag-category-return__icon" aria-hidden="true">←</span>
-    <span class="tag-category-return__text">{{ category_title }} 카테고리로 돌아가기</span>
+    <span class="tag-category-return__icon" aria-hidden="true"><i class="fa-solid fa-arrow-left"></i></span>
+    <span class="tag-category-return__text">return to {{ category_title }}</span>
   </a>
 {% endif %}
 
