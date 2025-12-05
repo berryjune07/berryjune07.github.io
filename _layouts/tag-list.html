@@ -21,6 +21,29 @@ layout: page
 
 {% assign posts = site.tags[page.slug] %}
 
+{% if page.category %}
+  {% assign category_meta = site.featured_categories | where:"slug", page.category | first %}
+  {% assign category_title = category_meta.title %}
+  {% assign category_url = category_meta.url %}
+  {% unless category_url %}
+    {% assign category_url = '/' | append:page.category | append:'/' %}
+  {% endunless %}
+  {% unless category_title %}
+    {% assign category_words = page.category | replace:'-',' ' | split:' ' %}
+    {% capture category_title %}
+      {% for word in category_words %}
+        {% assign cap_word = word | capitalize %}
+        {{ cap_word }}{% unless forloop.last %} {% endunless %}
+      {% endfor %}
+    {% endcapture %}
+    {% assign category_title = category_title | strip %}
+  {% endunless %}
+  <a class="tag-category-return" href="{{ category_url | relative_url }}">
+    <span class="tag-category-return__icon" aria-hidden="true">←</span>
+    <span class="tag-category-return__text">{{ category_title }} 카테고리로 돌아가기</span>
+  </a>
+{% endif %}
+
 {% assign date_formats  = site.data.strings.date_formats               %}
 {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
 {% assign list_entry    = date_formats.list_entry    | default:"%d %b" %}
