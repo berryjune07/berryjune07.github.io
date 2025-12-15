@@ -20,6 +20,9 @@ layout: page
 {{ content }}
 
 {% assign posts = site.tags[page.slug] %}
+{% unless posts %}
+  {% assign posts = "" | split: "" %}
+{% endunless %}
 
 {% if page.category %}
   {% assign category_meta = site.featured_categories | where:"slug", page.category | first %}
@@ -48,14 +51,44 @@ layout: page
 {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
 {% assign list_entry    = date_formats.list_entry    | default:"%d %b" %}
 
-{% for post in posts %}
-  {% assign currentdate = post.date | date:list_group_by %}
-  {% if currentdate != date %}
-    {% unless forloop.first %}</ul>{% endunless %}
-    <h2 id="{{ list_group_by | slugify }}-{{ currentdate | slugify }}" class="hr">{{ currentdate }}</h2>
-    <ul class="related-posts">
-    {% assign date = currentdate %}
-  {% endif %}
-  {% include components/post-list-item.html post=post format=list_entry %}
-  {% if forloop.last %}</ul>{% endif %}
-{% endfor %}
+{% assign posts_latest = posts | sort: "date" | reverse %}
+{% assign posts_oldest = posts | sort: "date" %}
+
+<div class="post-sort-controls" role="group" aria-label="Sort posts">
+  <button type="button" class="post-sort-button is-active" data-sort="latest" aria-label="Sort by latest">
+    <span class="post-sort-icon fa-solid fa-arrow-down-short-wide" aria-hidden="true"></span>
+    <span class="sr-only">Latest</span>
+  </button>
+  <button type="button" class="post-sort-button" data-sort="oldest" aria-label="Sort by oldest">
+    <span class="post-sort-icon fa-solid fa-arrow-up-wide-short" aria-hidden="true"></span>
+    <span class="sr-only">Oldest</span>
+  </button>
+</div>
+
+<div class="post-sort-list is-active" data-sort-list="latest">
+  {% include_cached components/post-list-grouped.html posts=posts_latest list_group_by=list_group_by list_entry=list_entry heading_class="hr" %}
+</div>
+
+<div class="post-sort-list" data-sort-list="oldest">
+  {% include_cached components/post-list-grouped.html posts=posts_oldest list_group_by=list_group_by list_entry=list_entry heading_class="hr" %}
+</div>
+
+<script>
+(function() {
+  var controls = document.querySelector('.post-sort-controls');
+  if (!controls) return;
+  var buttons = controls.querySelectorAll('.post-sort-button');
+  var lists = document.querySelectorAll('.post-sort-list');
+  controls.addEventListener('click', function (event) {
+    var btn = event.target.closest('.post-sort-button');
+    if (!btn) return;
+    var sort = btn.getAttribute('data-sort');
+    buttons.forEach(function (button) {
+      button.classList.toggle('is-active', button === btn);
+    });
+    lists.forEach(function (list) {
+      list.classList.toggle('is-active', list.getAttribute('data-sort-list') === sort);
+    });
+  });
+})();
+</script>

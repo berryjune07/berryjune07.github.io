@@ -1,0 +1,21 @@
+{% assign posts = include.posts | default:site.empty %}
+{% assign list_group_by = include.list_group_by | default:"%Y" %}
+{% assign list_entry = include.list_entry | default:"%d %b" %}
+{% assign heading_class = include.heading_class | default:"hr-bottom" %}
+{% assign no_groups = include.no_groups | default:false %}
+
+{% assign prev_date = "" %}
+{% if no_groups %}<ul class="related-posts">{% endif %}
+{% for post in posts %}
+  {% assign current_date = post.date | date:list_group_by %}
+  {% unless no_groups %}
+    {% if current_date != prev_date %}
+      {% unless forloop.first %}</ul>{% endunless %}
+      <h2 id="{{ list_group_by | slugify }}-{{ current_date | slugify }}" class="{{ heading_class }}">{{ current_date }}</h2>
+      <ul class="related-posts">
+      {% assign prev_date = current_date %}
+    {% endif %}
+  {% endunless %}
+  {% include_cached components/post-list-item.html post=post format=list_entry %}
+  {% if forloop.last %}</ul>{% endif %}
+{% endfor %}

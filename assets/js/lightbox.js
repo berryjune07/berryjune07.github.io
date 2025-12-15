@@ -1,56 +1,107 @@
 function is_youtubelink(url) {
-  var p =
-    /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-  return url.match(p) ? RegExp.$1 : false;
+    var p =
+        /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    return url.match(p) ? RegExp.$1 : false;
 }
 function is_imagelink(url) {
-  var p = /([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif|webp))/i;
-  return url.match(p) ? true : false;
+    var p = /([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif|webp|svg))/i;
+    return url.match(p) ? true : false;
 }
 function setGallery(el) {
-  var elements = document.body.querySelectorAll(".gallery");
-  elements.forEach((element) => {
-    element.classList.remove("gallery");
-  });
-  if (el.closest("ul, p")) {
-    var link_elements = el
-      .closest("ul, p")
-      .querySelectorAll("a[class*='lightbox-']");
-    link_elements.forEach((link_element) => {
-      link_element.classList.remove("current");
+    var elements = document.body.querySelectorAll(".gallery");
+    elements.forEach((element) => {
+        element.classList.remove("gallery");
     });
+
+    var scope = el.closest("article.page, article.post, .page, body");
+    var link_elements = scope
+        ? scope.querySelectorAll("a.lightbox-image")
+        : document.querySelectorAll("a.lightbox-image");
+
     link_elements.forEach((link_element) => {
-      if (el.getAttribute("href") == link_element.getAttribute("href")) {
-        link_element.classList.add("current");
-      }
+        link_element.classList.remove("current");
     });
+
+    var currentkey = 0;
+    link_elements.forEach((link_element, index) => {
+        if (el.getAttribute("href") === link_element.getAttribute("href")) {
+            link_element.classList.add("current");
+            currentkey = index;
+        }
+    });
+
+    var gallery_elements;
+
     if (link_elements.length > 1) {
-      document.getElementById("lightbox").classList.add("gallery");
-      link_elements.forEach((link_element) => {
-        link_element.classList.add("gallery");
-      });
+        document.getElementById("lightbox").classList.add("gallery");
+        link_elements.forEach((link_element) => {
+            link_element.classList.add("gallery");
+        });
+        gallery_elements = Array.from(
+            (scope ? scope : document).querySelectorAll("a.gallery")
+        );
+    } else {
+        gallery_elements = Array.from(link_elements);
     }
-    var currentkey;
-    var gallery_elements = document.querySelectorAll("a.gallery");
-    Object.keys(gallery_elements).forEach(function (k) {
-      if (gallery_elements[k].classList.contains("current")) currentkey = k;
-    });
-    if (currentkey == gallery_elements.length - 1) var nextkey = 0;
-    else var nextkey = parseInt(currentkey) + 1;
-    if (currentkey == 0) var prevkey = parseInt(gallery_elements.length - 1);
-    else var prevkey = parseInt(currentkey) - 1;
-    document.getElementById("next").addEventListener("click", function () {
-      gallery_elements[nextkey].click();
-    });
-    document.getElementById("prev").addEventListener("click", function () {
-      gallery_elements[prevkey].click();
-    });
-  }
+
+    var nextButton = document.getElementById("next");
+    var prevButton = document.getElementById("prev");
+    var indexLabel = document.getElementById("lightbox-index");
+
+    if (indexLabel) {
+        indexLabel.textContent = gallery_elements.length
+            ? currentkey + 1 + " / " + gallery_elements.length
+            : "";
+    }
+
+    var disableButton = function (button, disabled) {
+        if (!button) return;
+        if (disabled) {
+            button.classList.add("disabled");
+            button.setAttribute("aria-disabled", "true");
+            button.tabIndex = -1;
+        } else {
+            button.classList.remove("disabled");
+            button.removeAttribute("aria-disabled");
+            button.tabIndex = 0;
+        }
+    };
+
+    if (gallery_elements.length < 2) {
+        disableButton(nextButton, true);
+        disableButton(prevButton, true);
+        return;
+    }
+
+    var nextkey = currentkey + 1;
+    var prevkey = currentkey - 1;
+
+    disableButton(nextButton, nextkey >= gallery_elements.length);
+    disableButton(prevButton, prevkey < 0);
+
+    nextButton.onclick = function (event) {
+        if (nextkey >= gallery_elements.length) return;
+        event.stopPropagation();
+        gallery_elements[nextkey].click();
+    };
+
+    prevButton.onclick = function (event) {
+        if (prevkey < 0) return;
+        event.stopPropagation();
+        gallery_elements[prevkey].click();
+    };
 }
 
 function apply_lightbox_to_img_tag() {
+  var isPostPage = !!document.querySelector("article.post");
   Array.from(document.querySelectorAll("img")).forEach((img_element) => {
     if (img_element.classList.contains("no-lightbox")) {
+      return;
+    }
+    if (img_element.closest("#_sidebar")) {
+      return;
+    }
+    if (isPostPage && img_element.closest(".about.related")) {
       return;
     }
     var wrapper = document.createElement("a");
@@ -117,9 +168,9 @@ function apply_lightbox() {
         this.getAttribute("href") +
         '" alt="' +
         this.getAttribute("title") +
-        '" /></div><span>' +
+        '" /></div><div class="lightbox-meta"><span class="lightbox-title">' +
         this.getAttribute("title") +
-        "</span>";
+        '</span><span id="lightbox-index" class="lightbox-index"></span></div>';
       document.getElementById("lightbox").style.display = "block";
 
       setGallery(this);
