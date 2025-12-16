@@ -1,160 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-12-16T20:46:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">[BOJ 22849] 수식 알아맞히기 퀴즈 게임</title><link href="http://localhost:4000/computer-science/boj22849.html" rel="alternate" type="text/html" title="[BOJ 22849] 수식 알아맞히기 퀴즈 게임" /><published>2025-12-16T00:00:00+09:00</published><updated>2025-12-16T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj22849</id><content type="html" xml:base="http://localhost:4000/computer-science/boj22849.html">&lt;p&gt;&lt;a href=&quot;https://www.acmicpc.net/problem/22849&quot;&gt;https://www.acmicpc.net/problem/22849&lt;/a&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-12-17T05:12:46+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Fast Fourier Transform</title><link href="http://localhost:4000/computer-science/fast-fourier-transform.html" rel="alternate" type="text/html" title="Fast Fourier Transform" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fast-fourier-transform</id><content type="html" xml:base="http://localhost:4000/computer-science/fast-fourier-transform.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Riemann Sums and Definite Integrals</title><link href="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html" rel="alternate" type="text/html" title="Riemann Sums and Definite Integrals" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/riemann-sums-and-definite-integrals</id><content type="html" xml:base="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 22849] 수식 알아맞히기 퀴즈 게임</title><link href="http://localhost:4000/computer-science/boj22849.html" rel="alternate" type="text/html" title="[BOJ 22849] 수식 알아맞히기 퀴즈 게임" /><published>2025-12-16T00:00:00+09:00</published><updated>2025-12-16T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj22849</id><content type="html" xml:base="http://localhost:4000/computer-science/boj22849.html">[https://www.acmicpc.net/problem/22849](https://www.acmicpc.net/problem/22849)
 
-&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/22849</summary></entry><entry><title type="html">Viscous Fluids and the Navier–Stokes Equation</title><link href="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html" rel="alternate" type="text/html" title="Viscous Fluids and the Navier–Stokes Equation" /><published>2025-12-15T00:00:00+09:00</published><updated>2025-12-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation</id><content type="html" xml:base="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Antiderivatives</title><link href="http://localhost:4000/mathematics/antiderivatives.html" rel="alternate" type="text/html" title="Antiderivatives" /><published>2025-11-30T00:00:00+09:00</published><updated>2025-11-30T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/antiderivatives</id><content type="html" xml:base="http://localhost:4000/mathematics/antiderivatives.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Convexity of a Function and the Second Derivative Test</title><link href="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html" rel="alternate" type="text/html" title="Convexity of a Function and the Second Derivative Test" /><published>2025-11-29T00:00:00+09:00</published><updated>2025-11-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Monotonic Functions and the First Derivative Test</title><link href="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html" rel="alternate" type="text/html" title="Monotonic Functions and the First Derivative Test" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Strongly Connected Components</title><link href="http://localhost:4000/computer-science/strongly-connected-components.html" rel="alternate" type="text/html" title="Strongly Connected Components" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/strongly-connected-components</id><content type="html" xml:base="http://localhost:4000/computer-science/strongly-connected-components.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Topological Sorting</title><link href="http://localhost:4000/computer-science/topological-sorting.html" rel="alternate" type="text/html" title="Topological Sorting" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/topological-sorting</id><content type="html" xml:base="http://localhost:4000/computer-science/topological-sorting.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">The Mean Value Theorem</title><link href="http://localhost:4000/mathematics/the-mean-value-theorem.html" rel="alternate" type="text/html" title="The Mean Value Theorem" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-mean-value-theorem</id><content type="html" xml:base="http://localhost:4000/mathematics/the-mean-value-theorem.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#rolles-theorem&quot; id=&quot;markdown-toc-rolles-theorem&quot;&gt;Rolle’s Theorem&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/22849</summary></entry><entry><title type="html">Viscous Fluids and the Navier–Stokes Equation</title><link href="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html" rel="alternate" type="text/html" title="Viscous Fluids and the Navier–Stokes Equation" /><published>2025-12-15T00:00:00+09:00</published><updated>2025-12-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation</id><content type="html" xml:base="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Antiderivatives and Indefinite Integrals</title><link href="http://localhost:4000/mathematics/antiderivatives-and-indefinite-integrals.html" rel="alternate" type="text/html" title="Antiderivatives and Indefinite Integrals" /><published>2025-11-30T00:00:00+09:00</published><updated>2025-11-30T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/antiderivatives-and-indefinite-integrals</id><content type="html" xml:base="http://localhost:4000/mathematics/antiderivatives-and-indefinite-integrals.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;h2 id=&quot;rolles-theorem&quot;&gt;Rolle’s Theorem&lt;/h2&gt;
+## Antiderivatives
 
-&lt;p&gt;&lt;strong&gt;Rolle’s Theorem&lt;/strong&gt; is a Lemma that serves as a foundation for the Mean Value Theorem.&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Let $f$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$.
-If $f(a) = f(b)$, then there exists at least one point $c \in (a, b)$ such that $f^\prime(c) = 0$.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Euler Tour Technique</title><link href="http://localhost:4000/computer-science/euler-tour-technique.html" rel="alternate" type="text/html" title="Euler Tour Technique" /><published>2025-11-26T00:00:00+09:00</published><updated>2025-11-26T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/euler-tour-technique</id><content type="html" xml:base="http://localhost:4000/computer-science/euler-tour-technique.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Merge Sort Tree</title><link href="http://localhost:4000/computer-science/merge-sort-tree.html" rel="alternate" type="text/html" title="Merge Sort Tree" /><published>2025-11-12T00:00:00+09:00</published><updated>2025-11-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/merge-sort-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/merge-sort-tree.html">&lt;!--more--&gt;
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#merge-sort-tree&quot; id=&quot;markdown-toc-merge-sort-tree&quot;&gt;Merge Sort Tree&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#example&quot; id=&quot;markdown-toc-example&quot;&gt;Example&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+A function $F$ is called an **antiderivative** of $f$ on an interval $I$ if $F&apos;(x) = f(x)$ for all $x$ in $I$.
 
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+We can easily find that the antiderivative is not unique. From the [corollary of the MVT](/mathematics/the-mean-value-theorem.html#corollary),
+functions with same derivatives can differ by a constant. Thus, if $F(x)$ is an antiderivative of $f(x)$, $F(x)+C$ is also an antiderivative of $f(x)$ for an arbitrary constant $C$.
+Therefore, the most general antiderivative of $f$ on $I$ is a family of functions given by:
 
-&lt;p&gt;A &lt;strong&gt;merge sort tree&lt;/strong&gt; is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
-It usually does not support updates efficiently.&lt;/p&gt;
+\\[
+F(x)+C
+\\]
 
-&lt;h2 id=&quot;merge-sort-tree&quot;&gt;Merge Sort Tree&lt;/h2&gt;
+whose graphs are vertical translations of one another. Antiderivatives are usually denoted as the upper case letters of the function while the original function is usually denoted as the lower case letters.
 
-&lt;h3 id=&quot;explanation&quot;&gt;Explanation&lt;/h3&gt;
+## Indefinite Integrals
 
-&lt;p&gt;A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
-The tree is constructed by recursively dividing the array into segments and merging the sorted lists of child nodes.
-Each node in the merge sort tree is a &lt;em&gt;multiset&lt;/em&gt; (or sorted array), and the merge sort tree can only efficiently answer range queries that satisfy the following condition:&lt;/p&gt;
+The collection of all antiderivatives of a function $f$ is called the **indefinite integral** of $f$ respect to $x$, and is denoted by:
 
-&lt;ul&gt;
-  &lt;li&gt;For the query function $F$, multisets $S_1,S_2$, and a query result combiner function $G(\cdot,\cdot)$,&lt;/li&gt;
-&lt;/ul&gt;
+\\[
+\int f(x) \dd{x}
+\\]
 
-&lt;p&gt;\[
-F(S_1 \cup S_2) = G(F(S_1), F(S_2))
-\]&lt;/p&gt;
+The symbol $\int$ is called the **integral sign**, and the function $f(x)$ is called the **integrand**.
+$x$ is the **variable of integration** and $\dd{x}$ is called the **differential of $x$**.
 
-&lt;p&gt;This means that the result of the query on the union of two multisets can be computed by combining the results of the queries on each individual multiset,
-and $F$ only depends on the order statistics of the array.&lt;/p&gt;
+### Properties
 
-&lt;p&gt;For example, for an array $[4,3,7,1,2,1,2,5]$, the merge sort tree would be built as follows:&lt;/p&gt;
+\\[
+\begin{align\*}
+&amp; \int kf(x) \dd{x} = k\int f(x) \dd{x} \nl
+&amp; \int (f(x)+g(x)) \dd{x} = \int f(x) \dd{x} + \int g(x) \dd{x}
+\end{align\*}
+\\]
 
-&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TD;
-    A1[1,1,2,2,3,4,5,7];
-    B1[1,3,4,7]; B2[1,2,2,5];
-    C1[3,4]; C2[1,7]; C3[1,2]; C4[2,5];
-    D1[4]; D2[3]; D3[7]; D4[1]; D5[2]; D6[1]; D7[2]; D8[5];
-    
-    A1 --&amp;gt; B1; A1 --&amp;gt; B2;
-    B1 --&amp;gt; C1; B1 --&amp;gt; C2;
-    B2 --&amp;gt; C3; B2 --&amp;gt; C4;
-    C1 --&amp;gt; D1; C1 --&amp;gt; D2;
-    C2 --&amp;gt; D3; C2 --&amp;gt; D4;
-    C3 --&amp;gt; D5; C3 --&amp;gt; D6;
-    C4 --&amp;gt; D7; C4 --&amp;gt; D8;
-&lt;/code&gt;&lt;/pre&gt;
+These linear properties simply follow from the linearity of the derivative operator.
 
-&lt;h3 id=&quot;complexity&quot;&gt;Complexity&lt;/h3&gt;
+### Examples
 
-&lt;p&gt;Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.&lt;/p&gt;
+|         $f(x)$          | $x^n \;\; (-1\ne n \in \mathbb{Z})$ |   $\sin x$    |   $\cos x$   |  $\sec^2 x$  |  $\csc^2 x$   | $\sec x \tan x$ | $\csc x \cot x$ |
+|:-----------------------:|:-----------------------------------:|:-------------:|:------------:|:------------:|:-------------:|:---------------:|:---------------:|
+| $\dps \int f(x) \dd{x}$ |     $\dfrac{x^{n+1}}{n+1} + C$      | $-\cos x + C$ | $\sin x + C$ | $\tan x + C$ | $-\cot x + C$ |  $\sec x + C$   |  $-\csc x + C$  |
+{:.scroll-table}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Convexity of a Function and the Second Derivative Test</title><link href="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html" rel="alternate" type="text/html" title="Convexity of a Function and the Second Derivative Test" /><published>2025-11-29T00:00:00+09:00</published><updated>2025-11-29T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/convexity-of-a-function-and-the-second-derivative-test.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;p&gt;⁣1. &lt;strong&gt;Build&lt;/strong&gt;: $O(N \log N)$&lt;/p&gt;
+## Convex and Concave Functions</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Monotonic Functions and the First Derivative Test</title><link href="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html" rel="alternate" type="text/html" title="Monotonic Functions and the First Derivative Test" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test</id><content type="html" xml:base="http://localhost:4000/mathematics/monotonic-functions-and-the-first-derivative-test.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;p&gt;It takes $O(A+B)$ time to merge two sorted lists of sizes $A$ and $B$.
-Since the size of array is $N$ and at each level of the segment tree we merge $N$ elements,
-it takes $O(N)$ time per level.
-The height of the segment tree is $O(\log N)$, so the total time complexity for building the merge sort tree is $O(N \log N)$.&lt;/p&gt;
+## Monotonicity and the First Derivative
 
-&lt;p&gt;⁣2. &lt;strong&gt;Query&lt;/strong&gt;: $O(T(N) \log N)$&lt;/p&gt;
+As another corollary to the Mean Value Theorem, we can show that the functions with positive derivatives are increasing and those with negative derivatives are decreasing.
+Formally, suppose $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$.
 
-&lt;p&gt;From &lt;a href=&quot;/computer-science/segment-tree.html&quot;&gt;here&lt;/a&gt;, we know that for each range query, we visit $O(\log N)$ nodes in the segment tree.
-At each visited node, we perform a query on the sorted list stored in that node, which takes $O(T(N))$ time.
-Therefore, the total time complexity for a range query is $O(T(N) \log N)$.&lt;/p&gt;
+* If $f^\prime(x) &gt; 0$ for all $x \in (a, b)$, then $f$ is increasing on $[a, b]$.
+* If $f^\prime(x) &lt; 0$ for all $x \in (a, b)$, then $f$ is decreasing on $[a, b]$.
 
-&lt;p&gt;⁣3. &lt;strong&gt;Space Complexity&lt;/strong&gt;: $O(N \log N)$&lt;/p&gt;
+### Proof
 
-&lt;p&gt;The space complexity of a merge sort tree is $O(N \log N)$ because each level of the segment tree stores $N$ elements in sorted lists, and there are $O(\log N)$ levels in the tree.&lt;/p&gt;
+Let $x_1, x_2 \in [a,b]$ be two distinct points with $x_1 &lt; x_2$.
+The Mean Value Theorem implies that:
 
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+\\[
+f(x_2) - f(x_1) = f^\prime(c) (x_2 - x_1)
+\\]
 
-&lt;p&gt;Let’s see the sample code.&lt;/p&gt;
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define all(v) v.begin(),v.end()
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// orderable data type&lt;/span&gt;
+for some $c \in (x_1, x_2)$. By the sign of $f^\prime$, we can conclude the statement.
 
-&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// sorted array&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// other members if needed&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+## First Derivative Test for Local Extrema
 
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge_Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// other member merges if needed&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+Suppose that $c$ is a critical point of a continuous function $f$, and $f$ is differentiable at every point in some neighborhood of $c$ except possibly at $c$.
+Moving across this interval from left to right,
 
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// other member initializations if needed&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+1. if $f^\prime$ changes negative to positive at $c$, then $f$ has a local minimum at $c$;
+2. if $f^\prime$ changes positive to negative at $c$, then $f$ has a local maximum at $c$.
+3. if $f^\prime$ does not change sign at $c$, then $f$ has no local extremum at $c$.
 
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// query function on a node&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// query result combiner function&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// return identity query result&lt;/span&gt;
+### Proof
 
-&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+Let $a,b$ be two points in the neighborhood of $c$ such that $a &lt; c &lt; b$.
+For the first case, we have $f^\prime(x_1)&lt;0$ for all $x_1 \in (a,c)$ and $f^\prime(x_2) &gt; 0$ for all $x_2 \in (c,b)$.
+Therefore, $f$ is decreasing on $[a,c]$ and increasing on $[c,b]$, implying that $f(c)\le f(x)$ for all $x \in [a,b]$,
+which means that $f$ has a local minimum at $c$. We can do similarly for the other two cases.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">Strongly Connected Components</title><link href="http://localhost:4000/computer-science/strongly-connected-components.html" rel="alternate" type="text/html" title="Strongly Connected Components" /><published>2025-11-28T00:00:00+09:00</published><updated>2025-11-28T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/strongly-connected-components</id><content type="html" xml:base="http://localhost:4000/computer-science/strongly-connected-components.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Topological Sorting</title><link href="http://localhost:4000/computer-science/topological-sorting.html" rel="alternate" type="text/html" title="Topological Sorting" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/topological-sorting</id><content type="html" xml:base="http://localhost:4000/computer-science/topological-sorting.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">The Mean Value Theorem</title><link href="http://localhost:4000/mathematics/the-mean-value-theorem.html" rel="alternate" type="text/html" title="The Mean Value Theorem" /><published>2025-11-27T00:00:00+09:00</published><updated>2025-11-27T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/the-mean-value-theorem</id><content type="html" xml:base="http://localhost:4000/mathematics/the-mean-value-theorem.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
 
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+## Rolle&apos;s Theorem
 
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+**Rolle&apos;s Theorem** is a Lemma that serves as a foundation for the Mean Value Theorem.
+&gt; Let $f$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$.
+If $f(a) = f(b)$, then there exists at least one point $c \in (a, b)$ such that $f^\prime(c) = 0$.
 
-&lt;p&gt;Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.&lt;/p&gt;
+### Proof
 
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TREE_SIZE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+Being continuous, $f$ has absolute maximum and minimum values on $[a, b]$ by the Extreme Value Theorem.
+These can occur only at interior points where $f^\prime$ is zero, or at the endpoints $a$ and $b$.
+If either the maximum or minimum occurs at a point $c\in(a,b)$, then we&apos;ve found the desired point where $f^\prime(c) = 0$.
+If both the maximum and minimum occur at the endpoints, then since $f(a) = f(b)$, $f$ becomes constant on $[a, b]$.
+Therefore, $f^\prime(c) = 0$ for all $c \in (a, b)$.
 
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upper_bound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;G&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+## Mean Value Theorem
 
-&lt;p&gt;In this example, time complexity of the query function $F$ is $T(N) = O(\log N)$ due to the binary search performed by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;upper_bound&lt;/code&gt;.
-Thus, the overall time complexity for a range query becomes $O(\log^2 N)$.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>
+**Mean Value Theorem(MVT)** states that there exists a point where the tangent line is parallel to the secant line that joins the endpoints of the interval.
+&gt; Let $f$ be a continuous function on the closed interval $[a, b]$ and differentiable on the open interval $(a, b)$.
+Then there exists at least one point $c \in (a, b)$ such that:
+
+\\[
+\frac{f(b) - f(a)}{b - a} = f^\prime(c)
+\\]
+
+### Proof
+
+Define the function $g$ as:
+
+\\[
+g(x) = f(x) - f(a) - \frac{f(b) - f(a)}{b - a} (x - a)
+\\]
+
+Then $g$ is continuous on $[a, b]$ and differentiable on $(a, b)$.
+Also, $g(a) = g(b) = 0$.
+By Rolle&apos;s Theorem, there exists a point $c \in (a, b)$ such that $g^\prime(c) = 0$.
+Calculating $g^\prime(x)$ gives:
+
+\\[
+g^\prime(x) = f^\prime(x) - \frac{f(b) - f(a)}{b - a}
+\\]
+
+Setting $g^\prime(c) = 0$ leads to:
+
+\\[
+\frac{f(b) - f(a)}{b - a} = f^\prime(c)
+\\]
+
+### Corollary
+
+* If $f^\prime(x)=0$ for all $x \in (a, b)$, then $f$ is constant on $(a, b)$.
+* If $f^\prime(x)=g^\prime(x)$ for all $x \in (a, b)$, then $f-g$ is constant on $(a, b)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry></feed>

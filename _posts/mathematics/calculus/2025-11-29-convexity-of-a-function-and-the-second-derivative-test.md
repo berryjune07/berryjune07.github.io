@@ -10,3 +10,5 @@ tags: calculus
 <!--more-->
 * this unordered seed list will be replaced by the toc
 {:toc}
+
+## Convex and Concave Functions

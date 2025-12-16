@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Antiderivatives"
-subtitle: "cal3.8"
-classification: "Calculus 3.8"
+title: "Riemann Sums and Definite Integrals"
+subtitle: "cal4.1"
+classification: "Calculus 4.1"
 categories: mathematics
 tags: calculus
 ---
