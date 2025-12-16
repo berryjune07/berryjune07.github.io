@@ -51,8 +51,15 @@ layout: page
 {% assign list_group_by = date_formats.list_group_by | default:"%Y"    %}
 {% assign list_entry    = date_formats.list_entry    | default:"%d %b" %}
 
-{% assign posts_latest = posts | sort: "date" | reverse %}
-{% assign posts_oldest = posts | sort: "date" %}
+{% assign posts_grouped_by_date = posts | group_by_exp:"post","post.date | date:'%Y-%m-%d'" | sort:"name" %}
+
+{% assign posts_oldest = "" | split:"" %}
+{% for date_group in posts_grouped_by_date %}
+  {% assign sorted_items = date_group.items | sort_natural:"title" %}
+  {% assign posts_oldest = posts_oldest | concat:sorted_items %}
+{% endfor %}
+
+{% assign posts_latest = posts_oldest | reverse %}
 
 <div class="post-sort-controls" role="group" aria-label="Sort posts">
   <button type="button" class="post-sort-button is-active" data-sort="latest" aria-label="Sort by latest">

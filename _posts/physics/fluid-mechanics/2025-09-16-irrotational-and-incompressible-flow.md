@@ -102,7 +102,7 @@ A flow is said to be **incompressible** if the density $\rho$ of the fluid remai
 Mathematically, this is expressed as:
 
 \\[
-\mdv{\rho}{t} = 0
+\mdv{\rho} = 0
 \\]
 
 Reminding the [Euler's equation](eulers-equation-and-hydrostatics.html#eulers-equation),
