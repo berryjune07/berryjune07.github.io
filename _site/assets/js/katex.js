@@ -23,6 +23,7 @@ function render_KaTeX() {
 
             /* Mathematics */
             "\\dsum": "\\dps\\sum",
+            "\\tr": "\\operatorname{tr}",
             "\\d": "\\mathrm{d}",
             "\\dd": "\\,\\d{#1}",
             "\\abs": "\\left\| #1 \\right\|",

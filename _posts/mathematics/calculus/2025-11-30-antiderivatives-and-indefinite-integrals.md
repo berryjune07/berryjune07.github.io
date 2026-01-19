@@ -13,7 +13,7 @@ tags: calculus
 
 ## Antiderivatives
 
-A function $F$ is called an **antiderivative** of $f$ on an interval $I$ if $F'(x) = f(x)$ for all $x$ in $I$.
+A function $F$ is called an **antiderivative** of $f$ on an interval $I$ if $F^\prime(x) = f(x)$ for all $x$ in $I$.
 
 We can easily find that the antiderivative is not unique. From the [corollary of the MVT](/mathematics/the-mean-value-theorem.html#corollary),
 functions with same derivatives can differ by a constant. Thus, if $F(x)$ is an antiderivative of $f(x)$, $F(x)+C$ is also an antiderivative of $f(x)$ for an arbitrary constant $C$.

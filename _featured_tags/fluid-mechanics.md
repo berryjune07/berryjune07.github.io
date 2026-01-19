@@ -10,5 +10,5 @@ description: >
 ---
 
 \\[ \huge \fcolorbox{transparent}{transparent}{ $$ \dps
-\pdv{ }{t}(\rho\b{u})+\div(\rho\b{u}\otimes\b{u}+p\rm{I})=\div\tau+\rho\b{g}
+\rho \mdv{\b{v}} = - \grad p + \div \left[ \eta \left\{ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\} \right] + \grad [ \zeta (\div \b{v}) ] + \rho \b{a}
 $$ }\\]

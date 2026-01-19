@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2025-12-17T05:12:46+09:00',
+    INDEX_KEY: 'index--2026-01-20T01:47:57+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="320 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   5 min
 </span>
 
       </span>
@@ -300,6 +300,100 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>Euler Tour Technique(ETT)</strong> is a powerful method which enables us to perform various operations on a subtree of a given tree.
+By a simple depth-first search(dfs), we can represent each subtree as an interval of an index array.</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Suppose that we have a tree with $N$ nodes, rooted at node $1$.
+The following is a step-by-step explanation of ETT.</p>
+
+<ol>
+  <li>Start from node $1$, perform dfs recursively.</li>
+  <li>When we visit a node, we record the time of visiting an array <code class="language-plaintext highlighter-rouge">in[]</code>. Time is counted from the root node, increasing by one for each node.</li>
+  <li>After visiting all children of a node and returning to it, we record the time of getting out of the node <code class="language-plaintext highlighter-rouge">out[]</code>.</li>
+</ol>
+
+<p>Let’s see a simple example. The node is labeled as <code class="language-plaintext highlighter-rouge">node_number [in_time, out_time]</code>.</p>
+
+<pre><code class="language-mermaid">graph TD
+    A("1 [1, _]"):::now;
+    B("2 [_, _]");
+    C("3 [_, _]");
+    D("4 [_, _]");
+    A --- B &amp; C;
+    C --- D;
+    classDef now fill:#faa,stroke:#f77,stroke-width:2px;
+</code></pre>
+
+<p>Visiting the node $2$,</p>
+
+<pre><code class="language-mermaid">graph TD
+    A("1 [1, _]");
+    B("2 [2, 2]"):::now;
+    C("3 [_, _]");
+    D("4 [_, _]");
+    A --- B &amp; C;
+    C --- D;
+    classDef now fill:#faa,stroke:#f77,stroke-width:2px;
+</code></pre>
+
+<p>Visiting the node $3$,</p>
+
+<pre><code class="language-mermaid">graph TD
+    A("1 [1, _]");
+    B("2 [2, 2]");
+    C("3 [3, _]"):::now;
+    D("4 [_, _]");
+    A --- B &amp; C;
+    C --- D;
+    classDef now fill:#faa,stroke:#f77,stroke-width:2px;
+</code></pre>
+
+<p>Finally visiting the node $4$ and returning to $3$ and $1$,</p>
+
+<pre><code class="language-mermaid">graph TD
+    A("1 [1, 4]");
+    B("2 [2, 2]");
+    C("3 [3, 4]");
+    D("4 [4, 4]"):::now;
+    A --- B &amp; C;
+    C --- D;
+    classDef now fill:#faa,stroke:#f77,stroke-width:2px;
+</code></pre>
+
+<p>Since the algorithm is just a slight variation of dfs, the time complexity is $O(N)$.</p>
+
+<h2 id="code">Code</h2>
+
+<p>Let’s see the sample code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">in</span><span class="p">[</span><span class="n">MAX</span><span class="p">],</span> <span class="n">out</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">time</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">now</span><span class="p">,</span><span class="kt">int</span> <span class="n">prev</span><span class="p">){</span>
+    <span class="n">in</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">=</span> <span class="o">++</span><span class="n">time</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">next</span><span class="o">:</span><span class="n">G</span><span class="p">[</span><span class="n">now</span><span class="p">])</span> <span class="k">if</span><span class="p">(</span><span class="n">next</span><span class="o">!=</span><span class="n">prev</span><span class="p">)</span> <span class="n">dfs</span><span class="p">(</span><span class="n">next</span><span class="p">,</span><span class="n">now</span><span class="p">);</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="applications">Applications</h2>
+
+<ul>
+  <li>ETT is usually used with a segment tree with lazy propagation to efficiently perform range updates and queries on subtrees.</li>
+</ul>
 
   
 </article>
