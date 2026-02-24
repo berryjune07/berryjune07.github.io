@@ -212,7 +212,7 @@ Thus, the Navier--Stokes equation in spherical coordinates is:
 \\[
 \begin{align\*}
 \rho \left(\pdv{v_r}{t}+v_r\pdv{v_r}{r}+\frac{v_\theta}{r}\pdv{v_r}{\theta}+\frac{v_\phi}{r\sin\theta}\pdv{v_r}{\phi}-\frac{v_\theta^2+v_\phi^2}{r}\right)
-&=-\pdv{p}{r}+\mu \left(\nabla^2 v_r-\frac{2v_r}{r^2}-\frac{2}{r^2}\!\left(\pdv{v_\theta}{\theta}+\cot\theta\,v_\theta+\frac{1}{\sin\theta}\pdv{v_\phi}{\phi}\right)\right)+\left(\zeta+\frac{1}{3}\mu\right)\pdv{}{r}(\div\b{v})+\rho a_r \nt
+&=-\pdv{p}{r}+\mu \left(\nabla^2 v_r-\frac{2v_r}{r^2}-\frac{2}{r^2} \left(\pdv{v_\theta}{\theta}+\cot\theta\,v_\theta+\frac{1}{\sin\theta}\pdv{v_\phi}{\phi}\right)\right)+\left(\zeta+\frac{1}{3}\mu\right)\pdv{}{r}(\div\b{v})+\rho a_r \nt
 \rho \left(\pdv{v_\theta}{t}+v_r\pdv{v_\theta}{r}+\frac{v_\theta}{r}\pdv{v_\theta}{\theta}+\frac{v_\phi}{r\sin\theta}\pdv{v_\theta}{\phi}+\frac{v_r v_\theta-v_\phi^2\cot\theta}{r}\right)
 &=-\frac{1}{r}\pdv{p}{\theta}+\mu \left(\nabla^2 v_\theta+\frac{2}{r^2}\pdv{v_r}{\theta}-\frac{v_\theta}{r^2\sin^2\theta}\right)+\left(\zeta+\frac{1}{3}\mu\right)\frac{1}{r}\pdv{}{\theta}(\div\b{v})+\rho a_\theta \nt
 \rho \left(\pdv{v_\phi}{t}+v_r\pdv{v_\phi}{r}+\frac{v_\theta}{r}\pdv{v_\phi}{\theta}+\frac{v_\phi}{r\sin\theta}\pdv{v_\phi}{\phi}+\frac{v_r v_\phi+v_\theta v_\phi\cot\theta}{r}\right)

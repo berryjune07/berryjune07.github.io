@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-01-20T01:47:57+09:00',
+    INDEX_KEY: 'index--2026-02-24T16:01:08+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="841 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   14 min
 </span>
 
       </span>
@@ -300,6 +300,247 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li>
+<a href="#kahns-algorithm" id="markdown-toc-kahns-algorithm">Kahn’s Algorithm</a>    <ul>
+      <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+      <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+      <li><a href="#code" id="markdown-toc-code">Code</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#dfs-based-approach" id="markdown-toc-dfs-based-approach">DFS Based Approach</a>    <ul>
+      <li><a href="#explanation-1" id="markdown-toc-explanation-1">Explanation</a></li>
+      <li><a href="#complexity-1" id="markdown-toc-complexity-1">Complexity</a></li>
+      <li><a href="#code-1" id="markdown-toc-code-1">Code</a></li>
+    </ul>
+  </li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><strong>Topological sorting</strong> is a linear ordering of the vertices in a <em>directed acyclic graph (DAG)</em> such that for every directed edge
+$u \to v$, vertex $u$ comes before vertex $v$ in the ordering.
+A topological ordering is not unique; there can be multiple valid orderings for a given DAG.
+In contrast, if the graph contains a cycle, a topological sort is not possible.
+Topological sorting is widely used in various applications, including task scheduling, dependency resolution, and course prerequisite planning.
+There are two primary algorithms for performing topological sorting: <strong>Kahn’s Algorithm</strong> and <strong>Depth-First Search (DFS)</strong> based approach.</p>
+
+<h2 id="kahns-algorithm">Kahn’s Algorithm</h2>
+
+<p>Kahn’s Algorithm is an iterative method that uses in-degrees of vertices to determine the topological order.</p>
+
+<ol>
+  <li>Initialization:
+    <ul>
+      <li>Compute the in-degree (number of incoming edges) for each vertex in the graph.</li>
+      <li>Create a queue and enqueue all vertices with an in-degree of 0.</li>
+    </ul>
+  </li>
+  <li>Process the Queue:
+    <ul>
+      <li>While the queue is not empty:
+        <ul>
+          <li>Dequeue a vertex <code class="language-plaintext highlighter-rouge">u</code> from the queue and add it to the topological order.</li>
+          <li>For each neighbor <code class="language-plaintext highlighter-rouge">v</code> of <code class="language-plaintext highlighter-rouge">u</code>, decrease the in-degree of <code class="language-plaintext highlighter-rouge">v</code> by 1.</li>
+          <li>If the in-degree of <code class="language-plaintext highlighter-rouge">v</code> becomes 0, enqueue <code class="language-plaintext highlighter-rouge">v</code>.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Check for Cycles:
+    <ul>
+      <li>If the topological order contains all vertices, the graph is a DAG, and the topological sort is complete.</li>
+      <li>If not, the graph contains a cycle, and topological sorting is not possible.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>Start from the DAG and the in-degrees below:</p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)); B((B)); C((C)); D((D)); E((E)); F((F));
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+</code></pre>
+<center>
+$ \text{In} = (0,1,2,2,0,2) $
+</center>
+<p><br></p>
+
+<p>Then we enqueue vertices with in-degree 0, which are A and E.</p>
+<center>
+$ Q = [A,E] $
+</center>
+<p><br></p>
+
+<p>Dequeue A and add it to the topological order. Then we decrease the in-degrees of its neighbors B and C.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)):::now; B((B)); C((C)); D((D)); E((E)); F((F));
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+    classDef now fill:#acf,stroke:#77c,stroke-width:2px;
+</code></pre>
+<center>
+$ \text{In} = (0,0,1,2,0,2) \nl
+Q = [E,B] \nl
+\text{Top} = [A] $
+</center>
+<p><br></p>
+
+<p>Next, we dequeue E and add it to the topological order. Then we decrease the in-degree of its neighbor F.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)):::now; B((B)); C((C)); D((D)); E((E)):::now; F((F));
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+    classDef now fill:#acf,stroke:#77c,stroke-width:2px;
+</code></pre>
+<center>
+$ \text{In} = (0,0,1,2,0,1) \nl
+Q = [B] \nl
+\text{Top} = [A,E] $
+</center>
+<p><br></p>
+
+<p>Now, we dequeue B and add it to the topological order. Then we decrease the in-degrees of its neighbors C and D.</p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)):::now; B((B)):::now; C((C)); D((D)); E((E)):::now; F((F));
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+    classDef now fill:#acf,stroke:#77c,stroke-width:2px;
+</code></pre>
+<center>
+$ \text{In} = (0,0,0,1,0,1) \nl
+Q = [C] \nl
+\text{Top} = [A,E,B] $
+</center>
+<p><br></p>
+
+<p>Continue this process until the queue is empty. The final topological order will be:</p>
+
+<center>
+$ \text{Top} = [A,E,B,C,D,F] $
+</center>
+
+<h3 id="complexity">Complexity</h3>
+
+<p>It takes $O(V + E)$ time, where $V$ is the number of vertices and $E$ is the number of edges in the graph,
+since each vertex and edge is processed once.</p>
+
+<h3 id="code">Code</h3>
+
+<p>Let’s see the sample code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">in_degree</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topological_order</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">Kahn</span><span class="p">(){</span>
+    <span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">Q</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">u</span><span class="o">&lt;=</span><span class="n">V</span><span class="p">;</span> <span class="n">u</span><span class="o">++</span><span class="p">)</span> <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="o">:</span><span class="n">G</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="n">in_degree</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">u</span><span class="o">&lt;=</span><span class="n">V</span><span class="p">;</span> <span class="n">u</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span><span class="n">in_degree</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">Q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">Q</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+        <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="n">Q</span><span class="p">.</span><span class="n">front</span><span class="p">();</span> <span class="n">Q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">topological_order</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">now</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">nxt</span><span class="o">:</span><span class="n">G</span><span class="p">[</span><span class="n">now</span><span class="p">]){</span>
+            <span class="n">in_degree</span><span class="p">[</span><span class="n">nxt</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">in_degree</span><span class="p">[</span><span class="n">nxt</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="n">Q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">nxt</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">topological_order</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">==</span><span class="n">V</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="dfs-based-approach">DFS Based Approach</h2>
+
+<ol>
+  <li>Perform a DFS for each unvisited vertex in the graph.</li>
+  <li>During the DFS, when a vertex finishes (i.e., all its neighbors have been visited), push it onto a stack.</li>
+  <li>After the DFS is complete for all vertices, pop vertices from the stack to get the topological order.</li>
+</ol>
+
+<h3 id="explanation-1">Explanation</h3>
+
+<p>Start from the DAG below:</p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)); B((B)); C((C)); D((D)); E((E)); F((F));
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+</code></pre>
+
+<p>Perform DFS starting from vertex A.
+In the process, we visit B, then C, then D, and finally F.
+Backtrack and pushing vertices onto the stack as they finish, we get the following order in the stack:</p>
+
+<center>
+$ \text{Stack} = [F,D,C,B,A] $
+</center>
+<p><br></p>
+
+<pre><code class="language-mermaid">graph LR
+    A((A)):::now; B((B)):::now; C((C)):::now; D((D)):::now; E((E)); F((F)):::now;
+    A --&gt; B &amp; C --&gt; D --&gt; F;
+    B --&gt; C;
+    E --&gt; F;
+    classDef now fill:#acf,stroke:#77c,stroke-width:2px;
+</code></pre>
+
+<p>Finally, we perform DFS starting from vertex E, and push it onto the stack, and we get the full topological order:</p>
+
+<center>
+$ \text{Stack} = [F,D,C,B,A,E] \nl
+\text{Top} = [E,A,B,C,D,F] $
+</center>
+
+<h3 id="complexity-1">Complexity</h3>
+
+<p>Similar to Kahn’s Algorithm, it takes $O(V + E)$ time,
+since it’s basically an application of DFS algorithm.</p>
+
+<h3 id="code-1">Code</h3>
+
+<p>Let’s see the sample code.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">bool</span> <span class="n">visited</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">topological_order</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">now</span><span class="p">){</span>
+    <span class="n">visited</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">nxt</span><span class="o">:</span><span class="n">G</span><span class="p">[</span><span class="n">now</span><span class="p">])</span> <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">nxt</span><span class="p">])</span> <span class="n">dfs</span><span class="p">(</span><span class="n">nxt</span><span class="p">);</span>
+    <span class="n">topological_order</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">now</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">TopologicalSort</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">u</span><span class="o">&lt;=</span><span class="n">V</span><span class="p">;</span> <span class="n">u</span><span class="o">++</span><span class="p">)</span> <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">visited</span><span class="p">[</span><span class="n">u</span><span class="p">])</span> <span class="n">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">);</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">topological_order</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">topological_order</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You can either use stack as described in the explanation.</p>
+
+<h2 id="applications">Applications</h2>
+
+<ul>
+  <li>Task Scheduling: Determining the order of tasks based on dependencies.</li>
+  <li>Course Prerequisite Planning: Ordering courses based on prerequisite requirements.</li>
+  <li>Data Serialization: Ordering data elements based on dependencies for serialization.</li>
+</ul>
 
   
 </article>
@@ -454,7 +695,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                          <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/fast-fourier-transform.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/fast-fourier-transform.html" class="flip-title">Fast Fourier Transform</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/fast-fourier-transform.html" tabindex="-1"><span class="sr-only">Continue reading Fast Fourier Transform</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/strongly-connected-components.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/strongly-connected-components.html" class="flip-title">Strongly Connected Components</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/strongly-connected-components.html" tabindex="-1"><span class="sr-only">Continue reading Strongly Connected Components</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/fast-fourier-transform.html" class="flip-title">    <span>            Fast Fourier Transform    </span>  </a>      <time class="faded fine" datetime="2025-12-17T00:00:00+09:00">      17 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/fast-fourier-transform.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>      </ul></aside>
+                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/lowest-common-ancestor.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">Lowest Common Ancestor</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/lowest-common-ancestor.html" tabindex="-1"><span class="sr-only">Continue reading Lowest Common Ancestor</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/strongly-connected-components.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/strongly-connected-components.html" class="flip-title">Strongly Connected Components</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/strongly-connected-components.html" tabindex="-1"><span class="sr-only">Continue reading Strongly Connected Components</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>      </ul></aside>
 
   
 
