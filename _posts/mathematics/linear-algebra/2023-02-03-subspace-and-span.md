@@ -62,6 +62,7 @@ for $1 \le i \le n$ and $1 \le j \le m$. The following properties hold:
 A **symmetric matrix** is a square matrix that is equal to its transpose, i.e., $A = A^\top$.
 A **skew-symmetric matrix** is a square matrix that satisfies $A^\top = -A$.
 The set of all symmetric and skew-symmetric $n \times n$ matrices over $F$ also forms a linear subspace of $\mathcal{M}_{n\times n}(F)$.
+We often denote them as $\mathrm{Sym}_n(F)$ and $\mathrm{Skew}_n(F)$, respectively.
 
 * $A+A^\top$ is symmetric
 * $A-A^\top$ is skew-symmetric
@@ -88,12 +89,18 @@ Trace is a linear functional on $\mathcal{M}_{n\times n}(F)$.
 
 * $\tr(aA + bB) = a\tr(A) + b\tr(B)$
 
-### Direct sum
+## Direct sum
 
 Given two nonempty subsets $S_1,S_2 \subset V$, the **sum** of $S_1$ and $S_2$ is defined as:
 
 \\[
 S_1 + S_2 = \Set{ \b{v}_1 + \b{v}_2 \| \b{v}_1 \in S_1, \b{v}_2 \in S_2 }
+\\]
+
+For the family of subsets $\mathcal{F} = \Set{ S_i \| i \in I }$, the sum can be notated as:
+
+\\[
+\sum \mathcal{F} = \sum_{i \in I} S_i
 \\]
 
 If $S_1$ and $S_2$ are linear subspaces of $V$ such that $S_1 \cap S_2 = \\{\b{0}\\}$ and $S_1 + S_2 = V$,
@@ -103,7 +110,68 @@ then $V$ is called the **direct sum** of $S_1$ and $S_2$, denoted as:
 V = S_1 \oplus S_2
 \\]
 
-### Coset and quotient space
+For the family of subspaces $\mathcal{F} = \Set{ S_i \| i \in I }$, the direct sum can be notated as:
+
+\\[
+\bigoplus \mathcal{F} = \bigoplus_{i \in I} S_i
+\\]
+
+It is defined if and only if for every $i \in I$,
+
+\\[
+S_i \cap \left( \sum_{j \in I, j \neq i} S_j \right) = \\{\b{0}\\}
+\\]
+
+This condition is equivalent to the following condition: for every $\b{v} \in \sum \mathcal{F}$,
+
+* there exist unique $\b{s}\_i \in S_i$ for $i \in I$ such that $\b{v} = \sum\_{i \in I} \b{s}_i$
+
+and it is also equivalent to the following condition:
+
+* $\b{0} = \sum_{i \in I} \b{s}_i$ implies $\b{s}_i = \b{0}$ for every $i \in I$
+
+Proof is omitted.
+
+### Complementary subspace
+
+If $W$ is a linear subspace of $V$, then a **complementary subspace** of $W$ in $V$ is a linear subspace $U$ of $V$ such that:
+
+* $V = W \oplus U$
+
+For example, we have:
+
+* $\mathcal{M}_n(F) = \mathrm{Sym}_n(F) \oplus \mathrm{Skew}_n(F)$
+
+It can be shown that for every linear subspace $W$ of $V$, there exists a complementary subspace of $W$ in $V$ (though it may not be unique).
+Its proof requires the knowledge of the basis of a vector space, so it will be covered in the next section.
+
+### External direct sum
+
+The direct sum defined above is occasionally called the **internal direct sum** to distinguish it from the **external direct sum**.
+Given vector spaces $V_1,\dots,V_n$ over $F$, the external direct sum of $V_1,\dots,V_n$ is the vector space defined as:
+
+\\[
+V_1 \boxplus \cdots \boxplus V_n = \Set{ (\b{v}_1,\dots,\b{v}_n) \| \b{v}_i \in V_i, 1 \le i \le n }
+\\]
+
+with componentwise addition and scalar multiplication.
+In common, for the family of vector spaces $\mathcal{F} = \Set{ V_i \| i \in I }$, the external direct sum can be defined as:
+
+\\[
+\bigoplus {}^\text{ext} \mathcal{F} = \bigoplus_{i \in I} {}^\text{ext} V_i
+= \Set{ f : I \to \bigcup_{i \in I} V_i \| f(i) \in V_i, \abs{ \supp f } < \infty }
+\\]
+
+_Direct product_ or _cartesian product_ is a more general construction that doesn't require the finiteness condition on the support of $f$.
+
+\\[
+\prod \mathcal{F} = \prod_{i \in I} V_i
+= \Set{ f : I \to \bigcup_{i \in I} V_i \| f(i) \in V_i }
+\\]
+
+For finite family of vector spaces, the external direct sum and the cartesian product are identical, but for infinite family of vector spaces, the external direct sum is a proper subspace of the cartesian product.
+
+## Coset and quotient space
 
 Given a linear subspace $W$ of $V$ and a vector $\b{v} \in V$, the **coset** of $W$ containing $\b{v}$ is defined as:
 
@@ -117,4 +185,20 @@ so that $S$ forms a vector space over $F$, called the **quotient space** of $V$ 
 
 \\[
 V/W = \\{ \b{v} + W \| \b{v} \in V \\}
-\\] 
+\\]
+
+If $V = W \oplus U$ for some linear subspace $U$ of $V$, then we can show that $V/W$ is isomorphic to $U$.
+We will cover the concept of isomorphism later, but for now, we can understand that $V/W$ and $U$ are "the same" vector space in the sense that they have the same structure as vector spaces.
+
+## Lattice of subspaces
+
+The set $\mathcal{S}(V)$ of all linear subspaces of $V$ is partially ordered by set inclusion.
+The zero subspace is the least element of $\mathcal{S}(V)$, and $V$ itself is the greatest element of $\mathcal{S}(V)$.
+If we consider $(\mathcal{S}(V),\le)$ as a poset(partially ordered set),
+then we can show that for $S_1,S_2\in\mathcal{S}(V)$:
+
+* $S_1 + S_2 = \sup(S_1,S_2)$
+* $S_1 \cap S_2 = \inf(S_1,S_2)$
+
+where the supremum and infimum are taken with respect to the partial order $\le$, and return the element of $\mathcal{S}(V)$.
+Thus, $(\mathcal{S}(V),+,\cap)$ is a _lattice_, where the _join_ operation is the sum of subspaces and the _meet_ operation is the intersection of subspaces.

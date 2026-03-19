@@ -1,0 +1,629 @@
+{% assign viz_id = include.id | default: "dijkstra-demo" %}
+{% assign viz_title = include.title | default: "Dijkstra Algorithm Step Visualizer" %}
+
+<div id="{{ viz_id }}" class="dv-root">
+  <style>
+    #{{ viz_id }} {
+      margin: 2rem 0;
+    }
+
+    #{{ viz_id }} * {
+      box-sizing: border-box;
+    }
+
+    #{{ viz_id }} .dv-title {
+      margin: 0 0 0.75rem 0;
+    }
+
+    #{{ viz_id }} .dv-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin: 0 0 1rem 0;
+    }
+
+    #{{ viz_id }} .dv-controls button {
+      appearance: none;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      padding: 0.45rem 0.8rem;
+      border-radius: 0.5rem;
+      font: inherit;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    #{{ viz_id }} .dv-controls button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    #{{ viz_id }} .dv-counter {
+      margin-left: 0.25rem;
+      opacity: 0.8;
+      font-size: 0.95em;
+    }
+
+    #{{ viz_id }} pre.mermaid {
+      margin: 0 0 1.5rem 0;
+    }
+
+    #{{ viz_id }} .dv-divider {
+      border: 0;
+      border-top: 1px solid rgba(127, 127, 127, 0.25);
+      margin: 1.5rem 0;
+    }
+
+    #{{ viz_id }} .dv-step-block {
+      margin: 0 0 1.25rem 0;
+    }
+
+    #{{ viz_id }} .dv-step-title {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.05em;
+      font-weight: 700;
+    }
+
+    #{{ viz_id }} .dv-step-text {
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    #{{ viz_id }} .dv-info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1rem 0 0 0;
+    }
+
+    #{{ viz_id }} .dv-info-block h4 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1em;
+    }
+
+    #{{ viz_id }} .dv-math-line {
+      min-height: 1.8rem;
+      line-height: 1.8;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    #{{ viz_id }} .dv-legend {
+      margin-top: 0.75rem;
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    #{{ viz_id }} .dv-legend-item {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    #{{ viz_id }} .dv-swatch {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      border: 2px solid transparent;
+    }
+
+    #{{ viz_id }} .dv-swatch-current  { background: #fee2e2; border-color: #dc2626; }
+    #{{ viz_id }} .dv-swatch-visited  { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .dv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
+    #{{ viz_id }} .dv-swatch-normal   { background: #f8fafc; border-color: #475569; }
+
+    #{{ viz_id }} .dv-error {
+      white-space: pre-wrap;
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      padding: 0.9rem;
+      border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+  </style>
+
+  <p class="dv-description">
+    Click the buttons to move through Dijkstra’s algorithm one step at a time.
+  </p>
+
+  <div class="dv-controls">
+    <button type="button" data-role="prev">Previous Step</button>
+    <button type="button" data-role="next">Next Step</button>
+    <button type="button" data-role="reset">Reset</button>
+    <span class="dv-counter">
+      <strong>Current step:</strong>
+      <span data-role="counter"></span>
+    </span>
+  </div>
+
+  <pre class="mermaid" data-role="graph"></pre>
+
+  <hr class="dv-divider">
+
+  <div class="dv-step-block">
+    <div class="dv-step-title" data-role="step-title"></div>
+    <p class="dv-step-text" data-role="step-desc"></p>
+  </div>
+
+  <div class="dv-info-grid">
+    <div class="dv-info-block">
+      <h4>Priority queue</h4>
+      <div class="dv-math-line" data-role="pq-state"></div>
+    </div>
+
+    <div class="dv-info-block">
+      <h4>Legend</h4>
+      <div class="dv-legend">
+        <div class="dv-legend-item"><span class="dv-swatch dv-swatch-current"></span> Current node being processed</div>
+        <div class="dv-legend-item"><span class="dv-swatch dv-swatch-visited"></span> Node with finalized shortest distance</div>
+        <div class="dv-legend-item"><span class="dv-swatch dv-swatch-frontier"></span> Node currently stored in the priority queue</div>
+        <div class="dv-legend-item"><span class="dv-swatch dv-swatch-normal"></span> Unexplored node</div>
+        <div class="dv-legend-item"><span style="color:#dc2626;font-weight:700;">━</span> Edge being relaxed in this step</div>
+        <div class="dv-legend-item"><span style="color:#2563eb;font-weight:700;">━</span> Current shortest-path tree candidate</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+
+      function getGraphEl() {
+        return root.querySelector('[data-role="graph"]');
+      }
+
+      function showError(message) {
+        getGraphEl().outerHTML = '<div class="dv-error">' + message + '</div>';
+      }
+
+      function waitFor(checkFn, timeoutMs, intervalMs) {
+        return new Promise(function (resolve, reject) {
+          var start = Date.now();
+
+          function tick() {
+            var value = checkFn();
+            if (value) {
+              resolve(value);
+              return;
+            }
+            if (Date.now() - start >= timeoutMs) {
+              reject(new Error("Timed out while waiting for a required library."));
+              return;
+            }
+            setTimeout(tick, intervalMs);
+          }
+
+          tick();
+        });
+      }
+
+      function loadMermaidFallback() {
+        if (window.mermaid && typeof window.mermaid.run === "function") {
+          return Promise.resolve(window.mermaid);
+        }
+
+        if (window.__dvMermaidPromise) {
+          return window.__dvMermaidPromise;
+        }
+
+        window.__dvMermaidPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+          script.async = true;
+          script.onload = function () {
+            if (window.mermaid && typeof window.mermaid.run === "function") {
+              try {
+                window.mermaid.initialize({ startOnLoad: false, flowchart: { htmlLabels: false } });
+              } catch (e) {}
+              resolve(window.mermaid);
+            } else {
+              reject(new Error("Mermaid was loaded, but window.mermaid is unavailable."));
+            }
+          };
+          script.onerror = function () {
+            reject(new Error("Failed to load Mermaid."));
+          };
+          document.head.appendChild(script);
+        });
+
+        return window.__dvMermaidPromise;
+      }
+
+      function getKatex() {
+        return waitFor(function () {
+          return window.katex && typeof window.katex.renderToString === "function" ? window.katex : null;
+        }, 8000, 50);
+      }
+
+      function getMermaid() {
+        return waitFor(function () {
+          return window.mermaid && typeof window.mermaid.run === "function" ? window.mermaid : null;
+        }, 1500, 50).catch(function () {
+          return loadMermaidFallback();
+        });
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+
+        Promise.all([getKatex(), getMermaid()]).then(function (libs) {
+          var katex = libs[0];
+          var mermaidInstance = libs[1];
+
+          var graphNodes = ["A", "B", "C", "D", "E"];
+          var sourceNode = "A";
+          var baseEdges = [
+            ["A", "B", 4],
+            ["A", "C", 2],
+            ["B", "C", 1],
+            ["B", "D", 5],
+            ["C", "D", 8],
+            ["C", "E", 10],
+            ["D", "E", 2]
+          ];
+
+          var adjacency = (function buildAdjacency() {
+            var adj = {};
+            graphNodes.forEach(function (node) {
+              adj[node] = [];
+            });
+            baseEdges.forEach(function (edge) {
+              var u = edge[0], v = edge[1], w = edge[2];
+              adj[u].push({ node: v, weight: w });
+              adj[v].push({ node: u, weight: w });
+            });
+            Object.keys(adj).forEach(function (node) {
+              adj[node].sort(function (a, b) {
+                if (a.weight !== b.weight) return a.weight - b.weight;
+                return a.node.localeCompare(b.node);
+              });
+            });
+            return adj;
+          })();
+
+          function $(role) {
+            return root.querySelector('[data-role="' + role + '"]');
+          }
+
+          function renderMathHTML(expr, displayMode) {
+            return katex.renderToString(expr, {
+              throwOnError: false,
+              displayMode: !!displayMode
+            });
+          }
+
+          function texEscape(s) {
+            return String(s)
+              .replace(/\\/g, "\\\\")
+              .replace(/\{/g, "\\{")
+              .replace(/\}/g, "\\}");
+          }
+
+          function distExpr(value) {
+            return Number.isFinite(value) ? String(value) : "\\infty";
+          }
+
+          function pqExpr(pq) {
+            if (!pq.length) return "\\langle\\,\\rangle";
+            var entries = pq.slice().sort(function (a, b) {
+              if (a.dist !== b.dist) return a.dist - b.dist;
+              return a.node.localeCompare(b.node);
+            }).map(function (item) {
+              return "\\left(" + texEscape(item.node) + "," + distExpr(item.dist) + "\\right)";
+            });
+            return "\\left\\langle " + entries.join(",\\;") + " \\right\\rangle";
+          }
+
+          function labelText(node, dist) {
+            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "∞") + ")";
+          }
+
+          function cloneState(state) {
+            return {
+              dist: Object.assign({}, state.dist),
+              parent: Object.assign({}, state.parent),
+              visited: Object.assign({}, state.visited),
+              pq: state.pq.map(function (item) {
+                return { node: item.node, dist: item.dist };
+              }),
+              current: state.current,
+              currentNeighbors: state.currentNeighbors.map(function (item) {
+                return { node: item.node, weight: item.weight };
+              }),
+              neighborIndex: state.neighborIndex,
+              activeEdge: state.activeEdge ? [state.activeEdge[0], state.activeEdge[1]] : null,
+              phase: state.phase,
+              caption: state.caption,
+              eventDesc: state.eventDesc,
+              done: state.done
+            };
+          }
+
+          function makeInitialState() {
+            var dist = {};
+            graphNodes.forEach(function (node) {
+              dist[node] = Infinity;
+            });
+            dist[sourceNode] = 0;
+
+            return {
+              dist: dist,
+              parent: {},
+              visited: {},
+              pq: [{ node: sourceNode, dist: 0 }],
+              current: null,
+              currentNeighbors: [],
+              neighborIndex: 0,
+              activeEdge: null,
+              phase: "select",
+              caption: "Initialization",
+              eventDesc: "Initialize Dijkstra’s algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
+              done: false
+            };
+          }
+
+          function pqUpsert(state, node, newDist) {
+            var found = false;
+            for (var i = 0; i < state.pq.length; i += 1) {
+              if (state.pq[i].node === node) {
+                state.pq[i].dist = newDist;
+                found = true;
+                break;
+              }
+            }
+            if (!found) {
+              state.pq.push({ node: node, dist: newDist });
+            }
+          }
+
+          function popMinFromPQ(state) {
+            state.pq.sort(function (a, b) {
+              if (a.dist !== b.dist) return a.dist - b.dist;
+              return a.node.localeCompare(b.node);
+            });
+            return state.pq.shift();
+          }
+
+          function currentTreeEdges(state) {
+            return Object.keys(state.parent).map(function (node) {
+              return [state.parent[node], node];
+            });
+          }
+
+          function isSameUndirectedEdge(a, b, c, d) {
+            return (a === c && b === d) || (a === d && b === c);
+          }
+
+          function hasEdge(edgeList, u, v) {
+            return edgeList.some(function (edge) {
+              return isSameUndirectedEdge(edge[0], edge[1], u, v);
+            });
+          }
+
+          function nodeClass(node, state) {
+            if (state.current === node) return "current";
+            if (state.visited[node]) return "visited";
+            if (state.pq.some(function (item) { return item.node === node; })) return "frontier";
+            return "normal";
+          }
+
+          function linkStyleText(kind) {
+            if (kind === "active") return "stroke:#dc2626,stroke-width:4px;";
+            if (kind === "tree") return "stroke:#2563eb,stroke-width:3px;";
+            return "stroke:#64748b,stroke-width:1.5px;";
+          }
+
+          function buildMermaid(state) {
+            var lines = [];
+            lines.push("flowchart LR");
+
+            graphNodes.forEach(function (node) {
+              lines.push(node + '["' + labelText(node, state.dist[node]) + '"]:::' + nodeClass(node, state));
+            });
+
+            var treeEdges = currentTreeEdges(state);
+            var edgeIndex = 0;
+            baseEdges.forEach(function (edge) {
+              var u = edge[0], v = edge[1], w = edge[2];
+              var kind = "normal";
+              if (state.activeEdge && hasEdge([state.activeEdge], u, v)) kind = "active";
+              else if (hasEdge(treeEdges, u, v)) kind = "tree";
+
+              lines.push(u + " -->|" + w + "| " + v);
+              lines.push("linkStyle " + edgeIndex + " " + linkStyleText(kind));
+              edgeIndex += 1;
+            });
+
+            lines.push("classDef normal fill:#f8fafc,stroke:#334155,stroke-width:1.5px;");
+            lines.push("classDef visited fill:#dbeafe,stroke:#2563eb,stroke-width:2px;");
+            lines.push("classDef frontier fill:#fef3c7,stroke:#d97706,stroke-width:2px;");
+            lines.push("classDef current fill:#fee2e2,stroke:#dc2626,stroke-width:3px;");
+
+            return lines.join("\n");
+          }
+
+          function nextStateFrom(state) {
+            var next = cloneState(state);
+            next.activeEdge = null;
+
+            if (next.done) {
+              return next;
+            }
+
+            if (next.phase === "select") {
+              if (next.pq.length === 0) {
+                next.done = true;
+                next.current = null;
+                next.currentNeighbors = [];
+                next.neighborIndex = 0;
+                next.caption = "Finished";
+                next.eventDesc = "The priority queue is empty, so the algorithm terminates.";
+                next.phase = "done";
+                return next;
+              }
+
+              var item = popMinFromPQ(next);
+              next.current = item.node;
+              next.visited[item.node] = true;
+              next.currentNeighbors = adjacency[item.node].map(function (edge) {
+                return { node: edge.node, weight: edge.weight };
+              });
+              next.neighborIndex = 0;
+              next.phase = "relax";
+              next.caption = "Extract minimum";
+              next.eventDesc =
+                "Remove " + item.node +
+                " from the priority queue with key " + item.dist +
+                ". Since it is the minimum key, its shortest distance is now finalized.";
+              return next;
+            }
+
+            if (next.phase === "relax") {
+              if (next.neighborIndex >= next.currentNeighbors.length) {
+                var finishedNode = next.current;
+                next.current = null;
+                next.currentNeighbors = [];
+                next.neighborIndex = 0;
+                next.phase = "select";
+                next.caption = "Finish processing node";
+                next.eventDesc =
+                  "All outgoing edges of " + finishedNode +
+                  " have been examined. Return to the priority queue to choose the next node.";
+                return next;
+              }
+
+              var edge = next.currentNeighbors[next.neighborIndex];
+              next.neighborIndex += 1;
+              next.activeEdge = [next.current, edge.node];
+
+              if (next.visited[edge.node]) {
+                next.caption = "Skip finalized neighbor";
+                next.eventDesc =
+                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
+                  ". Node " + edge.node + " is already finalized, so no update is necessary.";
+                return next;
+              }
+
+              var candidate = next.dist[next.current] + edge.weight;
+              var oldDist = next.dist[edge.node];
+
+              if (candidate < oldDist) {
+                next.dist[edge.node] = candidate;
+                next.parent[edge.node] = next.current;
+                pqUpsert(next, edge.node, candidate);
+
+                next.caption = "Relax edge";
+                if (Number.isFinite(oldDist)) {
+                  next.eventDesc =
+                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
+                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
+                    ", which improves the old value " + oldDist +
+                    ". Update d(" + edge.node + ") and decrease its key in the priority queue.";
+                } else {
+                  next.eventDesc =
+                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
+                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
+                    ". Update d(" + edge.node + ") from infinity and insert it into the priority queue.";
+                }
+              } else {
+                next.caption = "Relax edge";
+                next.eventDesc =
+                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
+                  ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
+                  ", which is not smaller than the current value " + oldDist +
+                  ". No update is made.";
+              }
+
+              return next;
+            }
+
+            return next;
+          }
+
+          var history = [makeInitialState()];
+
+          function getState() {
+            return history[history.length - 1];
+          }
+
+          function renderMeta(state) {
+            $("counter").textContent = String(history.length - 1);
+            $("step-title").textContent = "Step " + (history.length - 1) + " — " + state.caption;
+            $("step-desc").textContent = state.eventDesc;
+            $("pq-state").innerHTML = renderMathHTML(pqExpr(state.pq), false);
+
+            root.querySelector('[data-role="prev"]').disabled = (history.length <= 1);
+            root.querySelector('[data-role="next"]').disabled = !!state.done;
+          }
+
+          function renderGraph(state) {
+            var code = buildMermaid(state);
+            var graphEl = getGraphEl();
+            graphEl.removeAttribute("data-processed");
+            graphEl.innerHTML = escapeHtml(code);
+
+            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] })).catch(function (err) {
+              graphEl.outerHTML =
+                '<div class="dv-error">Mermaid syntax error:\n' +
+                escapeHtml(String(err)) +
+                '\n\nGenerated code:\n' +
+                escapeHtml(code) +
+                '</div>';
+            });
+          }
+
+          function render() {
+            var state = getState();
+            renderMeta(state);
+            return renderGraph(state);
+          }
+
+          root.querySelector('[data-role="prev"]').addEventListener("click", function () {
+            if (history.length > 1) {
+              history.pop();
+              render();
+            }
+          });
+
+          root.querySelector('[data-role="next"]').addEventListener("click", function () {
+            var state = getState();
+            if (!state.done) {
+              history.push(nextStateFrom(state));
+              render();
+            }
+          });
+
+          root.querySelector('[data-role="reset"]').addEventListener("click", function () {
+            history = [makeInitialState()];
+            render();
+          });
+
+          render();
+        }).catch(function (err) {
+          showError(
+            "This widget could not find KaTeX or Mermaid after waiting for the page to finish loading.\n\n" +
+            String(err) +
+            "\n\nIf you already included both libraries, the most likely cause is that the core KaTeX script is missing, and only the auto-render helper was loaded."
+          );
+        });
+      }
+
+      if (document.readyState === "complete") {
+        start();
+      } else {
+        window.addEventListener("load", start, { once: true });
+      }
+    })();
+  </script>
+</div>

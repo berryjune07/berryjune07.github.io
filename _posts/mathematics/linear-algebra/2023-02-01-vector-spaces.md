@@ -74,7 +74,8 @@ The entries $a_{i1},\cdots,a_{in}$ of the $i$-th row of the matrix, and the entr
 are called the **row vectors** and **column vectors** of the matrix, respectively.
 We call the entries $a_{ij}$ with $i=j$ the **diagonal entries** of the matrix, and the other entries the _off-diagonal entries_.
 If the number of rows and columns of a matrix are equal, then the matrix is called a **square matrix**.
-The set of all $m\times n$ matrices with entries in $F$ is denoted by $\mathcal{M}_{m\times n}(F)$.
+The set of all $m\times n$ matrices with entries in $F$ is denoted by $\mathcal{M}\_{m\times n}(F)$.
+For square matrices, we simply write $\mathcal{M}\_n(F)$ instead of $\mathcal{M}\_{n\times n}(F)$.
 The matrix whose entries are all zero is called the **zero matrix** and is denoted by $O$.
 
 Column vectors and row vectors can be regarded as matrices with one column and one row, respectively.
