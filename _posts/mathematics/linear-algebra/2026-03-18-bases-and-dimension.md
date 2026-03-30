@@ -57,3 +57,29 @@ The set $\Set{\b{e}_1, \dots, \b{e}_n}$ is a standard basis of $\mathbb{R}^n$.
 ## Existence of a Basis
 
 Now, let's prove that every nontrivial vector space has a basis.
+
+Let $V$ be a nontrivial vector space and $I\subset V$ be a linearly independent set.
+Let $S \supset I$ be a spanning set of $V$; $\span(S) = V$.
+Then there exists a subset basis $\mathcal{B}$ for $V$ which $I \subseteq \mathcal{B} \subseteq S$. In particular,
+
+* Any vector space, except the trivial vector space, has a basis.
+* Any linearly independent set in $V$ is contained in some basis of $V$.
+* Any spanning set of $V$ contains some basis of $V$.
+
+_Proof._
+
+Consider the collection $\mathcal{A} = \Set{ A \subseteq S \| I \subseteq A, A \text{ is linearly independent} }$.
+Then $\mathcal{A}$ is nonempty since $I \in \mathcal{A}$. Consider the partial order on $\mathcal{A}$ given by set inclusion.
+Let $\mathcal{C} \subseteq \mathcal{A}$ be a chain in $\mathcal{A}$ and $U = \bigcup_{A \in \mathcal{C}} A$.
+$U$ is an upper bound of $\mathcal{C}$ since $I \subseteq U$ and $U$ is linearly independent.
+Then according to [Zorn's lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma), $\mathcal{A}$ has a maximal element $\mathcal{B}$, which is linearly independent.
+
+Now let's show that $\mathcal{B}$ is a basis of $V$. By the definition of $\mathcal{A}$, we have $\mathcal{B} \subseteq S$, so $\span(\mathcal{B}) \subseteq \span(S)$.
+Also, if any $s\in S$ is $s \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{s}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
+Hence, $s \in \span(\mathcal{B})$ for all $s \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
+Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $V$.
+
+---
+
+We can show that any subspace of a vector space has a complementary subspace using this theorem,
+which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).

@@ -30,7 +30,48 @@ Commonly used in routing and navigation systems, Dijkstra's algorithm is efficie
 
 ## Proof of Correctness
 
+Let $S$ be the set of visited vertices.
+We will show that for every $u\in S$,
+$d(u)=\mathrm{dist}(s,u)$,
+where $\mathrm{dist}(s,u)$ is the shortest distance from the source $s$ to $u$.
+We prove this by induction on the order the vertices are visited.
 
+For the base case, the first visited vertex is $s$ itself.
+Since $d(s)=0=\mathrm{dist}(s,s)$, the claim is true.
+
+Now suppose the claim is true for all previously visited vertices, and let $u$ be the next visited vertex.
+Since $u$ is extracted from the priority queue first,
+
+\\[
+d(u)=\min_{v\notin S} d(v)
+\\]
+
+Assume that $d(u)>\mathrm{dist}(s,u)$.
+Take a shortest path from $s$ to $u$, and let $x$ be the first vertex on this path with $x\notin S$.
+Let $y$ be the vertex right before $x$ on the path. Then $y\in S$. By the induction hypothesis, $d(y)=\mathrm{dist}(s,y)$.
+When $y$ was processed, the edge $(y,x)$ was relaxed, so we have:
+
+\\[
+\begin{align\*}
+d(x) & \le d(y)+w(y,x)
+& = \mathrm{dist}(s,y)+w(y,x) = \mathrm{dist}(s,x)
+\end{align\*}
+\\]
+
+since any subpath of a shortest path is also a shortest path.
+It is trivial that $d(x)\ge \mathrm{dist}(s,x)$, so $d(x)=\mathrm{dist}(s,x)$.
+Also, since all edge weights are non-negative, $\mathrm{dist}(s,x)\le \mathrm{dist}(s,u)$.
+Hence $d(x)\le \mathrm{dist}(s,u)$.
+
+But $u$ was chosen as the minimum-distance unvisited vertex, so we have:
+
+\\[
+d(u)\le d(x)\le \mathrm{dist}(s,u)
+\\]
+
+which contradicts $d(u)>\mathrm{dist}(s,u)$. So $d(u)=\mathrm{dist}(s,u)$.
+Thus, the claim is true for every visited vertex.
+When the algorithm ends, every reachable vertex has been visited, so all shortest distances are computed correctly.
 
 
 ## Complexity
@@ -73,6 +114,6 @@ void dijkstra(int K){ // K is the source node
 
 ## Applications
 
-- **Routing and Navigation**: Used in GPS systems to find the shortest path between locations.
-- **Network Routing Protocols**: Employed in protocols like OSPF (Open Shortest Path First) to determine the best path for data packets.
-- **Pathfinding in Games**: Utilized in video games for AI navigation and pathfinding.
+- Routing and Navigation: Used in GPS systems to find the shortest path between locations.
+- Network Routing Protocols: Employed in protocols like OSPF (Open Shortest Path First) to determine the best path for data packets.
+- Pathfinding in Games: Utilized in video games for AI navigation and pathfinding.

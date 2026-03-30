@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-20T01:14:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-30T11:55:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
 </subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
@@ -48,7 +48,33 @@ The set $\Set{\b{e}_1, \dots, \b{e}_n}$ is a standard basis of $\mathbb{R}^n$.
 
 ## Existence of a Basis
 
-Now, let&apos;s prove that every nontrivial vector space has a basis.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
+Now, let&apos;s prove that every nontrivial vector space has a basis.
+
+Let $V$ be a nontrivial vector space and $I\subset V$ be a linearly independent set.
+Let $S \supset I$ be a spanning set of $V$; $\span(S) = V$.
+Then there exists a subset basis $\mathcal{B}$ for $V$ which $I \subseteq \mathcal{B} \subseteq S$. In particular,
+
+* Any vector space, except the trivial vector space, has a basis.
+* Any linearly independent set in $V$ is contained in some basis of $V$.
+* Any spanning set of $V$ contains some basis of $V$.
+
+_Proof._
+
+Consider the collection $\mathcal{A} = \Set{ A \subseteq S \| I \subseteq A, A \text{ is linearly independent} }$.
+Then $\mathcal{A}$ is nonempty since $I \in \mathcal{A}$. Consider the partial order on $\mathcal{A}$ given by set inclusion.
+Let $\mathcal{C} \subseteq \mathcal{A}$ be a chain in $\mathcal{A}$ and $U = \bigcup_{A \in \mathcal{C}} A$.
+$U$ is an upper bound of $\mathcal{C}$ since $I \subseteq U$ and $U$ is linearly independent.
+Then according to [Zorn&apos;s lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma), $\mathcal{A}$ has a maximal element $\mathcal{B}$, which is linearly independent.
+
+Now let&apos;s show that $\mathcal{B}$ is a basis of $V$. By the definition of $\mathcal{A}$, we have $\mathcal{B} \subseteq S$, so $\span(\mathcal{B}) \subseteq \span(S)$.
+Also, if any $s\in S$ is $s \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{s}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
+Hence, $s \in \span(\mathcal{B})$ for all $s \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
+Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $V$.
+
+---
+
+We can show that any subspace of a vector space has a complementary subspace using this theorem,
+which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Linear Combination and Independence</title><link href="http://localhost:4000/mathematics/linear-combination-and-independence.html" rel="alternate" type="text/html" title="Linear Combination and Independence" /><published>2026-03-16T00:00:00+09:00</published><updated>2026-03-16T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-combination-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-combination-and-independence.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -146,11 +172,32 @@ then $n = m$ and there exists a permutation $\sigma \in \mathcal{S}_n$ such that
 
 We may characterize linear independence as follows.
 For $\emptyset \neq S \subset V$, the following are equivalent:
-* $S$ is linearly independent.
-* Every nonzero vector $\b{v} \in \span(S)$ is an essentially unique linear combination of vectors in $S$.
-* No vector in $S$ is a linear combination of the other vectors in $S$.
+1. $S$ is linearly independent.
+2. Every nonzero vector $\b{v} \in \span(S)$ is an essentially unique linear combination of vectors in $S$.
+3. No vector in $S$ is a linear combination of the other vectors in $S$.
 
-This can be proved cyclically by the definition of linear independence and the properties of linear combinations.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Binary Search</title><link href="http://localhost:4000/computer-science/binary-search.html" rel="alternate" type="text/html" title="Binary Search" /><published>2026-02-17T00:00:00+09:00</published><updated>2026-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/binary-search</id><content type="html" xml:base="http://localhost:4000/computer-science/binary-search.html">&lt;!--more--&gt;
+This can be proved cyclically by the definition of linear independence and the properties of linear combinations.
+
+_Proof._
+
+(1) $\Rightarrow$ (2): Suppose the following linear combination equals a nonzero vector $\b{v} \in \span(S)$:
+
+\\[
+\b{0} \neq \b{v} = \sum_{i=1}^n a_i \b{u}\_i = \sum\_{i=1}^m b_i \b{w}_i
+\\]
+
+where $a_i, b_i$ are nonzero coefficients and $\b{u}\_i, \b{w}\_i$ are distinct vectors in $S$.
+By subtracting and grouping $\b{u}$&apos;s and $\b{w}$&apos;s that are equal, we can write:
+
+\\[
+\b{0} = \sum_{j=1}^k (a_{i_j} - b_{i_j}) \b{v}\_{i_j} + \sum_{j=k+1}^n a_{i_j} \b{u}\_{i_j} - \sum_{j=k+1}^m b_{i_j} \b{w}_{i_j}
+\\]
+
+Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and $a_{i_j} = b_{i_j}$ for all $j=1,\cdots,k$.
+
+(2) $\Rightarrow$ (3): If some vector $\b{v} \in S$ is a linear combination of the other vectors in $S$, then $\b{v}$ can be expressed as a linear combination of vectors in $S$ in at least two different ways: $\b{v}$ itself and the linear combination of the other vectors, contradicting the essential uniqueness.
+
+(3) $\Rightarrow$ (1): If $S$ is linearly dependent, then some vector $\b{v} \in S$ can be written as a linear combination of the other vectors in $S$, contradicting the assumption.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Binary Search</title><link href="http://localhost:4000/computer-science/binary-search.html" rel="alternate" type="text/html" title="Binary Search" /><published>2026-02-17T00:00:00+09:00</published><updated>2026-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/binary-search</id><content type="html" xml:base="http://localhost:4000/computer-science/binary-search.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc 
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Heavy-Light Decomposition</title><link href="http://localhost:4000/computer-science/heavy-light-decomposition.html" rel="alternate" type="text/html" title="Heavy-Light Decomposition" /><published>2026-02-12T00:00:00+09:00</published><updated>2026-02-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/heavy-light-decomposition</id><content type="html" xml:base="http://localhost:4000/computer-science/heavy-light-decomposition.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc

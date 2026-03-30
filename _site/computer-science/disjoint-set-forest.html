@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-16T14:40:53+09:00',
+    INDEX_KEY: 'index--2026-03-30T11:54:10+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="536 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="689 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   8 min
+   11 min
 </span>
 
       </span>
@@ -328,49 +328,584 @@ It supports three main operations:</p>
 <p>The Disjoint-Set Forest is implemented using a collection of trees, where each tree represents a disjoint set.
 Let’s denote the union operation as <code class="language-plaintext highlighter-rouge">union(x, y)</code> which merges the sets containing elements <code class="language-plaintext highlighter-rouge">x</code> and <code class="language-plaintext highlighter-rouge">y</code>,
 and the find operation as <code class="language-plaintext highlighter-rouge">find(x)</code> which returns the representative (or root) of the set containing <code class="language-plaintext highlighter-rouge">x</code>.
-And also let’s denote the node as the form <code class="language-plaintext highlighter-rouge">value: parent</code>, where <code class="language-plaintext highlighter-rouge">value</code> is the element and <code class="language-plaintext highlighter-rouge">parent</code> is the parent node in the tree.
-Now we will seek the most efficient way to implement these operations. Consider the forest below:</p>
-<pre><code class="language-mermaid">graph TD
-    A((1:1)):::root;B((2:2)):::root;C((3:3)):::root;
-    D((4:4)):::root;E((5:5)):::root;F((6:6)):::root;G((7:7)):::root;
+And also let’s denote the node as the form <code class="language-plaintext highlighter-rouge">value:parent:rank</code>, where <code class="language-plaintext highlighter-rouge">value</code> is the value of the node, <code class="language-plaintext highlighter-rouge">parent</code> is the value of its parent node, and <code class="language-plaintext highlighter-rouge">rank</code> is the rank of the node (used for union by rank).</p>
 
+<p>The interactive demo below starts with nodes <code class="language-plaintext highlighter-rouge">1</code> through <code class="language-plaintext highlighter-rouge">6</code> and lets you apply <strong>union by rank</strong> and <strong>path compression</strong> yourself.
+Start with six singleton sets and modify the forest directly.</p>
+
+<div id="disjoint-set-demo" class="dsv-root">
+  <style>
+    #disjoint-set-demo {
+      margin: 2rem 0;
+      color: #1f2937;
+    }
+
+    #disjoint-set-demo * {
+      box-sizing: border-box;
+    }
+
+    #disjoint-set-demo .dsv-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    #disjoint-set-demo pre.mermaid {
+      margin: 0;
+      text-align: center;
+    }
+
+    #disjoint-set-demo [data-role="graph"] svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    #disjoint-set-demo [data-role="graph"] svg .flowchart-link,
+    #disjoint-set-demo [data-role="graph"] svg .edge-thickness-normal,
+    #disjoint-set-demo [data-role="graph"] svg .edge-thickness-thick,
+    #disjoint-set-demo [data-role="graph"] svg path.path {
+      fill: none !important;
+      stroke: #64748b !important;
+      stroke-width: 1.5px !important;
+    }
+
+    #disjoint-set-demo [data-role="graph"] svg marker path,
+    #disjoint-set-demo [data-role="graph"] svg .arrowheadPath {
+      fill: #64748b !important;
+      stroke: #64748b !important;
+    }
+
+    #disjoint-set-demo .dsv-status-text {
+      margin: 0;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(82, 96, 113, 0.18);
+      border-radius: 0.55rem;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    #disjoint-set-demo .dsv-status-text p {
+      margin: 0;
+    }
+
+    #disjoint-set-demo .dsv-status-text code {
+      padding: 0.08rem 0.38rem;
+      border-radius: 0.35rem;
+      background: rgba(148, 163, 184, 0.14);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    #disjoint-set-demo .dsv-controls-shell {
+      overflow-x: auto;
+      padding-bottom: 0.1rem;
+    }
+
+    #disjoint-set-demo .dsv-controls {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: max-content;
+    }
+
+    #disjoint-set-demo .dsv-controls > * {
+      flex: 0 0 auto;
+      margin: 0;
+      vertical-align: middle;
+    }
+
+    #disjoint-set-demo .dsv-controls input[type="number"],
+    #disjoint-set-demo .dsv-controls button {
+      height: 2.35rem;
+      border-radius: 0.5rem;
+      font: inherit;
+      line-height: 1.2;
+      box-sizing: border-box;
+    }
+
+    #disjoint-set-demo .dsv-controls input[type="number"] {
+      width: 6rem;
+      min-width: 0;
+      border: 1px solid rgba(82, 96, 113, 0.24);
+      background: #fff;
+      color: #1f2937;
+      padding: 0 0.75rem;
+      outline: none;
+      appearance: textfield;
+    }
+
+    #disjoint-set-demo .dsv-controls input[type="number"]::-webkit-outer-spin-button,
+    #disjoint-set-demo .dsv-controls input[type="number"]::-webkit-inner-spin-button {
+      margin: 0;
+    }
+
+    #disjoint-set-demo .dsv-controls input[type="number"]:focus {
+      border-color: rgba(31, 41, 55, 0.45);
+      box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08);
+    }
+
+    #disjoint-set-demo .dsv-controls button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      padding: 0 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    #disjoint-set-demo .dsv-controls button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    #disjoint-set-demo .dsv-legend {
+      margin-top: 0.75rem;
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    #disjoint-set-demo .dsv-legend-item {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    #disjoint-set-demo .dsv-swatch {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      border: 2px solid transparent;
+    }
+
+    #disjoint-set-demo .dsv-swatch-root    { background: #dbeafe; border-color: #2563eb; }
+    #disjoint-set-demo .dsv-swatch-touched { background: #fef3c7; border-color: #d97706; }
+    #disjoint-set-demo .dsv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #disjoint-set-demo .dsv-swatch-normal  { background: #f8fafc; border-color: #475569; }
+  </style>
+
+  <div class="dsv-stack">
+    <pre class="mermaid" data-role="graph"></pre>
+
+    <div class="dsv-status-text" data-role="status-text"></div>
+
+    <div class="dsv-controls-shell">
+      <div class="dsv-controls">
+        <input type="number" min="1" max="6" step="1" value="1" aria-label="Union first node" data-role="union-a">
+        <input type="number" min="1" max="6" step="1" value="2" aria-label="Union second node" data-role="union-b">
+        <button type="button" data-role="union-btn">Union</button>
+        <input type="number" min="1" max="6" step="1" value="1" aria-label="Find node" data-role="find-x">
+        <button type="button" data-role="find-btn">Find</button>
+        <button type="button" data-role="undo-btn">Undo</button>
+        <button type="button" data-role="reset-btn">Reset</button>
+      </div>
+    </div>
+    <div class="dsv-legend">
+      <div class="dsv-legend-item">
+<span class="dsv-swatch dsv-swatch-current"></span> Current node in the active operation</div>
+      <div class="dsv-legend-item">
+<span class="dsv-swatch dsv-swatch-root"></span> Root selected after union or find</div>
+      <div class="dsv-legend-item">
+<span class="dsv-swatch dsv-swatch-touched"></span> Node touched by path compression or merge</div>
+      <div class="dsv-legend-item">
+<span class="dsv-swatch dsv-swatch-normal"></span> Node with no highlight in the current step</div>
+      <div class="dsv-legend-item">
+<span style="color:#64748b;font-weight:700;">━</span> Parent-to-child pointer</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("disjoint-set-demo");
+      if (!root) return;
+
+      function $(role) {
+        return root.querySelector('[data-role="' + role + '"]');
+      }
+
+      function waitFor(checkFn, timeoutMs, intervalMs) {
+        return new Promise(function (resolve, reject) {
+          var start = Date.now();
+
+          function tick() {
+            var value = checkFn();
+            if (value) {
+              resolve(value);
+              return;
+            }
+            if (Date.now() - start >= timeoutMs) {
+              reject(new Error("Timed out while waiting for Mermaid."));
+              return;
+            }
+            setTimeout(tick, intervalMs);
+          }
+
+          tick();
+        });
+      }
+
+      function loadMermaidFallback() {
+        if (window.mermaid && typeof window.mermaid.run === "function") {
+          return Promise.resolve(window.mermaid);
+        }
+
+        if (window.__dsvMermaidPromise) {
+          return window.__dsvMermaidPromise;
+        }
+
+        window.__dsvMermaidPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+          script.async = true;
+          script.onload = function () {
+            if (window.mermaid && typeof window.mermaid.run === "function") {
+              try {
+                window.mermaid.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
+              } catch (e) {}
+              resolve(window.mermaid);
+            } else {
+              reject(new Error("Mermaid loaded, but window.mermaid is unavailable."));
+            }
+          };
+          script.onerror = function () {
+            reject(new Error("Failed to load Mermaid."));
+          };
+          document.head.appendChild(script);
+        });
+
+        return window.__dsvMermaidPromise;
+      }
+
+      function getMermaid() {
+        return waitFor(function () {
+          return window.mermaid && typeof window.mermaid.run === "function" ? window.mermaid : null;
+        }, 1500, 50).then(function (mermaidInstance) {
+          try {
+            mermaidInstance.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
+          } catch (e) {}
+          return mermaidInstance;
+        }).catch(function () {
+          return loadMermaidFallback();
+        });
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function renderInlineCodeMarkdown(text) {
+        return "<p>" + escapeHtml(text).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
+      }
+
+      function pushUnique(list, value) {
+        if (list.indexOf(value) === -1) list.push(value);
+      }
+
+      function cloneState(state) {
+        return {
+          parent: Object.assign({}, state.parent),
+          rank: Object.assign({}, state.rank),
+          currentNodes: state.currentNodes.slice(),
+          rootNodes: state.rootNodes.slice(),
+          touchedNodes: state.touchedNodes.slice(),
+          statusText: state.statusText
+        };
+      }
+
+      function makeInitialState(nodes) {
+        var parent = {};
+        var rank = {};
+        nodes.forEach(function (node) {
+          parent[node] = node;
+          rank[node] = 0;
+        });
+
+        return {
+          parent: parent,
+          rank: rank,
+          currentNodes: [],
+          rootNodes: nodes.slice(),
+          touchedNodes: [],
+          statusText: "Each node starts in its own set. Use `Union` or `Find` to update the forest."
+        };
+      }
+
+      function clearHighlights(state) {
+        state.currentNodes = [];
+        state.rootNodes = [];
+        state.touchedNodes = [];
+      }
+
+      function readNodeInput(role) {
+        var input = $(role);
+        var value = Number(input.value);
+        if (!Number.isInteger(value) || value < 1 || value > 6) {
+          input.focus();
+          throw new Error("Please enter an integer from `1` to `6`.");
+        }
+        return value;
+      }
+
+      function findRoot(state, x, touchedNodes) {
+        var path = [];
+        var current = x;
+
+        while (state.parent[current] !== current) {
+          path.push(current);
+          current = state.parent[current];
+        }
+
+        var rootNode = current;
+
+        path.forEach(function (node) {
+          if (state.parent[node] !== rootNode) {
+            state.parent[node] = rootNode;
+          }
+          pushUnique(touchedNodes, node);
+        });
+
+        pushUnique(touchedNodes, rootNode);
+
+        return {
+          root: rootNode,
+          path: path
+        };
+      }
+
+      function formatPath(path, rootNode) {
+        if (!path.length) return String(rootNode);
+        return path.join(" -> ") + " -> " + rootNode;
+      }
+
+      function applyUnion(prevState, a, b) {
+        var next = cloneState(prevState);
+        clearHighlights(next);
+        next.currentNodes = [a, b];
+
+        var touchedNodes = [];
+        var left = findRoot(next, a, touchedNodes);
+        var right = findRoot(next, b, touchedNodes);
+
+        if (left.root === right.root) {
+          next.rootNodes = [left.root];
+          next.touchedNodes = touchedNodes;
+          next.statusText =
+            "`union(" + a + ", " + b + ")` found the same root `" + left.root + "`" +
+            ". No merge was needed.";
+          return next;
+        }
+
+        var newRoot = left.root;
+        var attachRoot = right.root;
+
+        if (next.rank[left.root] < next.rank[right.root]) {
+          newRoot = right.root;
+          attachRoot = left.root;
+        }
+
+        next.parent[attachRoot] = newRoot;
+        pushUnique(touchedNodes, newRoot);
+        pushUnique(touchedNodes, attachRoot);
+
+        var rankRaised = false;
+        if (next.rank[left.root] === next.rank[right.root]) {
+          next.rank[newRoot] += 1;
+          rankRaised = true;
+        }
+
+        next.rootNodes = [newRoot];
+        next.touchedNodes = touchedNodes;
+        next.statusText =
+          "`union(" + a + ", " + b + ")` attached root `" + attachRoot + "` under root `" + newRoot + "`" +
+          (rankRaised ? ". The ranks were equal, so `rank(" + newRoot + ")` increased." : ".");
+        return next;
+      }
+
+      function applyFind(prevState, x) {
+        var next = cloneState(prevState);
+        clearHighlights(next);
+        next.currentNodes = [x];
+
+        var touchedNodes = [];
+        var result = findRoot(next, x, touchedNodes);
+
+        next.rootNodes = [result.root];
+        next.touchedNodes = touchedNodes;
+        next.statusText =
+          "`find(" + x + ")` reached root `" + result.root + "` along `" + formatPath(result.path, result.root) + "`" +
+          ".";
+        return next;
+      }
+
+      function nodeClass(node, state) {
+        if (state.currentNodes.indexOf(node) !== -1) return "current";
+        if (state.rootNodes.indexOf(node) !== -1) return "root";
+        if (state.touchedNodes.indexOf(node) !== -1) return "touched";
+        return "normal";
+      }
+
+      function labelText(node, state) {
+        return node + ":" + state.parent[node] + ":" + state.rank[node];
+      }
+
+      function buildMermaid(state) {
+        var lines = [];
+        lines.push('%%{init: {"flowchart": {"curve": "linear", "htmlLabels": false}} }%%');
+        lines.push("flowchart TD");
+
+        nodes.forEach(function (node) {
+          lines.push("N" + node + '["' + labelText(node, state) + '"]:::' + nodeClass(node, state));
+        });
+
+        nodes.forEach(function (node) {
+          if (state.parent[node] !== node) {
+            lines.push("N" + state.parent[node] + " --> N" + node);
+          }
+        });
+
+        lines.push("classDef normal fill:#f8fafc,stroke:#334155,stroke-width:1.5px;");
+        lines.push("classDef root fill:#dbeafe,stroke:#2563eb,stroke-width:2px;");
+        lines.push("classDef touched fill:#fef3c7,stroke:#d97706,stroke-width:2px;");
+        lines.push("classDef current fill:#fee2e2,stroke:#dc2626,stroke-width:3px;");
+        return lines.join("\n");
+      }
+
+      function renderMeta(state) {
+        $("status-text").innerHTML = renderInlineCodeMarkdown(state.statusText);
+        $("undo-btn").disabled = history.length <= 1;
+      }
+
+      function renderGraph(state) {
+        var graphEl = $("graph");
+        graphEl.removeAttribute("data-processed");
+        graphEl.textContent = buildMermaid(state);
+        return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
+      }
+
+      function render() {
+        var state = getState();
+        renderMeta(state);
+        renderChain = renderChain.catch(function () {
+          return null;
+        }).then(function () {
+          return renderGraph(state);
+        }).catch(function (err) {
+          $("status-text").innerHTML = renderInlineCodeMarkdown(
+            (state.statusText ? state.statusText + " " : "") +
+            "Graph render failed: " + (err && err.message ? err.message : "Unknown Mermaid error.")
+          );
+        });
+        return renderChain;
+      }
+
+      function commit(nextState) {
+        history.push(nextState);
+        render();
+      }
+
+      function handleAction(fn) {
+        try {
+          commit(fn(getState()));
+        } catch (err) {
+          var state = cloneState(getState());
+          clearHighlights(state);
+          state.statusText = err && err.message ? err.message : "The operation could not be applied.";
+          renderMeta(state);
+        }
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+
+        getMermaid().then(function (loadedMermaid) {
+          mermaidInstance = loadedMermaid;
+          history = [makeInitialState(nodes)];
+          render();
+
+          $("union-btn").addEventListener("click", function () {
+            handleAction(function (state) {
+              return applyUnion(state, readNodeInput("union-a"), readNodeInput("union-b"));
+            });
+          });
+
+          $("find-btn").addEventListener("click", function () {
+            handleAction(function (state) {
+              return applyFind(state, readNodeInput("find-x"));
+            });
+          });
+
+          $("undo-btn").addEventListener("click", function () {
+            if (history.length > 1) {
+              history.pop();
+              render();
+            }
+          });
+
+          $("reset-btn").addEventListener("click", function () {
+            history = [makeInitialState(nodes)];
+            render();
+          });
+        }).catch(function (err) {
+          $("status-text").innerHTML = renderInlineCodeMarkdown(
+            "Mermaid failed to load: " + (err && err.message ? err.message : "Unknown error.")
+          );
+        });
+      }
+
+      var nodes = [1, 2, 3, 4, 5, 6];
+      var mermaidInstance = null;
+      var history = [];
+      var renderChain = Promise.resolve();
+
+      function getState() {
+        return history[history.length - 1];
+      }
+
+      start();
+    })();
+  </script>
+</div>
+
+<p>Now we will seek what <em>path compression</em> and <em>union by rank</em> are, and how they help to optimize the <code class="language-plaintext highlighter-rouge">find</code> and <code class="language-plaintext highlighter-rouge">union</code> operations.
+Path compression enables us to find the representative(or root) of a tree in nearly constant time by flattening the structure of the tree whenever we perform a <code class="language-plaintext highlighter-rouge">find</code> operation.
+Union by rank helps to keep the tree flat by always attaching the smaller tree under the root of the larger tree during a <code class="language-plaintext highlighter-rouge">union</code> operation.</p>
+
+<p>Consider the forest below:</p>
+<pre><code class="language-mermaid">graph TD
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)):::root; F((6:5:0));
+    A---B; C---D; E---F; A---C;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 </code></pre>
 <p>Root nodes of each tree are indicated with a darker color.
-After performing <code class="language-plaintext highlighter-rouge">union(1, 2)</code>, <code class="language-plaintext highlighter-rouge">union(3, 4)</code> and <code class="language-plaintext highlighter-rouge">union(5, 6)</code>, the forest becomes:</p>
-<pre><code class="language-mermaid">graph TD
-    A((1:1)):::root;B((2:1));C((3:3)):::root;
-    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
-    A---B; C---D; E---F;
+Let’s perform <code class="language-plaintext highlighter-rouge">union(4,6)</code> on the forest above. First, we find the representatives of <code class="language-plaintext highlighter-rouge">4</code> and <code class="language-plaintext highlighter-rouge">6</code>
+by <code class="language-plaintext highlighter-rouge">find(4)</code> and <code class="language-plaintext highlighter-rouge">find(6)</code>, which will return <code class="language-plaintext highlighter-rouge">1</code> and <code class="language-plaintext highlighter-rouge">5</code> respectively while also performing path compression on the way.</p>
 
+<pre><code class="language-mermaid">graph TD
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)):::root; F((6:5:0));
+    A---B &amp; C &amp; D; E---F;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 </code></pre>
-<p>After performing <code class="language-plaintext highlighter-rouge">union(1, 4)</code>, the forest becomes:</p>
-<pre><code class="language-mermaid">graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
-    A---B; A---C---D; E---F;
 
+<p>Then we perform the <code class="language-plaintext highlighter-rouge">union</code> operation by attaching the tree with root <code class="language-plaintext highlighter-rouge">5</code> under the tree with root <code class="language-plaintext highlighter-rouge">1</code> since it has a higher rank.</p>
+
+<pre><code class="language-mermaid">graph TD
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)); F((6:5:0));
+    A---B &amp; C &amp; D &amp; E; E---F;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 </code></pre>
-<p>After performing <code class="language-plaintext highlighter-rouge">union(4, 5)</code>, the forest becomes:</p>
-<pre><code class="language-mermaid">graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:3));F((6:5));G((7:7)):::root;
-    A---B; A---C---D; E---F; C---E;
 
-    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
-</code></pre>
-<p>After performing <code class="language-plaintext highlighter-rouge">find(6)</code>, we can see that <code class="language-plaintext highlighter-rouge">6</code> belongs to the tree with root <code class="language-plaintext highlighter-rouge">1</code>,
-so we can update the parent of nodes on the path from <code class="language-plaintext highlighter-rouge">6</code> to <code class="language-plaintext highlighter-rouge">1</code> to point directly to <code class="language-plaintext highlighter-rouge">1</code>.</p>
-<pre><code class="language-mermaid">graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:1));F((6:1));G((7:7)):::root;
-    A---B &amp; E &amp; F; A---C---D;
-
-    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
-</code></pre>
-<p>This process is known as <strong>path compression</strong> and helps to flatten the structure of the tree, making future <code class="language-plaintext highlighter-rouge">find</code> operations faster.</p>
+<p>When the rank of the roots which we are trying to union are the same, we can choose either one as the new root and increase its rank by 1.</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -606,7 +1141,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman–Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman–Ford Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman–Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>      </ul></aside>
+                                                                                                                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman–Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman–Ford Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman–Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>      </ul></aside>
 
   
 

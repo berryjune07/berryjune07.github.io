@@ -1,6 +1,5 @@
-{% assign viz_id = include.id | default: "dijkstra-demo" %}
+﻿{% assign viz_id = include.id | default: "dijkstra-demo" %}
 {% assign viz_title = include.title | default: "Dijkstra Algorithm Step Visualizer" %}
-
 <div id="{{ viz_id }}" class="dv-root">
   <style>
     #{{ viz_id }} {
@@ -9,10 +8,6 @@
 
     #{{ viz_id }} * {
       box-sizing: border-box;
-    }
-
-    #{{ viz_id }} .dv-title {
-      margin: 0 0 0.75rem 0;
     }
 
     #{{ viz_id }} .dv-controls {
@@ -115,17 +110,10 @@
     #{{ viz_id }} .dv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
     #{{ viz_id }} .dv-swatch-normal   { background: #f8fafc; border-color: #475569; }
 
-    #{{ viz_id }} .dv-error {
-      white-space: pre-wrap;
-      border: 1px solid rgba(220, 38, 38, 0.25);
-      padding: 0.9rem;
-      border-radius: 0.5rem;
-      overflow-x: auto;
-    }
   </style>
 
   <p class="dv-description">
-    Click the buttons to move through Dijkstra’s algorithm one step at a time.
+    Click the buttons to move through Dijkstra's algorithm one step at a time.
   </p>
 
   <div class="dv-controls">
@@ -173,10 +161,6 @@
 
       function getGraphEl() {
         return root.querySelector('[data-role="graph"]');
-      }
-
-      function showError(message) {
-        getGraphEl().outerHTML = '<div class="dv-error">' + message + '</div>';
       }
 
       function waitFor(checkFn, timeoutMs, intervalMs) {
@@ -256,7 +240,6 @@
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
-
         Promise.all([getKatex(), getMermaid()]).then(function (libs) {
           var katex = libs[0];
           var mermaidInstance = libs[1];
@@ -299,8 +282,25 @@
           function renderMathHTML(expr, displayMode) {
             return katex.renderToString(expr, {
               throwOnError: false,
+              output: "html",
               displayMode: !!displayMode
             });
+          }
+
+          function nodeMath(node) {
+            return renderMathHTML(texEscape(node), false);
+          }
+
+          function edgeMath(u, v) {
+            return renderMathHTML("\\left(" + texEscape(u) + "," + texEscape(v) + "\\right)", false);
+          }
+
+          function valueMath(expr) {
+            return renderMathHTML(expr, false);
+          }
+
+          function distanceMath(node, dist) {
+            return renderMathHTML("d(" + texEscape(node) + ") = " + distExpr(dist), false);
           }
 
           function texEscape(s) {
@@ -326,7 +326,7 @@
           }
 
           function labelText(node, dist) {
-            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "∞") + ")";
+            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "INF") + ")";
           }
 
           function cloneState(state) {
@@ -345,7 +345,7 @@
               activeEdge: state.activeEdge ? [state.activeEdge[0], state.activeEdge[1]] : null,
               phase: state.phase,
               caption: state.caption,
-              eventDesc: state.eventDesc,
+              eventDescHtml: state.eventDescHtml,
               done: state.done
             };
           }
@@ -368,7 +368,8 @@
               activeEdge: null,
               phase: "select",
               caption: "Initialization",
-              eventDesc: "Initialize Dijkstra’s algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
+              eventDescHtml: "Initialize Dijkstra's algorithm with source node " + nodeMath(sourceNode) + ". The priority queue starts with only the source node.",
+              eventDesc: "Initialize Dijkstra's algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
               done: false
             };
           }
@@ -468,7 +469,7 @@
                 next.currentNeighbors = [];
                 next.neighborIndex = 0;
                 next.caption = "Finished";
-                next.eventDesc = "The priority queue is empty, so the algorithm terminates.";
+                next.eventDescHtml = "The priority queue is empty, so the algorithm terminates.";
                 next.phase = "done";
                 return next;
               }
@@ -482,10 +483,10 @@
               next.neighborIndex = 0;
               next.phase = "relax";
               next.caption = "Extract minimum";
-              next.eventDesc =
-                "Remove " + item.node +
-                " from the priority queue with key " + item.dist +
-                ". Since it is the minimum key, its shortest distance is now finalized.";
+              next.eventDescHtml =
+                "Remove " + nodeMath(item.node) +
+                " from the priority queue with key " + valueMath(distExpr(item.dist)) +
+                ". Its shortest distance is now finalized: " + distanceMath(item.node, item.dist) + ".";
               return next;
             }
 
@@ -497,8 +498,8 @@
                 next.neighborIndex = 0;
                 next.phase = "select";
                 next.caption = "Finish processing node";
-                next.eventDesc =
-                  "All outgoing edges of " + finishedNode +
+                next.eventDescHtml =
+                  "All outgoing edges of " + nodeMath(finishedNode) +
                   " have been examined. Return to the priority queue to choose the next node.";
                 return next;
               }
@@ -509,9 +510,10 @@
 
               if (next.visited[edge.node]) {
                 next.caption = "Skip finalized neighbor";
-                next.eventDesc =
-                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                  ". Node " + edge.node + " is already finalized, so no update is necessary.";
+                next.eventDescHtml =
+                  "Inspect edge " + edgeMath(next.current, edge.node) +
+                  " with weight " + valueMath(String(edge.weight)) +
+                  ". Node " + nodeMath(edge.node) + " is already finalized, so no update is necessary.";
                 return next;
               }
 
@@ -525,23 +527,32 @@
 
                 next.caption = "Relax edge";
                 if (Number.isFinite(oldDist)) {
-                  next.eventDesc =
-                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                    ", which improves the old value " + oldDist +
-                    ". Update d(" + edge.node + ") and decrease its key in the priority queue.";
+                  next.eventDescHtml =
+                    "Inspect edge " + edgeMath(next.current, edge.node) +
+                    " with weight " + valueMath(String(edge.weight)) +
+                    ". The candidate distance is " +
+                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                    ", which improves the old value " + distanceMath(edge.node, oldDist) +
+                    ". Update " + distanceMath(edge.node, candidate) +
+                    " and decrease its key in the priority queue.";
                 } else {
-                  next.eventDesc =
-                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                    ". Update d(" + edge.node + ") from infinity and insert it into the priority queue.";
+                  next.eventDescHtml =
+                    "Inspect edge " + edgeMath(next.current, edge.node) +
+                    " with weight " + valueMath(String(edge.weight)) +
+                    ". The candidate distance is " +
+                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                    ". Update " + distanceMath(edge.node, candidate) +
+                    " from " + valueMath("\\infty") +
+                    " and insert it into the priority queue.";
                 }
               } else {
                 next.caption = "Relax edge";
-                next.eventDesc =
-                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                  ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                  ", which is not smaller than the current value " + oldDist +
+                next.eventDescHtml =
+                  "Inspect edge " + edgeMath(next.current, edge.node) +
+                  " with weight " + valueMath(String(edge.weight)) +
+                  ". The candidate distance is " +
+                  valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                  ", which is not smaller than the current value " + distanceMath(edge.node, oldDist) +
                   ". No update is made.";
               }
 
@@ -552,6 +563,16 @@
           }
 
           var history = [makeInitialState()];
+          history[0].eventDescHtml =
+            "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
+            ". The priority queue starts with only the source node.";
+
+          function resetHistory() {
+            history = [makeInitialState()];
+            history[0].eventDescHtml =
+              "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
+              ". The priority queue starts with only the source node.";
+          }
 
           function getState() {
             return history[history.length - 1];
@@ -559,8 +580,8 @@
 
           function renderMeta(state) {
             $("counter").textContent = String(history.length - 1);
-            $("step-title").textContent = "Step " + (history.length - 1) + " — " + state.caption;
-            $("step-desc").textContent = state.eventDesc;
+            $("step-title").textContent = "Step " + (history.length - 1) + " - " + state.caption;
+            $("step-desc").innerHTML = state.eventDescHtml || state.eventDesc || "";
             $("pq-state").innerHTML = renderMathHTML(pqExpr(state.pq), false);
 
             root.querySelector('[data-role="prev"]').disabled = (history.length <= 1);
@@ -573,14 +594,7 @@
             graphEl.removeAttribute("data-processed");
             graphEl.innerHTML = escapeHtml(code);
 
-            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] })).catch(function (err) {
-              graphEl.outerHTML =
-                '<div class="dv-error">Mermaid syntax error:\n' +
-                escapeHtml(String(err)) +
-                '\n\nGenerated code:\n' +
-                escapeHtml(code) +
-                '</div>';
-            });
+            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
           }
 
           function render() {
@@ -605,17 +619,11 @@
           });
 
           root.querySelector('[data-role="reset"]').addEventListener("click", function () {
-            history = [makeInitialState()];
+            resetHistory();
             render();
           });
 
           render();
-        }).catch(function (err) {
-          showError(
-            "This widget could not find KaTeX or Mermaid after waiting for the page to finish loading.\n\n" +
-            String(err) +
-            "\n\nIf you already included both libraries, the most likely cause is that the core KaTeX script is missing, and only the auto-render helper was loaded."
-          );
         });
       }
 

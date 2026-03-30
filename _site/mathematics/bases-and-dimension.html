@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-19T23:27:59+09:00',
+    INDEX_KEY: 'index--2026-03-30T11:24:09+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="374 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="630 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   6 min
+   10 min
 </span>
 
       </span>
@@ -360,6 +360,34 @@ e_n = (0, 0, \dots, 1)
 <h2 id="existence-of-a-basis">Existence of a Basis</h2>
 
 <p>Now, let’s prove that every nontrivial vector space has a basis.</p>
+
+<p>Let $V$ be a nontrivial vector space and $I\subset V$ be a linearly independent set.
+Let $S \supset I$ be a spanning set of $V$; $\span(S) = V$.
+Then there exists a subset basis $\mathcal{B}$ for $V$ which $I \subseteq \mathcal{B} \subseteq S$. In particular,</p>
+
+<ul>
+  <li>Any vector space, except the trivial vector space, has a basis.</li>
+  <li>Any linearly independent set in $V$ is contained in some basis of $V$.</li>
+  <li>Any spanning set of $V$ contains some basis of $V$.</li>
+</ul>
+
+<p><em>Proof.</em></p>
+
+<p>Consider the collection $\mathcal{A} = \Set{ A \subseteq S | I \subseteq A, A \text{ is linearly independent} }$.
+Then $\mathcal{A}$ is nonempty since $I \in \mathcal{A}$. Consider the partial order on $\mathcal{A}$ given by set inclusion.
+Let $\mathcal{C} \subseteq \mathcal{A}$ be a chain in $\mathcal{A}$ and $U = \bigcup_{A \in \mathcal{C}} A$.
+$U$ is an upper bound of $\mathcal{C}$ since $I \subseteq U$ and $U$ is linearly independent.
+Then according to <a href="https://en.wikipedia.org/wiki/Zorn%27s_lemma">Zorn’s lemma</a>, $\mathcal{A}$ has a maximal element $\mathcal{B}$, which is linearly independent.</p>
+
+<p>Now let’s show that $\mathcal{B}$ is a basis of $V$. By the definition of $\mathcal{A}$, we have $\mathcal{B} \subseteq S$, so $\span(\mathcal{B}) \subseteq \span(S)$.
+Also, if any $s\in S$ is $s \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{s}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
+Hence, $s \in \span(\mathcal{B})$ for all $s \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
+Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $V$.</p>
+
+<hr>
+
+<p>We can show that any subspace of a vector space has a complementary subspace using this theorem,
+which was introduced <a href="/mathematics/subspace-and-span.html#complementary-subspace">here</a>.</p>
 
   
 </article>

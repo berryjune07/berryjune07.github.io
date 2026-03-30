@@ -103,8 +103,29 @@ then $n = m$ and there exists a permutation $\sigma \in \mathcal{S}_n$ such that
 
 We may characterize linear independence as follows.
 For $\emptyset \neq S \subset V$, the following are equivalent:
-* $S$ is linearly independent.
-* Every nonzero vector $\b{v} \in \span(S)$ is an essentially unique linear combination of vectors in $S$.
-* No vector in $S$ is a linear combination of the other vectors in $S$.
+1. $S$ is linearly independent.
+2. Every nonzero vector $\b{v} \in \span(S)$ is an essentially unique linear combination of vectors in $S$.
+3. No vector in $S$ is a linear combination of the other vectors in $S$.
 
 This can be proved cyclically by the definition of linear independence and the properties of linear combinations.
+
+_Proof._
+
+(1) $\Rightarrow$ (2): Suppose the following linear combination equals a nonzero vector $\b{v} \in \span(S)$:
+
+\\[
+\b{0} \neq \b{v} = \sum_{i=1}^n a_i \b{u}\_i = \sum\_{i=1}^m b_i \b{w}_i
+\\]
+
+where $a_i, b_i$ are nonzero coefficients and $\b{u}\_i, \b{w}\_i$ are distinct vectors in $S$.
+By subtracting and grouping $\b{u}$'s and $\b{w}$'s that are equal, we can write:
+
+\\[
+\b{0} = \sum_{j=1}^k (a_{i_j} - b_{i_j}) \b{v}\_{i_j} + \sum_{j=k+1}^n a_{i_j} \b{u}\_{i_j} - \sum_{j=k+1}^m b_{i_j} \b{w}_{i_j}
+\\]
+
+Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and $a_{i_j} = b_{i_j}$ for all $j=1,\cdots,k$.
+
+(2) $\Rightarrow$ (3): If some vector $\b{v} \in S$ is a linear combination of the other vectors in $S$, then $\b{v}$ can be expressed as a linear combination of vectors in $S$ in at least two different ways: $\b{v}$ itself and the linear combination of the other vectors, contradicting the essential uniqueness.
+
+(3) $\Rightarrow$ (1): If $S$ is linearly dependent, then some vector $\b{v} \in S$ can be written as a linear combination of the other vectors in $S$, contradicting the assumption.

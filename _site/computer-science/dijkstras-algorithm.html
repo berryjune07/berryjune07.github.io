@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-20T01:14:25+09:00',
+    INDEX_KEY: 'index--2026-03-28T00:30:16+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="471 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="710 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   7 min
+   11 min
 </span>
 
       </span>
@@ -338,10 +338,6 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
     #dijkstra-demo * {
       box-sizing: border-box;
-    }
-
-    #dijkstra-demo .dv-title {
-      margin: 0 0 0.75rem 0;
     }
 
     #dijkstra-demo .dv-controls {
@@ -444,17 +440,10 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
     #dijkstra-demo .dv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
     #dijkstra-demo .dv-swatch-normal   { background: #f8fafc; border-color: #475569; }
 
-    #dijkstra-demo .dv-error {
-      white-space: pre-wrap;
-      border: 1px solid rgba(220, 38, 38, 0.25);
-      padding: 0.9rem;
-      border-radius: 0.5rem;
-      overflow-x: auto;
-    }
   </style>
 
   <p class="dv-description">
-    Click the buttons to move through Dijkstra’s algorithm one step at a time.
+    Click the buttons to move through Dijkstra's algorithm one step at a time.
   </p>
 
   <div class="dv-controls">
@@ -508,10 +497,6 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
       function getGraphEl() {
         return root.querySelector('[data-role="graph"]');
-      }
-
-      function showError(message) {
-        getGraphEl().outerHTML = '<div class="dv-error">' + message + '</div>';
       }
 
       function waitFor(checkFn, timeoutMs, intervalMs) {
@@ -591,7 +576,6 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
-
         Promise.all([getKatex(), getMermaid()]).then(function (libs) {
           var katex = libs[0];
           var mermaidInstance = libs[1];
@@ -634,8 +618,25 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
           function renderMathHTML(expr, displayMode) {
             return katex.renderToString(expr, {
               throwOnError: false,
+              output: "html",
               displayMode: !!displayMode
             });
+          }
+
+          function nodeMath(node) {
+            return renderMathHTML(texEscape(node), false);
+          }
+
+          function edgeMath(u, v) {
+            return renderMathHTML("\\left(" + texEscape(u) + "," + texEscape(v) + "\\right)", false);
+          }
+
+          function valueMath(expr) {
+            return renderMathHTML(expr, false);
+          }
+
+          function distanceMath(node, dist) {
+            return renderMathHTML("d(" + texEscape(node) + ") = " + distExpr(dist), false);
           }
 
           function texEscape(s) {
@@ -661,7 +662,7 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
           }
 
           function labelText(node, dist) {
-            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "∞") + ")";
+            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "INF") + ")";
           }
 
           function cloneState(state) {
@@ -680,7 +681,7 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
               activeEdge: state.activeEdge ? [state.activeEdge[0], state.activeEdge[1]] : null,
               phase: state.phase,
               caption: state.caption,
-              eventDesc: state.eventDesc,
+              eventDescHtml: state.eventDescHtml,
               done: state.done
             };
           }
@@ -703,7 +704,8 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
               activeEdge: null,
               phase: "select",
               caption: "Initialization",
-              eventDesc: "Initialize Dijkstra’s algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
+              eventDescHtml: "Initialize Dijkstra's algorithm with source node " + nodeMath(sourceNode) + ". The priority queue starts with only the source node.",
+              eventDesc: "Initialize Dijkstra's algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
               done: false
             };
           }
@@ -803,7 +805,7 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
                 next.currentNeighbors = [];
                 next.neighborIndex = 0;
                 next.caption = "Finished";
-                next.eventDesc = "The priority queue is empty, so the algorithm terminates.";
+                next.eventDescHtml = "The priority queue is empty, so the algorithm terminates.";
                 next.phase = "done";
                 return next;
               }
@@ -817,10 +819,10 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
               next.neighborIndex = 0;
               next.phase = "relax";
               next.caption = "Extract minimum";
-              next.eventDesc =
-                "Remove " + item.node +
-                " from the priority queue with key " + item.dist +
-                ". Since it is the minimum key, its shortest distance is now finalized.";
+              next.eventDescHtml =
+                "Remove " + nodeMath(item.node) +
+                " from the priority queue with key " + valueMath(distExpr(item.dist)) +
+                ". Its shortest distance is now finalized: " + distanceMath(item.node, item.dist) + ".";
               return next;
             }
 
@@ -832,8 +834,8 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
                 next.neighborIndex = 0;
                 next.phase = "select";
                 next.caption = "Finish processing node";
-                next.eventDesc =
-                  "All outgoing edges of " + finishedNode +
+                next.eventDescHtml =
+                  "All outgoing edges of " + nodeMath(finishedNode) +
                   " have been examined. Return to the priority queue to choose the next node.";
                 return next;
               }
@@ -844,9 +846,10 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
               if (next.visited[edge.node]) {
                 next.caption = "Skip finalized neighbor";
-                next.eventDesc =
-                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                  ". Node " + edge.node + " is already finalized, so no update is necessary.";
+                next.eventDescHtml =
+                  "Inspect edge " + edgeMath(next.current, edge.node) +
+                  " with weight " + valueMath(String(edge.weight)) +
+                  ". Node " + nodeMath(edge.node) + " is already finalized, so no update is necessary.";
                 return next;
               }
 
@@ -860,23 +863,32 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
                 next.caption = "Relax edge";
                 if (Number.isFinite(oldDist)) {
-                  next.eventDesc =
-                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                    ", which improves the old value " + oldDist +
-                    ". Update d(" + edge.node + ") and decrease its key in the priority queue.";
+                  next.eventDescHtml =
+                    "Inspect edge " + edgeMath(next.current, edge.node) +
+                    " with weight " + valueMath(String(edge.weight)) +
+                    ". The candidate distance is " +
+                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                    ", which improves the old value " + distanceMath(edge.node, oldDist) +
+                    ". Update " + distanceMath(edge.node, candidate) +
+                    " and decrease its key in the priority queue.";
                 } else {
-                  next.eventDesc =
-                    "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                    ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                    ". Update d(" + edge.node + ") from infinity and insert it into the priority queue.";
+                  next.eventDescHtml =
+                    "Inspect edge " + edgeMath(next.current, edge.node) +
+                    " with weight " + valueMath(String(edge.weight)) +
+                    ". The candidate distance is " +
+                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                    ". Update " + distanceMath(edge.node, candidate) +
+                    " from " + valueMath("\\infty") +
+                    " and insert it into the priority queue.";
                 }
               } else {
                 next.caption = "Relax edge";
-                next.eventDesc =
-                  "Inspect edge (" + next.current + ", " + edge.node + ") with weight " + edge.weight +
-                  ". The candidate distance is " + next.dist[next.current] + " + " + edge.weight + " = " + candidate +
-                  ", which is not smaller than the current value " + oldDist +
+                next.eventDescHtml =
+                  "Inspect edge " + edgeMath(next.current, edge.node) +
+                  " with weight " + valueMath(String(edge.weight)) +
+                  ". The candidate distance is " +
+                  valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
+                  ", which is not smaller than the current value " + distanceMath(edge.node, oldDist) +
                   ". No update is made.";
               }
 
@@ -887,6 +899,16 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
           }
 
           var history = [makeInitialState()];
+          history[0].eventDescHtml =
+            "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
+            ". The priority queue starts with only the source node.";
+
+          function resetHistory() {
+            history = [makeInitialState()];
+            history[0].eventDescHtml =
+              "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
+              ". The priority queue starts with only the source node.";
+          }
 
           function getState() {
             return history[history.length - 1];
@@ -894,8 +916,8 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
           function renderMeta(state) {
             $("counter").textContent = String(history.length - 1);
-            $("step-title").textContent = "Step " + (history.length - 1) + " — " + state.caption;
-            $("step-desc").textContent = state.eventDesc;
+            $("step-title").textContent = "Step " + (history.length - 1) + " - " + state.caption;
+            $("step-desc").innerHTML = state.eventDescHtml || state.eventDesc || "";
             $("pq-state").innerHTML = renderMathHTML(pqExpr(state.pq), false);
 
             root.querySelector('[data-role="prev"]').disabled = (history.length <= 1);
@@ -908,14 +930,7 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
             graphEl.removeAttribute("data-processed");
             graphEl.innerHTML = escapeHtml(code);
 
-            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] })).catch(function (err) {
-              graphEl.outerHTML =
-                '<div class="dv-error">Mermaid syntax error:\n' +
-                escapeHtml(String(err)) +
-                '\n\nGenerated code:\n' +
-                escapeHtml(code) +
-                '</div>';
-            });
+            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
           }
 
           function render() {
@@ -940,17 +955,11 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
           });
 
           root.querySelector('[data-role="reset"]').addEventListener("click", function () {
-            history = [makeInitialState()];
+            resetHistory();
             render();
           });
 
           render();
-        }).catch(function (err) {
-          showError(
-            "This widget could not find KaTeX or Mermaid after waiting for the page to finish loading.\n\n" +
-            String(err) +
-            "\n\nIf you already included both libraries, the most likely cause is that the core KaTeX script is missing, and only the auto-render helper was loaded."
-          );
         });
       }
 
@@ -964,6 +973,49 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 </div>
 
 <h2 id="proof-of-correctness">Proof of Correctness</h2>
+
+<p>Let $S$ be the set of visited vertices.
+We will show that for every $u\in S$,
+$d(u)=\mathrm{dist}(s,u)$,
+where $\mathrm{dist}(s,u)$ is the shortest distance from the source $s$ to $u$.
+We prove this by induction on the order the vertices are visited.</p>
+
+<p>For the base case, the first visited vertex is $s$ itself.
+Since $d(s)=0=\mathrm{dist}(s,s)$, the claim is true.</p>
+
+<p>Now suppose the claim is true for all previously visited vertices, and let $u$ be the next visited vertex.
+Since $u$ is extracted from the priority queue first,</p>
+
+<p>\[
+d(u)=\min_{v\notin S} d(v)
+\]</p>
+
+<p>Assume that $d(u)&gt;\mathrm{dist}(s,u)$.
+Take a shortest path from $s$ to $u$, and let $x$ be the first vertex on this path with $x\notin S$.
+Let $y$ be the vertex right before $x$ on the path. Then $y\in S$. By the induction hypothesis, $d(y)=\mathrm{dist}(s,y)$.
+When $y$ was processed, the edge $(y,x)$ was relaxed, so we have:</p>
+
+<p>\[
+\begin{align*}
+d(x) &amp; \le d(y)+w(y,x)
+&amp; = \mathrm{dist}(s,y)+w(y,x) = \mathrm{dist}(s,x)
+\end{align*}
+\]</p>
+
+<p>since any subpath of a shortest path is also a shortest path.
+It is trivial that $d(x)\ge \mathrm{dist}(s,x)$, so $d(x)=\mathrm{dist}(s,x)$.
+Also, since all edge weights are non-negative, $\mathrm{dist}(s,x)\le \mathrm{dist}(s,u)$.
+Hence $d(x)\le \mathrm{dist}(s,u)$.</p>
+
+<p>But $u$ was chosen as the minimum-distance unvisited vertex, so we have:</p>
+
+<p>\[
+d(u)\le d(x)\le \mathrm{dist}(s,u)
+\]</p>
+
+<p>which contradicts $d(u)&gt;\mathrm{dist}(s,u)$. So $d(u)=\mathrm{dist}(s,u)$.
+Thus, the claim is true for every visited vertex.
+When the algorithm ends, every reachable vertex has been visited, so all shortest distances are computed correctly.</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -1009,12 +1061,9 @@ If an adjacency list is used, the space complexity is $O(V + E)$ for storing the
 <h2 id="applications">Applications</h2>
 
 <ul>
-  <li>
-<strong>Routing and Navigation</strong>: Used in GPS systems to find the shortest path between locations.</li>
-  <li>
-<strong>Network Routing Protocols</strong>: Employed in protocols like OSPF (Open Shortest Path First) to determine the best path for data packets.</li>
-  <li>
-<strong>Pathfinding in Games</strong>: Utilized in video games for AI navigation and pathfinding.</li>
+  <li>Routing and Navigation: Used in GPS systems to find the shortest path between locations.</li>
+  <li>Network Routing Protocols: Employed in protocols like OSPF (Open Shortest Path First) to determine the best path for data packets.</li>
+  <li>Pathfinding in Games: Utilized in video games for AI navigation and pathfinding.</li>
 </ul>
 
   

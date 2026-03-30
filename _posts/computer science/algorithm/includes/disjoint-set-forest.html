@@ -1,0 +1,536 @@
+{% assign viz_id = include.id | default: "disjoint-set-demo" %}
+<div id="{{ viz_id }}" class="dsv-root">
+  <style>
+    #{{ viz_id }} {
+      margin: 2rem 0;
+      color: #1f2937;
+    }
+
+    #{{ viz_id }} * {
+      box-sizing: border-box;
+    }
+
+    #{{ viz_id }} .dsv-stack {
+      display: grid;
+      gap: 1rem;
+    }
+
+    #{{ viz_id }} pre.mermaid {
+      margin: 0;
+      text-align: center;
+    }
+
+    #{{ viz_id }} [data-role="graph"] svg {
+      display: block;
+      margin: 0 auto;
+    }
+
+    #{{ viz_id }} [data-role="graph"] svg .flowchart-link,
+    #{{ viz_id }} [data-role="graph"] svg .edge-thickness-normal,
+    #{{ viz_id }} [data-role="graph"] svg .edge-thickness-thick,
+    #{{ viz_id }} [data-role="graph"] svg path.path {
+      fill: none !important;
+      stroke: #64748b !important;
+      stroke-width: 1.5px !important;
+    }
+
+    #{{ viz_id }} [data-role="graph"] svg marker path,
+    #{{ viz_id }} [data-role="graph"] svg .arrowheadPath {
+      fill: #64748b !important;
+      stroke: #64748b !important;
+    }
+
+    #{{ viz_id }} .dsv-status-text {
+      margin: 0;
+      padding: 0.85rem 1rem;
+      border: 1px solid rgba(82, 96, 113, 0.18);
+      border-radius: 0.55rem;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    #{{ viz_id }} .dsv-status-text p {
+      margin: 0;
+    }
+
+    #{{ viz_id }} .dsv-status-text code {
+      padding: 0.08rem 0.38rem;
+      border-radius: 0.35rem;
+      background: rgba(148, 163, 184, 0.14);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.94em;
+    }
+
+    #{{ viz_id }} .dsv-controls-shell {
+      overflow-x: auto;
+      padding-bottom: 0.1rem;
+    }
+
+    #{{ viz_id }} .dsv-controls {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: max-content;
+    }
+
+    #{{ viz_id }} .dsv-controls > * {
+      flex: 0 0 auto;
+      margin: 0;
+      vertical-align: middle;
+    }
+
+    #{{ viz_id }} .dsv-controls input[type="number"],
+    #{{ viz_id }} .dsv-controls button {
+      height: 2.35rem;
+      border-radius: 0.5rem;
+      font: inherit;
+      line-height: 1.2;
+      box-sizing: border-box;
+    }
+
+    #{{ viz_id }} .dsv-controls input[type="number"] {
+      width: 6rem;
+      min-width: 0;
+      border: 1px solid rgba(82, 96, 113, 0.24);
+      background: #fff;
+      color: #1f2937;
+      padding: 0 0.75rem;
+      outline: none;
+      appearance: textfield;
+    }
+
+    #{{ viz_id }} .dsv-controls input[type="number"]::-webkit-outer-spin-button,
+    #{{ viz_id }} .dsv-controls input[type="number"]::-webkit-inner-spin-button {
+      margin: 0;
+    }
+
+    #{{ viz_id }} .dsv-controls input[type="number"]:focus {
+      border-color: rgba(31, 41, 55, 0.45);
+      box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08);
+    }
+
+    #{{ viz_id }} .dsv-controls button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      padding: 0 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    #{{ viz_id }} .dsv-controls button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    #{{ viz_id }} .dsv-legend {
+      margin-top: 0.75rem;
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    #{{ viz_id }} .dsv-legend-item {
+      display: flex;
+      gap: 0.55rem;
+      align-items: center;
+    }
+
+    #{{ viz_id }} .dsv-swatch {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      border: 2px solid transparent;
+    }
+
+    #{{ viz_id }} .dsv-swatch-root    { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .dsv-swatch-touched { background: #fef3c7; border-color: #d97706; }
+    #{{ viz_id }} .dsv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #{{ viz_id }} .dsv-swatch-normal  { background: #f8fafc; border-color: #475569; }
+  </style>
+
+  <div class="dsv-stack">
+    <pre class="mermaid" data-role="graph"></pre>
+
+    <div class="dsv-status-text" data-role="status-text"></div>
+
+    <div class="dsv-controls-shell">
+      <div class="dsv-controls">
+        <input type="number" min="1" max="6" step="1" value="1" aria-label="Union first node" data-role="union-a">
+        <input type="number" min="1" max="6" step="1" value="2" aria-label="Union second node" data-role="union-b">
+        <button type="button" data-role="union-btn">Union</button>
+        <input type="number" min="1" max="6" step="1" value="1" aria-label="Find node" data-role="find-x">
+        <button type="button" data-role="find-btn">Find</button>
+        <button type="button" data-role="undo-btn">Undo</button>
+        <button type="button" data-role="reset-btn">Reset</button>
+      </div>
+    </div>
+    <div class="dsv-legend">
+      <div class="dsv-legend-item"><span class="dsv-swatch dsv-swatch-current"></span> Current node in the active operation</div>
+      <div class="dsv-legend-item"><span class="dsv-swatch dsv-swatch-root"></span> Root selected after union or find</div>
+      <div class="dsv-legend-item"><span class="dsv-swatch dsv-swatch-touched"></span> Node touched by path compression or merge</div>
+      <div class="dsv-legend-item"><span class="dsv-swatch dsv-swatch-normal"></span> Node with no highlight in the current step</div>
+      <div class="dsv-legend-item"><span style="color:#64748b;font-weight:700;">━</span> Parent-to-child pointer</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+
+      function $(role) {
+        return root.querySelector('[data-role="' + role + '"]');
+      }
+
+      function waitFor(checkFn, timeoutMs, intervalMs) {
+        return new Promise(function (resolve, reject) {
+          var start = Date.now();
+
+          function tick() {
+            var value = checkFn();
+            if (value) {
+              resolve(value);
+              return;
+            }
+            if (Date.now() - start >= timeoutMs) {
+              reject(new Error("Timed out while waiting for Mermaid."));
+              return;
+            }
+            setTimeout(tick, intervalMs);
+          }
+
+          tick();
+        });
+      }
+
+      function loadMermaidFallback() {
+        if (window.mermaid && typeof window.mermaid.run === "function") {
+          return Promise.resolve(window.mermaid);
+        }
+
+        if (window.__dsvMermaidPromise) {
+          return window.__dsvMermaidPromise;
+        }
+
+        window.__dsvMermaidPromise = new Promise(function (resolve, reject) {
+          var script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+          script.async = true;
+          script.onload = function () {
+            if (window.mermaid && typeof window.mermaid.run === "function") {
+              try {
+                window.mermaid.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
+              } catch (e) {}
+              resolve(window.mermaid);
+            } else {
+              reject(new Error("Mermaid loaded, but window.mermaid is unavailable."));
+            }
+          };
+          script.onerror = function () {
+            reject(new Error("Failed to load Mermaid."));
+          };
+          document.head.appendChild(script);
+        });
+
+        return window.__dsvMermaidPromise;
+      }
+
+      function getMermaid() {
+        return waitFor(function () {
+          return window.mermaid && typeof window.mermaid.run === "function" ? window.mermaid : null;
+        }, 1500, 50).then(function (mermaidInstance) {
+          try {
+            mermaidInstance.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
+          } catch (e) {}
+          return mermaidInstance;
+        }).catch(function () {
+          return loadMermaidFallback();
+        });
+      }
+
+      function escapeHtml(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function renderInlineCodeMarkdown(text) {
+        return "<p>" + escapeHtml(text).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
+      }
+
+      function pushUnique(list, value) {
+        if (list.indexOf(value) === -1) list.push(value);
+      }
+
+      function cloneState(state) {
+        return {
+          parent: Object.assign({}, state.parent),
+          rank: Object.assign({}, state.rank),
+          currentNodes: state.currentNodes.slice(),
+          rootNodes: state.rootNodes.slice(),
+          touchedNodes: state.touchedNodes.slice(),
+          statusText: state.statusText
+        };
+      }
+
+      function makeInitialState(nodes) {
+        var parent = {};
+        var rank = {};
+        nodes.forEach(function (node) {
+          parent[node] = node;
+          rank[node] = 0;
+        });
+
+        return {
+          parent: parent,
+          rank: rank,
+          currentNodes: [],
+          rootNodes: nodes.slice(),
+          touchedNodes: [],
+          statusText: "Each node starts in its own set. Use `Union` or `Find` to update the forest."
+        };
+      }
+
+      function clearHighlights(state) {
+        state.currentNodes = [];
+        state.rootNodes = [];
+        state.touchedNodes = [];
+      }
+
+      function readNodeInput(role) {
+        var input = $(role);
+        var value = Number(input.value);
+        if (!Number.isInteger(value) || value < 1 || value > 6) {
+          input.focus();
+          throw new Error("Please enter an integer from `1` to `6`.");
+        }
+        return value;
+      }
+
+      function findRoot(state, x, touchedNodes) {
+        var path = [];
+        var current = x;
+
+        while (state.parent[current] !== current) {
+          path.push(current);
+          current = state.parent[current];
+        }
+
+        var rootNode = current;
+
+        path.forEach(function (node) {
+          if (state.parent[node] !== rootNode) {
+            state.parent[node] = rootNode;
+          }
+          pushUnique(touchedNodes, node);
+        });
+
+        pushUnique(touchedNodes, rootNode);
+
+        return {
+          root: rootNode,
+          path: path
+        };
+      }
+
+      function formatPath(path, rootNode) {
+        if (!path.length) return String(rootNode);
+        return path.join(" -> ") + " -> " + rootNode;
+      }
+
+      function applyUnion(prevState, a, b) {
+        var next = cloneState(prevState);
+        clearHighlights(next);
+        next.currentNodes = [a, b];
+
+        var touchedNodes = [];
+        var left = findRoot(next, a, touchedNodes);
+        var right = findRoot(next, b, touchedNodes);
+
+        if (left.root === right.root) {
+          next.rootNodes = [left.root];
+          next.touchedNodes = touchedNodes;
+          next.statusText =
+            "`union(" + a + ", " + b + ")` found the same root `" + left.root + "`" +
+            ". No merge was needed.";
+          return next;
+        }
+
+        var newRoot = left.root;
+        var attachRoot = right.root;
+
+        if (next.rank[left.root] < next.rank[right.root]) {
+          newRoot = right.root;
+          attachRoot = left.root;
+        }
+
+        next.parent[attachRoot] = newRoot;
+        pushUnique(touchedNodes, newRoot);
+        pushUnique(touchedNodes, attachRoot);
+
+        var rankRaised = false;
+        if (next.rank[left.root] === next.rank[right.root]) {
+          next.rank[newRoot] += 1;
+          rankRaised = true;
+        }
+
+        next.rootNodes = [newRoot];
+        next.touchedNodes = touchedNodes;
+        next.statusText =
+          "`union(" + a + ", " + b + ")` attached root `" + attachRoot + "` under root `" + newRoot + "`" +
+          (rankRaised ? ". The ranks were equal, so `rank(" + newRoot + ")` increased." : ".");
+        return next;
+      }
+
+      function applyFind(prevState, x) {
+        var next = cloneState(prevState);
+        clearHighlights(next);
+        next.currentNodes = [x];
+
+        var touchedNodes = [];
+        var result = findRoot(next, x, touchedNodes);
+
+        next.rootNodes = [result.root];
+        next.touchedNodes = touchedNodes;
+        next.statusText =
+          "`find(" + x + ")` reached root `" + result.root + "` along `" + formatPath(result.path, result.root) + "`" +
+          ".";
+        return next;
+      }
+
+      function nodeClass(node, state) {
+        if (state.currentNodes.indexOf(node) !== -1) return "current";
+        if (state.rootNodes.indexOf(node) !== -1) return "root";
+        if (state.touchedNodes.indexOf(node) !== -1) return "touched";
+        return "normal";
+      }
+
+      function labelText(node, state) {
+        return node + ":" + state.parent[node] + ":" + state.rank[node];
+      }
+
+      function buildMermaid(state) {
+        var lines = [];
+        lines.push('%%{init: {"flowchart": {"curve": "linear", "htmlLabels": false}} }%%');
+        lines.push("flowchart TD");
+
+        nodes.forEach(function (node) {
+          lines.push("N" + node + '["' + labelText(node, state) + '"]:::' + nodeClass(node, state));
+        });
+
+        nodes.forEach(function (node) {
+          if (state.parent[node] !== node) {
+            lines.push("N" + state.parent[node] + " --> N" + node);
+          }
+        });
+
+        lines.push("classDef normal fill:#f8fafc,stroke:#334155,stroke-width:1.5px;");
+        lines.push("classDef root fill:#dbeafe,stroke:#2563eb,stroke-width:2px;");
+        lines.push("classDef touched fill:#fef3c7,stroke:#d97706,stroke-width:2px;");
+        lines.push("classDef current fill:#fee2e2,stroke:#dc2626,stroke-width:3px;");
+        return lines.join("\n");
+      }
+
+      function renderMeta(state) {
+        $("status-text").innerHTML = renderInlineCodeMarkdown(state.statusText);
+        $("undo-btn").disabled = history.length <= 1;
+      }
+
+      function renderGraph(state) {
+        var graphEl = $("graph");
+        graphEl.removeAttribute("data-processed");
+        graphEl.textContent = buildMermaid(state);
+        return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
+      }
+
+      function render() {
+        var state = getState();
+        renderMeta(state);
+        renderChain = renderChain.catch(function () {
+          return null;
+        }).then(function () {
+          return renderGraph(state);
+        }).catch(function (err) {
+          $("status-text").innerHTML = renderInlineCodeMarkdown(
+            (state.statusText ? state.statusText + " " : "") +
+            "Graph render failed: " + (err && err.message ? err.message : "Unknown Mermaid error.")
+          );
+        });
+        return renderChain;
+      }
+
+      function commit(nextState) {
+        history.push(nextState);
+        render();
+      }
+
+      function handleAction(fn) {
+        try {
+          commit(fn(getState()));
+        } catch (err) {
+          var state = cloneState(getState());
+          clearHighlights(state);
+          state.statusText = err && err.message ? err.message : "The operation could not be applied.";
+          renderMeta(state);
+        }
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+
+        getMermaid().then(function (loadedMermaid) {
+          mermaidInstance = loadedMermaid;
+          history = [makeInitialState(nodes)];
+          render();
+
+          $("union-btn").addEventListener("click", function () {
+            handleAction(function (state) {
+              return applyUnion(state, readNodeInput("union-a"), readNodeInput("union-b"));
+            });
+          });
+
+          $("find-btn").addEventListener("click", function () {
+            handleAction(function (state) {
+              return applyFind(state, readNodeInput("find-x"));
+            });
+          });
+
+          $("undo-btn").addEventListener("click", function () {
+            if (history.length > 1) {
+              history.pop();
+              render();
+            }
+          });
+
+          $("reset-btn").addEventListener("click", function () {
+            history = [makeInitialState(nodes)];
+            render();
+          });
+        }).catch(function (err) {
+          $("status-text").innerHTML = renderInlineCodeMarkdown(
+            "Mermaid failed to load: " + (err && err.message ? err.message : "Unknown error.")
+          );
+        });
+      }
+
+      var nodes = [1, 2, 3, 4, 5, 6];
+      var mermaidInstance = null;
+      var history = [];
+      var renderChain = Promise.resolve();
+
+      function getState() {
+        return history[history.length - 1];
+      }
+
+      start();
+    })();
+  </script>
+</div>

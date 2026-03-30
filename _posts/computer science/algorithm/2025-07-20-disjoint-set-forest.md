@@ -25,54 +25,48 @@ This data structure is particularly useful in applications such as network conne
 The Disjoint-Set Forest is implemented using a collection of trees, where each tree represents a disjoint set.
 Let's denote the union operation as `union(x, y)` which merges the sets containing elements `x` and `y`,
 and the find operation as `find(x)` which returns the representative (or root) of the set containing `x`.
-And also let's denote the node as the form `value: parent`, where `value` is the element and `parent` is the parent node in the tree.
-Now we will seek the most efficient way to implement these operations. Consider the forest below:
+And also let's denote the node as the form `value:parent:rank`, where `value` is the value of the node, `parent` is the value of its parent node, and `rank` is the rank of the node (used for union by rank).
+
+The interactive demo below starts with nodes `1` through `6` and lets you apply **union by rank** and **path compression** yourself.
+Start with six singleton sets and modify the forest directly.
+
+{% include_relative includes/disjoint-set-forest.html %}
+
+Now we will seek what _path compression_ and _union by rank_ are, and how they help to optimize the `find` and `union` operations.
+Path compression enables us to find the representative(or root) of a tree in nearly constant time by flattening the structure of the tree whenever we perform a `find` operation.
+Union by rank helps to keep the tree flat by always attaching the smaller tree under the root of the larger tree during a `union` operation.
+
+Consider the forest below:
 ```mermaid
 graph TD
-    A((1:1)):::root;B((2:2)):::root;C((3:3)):::root;
-    D((4:4)):::root;E((5:5)):::root;F((6:6)):::root;G((7:7)):::root;
-
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)):::root; F((6:5:0));
+    A---B; C---D; E---F; A---C;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 ```
 Root nodes of each tree are indicated with a darker color.
-After performing `union(1, 2)`, `union(3, 4)` and `union(5, 6)`, the forest becomes:
+Let's perform `union(4,6)` on the forest above. First, we find the representatives of `4` and `6`
+by `find(4)` and `find(6)`, which will return `1` and `5` respectively while also performing path compression on the way.
+
 ```mermaid
 graph TD
-    A((1:1)):::root;B((2:1));C((3:3)):::root;
-    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
-    A---B; C---D; E---F;
-
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)):::root; F((6:5:0));
+    A---B & C & D; E---F;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 ```
-After performing `union(1, 4)`, the forest becomes:
+
+Then we perform the `union` operation by attaching the tree with root `5` under the tree with root `1` since it has a higher rank.
+
 ```mermaid
 graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:5)):::root;F((6:5));G((7:7)):::root;
-    A---B; A---C---D; E---F;
-
+    A((1:1:2)):::root; B((2:1:0)); C((3:3:1));
+    D((4:3:0)); E((5:5:1)); F((6:5:0));
+    A---B & C & D & E; E---F;
     classDef root fill:#aaa,stroke:#444,stroke-width:2px;
 ```
-After performing `union(4, 5)`, the forest becomes:
-```mermaid
-graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:3));F((6:5));G((7:7)):::root;
-    A---B; A---C---D; E---F; C---E;
 
-    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
-```
-After performing `find(6)`, we can see that `6` belongs to the tree with root `1`,
-so we can update the parent of nodes on the path from `6` to `1` to point directly to `1`.
-```mermaid
-graph TD
-    A((1:1)):::root;B((2:1));C((3:1));
-    D((4:3));E((5:1));F((6:1));G((7:7)):::root;
-    A---B & E & F; A---C---D;
-
-    classDef root fill:#aaa,stroke:#444,stroke-width:2px;
-```
-This process is known as **path compression** and helps to flatten the structure of the tree, making future `find` operations faster.
+When the rank of the roots which we are trying to union are the same, we can choose either one as the new root and increase its rank by 1.
 
 ## Complexity
 
