@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-30T11:54:10+09:00',
+    INDEX_KEY: 'index--2026-04-02T17:44:54+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="689 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2149 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   11 min
+   35 min
 </span>
 
       </span>
@@ -909,71 +909,365 @@ by <code class="language-plaintext highlighter-rouge">find(4)</code> and <code c
 
 <h2 id="complexity">Complexity</h2>
 
-<p>The time complexity of the <code class="language-plaintext highlighter-rouge">find</code> operation is nearly constant, specifically $O(α(n))$, where α is the inverse Ackermann function.
-The <code class="language-plaintext highlighter-rouge">union</code> operation also has a time complexity of $O(α(n))$ when using path compression and union by size or rank,
-since it involves two <code class="language-plaintext highlighter-rouge">find</code> operations followed by a constant-time merge.</p>
+<p>Tarjan’s classical analysis shows that the total time for $M$ operations (including $N$ <code class="language-plaintext highlighter-rouge">make-set</code> operations) is $O(M \alpha(M,N)+N)$,
+where $N$ is the number of elements in the forest and $\alpha$ is the inverse Ackermann function, which grows very slowly and is practically constant for all reasonable values of $N$.
+Here we will only prove that <code class="language-plaintext highlighter-rouge">find</code> and <code class="language-plaintext highlighter-rouge">union</code> operations can be performed in amortized $O(\alpha(N))$ time.
+We will use the potential method to analyze the amortized time complexity of the operations.</p>
+
+<p>We represent each set by a rooted tree. For every node $x$, let $p(x)$ be the parent of $x$ and $r(x)$ be the rank of $x$.
+A node $x$ is a root if and only if $p(x)=x$.
+The operations are defined as follows:</p>
+
+<p>\[
+\mathtt{find}(x)=
+\begin{cases}
+x &amp;; p(x)=x \nl
+p(x) \gets \mathtt{find}(p(x)), \; p(x) &amp;; p(x)\neq x
+\end{cases}
+\]</p>
+
+<p>\[
+\mathtt{link}(x,y) = \begin{cases}
+\mathtt{false} &amp;; x=y \nl
+p(x) \gets y, \mathtt{true} &amp;; r(x)&lt;r(y) \nl
+p(y) \gets x, \mathtt{true} &amp;; r(x)&gt;r(y) \nl
+p(y) \gets x, r(x) \gets r(x)+1, \mathtt{true} &amp;; r(x)=r(y)
+\end{cases}
+\]</p>
+
+<p>\[
+\mathtt{union}(x,y) = \mathtt{link}(\mathtt{find}(x), \mathtt{find}(y))
+\]</p>
+
+<p>First of all, for every non-root node $x$, we have:</p>
+
+<p>\[
+r(x) &lt; r(p(x))
+\]</p>
+
+<p>This can be proved inductively by checking every operation.
+At the beginning, we have $r(x)=0$ for every node $x$, and there are only singleton trees, so the inequality holds.</p>
+<ul>
+  <li>$\mathtt{link}$: if $r(x)&lt;r(y)$, then we set $p(x) \gets y$ and $r(x)&lt;r(p(x))=r(y)$ holds;
+if $r(x)=r(y)$, then we set $p(y)\gets x, \; r(x)\gets r(x)+1$ and $r(y)&lt;r(p(y))=r(x)$ holds.</li>
+  <li>$\mathtt{find}$: if $p(x_1)\neq x_1$, we have a path $(x_1, \dots, x_k)$ where $x_k$ is the root and $p(x_i)=x_{i+1}$ for every $1\le i &lt; k$.
+Then we have $r(x_1)&lt;\dots&lt;r(x_k)$. After path compression, we set $p(x_i) \gets x_k$ for every $1\le i &lt; k$, and $r(x_i)&lt;r(p(x_i))=r(x_k)$ still holds.
+Thus, the rank of a node is always less than the rank of its parent.</li>
+</ul>
+
+<p>Also, for every node $x$, we have:</p>
+
+<p>\[
+r(x) \le N-1
+\]</p>
+
+<p>Every rank increase is caused by a <code class="language-plaintext highlighter-rouge">link</code> operation where the ranks of the two roots are the same.
+Since each such event decreases the number of roots by one, there can be at most $N-1$ such events, and thus the rank of any node can never exceed $N-1$.
+This is a weak upper bound, but it is sufficient for our analysis.</p>
+
+<p>Now let’s define a fast-growing hierarchy of functions $B_k: \mathbb{N} \to \mathbb{N}$ recursively as follows:</p>
+
+<p>\[
+B_0(n) = n+1, \quad B_{k+1}(n) = B_k^{(n+1)}(n)
+\]</p>
+
+<p>where $f^{(q)}$ denotes the $q$-fold composition of $f$ with itself.
+Each $B_k$ is a rapidly strictly increasing function.
+Now define</p>
+
+<p>\[
+\beta(n) = \min \Set{ k\in \mathbb{N} | B_k(1) \ge n }
+\]</p>
+
+<p>The function $\beta$ grows extraordinarily slowly. In particular,</p>
+
+<p>\[
+\beta(n) = O(\alpha(n))
+\]</p>
+
+<p>where $\alpha$ is the inverse Ackermann function. We’ll use this without proof.
+Now let’s quantify the size of the gap between $r(x)$ and $r(p(x))$ for a non-root node $x$ with positive rank.</p>
+
+<p>The <em>level</em> of a node $x$ is defined as:</p>
+
+<p>\[
+\ell(x) \coloneqq \max \Set{ \ell \ge 0 | B_\ell(r(x)) \le r(p(x)) }
+\]</p>
+
+<p>The <em>degree</em> of a node $x$ is:</p>
+
+<p>\[
+d(x) \coloneqq \max \Set{ d \ge 1 | B_{\ell(x)}^{(d)}(r(x)) \le r(p(x)) }
+\]</p>
+
+<p>We will show that for every non-root node $x$ with positive rank, we have:</p>
+
+<p>\[
+1 \le d(x) \le r(x)
+\]</p>
+
+<p>$d(x) \ge 1$ is trivial by its definition. Now assume $d(x) \ge r(x)+1$. Then</p>
+
+<p>\[
+B_{\ell(x)}^{(r(x)+1)}(r(x)) \le r(p(x))
+\]</p>
+
+<p>By definition of $B_{\ell(x)+1}$, we have:</p>
+
+<p>\[
+B_{\ell(x)+1}(r(x)) = B_{\ell(x)}^{(r(x)+1)}(r(x)) \le r(p(x))
+\]</p>
+
+<p>This contradicts the maximality of $\ell(x)$, so we must have $d(x) \le r(x)$.
+Also, we will show that for every non-root node $x$ with positive rank, we have:</p>
+
+<p>\[
+\ell(x) &lt; \beta(N)
+\]</p>
+
+<p>First, we start from the following inequality:</p>
+
+<p>\[
+B_{\beta(N)}(1) \ge N &gt; r(p(x))
+\]</p>
+
+<p>If $\ell(x) \ge \beta(N)$, then:</p>
+
+<p>\[
+r(p(x)) \ge B_{\ell(x)}(r(x)) \ge B_{\beta(N)}(1) \ge N &gt; r(p(x))
+\]</p>
+
+<p>which is impossible. Thus, we must have $\ell(x) &lt; \beta(N)$.
+Now we define the potential of a node $x$ as:</p>
+
+<p>\[
+\Phi(x) = \begin{cases}
+\beta(N)r(x) &amp;; p(x)=x \; \lor \; r(x)=0 \nl
+\bigl(\beta(N)-\ell(x)\bigr)r(x)-d(x) &amp;; \text{otherwise}
+\end{cases}
+\]</p>
+
+<p>Finally, define the potential of the forest $F$ as:</p>
+
+<p>\[
+\Phi(F) = \sum_{x\in F} \Phi(x)
+\]</p>
+
+<p>By the definition of $\Phi$, we have $\Phi(x) \ge 0$ for every node $x$, so $\Phi(F) \ge 0$ for every forest $F$.
+Now we are ready to analyze the amortized time complexity of the <code class="language-plaintext highlighter-rouge">find</code> and <code class="language-plaintext highlighter-rouge">link</code> operations.</p>
+
+<p>⁣1. $\mathtt{find}$: $O(\beta(N))$</p>
+
+<p>Let the path from non-root node $x$ to the root be $(x_1, \dots, x_k)$ where $x_1=x$ and $x_k$ is the root.
+Let’s define:</p>
+
+<p>\[
+P = \Set{ x_i | 1 \le i &lt; k }, \quad S_L = \Set{ v \in P | \ell(v) = L, r(v) &gt; 0 }
+\]</p>
+
+<p>Let’s also denote as:</p>
+
+<p>\[
+r_i = r(x_i), \quad r_i^\prime = r(p(x_i)), \quad R = r(x_k)
+\]</p>
+
+<p>Let’s sort the nodes in $S_L$ in increasing order of their ranks.</p>
+
+<p>\[
+S_L = \Set{ x_{i_1}, \dots, x_{i_m} } \quad (i_1 &lt; \dots &lt; i_m)
+\]</p>
+
+<p>After path compression, we set $p(x_i) \gets x_k$ then $r_i^\prime \gets R$ for every $1 \le i &lt; k$.
+For $1 \le q \le m$, $r \bigl(p \bigl( x_{i_q} \bigr) \bigr)$ changes from $r_{i_q}^\prime$ to $R$ where $r_{i_q}^\prime \le R$,
+so we have $\ell_{\text{new}}\bigl( x_{i_q} \bigr) \ge \ell_{\text{old}}\bigl( x_{i_q} \bigr) = L$.
+Let’s distinguish two cases:</p>
+
+<ul>
+  <li>$\ell_{\text{new}}\bigl( x_{i_q} \bigr)\ge L+1$:</li>
+</ul>
+
+<p>\[
+\Phi_{\text{new}}\bigl( x_{i_q} \bigr) \le \bigl(\beta(N)-(L+1)\bigr)r_{i_q}-1 \nl
+\Phi_{\text{old}}\bigl( x_{i_q} \bigr)=\bigl(\beta(N)-L\bigr)r_{i_q}-d_{\mathrm{old}}\bigl( x_{i_q} \bigr) \nt
+\Rightarrow \Phi_{\text{new}}\bigl( x_{i_q} \bigr) - \Phi_{\text{old}}\bigl( x_{i_q} \bigr) \le d_{\mathrm{old}}\bigl( x_{i_q} \bigr) - r_{i_q} - 1 \le -1
+\]</p>
+
+<ul>
+  <li>$\ell_{\text{new}}\bigl( x_{i_q} \bigr) = L$:</li>
+</ul>
+
+<p>If $q&lt;m$,</p>
+
+<p>\[
+r_{i_q}^\prime \le r_{i_{q+1}} \;\Rightarrow\; B_L \bigl( r_{i_q}^\prime \bigr) \le B_L \bigl( r_{i_{q+1}} \bigr) \le r_{i_{q+1}}^\prime \le R
+\]</p>
+
+<p>By definition of $d_\text{old}\bigl( x_{i_q} \bigr)$, we have $B_L^{\left( d_\text{old}\left( x_{i_q} \right) \right)}\bigl( r_{i_q} \bigr) \le r_{i_q}^\prime$.
+Applying $B_L$ to both sides, we have:</p>
+
+<p>\[
+B_L^{\left( d_\text{old}\left( x_{i_q} \right) + 1 \right)}\bigl( r_{i_q} \bigr) \le B_L \bigl( r_{i_q}^\prime \bigr) \le R
+\;\Rightarrow\;
+d_{\text{new}}\bigl( x_{i_q} \bigr) \ge d_{\text{old}}\bigl( x_{i_q} \bigr) + 1
+\]</p>
+
+<p>Thus the potential change for $x_{i_q}$ is:</p>
+
+<p>\[
+\Phi_{\text{new}}\bigl( x_{i_q} \bigr) - \Phi_{\text{old}}\bigl( x_{i_q} \bigr) = d_{\text{old}}\bigl( x_{i_q} \bigr) - d_{\text{new}}\bigl( x_{i_q} \bigr) \le -1
+\]</p>
+
+<p>If $q=m$,</p>
+
+<p>\[
+B_L^{\left( d_\text{old} \left( x_{i_m} \right) \right)} \le r_{i_m}^\prime \le R
+\]</p>
+
+<p>Thus the potential change for $x_{i_m}$ is:</p>
+
+<p>\[
+d_{\text{new}}\bigl( x_{i_m} \bigr) \ge d_{\text{old}}\bigl( x_{i_m} \bigr) \;\Rightarrow\; \Phi_{\text{new}}\bigl( x_{i_m} \bigr) - \Phi_{\text{old}}\bigl( x_{i_m} \bigr) \le 0
+\]</p>
+
+<p>So among the nodes with positive rank on the find-path whose level is $L$,
+all but at most one lose at least $1$ unit of potential during path compression.
+By defining $K = \Set{ v \in P | r(v) = 0 }$, we have:</p>
+
+<p>\[
+P = \left( \bigsqcup_{L=0}^{\beta(N)-1} S_L \right) \sqcup K
+\]</p>
+
+<p>Since the rank is strictly increasing along the path, $x_1$ can be the only node in $K$, so $\abs{K} \le 1$.
+By the definition of $\Phi$, node in $K$ does not contribute to the potential change.
+The actual cost of the $\mathtt{find}$ operation is $O(\abs{P})$. The potential change is at most:</p>
+
+<p>\[
+\begin{align*}
+\Phi_{\text{new}}(F) - \Phi_{\text{old}}(F) &amp;=
+\sum_{L=0}^{\beta(N)-1} \sum_{x \in S_L} \bigl( \Phi_{\text{new}}(x) - \Phi_{\text{old}}(x) \bigr) + \sum_{x \in K} \bigl( \Phi_{\text{new}}(x) - \Phi_{\text{old}}(x) \bigr) \nl
+&amp;\le \sum_{L=0}^{\beta(N)-1} \bigl( -\abs{S_L} + 1 \bigr) \nl
+&amp;= -\abs{P} + \abs{K} + \beta(N) \nl
+&amp;\le -\abs{P} + 1 + \beta(N)
+\end{align*}
+\]</p>
+
+<p>Finally, the amortized cost of the $\mathtt{find}$ operation is:</p>
+
+<p>\[
+O(\abs{P}) + \Delta \Phi(F) = O(\beta(N))
+\]</p>
+
+<p>⁣2. $\mathtt{link}$: $O(\beta(N))$</p>
+
+<p>The actual cost of the $\mathtt{link}$ operation is $O(1)$.
+Let’s seek the potential change.
+Only a constant number of local configurations can change.</p>
+
+<ol>
+  <li>One root becomes a child. Its status changes from root to non-root, which does not increase its potential.</li>
+  <li>If the two roots have unequal ranks, the surviving root keeps the same rank, so its contribution does not increase.</li>
+  <li>If the two roots have equal rank $k$, the surviving root changes rank from $k$ to $k+1$, so its potential increases by exactly</li>
+</ol>
+
+<p>\[
+\beta(n)(k+1)-\beta(n)k=\beta(n).
+\]</p>
+
+<p>Any former child of this root now has a parent of even larger rank, so its level can only increase or stay the same, and its degree can only increase or stay the same. Therefore the potentials of these children do not increase.
+Hence, the total increase is at most $\beta(n)$ and the amortized cost of the $\mathtt{link}$ operation becomes $O(\beta(N))$.</p>
+
+<p>⁣3. $\mathtt{union}$: $O(\beta(N))$</p>
+
+<p>Since $\mathtt{union}$ is equivalent to two $\mathtt{find}$ operations followed by one $\mathtt{link}$ operation, the amortized cost is</p>
+
+<p>\[
+O(\beta(N)) + O(\beta(N)) + O(\beta(N)) = O(\beta(N))
+\]</p>
 
 <h2 id="code">Code</h2>
 
 <p>Let’s see the sample code.</p>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MAX</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">par</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
-
-<span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">MAX</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">Find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
-    <span class="n">u</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
-    <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">u</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">DSU</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">par</span><span class="p">;</span>
+    <span class="n">DSU</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">n</span><span class="p">(</span><span class="n">n</span><span class="p">){</span>
+        <span class="n">init</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">init</span><span class="p">(){</span>
+        <span class="n">par</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
-<p>We can optimize the <code class="language-plaintext highlighter-rouge">Union</code> operation further by using <strong>union by size</strong> or <strong>union by rank</strong>.
+<p>We can optimize the <code class="language-plaintext highlighter-rouge">union</code> operation further by using <strong>union by size</strong> or <strong>union by rank</strong>.
 This means that when we merge two trees, we always attach the smaller tree under the root of the larger tree.</p>
 
 <ul>
   <li>Union by size</li>
 </ul>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">size</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
-
-<span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">MAX</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">size</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
-    <span class="n">u</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">size</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">&lt;</span><span class="n">size</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
-    <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">u</span><span class="p">;</span>
-    <span class="n">size</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">+=</span><span class="n">size</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
-<span class="p">}</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">DSU</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">par</span><span class="p">,</span> <span class="n">sz</span><span class="p">;</span>
+    <span class="n">DSU</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">n</span><span class="p">(</span><span class="n">n</span><span class="p">){</span>
+        <span class="n">init</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">init</span><span class="p">(){</span>
+        <span class="n">par</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+        <span class="n">sz</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">sz</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">&lt;</span><span class="n">sz</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+        <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+        <span class="n">sz</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sz</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <ul>
   <li>Union by rank</li>
 </ul>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">rank</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
-
-<span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
-    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">MAX</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">rank</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
-    <span class="n">u</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span><span class="o">=</span><span class="n">Find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">&lt;</span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
-    <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">u</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">==</span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">DSU</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">par</span><span class="p">,</span> <span class="n">rank</span><span class="p">;</span>
+    <span class="n">DSU</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="o">:</span> <span class="n">n</span><span class="p">(</span><span class="n">n</span><span class="p">){</span>
+        <span class="n">init</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kt">void</span> <span class="n">init</span><span class="p">(){</span>
+        <span class="n">par</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+        <span class="n">rank</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">par</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">==</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">unite</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span><span class="kt">int</span> <span class="n">v</span><span class="p">){</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">&lt;</span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+        
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <h2 id="applications">Applications</h2>

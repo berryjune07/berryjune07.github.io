@@ -54,7 +54,7 @@ e_n = (0, 0, \dots, 1)
 
 The set $\Set{\b{e}_1, \dots, \b{e}_n}$ is a standard basis of $\mathbb{R}^n$.
 
-## Existence of a Basis
+### Existence of a Basis
 
 Now, let's prove that every nontrivial vector space has a basis.
 
@@ -83,3 +83,6 @@ Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $
 
 We can show that any subspace of a vector space has a complementary subspace using this theorem,
 which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).
+
+## Dimension of a Vector Space
+

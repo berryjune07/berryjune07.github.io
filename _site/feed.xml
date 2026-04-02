@@ -1,5 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-30T11:55:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-02T17:45:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Ordered Basis</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -46,7 +50,7 @@ e_n = (0, 0, \dots, 1)
 
 The set $\Set{\b{e}_1, \dots, \b{e}_n}$ is a standard basis of $\mathbb{R}^n$.
 
-## Existence of a Basis
+### Existence of a Basis
 
 Now, let&apos;s prove that every nontrivial vector space has a basis.
 
@@ -74,7 +78,9 @@ Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $
 ---
 
 We can show that any subspace of a vector space has a complementary subspace using this theorem,
-which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
+which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).
+
+## Dimension of a Vector Space</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Linear Combination and Independence</title><link href="http://localhost:4000/mathematics/linear-combination-and-independence.html" rel="alternate" type="text/html" title="Linear Combination and Independence" /><published>2026-03-16T00:00:00+09:00</published><updated>2026-03-16T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-combination-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-combination-and-independence.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -209,8 +215,4 @@ Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and
 * this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Riemann Sums and Definite Integrals</title><link href="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html" rel="alternate" type="text/html" title="Riemann Sums and Definite Integrals" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/riemann-sums-and-definite-integrals</id><content type="html" xml:base="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry><entry><title type="html">[BOJ 22849] 수식 알아맞히기 퀴즈 게임</title><link href="http://localhost:4000/computer-science/boj22849.html" rel="alternate" type="text/html" title="[BOJ 22849] 수식 알아맞히기 퀴즈 게임" /><published>2025-12-16T00:00:00+09:00</published><updated>2025-12-16T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/boj22849</id><content type="html" xml:base="http://localhost:4000/computer-science/boj22849.html">[https://www.acmicpc.net/problem/22849](https://www.acmicpc.net/problem/22849)
-
-&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="problem-solving" /><summary type="html">https://www.acmicpc.net/problem/22849</summary></entry></feed>
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry></feed>
