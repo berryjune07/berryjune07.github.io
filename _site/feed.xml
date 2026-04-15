@@ -1,9 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-02T17:45:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-15T20:37:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Linear Transformations and their Kernels and Images</title><link href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html" rel="alternate" type="text/html" title="Linear Transformations and their Kernels and Images" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-## Ordered Basis</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
+## Linear Transformations
+
+Let $V$ and $W$ be vector spaces over a field $F$. A function $T: V \to W$ is called a **linear transformation** if for all $\mathbf{u}, \mathbf{v} \in V$ and all scalars $c \in F$, the following properties hold:
+- **Additivity**: $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$
+- **Homogeneity**: $T(c\mathbf{u}) = cT(\mathbf{u})$
+
+Then we naturally have the following properties:
+
+- $T(\mathbf{0}_V) = \mathbf{0}_W$
+- $T\left( \sum\_{i=1}^n c_i \mathbf{v}\_i \right) = \sum\_{i=1}^n c_i T(\mathbf{v}\_i)$ for any finite collection of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $V$ and scalars $c_1, c_2, \ldots, c_n$ in $F$.
+
+We have so many examples of linear transformations, such as rotations, reflections, projections, and scaling transformations in geometry, as well as differentiation and integration in calculus.
+Especially, we define the following special linear transformations:
+- **identity transformation**: $\iota_V: V \to V$ defined by $\iota_V(\mathbf{v}) = \mathbf{v}$ for all $\mathbf{v} \in V$.
+- **zero transformation**: $0\_{V,W}: V \to W$ defined by $0\_{V,W}(\mathbf{v}) = \mathbf{0}_W$ for all $\mathbf{v} \in V$.
+
+### Vector Space of Linear Transformations
+
+The set of all linear transformations from $V$ to $W$ is denoted by $\mathcal{L}(V, W)$.
+We can define addition and scalar multiplication on $\mathcal{L}(V, W)$ as follows.
+For $T_1, T_2 \in \mathcal{L}(V, W)$ and $c \in F$, we define:
+- $(T_1 + T_2)(\mathbf{v}) = T_1(\mathbf{v}) + T_2(\mathbf{v})$
+- $(cT_1)(\mathbf{v}) = c(T_1(\mathbf{v}))$
+
+With these operations, $\mathcal{L}(V, W)$ forms a _vector space_ over $F$ where
+the zero vector in $\mathcal{L}(V, W)$ is the zero transformation $0\_{V,W}$, and the additive inverse of a linear transformation $T$ is given by $-T$.
+
+A linear transformation from $V$ to $V$ is called a **linear operator** on $V$, and the set of all linear operators on $V$ is denoted by $\mathcal{L}(V) = \mathcal{L}(V, V)$.
+Especially, linear operators on a real vector space is called a _real operator_ and linear operators on a complex vector space is called a _complex operator_.
+Also, a linear transformation from $V$ to the base field $F$ is called a **linear functional** on $V$, and specifically the set of all linear functionals on $V$ is
+called the **dual space** of $V$, denoted by $V^\ast = \mathcal{L}(V, F)$.
+
+The following terms are also employed in the context of linear transformations:
+- **Homomorphism**: A linear transformation. Their set is denoted by $\mathrm{Hom}(V, W) = \mathcal{L}(V, W)$.
+- **Endomorphism**: A linear operator. Their set is denoted by $\mathrm{End}(V) = \mathcal{L}(V)$.
+- **Monomorphism**: An injective linear transformation, olso called an **embedding**.
+- **Epimorphism**: A surjective linear transformation.
+- **Isomorphism**: A bijective linear transformation.
+- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Ordered Basis
+
+Let $V$ be a vector space of dimension $n$ on a field $F$. An **ordered basis** for $V$ is an ordered $n$-tuple of vectors $(\b{v}_1, \dots, \b{v}_n)$
+such that $\Set{\b{v}_1, \dots, \b{v}_n}$ is a basis of $V$.
+If $\mathcal{B} = (\b{v}_1, \dots, \b{v}_n)$ is an ordered basis of $V$, then for each vector $\b{v} \in V$,
+there exist unique ordered $n$-tuples of scalars $(a_1, \dots, a_n)$ such that
+
+\\[
+\b{v} = \sum_{i=1}^n a_i \b{v}_i
+\\]
+
+## Coordinate Map and Coordinate Matrix
+
+Accordingly, we can define the **coordinate map** $\phi_\mathcal{B} : V \to F^n$ by
+
+\\[
+\phi_\mathcal{B}(\b{v}) = \[\b{v}\]_\mathcal{B} = \begin{bmatrix}
+a_1 \nl \vdots \nl  a_n
+\end{bmatrix}
+\\]
+
+where the column matrix $\[\b{v}\]\_\mathcal{B}$ is called the **coordinate matrix** of $\b{v}$ relative to $\mathcal{B}$.
+Clearly, knowing $\mathcal{B}$ and $\[\b{v}\]\_\mathcal{B}$ allows us to reconstruct $\b{v}$.
+
+Furthermore, it is easy to see that the coordinate map $\phi_\mathcal{B}$ is bijective and preserves the vector space operations, that is:
+
+\\[
+\phi_\mathcal{B}(\b{v} + \b{w}) = \phi_\mathcal{B}(\b{v}) + \phi_\mathcal{B}(\b{w}) \nl
+\phi_\mathcal{B}(c \b{v}) = c \phi_\mathcal{B}(\b{v})
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -71,8 +142,8 @@ $U$ is an upper bound of $\mathcal{C}$ since $I \subseteq U$ and $U$ is linearly
 Then according to [Zorn&apos;s lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma), $\mathcal{A}$ has a maximal element $\mathcal{B}$, which is linearly independent.
 
 Now let&apos;s show that $\mathcal{B}$ is a basis of $V$. By the definition of $\mathcal{A}$, we have $\mathcal{B} \subseteq S$, so $\span(\mathcal{B}) \subseteq \span(S)$.
-Also, if any $s\in S$ is $s \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{s}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
-Hence, $s \in \span(\mathcal{B})$ for all $s \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
+Also, if any $\b{s}\in S$ is $\b{s} \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{\b{s}}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
+Hence, $\b{s} \in \span(\mathcal{B})$ for all $\b{s} \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
 Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $V$.
 
 ---
@@ -80,7 +151,123 @@ Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $
 We can show that any subspace of a vector space has a complementary subspace using this theorem,
 which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).
 
-## Dimension of a Vector Space</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
+## Dimension of a Vector Space
+
+### Replacement Theorem
+
+&gt; If $V$ be a vector space and assume that the vectors $\b{v}_1,\dots,\b{v}_n$ are linearly independent
+and the vectors $\b{s}_1,\dots,\b{s}_m$ span $V$. Then $n \leq m$.
+
+_Proof._
+
+Suppose $n &gt; m$. Denote $S = \Set{ \b{s}_1, \dots, \b{s}_m }$,
+then $\b{v}_1\in V=\span(S)$, so:
+
+\\[
+\b{v}\_1 = \sum_{i=1}^m a_i \b{s}_i
+\\]
+
+with at least one coefficient, WLOG $a_1 \neq 0$.
+Then we can express $\b{s}_1$ as a linear combination of $\b{v}_1$ and the other $\b{s}_i$&apos;s:
+
+\\[
+\b{s}\_1 = a_1^{-1} \left( \b{v}\_1 - \sum_{i=2}^m a_i \b{s}_i \right)
+\\]
+
+Therefore, $\b{s}_k \in \span((S\cup \Set{\b{v}_1}) \setminus \Set{\b{s}_k})$.
+Since $\span(S\cup \Set{\b{v}_1}) = V$, we have $\span((S\cup \Set{\b{v}_1}) \setminus \Set{\b{s}_k}) = V$.
+Then we can repeat the above process for $\b{v}_2, \cdots$ until we get a spanning set without vectors in $S$.
+
+\\[
+\b{v}\_j = \sum_{i=1}^{j-1} a_i \b{v}\_i + \sum_{i=j}^m a_i \b{s}_i
+\\]
+
+If $\forall i \geq j, a_i = 0$, then $\b{v}\_j \in \span(\Set{\b{v}\_1, \dots, \b{v}\_{j-1}})$, contradicting the linear independence of $\b{v}\_1,\dots,\b{v}\_n$.
+Therefore, there exists some $i \geq j$ such that $a_i \neq 0$, WLOG $a_j \neq 0$, which guarantees the repeatability of the above process.
+Finally, we get a spanning set $\Set{\b{v}\_1, \dots, \b{v}\_m}$ of $V$, contradicting the linear independence.
+Thus, $n \leq m$.
+
+---
+
+By the corollary of the replacement theorem, if any vector space has a finite spanning set, then all its bases have the same number of vectors.
+Suppose that $V$ has two bases $\mathcal{B}$ and $\mathcal{C}$.
+Then $\mathcal{B}$ is a linearly independent set and $\mathcal{C}$ is a spanning set, so $|\mathcal{B}| \leq |\mathcal{C}|$.
+Similarly, $\mathcal{C}$ is a linearly independent set and $\mathcal{B}$ is a spanning set, so $|\mathcal{C}| \leq |\mathcal{B}|$.
+Therefore, $|\mathcal{B}| = |\mathcal{C}|$.
+
+### Infinite-Dimensional Vector Spaces
+
+A vector space is called **finite-dimensional** if it has a finite spanning set, and **infinite-dimensional** otherwise.
+For infinite-dimensional cases, we can also show that all bases have the same cardinality.
+Let $\mathcal{B} = \Set{ \b{b}_i \| i \in B}$ and $\mathcal{C} = \Set{ \b{c}_j \| j \in C}$ be two bases of $V$.
+Then any vector $\b{c} \in \mathcal{C}$ can be written as a finite linear combination of vectors in $\mathcal{B}$, where all of the coefficients are nonzero, say:
+
+\\[
+\b{c} = \sum_{i \in U_\b{c}} r_i \b{b}_i
+\\]
+
+But because $\mathcal{C}$ is a basis, we must have:
+
+\\[
+\bigcup_{\b{c} \in \mathcal{C}} U_\b{c} = B
+\\]
+
+for if the vectors in $\mathcal{C}$ can be expressed as finite linear combinations of a proper subset $\mathcal{B}^\prime \subset \mathcal{B}$,
+then $\mathcal{B}^\prime$ would also span $V$, which is contradictory.
+Then since $U_\b{c} &lt; \aleph_0$ for all $\b{c} \in \mathcal{C}$, we have:
+
+\\[
+|\mathcal{B}| = |B| \le \aleph_0 \cdot |\mathcal{C}| = |\mathcal{C}|
+\\]
+
+By reversing the role of $\mathcal{B}$ and $\mathcal{C}$, we also have $\|\mathcal{C}\| \le \|\mathcal{B}\|$, so $\|\mathcal{B}\| = \|\mathcal{C}\|$.
+
+---
+
+The common cardinality of all bases of a vector space $V$ is called the **dimension** of $V$, denoted by $\dim(V)$.
+If $\dim(V) = \kappa$ for some cardinal $\kappa$, then we say that $V$ is **$\kappa$-dimensional**.
+A vector space is finite-dimensional if and only if its dimension is finite, and infinite-dimensional otherwise.
+We can easily verify the following properties of dimension:
+
+* If $\dim(V)=n&lt;\infty$, then any finite generating set of $V$ has at least $n$ vectors, and any linearly independent set in $V$ has at most $n$ vectors. If any of these sets has exactly $n$ vectors, then it is a basis for $V$.
+* Every linearly independent subset of $V$ can be extended to a basis for $V$.
+* If $W$ is a subspace of $V$, then $\dim(W) \leq \dim(V)$, and if $\dim(W) = \dim(V) &lt; \infty$, then $W = V$.
+
+Let&apos;s see some examples of dimensions of vector spaces. For any field $F$,
+
+* $\dim( \\{ \b{0} \\}) = 0$
+* $\dim(F^n) = n$
+* $\dim(\mathcal{M}_{m \times n}(F)) = mn$
+* $\dim(\mathrm{Sym}_n(F)) = \frac{n(n+1)}{2}$
+* $\dim(\mathrm{Skew}_n(F)) = \frac{n(n-1)}{2}$
+* $\dim(\mathcal{P}_n(F)) = n+1$
+* $\dim(F[x]) = \aleph_0$
+* $\dim(\mathcal{F}(X, F)) = \|F\|^{\|X\|}$
+
+Specifying the base field is important when determining the dimension of a vector space.
+For example, $\mathbb{C}^n$ can be regarded as a vector space over $\mathbb{C}$ or $\mathbb{R}$, and we have $\dim_\mathbb{C}(\mathbb{C}^n) = n$ but $\dim_\mathbb{R}(\mathbb{C}^n) = 2n$.
+
+Also, let&apos;s see the following theorems. Let $V$ be a vector space.
+- If $\mathcal{B}$ is a basis of $V$ and $\mathcal{B} = \mathcal{B}_1 \sqcup \mathcal{B}_2$, then
+
+\\[
+V = \span(\mathcal{B}_1) \oplus \span(\mathcal{B}_2)
+\\]
+
+- Let $V = S_1 \oplus S_2$ and $\mathcal{B}_i$ be a basis of $S_i$, then $\mathcal{B}_1 \sqcup \mathcal{B}_2$ is a basis of $V$.
+- Let $S_1$ and $S_2$ be subspaces of vector space $V$. Then
+
+\\[
+\dim(S_1) + \dim(S_2) = \dim(S_1 + S_2) + \dim(S_1 \cap S_2)
+\\]
+
+In particular, if they are complementary,
+
+\\[
+\dim(S_1 \oplus S_2) = \dim(S_1) + \dim(S_2)
+\\]
+
+We omit the proofs here.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Linear Combination and Independence</title><link href="http://localhost:4000/mathematics/linear-combination-and-independence.html" rel="alternate" type="text/html" title="Linear Combination and Independence" /><published>2026-03-16T00:00:00+09:00</published><updated>2026-03-16T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-combination-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-combination-and-independence.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
@@ -213,6 +400,4 @@ Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and
 * this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Fast Fourier Transform</title><link href="http://localhost:4000/computer-science/fast-fourier-transform.html" rel="alternate" type="text/html" title="Fast Fourier Transform" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fast-fourier-transform</id><content type="html" xml:base="http://localhost:4000/computer-science/fast-fourier-transform.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Riemann Sums and Definite Integrals</title><link href="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html" rel="alternate" type="text/html" title="Riemann Sums and Definite Integrals" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/riemann-sums-and-definite-integrals</id><content type="html" xml:base="http://localhost:4000/mathematics/riemann-sums-and-definite-integrals.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="calculus" /><summary type="html"></summary></entry></feed>
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>

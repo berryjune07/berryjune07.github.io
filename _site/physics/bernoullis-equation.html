@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-31T21:02:16+09:00',
+    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
   };
 }(window);</script>
 
@@ -312,14 +312,14 @@
 <p>Let’s recall the <a href="eulers-equation-and-hydrostatics.html#thermodynamic-analysis">Euler equation</a> for an ideal fluid:</p>
 
 <p>\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( h + \frac{1}{2} v^2 \right) + \b{a}
 \]</p>
 
 <p>where $w$ is the specific enthalpy and $\b{a}$ represents body forces per unit mass (e.g., gravity).
 For <strong>steady flow</strong>, the time derivative term vanishes. If the body forces are conservative, i.e. $\b{a} = -\grad \Phi$, we can rewrite the equation as:</p>
 
 <p>\[
-\b{v} \times (\curl \b{v}) = \grad \left( w + \frac{1}{2} v^2 + \Phi \right)
+\b{v} \times (\curl \b{v}) = \grad \left( h + \frac{1}{2} v^2 + \Phi \right)
 \]</p>
 
 <p>Now let’s imagine a fluid particle moving along a particular streamline.
@@ -328,14 +328,14 @@ The left-hand side becomes zero because the cross product of the velocity vector
 Thus, we have:</p>
 
 <p>\[
-\pdv{}{l} \left( w + \frac{1}{2} v^2 + \Phi \right) = 0
+\pdv{}{l} \left( h + \frac{1}{2} v^2 + \Phi \right) = 0
 \]</p>
 
 <p>where $l$ is the variable parameterizing the streamline.
 This implies that the quantity inside the parentheses is constant along a streamline:</p>
 
 <p>\[
-w + \frac{1}{2} v^2 + \Phi = \text{const.}
+h + \frac{1}{2} v^2 + \Phi = \text{const.}
 \]</p>
 
 <p>This is known as <strong>Bernoulli’s equation</strong> for ideal fluids.

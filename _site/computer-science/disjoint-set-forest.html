@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-02T17:44:54+09:00',
+    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
   };
 }(window);</script>
 
@@ -278,7 +278,7 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2149 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2156 words">
   <i class="fa-regular fa-hourglass-half"></i>
    35 min
 </span>
@@ -1265,7 +1265,9 @@ This means that when we merge two trees, we always attach the smaller tree under
         <span class="n">u</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">v</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
         <span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="o">==</span><span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">&lt;</span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
-        
+        <span class="n">par</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">==</span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">rank</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div></div>

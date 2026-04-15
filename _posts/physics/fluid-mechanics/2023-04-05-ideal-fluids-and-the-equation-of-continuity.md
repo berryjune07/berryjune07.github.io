@@ -119,16 +119,16 @@ Then we similarly obtain:
 \pdv{}{t} \left( \frac{1}{2} \rho v^2 + \rho \varepsilon \right) + \div \left\[ \rho \b{v} \left( \frac{1}{2} v^2 + \varepsilon \right) + p\b{v} \right\] = \b{v} \cdot \b{f}
 \\]
 
-Substituting $w = \varepsilon + \frac{p}{\rho}$, the enthalpy per unit mass, we have:
+Substituting $h = \varepsilon + \frac{p}{\rho}$, the enthalpy per unit mass, we have:
 
 \\[
-\pdv{}{t} \left( \frac{1}{2} \rho v^2 + \rho \varepsilon \right) + \div \left\[ \rho \b{v} \left( \frac{1}{2} v^2 + w \right) \right\] = \b{v} \cdot \b{f}
+\pdv{}{t} \left( \frac{1}{2} \rho v^2 + \rho \varepsilon \right) + \div \left\[ \rho \b{v} \left( \frac{1}{2} v^2 + h \right) \right\] = \b{v} \cdot \b{f}
 \\]
 
 Hence, we see that the expression
 
 \\[
-\rho \b{v} \left( \frac{1}{2} v^2 + w \right)
+\rho \b{v} \left( \frac{1}{2} v^2 + h \right)
 \\]
 
 must be called the **energy flux density** of an ideal fluid.

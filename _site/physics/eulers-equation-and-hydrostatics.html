@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-31T21:02:16+09:00',
+    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
   };
 }(window);</script>
 
@@ -374,20 +374,20 @@ Summarizing, we have the following set of equations for an ideal fluid:</p>
 <p>Let’s think of the familiar thermodynamic relation:</p>
 
 <p>\[
-\dd{w} = T \dd{s} + \frac{1}{\rho} \dd{p}
+\dd{h} = T \dd{s} + \frac{1}{\rho} \dd{p}
 \]</p>
 
 <p>Since an ideal fluid is adiabatic, we have $\dd{s} = 0$.
 Thus, we can write:</p>
 
 <p>\[
-\grad w = \frac{1}{\rho} \grad p
+\grad h = \frac{1}{\rho} \grad p
 \]</p>
 
 <p>Substituting this into the momentum equation, we get:</p>
 
 <p>\[
-\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad w + \b{a}
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad h + \b{a}
 \]</p>
 
 <p>Using a well-known formula from vector calculus:</p>
@@ -399,7 +399,7 @@ Thus, we can write:</p>
 <p>we can rewrite the momentum equation as:</p>
 
 <p>\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( h + \frac{1}{2} v^2 \right) + \b{a}
 \]</p>
 
 <p>This form of Euler’s equation is particularly useful for analyzing fluid flow in various scenarios.
@@ -429,10 +429,10 @@ Substituting these into the momentum equation, we get:</p>
 <h3 id="constant-density">Constant Density</h3>
 
 <p>Let’s assume that the fluid density $\rho$ is constant throughout the fluid.
-Then from the condition $p = p_0$ at $z = h$, we have:</p>
+Then from the condition $p = p_0$ at $z = z_0$, we have:</p>
 
 <p>\[
-p = p_0 + \rho g (h - z)
+p = p_0 + \rho g (z_0 - z)
 \]</p>
 
 <h3 id="varying-density">Varying Density</h3>

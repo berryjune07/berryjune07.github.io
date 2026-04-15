@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-03-31T21:02:16+09:00',
+    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
   };
 }(window);</script>
 
@@ -345,19 +345,19 @@ It is also called a <strong>potential flow</strong> because the velocity field c
 <p>Writing Euler’s equation as <a href="bernoullis-equation.html#bernoullis-equation">here</a>,</p>
 
 <p>\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + w + \Phi\right)
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + h + \Phi\right)
 \]</p>
 
 <p>and substituting $\b{v} = \grad \phi$ gives:</p>
 
 <p>\[
-\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi \right) = 0
+\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + h + \Phi \right) = 0
 \]</p>
 
 <p>This implies:</p>
 
 <p>\[
-\pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi = f(t)
+\pdv{\phi}{t} + \frac{1}{2} v^2 + h + \Phi = f(t)
 \]</p>
 
 <p>where $f(t)$ is an arbitrary function of time.
@@ -382,7 +382,7 @@ If the amplitude $a$ of the oscillations is small compared to the characteristic
   <p>Let’s estimate the order of magnitude of terms in Euler’s equation.</p>
 
   <p>\[
-\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (w + \Phi)
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (h + \Phi)
 \]</p>
 
   <p>The velocity changes markedly (by an amount of the same order as $u$, the velocity of the oscillating body)

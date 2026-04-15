@@ -31,19 +31,19 @@ It is also called a **potential flow** because the velocity field can be express
 Writing Euler's equation as [here](bernoullis-equation.html#bernoullis-equation),
 
 \\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + w + \Phi\right)
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left(\frac{1}{2}v^2 + h + \Phi\right)
 \\]
 
 and substituting $\b{v} = \grad \phi$ gives:
 
 \\[
-\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi \right) = 0
+\grad \left( \pdv{\phi}{t} + \frac{1}{2} v^2 + h + \Phi \right) = 0
 \\]
 
 This implies:
 
 \\[
-\pdv{\phi}{t} + \frac{1}{2} v^2 + w + \Phi = f(t)
+\pdv{\phi}{t} + \frac{1}{2} v^2 + h + \Phi = f(t)
 \\]
 
 where $f(t)$ is an arbitrary function of time.
@@ -67,7 +67,7 @@ If the amplitude $a$ of the oscillations is small compared to the characteristic
 Let's estimate the order of magnitude of terms in Euler's equation.
 
 \\[
-\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (w + \Phi)
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad (h + \Phi)
 \\]
 
 The velocity changes markedly (by an amount of the same order as $u$, the velocity of the oscillating body)

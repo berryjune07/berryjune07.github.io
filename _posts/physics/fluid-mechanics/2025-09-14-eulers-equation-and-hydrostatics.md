@@ -66,20 +66,20 @@ These equations are known as **Euler's equations** for an ideal fluid.
 Let's think of the familiar thermodynamic relation:
 
 \\[
-\dd{w} = T \dd{s} + \frac{1}{\rho} \dd{p}
+\dd{h} = T \dd{s} + \frac{1}{\rho} \dd{p}
 \\]
 
 Since an ideal fluid is adiabatic, we have $\dd{s} = 0$.
 Thus, we can write:
 
 \\[
-\grad w = \frac{1}{\rho} \grad p
+\grad h = \frac{1}{\rho} \grad p
 \\]
 
 Substituting this into the momentum equation, we get:
 
 \\[
-\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad w + \b{a}
+\pdv{\b{v}}{t} + (\b{v} \cdot \grad) \b{v} = -\grad h + \b{a}
 \\]
 
 Using a well-known formula from vector calculus:
@@ -91,7 +91,7 @@ Using a well-known formula from vector calculus:
 we can rewrite the momentum equation as:
 
 \\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( h + \frac{1}{2} v^2 \right) + \b{a}
 \\]
 
 This form of Euler's equation is particularly useful for analyzing fluid flow in various scenarios.
@@ -121,10 +121,10 @@ It then follows that the density is also a function of $z$ only.
 ### Constant Density
 
 Let's assume that the fluid density $\rho$ is constant throughout the fluid.
-Then from the condition $p = p_0$ at $z = h$, we have:
+Then from the condition $p = p_0$ at $z = z_0$, we have:
 
 \\[
-p = p_0 + \rho g (h - z)
+p = p_0 + \rho g (z_0 - z)
 \\]
 
 ### Varying Density

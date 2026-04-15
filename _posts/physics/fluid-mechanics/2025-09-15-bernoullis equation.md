@@ -16,14 +16,14 @@ tags: fluid-mechanics
 Let's recall the [Euler equation](eulers-equation-and-hydrostatics.html#thermodynamic-analysis) for an ideal fluid:
 
 \\[
-\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( w + \frac{1}{2} v^2 \right) + \b{a}
+\pdv{\b{v}}{t} - \b{v} \times (\curl \b{v}) = -\grad \left( h + \frac{1}{2} v^2 \right) + \b{a}
 \\]
 
 where $w$ is the specific enthalpy and $\b{a}$ represents body forces per unit mass (e.g., gravity).
 For **steady flow**, the time derivative term vanishes. If the body forces are conservative, i.e. $\b{a} = -\grad \Phi$, we can rewrite the equation as:
 
 \\[
-\b{v} \times (\curl \b{v}) = \grad \left( w + \frac{1}{2} v^2 + \Phi \right)
+\b{v} \times (\curl \b{v}) = \grad \left( h + \frac{1}{2} v^2 + \Phi \right)
 \\]
 
 Now let's imagine a fluid particle moving along a particular streamline.
@@ -32,14 +32,14 @@ The left-hand side becomes zero because the cross product of the velocity vector
 Thus, we have:
 
 \\[
-\pdv{}{l} \left( w + \frac{1}{2} v^2 + \Phi \right) = 0
+\pdv{}{l} \left( h + \frac{1}{2} v^2 + \Phi \right) = 0
 \\]
 
 where $l$ is the variable parameterizing the streamline.
 This implies that the quantity inside the parentheses is constant along a streamline:
 
 \\[
-w + \frac{1}{2} v^2 + \Phi = \text{const.}
+h + \frac{1}{2} v^2 + \Phi = \text{const.}
 \\]
 
 This is known as **Bernoulli's equation** for ideal fluids.

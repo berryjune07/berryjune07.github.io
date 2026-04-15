@@ -19,24 +19,22 @@
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Commutator | Jiho’s Blog</title>
+<title>Linear Transformations and their Kernels and Images | Jiho’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="Commutator">
+<meta property="og:title" content="Linear Transformations and their Kernels and Images">
 <meta name="author" content="Jiho Jun">
 <meta property="og:locale" content="en">
-<meta name="description" content="from 「Modern Quantum Mechanics」: Sakurai, J. J. Commutators not only imply the non-commutativity of operators. You should look further.">
-<meta property="og:description" content="from 「Modern Quantum Mechanics」: Sakurai, J. J. Commutators not only imply the non-commutativity of operators. You should look further.">
-<link rel="canonical" href="http://localhost:4000/physics/commutator-qm.html">
-<meta property="og:url" content="http://localhost:4000/physics/commutator-qm.html">
+<meta name="description" content="noting down my thoughts and experiences">
+<meta property="og:description" content="noting down my thoughts and experiences">
+<link rel="canonical" href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">
+<meta property="og:url" content="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">
 <meta property="og:site_name" content="Jiho’s Blog">
-<meta property="og:image" content="http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2023-02-09T00:00:00+09:00">
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg">
-<meta property="twitter:title" content="Commutator">
+<meta property="article:published_time" content="2026-04-02T00:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Linear Transformations and their Kernels and Images">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2023-02-09T00:00:00+09:00","datePublished":"2023-02-09T00:00:00+09:00","description":"from 「Modern Quantum Mechanics」: Sakurai, J. J. Commutators not only imply the non-commutativity of operators. You should look further.","headline":"Commutator","image":"http://localhost:4000/assets/img/physics/quantum-mechanics/Sakurai.svg","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/physics/commutator-qm.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/physics/commutator-qm.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2026-04-02T00:00:00+09:00","datePublished":"2026-04-02T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Linear Transformations and their Kernels and Images","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -67,7 +65,7 @@
 
 
 
-<link rel="alternate" href="http://localhost:4000/physics/commutator-qm.html" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
 
@@ -131,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-04-15T20:36:43+09:00',
   };
 }(window);</script>
 
@@ -214,14 +212,14 @@
           <span>/</span>
           
           
-          <a href="/physics/">physics</a>
+          <a href="/mathematics/">mathematics</a>
         
       </li>
     
       <li>
         
           <span>/</span>
-          <span>commutator-qm.html</span>
+          <span>linear-transformations-and-their-kernels-and-images.html</span>
         
       </li>
     
@@ -239,14 +237,14 @@
 
 
 
-<article id="post-physics-commutator-qm" class="page post mb6" role="article">
+<article id="post-mathematics-linear-transformations-and-their-kernels-and-images" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        Commutator
+        Linear Transformations and their Kernels and Images
         
           <br>
-          <span style="font-size:1.5rem;font-style:italic;"> - Quantum Mechanics 1.4</span>
+          <span style="font-size:1.5rem;font-style:italic;"> - Linear Algebra 2.1</span>
         
       
     </h1>
@@ -254,7 +252,7 @@
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2023-02-09T00:00:00+09:00">09 Feb 2023</time> in <a href="/physics/" class="flip-title">Physics</a> on <a href="/tag-quantum-mechanics/" class="flip-title">Quantum Mechanics</a>
+        <time datetime="2026-04-02T00:00:00+09:00">02 Apr 2026</time> in <a href="/mathematics/" class="flip-title">Mathematics</a> on <a href="/tag-linear-algebra/" class="flip-title">Linear Algebra</a>
       </span>
       
         
@@ -263,7 +261,7 @@
       <span class="additional-info" style="font-size:1rem">
           <!--
         <span class="page-pv">
-          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/physics/commutator-qm.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
         </span>
           -->
         ·
@@ -283,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="167 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="420 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   2 min
+   7 min
 </span>
 
       </span>
@@ -293,102 +291,84 @@
 
     
     
-      
-        <div class="img-wrapper lead aspect-ratio sixteen-nine flip-project-img">
-          
-
-
-<img src="/assets/img/physics/quantum-mechanics/Sakurai.svg" alt="Commutator" width="864" height="486" loading="lazy">
-
-        </div>
-      
-      
-    
 
     
 
 
 
-  
+  <div class="hr pb0"></div>
 
 
   </header>
 
   
-    <p class="figcaption">from <strong>「Modern Quantum Mechanics」</strong>: <em>Sakurai, J. J.</em></p>
-
-<blockquote>
-  <p>Commutators not only imply the non-commutativity of operators. You should look further.</p>
-</blockquote>
-
-<!--more-->
+    <!--more-->
 <ul id="markdown-toc">
   <li>
-<a href="#commutator" id="markdown-toc-commutator">Commutator</a>    <ul>
-      <li><a href="#properties" id="markdown-toc-properties">Properties</a></li>
+<a href="#linear-transformations" id="markdown-toc-linear-transformations">Linear Transformations</a>    <ul>
+      <li><a href="#vector-space-of-linear-transformations" id="markdown-toc-vector-space-of-linear-transformations">Vector Space of Linear Transformations</a></li>
     </ul>
   </li>
-  <li><a href="#anticommutator" id="markdown-toc-anticommutator">Anticommutator</a></li>
 </ul>
 
-<h2 id="commutator">Commutator</h2>
+<h2 id="linear-transformations">Linear Transformations</h2>
 
-<p>For operators $\hat{A}$ and $\hat{B}$ acting on wavefunctions,
-the following operator is called the <strong>commutator</strong> of $\hat{A}$ and $\hat{B}$.</p>
+<p>Let $V$ and $W$ be vector spaces over a field $F$. A function $T: V \to W$ is called a <strong>linear transformation</strong> if for all $\mathbf{u}, \mathbf{v} \in V$ and all scalars $c \in F$, the following properties hold:</p>
+<ul>
+  <li>
+<strong>Additivity</strong>: $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$</li>
+  <li>
+<strong>Homogeneity</strong>: $T(c\mathbf{u}) = cT(\mathbf{u})$</li>
+</ul>
 
-<p>\[
-\comm{\hat{A}}{\hat{B}} \coloneqq \hat{A}\hat{B}-\hat{B}\hat{A}
-\]</p>
-
-<p>If $\comm{\hat{A}}{\hat{B}}=0$, we say that, $\hat{A}$ and $\hat{B}$ <strong><em>commute</em></strong>.
-In other words, there is no difference between the result of acting $\hat{A}$ after acting $\hat{B}$,
-and the result of acting $\hat{B}$ after acting $\hat{A}$.</p>
-
-<h3 id="properties">Properties</h3>
-<ol>
-  <li>Bilinearity
-    <ul>
-      <li>$ \comm{\hat{A}+\hat{B}}{\hat{C}} = \comm{\hat{A}}{\hat{C}}+\comm{\hat{B}}{\hat{C}} $</li>
-      <li>$ \comm{\hat{A}}{\hat{B}+\hat{C}} = \comm{\hat{A}}{\hat{B}}+\comm{\hat{A}}{\hat{C}} $</li>
-    </ul>
-  </li>
-  <li>Alternativity
-    <ul>
-      <li>$ \comm{\hat{A}}{\hat{B}} = -\comm{\hat{B}}{\hat{A}} $</li>
-    </ul>
-  </li>
-  <li>Jacobi identity
-    <ul>
-      <li>$ \comm{\hat{A}}{\comm{\hat{B}}{\hat{C}}} + \comm{\hat{B}}{\comm{\hat{C}}{\hat{A}}} + 
-\comm{\hat{C}}{\comm{\hat{A}}{\hat{B}}} = 0 $</li>
-    </ul>
-  </li>
-  <li>Additional Property
-    <ul>
-      <li>$ \comm{\hat{A}}{\hat{B}\hat{C}} = \comm{\hat{A}}{\hat{B}}\hat{C}+\hat{B}\comm{\hat{A}}{\hat{C}} $</li>
-      <li>$ \comm{\hat{A}\hat{B}}{\hat{C}} = \hat{A}\comm{\hat{B}}{\hat{C}}+\comm{\hat{A}}{\hat{C}}\hat{B} $</li>
-    </ul>
-  </li>
-</ol>
-
-<p>Read <a href="https://en.wikipedia.org/wiki/Commutator">Commutator (ring theory)</a> for further details.</p>
-
-<p>Also, if a common eigenfunction of any two different operators exists, they commute.</p>
-
-<p>\[ \begin{cases}
-A\psi=a\psi \nl
-B\psi=b\psi
-\end{cases} \Rightarrow \comm{A}{B}=0
-\]</p>
-
-<p>It’s very easy to show.</p>
-
-<h2 id="anticommutator">Anticommutator</h2>
-
-<p>We can also define <strong>anticommutators</strong>:</p>
+<p>Then we naturally have the following properties:</p>
 
 <ul>
-  <li>$ \acomm{\hat{A}}{\hat{B}} \coloneqq \hat{A}\hat{B}+\hat{B}\hat{A} $</li>
+  <li>$T(\mathbf{0}_V) = \mathbf{0}_W$</li>
+  <li>$T\left( \sum_{i=1}^n c_i \mathbf{v}_i \right) = \sum_{i=1}^n c_i T(\mathbf{v}_i)$ for any finite collection of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $V$ and scalars $c_1, c_2, \ldots, c_n$ in $F$.</li>
+</ul>
+
+<p>We have so many examples of linear transformations, such as rotations, reflections, projections, and scaling transformations in geometry, as well as differentiation and integration in calculus.
+Especially, we define the following special linear transformations:</p>
+<ul>
+  <li>
+<strong>identity transformation</strong>: $\iota_V: V \to V$ defined by $\iota_V(\mathbf{v}) = \mathbf{v}$ for all $\mathbf{v} \in V$.</li>
+  <li>
+<strong>zero transformation</strong>: $0_{V,W}: V \to W$ defined by $0_{V,W}(\mathbf{v}) = \mathbf{0}_W$ for all $\mathbf{v} \in V$.</li>
+</ul>
+
+<h3 id="vector-space-of-linear-transformations">Vector Space of Linear Transformations</h3>
+
+<p>The set of all linear transformations from $V$ to $W$ is denoted by $\mathcal{L}(V, W)$.
+We can define addition and scalar multiplication on $\mathcal{L}(V, W)$ as follows.
+For $T_1, T_2 \in \mathcal{L}(V, W)$ and $c \in F$, we define:</p>
+<ul>
+  <li>$(T_1 + T_2)(\mathbf{v}) = T_1(\mathbf{v}) + T_2(\mathbf{v})$</li>
+  <li>$(cT_1)(\mathbf{v}) = c(T_1(\mathbf{v}))$</li>
+</ul>
+
+<p>With these operations, $\mathcal{L}(V, W)$ forms a <em>vector space</em> over $F$ where
+the zero vector in $\mathcal{L}(V, W)$ is the zero transformation $0_{V,W}$, and the additive inverse of a linear transformation $T$ is given by $-T$.</p>
+
+<p>A linear transformation from $V$ to $V$ is called a <strong>linear operator</strong> on $V$, and the set of all linear operators on $V$ is denoted by $\mathcal{L}(V) = \mathcal{L}(V, V)$.
+Especially, linear operators on a real vector space is called a <em>real operator</em> and linear operators on a complex vector space is called a <em>complex operator</em>.
+Also, a linear transformation from $V$ to the base field $F$ is called a <strong>linear functional</strong> on $V$, and specifically the set of all linear functionals on $V$ is
+called the <strong>dual space</strong> of $V$, denoted by $V^\ast = \mathcal{L}(V, F)$.</p>
+
+<p>The following terms are also employed in the context of linear transformations:</p>
+<ul>
+  <li>
+<strong>Homomorphism</strong>: A linear transformation. Their set is denoted by $\mathrm{Hom}(V, W) = \mathcal{L}(V, W)$.</li>
+  <li>
+<strong>Endomorphism</strong>: A linear operator. Their set is denoted by $\mathrm{End}(V) = \mathcal{L}(V)$.</li>
+  <li>
+<strong>Monomorphism</strong>: An injective linear transformation, olso called an <strong>embedding</strong>.</li>
+  <li>
+<strong>Epimorphism</strong>: A surjective linear transformation.</li>
+  <li>
+<strong>Isomorphism</strong>: A bijective linear transformation.</li>
+  <li>
+<strong>Automorphism</strong>: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</li>
 </ul>
 
   
@@ -396,7 +376,7 @@ B\psi=b\psi
 
 
 
-<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/physics/commutator-qm.html">
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">
   </applause-button>
 
 
@@ -544,7 +524,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/dynamical-pictures-of-qm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/physics/quantum-mechanics/Sakurai.svg"        sizes="(min-width:86em)27.5rem,(min-width:54em)24.5rem,(min-width:42em)21.5rem,42rem"    alt="Dynamical Pictures"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/dynamical-pictures-of-qm.html" class="flip-title">Dynamical Pictures</a>  </h3>      <a class="fill-card no-hover" href="/physics/dynamical-pictures-of-qm.html" tabindex="-1"><span class="sr-only">Continue reading Dynamical Pictures</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/matrix-representation-of-qm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine flip-project-img">              <img      src="/assets/img/physics/quantum-mechanics/Sakurai.svg"        sizes="(min-width:86em)27.5rem,(min-width:54em)24.5rem,(min-width:42em)21.5rem,42rem"    alt="Matrix Representation of Quantum Mechanics"      width="864"  height="486"  loading="lazy"/>          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/matrix-representation-of-qm.html" class="flip-title">Matrix Representation of Quantum Mechanics</a>  </h3>      <a class="fill-card no-hover" href="/physics/matrix-representation-of-qm.html" tabindex="-1"><span class="sr-only">Continue reading Matrix Representation of Quantum Mechanics</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/dynamical-pictures-of-qm.html" class="flip-title">    <span>              [Quantum Mechanics 1.6]            Dynamical Pictures    </span>  </a>      <time class="faded fine" datetime="2023-02-10T00:00:00+09:00">      10 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/dynamical-pictures-of-qm.html"></span>  </li>          <li class="h4">  <a href="/physics/matrix-representation-of-qm.html" class="flip-title">    <span>              [Quantum Mechanics 1.5]            Matrix Representation of Quantum Mechanics    </span>  </a>      <time class="faded fine" datetime="2023-02-09T00:00:00+09:00">      09 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/matrix-representation-of-qm.html"></span>  </li>          <li class="h4">  <a href="/physics/hermitian-operator.html" class="flip-title">    <span>              [Quantum Mechanics 1.3]            Hermitian operator    </span>  </a>      <time class="faded fine" datetime="2023-02-08T00:00:00+09:00">      08 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/hermitian-operator.html"></span>  </li>          <li class="h4">  <a href="/physics/bra-ket-notation-and-wavefunction.html" class="flip-title">    <span>              [Quantum Mechanics 1.2]            Bra-ket Notation and Wavefunction    </span>  </a>      <time class="faded fine" datetime="2023-02-08T00:00:00+09:00">      08 Feb 2023    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/bra-ket-notation-and-wavefunction.html"></span>  </li>      </ul></aside>
+                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/ordered-bases-and-coordinate-matrices.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/ordered-bases-and-coordinate-matrices.html" class="flip-title">Ordered Bases and Coordinate Matrices</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/ordered-bases-and-coordinate-matrices.html" tabindex="-1"><span class="sr-only">Continue reading Ordered Bases and Coordinate Matrices</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/mathematics/bases-and-dimension.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/mathematics/bases-and-dimension.html" class="flip-title">Bases and Dimension</a>  </h3>      <a class="fill-card no-hover" href="/mathematics/bases-and-dimension.html" tabindex="-1"><span class="sr-only">Continue reading Bases and Dimension</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/mathematics/ordered-bases-and-coordinate-matrices.html" class="flip-title">    <span>              [Linear Algebra 1.5]            Ordered Bases and Coordinate Matrices    </span>  </a>      <time class="faded fine" datetime="2026-03-31T00:00:00+09:00">      31 Mar 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html"></span>  </li>          <li class="h4">  <a href="/mathematics/bases-and-dimension.html" class="flip-title">    <span>              [Linear Algebra 1.4]            Bases and Dimension    </span>  </a>      <time class="faded fine" datetime="2026-03-18T00:00:00+09:00">      18 Mar 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/mathematics/bases-and-dimension.html"></span>  </li>      </ul></aside>
 
   
 
