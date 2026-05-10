@@ -1,0 +1,292 @@
+{% assign viz_id = include.id | default: "fft-demo" %}
+<div id="{{ viz_id }}" class="fftv-root">
+  <style>
+    #{{ viz_id }} { margin: 2rem 0; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .fftv-description { margin: 0 0 1rem 0; line-height: 1.7; }
+    #{{ viz_id }} .fftv-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0 0 1rem 0; }
+    #{{ viz_id }} .fftv-controls button {
+      appearance: none; border: 1px solid currentColor; background: transparent; color: inherit;
+      padding: 0.45rem 0.8rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; cursor: pointer;
+    }
+    #{{ viz_id }} .fftv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .fftv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #{{ viz_id }} .fftv-graph { width: 100%; overflow-x: auto; padding: 0.5rem 0; }
+    #{{ viz_id }} .fftv-graph svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .fftv-divider { border: 0; border-top: 1px solid rgba(127, 127, 127, 0.25); margin: 1.5rem 0; }
+    #{{ viz_id }} .fftv-step-title { margin: 0 0 0.5rem 0; font-size: 1.05em; font-weight: 700; }
+    #{{ viz_id }} .fftv-step-text { margin: 0; line-height: 1.7; }
+    #{{ viz_id }} .fftv-info-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0 0 0; }
+    #{{ viz_id }} .fftv-info-block h4 { margin: 0 0 0.5rem 0; font-size: 1em; }
+    #{{ viz_id }} .fftv-math-line { min-height: 1.8rem; line-height: 1.8; overflow-x: auto; overflow-y: hidden; }
+    #{{ viz_id }} .fftv-legend { margin-top: 0.75rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .fftv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #{{ viz_id }} .fftv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #{{ viz_id }} .fftv-swatch-active { background: #fee2e2; border-color: #dc2626; }
+    #{{ viz_id }} .fftv-swatch-finished { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .fftv-swatch-normal { background: #f8fafc; border-color: #475569; }
+  </style>
+
+  <p class="fftv-description">
+    The demo below shows an iterative radix-2 FFT on eight coefficients. Move through the bit-reversal step and the butterfly stages.
+  </p>
+
+  <div class="fftv-controls">
+    <button type="button" data-role="prev">Previous Step</button>
+    <button type="button" data-role="next">Next Step</button>
+    <button type="button" data-role="reset">Reset</button>
+    <span class="fftv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+  </div>
+
+  <div class="fftv-graph" data-role="graph"></div>
+
+  <hr class="fftv-divider">
+
+  <div class="fftv-step-block">
+    <div class="fftv-step-title" data-role="step-title"></div>
+    <p class="fftv-step-text" data-role="step-desc"></p>
+  </div>
+
+  <div class="fftv-info-grid">
+    <div class="fftv-info-block">
+      <h4>Current array</h4>
+      <div class="fftv-math-line" data-role="array-state"></div>
+    </div>
+    <div class="fftv-info-block">
+      <h4>Butterfly rule</h4>
+      <div class="fftv-math-line" data-role="butterfly-rule"></div>
+    </div>
+    <div class="fftv-info-block">
+      <h4>Legend</h4>
+      <div class="fftv-legend">
+        <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-active"></span> Coefficients currently combined by butterflies</div>
+        <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-finished"></span> Coefficients already produced by completed stages</div>
+        <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-normal"></span> Coefficients not active in the current step</div>
+        <div class="fftv-legend-item"><span style="color:#dc2626;font-weight:700;">━</span> Active butterfly edges</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+
+      function $(role) { return root.querySelector('[data-role="' + role + '"]'); }
+
+      function waitFor(checkFn, timeoutMs, intervalMs) {
+        return new Promise(function (resolve, reject) {
+          var start = Date.now();
+          function tick() {
+            var value = checkFn();
+            if (value) { resolve(value); return; }
+            if (Date.now() - start >= timeoutMs) { reject(new Error("Timed out while waiting for a required library.")); return; }
+            setTimeout(tick, intervalMs);
+          }
+          tick();
+        });
+      }
+
+      function getKatex() {
+        return waitFor(function () {
+          return window.katex && typeof window.katex.renderToString === "function" ? window.katex : null;
+        }, 8000, 50);
+      }
+
+      function getViz() {
+        if (window.__graphvizVizPromise) return window.__graphvizVizPromise;
+        window.__graphvizVizPromise = new Promise(function (resolve, reject) {
+          function instantiate() {
+            if (window.Viz && typeof window.Viz.instance === "function") {
+              window.Viz.instance().then(resolve).catch(reject);
+              return true;
+            }
+            return false;
+          }
+          if (instantiate()) return;
+          var script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/@viz-js/viz@3/lib/viz-standalone.js";
+          script.async = true;
+          script.onload = function () { if (!instantiate()) reject(new Error("Viz.js loaded, but window.Viz.instance is unavailable.")); };
+          script.onerror = function () { reject(new Error("Failed to load Viz.js.")); };
+          document.head.appendChild(script);
+        });
+        return window.__graphvizVizPromise;
+      }
+
+      function renderMath(expr, displayMode) {
+        return katex.renderToString(expr, { throwOnError: false, output: "html", displayMode: !!displayMode });
+      }
+
+      function dotQuote(s) {
+        return '"' + String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"').replace(/\n/g, "\\n") + '"';
+      }
+
+      function formatComplex(z) {
+        var eps = 1e-9;
+        var re = Math.abs(z.re) < eps ? 0 : z.re;
+        var im = Math.abs(z.im) < eps ? 0 : z.im;
+        function fmt(x) {
+          if (Math.abs(x - Math.round(x)) < 1e-9) return String(Math.round(x));
+          return x.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+        }
+        if (im === 0) return fmt(re);
+        if (re === 0) return (im === 1 ? "i" : im === -1 ? "-i" : fmt(im) + "i");
+        return fmt(re) + (im > 0 ? "+" : "") + (im === 1 ? "i" : im === -1 ? "-i" : fmt(im) + "i");
+      }
+
+      function c(re, im) { return { re: re, im: im || 0 }; }
+      function cAdd(a, b) { return c(a.re + b.re, a.im + b.im); }
+      function cSub(a, b) { return c(a.re - b.re, a.im - b.im); }
+      function cMul(a, b) { return c(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re); }
+      function rootOfUnity(len, j) {
+        var theta = 2 * Math.PI * j / len;
+        return c(Math.cos(theta), Math.sin(theta));
+      }
+
+      function bitReversePermutation(values) {
+        var n = values.length;
+        var bits = Math.round(Math.log2(n));
+        var out = new Array(n);
+        for (var i = 0; i < n; i += 1) {
+          var x = i, r = 0;
+          for (var b = 0; b < bits; b += 1) { r = (r << 1) | (x & 1); x >>= 1; }
+          out[r] = values[i];
+        }
+        return out;
+      }
+
+      function buildStates() {
+        var input = [3, 1, 4, 1, 5, 9, 2, 6].map(function (x) { return c(x, 0); });
+        var arr = bitReversePermutation(input);
+        var states = [{
+          title: "Bit-reversal permutation",
+          desc: "Reorder the coefficients so that the iterative butterflies can be performed in-place.",
+          len: 1,
+          active: [],
+          array: arr.map(function (z) { return c(z.re, z.im); }),
+          rule: "a=[3,5,4,2,1,9,1,6]"
+        }];
+
+        [2, 4, 8].forEach(function (len) {
+          var active = [];
+          for (var base = 0; base < arr.length; base += len) {
+            for (var j = 0; j < len / 2; j += 1) {
+              var u = arr[base + j];
+              var v = cMul(arr[base + j + len / 2], rootOfUnity(len, j));
+              arr[base + j] = cAdd(u, v);
+              arr[base + j + len / 2] = cSub(u, v);
+              active.push([base + j, base + j + len / 2]);
+            }
+          }
+          states.push({
+            title: "Butterfly stage with length " + len,
+            desc: "Combine blocks of length " + len + ". Each butterfly replaces \`u,v\` by \`u+\\omega_" + len + "^j v\` and \`u-\\omega_" + len + "^j v\`.",
+            len: len,
+            active: active,
+            array: arr.map(function (z) { return c(z.re, z.im); }),
+            rule: "u' = u + \\omega_{" + len + "}^{j}v, \\quad v' = u - \\omega_{" + len + "}^{j}v"
+          });
+        });
+        return states;
+      }
+
+      function arrayExpr(state) {
+        return "\\left[" + state.array.map(function (z) { return formatComplex(z).replace(/i/g, "i"); }).join(",\\;") + "\\right]";
+      }
+
+      function isActivePair(state, i, j) {
+        return state.active.some(function (e) { return e[0] === i && e[1] === j; });
+      }
+
+      function buildDot(state, stateIndex) {
+        var lines = [];
+        var n = state.array.length;
+        lines.push("digraph FFT {");
+        lines.push('  graph [rankdir=LR, bgcolor="transparent", margin="0.05", nodesep="0.45", ranksep="0.75"];');
+        lines.push('  node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize="12", color="#334155", penwidth="1.5", fillcolor="#f8fafc"];');
+        lines.push('  edge [color="#64748b", penwidth="1.4", arrowsize="0.7"];');
+
+        for (var s = 0; s <= stateIndex; s += 1) {
+          var rank = [];
+          for (var i = 0; i < n; i += 1) {
+            var id = "S" + s + "N" + i;
+            var label = s === 0 ? "x[" + i + "]\\n" + formatComplex(states[s].array[i]) : "s" + s + "[" + i + "]\\n" + formatComplex(states[s].array[i]);
+            var fill = s < stateIndex ? "#dbeafe" : "#f8fafc";
+            var stroke = s < stateIndex ? "#2563eb" : "#334155";
+            var width = "1.5";
+            if (s === stateIndex && state.active.some(function (e) { return e[0] === i || e[1] === i; })) {
+              fill = "#fee2e2"; stroke = "#dc2626"; width = "3";
+            }
+            lines.push("  " + id + " [label=" + dotQuote(label) + ", fillcolor=" + dotQuote(fill) + ", color=" + dotQuote(stroke) + ", penwidth=" + dotQuote(width) + "];");
+            rank.push(id);
+          }
+          lines.push("  { rank=same; " + rank.join("; ") + "; }");
+        }
+
+        for (var col = 1; col <= stateIndex; col += 1) {
+          var prev = col - 1;
+          var len = states[col].len;
+          for (var base = 0; base < n; base += len) {
+            for (var j = 0; j < len / 2; j += 1) {
+              var a = base + j;
+              var b = base + j + len / 2;
+              var active = col === stateIndex && isActivePair(states[col], a, b);
+              var color = active ? "#dc2626" : "#64748b";
+              var pen = active ? "3" : "1.4";
+              lines.push("  S" + prev + "N" + a + " -> S" + col + "N" + a + " [color=" + dotQuote(color) + ", penwidth=" + dotQuote(pen) + "];");
+              lines.push("  S" + prev + "N" + b + " -> S" + col + "N" + a + " [color=" + dotQuote(color) + ", penwidth=" + dotQuote(pen) + ", label=" + dotQuote("w") + "];");
+              lines.push("  S" + prev + "N" + a + " -> S" + col + "N" + b + " [color=" + dotQuote(color) + ", penwidth=" + dotQuote(pen) + "];");
+              lines.push("  S" + prev + "N" + b + " -> S" + col + "N" + b + " [color=" + dotQuote(color) + ", penwidth=" + dotQuote(pen) + ", label=" + dotQuote("-w") + "];");
+            }
+          }
+        }
+        lines.push("}");
+        return lines.join("\n");
+      }
+
+      function renderGraph(state, stateIndex) {
+        var graphEl = $("graph");
+        graphEl.innerHTML = "";
+        var svg = viz.renderSVGElement(buildDot(state, stateIndex), { engine: "dot" });
+        svg.setAttribute("role", "img");
+        svg.setAttribute("aria-label", "FFT butterfly graph");
+        graphEl.appendChild(svg);
+      }
+
+      function render() {
+        var state = states[index];
+        $("counter").textContent = String(index);
+        $("step-title").textContent = "Step " + index + " - " + state.title;
+        $("step-desc").innerHTML = state.desc.replace(/`([^`]+)`/g, "<code>$1</code>");
+        $("array-state").innerHTML = renderMath(arrayExpr(state), false);
+        $("butterfly-rule").innerHTML = renderMath(state.rule, false);
+        root.querySelector('[data-role="prev"]').disabled = index === 0;
+        root.querySelector('[data-role="next"]').disabled = index === states.length - 1;
+        renderGraph(state, index);
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        Promise.all([getKatex(), getViz()]).then(function (libs) {
+          katex = libs[0];
+          viz = libs[1];
+          states = buildStates();
+          render();
+          root.querySelector('[data-role="prev"]').addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+          root.querySelector('[data-role="next"]').addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+          root.querySelector('[data-role="reset"]').addEventListener("click", function () { index = 0; render(); });
+        }).catch(function (err) {
+          $("graph").textContent = err && err.message ? err.message : "Failed to initialize the FFT visualizer.";
+        });
+      }
+
+      var katex = null;
+      var viz = null;
+      var states = [];
+      var index = 0;
+      if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
+    })();
+  </script>
+</div>
