@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Floyd–Warshall Algorithm"
+title: "Floyd-Warshall Algorithm"
 subtitle: "floyd-warshall-algorithm"
 categories: computer-science
 tags: algorithms
@@ -26,68 +26,20 @@ The Floyd--Warshall algorithm works by iteratively improving the shortest path e
 \text{dist}[i][j] = \min(\text{dist}[i][j], \text{dist}[i][k] + \text{dist}[k][j])
 \\]
 
-Consider the graph below:
-```mermaid
-graph LR
-    A((A));B((B));C((C));D((D));
-    A-->|5|B;
-    B-->|4|A;
-    B-->|-3|C;
-    C-->|6|A;
-    A--->|7|D;
-    C-->|4|D;
-    D-->|2|C;
-```
+The interactive demo below uses the same recurrence.
+At step $k$, the matrix allows paths whose internal vertices are contained in the first $k$ vertices of the order
 
-The initial distance matrix is:
+\\[
+A,B,C,D.
+\\]
 
-| i\j   | A | B | C | D |
-|-------|---|---|---|---|
-| **A** | 0 | 5 | ∞ | 7 |
-| **B** | 4 | 0 | -3| ∞ |
-| **C** | 6 | ∞ | 0 | 4 |
-| **D** | ∞ | ∞ | 2 | 0 |
-{:.centered}
+{% include_relative includes/floyd-warshall.html %}
 
-Afer the first iteration with `k = A`, the distance matrix becomes:
+For example, when $k=C$, the entry from $B$ to $D$ improves because
 
-| i\j   | A | B | C | D |
-|-------|---|---|---|---|
-| **A** | 0 | 5 | ∞ | 7 |
-| **B** | 4 | 0 | -3| 11 |
-| **C** | 6 | 11| 0 | 4 |
-| **D** | ∞ | ∞ | 2 | 0 |
-{:.centered}
-
-After the second iteration with `k = B`, the distance matrix becomes:
-
-| i\j   | A | B | C | D |
-|-------|---|---|---|---|
-| **A** | 0 | 5 | 2 | 7 |
-| **B** | 4 | 0 | -3| 11 |
-| **C** | 6 | 11| 0 | 4 |
-| **D** | ∞ | ∞ | 2 | 0 |
-{:.centered}
-
-After the third iteration with `k = C`, the distance matrix becomes:
-
-| i\j   | A | B | C | D |
-|-------|---|---|---|---|
-| **A** | 0 | 5 | 2 | 6 |
-| **B** | 3 | 0 | -3| 1 |
-| **C** | 6 | 11| 0 | 4 |
-| **D** | 8 | 13| 2 | 0 |
-{:.centered}
-
-After the fourth iteration with `k = D`, the final distance matrix becomes:
-
-| i\j   | A | B | C | D |
-|-------|---|---|---|---|
-| **A** | 0 | 5 | 2 | 6 |
-| **B** | 3 | 0 | -3| 1 |
-| **C** | 6 | 11| 0 | 4 |
-| **D** | 8 | 13| 2 | 0 |
-{:.centered}
+\\[
+\mathrm{dist}[B][C]+\mathrm{dist}[C][D] = -3+4=1.
+\\]
 
 ## Complexity
 
@@ -110,7 +62,7 @@ void init(){
         dist[i][j] = (i==j)?0:INF;
 }
 
-voiid FloydWarshall(){
+void FloydWarshall(){
     for(int k=1; k<=N; k++)
         for(int i=1; i<=N; i++) for(int j=1; j<=N; j++)
             dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j]);

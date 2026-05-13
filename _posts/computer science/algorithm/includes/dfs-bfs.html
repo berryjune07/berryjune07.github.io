@@ -1,0 +1,375 @@
+{% assign viz_id = include.id | default: "dfs-bfs-demo" %}
+{% assign viz_mode = include.mode | default: "both" %}
+<div id="{{ viz_id }}" class="dbv-root">
+  <style>
+    #{{ viz_id }} { margin: 2rem 0; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .dbv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #{{ viz_id }} .dbv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; margin: 0 0 1rem 0; }
+    #{{ viz_id }} .dbv-controls button {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid currentColor;
+      background: transparent;
+      color: inherit;
+      padding: 0.45rem 0.8rem;
+      border-radius: 0.5rem;
+      font: inherit;
+      line-height: 1.2;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    #{{ viz_id }} .dbv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .dbv-controls button.is-active { background: rgba(0, 0, 0, 0.1); }
+    #{{ viz_id }} .dbv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #{{ viz_id }} .dbv-graph { width: 100%; overflow-x: auto; padding: 0.5rem 0; }
+    #{{ viz_id }} .dbv-graph svg { display: block; width: min(100%, 620px); height: auto; margin: 0 auto; }
+    #{{ viz_id }} .dbv-edge { stroke: #64748b; stroke-width: 2.2; }
+    #{{ viz_id }} .dbv-edge-tree { stroke: #2563eb; stroke-width: 4; }
+    #{{ viz_id }} .dbv-edge-active { stroke: #dc2626; stroke-width: 5; }
+    #{{ viz_id }} .dbv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #{{ viz_id }} .dbv-node-visited circle { fill: #dbeafe; stroke: #2563eb; }
+    #{{ viz_id }} .dbv-node-frontier circle { fill: #fef3c7; stroke: #d97706; }
+    #{{ viz_id }} .dbv-node-current circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 4; }
+    #{{ viz_id }} .dbv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #{{ viz_id }} .dbv-divider { border: 0; border-top: 1px solid rgba(127, 127, 127, 0.25); margin: 1.5rem 0; }
+    #{{ viz_id }} .dbv-step-title { margin: 0 0 0.5rem 0; font-size: 1.05em; font-weight: 700; }
+    #{{ viz_id }} .dbv-step-text { margin: 0; line-height: 1.7; }
+    #{{ viz_id }} .dbv-step-text code,
+    #{{ viz_id }} .dbv-info-line code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148, 163, 184, 0.14); font-family: var(--code-font-family); font-size: 0.94em; }
+    #{{ viz_id }} .dbv-info-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0 0 0; }
+    #{{ viz_id }} .dbv-info-block h4 { margin: 0 0 0.5rem 0; font-size: 1em; }
+    #{{ viz_id }} .dbv-info-line { min-height: 1.8rem; line-height: 1.8; overflow-x: auto; overflow-y: hidden; white-space: nowrap; }
+    #{{ viz_id }} .dbv-legend { margin-top: 0.25rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .dbv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #{{ viz_id }} .dbv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #{{ viz_id }} .dbv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #{{ viz_id }} .dbv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
+    #{{ viz_id }} .dbv-swatch-visited { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .dbv-swatch-normal { background: #f8fafc; border-color: #475569; }
+  </style>
+
+  <div class="dbv-controls-shell">
+    <div class="dbv-controls" role="group" aria-label="DFS and BFS visualizer controls">
+      {% unless viz_mode == "dfs" or viz_mode == "bfs" %}
+        <button type="button" class="is-active" data-role="mode-dfs">DFS</button>
+        <button type="button" data-role="mode-bfs">BFS</button>
+      {% endunless %}
+      <button type="button" data-role="prev">Previous Step</button>
+      <button type="button" data-role="next">Next Step</button>
+      <button type="button" data-role="reset">Reset</button>
+      <span class="dbv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+    </div>
+  </div>
+
+  <div class="dbv-graph" data-role="graph"></div>
+  <hr class="dbv-divider">
+  <div class="dbv-step-title" data-role="step-title"></div>
+  <p class="dbv-step-text" data-role="step-desc"></p>
+
+  <div class="dbv-info-grid">
+    <div class="dbv-info-block">
+      <h4 data-role="frontier-title">Stack</h4>
+      <div class="dbv-info-line" data-role="frontier-state"></div>
+    </div>
+    <div class="dbv-info-block">
+      <h4 data-role="order-title">Traversal order</h4>
+      <div class="dbv-info-line" data-role="visited-state"></div>
+    </div>
+    <div class="dbv-info-block">
+      <h4>Legend</h4>
+      <div class="dbv-legend">
+        <div class="dbv-legend-item"><span class="dbv-swatch dbv-swatch-current"></span> Current vertex</div>
+        <div class="dbv-legend-item"><span class="dbv-swatch dbv-swatch-frontier"></span> Vertex currently in the stack or queue</div>
+        <div class="dbv-legend-item"><span class="dbv-swatch dbv-swatch-visited"></span> Vertex already in the traversal order</div>
+        <div class="dbv-legend-item"><span class="dbv-swatch dbv-swatch-normal"></span> Unvisited vertex</div>
+        <div class="dbv-legend-item"><span style="color:#dc2626;font-weight:700;">-</span> Traversal edge used in the current step</div>
+        <div class="dbv-legend-item"><span style="color:#2563eb;font-weight:700;">-</span> Tree edge of the traversal</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+
+      function byRole(name) {
+        return root.querySelector('[data-role="' + name + '"]');
+      }
+
+      function key(a, b) {
+        return a < b ? a + "-" + b : b + "-" + a;
+      }
+
+      function has(arr, x) {
+        return arr.indexOf(x) !== -1;
+      }
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function inlineCode(s) {
+        return esc(s).replace(/`([^`]+)`/g, "<code>$1</code>");
+      }
+
+      function listText(name, arr, state) {
+        return "<code>" + name + " = [" + arr.map(function (x) { return label(state.mode, x); }).join(", ") + "]</code>";
+      }
+
+      function copy(arr) {
+        return arr.slice();
+      }
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var nodes = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var edges = [
+        [1, 2], [1, 3], [1, 4],
+        [2, 5], [2, 6],
+        [3, 7], [4, 8],
+        [6, 9], [7, 8]
+      ];
+      var pos = {
+        1: [300, 42],
+        2: [170, 115],
+        3: [300, 115],
+        4: [430, 115],
+        5: [100, 210],
+        6: [230, 210],
+        7: [360, 210],
+        8: [500, 210],
+        9: [230, 300]
+      };
+      var adj = {};
+      nodes.forEach(function (n) { adj[n] = []; });
+      edges.forEach(function (e) {
+        adj[e[0]].push(e[1]);
+        adj[e[1]].push(e[0]);
+      });
+      nodes.forEach(function (n) {
+        adj[n].sort(function (a, b) { return a - b; });
+      });
+
+      var dfsTraversalOrder = {};
+      (function assignDfsTraversalOrder() {
+        var seen = {};
+        var order = 0;
+        function walk(u) {
+          seen[u] = true;
+          dfsTraversalOrder[u] = ++order;
+          adj[u].forEach(function (v) {
+            if (!seen[v]) walk(v);
+          });
+        }
+        walk(1);
+      })();
+
+      function label(modeName, n) {
+        return modeName === "DFS" ? dfsTraversalOrder[n] : n;
+      }
+
+      function edgeKeys(active) {
+        if (!active) return [];
+        if (!active.length) return [];
+        if (Array.isArray(active[0])) {
+          return active.map(function (e) { return key(e[0], e[1]); });
+        }
+        return [key(active[0], active[1])];
+      }
+
+      function makeState(mode, title, desc, current, active, frontier, visited, tree) {
+        return {
+          mode: mode,
+          title: title,
+          desc: desc,
+          current: current,
+          active: edgeKeys(active),
+          frontier: copy(frontier),
+          visited: copy(visited),
+          tree: copy(tree)
+        };
+      }
+
+      function buildDFS() {
+        var states = [];
+        var visited = [];
+        var stack = [];
+        var tree = [];
+
+        function push(title, desc, current, active) {
+          states.push(makeState("DFS", title, desc, current, active, stack, visited, tree));
+        }
+
+        function dfs(u, parent) {
+          visited.push(u);
+          stack.push(u);
+          if (parent === null) {
+            push("Visit " + label("DFS", u), "Start at `" + label("DFS", u) + "` and push it onto the DFS call stack.", u, null);
+          } else {
+            var previous = states.length ? states[states.length - 1].current : null;
+            var prefix = previous === parent ? "Move" : "After completed branches are popped, move";
+            push("Visit " + label("DFS", u), prefix + " from `" + label("DFS", parent) + "` to `" + label("DFS", u) + "` and push `" + label("DFS", u) + "` onto the DFS call stack.", u, [parent, u]);
+          }
+
+          adj[u].forEach(function (v) {
+            if (!has(visited, v)) {
+              tree.push(key(u, v));
+              dfs(v, u);
+            }
+          });
+
+          stack.pop();
+        }
+
+        dfs(1, null);
+        states.push(makeState("DFS", "Finished", "The DFS call stack is empty, so the traversal is complete.", null, null, stack, visited, tree));
+        return states;
+      }
+
+      function buildBFS() {
+        var states = [];
+        var seen = [1];
+        var visited = [];
+        var queue = [1];
+        var tree = [];
+
+        function push(title, desc, current, active) {
+          states.push(makeState("BFS", title, desc, current, active, queue, visited, tree));
+        }
+
+        while (queue.length) {
+          var u = queue.shift();
+          visited.push(u);
+          var active = [];
+          var added = [];
+          adj[u].forEach(function (v) {
+            if (!has(seen, v)) {
+              seen.push(v);
+              queue.push(v);
+              tree.push(key(u, v));
+              active.push([u, v]);
+              added.push(v);
+            }
+          });
+          if (added.length) {
+            push("Visit " + label("BFS", u), "Dequeue `" + label("BFS", u) + "` and enqueue `" + added.map(function (v) { return label("BFS", v); }).join("`, `") + "`.", u, active);
+          } else {
+            push("Visit " + label("BFS", u), "Dequeue `" + label("BFS", u) + "`. No new vertex is enqueued.", u, active);
+          }
+        }
+        states.push(makeState("BFS", "Finished", "The BFS queue is empty, so the traversal is complete.", null, null, queue, visited, tree));
+        return states;
+      }
+
+      var fixedMode = "{{ viz_mode }}";
+      var states = {
+        dfs: buildDFS(),
+        bfs: buildBFS()
+      };
+      var mode = fixedMode === "bfs" ? "bfs" : "dfs";
+      var index = 0;
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS, name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      function edgeClass(state, e) {
+        if (has(state.active, key(e[0], e[1]))) return "dbv-edge dbv-edge-active";
+        if (has(state.tree, key(e[0], e[1]))) return "dbv-edge dbv-edge-tree";
+        return "dbv-edge";
+      }
+
+      function nodeClass(state, n) {
+        if (state.current === n) return "dbv-node dbv-node-current";
+        if (has(state.frontier, n)) return "dbv-node dbv-node-frontier";
+        if (has(state.visited, n)) return "dbv-node dbv-node-visited";
+        return "dbv-node";
+      }
+
+      function draw(state) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox: "0 0 600 340", role: "img", "aria-label": state.mode + " traversal graph" });
+
+        edges.forEach(function (e) {
+          var a = pos[e[0]], b = pos[e[1]];
+          svg.appendChild(svgEl("line", {
+            x1: a[0], y1: a[1],
+            x2: b[0], y2: b[1],
+            class: edgeClass(state, e),
+            "stroke-linecap": "round"
+          }));
+        });
+
+        nodes.forEach(function (n) {
+          var p = pos[n];
+          var g = svgEl("g", { class: nodeClass(state, n) });
+          g.appendChild(svgEl("circle", { cx: p[0], cy: p[1], r: 24 }));
+          var text = svgEl("text", { x: p[0], y: p[1] });
+          text.textContent = String(label(state.mode, n));
+          g.appendChild(text);
+          svg.appendChild(g);
+        });
+
+        target.appendChild(svg);
+      }
+
+      function render() {
+        var state = states[mode][index];
+        var last = states[mode].length - 1;
+        var frontierTitle = mode === "dfs" ? "DFS call stack" : "BFS queue after this visit";
+        var frontierName = mode === "dfs" ? "Call stack" : "Queue";
+        var orderName = mode === "dfs" ? "DFS order" : "BFS order";
+
+        byRole("counter").textContent = index + " / " + last;
+        byRole("step-title").textContent = state.mode + " Step " + index + " - " + state.title;
+        byRole("step-desc").innerHTML = inlineCode(state.desc);
+        byRole("frontier-title").textContent = frontierTitle;
+        byRole("order-title").textContent = "Traversal order so far";
+        byRole("frontier-state").innerHTML = listText(frontierName, state.frontier, state);
+        byRole("visited-state").innerHTML = listText(orderName, state.visited, state);
+
+        if (fixedMode === "both") {
+          root.querySelector('[data-role="mode-dfs"]').classList.toggle("is-active", mode === "dfs");
+          root.querySelector('[data-role="mode-bfs"]').classList.toggle("is-active", mode === "bfs");
+        }
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        draw(state);
+      }
+
+      function setMode(nextMode) {
+        mode = nextMode;
+        index = 0;
+        render();
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        if (fixedMode === "both") {
+          byRole("mode-dfs").addEventListener("click", function () { setMode("dfs"); });
+          byRole("mode-bfs").addEventListener("click", function () { setMode("bfs"); });
+        }
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states[mode].length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start, { once: true });
+      } else {
+        start();
+      }
+    })();
+  </script>
+</div>

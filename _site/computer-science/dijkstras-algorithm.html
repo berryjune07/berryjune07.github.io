@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -332,642 +332,166 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
 <div id="dijkstra-demo" class="dv-root">
   <style>
-    #dijkstra-demo {
-      margin: 2rem 0;
-    }
-
-    #dijkstra-demo * {
-      box-sizing: border-box;
-    }
-
-    #dijkstra-demo .dv-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      align-items: center;
-      margin: 0 0 1rem 0;
-    }
-
-    #dijkstra-demo .dv-controls button {
-      appearance: none;
-      border: 1px solid currentColor;
-      background: transparent;
-      color: inherit;
-      padding: 0.45rem 0.8rem;
-      border-radius: 0.5rem;
-      font: inherit;
-      line-height: 1.2;
-      cursor: pointer;
-    }
-
-    #dijkstra-demo .dv-controls button:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
-
-    #dijkstra-demo .dv-counter {
-      margin-left: 0.25rem;
-      opacity: 0.8;
-      font-size: 0.95em;
-    }
-
-    #dijkstra-demo pre.mermaid {
-      margin: 0 0 1.5rem 0;
-    }
-
-    #dijkstra-demo .dv-divider {
-      border: 0;
-      border-top: 1px solid rgba(127, 127, 127, 0.25);
-      margin: 1.5rem 0;
-    }
-
-    #dijkstra-demo .dv-step-block {
-      margin: 0 0 1.25rem 0;
-    }
-
-    #dijkstra-demo .dv-step-title {
-      margin: 0 0 0.5rem 0;
-      font-size: 1.05em;
-      font-weight: 700;
-    }
-
-    #dijkstra-demo .dv-step-text {
-      margin: 0;
-      line-height: 1.7;
-    }
-
-    #dijkstra-demo .dv-info-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      margin: 1rem 0 0 0;
-    }
-
-    #dijkstra-demo .dv-info-block h4 {
-      margin: 0 0 0.5rem 0;
-      font-size: 1em;
-    }
-
-    #dijkstra-demo .dv-math-line {
-      min-height: 1.8rem;
-      line-height: 1.8;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-
-    #dijkstra-demo .dv-legend {
-      margin-top: 0.75rem;
-      font-size: 0.95em;
-      line-height: 1.7;
-    }
-
-    #dijkstra-demo .dv-legend-item {
-      display: flex;
-      gap: 0.55rem;
-      align-items: center;
-    }
-
-    #dijkstra-demo .dv-swatch {
-      width: 0.95rem;
-      height: 0.95rem;
-      border-radius: 999px;
-      flex: 0 0 auto;
-      border: 2px solid transparent;
-    }
-
-    #dijkstra-demo .dv-swatch-current  { background: #fee2e2; border-color: #dc2626; }
-    #dijkstra-demo .dv-swatch-visited  { background: #dbeafe; border-color: #2563eb; }
+    #dijkstra-demo { margin: 2rem 0; }
+    #dijkstra-demo * { box-sizing: border-box; }
+    #dijkstra-demo .dv-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0 0 1rem 0; }
+    #dijkstra-demo .dv-controls button { appearance: none; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0.45rem 0.8rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; cursor: pointer; }
+    #dijkstra-demo .dv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #dijkstra-demo .dv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #dijkstra-demo .dv-graph { width: 100%; overflow-x: auto; padding: 0.5rem 0; }
+    #dijkstra-demo .dv-graph svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+    #dijkstra-demo .dv-divider { border: 0; border-top: 1px solid rgba(127,127,127,0.25); margin: 1.5rem 0; }
+    #dijkstra-demo .dv-step-title { margin: 0 0 0.5rem 0; font-size: 1.05em; font-weight: 700; }
+    #dijkstra-demo .dv-step-text { margin: 0; line-height: 1.7; }
+    #dijkstra-demo .dv-info-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0 0 0; }
+    #dijkstra-demo .dv-info-block h4 { margin: 0 0 0.5rem 0; font-size: 1em; }
+    #dijkstra-demo .dv-math-line { min-height: 1.8rem; line-height: 1.8; overflow-x: auto; overflow-y: hidden; }
+    #dijkstra-demo .dv-legend { margin-top: 0.75rem; font-size: 0.95em; line-height: 1.7; }
+    #dijkstra-demo .dv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #dijkstra-demo .dv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #dijkstra-demo .dv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #dijkstra-demo .dv-swatch-visited { background: #dbeafe; border-color: #2563eb; }
     #dijkstra-demo .dv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
-    #dijkstra-demo .dv-swatch-normal   { background: #f8fafc; border-color: #475569; }
-
+    #dijkstra-demo .dv-swatch-normal { background: #f8fafc; border-color: #475569; }
   </style>
 
-  <p class="dv-description">
-    Click the buttons to move through Dijkstra's algorithm one step at a time.
-  </p>
-
+  <p class="dv-description">Click the buttons to move through Dijkstra's algorithm one step at a time.</p>
   <div class="dv-controls">
     <button type="button" data-role="prev">Previous Step</button>
     <button type="button" data-role="next">Next Step</button>
     <button type="button" data-role="reset">Reset</button>
-    <span class="dv-counter">
-      <strong>Current step:</strong>
-      <span data-role="counter"></span>
-    </span>
+    <span class="dv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
   </div>
-
-  <pre class="mermaid" data-role="graph"></pre>
-
+  <div class="dv-graph" data-role="graph"></div>
   <hr class="dv-divider">
-
-  <div class="dv-step-block">
-    <div class="dv-step-title" data-role="step-title"></div>
-    <p class="dv-step-text" data-role="step-desc"></p>
-  </div>
-
+  <div class="dv-step-title" data-role="step-title"></div>
+  <p class="dv-step-text" data-role="step-desc"></p>
   <div class="dv-info-grid">
     <div class="dv-info-block">
-      <h4>Priority queue</h4>
-      <div class="dv-math-line" data-role="pq-state"></div>
-    </div>
-
+<h4>Priority queue</h4>
+<div class="dv-math-line" data-role="pq-state"></div>
+</div>
     <div class="dv-info-block">
-      <h4>Legend</h4>
-      <div class="dv-legend">
-        <div class="dv-legend-item">
+<h4>Legend</h4>
+<div class="dv-legend">
+      <div class="dv-legend-item">
 <span class="dv-swatch dv-swatch-current"></span> Current node being processed</div>
-        <div class="dv-legend-item">
+      <div class="dv-legend-item">
 <span class="dv-swatch dv-swatch-visited"></span> Node with finalized shortest distance</div>
-        <div class="dv-legend-item">
+      <div class="dv-legend-item">
 <span class="dv-swatch dv-swatch-frontier"></span> Node currently stored in the priority queue</div>
-        <div class="dv-legend-item">
+      <div class="dv-legend-item">
 <span class="dv-swatch dv-swatch-normal"></span> Unexplored node</div>
-        <div class="dv-legend-item">
+      <div class="dv-legend-item">
 <span style="color:#dc2626;font-weight:700;">━</span> Edge being relaxed in this step</div>
-        <div class="dv-legend-item">
+      <div class="dv-legend-item">
 <span style="color:#2563eb;font-weight:700;">━</span> Current shortest-path tree candidate</div>
-      </div>
     </div>
+</div>
   </div>
 
   <script>
     (function () {
       var root = document.getElementById("dijkstra-demo");
       if (!root) return;
-
-      function getGraphEl() {
-        return root.querySelector('[data-role="graph"]');
-      }
-
-      function waitFor(checkFn, timeoutMs, intervalMs) {
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function waitFor(check, timeout, step) {
         return new Promise(function (resolve, reject) {
           var start = Date.now();
-
           function tick() {
-            var value = checkFn();
-            if (value) {
-              resolve(value);
-              return;
-            }
-            if (Date.now() - start >= timeoutMs) {
-              reject(new Error("Timed out while waiting for a required library."));
-              return;
-            }
-            setTimeout(tick, intervalMs);
+            var value = check();
+            if (value) return resolve(value);
+            if (Date.now() - start > timeout) return reject(new Error("Timed out while waiting for a required library."));
+            setTimeout(tick, step);
           }
-
           tick();
         });
       }
-
-      function loadMermaidFallback() {
-        if (window.mermaid && typeof window.mermaid.run === "function") {
-          return Promise.resolve(window.mermaid);
-        }
-
-        if (window.__dvMermaidPromise) {
-          return window.__dvMermaidPromise;
-        }
-
-        window.__dvMermaidPromise = new Promise(function (resolve, reject) {
-          var script = document.createElement("script");
-          script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
-          script.async = true;
-          script.onload = function () {
-            if (window.mermaid && typeof window.mermaid.run === "function") {
-              try {
-                window.mermaid.initialize({ startOnLoad: false, flowchart: { htmlLabels: false } });
-              } catch (e) {}
-              resolve(window.mermaid);
-            } else {
-              reject(new Error("Mermaid was loaded, but window.mermaid is unavailable."));
+      function getKatex() {
+        return waitFor(function () { return window.katex && window.katex.renderToString ? window.katex : null; }, 8000, 50);
+      }
+      function getViz() {
+        if (window.__graphvizVizPromise) return window.__graphvizVizPromise;
+        window.__graphvizVizPromise = new Promise(function (resolve, reject) {
+          function ready() {
+            if (window.Viz && window.Viz.instance) {
+              window.Viz.instance().then(resolve).catch(reject);
+              return true;
             }
-          };
-          script.onerror = function () {
-            reject(new Error("Failed to load Mermaid."));
-          };
+            return false;
+          }
+          if (ready()) return;
+          var script = document.createElement("script");
+          script.src = "https://cdn.jsdelivr.net/npm/@viz-js/viz@3/lib/viz-standalone.js";
+          script.async = true;
+          script.onload = function () { if (!ready()) reject(new Error("Viz.js did not expose Viz.instance.")); };
+          script.onerror = function () { reject(new Error("Failed to load Viz.js.")); };
           document.head.appendChild(script);
         });
-
-        return window.__dvMermaidPromise;
+        return window.__graphvizVizPromise;
       }
-
-      function getKatex() {
-        return waitFor(function () {
-          return window.katex && typeof window.katex.renderToString === "function" ? window.katex : null;
-        }, 8000, 50);
+      function h(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function q(s) { return '"' + String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g,"\\n") + '"'; }
+      function math(s) { return katex.renderToString(s, { throwOnError: false, output: "html" }); }
+      function dist(x) { return Number.isFinite(x) ? String(x) : "\\infty"; }
+      function pqTex(pq) {
+        if (!pq.length) return "\\langle\\,\\rangle";
+        return "\\left\\langle " + pq.slice().sort(function(a,b){ return a.dist-b.dist || a.node.localeCompare(b.node); }).map(function(x){ return "(" + x.node + "," + dist(x.dist) + ")"; }).join(",\\;") + " \\right\\rangle";
       }
-
-      function getMermaid() {
-        return waitFor(function () {
-          return window.mermaid && typeof window.mermaid.run === "function" ? window.mermaid : null;
-        }, 1500, 50).catch(function () {
-          return loadMermaidFallback();
-        });
+      var nodes = ["A","B","C","D","E"];
+      var edges = [["A","B",4],["A","C",2],["B","C",1],["B","D",5],["C","D",8],["C","E",10],["D","E",2]];
+      var pos = { A:"0,1.7!", B:"1.8,2.4!", C:"1.8,0.8!", D:"3.8,2.0!", E:"4.2,0.6!" };
+      var adj = {};
+      nodes.forEach(function(n){ adj[n] = []; });
+      edges.forEach(function(e){ adj[e[0]].push({node:e[1],weight:e[2]}); adj[e[1]].push({node:e[0],weight:e[2]}); });
+      Object.keys(adj).forEach(function(n){ adj[n].sort(function(a,b){ return a.weight-b.weight || a.node.localeCompare(b.node); }); });
+      function copyState(s) {
+        var t = { dist:{}, parent:{}, visited:{}, pq:[], current:s.current, index:s.index, phase:s.phase, active:s.active ? [s.active[0],s.active[1]] : null, caption:s.caption, desc:s.desc, done:s.done };
+        Object.keys(s.dist).forEach(function(k){ t.dist[k] = s.dist[k]; });
+        Object.keys(s.parent).forEach(function(k){ t.parent[k] = s.parent[k]; });
+        Object.keys(s.visited).forEach(function(k){ t.visited[k] = s.visited[k]; });
+        s.pq.forEach(function(x){ t.pq.push({node:x.node, dist:x.dist}); });
+        return t;
       }
-
-      function escapeHtml(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
+      function initial() {
+        var d = {}; nodes.forEach(function(n){ d[n] = Infinity; }); d.A = 0;
+        return { dist:d, parent:{}, visited:{}, pq:[{node:"A",dist:0}], current:null, index:0, phase:"select", active:null, caption:"Initialization", desc:"Initialize Dijkstra's algorithm with source node `A`.", done:false };
       }
-
-      function start() {
-        if (root.dataset.initialized === "true") return;
-        root.dataset.initialized = "true";
-        Promise.all([getKatex(), getMermaid()]).then(function (libs) {
-          var katex = libs[0];
-          var mermaidInstance = libs[1];
-
-          var graphNodes = ["A", "B", "C", "D", "E"];
-          var sourceNode = "A";
-          var baseEdges = [
-            ["A", "B", 4],
-            ["A", "C", 2],
-            ["B", "C", 1],
-            ["B", "D", 5],
-            ["C", "D", 8],
-            ["C", "E", 10],
-            ["D", "E", 2]
-          ];
-
-          var adjacency = (function buildAdjacency() {
-            var adj = {};
-            graphNodes.forEach(function (node) {
-              adj[node] = [];
-            });
-            baseEdges.forEach(function (edge) {
-              var u = edge[0], v = edge[1], w = edge[2];
-              adj[u].push({ node: v, weight: w });
-              adj[v].push({ node: u, weight: w });
-            });
-            Object.keys(adj).forEach(function (node) {
-              adj[node].sort(function (a, b) {
-                if (a.weight !== b.weight) return a.weight - b.weight;
-                return a.node.localeCompare(b.node);
-              });
-            });
-            return adj;
-          })();
-
-          function $(role) {
-            return root.querySelector('[data-role="' + role + '"]');
-          }
-
-          function renderMathHTML(expr, displayMode) {
-            return katex.renderToString(expr, {
-              throwOnError: false,
-              output: "html",
-              displayMode: !!displayMode
-            });
-          }
-
-          function nodeMath(node) {
-            return renderMathHTML(texEscape(node), false);
-          }
-
-          function edgeMath(u, v) {
-            return renderMathHTML("\\left(" + texEscape(u) + "," + texEscape(v) + "\\right)", false);
-          }
-
-          function valueMath(expr) {
-            return renderMathHTML(expr, false);
-          }
-
-          function distanceMath(node, dist) {
-            return renderMathHTML("d(" + texEscape(node) + ") = " + distExpr(dist), false);
-          }
-
-          function texEscape(s) {
-            return String(s)
-              .replace(/\\/g, "\\\\")
-              .replace(/\{/g, "\\{")
-              .replace(/\}/g, "\\}");
-          }
-
-          function distExpr(value) {
-            return Number.isFinite(value) ? String(value) : "\\infty";
-          }
-
-          function pqExpr(pq) {
-            if (!pq.length) return "\\langle\\,\\rangle";
-            var entries = pq.slice().sort(function (a, b) {
-              if (a.dist !== b.dist) return a.dist - b.dist;
-              return a.node.localeCompare(b.node);
-            }).map(function (item) {
-              return "\\left(" + texEscape(item.node) + "," + distExpr(item.dist) + "\\right)";
-            });
-            return "\\left\\langle " + entries.join(",\\;") + " \\right\\rangle";
-          }
-
-          function labelText(node, dist) {
-            return node + ":(" + (Number.isFinite(dist) ? String(dist) : "INF") + ")";
-          }
-
-          function cloneState(state) {
-            return {
-              dist: Object.assign({}, state.dist),
-              parent: Object.assign({}, state.parent),
-              visited: Object.assign({}, state.visited),
-              pq: state.pq.map(function (item) {
-                return { node: item.node, dist: item.dist };
-              }),
-              current: state.current,
-              currentNeighbors: state.currentNeighbors.map(function (item) {
-                return { node: item.node, weight: item.weight };
-              }),
-              neighborIndex: state.neighborIndex,
-              activeEdge: state.activeEdge ? [state.activeEdge[0], state.activeEdge[1]] : null,
-              phase: state.phase,
-              caption: state.caption,
-              eventDescHtml: state.eventDescHtml,
-              done: state.done
-            };
-          }
-
-          function makeInitialState() {
-            var dist = {};
-            graphNodes.forEach(function (node) {
-              dist[node] = Infinity;
-            });
-            dist[sourceNode] = 0;
-
-            return {
-              dist: dist,
-              parent: {},
-              visited: {},
-              pq: [{ node: sourceNode, dist: 0 }],
-              current: null,
-              currentNeighbors: [],
-              neighborIndex: 0,
-              activeEdge: null,
-              phase: "select",
-              caption: "Initialization",
-              eventDescHtml: "Initialize Dijkstra's algorithm with source node " + nodeMath(sourceNode) + ". The priority queue starts with only the source node.",
-              eventDesc: "Initialize Dijkstra's algorithm with source node " + sourceNode + ". The priority queue starts with only the source node.",
-              done: false
-            };
-          }
-
-          function pqUpsert(state, node, newDist) {
-            var found = false;
-            for (var i = 0; i < state.pq.length; i += 1) {
-              if (state.pq[i].node === node) {
-                state.pq[i].dist = newDist;
-                found = true;
-                break;
-              }
-            }
-            if (!found) {
-              state.pq.push({ node: node, dist: newDist });
-            }
-          }
-
-          function popMinFromPQ(state) {
-            state.pq.sort(function (a, b) {
-              if (a.dist !== b.dist) return a.dist - b.dist;
-              return a.node.localeCompare(b.node);
-            });
-            return state.pq.shift();
-          }
-
-          function currentTreeEdges(state) {
-            return Object.keys(state.parent).map(function (node) {
-              return [state.parent[node], node];
-            });
-          }
-
-          function isSameUndirectedEdge(a, b, c, d) {
-            return (a === c && b === d) || (a === d && b === c);
-          }
-
-          function hasEdge(edgeList, u, v) {
-            return edgeList.some(function (edge) {
-              return isSameUndirectedEdge(edge[0], edge[1], u, v);
-            });
-          }
-
-          function nodeClass(node, state) {
-            if (state.current === node) return "current";
-            if (state.visited[node]) return "visited";
-            if (state.pq.some(function (item) { return item.node === node; })) return "frontier";
-            return "normal";
-          }
-
-          function linkStyleText(kind) {
-            if (kind === "active") return "stroke:#dc2626,stroke-width:4px;";
-            if (kind === "tree") return "stroke:#2563eb,stroke-width:3px;";
-            return "stroke:#64748b,stroke-width:1.5px;";
-          }
-
-          function buildMermaid(state) {
-            var lines = [];
-            lines.push("flowchart LR");
-
-            graphNodes.forEach(function (node) {
-              lines.push(node + '["' + labelText(node, state.dist[node]) + '"]:::' + nodeClass(node, state));
-            });
-
-            var treeEdges = currentTreeEdges(state);
-            var edgeIndex = 0;
-            baseEdges.forEach(function (edge) {
-              var u = edge[0], v = edge[1], w = edge[2];
-              var kind = "normal";
-              if (state.activeEdge && hasEdge([state.activeEdge], u, v)) kind = "active";
-              else if (hasEdge(treeEdges, u, v)) kind = "tree";
-
-              lines.push(u + " -->|" + w + "| " + v);
-              lines.push("linkStyle " + edgeIndex + " " + linkStyleText(kind));
-              edgeIndex += 1;
-            });
-
-            lines.push("classDef normal fill:#f8fafc,stroke:#334155,stroke-width:1.5px;");
-            lines.push("classDef visited fill:#dbeafe,stroke:#2563eb,stroke-width:2px;");
-            lines.push("classDef frontier fill:#fef3c7,stroke:#d97706,stroke-width:2px;");
-            lines.push("classDef current fill:#fee2e2,stroke:#dc2626,stroke-width:3px;");
-
-            return lines.join("\n");
-          }
-
-          function nextStateFrom(state) {
-            var next = cloneState(state);
-            next.activeEdge = null;
-
-            if (next.done) {
-              return next;
-            }
-
-            if (next.phase === "select") {
-              if (next.pq.length === 0) {
-                next.done = true;
-                next.current = null;
-                next.currentNeighbors = [];
-                next.neighborIndex = 0;
-                next.caption = "Finished";
-                next.eventDescHtml = "The priority queue is empty, so the algorithm terminates.";
-                next.phase = "done";
-                return next;
-              }
-
-              var item = popMinFromPQ(next);
-              next.current = item.node;
-              next.visited[item.node] = true;
-              next.currentNeighbors = adjacency[item.node].map(function (edge) {
-                return { node: edge.node, weight: edge.weight };
-              });
-              next.neighborIndex = 0;
-              next.phase = "relax";
-              next.caption = "Extract minimum";
-              next.eventDescHtml =
-                "Remove " + nodeMath(item.node) +
-                " from the priority queue with key " + valueMath(distExpr(item.dist)) +
-                ". Its shortest distance is now finalized: " + distanceMath(item.node, item.dist) + ".";
-              return next;
-            }
-
-            if (next.phase === "relax") {
-              if (next.neighborIndex >= next.currentNeighbors.length) {
-                var finishedNode = next.current;
-                next.current = null;
-                next.currentNeighbors = [];
-                next.neighborIndex = 0;
-                next.phase = "select";
-                next.caption = "Finish processing node";
-                next.eventDescHtml =
-                  "All outgoing edges of " + nodeMath(finishedNode) +
-                  " have been examined. Return to the priority queue to choose the next node.";
-                return next;
-              }
-
-              var edge = next.currentNeighbors[next.neighborIndex];
-              next.neighborIndex += 1;
-              next.activeEdge = [next.current, edge.node];
-
-              if (next.visited[edge.node]) {
-                next.caption = "Skip finalized neighbor";
-                next.eventDescHtml =
-                  "Inspect edge " + edgeMath(next.current, edge.node) +
-                  " with weight " + valueMath(String(edge.weight)) +
-                  ". Node " + nodeMath(edge.node) + " is already finalized, so no update is necessary.";
-                return next;
-              }
-
-              var candidate = next.dist[next.current] + edge.weight;
-              var oldDist = next.dist[edge.node];
-
-              if (candidate < oldDist) {
-                next.dist[edge.node] = candidate;
-                next.parent[edge.node] = next.current;
-                pqUpsert(next, edge.node, candidate);
-
-                next.caption = "Relax edge";
-                if (Number.isFinite(oldDist)) {
-                  next.eventDescHtml =
-                    "Inspect edge " + edgeMath(next.current, edge.node) +
-                    " with weight " + valueMath(String(edge.weight)) +
-                    ". The candidate distance is " +
-                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
-                    ", which improves the old value " + distanceMath(edge.node, oldDist) +
-                    ". Update " + distanceMath(edge.node, candidate) +
-                    " and decrease its key in the priority queue.";
-                } else {
-                  next.eventDescHtml =
-                    "Inspect edge " + edgeMath(next.current, edge.node) +
-                    " with weight " + valueMath(String(edge.weight)) +
-                    ". The candidate distance is " +
-                    valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
-                    ". Update " + distanceMath(edge.node, candidate) +
-                    " from " + valueMath("\\infty") +
-                    " and insert it into the priority queue.";
-                }
-              } else {
-                next.caption = "Relax edge";
-                next.eventDescHtml =
-                  "Inspect edge " + edgeMath(next.current, edge.node) +
-                  " with weight " + valueMath(String(edge.weight)) +
-                  ". The candidate distance is " +
-                  valueMath(distExpr(next.dist[next.current]) + " + " + edge.weight + " = " + candidate) +
-                  ", which is not smaller than the current value " + distanceMath(edge.node, oldDist) +
-                  ". No update is made.";
-              }
-
-              return next;
-            }
-
-            return next;
-          }
-
-          var history = [makeInitialState()];
-          history[0].eventDescHtml =
-            "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
-            ". The priority queue starts with only the source node.";
-
-          function resetHistory() {
-            history = [makeInitialState()];
-            history[0].eventDescHtml =
-              "Initialize Dijkstra’s algorithm with source node " + nodeMath(sourceNode) +
-              ". The priority queue starts with only the source node.";
-          }
-
-          function getState() {
-            return history[history.length - 1];
-          }
-
-          function renderMeta(state) {
-            $("counter").textContent = String(history.length - 1);
-            $("step-title").textContent = "Step " + (history.length - 1) + " - " + state.caption;
-            $("step-desc").innerHTML = state.eventDescHtml || state.eventDesc || "";
-            $("pq-state").innerHTML = renderMathHTML(pqExpr(state.pq), false);
-
-            root.querySelector('[data-role="prev"]').disabled = (history.length <= 1);
-            root.querySelector('[data-role="next"]').disabled = !!state.done;
-          }
-
-          function renderGraph(state) {
-            var code = buildMermaid(state);
-            var graphEl = getGraphEl();
-            graphEl.removeAttribute("data-processed");
-            graphEl.innerHTML = escapeHtml(code);
-
-            return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
-          }
-
-          function render() {
-            var state = getState();
-            renderMeta(state);
-            return renderGraph(state);
-          }
-
-          root.querySelector('[data-role="prev"]').addEventListener("click", function () {
-            if (history.length > 1) {
-              history.pop();
-              render();
-            }
-          });
-
-          root.querySelector('[data-role="next"]').addEventListener("click", function () {
-            var state = getState();
-            if (!state.done) {
-              history.push(nextStateFrom(state));
-              render();
-            }
-          });
-
-          root.querySelector('[data-role="reset"]').addEventListener("click", function () {
-            resetHistory();
-            render();
-          });
-
-          render();
-        });
+      function popMin(s) { s.pq.sort(function(a,b){ return a.dist-b.dist || a.node.localeCompare(b.node); }); return s.pq.shift(); }
+      function putPQ(s,node,d) { for (var i=0;i<s.pq.length;i++) if (s.pq[i].node===node) { s.pq[i].dist=d; return; } s.pq.push({node:node,dist:d}); }
+      function same(a,b,c,d) { return (a===c && b===d) || (a===d && b===c); }
+      function treeEdge(s,u,v) { return Object.keys(s.parent).some(function(x){ return same(s.parent[x], x, u, v); }); }
+      function nodeKind(s,n) { if (s.current===n) return "current"; if (s.visited[n]) return "visited"; if (s.pq.some(function(x){ return x.node===n; })) return "frontier"; return "normal"; }
+      function next(s) {
+        var t = copyState(s); t.active = null;
+        if (t.done) return t;
+        if (t.phase === "select") {
+          if (!t.pq.length) { t.done = true; t.caption = "Finished"; t.desc = "The priority queue is empty, so the algorithm terminates."; return t; }
+          var x = popMin(t); t.current = x.node; t.visited[x.node] = true; t.index = 0; t.phase = "relax";
+          t.caption = "Extract minimum"; t.desc = "Remove `" + x.node + "` from the priority queue. Its shortest distance is now finalized."; return t;
+        }
+        var list = adj[t.current];
+        if (t.index >= list.length) { var f = t.current; t.current = null; t.index = 0; t.phase = "select"; t.caption = "Finish processing node"; t.desc = "All outgoing edges of `" + f + "` have been examined."; return t; }
+        var e = list[t.index++]; t.active = [t.current, e.node];
+        if (t.visited[e.node]) { t.caption = "Skip finalized neighbor"; t.desc = "Inspect edge `(" + t.current + "," + e.node + ")`. The neighbor is already finalized."; return t; }
+        var cand = t.dist[t.current] + e.weight;
+        if (cand < t.dist[e.node]) { t.dist[e.node] = cand; t.parent[e.node] = t.current; putPQ(t,e.node,cand); t.caption = "Relax edge"; t.desc = "Inspect edge `(" + t.current + "," + e.node + ")`. The candidate distance improves the current value."; }
+        else { t.caption = "Relax edge"; t.desc = "Inspect edge `(" + t.current + "," + e.node + ")`. The candidate distance is not smaller."; }
+        return t;
       }
-
-      if (document.readyState === "complete") {
-        start();
-      } else {
-        window.addEventListener("load", start, { once: true });
+      function dot(s) {
+        var fill = { normal:"#f8fafc", visited:"#dbeafe", frontier:"#fef3c7", current:"#fee2e2" };
+        var stroke = { normal:"#334155", visited:"#2563eb", frontier:"#d97706", current:"#dc2626" };
+        var out = ['graph G {', 'graph [layout=neato, overlap=false, splines=true, bgcolor="transparent", margin="0.05"];', 'node [shape=circle, style="filled", fontname="Helvetica", fontsize="12", fixedsize=true, width="0.78"];', 'edge [fontname="Helvetica", fontsize="11", color="#64748b", penwidth="1.5"];'];
+        nodes.forEach(function(n){ var k = nodeKind(s,n); out.push(n + ' [label=' + q(n + "\n" + (Number.isFinite(s.dist[n]) ? s.dist[n] : "INF")) + ', pos=' + q(pos[n]) + ', fillcolor=' + q(fill[k]) + ', color=' + q(stroke[k]) + ', penwidth=' + (k === "current" ? '3' : '2') + '];'); });
+        edges.forEach(function(e){ var color = "#64748b", pen = "1.5"; if (s.active && same(s.active[0],s.active[1],e[0],e[1])) { color = "#dc2626"; pen = "4"; } else if (treeEdge(s,e[0],e[1])) { color = "#2563eb"; pen = "3"; } out.push(e[0] + ' -- ' + e[1] + ' [label=' + q(String(e[2])) + ', color=' + q(color) + ', penwidth=' + q(pen) + '];'); });
+        out.push('}'); return out.join("\n");
       }
+      function draw(s) { var target = byRole("graph"); target.innerHTML = ""; target.appendChild(viz.renderSVGElement(dot(s), { engine: "neato" })); }
+      function render() { var s = history[history.length-1]; byRole("counter").textContent = String(history.length-1); byRole("step-title").textContent = "Step " + (history.length-1) + " - " + s.caption; byRole("step-desc").innerHTML = h(s.desc).replace(/`([^`]+)`/g,"<code>$1</code>"); byRole("pq-state").innerHTML = math(pqTex(s.pq)); root.querySelector('[data-role="prev"]').disabled = history.length <= 1; root.querySelector('[data-role="next"]').disabled = s.done; draw(s); }
+      function start() { if (root.dataset.initialized === "true") return; root.dataset.initialized = "true"; Promise.all([getKatex(), getViz()]).then(function(libs){ katex = libs[0]; viz = libs[1]; history = [initial()]; render(); root.querySelector('[data-role="prev"]').addEventListener("click", function(){ if (history.length > 1) { history.pop(); render(); } }); root.querySelector('[data-role="next"]').addEventListener("click", function(){ if (!history[history.length-1].done) { history.push(next(history[history.length-1])); render(); } }); root.querySelector('[data-role="reset"]').addEventListener("click", function(){ history = [initial()]; render(); }); }).catch(function(err){ byRole("graph").textContent = err && err.message ? err.message : "Failed to initialize visualizer."; }); }
+      var katex = null, viz = null, history = [];
+      if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
     })();
   </script>
 </div>

@@ -149,6 +149,12 @@ we obtain the differential equation for $\psi$:
 \pdv{}{t} \laplacian \psi - \pdv{\psi}{x} \pdv{}{y} \laplacian \psi + \pdv{\psi}{y} \pdv{}{x} \laplacian \psi = 0
 \\]
 
+Also, the vorticity $\omega$ is given by:
+
+\\[
+\omega = \curl \b{v} = -\laplacian \psi
+\\]
+
 If we know the stream function $\psi$, we can immediately determine the form of streamlines.
 The equation of a streamline is:
 
@@ -240,6 +246,7 @@ The velocity potential $\phi$ and the stream function $\psi$ are related to the 
 v_x = \pdv{\phi}{x} = \pdv{\psi}{y}, \quad v_y = \pdv{\phi}{y} = -\pdv{\psi}{x}
 \\]
 
+
 These relations between $\phi$ and $\psi$ are known as the _Cauchy-Riemann equations_
 for a complex function $w=\phi + i \psi$ to be an analytic function of the complex variable $z = x + iy$.
 This means that $w(z)$ has a well-defined derivative at every point in the flow field.
@@ -281,4 +288,98 @@ This shows that both the circulation $\Gamma$ and the mass flux $Q$ are determin
 
 \\[
 \Gamma + i \frac{Q}{\rho} = 2 \pi i \sum_k \text{Res}(w^\prime, z_k)
+\\]
+
+#### Governing Equations
+
+The velocity potential satisfies
+
+\\[
+\b{v}=\grad\phi,\qquad
+v_x=\pdv{\phi}{x},\quad v_y=\pdv{\phi}{y}.
+\\]
+
+Since the flow is incompressible,
+
+\\[
+\div\b{v}=0,
+\\]
+
+we obtain the governing equation for $\phi$:
+
+\\[
+\laplacian\phi
+=\pdvn{2}{\phi}{x}+\pdvn{2}{\phi}{y}=0.
+\\]
+
+The stream function satisfies
+
+\\[
+v_x=\pdv{\psi}{y},\qquad
+v_y=-\pdv{\psi}{x}.
+\\]
+
+This automatically gives $\div\b{v}=0$.
+The irrotational condition is
+
+\\[
+(\curl\b{v})_z=\pdv{v_y}{x}-\pdv{v_x}{y}=0.
+\\]
+
+Substituting the stream-function representation gives
+
+\\[
+\laplacian \psi =
+\pdvn{2}{\psi}{x}+\pdvn{2}{\psi}{y}=0.
+\\]
+
+Thus both $\phi$ and $\psi$ are harmonic functions in a two-dimensional irrotational incompressible flow.
+
+In cylindrical coordinates $(r,\theta,z)$, for a two-dimensional flow independent of $z$ and with $v_z=0$, the velocity is
+
+\\[
+\b{v}=v_r\hat{\b{r}}+v_\theta\hat{\bs{\theta}}.
+\\]
+
+The velocity potential gives
+
+\\[
+v_r=\pdv{\phi}{r},\qquad
+v_\theta=\frac{1}{r}\pdv{\phi}{\theta}.
+\\]
+
+The incompressibility condition becomes
+
+\\[
+\div\b{v}
+=\frac{1}{r}\pdv{}{r}(rv_r)+\frac{1}{r}\pdv{v_\theta}{\theta}=0.
+\\]
+
+Therefore the governing equation for $\phi$ is
+
+\\[
+\frac{1}{r}\pdv{}{r}\left(r\pdv{\phi}{r}\right)
++\frac{1}{r^2}\pdvn{2}{\phi}{\theta}=0.
+\\]
+
+For the stream function in cylindrical coordinates, we define
+
+\\[
+v_r=\frac{1}{r}\pdv{\psi}{\theta},\qquad
+v_\theta=-\pdv{\psi}{r}.
+\\]
+
+This automatically satisfies $\div\b{v}=0$.
+The irrotational condition is
+
+\\[
+(\curl\b{v})\_z
+=\frac{1}{r}\pdv{}{r}(rv_\theta)-\frac{1}{r}\pdv{v_r}{\theta}=0.
+\\]
+
+Substitution gives the governing equation
+
+\\[
+\frac{1}{r}\pdv{}{r}\left(r\pdv{\psi}{r}\right)
++\frac{1}{r^2}\pdvn{2}{\psi}{\theta}=0.
 \\]

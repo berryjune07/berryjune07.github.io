@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="401 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   6 min
 </span>
 
       </span>
@@ -303,6 +303,166 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#kinetic-energy-balance" id="markdown-toc-kinetic-energy-balance">Kinetic Energy Balance</a></li>
+  <li><a href="#potential-flow-form" id="markdown-toc-potential-flow-form">Potential Flow Form</a></li>
+</ul>
+
+<h2 id="kinetic-energy-balance">Kinetic Energy Balance</h2>
+
+<p>Let an incompressible viscous fluid have constant density $\rho$ and shear viscosity $\eta$.
+Then $\div \b{v}=0$, and the viscous part of the stress tensor is</p>
+
+<p>\[
+\varepsilon_{ik}=\eta\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
+\]</p>
+
+<p>The incompressible Navier–Stokes equation without external force can be written in index notation as</p>
+
+<p>\[
+\pdv{v_i}{t}=-v_k\pdv{v_i}{x_k}-\frac{1}{\rho}\pdv{p}{x_i}
++\frac{1}{\rho}\pdv{\varepsilon_{ik}}{x_k}.
+\]</p>
+
+<p>Multiplying by $\rho v_i$, we obtain the local balance of kinetic energy density:</p>
+
+<p>\[
+\begin{align*}
+\pdv{}{t}\left(\frac{1}{2}\rho v^2\right)
+&amp;=-\rho v_i v_k\pdv{v_i}{x_k}-v_i\pdv{p}{x_i}
++v_i\pdv{\varepsilon_{ik}}{x_k} \nl
+&amp;=-\div\left(\frac{1}{2}\rho v^2\b{v}+p\b{v}-\b{v}\cdot\bs{\varepsilon}\right)
+-\varepsilon_{ik}\pdv{v_i}{x_k}.
+\end{align*}
+\]</p>
+
+<p>Here $\b{v}\cdot\bs{\varepsilon}$ denotes the vector whose $k$-th component is
+$v_i\varepsilon_{ik}$.
+Thus the expression</p>
+
+<p>\[
+\frac{1}{2}\rho v^2\b{v}+p\b{v}-\b{v}\cdot\bs{\varepsilon}
+\]</p>
+
+<p>is the kinetic energy flux density.
+The first term is the transport of kinetic energy by mass motion, the second term is the pressure work flux, and the last term is the flux due to viscous momentum transfer.
+The remaining term is not a divergence term and therefore represents an irreversible conversion of mechanical energy into heat.</p>
+
+<p>Integrating over a volume $V$ with boundary surface $S$, we get</p>
+
+<p>\[
+\odv{}{t}\int_V \frac{1}{2}\rho v^2\,dV
+=-\oint_S \left(\frac{1}{2}\rho v^2\b{v}+p\b{v}-\b{v}\cdot\bs{\varepsilon}\right)\cdot d\b{f}
+-\int_V \varepsilon_{ik}\pdv{v_i}{x_k}\,dV.
+\]</p>
+
+<p>If the volume is the whole region of motion and either the velocity vanishes at infinity or the no-slip condition holds on a fixed solid boundary, the surface integral vanishes.
+Then</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}
+=-\int_V \varepsilon_{ik}\pdv{v_i}{x_k}\,dV.
+\]</p>
+
+<p>Since $\varepsilon_{ik}$ is symmetric, this may be symmetrized:</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}
+=-\frac{1}{2}\int_V \varepsilon_{ik}
+\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)dV.
+\]</p>
+
+<p>Substituting the viscous stress tensor gives</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}
+=-\frac{\eta}{2}\int_V
+\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)^2 dV
+\]</p>
+
+<p>where summation over repeated indices is understood.
+Equivalently, if</p>
+
+<p>\[
+E_{ik}=\frac{1}{2}\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
+\]</p>
+
+<p>is the strain-rate tensor, then</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}=-2\eta\int_V E_{ik}E_{ik}\,dV.
+\]</p>
+
+<p>The quantity</p>
+
+<p>\[
+\Phi=\frac{\eta}{2}
+\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)^2
+=2\eta E_{ik}E_{ik}
+\]</p>
+
+<p>is called the <strong>dissipation function</strong>.
+It is the mechanical energy lost per unit volume and unit time.
+Since the mechanical energy cannot increase by internal friction alone, we must have</p>
+
+<p>\[
+\eta&gt;0.
+\]</p>
+
+<h2 id="potential-flow-form">Potential Flow Form</h2>
+
+<p>For a potential flow, let</p>
+
+<p>\[
+\b{v}=\grad \phi.
+\]</p>
+
+<p>Then</p>
+
+<p>\[
+\pdv{v_i}{x_k}=\pdv{v_k}{x_i}.
+\]</p>
+
+<p>If the fluid is also incompressible, then $\laplacian \phi=0$, hence</p>
+
+<p>\[
+\laplacian v_i=\pdv{}{x_i}(\laplacian \phi)=0.
+\]</p>
+
+<p>The dissipation formula becomes</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}
+=-2\eta\int_V \left(\pdv{v_i}{x_k}\right)^2dV.
+\]</p>
+
+<p>Using integration by parts,</p>
+
+<p>\[
+\begin{align*}
+\int_V \left(\pdv{v_i}{x_k}\right)^2dV
+&amp;=\int_V \pdv{}{x_k}\left(v_i\pdv{v_i}{x_k}\right)dV
+-\int_V v_i\laplacian v_i\,dV \nl
+&amp;=\oint_S v_i\pdv{v_i}{x_k}\,df_k.
+\end{align*}
+\]</p>
+
+<p>Since</p>
+
+<p>\[
+v_i\pdv{v_i}{x_k}
+=\frac{1}{2}\pdv{}{x_k}(v^2),
+\]</p>
+
+<p>we obtain the surface form</p>
+
+<p>\[
+\dot{E}_{\mathrm{kin}}
+=-\eta\oint_S \grad(v^2)\cdot d\b{f}
+\]</p>
+
+<p>for an incompressible potential flow.
+This form is useful when the outer flow is potential but the loss of energy is determined by boundary data.</p>
 
   
 </article>
@@ -457,7 +617,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">Couette Flow and Poiseuille Flow</a>  </h3>      <a class="fill-card no-hover" href="/physics/couette-flow-and-poiseuille-flow.html" tabindex="-1"><span class="sr-only">Continue reading Couette Flow and Poiseuille Flow</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">Viscous Fluids and the Navier–Stokes Equation</a>  </h3>      <a class="fill-card no-hover" href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" tabindex="-1"><span class="sr-only">Continue reading Viscous Fluids and the Navier–Stokes Equation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">    <span>              [Fluid Mechanics 2.3]            Couette Flow and Poiseuille Flow    </span>  </a>      <time class="faded fine" datetime="2026-01-20T00:00:00+09:00">      20 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html"></span>  </li>          <li class="h4">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">    <span>              [Fluid Mechanics 2.1]            Viscous Fluids and the Navier–Stokes Equation    </span>  </a>      <time class="faded fine" datetime="2025-12-15T00:00:00+09:00">      15 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html"></span>  </li>          <li class="h4">  <a href="/physics/internal-waves-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 1.10]            Internal Waves in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2025-10-26T00:00:00+09:00">      26 Oct 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html"></span>  </li>      </ul></aside>
+                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="flip-title">The Law of Similarity and Reynolds Number</a>  </h3>      <a class="fill-card no-hover" href="/physics/the-law-of-similarity-and-reynolds-number.html" tabindex="-1"><span class="sr-only">Continue reading The Law of Similarity and Reynolds Number</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">Couette Flow and Poiseuille Flow</a>  </h3>      <a class="fill-card no-hover" href="/physics/couette-flow-and-poiseuille-flow.html" tabindex="-1"><span class="sr-only">Continue reading Couette Flow and Poiseuille Flow</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="flip-title">    <span>              [Fluid Mechanics 2.4]            The Law of Similarity and Reynolds Number    </span>  </a>      <time class="faded fine" datetime="2026-04-01T00:00:00+09:00">      01 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html"></span>  </li>          <li class="h4">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">    <span>              [Fluid Mechanics 2.3]            Couette Flow and Poiseuille Flow    </span>  </a>      <time class="faded fine" datetime="2026-01-20T00:00:00+09:00">      20 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html"></span>  </li>          <li class="h4">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">    <span>              [Fluid Mechanics 2.1]            Viscous Fluids and the Navier–Stokes Equation    </span>  </a>      <time class="faded fine" datetime="2025-12-15T00:00:00+09:00">      15 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html"></span>  </li>          <li class="h4">  <a href="/physics/internal-waves-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 1.10]            Internal Waves in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2025-10-26T00:00:00+09:00">      26 Oct 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html"></span>  </li>      </ul></aside>
 
   
 

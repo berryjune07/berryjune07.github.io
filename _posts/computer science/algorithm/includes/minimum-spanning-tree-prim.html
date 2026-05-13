@@ -1,0 +1,203 @@
+{% assign viz_id = include.id | default: "mst-prim-demo" %}
+<div id="{{ viz_id }}" class="mstpv-root">
+  <style>
+    #{{ viz_id }} { margin: 2rem 0; color: #1f2937; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .mstpv-stack { display: grid; gap: 1rem; }
+    #{{ viz_id }} .mstpv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #{{ viz_id }} .mstpv-graph svg { display: block; width: min(100%, 620px); min-width: 520px; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .mstpv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #{{ viz_id }} .mstpv-status p { margin: 0; }
+    #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .mstpv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #{{ viz_id }} .mstpv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #{{ viz_id }} .mstpv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .mstpv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .mstpv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #{{ viz_id }} .mstpv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #{{ viz_id }} .mstpv-line { overflow-x: auto; white-space: nowrap; }
+    #{{ viz_id }} .mstpv-edge { stroke: #64748b; stroke-width: 2.2; }
+    #{{ viz_id }} .mstpv-edge-frontier { stroke: #d97706; stroke-width: 3.2; }
+    #{{ viz_id }} .mstpv-edge-tree { stroke: #2563eb; stroke-width: 4; }
+    #{{ viz_id }} .mstpv-edge-current { stroke: #dc2626; stroke-width: 5; }
+    #{{ viz_id }} .mstpv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #{{ viz_id }} .mstpv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #{{ viz_id }} .mstpv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #{{ viz_id }} .mstpv-node-selected circle { fill: #dbeafe; stroke: #2563eb; }
+    #{{ viz_id }} .mstpv-node-current circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 4; }
+    #{{ viz_id }} .mstpv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #{{ viz_id }} .mstpv-legend { font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .mstpv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #{{ viz_id }} .mstpv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #{{ viz_id }} .mstpv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #{{ viz_id }} .mstpv-swatch-tree { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .mstpv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
+  </style>
+
+  <div class="mstpv-stack">
+    <div class="mstpv-graph" data-role="graph"></div>
+    <div class="mstpv-status" data-role="status"></div>
+    <div class="mstpv-controls-shell">
+      <div class="mstpv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="mstpv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="mstpv-info">
+      <div class="mstpv-line"><strong>Selected vertices:</strong> <span data-role="selected"></span></div>
+      <div class="mstpv-line"><strong>Accepted edges:</strong> <span data-role="accepted"></span></div>
+      <div class="mstpv-line"><strong>Priority queue:</strong> <span data-role="queue"></span></div>
+    </div>
+    <div class="mstpv-legend">
+      <div class="mstpv-legend-item"><span class="mstpv-swatch mstpv-swatch-current"></span> Edge currently chosen from the priority queue</div>
+      <div class="mstpv-legend-item"><span class="mstpv-swatch mstpv-swatch-tree"></span> Selected vertex or accepted edge</div>
+      <div class="mstpv-legend-item"><span class="mstpv-swatch mstpv-swatch-frontier"></span> Edge crossing from the tree to the outside</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function key(a,b) { return a < b ? a + "-" + b : b + "-" + a; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function copy(a) { return a.slice(); }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var vertices = ["A","B","C","D"];
+      var edges = [
+        { u:"C", v:"D", w:3 },
+        { u:"B", v:"D", w:4 },
+        { u:"B", v:"C", w:5, label:[302,158] },
+        { u:"A", v:"B", w:6 },
+        { u:"A", v:"D", w:8, label:[302,202] },
+        { u:"A", v:"C", w:10 }
+      ];
+      var pos = { A:[115,85], B:[425,85], C:[115,275], D:[425,275] };
+      function edgeKey(e) { return key(e.u,e.v); }
+      function edgeText(e) { return "(" + e.u + "," + e.v + "," + e.w + ")"; }
+      function keysText(keys) {
+        if (!keys.length) return "<code>-</code>";
+        return "<code>" + keys.map(function (k) {
+          return edgeText(edges.filter(function (e) { return edgeKey(e) === k; })[0]);
+        }).join(", ") + "</code>";
+      }
+      function queueText(queue) {
+        if (!queue.length) return "<code>-</code>";
+        return "<code>" + queue.slice().sort(function (a,b) {
+          return a.edge.w - b.edge.w || edgeText(a.edge).localeCompare(edgeText(b.edge));
+        }).map(function (x) { return edgeText(x.edge); }).join(", ") + "</code>";
+      }
+      function frontierKeys(queue, selected) {
+        return queue.filter(function (x) {
+          var left = has(selected,x.edge.u);
+          var right = has(selected,x.edge.v);
+          return left !== right;
+        }).map(function (x) { return edgeKey(x.edge); });
+      }
+      function makeState(title, desc, current, accepted, selected, queue) {
+        return { title:title, desc:desc, current:current ? edgeKey(current) : null, accepted:copy(accepted), selected:copy(selected), queue:queue.slice(), frontier:frontierKeys(queue,selected) };
+      }
+      function buildStates() {
+        var states = [], selected = ["A"], accepted = [];
+        var queue = [
+          { edge:edges[3], to:"B" },
+          { edge:edges[4], to:"D" },
+          { edge:edges[5], to:"C" }
+        ];
+        function pushFrom(v) {
+          edges.forEach(function (e) {
+            var other = null;
+            if (e.u === v) other = e.v;
+            if (e.v === v) other = e.u;
+            if (other && !has(selected,other)) queue.push({ edge:e, to:other });
+          });
+        }
+        states.push(makeState("Start at A", "The current tree contains only `A`. Insert all edges incident to `A`.", null, accepted, selected, queue));
+        while (accepted.length < vertices.length - 1) {
+          queue.sort(function (a,b) { return a.edge.w - b.edge.w || edgeText(a.edge).localeCompare(edgeText(b.edge)); });
+          var item = queue.shift();
+          if (has(selected,item.to)) continue;
+          accepted.push(edgeKey(item.edge));
+          selected.push(item.to);
+          pushFrom(item.to);
+          queue = queue.filter(function (x) { return !has(selected,x.to); });
+          states.push(makeState("Accept " + edgeText(item.edge), "This is the minimum edge crossing from the current tree to an unselected vertex.", item.edge, accepted, selected, queue));
+        }
+        states.push(makeState("Finished", "All vertices are selected, and the accepted edges form a spanning tree.", null, accepted, selected, []));
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function edgeClass(s,e) {
+        var k = edgeKey(e);
+        if (s.current === k) return "mstpv-edge mstpv-edge-current";
+        if (has(s.accepted,k)) return "mstpv-edge mstpv-edge-tree";
+        if (has(s.frontier,k)) return "mstpv-edge mstpv-edge-frontier";
+        return "mstpv-edge";
+      }
+      function nodeClass(s,v) {
+        if (s.current) {
+          var e = edges.filter(function (x) { return edgeKey(x) === s.current; })[0];
+          if (e && (e.u === v || e.v === v)) return "mstpv-node mstpv-node-current";
+        }
+        if (has(s.selected,v)) return "mstpv-node mstpv-node-selected";
+        return "mstpv-node";
+      }
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"0 0 540 360", role:"img", "aria-label":"Prim algorithm visualizer" });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v];
+          svg.appendChild(svgEl("line", { x1:a[0], y1:a[1], x2:b[0], y2:b[1], class:edgeClass(s,e), "stroke-linecap":"round" }));
+        });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v], x = e.label ? e.label[0] : (a[0]+b[0])/2, y = e.label ? e.label[1] : (a[1]+b[1])/2;
+          svg.appendChild(svgEl("rect", { x:x-13, y:y-11, width:26, height:22, rx:5, ry:5, class:"mstpv-edge-label-bg" }));
+          var t = svgEl("text", { x:x, y:y, class:"mstpv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v) {
+          var p = pos[v], g = svgEl("g", { class:nodeClass(s,v) });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:25 }));
+          var t = svgEl("text", { x:p[0], y:p[1] });
+          t.textContent = v;
+          g.appendChild(t);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("selected").innerHTML = "<code>{" + s.selected.join(",") + "}</code>";
+        byRole("accepted").innerHTML = keysText(s.accepted);
+        byRole("queue").innerHTML = queueText(s.queue);
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>

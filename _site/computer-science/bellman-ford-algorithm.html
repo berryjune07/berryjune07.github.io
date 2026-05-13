@@ -19,9 +19,9 @@
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Bellman–Ford Algorithm | Jiho’s Blog</title>
+<title>Bellman-Ford Algorithm | Jiho’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="Bellman–Ford Algorithm">
+<meta property="og:title" content="Bellman-Ford Algorithm">
 <meta name="author" content="Jiho Jun">
 <meta property="og:locale" content="en">
 <meta name="description" content="noting down my thoughts and experiences">
@@ -32,9 +32,9 @@
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-07-24T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Bellman–Ford Algorithm">
+<meta property="twitter:title" content="Bellman-Ford Algorithm">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-24T00:00:00+09:00","datePublished":"2025-07-24T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Bellman–Ford Algorithm","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/bellman-ford-algorithm.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/bellman-ford-algorithm.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-24T00:00:00+09:00","datePublished":"2025-07-24T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Bellman-Ford Algorithm","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/bellman-ford-algorithm.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/bellman-ford-algorithm.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -241,7 +241,7 @@
   <header>
     <h1 class="post-title flip-project-title">
       
-        Bellman–Ford Algorithm
+        Bellman-Ford Algorithm
         
       
     </h1>
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="486 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="435 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   8 min
+   7 min
 </span>
 
       </span>
@@ -326,72 +326,256 @@ The relaxation process updates the shortest path estimate for each vertex based 
   <li>After $V - 1$ iterations, check for negative weight cycles by iterating through all edges again. If any distance can still be updated, a negative weight cycle exists. If no updates are possible, the algorithm terminates successfully.</li>
 </ol>
 
-<p>Consider the graph and the edges below:</p>
+<p>The interactive demo below uses the edge order</p>
 
-<pre><code class="language-mermaid">graph LR
-    A(("$$A:0$$"));B(("$$B:\infty$$"));C(("$$C:\infty$$"));D(("$$D:\infty$$"));E(("$$E:\infty$$"));
-    A--&gt;|8|E;
-    A--&gt;|-6|B;
-    A--&gt;|9|D;
-    B--&gt;|-2|C;
-    C--&gt;|5|D;
-    D--&gt;|-4|C;
-    A--&gt;|3|C;
-    C--&gt;|-7|E;
-    E--&gt;|-13|C;
-</code></pre>
-<center>
-$\mathrm{E} = \{(A, E, 8), (A, B, -6), (A, D, 9), (B, C, -2), (C, D, 5), (D, C, -4), (A, C, 3), (C, E, -7), (E, C, -13)\}$
-</center>
-<p><br></p>
+<p>\[
+\begin{gathered}
+(A,E,8),(A,B,-6),(A,D,9),(B,C,-2),(C,D,5),\nl
+(D,C,-4),(A,C,3),(C,E,-7),(E,C,-13).
+\end{gathered}
+\]</p>
 
-<p>After the first relaxation, the distances are updated as follows:</p>
+<p>Each step performs one full pass over all edges.</p>
 
-<pre><code class="language-mermaid">graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-28$$"));D(("$$D:-3$$"));E(("$$E:-15$$"));
-    A--&gt;|8|E;
-    A--&gt;|-6|B;
-    A--&gt;|9|D;
-    B--&gt;|-2|C;
-    C--&gt;|5|D;
-    D--&gt;|-4|C;
-    A--&gt;|3|C;
-    C--&gt;|-7|E;
-    E--&gt;|-13|C;
-</code></pre>
+<div id="bellman-ford-demo" class="bfv-root">
+  <style>
+    #bellman-ford-demo { margin: 2rem 0; color: #1f2937; }
+    #bellman-ford-demo * { box-sizing: border-box; }
+    #bellman-ford-demo .bfv-stack { display: grid; gap: 1rem; }
+    #bellman-ford-demo .bfv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #bellman-ford-demo .bfv-graph svg { display: block; width: min(100%, 680px); min-width: 560px; height: auto; margin: 0 auto; }
+    #bellman-ford-demo .bfv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #bellman-ford-demo .bfv-status p { margin: 0; }
+    #bellman-ford-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #bellman-ford-demo .bfv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #bellman-ford-demo .bfv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #bellman-ford-demo .bfv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #bellman-ford-demo .bfv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #bellman-ford-demo .bfv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #bellman-ford-demo .bfv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #bellman-ford-demo .bfv-line { overflow-x: auto; white-space: nowrap; }
+    #bellman-ford-demo .bfv-edge { fill: none; stroke: #64748b; stroke-width: 2.2; }
+    #bellman-ford-demo .bfv-edge-updated { stroke: #2563eb; stroke-width: 4; }
+    #bellman-ford-demo .bfv-edge-negative { stroke: #dc2626; stroke-width: 4.5; }
+    #bellman-ford-demo .bfv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #bellman-ford-demo .bfv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #bellman-ford-demo .bfv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #bellman-ford-demo .bfv-node-source circle { fill: #dbeafe; stroke: #2563eb; }
+    #bellman-ford-demo .bfv-node-updated circle { fill: #fef3c7; stroke: #d97706; stroke-width: 3; }
+    #bellman-ford-demo .bfv-node-negative circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 4; }
+    #bellman-ford-demo .bfv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #bellman-ford-demo .bfv-node-name { font-size: 17px; font-weight: 700; }
+    #bellman-ford-demo .bfv-node-dist { font-size: 12px; font-weight: 600; }
+    #bellman-ford-demo .bfv-legend { font-size: 0.95em; line-height: 1.7; }
+    #bellman-ford-demo .bfv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #bellman-ford-demo .bfv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #bellman-ford-demo .bfv-swatch-source { background: #dbeafe; border-color: #2563eb; }
+    #bellman-ford-demo .bfv-swatch-updated { background: #fef3c7; border-color: #d97706; }
+    #bellman-ford-demo .bfv-swatch-negative { background: #fee2e2; border-color: #dc2626; }
+  </style>
 
-<p>After the second relaxation, the distances are updated as follows:</p>
+  <div class="bfv-stack">
+    <div class="bfv-graph" data-role="graph"></div>
+    <div class="bfv-status" data-role="status"></div>
+    <div class="bfv-controls-shell">
+      <div class="bfv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="bfv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="bfv-info">
+      <div class="bfv-line">
+<strong>Distances:</strong> <span data-role="distances"></span>
+</div>
+      <div class="bfv-line">
+<strong>Relaxed edges in this step:</strong> <span data-role="relaxed"></span>
+</div>
+    </div>
+    <div class="bfv-legend">
+      <div class="bfv-legend-item">
+<span class="bfv-swatch bfv-swatch-source"></span> Source vertex</div>
+      <div class="bfv-legend-item">
+<span class="bfv-swatch bfv-swatch-updated"></span> Vertex updated during this full pass</div>
+      <div class="bfv-legend-item">
+<span class="bfv-swatch bfv-swatch-negative"></span> Edge proving a reachable negative cycle</div>
+    </div>
+  </div>
 
-<pre><code class="language-mermaid">graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-48$$"));D(("$$D:-23$$"));E(("$$E:-35$$"));
-    A--&gt;|8|E;
-    A--&gt;|-6|B;
-    A--&gt;|9|D;
-    B--&gt;|-2|C;
-    C--&gt;|5|D;
-    D--&gt;|-4|C;
-    A--&gt;|3|C;
-    C--&gt;|-7|E;
-    E--&gt;|-13|C;
-</code></pre>
+  <script>
+    (function () {
+      var root = document.getElementById("bellman-ford-demo");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function copyDist(d) { var out = {}; vertices.forEach(function (v) { out[v] = d[v]; }); return out; }
+      function edgeKey(e) { return e.u + "-" + e.v; }
+      function edgeText(e) { return "(" + e.u + "," + e.v + "," + e.w + ")"; }
+      function distText(x) { return Number.isFinite(x) ? String(x) : "INF"; }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var inf = Infinity;
+      var vertices = ["A","B","C","D","E"];
+      var pos = { A:[85,170], B:[230,70], C:[395,170], D:[230,270], E:[560,170] };
+      var edges = [
+        { u:"A", v:"E", w:8, q:[320,42], label:[340,104] },
+        { u:"A", v:"B", w:-6, label:[148,110] },
+        { u:"A", v:"D", w:9, label:[148,230] },
+        { u:"B", v:"C", w:-2, label:[322,126] },
+        { u:"C", v:"D", w:5, q:[330,252], label:[333,252] },
+        { u:"D", v:"C", w:-4, q:[315,188], label:[313,200] },
+        { u:"A", v:"C", w:3, label:[240,160] },
+        { u:"C", v:"E", w:-7, q:[480,125], label:[480,126] },
+        { u:"E", v:"C", w:-13, q:[480,215], label:[480,215] }
+      ];
+      function formatEdges(keys) {
+        if (!keys.length) return "<code>-</code>";
+        return "<code>" + keys.map(function (k) {
+          return edgeText(edges.filter(function (e) { return edgeKey(e) === k; })[0]);
+        }).join(", ") + "</code>";
+      }
+      function formatDistances(d) {
+        return "<code>" + vertices.map(function (v) { return v + ":" + distText(d[v]); }).join(", ") + "</code>";
+      }
+      function makeState(title, desc, d, relaxed, updated, negative) {
+        return { title:title, desc:desc, dist:copyDist(d), relaxed:relaxed.slice(), updated:updated.slice(), negative:negative || null };
+      }
+      function buildStates() {
+        var d = {};
+        vertices.forEach(function (v) { d[v] = inf; });
+        d.A = 0;
+        var states = [makeState("Initialization", "Set `d(A)=0` and all other distances to `INF`.", d, [], [], null)];
+        for (var pass = 1; pass <= vertices.length - 1; pass++) {
+          var relaxed = [], updated = [];
+          edges.forEach(function (e) {
+            if (!Number.isFinite(d[e.u])) return;
+            var cand = d[e.u] + e.w;
+            if (cand < d[e.v]) {
+              d[e.v] = cand;
+              relaxed.push(edgeKey(e));
+              if (!has(updated,e.v)) updated.push(e.v);
+            }
+          });
+          states.push(makeState("After pass " + pass, "Perform one full pass over the edge list. Every highlighted edge relaxed its endpoint.", d, relaxed, updated, null));
+        }
+        var witness = null;
+        edges.some(function (e) {
+          if (Number.isFinite(d[e.u]) && d[e.u] + e.w < d[e.v]) { witness = e; return true; }
+          return false;
+        });
+        if (witness) {
+          var desc = "Even after `|V|-1` passes, `" + edgeText(witness) + "` can still decrease a distance: `" + distText(d[witness.u]) + " + " + witness.w + " < " + distText(d[witness.v]) + "`.";
+          states.push(makeState("Negative cycle detected", desc, d, [edgeKey(witness)], [witness.v], edgeKey(witness)));
+        }
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function shorten(a,b) {
+        var dx = b[0]-a[0], dy = b[1]-a[1], len = Math.sqrt(dx*dx+dy*dy) || 1, r = 29;
+        return [[a[0]+dx*r/len,a[1]+dy*r/len],[b[0]-dx*r/len,b[1]-dy*r/len]];
+      }
+      function edgePath(e) {
+        var s = shorten(pos[e.u],pos[e.v]), a = s[0], b = s[1];
+        if (e.q) return "M " + a[0] + " " + a[1] + " Q " + e.q[0] + " " + e.q[1] + " " + b[0] + " " + b[1];
+        return "M " + a[0] + " " + a[1] + " L " + b[0] + " " + b[1];
+      }
+      function markerId(kind) { return root.id + "-arrow-" + kind; }
+      function edgeKind(s,e) {
+        var k = edgeKey(e);
+        if (s.negative === k) return "negative";
+        if (has(s.relaxed,k)) return "updated";
+        return "normal";
+      }
+      function edgeClass(kind) {
+        if (kind === "negative") return "bfv-edge bfv-edge-negative";
+        if (kind === "updated") return "bfv-edge bfv-edge-updated";
+        return "bfv-edge";
+      }
+      function nodeClass(s,v) {
+        if (s.negative && has(s.updated,v)) return "bfv-node bfv-node-negative";
+        if (has(s.updated,v)) return "bfv-node bfv-node-updated";
+        if (v === "A") return "bfv-node bfv-node-source";
+        return "bfv-node";
+      }
+      function appendMarker(defs, kind, color) {
+        var marker = svgEl("marker", { id:markerId(kind), viewBox:"0 0 10 10", refX:"9", refY:"5", markerWidth:"7", markerHeight:"7", orient:"auto-start-reverse" });
+        marker.appendChild(svgEl("path", { d:"M 0 0 L 10 5 L 0 10 z", fill:color }));
+        defs.appendChild(marker);
+      }
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"0 0 650 340", role:"img", "aria-label":"Bellman-Ford algorithm visualizer" });
+        var defs = svgEl("defs", {});
+        appendMarker(defs,"normal","#64748b");
+        appendMarker(defs,"updated","#2563eb");
+        appendMarker(defs,"negative","#dc2626");
+        svg.appendChild(defs);
+        edges.forEach(function (e) {
+          var kind = edgeKind(s,e);
+          svg.appendChild(svgEl("path", { d:edgePath(e), class:edgeClass(kind), "marker-end":"url(#" + markerId(kind) + ")" }));
+        });
+        edges.forEach(function (e) {
+          var p = e.label;
+          svg.appendChild(svgEl("rect", { x:p[0]-18, y:p[1]-11, width:36, height:22, rx:5, ry:5, class:"bfv-edge-label-bg" }));
+          var t = svgEl("text", { x:p[0], y:p[1], class:"bfv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v) {
+          var p = pos[v], g = svgEl("g", { class:nodeClass(s,v) });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:29 }));
+          var name = svgEl("text", { x:p[0], y:p[1]-7, class:"bfv-node-name" });
+          name.textContent = v;
+          var d = svgEl("text", { x:p[0], y:p[1]+12, class:"bfv-node-dist" });
+          d.textContent = distText(s.dist[v]);
+          g.appendChild(name);
+          g.appendChild(d);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("distances").innerHTML = formatDistances(s.dist);
+        byRole("relaxed").innerHTML = formatEdges(s.relaxed);
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>
 
-<p>After the third relaxation, the distances are updated as follows:</p>
+<p>Here $V=5$, so the algorithm performs $V-1=4$ full relaxation passes.
+Even after these passes, the edge $(C,D,5)$ can still be relaxed.
+Thus a negative cycle is reachable from $A$.
+Indeed, the cycle</p>
 
-<pre><code class="language-mermaid">graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-68$$"));D(("$$D:-43$$"));E(("$$E:-55$$"));
-    A--&gt;|8|E;
-    A--&gt;|-6|B;
-    A--&gt;|9|D;
-    B--&gt;|-2|C;
-    C--&gt;|5|D;
-    D--&gt;|-4|C;
-    A--&gt;|3|C;
-    C--&gt;|-7|E;
-    E--&gt;|-13|C;
-</code></pre>
+<p>\[
+C\to E\to C
+\]</p>
 
-<p>Likewise, for this graph, the Bellman–Ford algorithm will continue to relax the edges infinitely.
-Therefore, it will detect a negative weight cycle at the end of the algorithm.</p>
+<p>has total weight $-7+(-13)=-20$.</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -589,7 +773,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd–Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd–Warshall Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd–Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>      </ul></aside>
+                                                                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd-Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd-Warshall Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>      </ul></aside>
 
   
 

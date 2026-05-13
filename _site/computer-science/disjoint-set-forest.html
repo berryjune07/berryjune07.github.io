@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -335,164 +335,34 @@ Start with six singleton sets and modify the forest directly.</p>
 
 <div id="disjoint-set-demo" class="dsv-root">
   <style>
-    #disjoint-set-demo {
-      margin: 2rem 0;
-      color: #1f2937;
-    }
-
-    #disjoint-set-demo * {
-      box-sizing: border-box;
-    }
-
-    #disjoint-set-demo .dsv-stack {
-      display: grid;
-      gap: 1rem;
-    }
-
-    #disjoint-set-demo pre.mermaid {
-      margin: 0;
-      text-align: center;
-    }
-
-    #disjoint-set-demo [data-role="graph"] svg {
-      display: block;
-      margin: 0 auto;
-    }
-
-    #disjoint-set-demo [data-role="graph"] svg .flowchart-link,
-    #disjoint-set-demo [data-role="graph"] svg .edge-thickness-normal,
-    #disjoint-set-demo [data-role="graph"] svg .edge-thickness-thick,
-    #disjoint-set-demo [data-role="graph"] svg path.path {
-      fill: none !important;
-      stroke: #64748b !important;
-      stroke-width: 1.5px !important;
-    }
-
-    #disjoint-set-demo [data-role="graph"] svg marker path,
-    #disjoint-set-demo [data-role="graph"] svg .arrowheadPath {
-      fill: #64748b !important;
-      stroke: #64748b !important;
-    }
-
-    #disjoint-set-demo .dsv-status-text {
-      margin: 0;
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(82, 96, 113, 0.18);
-      border-radius: 0.55rem;
-      background: #f8fafc;
-      color: #1f2937;
-      line-height: 1.7;
-    }
-
-    #disjoint-set-demo .dsv-status-text p {
-      margin: 0;
-    }
-
-    #disjoint-set-demo .dsv-status-text code {
-      padding: 0.08rem 0.38rem;
-      border-radius: 0.35rem;
-      background: rgba(148, 163, 184, 0.14);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.94em;
-    }
-
-    #disjoint-set-demo .dsv-controls-shell {
-      overflow-x: auto;
-      padding-bottom: 0.1rem;
-    }
-
-    #disjoint-set-demo .dsv-controls {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      gap: 0.5rem;
-      min-width: max-content;
-    }
-
-    #disjoint-set-demo .dsv-controls > * {
-      flex: 0 0 auto;
-      margin: 0;
-      vertical-align: middle;
-    }
-
-    #disjoint-set-demo .dsv-controls input[type="number"],
-    #disjoint-set-demo .dsv-controls button {
-      height: 2.35rem;
-      border-radius: 0.5rem;
-      font: inherit;
-      line-height: 1.2;
-      box-sizing: border-box;
-    }
-
-    #disjoint-set-demo .dsv-controls input[type="number"] {
-      width: 6rem;
-      min-width: 0;
-      border: 1px solid rgba(82, 96, 113, 0.24);
-      background: #fff;
-      color: #1f2937;
-      padding: 0 0.75rem;
-      outline: none;
-      appearance: textfield;
-    }
-
-    #disjoint-set-demo .dsv-controls input[type="number"]::-webkit-outer-spin-button,
-    #disjoint-set-demo .dsv-controls input[type="number"]::-webkit-inner-spin-button {
-      margin: 0;
-    }
-
-    #disjoint-set-demo .dsv-controls input[type="number"]:focus {
-      border-color: rgba(31, 41, 55, 0.45);
-      box-shadow: 0 0 0 3px rgba(31, 41, 55, 0.08);
-    }
-
-    #disjoint-set-demo .dsv-controls button {
-      appearance: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid currentColor;
-      background: transparent;
-      color: inherit;
-      padding: 0 0.85rem;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    #disjoint-set-demo .dsv-controls button:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
-    #disjoint-set-demo .dsv-legend {
-      margin-top: 0.75rem;
-      font-size: 0.95em;
-      line-height: 1.7;
-    }
-
-    #disjoint-set-demo .dsv-legend-item {
-      display: flex;
-      gap: 0.55rem;
-      align-items: center;
-    }
-
-    #disjoint-set-demo .dsv-swatch {
-      width: 0.95rem;
-      height: 0.95rem;
-      border-radius: 999px;
-      flex: 0 0 auto;
-      border: 2px solid transparent;
-    }
-
-    #disjoint-set-demo .dsv-swatch-root    { background: #dbeafe; border-color: #2563eb; }
+    #disjoint-set-demo { margin: 2rem 0; color: #1f2937; }
+    #disjoint-set-demo * { box-sizing: border-box; }
+    #disjoint-set-demo .dsv-stack { display: grid; gap: 1rem; }
+    #disjoint-set-demo .dsv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #disjoint-set-demo .dsv-graph svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+    #disjoint-set-demo .dsv-status-text { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; color: #1f2937; line-height: 1.7; }
+    #disjoint-set-demo .dsv-status-text p { margin: 0; }
+    #disjoint-set-demo .dsv-status-text code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #disjoint-set-demo .dsv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #disjoint-set-demo .dsv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #disjoint-set-demo .dsv-controls > * { flex: 0 0 auto; margin: 0; vertical-align: middle; }
+    #disjoint-set-demo .dsv-controls input[type="number"], #disjoint-set-demo .dsv-controls button { height: 2.35rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; box-sizing: border-box; }
+    #disjoint-set-demo .dsv-controls input[type="number"] { width: 6rem; min-width: 0; border: 1px solid rgba(82,96,113,0.24); background: #fff; color: #1f2937; padding: 0 0.75rem; outline: none; appearance: textfield; }
+    #disjoint-set-demo .dsv-controls input[type="number"]:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #disjoint-set-demo .dsv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0 0.85rem; cursor: pointer; white-space: nowrap; }
+    #disjoint-set-demo .dsv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #disjoint-set-demo .dsv-legend { margin-top: 0.75rem; font-size: 0.95em; line-height: 1.7; }
+    #disjoint-set-demo .dsv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #disjoint-set-demo .dsv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #disjoint-set-demo .dsv-swatch-root { background: #dbeafe; border-color: #2563eb; }
     #disjoint-set-demo .dsv-swatch-touched { background: #fef3c7; border-color: #d97706; }
     #disjoint-set-demo .dsv-swatch-current { background: #fee2e2; border-color: #dc2626; }
-    #disjoint-set-demo .dsv-swatch-normal  { background: #f8fafc; border-color: #475569; }
+    #disjoint-set-demo .dsv-swatch-normal { background: #f8fafc; border-color: #475569; }
   </style>
 
   <div class="dsv-stack">
-    <pre class="mermaid" data-role="graph"></pre>
-
+    <div class="dsv-graph" data-role="graph"></div>
     <div class="dsv-status-text" data-role="status-text"></div>
-
     <div class="dsv-controls-shell">
       <div class="dsv-controls">
         <input type="number" min="1" max="6" step="1" value="1" aria-label="Union first node" data-role="union-a">
@@ -522,354 +392,95 @@ Start with six singleton sets and modify the forest directly.</p>
     (function () {
       var root = document.getElementById("disjoint-set-demo");
       if (!root) return;
-
-      function $(role) {
-        return root.querySelector('[data-role="' + role + '"]');
-      }
-
-      function waitFor(checkFn, timeoutMs, intervalMs) {
-        return new Promise(function (resolve, reject) {
-          var start = Date.now();
-
-          function tick() {
-            var value = checkFn();
-            if (value) {
-              resolve(value);
-              return;
-            }
-            if (Date.now() - start >= timeoutMs) {
-              reject(new Error("Timed out while waiting for Mermaid."));
-              return;
-            }
-            setTimeout(tick, intervalMs);
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function getViz() {
+        if (window.__graphvizVizPromise) return window.__graphvizVizPromise;
+        window.__graphvizVizPromise = new Promise(function (resolve, reject) {
+          function ready() {
+            if (window.Viz && window.Viz.instance) { window.Viz.instance().then(resolve).catch(reject); return true; }
+            return false;
           }
-
-          tick();
-        });
-      }
-
-      function loadMermaidFallback() {
-        if (window.mermaid && typeof window.mermaid.run === "function") {
-          return Promise.resolve(window.mermaid);
-        }
-
-        if (window.__dsvMermaidPromise) {
-          return window.__dsvMermaidPromise;
-        }
-
-        window.__dsvMermaidPromise = new Promise(function (resolve, reject) {
+          if (ready()) return;
           var script = document.createElement("script");
-          script.src = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js";
+          script.src = "https://cdn.jsdelivr.net/npm/@viz-js/viz@3/lib/viz-standalone.js";
           script.async = true;
-          script.onload = function () {
-            if (window.mermaid && typeof window.mermaid.run === "function") {
-              try {
-                window.mermaid.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
-              } catch (e) {}
-              resolve(window.mermaid);
-            } else {
-              reject(new Error("Mermaid loaded, but window.mermaid is unavailable."));
-            }
-          };
-          script.onerror = function () {
-            reject(new Error("Failed to load Mermaid."));
-          };
+          script.onload = function () { if (!ready()) reject(new Error("Viz.js did not expose Viz.instance.")); };
+          script.onerror = function () { reject(new Error("Failed to load Viz.js.")); };
           document.head.appendChild(script);
         });
-
-        return window.__dsvMermaidPromise;
+        return window.__graphvizVizPromise;
       }
-
-      function getMermaid() {
-        return waitFor(function () {
-          return window.mermaid && typeof window.mermaid.run === "function" ? window.mermaid : null;
-        }, 1500, 50).then(function (mermaidInstance) {
-          try {
-            mermaidInstance.initialize({ startOnLoad: false, flowchart: { htmlLabels: false, curve: "linear" } });
-          } catch (e) {}
-          return mermaidInstance;
-        }).catch(function () {
-          return loadMermaidFallback();
-        });
+      function html(s) { return "<p>" + String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function quote(s) { return '"' + String(s).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g,"\\n") + '"'; }
+      function addUnique(a,x) { if (a.indexOf(x) === -1) a.push(x); }
+      var nodes = [1,2,3,4,5,6];
+      function initial() {
+        var parent = {}, rank = {};
+        nodes.forEach(function(n){ parent[n] = n; rank[n] = 0; });
+        return { parent: parent, rank: rank, current: [], roots: nodes.slice(), touched: [], status: "Each node starts in its own set. Use `Union` or `Find` to update the forest." };
       }
-
-      function escapeHtml(s) {
-        return String(s)
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
+      function copy(s) {
+        return { parent: Object.assign({}, s.parent), rank: Object.assign({}, s.rank), current: s.current.slice(), roots: s.roots.slice(), touched: s.touched.slice(), status: s.status };
       }
-
-      function renderInlineCodeMarkdown(text) {
-        return "<p>" + escapeHtml(text).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
-      }
-
-      function pushUnique(list, value) {
-        if (list.indexOf(value) === -1) list.push(value);
-      }
-
-      function cloneState(state) {
-        return {
-          parent: Object.assign({}, state.parent),
-          rank: Object.assign({}, state.rank),
-          currentNodes: state.currentNodes.slice(),
-          rootNodes: state.rootNodes.slice(),
-          touchedNodes: state.touchedNodes.slice(),
-          statusText: state.statusText
-        };
-      }
-
-      function makeInitialState(nodes) {
-        var parent = {};
-        var rank = {};
-        nodes.forEach(function (node) {
-          parent[node] = node;
-          rank[node] = 0;
-        });
-
-        return {
-          parent: parent,
-          rank: rank,
-          currentNodes: [],
-          rootNodes: nodes.slice(),
-          touchedNodes: [],
-          statusText: "Each node starts in its own set. Use `Union` or `Find` to update the forest."
-        };
-      }
-
-      function clearHighlights(state) {
-        state.currentNodes = [];
-        state.rootNodes = [];
-        state.touchedNodes = [];
-      }
-
-      function readNodeInput(role) {
-        var input = $(role);
-        var value = Number(input.value);
-        if (!Number.isInteger(value) || value < 1 || value > 6) {
-          input.focus();
-          throw new Error("Please enter an integer from `1` to `6`.");
-        }
+      function clear(s) { s.current = []; s.roots = []; s.touched = []; }
+      function read(role) {
+        var input = byRole(role), value = Number(input.value);
+        if (!Number.isInteger(value) || value < 1 || value > 6) { input.focus(); throw new Error("Please enter an integer from `1` to `6`."); }
         return value;
       }
-
-      function findRoot(state, x, touchedNodes) {
-        var path = [];
-        var current = x;
-
-        while (state.parent[current] !== current) {
-          path.push(current);
-          current = state.parent[current];
-        }
-
-        var rootNode = current;
-
-        path.forEach(function (node) {
-          if (state.parent[node] !== rootNode) {
-            state.parent[node] = rootNode;
-          }
-          pushUnique(touchedNodes, node);
-        });
-
-        pushUnique(touchedNodes, rootNode);
-
-        return {
-          root: rootNode,
-          path: path
-        };
+      function findRoot(s, x, touched) {
+        var path = [], cur = x;
+        while (s.parent[cur] !== cur) { path.push(cur); cur = s.parent[cur]; }
+        path.forEach(function(v){ s.parent[v] = cur; addUnique(touched, v); });
+        addUnique(touched, cur);
+        return { root: cur, path: path };
       }
-
-      function formatPath(path, rootNode) {
-        if (!path.length) return String(rootNode);
-        return path.join(" -> ") + " -> " + rootNode;
+      function pathText(path, rootNode) { return path.length ? path.join(" -> ") + " -> " + rootNode : String(rootNode); }
+      function doFind(prev, x) {
+        var s = copy(prev); clear(s); s.current = [x];
+        var touched = [], r = findRoot(s, x, touched);
+        s.roots = [r.root]; s.touched = touched;
+        s.status = "`find(" + x + ")` reached root `" + r.root + "` along `" + pathText(r.path, r.root) + "`.";
+        return s;
       }
-
-      function applyUnion(prevState, a, b) {
-        var next = cloneState(prevState);
-        clearHighlights(next);
-        next.currentNodes = [a, b];
-
-        var touchedNodes = [];
-        var left = findRoot(next, a, touchedNodes);
-        var right = findRoot(next, b, touchedNodes);
-
-        if (left.root === right.root) {
-          next.rootNodes = [left.root];
-          next.touchedNodes = touchedNodes;
-          next.statusText =
-            "`union(" + a + ", " + b + ")` found the same root `" + left.root + "`" +
-            ". No merge was needed.";
-          return next;
-        }
-
-        var newRoot = left.root;
-        var attachRoot = right.root;
-
-        if (next.rank[left.root] < next.rank[right.root]) {
-          newRoot = right.root;
-          attachRoot = left.root;
-        }
-
-        next.parent[attachRoot] = newRoot;
-        pushUnique(touchedNodes, newRoot);
-        pushUnique(touchedNodes, attachRoot);
-
-        var rankRaised = false;
-        if (next.rank[left.root] === next.rank[right.root]) {
-          next.rank[newRoot] += 1;
-          rankRaised = true;
-        }
-
-        next.rootNodes = [newRoot];
-        next.touchedNodes = touchedNodes;
-        next.statusText =
-          "`union(" + a + ", " + b + ")` attached root `" + attachRoot + "` under root `" + newRoot + "`" +
-          (rankRaised ? ". The ranks were equal, so `rank(" + newRoot + ")` increased." : ".");
-        return next;
+      function doUnion(prev, a, b) {
+        var s = copy(prev); clear(s); s.current = [a,b];
+        var touched = [], left = findRoot(s, a, touched), right = findRoot(s, b, touched);
+        if (left.root === right.root) { s.roots = [left.root]; s.touched = touched; s.status = "`union(" + a + ", " + b + ")` found the same root `" + left.root + "`. No merge was needed."; return s; }
+        var rootNode = left.root, child = right.root;
+        if (s.rank[left.root] < s.rank[right.root]) { rootNode = right.root; child = left.root; }
+        s.parent[child] = rootNode; addUnique(touched, rootNode); addUnique(touched, child);
+        var raised = false;
+        if (s.rank[left.root] === s.rank[right.root]) { s.rank[rootNode] += 1; raised = true; }
+        s.roots = [rootNode]; s.touched = touched;
+        s.status = "`union(" + a + ", " + b + ")` attached root `" + child + "` under root `" + rootNode + "`" + (raised ? ". The ranks were equal, so the root rank increased." : ".");
+        return s;
       }
-
-      function applyFind(prevState, x) {
-        var next = cloneState(prevState);
-        clearHighlights(next);
-        next.currentNodes = [x];
-
-        var touchedNodes = [];
-        var result = findRoot(next, x, touchedNodes);
-
-        next.rootNodes = [result.root];
-        next.touchedNodes = touchedNodes;
-        next.statusText =
-          "`find(" + x + ")` reached root `" + result.root + "` along `" + formatPath(result.path, result.root) + "`" +
-          ".";
-        return next;
+      function kind(s, n) { if (s.current.indexOf(n) !== -1) return "current"; if (s.roots.indexOf(n) !== -1) return "root"; if (s.touched.indexOf(n) !== -1) return "touched"; return "normal"; }
+      function dot(s) {
+        var fill = { normal:"#f8fafc", root:"#dbeafe", touched:"#fef3c7", current:"#fee2e2" };
+        var stroke = { normal:"#334155", root:"#2563eb", touched:"#d97706", current:"#dc2626" };
+        var out = ['digraph DSU {', 'graph [rankdir=TB, bgcolor="transparent", margin="0.05", nodesep="0.45", ranksep="0.65"];', 'node [shape=circle, style="filled", fontname="Helvetica", fontsize="12", fixedsize=true, width="0.86"];', 'edge [color="#64748b", penwidth="1.5", arrowsize="0.7"];'];
+        nodes.forEach(function(n){ var k = kind(s,n); out.push('N' + n + ' [label=' + quote(n + ":" + s.parent[n] + ":" + s.rank[n]) + ', fillcolor=' + quote(fill[k]) + ', color=' + quote(stroke[k]) + ', penwidth=' + (k === "current" ? '3' : '2') + '];'); });
+        nodes.forEach(function(n){ if (s.parent[n] !== n) out.push('N' + s.parent[n] + ' -> N' + n + ';'); });
+        out.push('}'); return out.join("\n");
       }
-
-      function nodeClass(node, state) {
-        if (state.currentNodes.indexOf(node) !== -1) return "current";
-        if (state.rootNodes.indexOf(node) !== -1) return "root";
-        if (state.touchedNodes.indexOf(node) !== -1) return "touched";
-        return "normal";
-      }
-
-      function labelText(node, state) {
-        return node + ":" + state.parent[node] + ":" + state.rank[node];
-      }
-
-      function buildMermaid(state) {
-        var lines = [];
-        lines.push('%%{init: {"flowchart": {"curve": "linear", "htmlLabels": false}} }%%');
-        lines.push("flowchart TD");
-
-        nodes.forEach(function (node) {
-          lines.push("N" + node + '["' + labelText(node, state) + '"]:::' + nodeClass(node, state));
-        });
-
-        nodes.forEach(function (node) {
-          if (state.parent[node] !== node) {
-            lines.push("N" + state.parent[node] + " --> N" + node);
-          }
-        });
-
-        lines.push("classDef normal fill:#f8fafc,stroke:#334155,stroke-width:1.5px;");
-        lines.push("classDef root fill:#dbeafe,stroke:#2563eb,stroke-width:2px;");
-        lines.push("classDef touched fill:#fef3c7,stroke:#d97706,stroke-width:2px;");
-        lines.push("classDef current fill:#fee2e2,stroke:#dc2626,stroke-width:3px;");
-        return lines.join("\n");
-      }
-
-      function renderMeta(state) {
-        $("status-text").innerHTML = renderInlineCodeMarkdown(state.statusText);
-        $("undo-btn").disabled = history.length <= 1;
-      }
-
-      function renderGraph(state) {
-        var graphEl = $("graph");
-        graphEl.removeAttribute("data-processed");
-        graphEl.textContent = buildMermaid(state);
-        return Promise.resolve(mermaidInstance.run({ nodes: [graphEl] }));
-      }
-
-      function render() {
-        var state = getState();
-        renderMeta(state);
-        renderChain = renderChain.catch(function () {
-          return null;
-        }).then(function () {
-          return renderGraph(state);
-        }).catch(function (err) {
-          $("status-text").innerHTML = renderInlineCodeMarkdown(
-            (state.statusText ? state.statusText + " " : "") +
-            "Graph render failed: " + (err && err.message ? err.message : "Unknown Mermaid error.")
-          );
-        });
-        return renderChain;
-      }
-
-      function commit(nextState) {
-        history.push(nextState);
-        render();
-      }
-
-      function handleAction(fn) {
-        try {
-          commit(fn(getState()));
-        } catch (err) {
-          var state = cloneState(getState());
-          clearHighlights(state);
-          state.statusText = err && err.message ? err.message : "The operation could not be applied.";
-          renderMeta(state);
-        }
-      }
-
+      function draw(s) { var target = byRole("graph"); target.innerHTML = ""; target.appendChild(viz.renderSVGElement(dot(s), { engine: "dot" })); }
+      function render() { var s = history[history.length-1]; byRole("status-text").innerHTML = html(s.status); byRole("undo-btn").disabled = history.length <= 1; draw(s); }
+      function commit(s) { history.push(s); render(); }
+      function handle(f) { try { commit(f(history[history.length-1])); } catch(e) { var s = copy(history[history.length-1]); clear(s); s.status = e && e.message ? e.message : "The operation could not be applied."; byRole("status-text").innerHTML = html(s.status); } }
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
-
-        getMermaid().then(function (loadedMermaid) {
-          mermaidInstance = loadedMermaid;
-          history = [makeInitialState(nodes)];
-          render();
-
-          $("union-btn").addEventListener("click", function () {
-            handleAction(function (state) {
-              return applyUnion(state, readNodeInput("union-a"), readNodeInput("union-b"));
-            });
-          });
-
-          $("find-btn").addEventListener("click", function () {
-            handleAction(function (state) {
-              return applyFind(state, readNodeInput("find-x"));
-            });
-          });
-
-          $("undo-btn").addEventListener("click", function () {
-            if (history.length > 1) {
-              history.pop();
-              render();
-            }
-          });
-
-          $("reset-btn").addEventListener("click", function () {
-            history = [makeInitialState(nodes)];
-            render();
-          });
-        }).catch(function (err) {
-          $("status-text").innerHTML = renderInlineCodeMarkdown(
-            "Mermaid failed to load: " + (err && err.message ? err.message : "Unknown error.")
-          );
-        });
+        getViz().then(function(loadedViz){ viz = loadedViz; history = [initial()]; render();
+          byRole("union-btn").addEventListener("click", function(){ handle(function(s){ return doUnion(s, read("union-a"), read("union-b")); }); });
+          byRole("find-btn").addEventListener("click", function(){ handle(function(s){ return doFind(s, read("find-x")); }); });
+          byRole("undo-btn").addEventListener("click", function(){ if (history.length > 1) { history.pop(); render(); } });
+          byRole("reset-btn").addEventListener("click", function(){ history = [initial()]; render(); });
+        }).catch(function(e){ byRole("status-text").innerHTML = html("Viz.js failed to load: " + (e && e.message ? e.message : "Unknown error.")); });
       }
-
-      var nodes = [1, 2, 3, 4, 5, 6];
-      var mermaidInstance = null;
-      var history = [];
-      var renderChain = Promise.resolve();
-
-      function getState() {
-        return history[history.length - 1];
-      }
-
-      start();
+      var viz = null, history = [];
+      if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
     })();
   </script>
 </div>
@@ -1437,7 +1048,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman–Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman–Ford Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman–Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>      </ul></aside>
+                                                                                                                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman-Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman-Ford Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>      </ul></aside>
 
   
 

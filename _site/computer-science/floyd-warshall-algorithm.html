@@ -19,9 +19,9 @@
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Floyd–Warshall Algorithm | Jiho’s Blog</title>
+<title>Floyd-Warshall Algorithm | Jiho’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="Floyd–Warshall Algorithm">
+<meta property="og:title" content="Floyd-Warshall Algorithm">
 <meta name="author" content="Jiho Jun">
 <meta property="og:locale" content="en">
 <meta name="description" content="noting down my thoughts and experiences">
@@ -32,9 +32,9 @@
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-07-24T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="Floyd–Warshall Algorithm">
+<meta property="twitter:title" content="Floyd-Warshall Algorithm">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-24T00:00:00+09:00","datePublished":"2025-07-24T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Floyd–Warshall Algorithm","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/floyd-warshall-algorithm.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/floyd-warshall-algorithm.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-07-24T00:00:00+09:00","datePublished":"2025-07-24T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Floyd-Warshall Algorithm","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/floyd-warshall-algorithm.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/floyd-warshall-algorithm.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -241,7 +241,7 @@
   <header>
     <h1 class="post-title flip-project-title">
       
-        Floyd–Warshall Algorithm
+        Floyd-Warshall Algorithm
         
       
     </h1>
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="459 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="335 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   7 min
+   5 min
 </span>
 
       </span>
@@ -326,237 +326,253 @@ The algorithm is particularly useful for dense graphs and is often used in netwo
 \]</li>
 </ol>
 
-<p>Consider the graph below:</p>
-<pre><code class="language-mermaid">graph LR
-    A((A));B((B));C((C));D((D));
-    A--&gt;|5|B;
-    B--&gt;|4|A;
-    B--&gt;|-3|C;
-    C--&gt;|6|A;
-    A---&gt;|7|D;
-    C--&gt;|4|D;
-    D--&gt;|2|C;
-</code></pre>
+<p>The interactive demo below uses the same recurrence.
+At step $k$, the matrix allows paths whose internal vertices are contained in the first $k$ vertices of the order</p>
 
-<p>The initial distance matrix is:</p>
+<p>\[
+A,B,C,D.
+\]</p>
 
-<table class="centered">
-  <thead>
-    <tr>
-      <th>i\j</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>A</strong></td>
-      <td>0</td>
-      <td>5</td>
-      <td>∞</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <td><strong>B</strong></td>
-      <td>4</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>∞</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>6</td>
-      <td>∞</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td><strong>D</strong></td>
-      <td>∞</td>
-      <td>∞</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+<div id="floyd-warshall-demo" class="fwv-root">
+  <style>
+    #floyd-warshall-demo { margin: 2rem 0; color: #1f2937; }
+    #floyd-warshall-demo * { box-sizing: border-box; }
+    #floyd-warshall-demo .fwv-stack { display: grid; gap: 1rem; }
+    #floyd-warshall-demo .fwv-main { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 250px); align-items: center; justify-content: center; gap: 1.25rem 2.25rem; }
+    @media (max-width: 720px) { #floyd-warshall-demo .fwv-main { grid-template-columns: minmax(0, 1fr); } }
+    #floyd-warshall-demo .fwv-graph { width: 100%; max-width: 360px; min-width: 0; justify-self: center; padding: 0.25rem 0; }
+    #floyd-warshall-demo .fwv-graph svg { display: block; width: 100%; height: auto; margin: 0 auto; }
+    #floyd-warshall-demo .fwv-matrix-wrap { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 250px; min-width: 0; justify-self: center; }
+    #floyd-warshall-demo .fwv-matrix { border-collapse: collapse; width: 100%; margin: 0 auto; table-layout: fixed; font-size: 0.95em; }
+    #floyd-warshall-demo .fwv-matrix th,
+    #floyd-warshall-demo .fwv-matrix td { border: 1px solid rgba(82,96,113,0.22); height: 2.45rem; padding: 0.35rem 0.35rem; text-align: center; }
+    #floyd-warshall-demo .fwv-matrix th { background: #f8fafc; font-weight: 700; }
+    #floyd-warshall-demo .fwv-matrix .is-k { background: #dbeafe; color: #1d4ed8; }
+    #floyd-warshall-demo .fwv-matrix .is-changed { background: #fef3c7; color: #92400e; font-weight: 700; }
+    #floyd-warshall-demo .fwv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-status p { margin: 0; }
+    #floyd-warshall-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #floyd-warshall-demo .fwv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #floyd-warshall-demo .fwv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #floyd-warshall-demo .fwv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #floyd-warshall-demo .fwv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #floyd-warshall-demo .fwv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #floyd-warshall-demo .fwv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-line { overflow-x: auto; white-space: nowrap; }
+    #floyd-warshall-demo .fwv-edge { fill: none; stroke: #64748b; stroke-width: 2.2; }
+    #floyd-warshall-demo .fwv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #floyd-warshall-demo .fwv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #floyd-warshall-demo .fwv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #floyd-warshall-demo .fwv-node-k circle { fill: #dbeafe; stroke: #2563eb; stroke-width: 4; }
+    #floyd-warshall-demo .fwv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #floyd-warshall-demo .fwv-legend { font-size: 0.95em; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #floyd-warshall-demo .fwv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #floyd-warshall-demo .fwv-swatch-k { background: #dbeafe; border-color: #2563eb; }
+    #floyd-warshall-demo .fwv-swatch-changed { background: #fef3c7; border-color: #d97706; }
+  </style>
 
-<p>Afer the first iteration with <code class="language-plaintext highlighter-rouge">k = A</code>, the distance matrix becomes:</p>
+  <div class="fwv-stack">
+    <div class="fwv-main">
+      <div class="fwv-graph" data-role="graph"></div>
+      <div class="fwv-matrix-wrap" data-role="matrix"></div>
+    </div>
+    <div class="fwv-status" data-role="status"></div>
+    <div class="fwv-controls-shell">
+      <div class="fwv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="fwv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="fwv-info">
+      <div class="fwv-line">
+<strong>Allowed intermediate vertices:</strong> <span data-role="allowed"></span>
+</div>
+      <div class="fwv-line">
+<strong>Changed cells:</strong> <span data-role="changed"></span>
+</div>
+    </div>
+    <div class="fwv-legend">
+      <div class="fwv-legend-item">
+<span class="fwv-swatch fwv-swatch-k"></span> Current intermediate vertex $k$</div>
+      <div class="fwv-legend-item">
+<span class="fwv-swatch fwv-swatch-changed"></span> Distance improved in this iteration</div>
+    </div>
+  </div>
 
-<table class="centered">
-  <thead>
-    <tr>
-      <th>i\j</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>A</strong></td>
-      <td>0</td>
-      <td>5</td>
-      <td>∞</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <td><strong>B</strong></td>
-      <td>4</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>6</td>
-      <td>11</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td><strong>D</strong></td>
-      <td>∞</td>
-      <td>∞</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+  <script>
+    (function () {
+      var root = document.getElementById("floyd-warshall-demo");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function cellKey(i,j) { return i + "-" + j; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function valText(x) { return Number.isFinite(x) ? String(x) : "INF"; }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var inf = Infinity;
+      var vertices = ["A","B","C","D"];
+      var pos = { A:[85,105], B:[315,105], C:[315,265], D:[85,265] };
+      var edges = [
+        { u:"A", v:"B", w:5, label:[200,83] },
+        { u:"B", v:"A", w:4, label:[200,128] },
+        { u:"B", v:"C", w:-3, label:[340,185] },
+        { u:"C", v:"A", w:6, q:[190,145], label:[188,150] },
+        { u:"A", v:"D", w:7, label:[60,185] },
+        { u:"C", v:"D", w:4, label:[200,288] },
+        { u:"D", v:"C", w:2, label:[200,242] }
+      ];
+      function copyMatrix(a) { return a.map(function (row) { return row.slice(); }); }
+      function buildStates() {
+        var d = vertices.map(function (_,i) {
+          return vertices.map(function (_,j) { return i === j ? 0 : inf; });
+        });
+        edges.forEach(function (e) {
+          var u = vertices.indexOf(e.u), v = vertices.indexOf(e.v);
+          d[u][v] = Math.min(d[u][v], e.w);
+        });
+        var states = [{ title:"Initial matrix", desc:"Initialize `dist[i][j]` with direct edge weights and `dist[i][i]=0`.", k:-1, dist:copyMatrix(d), changed:[] }];
+        for (var k = 0; k < vertices.length; k++) {
+          var changed = [];
+          for (var i = 0; i < vertices.length; i++) {
+            for (var j = 0; j < vertices.length; j++) {
+              if (!Number.isFinite(d[i][k]) || !Number.isFinite(d[k][j])) continue;
+              var cand = d[i][k] + d[k][j];
+              if (cand < d[i][j]) {
+                d[i][j] = cand;
+                changed.push(cellKey(i,j));
+              }
+            }
+          }
+          states.push({
+            title:"Use " + vertices[k] + " as an intermediate vertex",
+            desc:"Apply `dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])` for `k = " + vertices[k] + "`.",
+            k:k,
+            dist:copyMatrix(d),
+            changed:changed
+          });
+        }
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function markerId() { return root.id + "-arrow"; }
+      function shorten(a,b) {
+        var dx = b[0]-a[0], dy = b[1]-a[1], len = Math.sqrt(dx*dx+dy*dy) || 1, r = 28;
+        return [[a[0]+dx*r/len,a[1]+dy*r/len],[b[0]-dx*r/len,b[1]-dy*r/len]];
+      }
+      function edgePath(e) {
+        var s = shorten(pos[e.u],pos[e.v]), a = s[0], b = s[1];
+        if (e.q) return "M " + a[0] + " " + a[1] + " Q " + e.q[0] + " " + e.q[1] + " " + b[0] + " " + b[1];
+        return "M " + a[0] + " " + a[1] + " L " + b[0] + " " + b[1];
+      }
+      function drawGraph(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"35 58 330 250", role:"img", "aria-label":"Floyd-Warshall graph" });
+        var defs = svgEl("defs", {});
+        var marker = svgEl("marker", { id:markerId(), viewBox:"0 0 10 10", refX:"9", refY:"5", markerWidth:"7", markerHeight:"7", orient:"auto-start-reverse" });
+        marker.appendChild(svgEl("path", { d:"M 0 0 L 10 5 L 0 10 z", fill:"#64748b" }));
+        defs.appendChild(marker);
+        svg.appendChild(defs);
+        edges.forEach(function (e) {
+          svg.appendChild(svgEl("path", { d:edgePath(e), class:"fwv-edge", "marker-end":"url(#" + markerId() + ")" }));
+        });
+        edges.forEach(function (e) {
+          var p = e.label;
+          svg.appendChild(svgEl("rect", { x:p[0]-16, y:p[1]-11, width:32, height:22, rx:5, ry:5, class:"fwv-edge-label-bg" }));
+          var t = svgEl("text", { x:p[0], y:p[1], class:"fwv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v,i) {
+          var p = pos[v], g = svgEl("g", { class:i === s.k ? "fwv-node fwv-node-k" : "fwv-node" });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:27 }));
+          var t = svgEl("text", { x:p[0], y:p[1] });
+          t.textContent = v;
+          g.appendChild(t);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function drawMatrix(s) {
+        var table = document.createElement("table");
+        table.className = "fwv-matrix";
+        var thead = document.createElement("thead");
+        var head = document.createElement("tr");
+        head.appendChild(document.createElement("th"));
+        vertices.forEach(function (v,j) {
+          var th = document.createElement("th");
+          th.textContent = v;
+          if (j === s.k) th.className = "is-k";
+          head.appendChild(th);
+        });
+        thead.appendChild(head);
+        table.appendChild(thead);
+        var tbody = document.createElement("tbody");
+        vertices.forEach(function (v,i) {
+          var tr = document.createElement("tr");
+          var th = document.createElement("th");
+          th.textContent = v;
+          if (i === s.k) th.className = "is-k";
+          tr.appendChild(th);
+          vertices.forEach(function (_,j) {
+            var td = document.createElement("td");
+            td.textContent = valText(s.dist[i][j]);
+            if (has(s.changed,cellKey(i,j))) td.className = "is-changed";
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        var target = byRole("matrix");
+        target.innerHTML = "";
+        target.appendChild(table);
+      }
+      function changedText(s) {
+        if (!s.changed.length) return "<code>-</code>";
+        return "<code>" + s.changed.map(function (k) {
+          var parts = k.split("-"), i = Number(parts[0]), j = Number(parts[1]);
+          return "(" + vertices[i] + "," + vertices[j] + ")=" + valText(s.dist[i][j]);
+        }).join(", ") + "</code>";
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("allowed").innerHTML = s.k < 0 ? "<code>-</code>" : "<code>{" + vertices.slice(0,s.k+1).join(",") + "}</code>";
+        byRole("changed").innerHTML = changedText(s);
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        drawGraph(s);
+        drawMatrix(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>
 
-<p>After the second iteration with <code class="language-plaintext highlighter-rouge">k = B</code>, the distance matrix becomes:</p>
+<p>For example, when $k=C$, the entry from $B$ to $D$ improves because</p>
 
-<table class="centered">
-  <thead>
-    <tr>
-      <th>i\j</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>A</strong></td>
-      <td>0</td>
-      <td>5</td>
-      <td>2</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <td><strong>B</strong></td>
-      <td>4</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>6</td>
-      <td>11</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td><strong>D</strong></td>
-      <td>∞</td>
-      <td>∞</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>After the third iteration with <code class="language-plaintext highlighter-rouge">k = C</code>, the distance matrix becomes:</p>
-
-<table class="centered">
-  <thead>
-    <tr>
-      <th>i\j</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>A</strong></td>
-      <td>0</td>
-      <td>5</td>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td><strong>B</strong></td>
-      <td>3</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>6</td>
-      <td>11</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td><strong>D</strong></td>
-      <td>8</td>
-      <td>13</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>After the fourth iteration with <code class="language-plaintext highlighter-rouge">k = D</code>, the final distance matrix becomes:</p>
-
-<table class="centered">
-  <thead>
-    <tr>
-      <th>i\j</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>A</strong></td>
-      <td>0</td>
-      <td>5</td>
-      <td>2</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <td><strong>B</strong></td>
-      <td>3</td>
-      <td>0</td>
-      <td>-3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td><strong>C</strong></td>
-      <td>6</td>
-      <td>11</td>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td><strong>D</strong></td>
-      <td>8</td>
-      <td>13</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
+<p>\[
+\mathrm{dist}[B][C]+\mathrm{dist}[C][D] = -3+4=1.
+\]</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -578,7 +594,7 @@ The space complexity is $O(V^2)$ due to the distance matrix.</p>
         <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">)</span><span class="o">?</span><span class="mi">0</span><span class="o">:</span><span class="n">INF</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">voiid</span> <span class="nf">FloydWarshall</span><span class="p">(){</span>
+<span class="kt">void</span> <span class="nf">FloydWarshall</span><span class="p">(){</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
         <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
             <span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="n">dist</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">dist</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
@@ -747,7 +763,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman–Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>      </ul></aside>
+                                                                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>      </ul></aside>
 
   
 

@@ -14,29 +14,16 @@ tags: algorithms
 DFS and BFS are both algorithms used for searching graphs, i.e. graph traversal.
 There are other algorithms such as backtracking, but these two are the most useful ones.
 
-Before going on, we should know some common notions in graph theory.
-* $\vert{V}\vert$: the number of vertices
-* $\vert{E}\vert$: the number of edges
-
 ## DFS
 **Depth-First-Search(DFS)**  is an algorithm for traversing or searching tree or graph data structures.
 The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph)
 and explores as far as possible along each branch before backtracking.
 
 ### Explanation
-```mermaid
-graph TD
 
-f1((1)); f2((2)); f3((3)); f4((4)); f5((5)); f6((6)); f7((7)); f8((8)); f9((9)); f10((10)); f11((11));
-f1-->f2;
-f2-->f3; f2-->f4-->f5;
-f1---f7;
-f1-->f6-->f7-->f8;
-f6-->f9;
-f9-->f10; f9-->f11;
-```
+The interactive demo below shows the call-stack behavior of DFS.
 
-The graph above is an example result for the DFS algorithm.
+{% include_relative includes/dfs-bfs.html id="dfs-demo" mode="dfs" %}
 
 The time and space analysis of DFS differs according to its application area.
 DFS is typically used to traverse an entire graph, and takes time $ O(|V|+|E|) $
@@ -86,18 +73,10 @@ to moving on to the nodes at the next depth level.
 Extra memory, usually a queue, is needed to track the child nodes encountered but not yet explored.
 
 ### Explanation
-```mermaid
-graph TD
 
-f1((1)); f2((2)); f3((3)); f4((4)); f5((5)); f6((6)); f7((7)); f8((8)); f9((9)); f10((10)); f11((11));
-f1-->f2; f1-->f3; f1-->f4; f4---f3;
-f2-->f5; f2-->f6-->f7;
-f3-->f8;
-f4-->f9;
-f9-->f10; f9-->f11;
-```
+The interactive demo below shows the queue behavior of BFS.
 
-The graph above is an example result for the BFS algorithm.
+{% include_relative includes/dfs-bfs.html id="bfs-demo" mode="bfs" %}
 
 The time complexity can be expressed as $ O(|V|+|E|) $ if implemented by using adjacency list,
 since every vertex and every edge will be explored in the worst case.

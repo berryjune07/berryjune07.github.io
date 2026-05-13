@@ -1,5 +1,550 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-15T20:37:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Linear Transformations and their Kernels and Images</title><link href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html" rel="alternate" type="text/html" title="Linear Transformations and their Kernels and Images" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-14T03:06:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">The Viscosity of Suspensions</title><link href="http://localhost:4000/physics/the-viscosity-of-suspensions.html" rel="alternate" type="text/html" title="The Viscosity of Suspensions" /><published>2026-04-04T00:00:00+09:00</published><updated>2026-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-viscosity-of-suspensions</id><content type="html" xml:base="http://localhost:4000/physics/the-viscosity-of-suspensions.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc 
+{:toc}
+
+## Dilute Suspension
+
+Consider a fluid containing many small rigid particles.
+If the characteristic length of the observed motion is large compared with the particle radius, the mixture may be
+regarded as a homogeneous medium.
+Its viscosity is then not the viscosity $\eta_0$ of the pure liquid, but an effective viscosity
+$\eta_{\mathrm{eff}}$.
+
+We shall assume that the concentration is small.
+Then the disturbance produced by each particle may be calculated as if the other particles were absent, and the total
+correction is obtained by multiplying the single-particle result by the number density $n$.
+For spherical particles of radius $R$, the volume fraction is
+
+\\[
+\phi=\frac{4\pi R^3}{3}n.
+\\]
+
+The calculation is local.
+Near each particle the undisturbed flow may be replaced by its linear part:
+
+\\[
+v_{0i}=\alpha_{ik}x_k,
+\\]
+
+where $\alpha_{ik}$ is constant and symmetric.
+For an incompressible fluid,
+
+\\[
+\alpha_{ii}=0.
+\\]
+
+The pressure of this undisturbed linear flow is constant, and we may take this constant to be zero.
+
+## Disturbance by One Sphere
+
+Place one rigid sphere at the origin.
+Let
+
+\\[
+\b{v}=\b{v}_0+\b{v}_1.
+\\]
+
+The disturbance $\b{v}_1$ must vanish at infinity, while the no-slip condition on the sphere is
+
+\\[
+\b{v}=0\qquad (r=R).
+\\]
+
+Since the Reynolds number based on the particle radius is small, the disturbance satisfies the Stokes equations
+
+\\[
+\eta_0\laplacian\b{v}_1-\grad p=0,\qquad
+\div\b{v}_1=0.
+\\]
+
+The solution can be obtained from the same scalar function used in the Stokes-flow problem for a translating sphere.
+In index notation, with
+
+\\[
+n_i=\frac{x_i}{r},
+\\]
+
+the result is
+
+\\[
+v_{1i}
+=\frac{5}{2}\left(\frac{R^5}{r^4}-\frac{R^3}{r^2}\right)
+\alpha_{kl}n_in_kn_l
+-\frac{R^5}{r^4}\alpha_{ik}n_k,
+\\]
+
+and the pressure deviation is
+
+\\[
+p=-5\eta_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
+\\]
+
+These formulae are to be used only outside the solid sphere.
+They vanish at infinity and make the total velocity zero at $r=R$.
+
+## Mean Stress
+
+The effective viscosity is determined by comparing the mean stress with the mean velocity gradient.
+Let the average be taken over a large volume $V$:
+
+\\[
+\bar{\sigma}\_{ik}=\frac{1}{V}\int_V \sigma_{ik}\,dV.
+\\]
+
+For the pure liquid,
+
+\\[
+\sigma_{ik}=-p\delta_{ik}
++\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
+\\]
+
+Separate from this expression the stress which would be present in a homogeneous fluid with the same average velocity
+gradient. Then
+
+\\[
+\bar{\sigma}\_{ik}
+=\eta_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
++\frac{1}{V}\int_V
+\left\\{
+\sigma_{ik}
+-\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
++p\delta_{ik}
+\right\\}dV.
+\\]
+
+The integrand in the last term is zero in the liquid except for the disturbance caused by the solid particles.
+In the dilute limit, we evaluate the correction for one sphere and multiply by $n$.
+The direct volume integral would require the unknown internal stress inside the rigid particle.
+This is avoided by using the equilibrium equation
+
+\\[
+\pdv{\sigma_{il}}{x_l}=0.
+\\]
+
+Since
+
+\\[
+\sigma_{ik}=\pdv{}{x_l}(\sigma_{il}x_k),
+\\]
+
+the volume integral can be transformed into a surface integral over a large sphere lying entirely in the liquid.
+Only the terms of order $r^{-2}$ in the disturbance are needed.
+Using the solution above, the single-particle contribution gives
+
+\\[
+n\eta_0 \cdot 20\pi R^3
+\left\\{
+5\alpha_{lm}\overline{n_i n_k n_l n_m}
+-\alpha_{il}\overline{n_kn_l}
+\right\\}.
+\\]
+
+The directional averages are
+
+\\[
+\overline{n_in_k}=\frac{1}{3}\delta_{ik},
+\qquad
+\overline{n_in_kn_ln_m}
+=\frac{1}{15}
+\left(
+\delta_{ik}\delta_{lm}
++\delta_{il}\delta_{km}
++\delta_{im}\delta_{kl}
+\right).
+\\]
+
+Since $\alpha_{ll}=0$, the correction reduces to
+
+\\[
+5\eta_0\alpha_{ik}\frac{4\pi R^3n}{3}.
+\\]
+
+Thus
+
+\\[
+\bar{\sigma}\_{ik}
+=2\eta_0\alpha\_{ik}
++5\eta_0\alpha\_{ik}\phi.
+\\]
+
+On the other hand, by definition of the effective viscosity,
+
+\\[
+\bar{\sigma}\_{ik}=2\eta\_{\mathrm{eff}}\alpha\_{ik}.
+\\]
+
+Therefore
+
+\\[
+\eta_{\mathrm{eff}}=\eta_0\left(1+\frac{5}{2}\phi\right).
+\\]
+
+This is Einstein&apos;s formula for the viscosity of a dilute suspension of rigid spheres.
+The coefficient $5/2$ is called the intrinsic viscosity of a dilute suspension of spheres.
+
+## Non-spherical Particles
+
+For spheroidal particles the same form is retained,
+
+\\[
+\eta_{\mathrm{eff}}=\eta_0(1+A\phi),
+\\]
+
+but the coefficient $A$ depends on the aspect ratio.
+If the semi-axes are $a,b,b$, then
+
+\\[
+\phi=\frac{4\pi ab^2}{3}n.
+\\]
+
+Landau gives, for several values of $a/b$,
+
+| $a/b$ | $0.1$  | $0.2$  | $0.5$  | $1.0$ | $2$    | $5$    | $10$   |
+|-------|--------|--------|--------|-------|--------|--------|--------|
+| $A$   | $8.04$ | $4.71$ | $2.85$ | $2.5$ | $2.91$ | $5.81$ | $13.6$ |
+{:.centered}
+
+The correction is smallest near the spherical case and increases as the particle becomes either flattened or elongated.
+For non-spherical particles, velocity gradients also orient the particles.
+Thus the distribution of orientations becomes part of the hydrodynamical problem; the simple scalar correction above is
+valid only when the orientational distribution is prescribed or effectively isotropic.
+
+## Range of Validity
+
+Einstein&apos;s formula is the first term of a concentration expansion:
+
+\\[
+\frac{\eta_{\mathrm{eff}}}{\eta_0}
+=1+\frac{5}{2}\phi+O(\phi^2).
+\\]
+
+The $O(\phi^2)$ terms come from hydrodynamical interactions between particles and from correlations in their positions.
+Hence the formula is valid only for dilute suspensions, on length scales large compared with the particle size, and for
+slow enough motion that the Stokes approximation is applicable around each particle.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Laminar Wake</title><link href="http://localhost:4000/physics/the-laminar-wake.html" rel="alternate" type="text/html" title="The Laminar Wake" /><published>2026-04-03T00:00:00+09:00</published><updated>2026-04-03T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-laminar-wake</id><content type="html" xml:base="http://localhost:4000/physics/the-laminar-wake.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Momentum Deficit
+
+Consider a steady flow of a viscous fluid past a solid body.
+Let the velocity of the incident current be
+
+\\[
+\b{U}=U\hat{\b{x}},
+\\]
+
+and write the actual velocity as
+
+\\[
+\b{U}+\b{v},
+\\]
+
+where $\b{v}$ is the disturbance velocity and $\b{v}\to 0$ at infinity.
+Far behind the body, $\b{v}$ is appreciable only in a narrow region near the $x$-axis.
+This region is called the **laminar wake**.
+
+The wake contains vorticity produced at the surface of the body.
+Outside the wake the flow may be regarded as potential, since the streamlines there have not passed close to the body.
+Thus the far field is potential flow except in the wake.
+
+The momentum flux density tensor is
+
+\\[
+\Pi_{ik}=p\delta_{ik}+\rho(U_i+v_i)(U_k+v_k).
+\\]
+
+Write
+
+\\[
+p=p_0+p^\prime,
+\\]
+
+where $p_0$ is the pressure at infinity.
+On a large closed surface surrounding the body, the constant term $p_0\delta_{ik}$ gives no net contribution.
+Also the term linear in the mass flux vanishes by conservation of mass.
+Since $\b{v}$ is small far from the body, the quadratic term $\rho v_i v_k$ may be neglected.
+Thus the relevant momentum flux is
+
+\\[
+p^\prime\delta_{ik}+\rho U_i v_k.
+\\]
+
+Take two infinite planes $x=x_2$ far in front of the body and $x=x_1$ far behind it.
+The contribution from the lateral surface at infinity vanishes.
+Hence the force on the body is the difference between the momentum flux entering through the forward plane and that
+leaving through the backward plane.
+For the drag component,
+
+\\[
+F_x
+=\left(\iint_{x=x_2}-\iint_{x=x_1}\right)
+(p^\prime+\rho Uv_x)\,dy\,dz.
+\\]
+
+Outside the wake the flow is potential, and Bernoulli&apos;s equation gives, to first order in $\b{v}$,
+
+\\[
+p+\frac{1}{2}\rho(\b{U}+\b{v})^2
+=p_0+\frac{1}{2}\rho U^2,
+\\]
+
+so that
+
+\\[
+p^\prime=-\rho Uv_x.
+\\]
+
+Therefore the integrand vanishes outside the wake.
+The forward plane does not intersect the wake, and on the backward plane the pressure term is of smaller order than
+$\rho Uv_x$ inside the wake.
+Thus
+
+\\[
+F_x=-\rho U\iint_{\mathrm{wake}} v_x\,dy\,dz.
+\\]
+
+Here $v_x&lt;0$ in the wake, since the fluid moves more slowly than it would in the absence of the body.
+The integral is the deficit of discharge through the wake.
+
+The transverse components give the lift:
+
+\\[
+F_y=-\rho U\iint_{\mathrm{wake}} v_y\,dy\,dz,\qquad
+F_z=-\rho U\iint_{\mathrm{wake}} v_z\,dy\,dz.
+\\]
+
+If the body has an axis of symmetry parallel to the incident flow, then the wake has the same symmetry and the lift is
+zero.
+
+## Width of the Wake
+
+Let $Y$ be the order of magnitude of the transverse width of the wake at distance $x$ behind the body.
+Inside the wake, transverse derivatives are much larger than longitudinal derivatives:
+
+\\[
+\pdvn{2}{\b{v}}{y},\ \pdvn{2}{\b{v}}{z}
+\gg
+\pdvn{2}{\b{v}}{x}.
+\\]
+
+The two important terms in the Navier--Stokes equation have orders
+
+\\[
+(\b{v}\cdot\grad)\b{v}\sim U\pdv{\b{v}}{x}\sim \frac{Uv}{x},
+\qquad
+\nu\laplacian\b{v}\sim \nu\frac{v}{Y^2}.
+\\]
+
+Equating these two orders gives
+
+\\[
+Y\sim \sqrt{\frac{\nu x}{U}}.
+\\]
+
+Thus the laminar wake broadens only as the square root of the distance from the body.
+This is small compared with $x$ when $Ux/\nu\gg 1$, which is precisely the far-wake condition.
+
+Using the drag formula,
+
+\\[
+F_x\sim \rho U vY^2,
+\\]
+
+we also obtain the order of the velocity deficit:
+
+\\[
+v\sim \frac{F_x}{\rho\nu x}.
+\\]
+
+## Flow Inside the Wake
+
+Far from the body we use Oseen&apos;s approximation.
+In the steady equation
+
+\\[
+(\b{v}\cdot\grad)\b{v}
+=-\grad\left(\frac{p}{\rho}\right)+\nu\laplacian\b{v},
+\\]
+
+replace the convective derivative by $U\partial/\partial x$ and neglect the longitudinal part of the Laplacian in
+comparison with the transverse part.
+Then
+
+\\[
+U\pdv{\b{v}}{x}
+=-\grad\left(\frac{p}{\rho}\right)
++\nu\left(\pdvn{2}{\b{v}}{y}+\pdvn{2}{\b{v}}{z}\right).
+\\]
+
+First omit the pressure-gradient part.
+Then each component satisfies
+
+\\[
+U\pdv{v}{x}
+=\nu\left(\pdvn{2}{v}{y}+\pdvn{2}{v}{z}\right).
+\\]
+
+This is the two-dimensional heat equation with $x/U$ in place of time and $\nu$ in place of thermal diffusivity.
+The solution which becomes concentrated at the origin as $x\to0$ and whose integral gives the drag is
+
+\\[
+v_x
+=-\frac{F_x}{4\pi\rho\nu x}
+\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right].
+\\]
+
+The coefficient is fixed by
+
+\\[
+F_x=-\rho U\iint v_x\,dy\,dz.
+\\]
+
+In spherical coordinates with the polar axis along the $x$-axis, the wake corresponds to $\theta\ll1$ and
+$y^2+z^2\simeq r^2\theta^2$, $x\simeq r$.
+Thus
+
+\\[
+v_x
+=-\frac{F_x}{4\pi\rho\nu r}
+\exp\left[-\frac{Ur\theta^2}{4\nu}\right].
+\\]
+
+For the transverse flow, take the lift to be in the $y$-direction, so $F_z=0$.
+The pressure-gradient part may be represented by a potential $\Phi$.
+Then
+
+\\[
+v_y
+=-\frac{F_y}{4\pi\rho\nu x}
+\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right]
++\pdv{\Phi}{y},
+\qquad
+v_z=\pdv{\Phi}{z}.
+\\]
+
+The continuity equation gives, neglecting the longitudinal derivative,
+
+\\[
+\pdv{v_y}{y}+\pdv{v_z}{z}=0.
+\\]
+
+Using the heat equation for the first term of $v_y$, this yields
+
+\\[
+\pdv{\Phi}{x}
+=-\frac{\nu}{U}\pdv{}{y}
+\left(
+-\frac{F_y}{4\pi\rho\nu x}
+\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right]
+\right).
+\\]
+
+After integration in $x$, choosing the constant so that $\Phi$ is finite on the axis, we get
+
+\\[
+\Phi
+=-\frac{F_y}{2\pi\rho U}
+\frac{y}{y^2+z^2}
+\left\\{
+\exp\left\[-\frac{U(y^2+z^2)}{4\nu x}\right\]-1
+\right\\}.
+\\]
+
+Equivalently, in spherical coordinates,
+
+\\[
+\Phi
+=-\frac{F_y}{2\pi\rho U}
+\frac{\cos\phi}{r\theta}
+\left\\{
+\exp\left\[-\frac{Ur\theta^2}{4\nu}\right\]-1
+\right\\}.
+\\]
+
+If there is no lift, the wake is axially symmetric and $\Phi=0$.
+
+## Flow Outside the Wake
+
+Outside the wake the flow is potential:
+
+\\[
+\b{v}=\grad\Phi,\qquad \laplacian\Phi=0.
+\\]
+
+We need only the terms which decrease least rapidly at large distances.
+Write
+
+\\[
+\Phi=\frac{a}{r}+\frac{\cos\phi}{r}f(\theta),
+\\]
+
+where the first term is associated with the drag and the second with the lift.
+Substitution into Laplace&apos;s equation gives
+
+\\[
+\odv{}{\theta}\left(\sin\theta\odv{f}{\theta}\right)
+-\frac{f}{\sin\theta}=0.
+\\]
+
+The solution finite as $\theta\to\pi$ is
+
+\\[
+f=b\cot\frac{\theta}{2}.
+\\]
+
+The constant $b$ is found by matching with the inside-wake potential in the overlap region
+
+\\[
+\sqrt{\frac{\nu}{Ur}}\ll \theta\ll 1.
+\\]
+
+Since
+
+\\[
+\cot\frac{\theta}{2}\sim \frac{2}{\theta},
+\\]
+
+comparison with the inside expression gives
+
+\\[
+b=\frac{F_y}{4\pi\rho U}.
+\\]
+
+The constant $a$ is determined from conservation of mass through a large sphere.
+The inflow deficit through the part cut out by the wake is
+
+\\[
+-\iint_{\mathrm{wake}} v_x\,dy\,dz=\frac{F_x}{\rho U}.
+\\]
+
+The same amount must leave through the rest of the large sphere, and hence
+
+\\[
+\oint \b{v}\cdot d\b{f}
+=\oint \grad\Phi\cdot d\b{f}
+=-4\pi a
+=\frac{F_x}{\rho U}.
+\\]
+
+Therefore
+
+\\[
+a=-\frac{F_x}{4\pi\rho U}.
+\\]
+
+The potential outside the wake is finally
+
+\\[
+\Phi
+=\frac{1}{4\pi\rho Ur}
+\left(
+-F_x+F_y\cos\phi\cot\frac{\theta}{2}
+\right).
+\\]
+
+It decreases as $1/r$, while the velocity outside the wake decreases as $1/r^2$.
+When the lift is zero, the far field outside the wake is axially symmetric.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Linear Transformations and their Kernels and Images</title><link href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html" rel="alternate" type="text/html" title="Linear Transformations and their Kernels and Images" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -41,7 +586,581 @@ The following terms are also employed in the context of linear transformations:
 - **Monomorphism**: An injective linear transformation, olso called an **embedding**.
 - **Epimorphism**: A surjective linear transformation.
 - **Isomorphism**: A bijective linear transformation.
-- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
+- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Flow with Small Reynolds Numbers</title><link href="http://localhost:4000/physics/flow-with-small-reynolds-numbers.html" rel="alternate" type="text/html" title="Flow with Small Reynolds Numbers" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/physics/flow-with-small-reynolds-numbers</id><content type="html" xml:base="http://localhost:4000/physics/flow-with-small-reynolds-numbers.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Stokes Approximation
+
+For steady incompressible flow of a viscous fluid, the Navier--Stokes equation is
+
+\\[
+(\b{v}\cdot\grad)\b{v}
+=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},\qquad
+\div\b{v}=0.
+\\]
+
+Let $u$ and $l$ be the characteristic velocity and length.
+Then
+
+\\[
+(\b{v}\cdot\grad)\b{v}\sim \frac{u^2}{l},\qquad
+\nu\laplacian\b{v}\sim \frac{\nu u}{l^2}.
+\\]
+
+The ratio of these terms is the Reynolds number
+
+\\[
+\mathrm{Re}=\frac{ul}{\nu}.
+\\]
+
+When $\mathrm{Re}\ll 1$, the inertial term may be omitted in the first approximation.
+The equation of motion becomes the **Stokes equation**
+
+\\[
+\eta\laplacian\b{v}-\grad p=0,\qquad
+\div\b{v}=0.
+\\]
+
+Taking the divergence gives
+
+\\[
+\laplacian p=0,
+\\]
+
+and taking the curl gives
+
+\\[
+\laplacian(\curl\b{v})=0.
+\\]
+
+These equations are linear.
+Therefore if all boundary velocities are reversed, the velocity field and all hydrodynamical forces are reversed.
+This reversibility is a basic feature of creeping motion and disappears as soon as inertia becomes important.
+
+## Flow Past a Sphere
+
+Consider a sphere of radius $R$ fixed at the origin, with a uniform velocity $\b{u}=u\hat{\b{z}}$ at infinity.
+The flow is axisymmetric and has no azimuthal component, so we introduce a Stokes stream function $\psi(r,\theta)$ by
+
+\\[
+v_r=\frac{1}{r^2\sin\theta}\pdv{\psi}{\theta},\qquad
+v_\theta=-\frac{1}{r\sin\theta}\pdv{\psi}{r},\qquad
+v_\phi=0.
+\\]
+
+This representation satisfies $\div\b{v}=0$ identically.
+The only non-zero component of the vorticity is
+
+\\[
+\omega_\phi
+=\frac{1}{r}\left(\pdv{(rv_\theta)}{r}-\pdv{v_r}{\theta}\right)
+=-\frac{1}{r\sin\theta}E^2\psi,
+\\]
+
+where
+
+\\[
+E^2\psi
+=\pdvn{2}{\psi}{r}
++\frac{\sin\theta}{r^2}\pdv{}{\theta}
+\left(\frac{1}{\sin\theta}\pdv{\psi}{\theta}\right).
+\\]
+
+Taking the curl of the Stokes equation eliminates the pressure and gives
+
+\\[
+\laplacian(\curl\b{v})=0.
+\\]
+
+For the present axisymmetric flow this is equivalent to the biharmonic equation
+
+\\[
+E^2(E^2\psi)=0.
+\\]
+
+The incident uniform flow has stream function
+
+\\[
+\psi_\infty=\frac{1}{2}ur^2\sin^2\theta.
+\\]
+
+Thus we seek a solution of the form
+
+\\[
+\psi=f(r)\sin^2\theta.
+\\]
+
+For this form,
+
+\\[
+E^2\psi=\left(f^{\prime\prime}-\frac{2f}{r^2}\right)\sin^2\theta,
+\\]
+
+and the biharmonic equation reduces to
+
+\\[
+\left(\frac{d^2}{dr^2}-\frac{2}{r^2}\right)^2f=0.
+\\]
+
+Hence
+
+\\[
+f=Ar^4+Br^2+Cr+\frac{D}{r}.
+\\]
+
+The term $Ar^4$ must be absent, since the velocity cannot grow faster than the imposed uniform flow at infinity.
+The coefficient of the uniform flow is
+
+\\[
+B=\frac{u}{2}.
+\\]
+
+The no-slip condition on the surface of the sphere is
+
+\\[
+v_r(R,\theta)=0,\qquad v_\theta(R,\theta)=0.
+\\]
+
+In terms of $f$, this gives
+
+\\[
+f(R)=0,\qquad f^\prime(R)=0.
+\\]
+
+Therefore
+
+\\[
+C=-\frac{3uR}{4},\qquad D=\frac{uR^3}{4}.
+\\]
+
+The stream function is consequently
+
+\\[
+\psi
+=\frac{1}{2}ur^2\sin^2\theta
+\left(1-\frac{3R}{2r}+\frac{R^3}{2r^3}\right).
+\\]
+
+The velocity components are
+
+\\[
+v_r=u\cos\theta\left(1-\frac{3R}{2r}+\frac{R^3}{2r^3}\right),
+\qquad
+v_\theta=-u\sin\theta\left(1-\frac{3R}{4r}-\frac{R^3}{4r^3}\right).
+\\]
+
+The pressure follows from the Stokes equation:
+
+\\[
+\grad p=\eta\laplacian\b{v}.
+\\]
+
+Using the above solution, one obtains
+
+\\[
+p=p_0-\frac{3\eta Ru}{2r^2}\cos\theta.
+\\]
+
+At the surface of the sphere,
+
+\\[
+\sigma_{rr}^{\prime}=0,\qquad
+\sigma_{r\theta}^{\prime}=-\frac{3\eta u}{2R}\sin\theta,
+\qquad
+p=p_0-\frac{3\eta u}{2R}\cos\theta,
+\\]
+
+where $\sigma_{ij}^{\prime}$ denotes the viscous part of the stress tensor.
+Projecting the normal and tangential stresses on the direction of $\b{u}$ and integrating over the surface gives
+
+\\[
+D=6\pi\eta Ru.
+\\]
+
+This is **Stokes&apos; formula** for the drag on a slowly moving sphere.
+The force is proportional to the velocity and to the linear size of the body.
+This also follows from dimensional analysis of the Stokes equations, since $\rho$ no longer appears in the first
+approximation and the only force scale formed from $\eta,u,R$ is $\eta uR$.
+
+## Resistance Tensor
+
+For a slowly moving body of arbitrary fixed shape, the drag need not be parallel to the velocity.
+By linearity, however, it must have the form
+
+\\[
+D_i=\eta a_{ik}u_k,
+\\]
+
+where $a_{ik}$ is a tensor determined only by the shape and size of the body.
+This tensor is symmetric.
+The symmetry is a particular case of the reciprocal relations for slow dissipative motion.
+
+## Limitation of Stokes&apos; Formula
+
+The Stokes solution is not uniformly valid at arbitrarily large distances, even when the Reynolds number is small.
+For the sphere solution, at large $r$ the disturbance is of order
+
+\\[
+\abs{\b{v}-\b{u}}\sim \frac{uR}{r}.
+\\]
+
+Hence
+
+\\[
+(\b{v}\cdot\grad)\b{v}\sim \frac{u^2R}{r^2},
+\qquad
+\nu\laplacian\b{v}\sim \frac{\nu uR}{r^3}.
+\\]
+
+The neglected inertial term is small compared with the retained viscous term only if
+
+\\[
+r\ll \frac{\nu}{u}.
+\\]
+
+Equivalently, if $\mathrm{Re}=uR/\nu$, then the Stokes solution is valid in the near region
+
+\\[
+\frac{r}{R}\ll \frac{1}{\mathrm{Re}}.
+\\]
+
+At larger distances, the convective term must be kept in a linearized form.
+Replacing $\b{v}\cdot\grad$ by $\b{u}\cdot\grad$ gives Oseen&apos;s equation
+
+\\[
+(\b{u}\cdot\grad)\b{v}
+=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v}.
+\\]
+
+For a sphere, this gives the first correction to Stokes&apos; drag:
+
+\\[
+D=6\pi\eta Ru\left(1+\frac{3}{8}\frac{uR}{\nu}\right).
+\\]
+
+The necessity of this correction shows that the limit $\mathrm{Re}\to0$ is singular.
+The first approximation is local near the body; the far field enters through matching.
+
+For an infinite circular cylinder, the difficulty is stronger.
+The Stokes equations alone cannot satisfy both the boundary condition on the cylinder and the condition at infinity.
+Using Oseen&apos;s equation from the beginning gives, for the drag per unit length,
+
+\\[
+D=\frac{4\pi\eta u}{\log(3.70\nu/uR)}.
+\\]
+
+Thus even the leading expression contains a logarithm of the Reynolds number.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Law of Similarity and Reynolds Number</title><link href="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html" rel="alternate" type="text/html" title="The Law of Similarity and Reynolds Number" /><published>2026-04-01T00:00:00+09:00</published><updated>2026-04-01T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number</id><content type="html" xml:base="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Dimensional Form of a Flow
+
+Consider a steady incompressible flow past a body of fixed shape.
+If two bodies have the same shape and differ only by a change of all lengths in the same ratio, we say that they are
+**geometrically similar**.
+Then the shape is determined by one characteristic length $l$.
+Let $u$ be the velocity of the incident stream and let $\nu=\eta/\rho$ be the kinematic viscosity of the fluid.
+The hydrodynamical problem is then specified, apart from the dimensionless shape, by
+
+\\[
+\nu,\qquad u,\qquad l.
+\\]
+
+Their dimensions are
+
+\\[
+[\nu]=L^2T^{-1},\qquad [u]=LT^{-1},\qquad [l]=L.
+\\]
+
+From these three quantities only one independent dimensionless quantity can be formed:
+
+\\[
+\mathrm{Re}=\frac{ul}{\nu}=\frac{\rho ul}{\eta}.
+\\]
+
+This is the **Reynolds number**.
+It measures the ratio of the inertial term to the viscous term in the Navier--Stokes equation:
+
+\\[
+\frac{(\b{v}\cdot\grad)\b{v}}{\nu\laplacian\b{v}}
+\sim
+\frac{u^2/l}{\nu u/l^2}
+=\frac{ul}{\nu}.
+\\]
+
+If we introduce dimensionless variables
+
+\\[
+\b{r}=l\b{r}^{\prime},\qquad
+\b{v}=u\b{v}^{\prime},\qquad
+p=p_0+\rho u^2 p^{\prime},
+\\]
+
+then the steady incompressible Navier--Stokes equation becomes
+
+\\[
+(\b{v}^{\prime}\cdot\grad^{\prime})\b{v}^{\prime}
+=-\grad^{\prime}p^{\prime}
++\frac{1}{\mathrm{Re}}{\laplacian}^{\prime}\b{v}^{\prime},\qquad
+\div^{\prime}\b{v}^{\prime}=0.
+\\]
+
+Thus the dimensionless velocity and pressure have the form
+
+\\[
+\b{v}=u\,\b{f}\left(\frac{\b{r}}{l},\mathrm{Re}\right),\qquad
+p=p_0+\rho u^2 f\left(\frac{\b{r}}{l},\mathrm{Re}\right).
+\\]
+
+This is the simplest form of the **law of similarity**.
+Two geometrically similar steady incompressible flows are dynamically similar if their Reynolds numbers are equal.
+
+For a quantity which is not a function of position, for example the drag force $D$, the same argument gives
+
+\\[
+D=\rho u^2l^2 C_D(\mathrm{Re})
+\\]
+
+where $C_D$ is a dimensionless function of the Reynolds number.
+
+## Buckingham Pi Theorem
+
+The above argument is a special case of the Buckingham pi theorem.
+
+_Theorem._
+Suppose that a physical law contains $n$ dimensional quantities $q_1,\ldots,q_n$, and let the dimension matrix of these
+quantities have rank $s$.
+Then there exist $n-s$ independent dimensionless products
+
+\\[
+\Pi_1,\ldots,\Pi_{n-s}
+\\]
+
+such that every dimensionally homogeneous relation
+
+\\[
+F(q_1,\ldots,q_n)=0
+\\]
+
+can be written in the form
+
+\\[
+\Phi(\Pi_1,\ldots,\Pi_{n-s})=0.
+\\]
+
+Thus the number of independent dimensionless parameters is the number of dimensional quantities minus the rank of the
+dimension matrix.
+
+&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt; Proof &lt;/summary&gt;
+
+Suppose that a physical relation involves non-zero quantities
+
+\\[
+q_1,\ldots,q_n
+\\]
+
+and fundamental dimensions $D_1,\ldots,D_m$.
+Write the dimension of $q_j$ as
+
+\\[
+[q_j]=D_1^{a_{1j}}\cdots D_m^{a_{mj}}.
+\\]
+
+Let
+
+\\[
+A=(a_{ij})\in \mathbb{R}^{m\times n}
+\\]
+
+be the dimension matrix, and let $s=\operatorname{rank} A$.
+A monomial
+
+\\[
+\Pi=q_1^{b_1}\cdots q_n^{b_n}
+\\]
+
+is dimensionless if and only if
+
+\\[
+Ab=0.
+\\]
+
+Hence the number of independent dimensionless monomials is
+
+\\[
+\dim\ker A=n-s.
+\\]
+
+Choose $s$ quantities whose dimension vectors are linearly independent.
+After reordering, let these be $q_1,\ldots,q_s$, and write
+
+\\[
+A=\begin{bmatrix} B &amp; C \end{bmatrix},
+\\]
+
+where $B$ is an invertible $s\times s$ matrix after restricting to the independent rows.
+For each remaining quantity $q_{s+\alpha}$, let $c_\alpha$ be the corresponding column of $C$ and define
+
+\\[
+\beta^{(\alpha)}=-B^{-1}c_\alpha.
+\\]
+
+Then
+
+\\[
+\Pi_\alpha
+=q_{s+\alpha}\prod_{i=1}^s q_i^{\beta_i^{(\alpha)}},
+\qquad
+\alpha=1,\ldots,n-s
+\\]
+
+is dimensionless, since its dimension vector is
+
+\\[
+c_\alpha+B\beta^{(\alpha)}=0.
+\\]
+
+It remains to show that every dimensionally homogeneous physical law can be written using only these $\Pi_\alpha$.
+Changing the fundamental units multiplies the quantities by
+
+\\[
+q_j\mapsto \lambda_1^{a_{1j}}\cdots \lambda_m^{a_{mj}}q_j.
+\\]
+
+A physical law cannot depend on this arbitrary choice of units.
+Therefore its truth value is constant along the orbits of this scaling action.
+Because $B$ is invertible, the $s$ independent scaling parameters may be chosen so that
+$q_1,\ldots,q_s$ are changed to any prescribed positive reference values.
+After this normalization, the only remaining coordinates of the orbit space are precisely
+
+\\[
+\Pi_1,\ldots,\Pi_{n-s}.
+\\]
+
+Thus a dimensionally homogeneous relation
+
+\\[
+F(q_1,\ldots,q_n)=0
+\\]
+
+is equivalent to
+
+\\[
+\Phi(\Pi_1,\ldots,\Pi_{n-s})=0.
+\\]
+
+This proves the Buckingham pi theorem.
+
+&lt;/details&gt;
+
+---
+
+As an example, for the drag force on a body in a viscous incompressible fluid we may take
+
+\\[
+D,\rho,u,l,\eta.
+\\]
+
+There are five dimensional quantities and three fundamental dimensions $M,L,T$.
+Hence there are two independent dimensionless groups, which may be chosen as
+
+\\[
+\frac{D}{\rho u^2l^2},\qquad
+\frac{\rho ul}{\eta}.
+\\]
+
+Therefore
+
+\\[
+\frac{D}{\rho u^2l^2}=C_D(\mathrm{Re}),
+\\]
+
+which is the drag form written above.
+
+## Other Similarity Numbers
+
+If gravity is important, the quantities determining the flow include $g$ as well as $\nu,u,l$.
+Then there are two independent dimensionless parameters.
+One may take the Reynolds number and the Froude number
+
+\\[
+\mathrm{Fr}=\frac{u}{\sqrt{gl}}
+\\]
+
+or, equivalently, $\mathrm{Fr}^2=u^2/(gl)$.
+Free-surface flows are usually governed by both $\mathrm{Re}$ and $\mathrm{Fr}$; a model and the original motion are
+fully similar only when both are equal.
+
+If the motion is non-steady and has a characteristic time $\tau$, a further dimensionless quantity appears:
+
+\\[
+\mathrm{St}=\frac{l}{u\tau}.
+\\]
+
+Landau uses the reciprocal form $S=u\tau/l$.
+The equality of this parameter expresses similarity of the time scale of the motion.
+For externally forced oscillations, $\tau$ is the period of forcing.
+For spontaneous oscillations of a given type, the dimensionless period is not arbitrary but is determined by the other
+dimensionless parameters, for example
+
+\\[
+\mathrm{St}=f(\mathrm{Re}).
+\\]
+
+Other effects introduce their own similarity parameters.
+For compressible flow, the Mach number
+
+\\[
+\mathrm{Ma}=\frac{u}{c}
+\\]
+
+compares the flow speed with the sound speed.
+For capillary motion, the Weber number
+
+\\[
+\mathrm{We}=\frac{\rho u^2l}{\sigma}
+\\]
+
+compares inertia with surface tension.
+For heat transfer in fluids, the Prandtl number
+
+\\[
+\mathrm{Pr}=\frac{\nu}{\chi}
+\\]
+
+compares momentum diffusion with thermal diffusion.
+The relevant list is not universal; it is determined by the physical terms retained in the equations and boundary
+conditions.
+
+## Kinematic and Dynamic Similarity
+
+There are several levels of similarity.
+
+Two flows are **geometrically similar** if their boundaries and bodies are obtained from each other by one scale factor.
+They are **kinematically similar** if, after the transformations
+
+\\[
+\b{r}^{\prime}=\frac{\b{r}}{l},\qquad
+t^{\prime}=\frac{ut}{l},\qquad
+\b{v}^{\prime}=\frac{\b{v}}{u},
+\\]
+
+the dimensionless velocity fields are the same.
+Thus streamlines, pathlines, and periods correspond after rescaling.
+
+They are **dynamically similar** if the dimensionless governing equations and dimensionless boundary conditions are the
+same.
+Equivalently, all independent dimensionless numbers which enter the problem have the same values.
+Dynamic similarity implies the equality of all dimensionless force coefficients, pressure coefficients, and velocity
+profiles.
+
+There is also **complete similarity** in a limiting problem when a dimensionless solution tends to a finite limit
+independent of a parameter, for example the inviscid limit away from boundary layers.
+In contrast, **incomplete similarity** occurs when a parameter remains in the asymptotic form through powers or
+logarithms.
+This distinction appears repeatedly in viscous flows, since a small viscosity may disappear from the main equation but
+remain essential in boundary conditions, wakes, and thin layers.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -392,12 +1511,4 @@ Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and
 
 (3) $\Rightarrow$ (1): If $S$ is linearly dependent, then some vector $\b{v} \in S$ can be written as a linear combination of the other vectors in $S$, contradicting the assumption.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Binary Search</title><link href="http://localhost:4000/computer-science/binary-search.html" rel="alternate" type="text/html" title="Binary Search" /><published>2026-02-17T00:00:00+09:00</published><updated>2026-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/binary-search</id><content type="html" xml:base="http://localhost:4000/computer-science/binary-search.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc 
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Heavy-Light Decomposition</title><link href="http://localhost:4000/computer-science/heavy-light-decomposition.html" rel="alternate" type="text/html" title="Heavy-Light Decomposition" /><published>2026-02-12T00:00:00+09:00</published><updated>2026-02-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/heavy-light-decomposition</id><content type="html" xml:base="http://localhost:4000/computer-science/heavy-light-decomposition.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Couette Flow and Poiseuille Flow</title><link href="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html" rel="alternate" type="text/html" title="Couette Flow and Poiseuille Flow" /><published>2026-01-20T00:00:00+09:00</published><updated>2026-01-20T00:00:00+09:00</updated><id>http://localhost:4000/physics/couette-flow-and-poiseuille-flow</id><content type="html" xml:base="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Energy Dissipation in an Incompressible Fluid</title><link href="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html" rel="alternate" type="text/html" title="Energy Dissipation in an Incompressible Fluid" /><published>2026-01-19T00:00:00+09:00</published><updated>2026-01-19T00:00:00+09:00</updated><id>http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid</id><content type="html" xml:base="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Fast Fourier Transform</title><link href="http://localhost:4000/computer-science/fast-fourier-transform.html" rel="alternate" type="text/html" title="Fast Fourier Transform" /><published>2025-12-17T00:00:00+09:00</published><updated>2025-12-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fast-fourier-transform</id><content type="html" xml:base="http://localhost:4000/computer-science/fast-fourier-transform.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
 {:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>

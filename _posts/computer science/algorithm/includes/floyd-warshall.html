@@ -1,0 +1,229 @@
+{% assign viz_id = include.id | default: "floyd-warshall-demo" %}
+<div id="{{ viz_id }}" class="fwv-root">
+  <style>
+    #{{ viz_id }} { margin: 2rem 0; color: #1f2937; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .fwv-stack { display: grid; gap: 1rem; }
+    #{{ viz_id }} .fwv-main { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 250px); align-items: center; justify-content: center; gap: 1.25rem 2.25rem; }
+    @media (max-width: 720px) { #{{ viz_id }} .fwv-main { grid-template-columns: minmax(0, 1fr); } }
+    #{{ viz_id }} .fwv-graph { width: 100%; max-width: 360px; min-width: 0; justify-self: center; padding: 0.25rem 0; }
+    #{{ viz_id }} .fwv-graph svg { display: block; width: 100%; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .fwv-matrix-wrap { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 250px; min-width: 0; justify-self: center; }
+    #{{ viz_id }} .fwv-matrix { border-collapse: collapse; width: 100%; margin: 0 auto; table-layout: fixed; font-size: 0.95em; }
+    #{{ viz_id }} .fwv-matrix th,
+    #{{ viz_id }} .fwv-matrix td { border: 1px solid rgba(82,96,113,0.22); height: 2.45rem; padding: 0.35rem 0.35rem; text-align: center; }
+    #{{ viz_id }} .fwv-matrix th { background: #f8fafc; font-weight: 700; }
+    #{{ viz_id }} .fwv-matrix .is-k { background: #dbeafe; color: #1d4ed8; }
+    #{{ viz_id }} .fwv-matrix .is-changed { background: #fef3c7; color: #92400e; font-weight: 700; }
+    #{{ viz_id }} .fwv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #{{ viz_id }} .fwv-status p { margin: 0; }
+    #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .fwv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #{{ viz_id }} .fwv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #{{ viz_id }} .fwv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .fwv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .fwv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #{{ viz_id }} .fwv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #{{ viz_id }} .fwv-line { overflow-x: auto; white-space: nowrap; }
+    #{{ viz_id }} .fwv-edge { fill: none; stroke: #64748b; stroke-width: 2.2; }
+    #{{ viz_id }} .fwv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #{{ viz_id }} .fwv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #{{ viz_id }} .fwv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #{{ viz_id }} .fwv-node-k circle { fill: #dbeafe; stroke: #2563eb; stroke-width: 4; }
+    #{{ viz_id }} .fwv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #{{ viz_id }} .fwv-legend { font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .fwv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #{{ viz_id }} .fwv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #{{ viz_id }} .fwv-swatch-k { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .fwv-swatch-changed { background: #fef3c7; border-color: #d97706; }
+  </style>
+
+  <div class="fwv-stack">
+    <div class="fwv-main">
+      <div class="fwv-graph" data-role="graph"></div>
+      <div class="fwv-matrix-wrap" data-role="matrix"></div>
+    </div>
+    <div class="fwv-status" data-role="status"></div>
+    <div class="fwv-controls-shell">
+      <div class="fwv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="fwv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="fwv-info">
+      <div class="fwv-line"><strong>Allowed intermediate vertices:</strong> <span data-role="allowed"></span></div>
+      <div class="fwv-line"><strong>Changed cells:</strong> <span data-role="changed"></span></div>
+    </div>
+    <div class="fwv-legend">
+      <div class="fwv-legend-item"><span class="fwv-swatch fwv-swatch-k"></span> Current intermediate vertex $k$</div>
+      <div class="fwv-legend-item"><span class="fwv-swatch fwv-swatch-changed"></span> Distance improved in this iteration</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function cellKey(i,j) { return i + "-" + j; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function valText(x) { return Number.isFinite(x) ? String(x) : "INF"; }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var inf = Infinity;
+      var vertices = ["A","B","C","D"];
+      var pos = { A:[85,105], B:[315,105], C:[315,265], D:[85,265] };
+      var edges = [
+        { u:"A", v:"B", w:5, label:[200,83] },
+        { u:"B", v:"A", w:4, label:[200,128] },
+        { u:"B", v:"C", w:-3, label:[340,185] },
+        { u:"C", v:"A", w:6, q:[190,145], label:[188,150] },
+        { u:"A", v:"D", w:7, label:[60,185] },
+        { u:"C", v:"D", w:4, label:[200,288] },
+        { u:"D", v:"C", w:2, label:[200,242] }
+      ];
+      function copyMatrix(a) { return a.map(function (row) { return row.slice(); }); }
+      function buildStates() {
+        var d = vertices.map(function (_,i) {
+          return vertices.map(function (_,j) { return i === j ? 0 : inf; });
+        });
+        edges.forEach(function (e) {
+          var u = vertices.indexOf(e.u), v = vertices.indexOf(e.v);
+          d[u][v] = Math.min(d[u][v], e.w);
+        });
+        var states = [{ title:"Initial matrix", desc:"Initialize `dist[i][j]` with direct edge weights and `dist[i][i]=0`.", k:-1, dist:copyMatrix(d), changed:[] }];
+        for (var k = 0; k < vertices.length; k++) {
+          var changed = [];
+          for (var i = 0; i < vertices.length; i++) {
+            for (var j = 0; j < vertices.length; j++) {
+              if (!Number.isFinite(d[i][k]) || !Number.isFinite(d[k][j])) continue;
+              var cand = d[i][k] + d[k][j];
+              if (cand < d[i][j]) {
+                d[i][j] = cand;
+                changed.push(cellKey(i,j));
+              }
+            }
+          }
+          states.push({
+            title:"Use " + vertices[k] + " as an intermediate vertex",
+            desc:"Apply `dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])` for `k = " + vertices[k] + "`.",
+            k:k,
+            dist:copyMatrix(d),
+            changed:changed
+          });
+        }
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function markerId() { return root.id + "-arrow"; }
+      function shorten(a,b) {
+        var dx = b[0]-a[0], dy = b[1]-a[1], len = Math.sqrt(dx*dx+dy*dy) || 1, r = 28;
+        return [[a[0]+dx*r/len,a[1]+dy*r/len],[b[0]-dx*r/len,b[1]-dy*r/len]];
+      }
+      function edgePath(e) {
+        var s = shorten(pos[e.u],pos[e.v]), a = s[0], b = s[1];
+        if (e.q) return "M " + a[0] + " " + a[1] + " Q " + e.q[0] + " " + e.q[1] + " " + b[0] + " " + b[1];
+        return "M " + a[0] + " " + a[1] + " L " + b[0] + " " + b[1];
+      }
+      function drawGraph(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"35 58 330 250", role:"img", "aria-label":"Floyd-Warshall graph" });
+        var defs = svgEl("defs", {});
+        var marker = svgEl("marker", { id:markerId(), viewBox:"0 0 10 10", refX:"9", refY:"5", markerWidth:"7", markerHeight:"7", orient:"auto-start-reverse" });
+        marker.appendChild(svgEl("path", { d:"M 0 0 L 10 5 L 0 10 z", fill:"#64748b" }));
+        defs.appendChild(marker);
+        svg.appendChild(defs);
+        edges.forEach(function (e) {
+          svg.appendChild(svgEl("path", { d:edgePath(e), class:"fwv-edge", "marker-end":"url(#" + markerId() + ")" }));
+        });
+        edges.forEach(function (e) {
+          var p = e.label;
+          svg.appendChild(svgEl("rect", { x:p[0]-16, y:p[1]-11, width:32, height:22, rx:5, ry:5, class:"fwv-edge-label-bg" }));
+          var t = svgEl("text", { x:p[0], y:p[1], class:"fwv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v,i) {
+          var p = pos[v], g = svgEl("g", { class:i === s.k ? "fwv-node fwv-node-k" : "fwv-node" });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:27 }));
+          var t = svgEl("text", { x:p[0], y:p[1] });
+          t.textContent = v;
+          g.appendChild(t);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function drawMatrix(s) {
+        var table = document.createElement("table");
+        table.className = "fwv-matrix";
+        var thead = document.createElement("thead");
+        var head = document.createElement("tr");
+        head.appendChild(document.createElement("th"));
+        vertices.forEach(function (v,j) {
+          var th = document.createElement("th");
+          th.textContent = v;
+          if (j === s.k) th.className = "is-k";
+          head.appendChild(th);
+        });
+        thead.appendChild(head);
+        table.appendChild(thead);
+        var tbody = document.createElement("tbody");
+        vertices.forEach(function (v,i) {
+          var tr = document.createElement("tr");
+          var th = document.createElement("th");
+          th.textContent = v;
+          if (i === s.k) th.className = "is-k";
+          tr.appendChild(th);
+          vertices.forEach(function (_,j) {
+            var td = document.createElement("td");
+            td.textContent = valText(s.dist[i][j]);
+            if (has(s.changed,cellKey(i,j))) td.className = "is-changed";
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        var target = byRole("matrix");
+        target.innerHTML = "";
+        target.appendChild(table);
+      }
+      function changedText(s) {
+        if (!s.changed.length) return "<code>-</code>";
+        return "<code>" + s.changed.map(function (k) {
+          var parts = k.split("-"), i = Number(parts[0]), j = Number(parts[1]);
+          return "(" + vertices[i] + "," + vertices[j] + ")=" + valText(s.dist[i][j]);
+        }).join(", ") + "</code>";
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("allowed").innerHTML = s.k < 0 ? "<code>-</code>" : "<code>{" + vertices.slice(0,s.k+1).join(",") + "}</code>";
+        byRole("changed").innerHTML = changedText(s);
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        drawGraph(s);
+        drawMatrix(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>

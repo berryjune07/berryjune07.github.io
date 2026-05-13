@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="543 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   9 min
 </span>
 
       </span>
@@ -303,6 +303,234 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#plane-couette-flow" id="markdown-toc-plane-couette-flow">Plane Couette Flow</a></li>
+  <li><a href="#plane-poiseuille-flow" id="markdown-toc-plane-poiseuille-flow">Plane Poiseuille Flow</a></li>
+  <li><a href="#flow-in-a-circular-pipe" id="markdown-toc-flow-in-a-circular-pipe">Flow in a Circular Pipe</a></li>
+</ul>
+
+<h2 id="plane-couette-flow">Plane Couette Flow</h2>
+
+<p>Consider a viscous incompressible fluid between two parallel planes.
+Let the lower plane be $y=0$, the upper plane be $y=h$, and take the $x$-axis in the direction of motion.
+Assume a steady one-dimensional velocity field</p>
+
+<p>\[
+\b{v}=v(y)\hat{\b{x}}.
+\]</p>
+
+<p>The equation of continuity is identically satisfied.
+The incompressible Navier–Stokes equation reduces to</p>
+
+<p>\[
+\eta \odvn{2}{v}{y}=\odv{p}{x}, \qquad \pdv{p}{y}=0.
+\]</p>
+
+<p>For pure Couette flow, there is no pressure gradient:</p>
+
+<p>\[
+\odv{p}{x}=0.
+\]</p>
+
+<p>Hence</p>
+
+<p>\[
+\odvn{2}{v}{y}=0,
+\]</p>
+
+<p>so that $v$ is linear in $y$.
+If the lower plane is fixed and the upper plane moves with velocity $u$, then</p>
+
+<p>\[
+v(0)=0,\qquad v(h)=u.
+\]</p>
+
+<p>Therefore</p>
+
+<p>\[
+v(y)=\frac{u}{h}y
+\]</p>
+
+<p>and the mean velocity is</p>
+
+<p>\[
+\bar{v}
+=\frac{1}{h}\int_0^h v(y)\,dy
+=\frac{u}{2}.
+\]</p>
+
+<p>The shear stress is constant:</p>
+
+<p>\[
+\varepsilon_{xy}
+=\eta\odv{v}{y}
+=\eta\frac{u}{h}.
+\]</p>
+
+<p>Thus the tangential force per unit area on the lower plane is $\eta u/h$, while the force on the upper plane has the opposite sign.</p>
+
+<h2 id="plane-poiseuille-flow">Plane Poiseuille Flow</h2>
+
+<p>Now suppose both planes are fixed and the motion is caused by a pressure gradient.
+The boundary conditions are</p>
+
+<p>\[
+v(0)=v(h)=0.
+\]</p>
+
+<p>Since $\pdv{p}{y}=0$, the pressure is constant across the gap.
+Also the equation</p>
+
+<p>\[
+\eta \odvn{2}{v}{y}=\odv{p}{x}
+\]</p>
+
+<p>has a left-hand side depending only on $y$ and a right-hand side depending only on $x$.
+Hence $\odv{p}{x}$ must be constant.
+Let</p>
+
+<p>\[
+\Delta p=p(0)-p(l)&gt;0
+\]</p>
+
+<p>be the pressure drop over a length $l$ in the positive $x$-direction.
+Then</p>
+
+<p>\[
+\odv{p}{x}=-\frac{\Delta p}{l}.
+\]</p>
+
+<p>Solving the differential equation gives</p>
+
+<p>\[
+v(y)=\frac{\Delta p}{2\eta l}y(h-y)
+\]</p>
+
+<p>which is parabolic and reaches its maximum at $y=h/2$:</p>
+
+<p>\[
+v_{\max}=\frac{\Delta p}{8\eta l}h^2.
+\]</p>
+
+<p>The mean velocity is</p>
+
+<p>\[
+\bar{v}
+=\frac{1}{h}\int_0^h v(y)\,dy
+=\frac{\Delta p}{12\eta l}h^2
+=\frac{2}{3}v_{\max}.
+\]</p>
+
+<p>Per unit width in the $z$-direction, the volume discharge is</p>
+
+<p>\[
+q=\int_0^h v(y)\,dy
+=\frac{\Delta p}{12\eta l}h^3.
+\]</p>
+
+<p>The shear stress distribution is</p>
+
+<p>\[
+\varepsilon_{xy}
+=\eta\odv{v}{y}
+=\frac{\Delta p}{2l}(h-2y).
+\]</p>
+
+<p>It changes sign at the middle of the channel.
+The wall shear stress has magnitude</p>
+
+<p>\[
+\abs{\varepsilon_{xy}}_{y=0,h}
+=\frac{\Delta p}{2l}h.
+\]</p>
+
+<p>If the upper plane also moves with velocity $u$, the two effects superpose:</p>
+
+<p>\[
+v(y)=\frac{u}{h}y+\frac{\Delta p}{2\eta l}y(h-y).
+\]</p>
+
+<p>This is often called Couette–Poiseuille flow.</p>
+
+<h2 id="flow-in-a-circular-pipe">Flow in a Circular Pipe</h2>
+
+<p>Consider steady flow in a circular pipe of radius $R$ and length $l$.
+Take the $x$-axis along the pipe.
+By symmetry,</p>
+
+<p>\[
+\b{v}=v(r)\hat{\b{x}},
+\]</p>
+
+<p>where $r$ is the distance from the axis.
+The pressure is constant over each cross-section, and</p>
+
+<p>\[
+\odv{p}{x}=-\frac{\Delta p}{l}.
+\]</p>
+
+<p>The $x$-component of the Navier–Stokes equation becomes</p>
+
+<p>\[
+\eta \frac{1}{r}\odv{}{r}\left(r\odv{v}{r}\right)
+=-\frac{\Delta p}{l}.
+\]</p>
+
+<p>Integrating once,</p>
+
+<p>\[
+r\odv{v}{r}
+=-\frac{\Delta p}{2\eta l}r^2+C.
+\]</p>
+
+<p>The velocity must remain finite at $r=0$, so $C=0$.
+Integrating again gives</p>
+
+<p>\[
+v(r)=-\frac{\Delta p}{4\eta l}r^2+C_1.
+\]</p>
+
+<p>The no-slip condition $v(R)=0$ gives</p>
+
+<p>\[
+v(r)=\frac{\Delta p}{4\eta l}(R^2-r^2)
+\]</p>
+
+<p>This is again a parabolic profile.
+The maximum velocity is</p>
+
+<p>\[
+v_{\max}=v(0)=\frac{\Delta p}{4\eta l}R^2.
+\]</p>
+
+<p>The volume discharge is</p>
+
+<p>\[
+\begin{align*}
+Q
+&amp;=2\pi\int_0^R v(r)r\,dr \nl
+&amp;=\frac{\pi\Delta p}{8\eta l}R^4.
+\end{align*}
+\]</p>
+
+<p>Thus</p>
+
+<p>\[
+Q=\frac{\pi R^4}{8\eta l}\Delta p
+\]</p>
+
+<p>which is the Hagen–Poiseuille law.
+The mean velocity in the pipe is</p>
+
+<p>\[
+\bar{v}
+=\frac{Q}{\pi R^2}
+=\frac{\Delta p}{8\eta l}R^2
+=\frac{1}{2}v_{\max}.
+\]</p>
+
+<p>The mass discharge is $\rho Q$.
+In particular, the dependence on the fourth power of $R$ shows why the radius of a pipe is the dominant geometric factor in viscous laminar flow.</p>
 
   
 </article>
@@ -457,7 +685,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">Energy Dissipation in an Incompressible Fluid</a>  </h3>      <a class="fill-card no-hover" href="/physics/energy-dissipation-in-an-incompressible-fluid.html" tabindex="-1"><span class="sr-only">Continue reading Energy Dissipation in an Incompressible Fluid</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">Viscous Fluids and the Navier–Stokes Equation</a>  </h3>      <a class="fill-card no-hover" href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" tabindex="-1"><span class="sr-only">Continue reading Viscous Fluids and the Navier–Stokes Equation</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 2.2]            Energy Dissipation in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2026-01-19T00:00:00+09:00">      19 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">    <span>              [Fluid Mechanics 2.1]            Viscous Fluids and the Navier–Stokes Equation    </span>  </a>      <time class="faded fine" datetime="2025-12-15T00:00:00+09:00">      15 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html"></span>  </li>      </ul></aside>
+                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/flow-with-small-reynolds-numbers.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/flow-with-small-reynolds-numbers.html" class="flip-title">Flow with Small Reynolds Numbers</a>  </h3>      <a class="fill-card no-hover" href="/physics/flow-with-small-reynolds-numbers.html" tabindex="-1"><span class="sr-only">Continue reading Flow with Small Reynolds Numbers</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="flip-title">The Law of Similarity and Reynolds Number</a>  </h3>      <a class="fill-card no-hover" href="/physics/the-law-of-similarity-and-reynolds-number.html" tabindex="-1"><span class="sr-only">Continue reading The Law of Similarity and Reynolds Number</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/flow-with-small-reynolds-numbers.html" class="flip-title">    <span>              [Fluid Mechanics 2.5]            Flow with Small Reynolds Numbers    </span>  </a>      <time class="faded fine" datetime="2026-04-02T00:00:00+09:00">      02 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/flow-with-small-reynolds-numbers.html"></span>  </li>          <li class="h4">  <a href="/physics/the-law-of-similarity-and-reynolds-number.html" class="flip-title">    <span>              [Fluid Mechanics 2.4]            The Law of Similarity and Reynolds Number    </span>  </a>      <time class="faded fine" datetime="2026-04-01T00:00:00+09:00">      01 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html"></span>  </li>          <li class="h4">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 2.2]            Energy Dissipation in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2026-01-19T00:00:00+09:00">      19 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/viscous-fluids-and-the-navier-stokes-equation.html" class="flip-title">    <span>              [Fluid Mechanics 2.1]            Viscous Fluids and the Navier–Stokes Equation    </span>  </a>      <time class="faded fine" datetime="2025-12-15T00:00:00+09:00">      15 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/viscous-fluids-and-the-navier-stokes-equation.html"></span>  </li>      </ul></aside>
 
   
 

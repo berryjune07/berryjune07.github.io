@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Bellman–Ford Algorithm"
+title: "Bellman-Ford Algorithm"
 subtitle: "bellman-ford-algorithm"
 categories: computer-science
 tags: algorithms
@@ -26,75 +26,29 @@ The relaxation process updates the shortest path estimate for each vertex based 
 3. Repeat the relaxation process for $V - 1$ iterations, where $V$ is the number of vertices in the graph.
 4. After $V - 1$ iterations, check for negative weight cycles by iterating through all edges again. If any distance can still be updated, a negative weight cycle exists. If no updates are possible, the algorithm terminates successfully.
 
-Consider the graph and the edges below:
+The interactive demo below uses the edge order
 
-```mermaid
-graph LR
-    A(("$$A:0$$"));B(("$$B:\infty$$"));C(("$$C:\infty$$"));D(("$$D:\infty$$"));E(("$$E:\infty$$"));
-    A-->|8|E;
-    A-->|-6|B;
-    A-->|9|D;
-    B-->|-2|C;
-    C-->|5|D;
-    D-->|-4|C;
-    A-->|3|C;
-    C-->|-7|E;
-    E-->|-13|C;
-```
-<center>
-$\mathrm{E} = \{(A, E, 8), (A, B, -6), (A, D, 9), (B, C, -2), (C, D, 5), (D, C, -4), (A, C, 3), (C, E, -7), (E, C, -13)\}$
-</center><br>
+\\[
+\begin{gathered}
+(A,E,8),(A,B,-6),(A,D,9),(B,C,-2),(C,D,5),\nl
+(D,C,-4),(A,C,3),(C,E,-7),(E,C,-13).
+\end{gathered}
+\\]
 
-After the first relaxation, the distances are updated as follows:
+Each step performs one full pass over all edges.
 
-```mermaid
-graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-28$$"));D(("$$D:-3$$"));E(("$$E:-15$$"));
-    A-->|8|E;
-    A-->|-6|B;
-    A-->|9|D;
-    B-->|-2|C;
-    C-->|5|D;
-    D-->|-4|C;
-    A-->|3|C;
-    C-->|-7|E;
-    E-->|-13|C;
-```
+{% include_relative includes/bellman-ford.html %}
 
-After the second relaxation, the distances are updated as follows:
+Here $V=5$, so the algorithm performs $V-1=4$ full relaxation passes.
+Even after these passes, the edge $(C,D,5)$ can still be relaxed.
+Thus a negative cycle is reachable from $A$.
+Indeed, the cycle
 
-```mermaid
-graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-48$$"));D(("$$D:-23$$"));E(("$$E:-35$$"));
-    A-->|8|E;
-    A-->|-6|B;
-    A-->|9|D;
-    B-->|-2|C;
-    C-->|5|D;
-    D-->|-4|C;
-    A-->|3|C;
-    C-->|-7|E;
-    E-->|-13|C;
-```
+\\[
+C\to E\to C
+\\]
 
-After the third relaxation, the distances are updated as follows:
-
-```mermaid
-graph LR
-    A(("$$A:0$$"));B(("$$B:-6$$"));C(("$$C:-68$$"));D(("$$D:-43$$"));E(("$$E:-55$$"));
-    A-->|8|E;
-    A-->|-6|B;
-    A-->|9|D;
-    B-->|-2|C;
-    C-->|5|D;
-    D-->|-4|C;
-    A-->|3|C;
-    C-->|-7|E;
-    E-->|-13|C;
-```
-
-Likewise, for this graph, the Bellman--Ford algorithm will continue to relax the edges infinitely.
-Therefore, it will detect a negative weight cycle at the end of the algorithm.
+has total weight $-7+(-13)=-20$.
 
 ## Complexity
 

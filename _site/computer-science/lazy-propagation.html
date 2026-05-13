@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="897 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1472 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   14 min
+   24 min
 </span>
 
       </span>
@@ -304,29 +304,39 @@
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
   <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
-  <li>
-<a href="#code" id="markdown-toc-code">Code</a>    <ul>
-      <li><a href="#example" id="markdown-toc-example">Example</a></li>
-    </ul>
-  </li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
-<p><strong>Lazy propagation</strong> is a technique used to delay the updates in segment trees. It is used to optimize the time complexity of range updates in segment trees.</p>
+<p><strong>Lazy propagation</strong> is a technique used to delay the updates in <a href="/computer-science/segment-tree.html">segment trees</a>.
+It is used to optimize the time complexity of range updates in segment trees.</p>
 
 <h2 id="explanation">Explanation</h2>
-<p>Segment tree with lazy propagation is a data structure for the pair of a monoid $(M, \ast)$ and a set of functions
-$F \subset M^M$ which satisfies the following property:</p>
-<ul>
-  <li>$\forall f\in F, \; \forall a,b\in M, \; f(a\ast b) = f(a)\ast f(b)$</li>
-</ul>
+<p>Segment tree with lazy propagation is a data structure for a monoid $(M, \ast)$
+and a monoid $(F,\circ)$ of endomorphisms of $M$.
+This means that every $f\in F$ satisfies:</p>
 
-<p>i.e. $f$ is an endomorphism of the monoid $(M, \ast)$.</p>
-<ul>
-  <li>$F = \mathrm{End}(M)$</li>
-</ul>
+<p>\[
+f(x\ast y)=f(x)\ast f(y)
+\]</p>
 
-<p>An endomorphism is a homomorphism from a set to itself, and a homomorphism is a function that preserves the structure of the set. (Read more about homomorphisms <a href="https://en.wikipedia.org/wiki/Homomorphism">here</a>.)</p>
+<p>and the composition of two updates is again an update in $F$.
+The identity element of $F$ is the identity function $\mathrm{id}_M$.
+For example, in the common range-sum / range-addition case, it is better to store both sum and length:</p>
+
+<p>\[
+M=\Set{(s,n)} ,\quad
+(s_1,n_1)\ast(s_2,n_2)=(s_1+s_2,n_1+n_2)
+\]</p>
+
+<p>Adding $c$ to every element in an interval is represented by</p>
+
+<p>\[
+f_c(s,n)=(s+cn,n)
+\]</p>
+
+<p>Then $f_c$ is an endomorphism of $M$, and $f_c\circ f_d=f_{c+d}$.
+This is why range addition can be stored as a single lazy value.</p>
 
 <p>Consider an array $A=[a_1,\cdots,a_N]$ of size $N$.
 Segment tree with lazy propagation can carry out two types of queries in $O(\log N)$ time complexity:</p>
@@ -339,227 +349,708 @@ Segment tree with lazy propagation can carry out two types of queries in $O(\log
 </ol>
 
 <p>The idea is to store the updates in the nodes of the segment tree and apply them only when needed.
-Such new tree nodes are called <strong>lazy nodes</strong> and the updates are called <strong>lazy updates</strong>.</p>
+These extra stored values are called <strong>lazy values</strong>, and the delayed updates are called <strong>lazy updates</strong>.</p>
 
-<pre><code class="language-mermaid">graph TD
-    subgraph s1 ["1/[1:4]"];
-        f1(4); l1( ):::lazy;
-    end;
-    subgraph s2 ["2/[1:2]"];
-        f2(2); l2( ):::lazy;
-    end;
-    subgraph s3 ["3/[3:4]"];
-        f3(2); l3( ):::lazy;
-    end;
-    subgraph s4 ["4/[1]"];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 ["5/[2]"];
-        f5(1); l5( ):::lazy;
-    end;
-    subgraph s6 ["6/[3]"];
-        f6(1); l6( ):::lazy;
-    end;
-    subgraph s7 ["7/[4]"];
-        f7(1); l7( ):::lazy;
-    end;
+<p>Let a node $v$ represent an interval $I_v$.
+We store two values at $v$:</p>
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+<ul>
+  <li>$T_v\in M$: the aggregate value of the interval $I_v$ after all updates so far.</li>
+  <li>$L_v\in F$: the update which has already been applied to $T_v$, but has not yet been propagated to the children of $v$.</li>
+</ul>
 
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-</code></pre>
+<p>Initially, $L_v=\mathrm{id}_M$ for every node $v$.
+For an internal node $v$, the invariant is:</p>
 
-<p>The binary tree above is an example of a segment tree with lazy propagation for the array $[1,1,1,1]$.
-In each subgraph, the left node represents the sum of all elements in the range, and the right node represents the lazy update.</p>
+<p>\[
+T_v=L_v(T_{2v}\ast T_{2v+1})
+\]</p>
 
-<p>When we update the range $[2:4]$ by adding $1$ to all elements, the segment tree will be updated as follows.</p>
+<p>Here $2v$ and $2v+1$ are the left and right children of $v$.
+If $L_v=\mathrm{id}_M$, then this reduces to the ordinary segment tree equation
+$T_v=T_{2v}\ast T_{2v+1}$.</p>
 
-<pre><code class="language-mermaid">graph TD
-    subgraph s1 ["1/[1:4]"];
-        f1(7); l1( ):::lazy;
-    end;
-    subgraph s2 ["2/[1:2]"];
-        f2(3); l2( ):::lazy;
-    end;
-    subgraph s3 ["3/[3:4]"];
-        f3(4); l3(1):::lazy;
-    end;
-    subgraph s4 ["4/[1]"];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 ["5/[2]"];
-        f5(2); l5(1):::lazy;
-    end;
-    subgraph s6 ["6/[3]"];
-        f6(1); l6( ):::lazy;
-    end;
-    subgraph s7 ["7/[4]"];
-        f7(1); l7( ):::lazy;
-    end;
+<p>Now suppose that we want to apply $f\in F$ to the whole interval $I_v$.
+We can update the node without visiting descendants:</p>
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+<p>\[
+T_v\gets f(T_v),\quad
+L_v\gets f\circ L_v
+\]</p>
 
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-</code></pre>
+<p>The order means that the old delayed update $L_v$ is applied first, and the new update $f$ is applied afterward.
+This is the essential idea of lazy propagation.
+The value $T_v$ remains correct for the whole interval $I_v$,
+but the children have not yet received the update $f$.</p>
 
-<p>When we update the range $[1:3]$ by adding $1$ to all elements, the segment tree will be updated as follows.</p>
+<p>When we need to descend from $v$ to its children, we <strong>push</strong> the lazy value:</p>
 
-<pre><code class="language-mermaid">graph TD
-    subgraph s1 ["1/[1:4]"];
-        f1(10); l1( ):::lazy;
-    end;
-    subgraph s2 ["2/[1:2]"];
-        f2(5); l2(1):::lazy;
-    end;
-    subgraph s3 ["3/[3:4]"];
-        f3(5); l3( ):::lazy;
-    end;
-    subgraph s4 ["4/[1]"];
-        f4(1); l4( ):::lazy;
-    end;
-    subgraph s5 ["5/[2]"];
-        f5(2); l5(1):::lazy;
-    end;
-    subgraph s6 ["6/[3]"];
-        f6(3); l6(2):::lazy;
-    end;
-    subgraph s7 ["7/[4]"];
-        f7(2); l7(1):::lazy;
-    end;
+<p>\[
+\begin{align*}
+T_{2v} &amp;\gets L_v(T_{2v}), &amp;
+L_{2v} &amp;\gets L_v\circ L_{2v}, \nl
+T_{2v+1} &amp;\gets L_v(T_{2v+1}), &amp;
+L_{2v+1} &amp;\gets L_v\circ L_{2v+1}, \nl
+&amp; L_v &amp;\gets \mathrm{id}_M
+\end{align*}
+\]</p>
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
+<p>This preserves the invariant because $L_v$ is an endomorphism:</p>
 
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-</code></pre>
+<p>\[
+L_v(T_{2v}\ast T_{2v+1})=L_v(T_{2v})\ast L_v(T_{2v+1})
+\]</p>
 
-<p>When we query the sum of the elements in the range $[3,4]$, the segment tree will be updated
-and the nodes will be visited as follows.</p>
+<p>Therefore, after pushing, the parent can again be viewed as the merge of its two children.
+For a partial range update or a partial range query, we first push the lazy value of the current node,
+then recurse into the children.
+After updating children, we recompute:</p>
 
-<pre><code class="language-mermaid">graph TD
-    subgraph s1 ["1/[1:4]"];
-        f1(10); l1( ):::lazy;
-    end;
-    subgraph s2 ["2/[1:2]"];
-        f2(5); l2( ):::lazy;
-    end;
-    subgraph s3 ["3/[3:4]"];
-        f3(5); l3( ):::lazy;
-    end;
-    subgraph s4 ["4/[1]"];
-        f4(2); l4(1):::lazy;
-    end;
-    subgraph s5 ["5/[2]"];
-        f5(3); l5(2):::lazy;
-    end;
-    subgraph s6 ["6/[3]"];
-        f6(3); l6(2):::lazy;
-    end;
-    subgraph s7 ["7/[4]"];
-        f7(2); l7(1):::lazy;
-    end;
+<p>\[
+T_v=T_{2v}\ast T_{2v+1}
+\]</p>
 
-    s1:::round---s2:::round &amp; s3:::round;
-    s2---s4:::round &amp; s5:::round;
-    s3---s6:::round &amp; s7:::round;
-    s5:::highlight; s6:::highlight;
+<p>The interactive demo below is a range-sum segment tree with lazy range-addition updates.
+Each node is written in the form of node index, represented interval, stored sum, and stored lazy value.
+Range updates highlight the fully covered nodes where lazy values are stored, and range queries highlight the canonical cover.</p>
 
-    classDef lazy fill:#ccf;
-    classDef round rx:10,ry:10,fill:#ffe;
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-</code></pre>
+<div id="lazy-propagation-demo" class="lpv-root">
+  <style>
+    #lazy-propagation-demo { margin: 2rem 0; color: #1f2937; }
+    #lazy-propagation-demo * { box-sizing: border-box; }
+    #lazy-propagation-demo .lpv-stack { display: grid; gap: 1rem; }
+    #lazy-propagation-demo .lpv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #lazy-propagation-demo .lpv-graph svg { display: block; width: min(100%, 780px); min-width: 620px; height: auto; margin: 0 auto; }
+    #lazy-propagation-demo .lpv-status-text { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; color: #1f2937; line-height: 1.7; }
+    #lazy-propagation-demo .lpv-status-text p { margin: 0; }
+    #lazy-propagation-demo .lpv-status-text code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #lazy-propagation-demo .lpv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #lazy-propagation-demo .lpv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #lazy-propagation-demo .lpv-controls > * { flex: 0 0 auto; margin: 0; vertical-align: middle; }
+    #lazy-propagation-demo .lpv-controls input[type="number"], #lazy-propagation-demo .lpv-controls button { height: 2.35rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; box-sizing: border-box; }
+    #lazy-propagation-demo .lpv-controls input[type="number"] { width: 6rem; min-width: 0; border: 1px solid rgba(82,96,113,0.24); background: #fff; color: #1f2937; padding: 0 0.75rem; outline: none; appearance: textfield; }
+    #lazy-propagation-demo .lpv-controls input[type="number"]:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #lazy-propagation-demo .lpv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0 0.85rem; cursor: pointer; white-space: nowrap; }
+    #lazy-propagation-demo .lpv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #lazy-propagation-demo .lpv-edge { stroke: #64748b; stroke-width: 2; }
+    #lazy-propagation-demo .lpv-node rect { fill: #f8fafc; stroke: #475569; stroke-width: 2; rx: 7; ry: 7; }
+    #lazy-propagation-demo .lpv-node-touched rect { fill: #fef3c7; stroke: #d97706; stroke-width: 2.2; }
+    #lazy-propagation-demo .lpv-node-selected rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.5; }
+    #lazy-propagation-demo .lpv-node-current rect { fill: #fee2e2; stroke: #dc2626; stroke-width: 3; }
+    #lazy-propagation-demo .lpv-node text,
+    #lazy-propagation-demo .lpv-array-cell text { fill: #111827; font-family: Helvetica, Arial, sans-serif; text-anchor: middle; pointer-events: none; }
+    #lazy-propagation-demo .lpv-node .lpv-node-index { font-size: 12px; font-weight: 700; }
+    #lazy-propagation-demo .lpv-node .lpv-node-interval { font-size: 11px; }
+    #lazy-propagation-demo .lpv-node .lpv-node-value { font-size: 11px; }
+    #lazy-propagation-demo .lpv-array-cell rect { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.6; rx: 5; ry: 5; }
+    #lazy-propagation-demo .lpv-array-cell-update rect { fill: #fee2e2; stroke: #dc2626; stroke-width: 2.2; }
+    #lazy-propagation-demo .lpv-array-cell-query rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+    #lazy-propagation-demo .lpv-array-cell .lpv-array-value { font-size: 14px; font-weight: 700; dominant-baseline: central; }
+    #lazy-propagation-demo .lpv-array-cell .lpv-array-index { font-size: 11px; dominant-baseline: central; opacity: 0.8; }
+    #lazy-propagation-demo .lpv-legend { margin-top: 0.25rem; font-size: 0.95em; line-height: 1.7; }
+    #lazy-propagation-demo .lpv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #lazy-propagation-demo .lpv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #lazy-propagation-demo .lpv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #lazy-propagation-demo .lpv-swatch-selected { background: #dbeafe; border-color: #2563eb; }
+    #lazy-propagation-demo .lpv-swatch-touched { background: #fef3c7; border-color: #d97706; }
+    #lazy-propagation-demo .lpv-swatch-normal { background: #f8fafc; border-color: #475569; }
+  </style>
+
+  <div class="lpv-stack">
+    <div class="lpv-graph" data-role="graph"></div>
+    <div class="lpv-status-text" data-role="status-text"></div>
+    <div class="lpv-controls-shell">
+      <div class="lpv-controls">
+        <input type="number" min="1" max="8" step="1" value="2" aria-label="Update left endpoint" title="Update left endpoint" data-role="update-left">
+        <input type="number" min="1" max="8" step="1" value="4" aria-label="Update right endpoint" title="Update right endpoint" data-role="update-right">
+        <input type="number" min="-9" max="9" step="1" value="1" aria-label="Add value" title="Add value" data-role="update-delta">
+        <button type="button" data-role="update-btn">Add</button>
+        <input type="number" min="1" max="8" step="1" value="3" aria-label="Query left endpoint" title="Query left endpoint" data-role="query-left">
+        <input type="number" min="1" max="8" step="1" value="4" aria-label="Query right endpoint" title="Query right endpoint" data-role="query-right">
+        <button type="button" data-role="query-btn">Query</button>
+        <button type="button" data-role="undo-btn">Undo</button>
+        <button type="button" data-role="reset-btn">Reset</button>
+      </div>
+    </div>
+    <div class="lpv-legend">
+      <div class="lpv-legend-item">
+<span class="lpv-swatch lpv-swatch-current"></span> Node whose lazy value was propagated</div>
+      <div class="lpv-legend-item">
+<span class="lpv-swatch lpv-swatch-selected"></span> Fully covered update node or query cover node</div>
+      <div class="lpv-legend-item">
+<span class="lpv-swatch lpv-swatch-touched"></span> Recursive call touched by the operation</div>
+      <div class="lpv-legend-item">
+<span class="lpv-swatch lpv-swatch-normal"></span> Node not touched by the last operation</div>
+      <div class="lpv-legend-item">
+<span style="color:#64748b;font-weight:700;">-</span> Parent-to-child relation</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("lazy-propagation-demo");
+      if (!root) return;
+
+      function byRole(name) {
+        return root.querySelector('[data-role="' + name + '"]');
+      }
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function html(s) {
+        return "<p>" + esc(s).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
+      }
+
+      function addUnique(arr, x) {
+        if (arr.indexOf(x) === -1) arr.push(x);
+      }
+
+      function contains(arr, x) {
+        return arr.indexOf(x) !== -1;
+      }
+
+      function copyArray(arr) {
+        return arr.slice();
+      }
+
+      function copyObject(obj) {
+        var out = {};
+        Object.keys(obj).forEach(function (k) { out[k] = obj[k]; });
+        return out;
+      }
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var N = 8;
+      var initialArray = [0, 1, 1, 1, 1, 1, 1, 1, 1];
+      var nodes = [
+        { id: 1, l: 1, r: 8, x: 390, y: 34 },
+        { id: 2, l: 1, r: 4, x: 200, y: 112 },
+        { id: 3, l: 5, r: 8, x: 580, y: 112 },
+        { id: 4, l: 1, r: 2, x: 105, y: 190 },
+        { id: 5, l: 3, r: 4, x: 295, y: 190 },
+        { id: 6, l: 5, r: 6, x: 485, y: 190 },
+        { id: 7, l: 7, r: 8, x: 675, y: 190 },
+        { id: 8, l: 1, r: 1, x: 60, y: 268 },
+        { id: 9, l: 2, r: 2, x: 150, y: 268 },
+        { id: 10, l: 3, r: 3, x: 250, y: 268 },
+        { id: 11, l: 4, r: 4, x: 340, y: 268 },
+        { id: 12, l: 5, r: 5, x: 440, y: 268 },
+        { id: 13, l: 6, r: 6, x: 530, y: 268 },
+        { id: 14, l: 7, r: 7, x: 630, y: 268 },
+        { id: 15, l: 8, r: 8, x: 720, y: 268 }
+      ];
+      var edges = [
+        [1, 2], [1, 3],
+        [2, 4], [2, 5], [3, 6], [3, 7],
+        [4, 8], [4, 9], [5, 10], [5, 11], [6, 12], [6, 13], [7, 14], [7, 15]
+      ];
+      var byId = {};
+      var leafByIndex = {};
+      nodes.forEach(function (n) {
+        byId[n.id] = n;
+        if (n.l === n.r) leafByIndex[n.l] = n.id;
+      });
+
+      function interval(n) {
+        return n.l === n.r ? "[" + n.l + "]" : "[" + n.l + ":" + n.r + "]";
+      }
+
+      function nodeText(id) {
+        var n = byId[id];
+        return id + "/" + interval(n);
+      }
+
+      function nodeList(ids) {
+        if (!ids.length) return "-";
+        return ids.map(nodeText).join(", ");
+      }
+
+      function arrayText(arr) {
+        return "[" + arr.slice(1).join(", ") + "]";
+      }
+
+      function buildTree(arr) {
+        var tree = {};
+        function build(id, l, r) {
+          if (l === r) {
+            tree[id] = arr[l];
+            return tree[id];
+          }
+          var m = Math.floor((l + r) / 2);
+          tree[id] = build(id * 2, l, m) + build(id * 2 + 1, m + 1, r);
+          return tree[id];
+        }
+        build(1, 1, N);
+        return tree;
+      }
+
+      function emptyLazy() {
+        var lazy = {};
+        nodes.forEach(function (n) { lazy[n.id] = 0; });
+        return lazy;
+      }
+
+      function copyState(s) {
+        return {
+          arr: copyArray(s.arr),
+          tree: copyObject(s.tree),
+          lazy: copyObject(s.lazy),
+          current: copyArray(s.current),
+          selected: copyArray(s.selected),
+          touched: copyArray(s.touched),
+          focus: {
+            updateLeft: s.focus.updateLeft || null,
+            updateRight: s.focus.updateRight || null,
+            queryLeft: s.focus.queryLeft || null,
+            queryRight: s.focus.queryRight || null
+          },
+          status: s.status
+        };
+      }
+
+      function initial() {
+        var arr = copyArray(initialArray);
+        return {
+          arr: arr,
+          tree: buildTree(arr),
+          lazy: emptyLazy(),
+          current: [],
+          selected: [],
+          touched: [],
+          focus: {},
+          status: "The tree stores range sums over `A = " + arrayText(arr) + "`. Each node also stores a lazy addition value."
+        };
+      }
+
+      function clearHighlights(s) {
+        s.current = [];
+        s.selected = [];
+        s.touched = [];
+        s.focus = {};
+      }
+
+      function readInt(role, min, max, name) {
+        var input = byRole(role);
+        var value = Number(input.value);
+        if (!Number.isInteger(value) || value < min || value > max) {
+          input.focus();
+          throw new Error(name + " must be an integer from `" + min + "` to `" + max + "`.");
+        }
+        return value;
+      }
+
+      function applyNode(s, id, delta) {
+        var n = byId[id];
+        s.tree[id] += (n.r - n.l + 1) * delta;
+        s.lazy[id] += delta;
+      }
+
+      function push(s, id, pushed) {
+        var n = byId[id];
+        var delta = s.lazy[id];
+        if (!delta || n.l === n.r) return;
+        applyNode(s, id * 2, delta);
+        applyNode(s, id * 2 + 1, delta);
+        s.lazy[id] = 0;
+        addUnique(pushed, id);
+      }
+
+      function pull(s, id) {
+        s.tree[id] = s.tree[id * 2] + s.tree[id * 2 + 1];
+      }
+
+      function updateNode(s, id, ql, qr, delta, updated, touched, pushed) {
+        var n = byId[id];
+        addUnique(touched, id);
+        if (qr < n.l || n.r < ql) return;
+        if (ql <= n.l && n.r <= qr) {
+          applyNode(s, id, delta);
+          addUnique(updated, id);
+          return;
+        }
+        push(s, id, pushed);
+        updateNode(s, id * 2, ql, qr, delta, updated, touched, pushed);
+        updateNode(s, id * 2 + 1, ql, qr, delta, updated, touched, pushed);
+        pull(s, id);
+      }
+
+      function queryNode(s, id, ql, qr, cover, touched, pushed) {
+        var n = byId[id];
+        addUnique(touched, id);
+        if (qr < n.l || n.r < ql) return 0;
+        if (ql <= n.l && n.r <= qr) {
+          addUnique(cover, id);
+          return s.tree[id];
+        }
+        push(s, id, pushed);
+        return queryNode(s, id * 2, ql, qr, cover, touched, pushed) + queryNode(s, id * 2 + 1, ql, qr, cover, touched, pushed);
+      }
+
+      function doUpdate(prev, left, right, delta) {
+        if (left > right) throw new Error("The left endpoint must be at most the right endpoint.");
+        var s = copyState(prev);
+        clearHighlights(s);
+        var updated = [];
+        var touched = [];
+        var pushed = [];
+        updateNode(s, 1, left, right, delta, updated, touched, pushed);
+        for (var i = left; i <= right; i += 1) s.arr[i] += delta;
+        s.current = pushed;
+        s.selected = updated;
+        s.touched = touched;
+        s.focus.updateLeft = left;
+        s.focus.updateRight = right;
+        s.status = "`add(" + left + ", " + right + ", " + delta + ")` applied the update to nodes `" + nodeList(updated) + "`."
+          + (pushed.length ? " Propagated lazy values from `" + nodeList(pushed) + "`." : "");
+        return s;
+      }
+
+      function doQuery(prev, left, right) {
+        if (left > right) throw new Error("The left endpoint must be at most the right endpoint.");
+        var s = copyState(prev);
+        clearHighlights(s);
+        var cover = [];
+        var touched = [];
+        var pushed = [];
+        var result = queryNode(s, 1, left, right, cover, touched, pushed);
+        s.current = pushed;
+        s.selected = cover;
+        s.touched = touched;
+        s.focus.queryLeft = left;
+        s.focus.queryRight = right;
+        s.status = "`query(" + left + ", " + right + ") = " + result + "`. Canonical cover nodes are `" + nodeList(cover) + "`."
+          + (pushed.length ? " Propagated lazy values from `" + nodeList(pushed) + "`." : "");
+        return s;
+      }
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS, name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      function nodeClass(s, id) {
+        if (contains(s.current, id)) return "lpv-node lpv-node-current";
+        if (contains(s.selected, id)) return "lpv-node lpv-node-selected";
+        if (contains(s.touched, id)) return "lpv-node lpv-node-touched";
+        return "lpv-node";
+      }
+
+      function drawNode(svg, s, n) {
+        var g = svgEl("g", { class: nodeClass(s, n.id) });
+        g.appendChild(svgEl("rect", { x: n.x - 44, y: n.y - 31, width: 88, height: 62, rx: 7, ry: 7 }));
+        var t1 = svgEl("text", { x: n.x, y: n.y - 18, class: "lpv-node-index" });
+        t1.textContent = String(n.id);
+        var t2 = svgEl("text", { x: n.x, y: n.y - 2, class: "lpv-node-interval" });
+        t2.textContent = interval(n);
+        var t3 = svgEl("text", { x: n.x, y: n.y + 13, class: "lpv-node-value" });
+        t3.textContent = "sum=" + s.tree[n.id];
+        var t4 = svgEl("text", { x: n.x, y: n.y + 27, class: "lpv-node-value" });
+        t4.textContent = "lazy=" + s.lazy[n.id];
+        g.appendChild(t1);
+        g.appendChild(t2);
+        g.appendChild(t3);
+        g.appendChild(t4);
+        svg.appendChild(g);
+      }
+
+      function cellClass(s, i) {
+        if (s.focus.updateLeft && s.focus.updateLeft <= i && i <= s.focus.updateRight) return "lpv-array-cell lpv-array-cell-update";
+        if (s.focus.queryLeft && s.focus.queryLeft <= i && i <= s.focus.queryRight) return "lpv-array-cell lpv-array-cell-query";
+        return "lpv-array-cell";
+      }
+
+      function drawArray(svg, s) {
+        var y = 390;
+        for (var i = 1; i <= N; i += 1) {
+          var x = byId[leafByIndex[i]].x;
+          var g = svgEl("g", { class: cellClass(s, i) });
+          g.appendChild(svgEl("rect", { x: x - 27, y: y - 20, width: 54, height: 40, rx: 5, ry: 5 }));
+          var val = svgEl("text", { x: x, y: y - 6, class: "lpv-array-value" });
+          val.textContent = String(s.arr[i]);
+          var idx = svgEl("text", { x: x, y: y + 13, class: "lpv-array-index" });
+          idx.textContent = "A" + i;
+          g.appendChild(val);
+          g.appendChild(idx);
+          svg.appendChild(g);
+        }
+      }
+
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox: "0 0 780 445", role: "img", "aria-label": "Lazy propagation segment tree" });
+        edges.forEach(function (e) {
+          var a = byId[e[0]];
+          var b = byId[e[1]];
+          svg.appendChild(svgEl("line", {
+            x1: a.x, y1: a.y + 31,
+            x2: b.x, y2: b.y - 31,
+            class: "lpv-edge",
+            "stroke-linecap": "round"
+          }));
+        });
+        nodes.forEach(function (n) { drawNode(svg, s, n); });
+        drawArray(svg, s);
+        target.appendChild(svg);
+      }
+
+      function render() {
+        var s = history[history.length - 1];
+        byRole("status-text").innerHTML = html(s.status);
+        byRole("undo-btn").disabled = history.length <= 1;
+        draw(s);
+      }
+
+      function commit(s) {
+        history.push(s);
+        render();
+      }
+
+      function handle(f) {
+        try {
+          commit(f(history[history.length - 1]));
+        } catch (e) {
+          var s = copyState(history[history.length - 1]);
+          clearHighlights(s);
+          s.status = e && e.message ? e.message : "The operation could not be applied.";
+          byRole("status-text").innerHTML = html(s.status);
+          draw(s);
+        }
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        history = [initial()];
+        render();
+        byRole("update-btn").addEventListener("click", function () {
+          handle(function (s) {
+            return doUpdate(
+              s,
+              readInt("update-left", 1, N, "Update left endpoint"),
+              readInt("update-right", 1, N, "Update right endpoint"),
+              readInt("update-delta", -9, 9, "Added value")
+            );
+          });
+        });
+        byRole("query-btn").addEventListener("click", function () {
+          handle(function (s) {
+            return doQuery(
+              s,
+              readInt("query-left", 1, N, "Query left endpoint"),
+              readInt("query-right", 1, N, "Query right endpoint")
+            );
+          });
+        });
+        byRole("undo-btn").addEventListener("click", function () {
+          if (history.length > 1) {
+            history.pop();
+            render();
+          }
+        });
+        byRole("reset-btn").addEventListener("click", function () {
+          history = [initial()];
+          render();
+        });
+      }
+
+      var history = [];
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start, { once: true });
+      } else {
+        start();
+      }
+    })();
+  </script>
+</div>
 
 <h2 id="complexity">Complexity</h2>
 
-<p>Suppose that merging two tree nodes or lazy nodes, applying a lazy node to a tree node takes $O(T)$ time.
-Then, both range query and range update take $O(T\log N)$ time.
-We can prove this as we did <a href="/computer-science/segment-tree.html">here</a>.</p>
+<p>This section is very similar to <a href="/computer-science/segment-tree.html#complexity">here</a>, so
+we will explain qualitatively.
+Suppose that merging two tree nodes, composing two lazy nodes, and applying a lazy node to a tree node each take $O(T)$ time.
+In the range-sum / range-addition example, $T=O(1)$.
+Assume that the tree is a complete binary tree of height</p>
+
+<p>\[
+H=\lceil\log_2 N\rceil
+\]</p>
+
+<p>⁣1. <strong>Build</strong>: $O(TN)$</p>
+
+<p>The build process is the same as an ordinary segment tree.
+It visits every tree node once and merges the children of every internal node.
+Since the number of nodes is $O(N)$, the build time is $O(TN)$.</p>
+
+<p>⁣2. <strong>Push</strong>: $O(T)$</p>
+
+<p>Pushing a lazy value from one node to its two children requires:</p>
+
+<ul>
+  <li>applying the lazy value to two child nodes;</li>
+  <li>composing two child lazy values;</li>
+  <li>resetting the current lazy value to $\mathrm{id}_M$.</li>
+</ul>
+
+<p>Thus one push operation takes $O(T)$ time.</p>
+
+<p>⁣3. <strong>Range update</strong>: $O(T\log N)$</p>
+
+<p>Let the update range be $[l:r]$.
+During the recursive update, a node is terminal if its interval is either disjoint from $[l:r]$
+or completely contained in $[l:r]$.
+Only nonterminal nodes are expanded into children.</p>
+
+<p>Among the nodes reached by the recursion, at any fixed depth of the tree, there are at most two nonterminal nodes:
+one can contain the left boundary $l$, and one can contain the right boundary $r$.
+All other reached intersecting nodes at that depth are fully contained in $[l:r]$ and stop immediately.
+Hence the recursive search visits only $O(1)$ nodes per depth, and there are $O(\log N)$ depths.</p>
+
+<p>At each visited node, we perform only a constant number of merge, composition, apply, or push operations.
+Therefore the range update time is $O(T\log N)$.</p>
+
+<p>⁣4. <strong>Range query</strong>: $O(T\log N)$</p>
+
+<p>The same boundary argument applies to a range query.
+If a node interval is fully contained in the query range, we return $T_v$ immediately.
+This is correct even when $L_v\neq\mathrm{id}_M$, because $T_v$ already contains the delayed update.
+If the query only partially intersects $I_v$, we push before descending, so the children become correct.</p>
+
+<p>Thus, a range query also visits $O(\log N)$ nodes and takes $O(T\log N)$ time.</p>
 
 <h2 id="code">Code</h2>
 <p>Let’s see the sample code.</p>
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span><span class="p">;</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">TREE_SIZE</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">N</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
 
-<span class="n">data</span> <span class="n">A</span><span class="p">[</span><span class="n">N</span><span class="p">];</span>
-<span class="n">Node</span> <span class="n">tree</span><span class="p">[</span><span class="n">TREE_SIZE</span><span class="p">];</span>
-<span class="n">Node_lazy</span> <span class="n">lazy</span><span class="p">[</span><span class="n">TREE_SIZE</span><span class="p">];</span>
-
-<span class="n">Node</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Node</span> <span class="n">a</span><span class="p">,</span><span class="n">Node</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// merge two nodes</span>
-<span class="n">Node</span> <span class="nf">conv</span><span class="p">(</span><span class="n">data</span> <span class="n">a</span><span class="p">);</span> <span class="c1">// convert data to node</span>
-<span class="n">Node</span> <span class="nf">identity</span><span class="p">();</span> <span class="c1">// return identity node</span>
-<span class="n">Node_lazy</span> <span class="nf">merge_lazy</span><span class="p">(</span><span class="n">Node_lazy</span> <span class="n">a</span><span class="p">,</span><span class="n">Node_lazy</span> <span class="n">b</span><span class="p">);</span> <span class="c1">// merge two lazy nodes</span>
-<span class="n">Node_lazy</span> <span class="nf">identity_lazy</span><span class="p">();</span> <span class="c1">// return identity lazy node</span>
-<span class="n">Node</span> <span class="nf">apply_lazy</span><span class="p">(</span><span class="n">Node</span> <span class="n">nd</span><span class="p">,</span><span class="n">Node_lazy</span> <span class="n">lz</span><span class="p">);</span> <span class="c1">// apply lazy node to the node</span>
-
-<span class="n">Node</span> <span class="nf">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">l</span><span class="o">==</span><span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">conv</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">l</span><span class="p">]);</span>
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">init</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">),</span><span class="n">init</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">));</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">propagate</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span><span class="o">==</span><span class="n">identity_lazy</span><span class="p">())</span> <span class="k">return</span><span class="p">;</span>
-    <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_lazy</span><span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]),</span> <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_lazy</span><span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]);</span>
-    <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_lazy</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">],</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]),</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_lazy</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]);</span>
-    <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">identity_lazy</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="n">Node</span> <span class="nf">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="kt">int</span> <span class="n">e</span><span class="p">,</span><span class="n">Node_lazy</span> <span class="n">lz</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="o">&lt;</span><span class="n">l</span> <span class="n">or</span> <span class="n">r</span><span class="o">&lt;</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">];</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="n">l</span> <span class="n">and</span> <span class="n">r</span><span class="o">&lt;=</span><span class="n">e</span><span class="p">){</span>
-        <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge_lazy</span><span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">],</span><span class="n">lz</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_lazy</span><span class="p">(</span><span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">],</span><span class="n">lz</span><span class="p">);</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Lazy</span><span class="p">;</span>
+<span class="k">struct</span> <span class="nc">Node</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">static</span> <span class="n">Node</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">);</span>
+    <span class="k">static</span> <span class="n">Node</span> <span class="n">identity</span><span class="p">();</span>
+    <span class="n">Node</span><span class="o">&amp;</span> <span class="n">apply_lazy</span><span class="p">(</span><span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">){</span>
+        <span class="p">...</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">propagate</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">update</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">lz</span><span class="p">),</span><span class="n">update</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">lz</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="p">};</span>
 
-<span class="n">Node</span> <span class="nf">Query</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span><span class="kt">int</span> <span class="n">r</span><span class="p">,</span><span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="kt">int</span> <span class="n">e</span><span class="p">){</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">e</span><span class="o">&lt;</span><span class="n">l</span> <span class="n">or</span> <span class="n">r</span><span class="o">&lt;</span><span class="n">s</span><span class="p">)</span> <span class="k">return</span> <span class="n">identity</span><span class="p">();</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">s</span><span class="o">&lt;=</span><span class="n">l</span> <span class="n">and</span> <span class="n">r</span><span class="o">&lt;=</span><span class="n">e</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">];</span>
-    <span class="n">propagate</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">r</span><span class="p">);</span>
-    <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">merge</span><span class="p">(</span><span class="n">Query</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">),</span><span class="n">Query</span><span class="p">(</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">));</span>
-<span class="p">}</span>
+<span class="k">struct</span> <span class="nc">Lazy</span> <span class="p">{</span>
+    <span class="p">...</span>
+    <span class="k">static</span> <span class="n">Lazy</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">);</span>
+    <span class="k">static</span> <span class="n">Lazy</span> <span class="n">identity</span><span class="p">();</span>
+    <span class="kt">bool</span> <span class="n">is_identity</span><span class="p">()</span> <span class="k">const</span><span class="p">;</span>
+    <span class="kt">void</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">){</span>
+        <span class="o">*</span><span class="k">this</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">,</span> <span class="n">lz</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Node</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Lazy</span><span class="p">&gt;</span>
+<span class="k">struct</span> <span class="nc">SegTree</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;</span> <span class="n">tree</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Lazy</span><span class="o">&gt;</span> <span class="n">lazy</span><span class="p">;</span>
+
+    <span class="n">SegTree</span><span class="p">()</span> <span class="o">:</span> <span class="n">n</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="n">SegTree</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="n">init</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">init</span><span class="p">(</span><span class="kt">int</span> <span class="n">_n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">_n</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">tree_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">tree</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">tree_size</span><span class="p">,</span> <span class="n">Node</span><span class="o">::</span><span class="n">identity</span><span class="p">());</span>
+        <span class="n">lazy</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">tree_size</span><span class="p">,</span> <span class="n">Lazy</span><span class="o">::</span><span class="n">identity</span><span class="p">());</span>
+    <span class="p">}</span>
+    
+    <span class="n">Node</span> <span class="n">build</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">==</span> <span class="n">r</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">Node</span><span class="o">::</span><span class="n">merge</span><span class="p">(</span><span class="n">build</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">),</span> <span class="n">build</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">a</span><span class="p">));</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">apply</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span> <span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">].</span><span class="n">merge</span><span class="p">(</span><span class="n">lz</span><span class="p">);</span>
+        <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">].</span><span class="n">apply_lazy</span><span class="p">(</span><span class="n">lz</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">propagate</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">].</span><span class="n">is_identity</span><span class="p">())</span> <span class="k">return</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">l</span> <span class="o">!=</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">apply</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]);</span>
+            <span class="n">apply</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">,</span> <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">lazy</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lazy</span><span class="o">::</span><span class="n">identity</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">Node</span> <span class="n">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ql</span><span class="p">,</span> <span class="kt">int</span> <span class="n">qr</span><span class="p">,</span> <span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">qr</span> <span class="o">&lt;</span> <span class="n">l</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">ql</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ql</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">qr</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">apply</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span> <span class="n">lz</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="n">propagate</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">]</span> <span class="o">=</span> <span class="n">Node</span><span class="o">::</span><span class="n">merge</span><span class="p">(</span><span class="n">update</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">ql</span><span class="p">,</span> <span class="n">qr</span><span class="p">,</span> <span class="n">lz</span><span class="p">),</span> <span class="n">update</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">ql</span><span class="p">,</span> <span class="n">qr</span><span class="p">,</span> <span class="n">lz</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="n">Node</span> <span class="n">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">nd</span><span class="p">,</span> <span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="kt">int</span> <span class="n">ql</span><span class="p">,</span> <span class="kt">int</span> <span class="n">qr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">qr</span> <span class="o">&lt;</span> <span class="n">l</span> <span class="o">||</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">ql</span><span class="p">)</span> <span class="k">return</span> <span class="n">Node</span><span class="o">::</span><span class="n">identity</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ql</span> <span class="o">&lt;=</span> <span class="n">l</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">qr</span><span class="p">)</span> <span class="k">return</span> <span class="n">tree</span><span class="p">[</span><span class="n">nd</span><span class="p">];</span>
+        <span class="n">propagate</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">Node</span><span class="o">::</span><span class="n">merge</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">ql</span><span class="p">,</span> <span class="n">qr</span><span class="p">),</span> <span class="n">query</span><span class="p">(</span><span class="n">nd</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span> <span class="o">|</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">ql</span><span class="p">,</span> <span class="n">qr</span><span class="p">));</span>
+    <span class="p">}</span>
+    
+    <span class="c1">//wrappers</span>
+    <span class="kt">void</span> <span class="n">build</span><span class="p">(</span><span class="k">const</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">init</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 1-indexed</span>
+        <span class="n">build</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">update</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">,</span> <span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">lz</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">Node</span> <span class="n">query</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">query</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
-
-<h3 id="example">Example</h3>
 
 <p>Let’s think of an example of calculating the sum of elements in a range and updating the elements in a range by adding a constant value.
 Then, the code will be as follows:</p>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Node</span><span class="p">{</span>
-    <span class="kt">int</span> <span class="n">sum</span><span class="p">,</span><span class="n">len</span><span class="p">;</span>
-    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="kt">int</span> <span class="n">len</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span><span class="n">sum</span><span class="p">(</span><span class="n">sum</span><span class="p">),</span><span class="n">len</span><span class="p">(</span><span class="n">len</span><span class="p">){}</span>
+    <span class="kt">int</span> <span class="n">sum</span><span class="p">,</span> <span class="n">len</span><span class="p">;</span>
+    <span class="n">Node</span><span class="p">(</span><span class="kt">int</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">:</span> <span class="n">sum</span><span class="p">(</span><span class="n">sum</span><span class="p">),</span> <span class="n">len</span><span class="p">(</span><span class="n">len</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">static</span> <span class="n">Node</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">sum</span> <span class="o">+</span> <span class="n">b</span><span class="p">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">len</span> <span class="o">+</span> <span class="n">b</span><span class="p">.</span><span class="n">len</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">static</span> <span class="n">Node</span> <span class="n">identity</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Node</span><span class="o">&amp;</span> <span class="n">apply_lazy</span><span class="p">(</span><span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">lz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span> <span class="o">+=</span> <span class="n">lz</span><span class="p">.</span><span class="n">add</span> <span class="o">*</span> <span class="n">len</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">};</span>
 
-<span class="n">Node</span> <span class="nf">merge</span><span class="p">(</span><span class="n">Node</span> <span class="n">a</span><span class="p">,</span><span class="n">Node</span> <span class="n">b</span><span class="p">){</span>
-    <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">sum</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">sum</span><span class="p">,</span><span class="n">a</span><span class="p">.</span><span class="n">len</span><span class="o">+</span><span class="n">b</span><span class="p">.</span><span class="n">len</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="n">Node</span> <span class="nf">conv</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">){</span>
-    <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="n">Node</span> <span class="nf">identity</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="nf">merge_lazy</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">b</span><span class="p">){</span>
-    <span class="k">return</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="nf">identity_lazy</span><span class="p">(){</span>
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">Node</span> <span class="nf">apply_lazy</span><span class="p">(</span><span class="n">Node</span> <span class="n">nd</span><span class="p">,</span><span class="kt">int</span> <span class="n">lz</span><span class="p">){</span>
-    <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">nd</span><span class="p">.</span><span class="n">sum</span><span class="o">+</span><span class="n">nd</span><span class="p">.</span><span class="n">len</span><span class="o">*</span><span class="n">lz</span><span class="p">,</span><span class="n">nd</span><span class="p">.</span><span class="n">len</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="k">struct</span> <span class="nc">Lazy</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">add</span><span class="p">;</span>
+    <span class="n">Lazy</span><span class="p">(</span><span class="kt">int</span> <span class="n">add</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="n">add</span><span class="p">(</span><span class="n">add</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="k">static</span> <span class="n">Lazy</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Lazy</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Lazy</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">add</span> <span class="o">+</span> <span class="n">b</span><span class="p">.</span><span class="n">add</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">static</span> <span class="n">Lazy</span> <span class="n">identity</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Lazy</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">is_identity</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">add</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
   

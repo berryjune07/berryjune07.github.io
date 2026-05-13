@@ -39,93 +39,11 @@ The first one is to construct only $N$ leaf nodes, for which we usually use recu
 The second one is to construct a complete binary tree, thinking of the array as being padded with identity elements up to the next power of two.
 We can use simple iterative methods for the second one. Let's see the example for the first approach.
 
-```mermaid
-graph TD
-    f1("1 <br> [1:11]"); f2("2 <br> [1:6]");
-    f3("3 <br> [7:11]"); f4("4 <br> [1:3]");
-    f5("5 <br> [4:6]"); f6("6 <br> [7:9]");
-    f7("7 <br> [10:11]"); f8("8 <br> [1:2]");
-    f9("9 <br> [3]"); f10("10 <br> [4:5]");
-    f11("11 <br> [6]"); f12("12 <br> [7:8]");
-    f13("13 <br> [9]"); f14("14 <br> [10]");
-    f15("15 <br> [11]"); f16("16 <br> [1]");
-    f17("17 <br> [2]"); f20("20 <br> [4]");
-    f21("21 <br> [5]"); f24("24 <br> [7]");
-    f25("25 <br> [8]");
+The interactive demo below is a segment tree for range sums on an array with 8 elements.
+Each node is written in the form of node index, represented interval, and stored sum.
+Point updates highlight the recomputed path, and range queries highlight the canonical cover.
 
-    f1---f2 & f3;
-    f2---f4 & f5;
-    f3---f6 & f7;
-    f4---f8 & f9;
-    f5---f10 & f11;
-    f6---f12 & f13;
-    f7---f14 & f15;
-    f8---f16 & f17;
-    f10---f20 & f21;
-    f12---f24 & f25;
-```
-
-The binary tree above is an example of a segment tree for the array with 11 elements.
-Each node is written in the form of node index and the interval it represents.
-When we update the 5th element of the array, the segment tree will be updated as follows.
-
-```mermaid
-graph TD
-    f1("1 <br> [1:11]"):::highlight ; f2("2 <br> [1:6]"):::highlight;
-    f3("3 <br> [7:11]"); f4("4 <br> [1:3]");
-    f5("5 <br> [4:6]"):::highlight; f6("6 <br> [7:9]");
-    f7("7 <br> [10:11]"); f8("8 <br> [1:2]");
-    f9("9 <br> [3]"); f10("10 <br> [4:5]"):::highlight;
-    f11("11 <br> [6]"); f12("12 <br> [7:8]");
-    f13("13 <br> [9]"); f14("14 <br> [10]");
-    f15("15 <br> [11]"); f16("16 <br> [1]");
-    f17("17 <br> [2]"); f20("20 <br> [4]");
-    f21("21 <br> [5]"):::highlight; f24("24 <br> [7]");
-    f25("25 <br> [8]");
-
-    f1---f2 & f3;
-    f2---f4 & f5;
-    f3---f6 & f7;
-    f4---f8 & f9;
-    f5---f10 & f11;
-    f6---f12 & f13;
-    f7---f14 & f15;
-    f8---f16 & f17;
-    f10---f20 & f21;
-    f12---f24 & f25;
-
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-```
-
-When we query the sum of the elements in the range $[3,8]$, following nodes will be visited.
-
-```mermaid
-graph TD
-    f1("1 <br> [1:11]"); f2("2 <br> [1:6]");
-    f3("3 <br> [7:11]"); f4("4 <br> [1:3]");
-    f5("5 <br> [4:6]"):::highlight;; f6("6 <br> [7:9]");
-    f7("7 <br> [10:11]"); f8("8 <br> [1:2]");
-    f9("9 <br> [3]"):::highlight;; f10("10 <br> [4:5]");
-    f11("11 <br> [6]"); f12("12 <br> [7:8]"):::highlight;;
-    f13("13 <br> [9]"); f14("14 <br> [10]");
-    f15("15 <br> [11]"); f16("16 <br> [1]");
-    f17("17 <br> [2]"); f20("20 <br> [4]");
-    f21("21 <br> [5]"); f24("24 <br> [7]");
-    f25("25 <br> [8]");
-
-    f1---f2 & f3;
-    f2---f4 & f5;
-    f3---f6 & f7;
-    f4---f8 & f9;
-    f5---f10 & f11;
-    f6---f12 & f13;
-    f7---f14 & f15;
-    f8---f16 & f17;
-    f10---f20 & f21;
-    f12---f24 & f25;
-
-    classDef highlight fill:#888,stroke:#444,stroke-width:2px;
-```
+{% include_relative includes/segment-tree.html %}
 
 ## Complexity
 
@@ -278,35 +196,60 @@ The time complexity is $O(TH) = O(T\log N)$.
 ## Code
 Let's see the sample code implemented with a recursive approach first.
 ```cpp
-const int N;
-const int TREE_SIZE = 1 << ((int)ceil(log2(N)) + 1);
+struct Node {
+    ...
+    static Node merge(const Node& a, const Node& b);
+    static Node identity();
+};
 
-data A[N];
-Node tree[TREE_SIZE];
+template <class Node>
+struct SegTree {
+    int n, tree_size;
+    vector<Node> tree;
+    
+    SegTree() {}
+    SegTree(int n) { init(n); }
+    
+    void init(int n_) {
+        n = n_;
+        tree_size = 1 << ((int)ceil(log2(n)) + 1);
+        tree.assign(tree_size, Node::identity());
+    }
+    
+    Node build(int nd, int l, int r, const vector<Node>& a) {
+        if (l == r) return tree[nd] = a[l];
+        int m = (l + r) >> 1;
+        return tree[nd] = Node::merge(build(nd << 1, l, m, a), build(nd << 1 | 1, m + 1, r, a));
+    }
+    
+    Node update(int nd, int l, int r, int idx, const Node& val) {
+        if (idx < l || r < idx) return tree[nd];
+        if (l == r) return tree[nd] = val;
+        int m = (l + r) >> 1;
+        return tree[nd] = Node::merge(update(nd << 1, l, m, idx, val), update(nd << 1 | 1, m + 1, r, idx, val));
+    }
 
-Node merge(Node a,Node b); // merge two nodes
-Node conv(data a); // convert data to node
-Node identity(); // return identity node
+    Node query(int nd, int l, int r, int ql, int qr) {
+        if (qr < l || r < ql) return Node::identity();
+        if (ql <= l && r <= qr) return tree[nd];
+        int m = (l + r) >> 1;
+        return Node::merge(query(nd << 1, l, m, ql, qr), query(nd << 1 | 1, m + 1, r, ql, qr));
+    }
 
-Node init(int nd,int l,int r){
-    if(l==r) return tree[nd] = conv(A[l]);
-    int m = (l+r)/2;
-    return tree[nd] = merge(init(nd*2,l,m),init(nd*2+1,m+1,r));
-}
+    // wrappers
+    void build(const vector<Node>& a) {
+        init((int)a.size() - 1); // 1-indexed
+        build(1, 1, n, a);
+    }
+    
+    void update(int idx, const Node& val) {
+        update(1, 1, n, idx, val);
+    }
 
-Node update(int nd,int l,int r,int idx,data val){
-    if(idx<l or r<idx) return tree[nd];
-    if(l==r) return tree[nd] = conv(val);
-    int m = (l+r)/2;
-    return tree[nd] = merge(update(nd*2,l,m,idx,val),update(nd*2+1,m+1,r,idx,val));
-}
-
-Node Query(int nd,int l,int r,int s,int e){
-    if(e<l or r<s) return identity();
-    if(s<=l and r<=e) return tree[nd];
-    int m = (l+r)/2;
-    return merge(Query(nd*2,l,m,s,e),Query(nd*2+1,m+1,r,s,e));
-}
+    Node query(int l, int r) {
+        return query(1, 1, n, l, r);
+    }
+};
 ```
 
 So here, the data type **Node** should be the monoid structure $(M, \ast)$.
@@ -314,31 +257,36 @@ Commonly, we store data in the array $A$ in another data type(**data**, such as 
 If such the data type is different with the node, you should convert the data to the node structure in the function **conv**.
 
 Now let's see the sample code implemented with an iterative approach.
+
 ```cpp
-void init(){
-    for(int i=0; i<N; i++) tree[i+TREE_SIZE/2] = conv(A[i]);
-    for(int i=TREE_SIZE/2-1; i>0; i--) tree[i] = merge(tree[i<<1],tree[i<<1|1]);
-}
-
-void update(int idx,data val){
-    idx += TREE_SIZE/2;
-    tree[idx] = conv(val);
-    while(idx>1){
-        idx >>= 1;
-        tree[idx] = merge(tree[idx<<1],tree[idx<<1|1]);
+template <class Node>
+struct SegTree {
+    ...
+    Node build() {
+        for(int i=0; i<N; i++) tree[i+tree_size/2] = conv(A[i]);
+        for(int i=tree_size/2-1; i>0; i--) tree[i] = merge(tree[i<<1], tree[i<<1|1]);
     }
-}
-
-Node Query(int s,int e){
-    s += TREE_SIZE/2; e += TREE_SIZE/2;
-    Node res = identity();
-    while(s<=e){
-        if(s&1) res = merge(res,tree[s++]);
-        if(!(e&1)) res = merge(res,tree[e--]);
-        s >>= 1; e >>= 1;
+    
+    void update(int idx, const Node& val) {
+        idx += tree_size/2;
+        tree[idx] = val;
+        while(idx > 1){
+            idx >>= 1;
+            tree[idx] = merge(tree[idx<<1], tree[idx<<1|1]);
+        }
     }
-    return res;
-}
+    
+    Node query(int l, int r) {
+        l += tree_size/2; r += tree_size/2;
+        Node res = identity();
+        while(l <= r){
+            if(l & 1) res = merge(res, tree[l++]);
+            if(!(r & 1)) res = merge(res, tree[r--]);
+            l >>= 1; r >>= 1;
+        }
+        return res;
+    }
+};
 ```
 
 It is faster to use bitwise operations to access the nodes.

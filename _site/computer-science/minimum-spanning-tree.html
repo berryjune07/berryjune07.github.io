@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-04-15T19:53:49+09:00',
+    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="882 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1529 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   14 min
+   25 min
 </span>
 
       </span>
@@ -305,6 +305,7 @@
   <li>
 <a href="#kruskals-algorithm" id="markdown-toc-kruskals-algorithm">Kruskal’s Algorithm</a>    <ul>
       <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+      <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
       <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
       <li><a href="#code" id="markdown-toc-code">Code</a></li>
     </ul>
@@ -312,6 +313,7 @@
   <li>
 <a href="#prims-algorithm" id="markdown-toc-prims-algorithm">Prim’s Algorithm</a>    <ul>
       <li><a href="#explanation-1" id="markdown-toc-explanation-1">Explanation</a></li>
+      <li><a href="#proof-of-correctness-1" id="markdown-toc-proof-of-correctness-1">Proof of Correctness</a></li>
       <li><a href="#complexity-1" id="markdown-toc-complexity-1">Complexity</a></li>
       <li><a href="#code-1" id="markdown-toc-code-1">Code</a></li>
     </ul>
@@ -343,71 +345,324 @@ There are two popular algorithms to find the MST: <strong>Kruskal’s Algorithm<
 
 <h3 id="explanation">Explanation</h3>
 
-<p>Start from the graph and sorted edges below.</p>
+<p>The interactive demo below shows Kruskal’s algorithm on a fixed weighted graph.
+The edges are considered in the following order:</p>
 
-<pre><code class="language-mermaid">graph LR
-    A((A));B((B));C((C));D((D));
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    %% linkStyle  stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ E = \Set{(C,D,3), (B,D,4), (A,B,5), (A,C,6), (B,C,6), (A,D,8)} $
-</center>
-<p><br></p>
+<p>\[
+(C,D,3),(B,D,4),(B,C,5),(A,B,6),(A,D,8),(A,C,10)
+\]</p>
 
-<p>Use a disjoint-set data structure to keep track of connected components.</p>
+<div id="mst-kruskal-demo" class="mstkv-root">
+  <style>
+    #mst-kruskal-demo { margin: 2rem 0; color: #1f2937; }
+    #mst-kruskal-demo * { box-sizing: border-box; }
+    #mst-kruskal-demo .mstkv-stack { display: grid; gap: 1rem; }
+    #mst-kruskal-demo .mstkv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #mst-kruskal-demo .mstkv-graph svg { display: block; width: min(100%, 620px); min-width: 520px; height: auto; margin: 0 auto; }
+    #mst-kruskal-demo .mstkv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #mst-kruskal-demo .mstkv-status p { margin: 0; }
+    #mst-kruskal-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #mst-kruskal-demo .mstkv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #mst-kruskal-demo .mstkv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #mst-kruskal-demo .mstkv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #mst-kruskal-demo .mstkv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #mst-kruskal-demo .mstkv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #mst-kruskal-demo .mstkv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #mst-kruskal-demo .mstkv-line { overflow-x: auto; white-space: nowrap; }
+    #mst-kruskal-demo .mstkv-edge { stroke: #64748b; stroke-width: 2.2; }
+    #mst-kruskal-demo .mstkv-edge-tree { stroke: #2563eb; stroke-width: 4; }
+    #mst-kruskal-demo .mstkv-edge-current { stroke: #dc2626; stroke-width: 5; }
+    #mst-kruskal-demo .mstkv-edge-rejected { stroke: #94a3b8; stroke-width: 3; stroke-dasharray: 7 6; }
+    #mst-kruskal-demo .mstkv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #mst-kruskal-demo .mstkv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #mst-kruskal-demo .mstkv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #mst-kruskal-demo .mstkv-node-current circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 4; }
+    #mst-kruskal-demo .mstkv-node-selected circle { fill: #dbeafe; stroke: #2563eb; }
+    #mst-kruskal-demo .mstkv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #mst-kruskal-demo .mstkv-legend { font-size: 0.95em; line-height: 1.7; }
+    #mst-kruskal-demo .mstkv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #mst-kruskal-demo .mstkv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #mst-kruskal-demo .mstkv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #mst-kruskal-demo .mstkv-swatch-tree { background: #dbeafe; border-color: #2563eb; }
+    #mst-kruskal-demo .mstkv-swatch-rejected { background: #f8fafc; border-color: #94a3b8; }
+  </style>
 
-<pre><code class="language-mermaid">graph LR
-    A((A));B((B));C((C)):::tree;D((D)):::tree;
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 5 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
+  <div class="mstkv-stack">
+    <div class="mstkv-graph" data-role="graph"></div>
+    <div class="mstkv-status" data-role="status"></div>
+    <div class="mstkv-controls-shell">
+      <div class="mstkv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="mstkv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="mstkv-info">
+      <div class="mstkv-line">
+<strong>Sorted edges:</strong> <span data-role="sorted"></span>
+</div>
+      <div class="mstkv-line">
+<strong>Accepted edges:</strong> <span data-role="accepted"></span>
+</div>
+      <div class="mstkv-line">
+<strong>Components:</strong> <span data-role="components"></span>
+</div>
+    </div>
+    <div class="mstkv-legend">
+      <div class="mstkv-legend-item">
+<span class="mstkv-swatch mstkv-swatch-current"></span> Edge currently considered</div>
+      <div class="mstkv-legend-item">
+<span class="mstkv-swatch mstkv-swatch-tree"></span> Edge accepted into the forest</div>
+      <div class="mstkv-legend-item">
+<span class="mstkv-swatch mstkv-swatch-rejected"></span> Edge rejected because it forms a cycle</div>
+    </div>
+  </div>
 
-<pre><code class="language-mermaid">graph LR
-    A((A));B((B)):::tree;C((C)):::tree;D((D)):::tree;
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 5 stroke:red, stroke-width:2px;
-    linkStyle 3 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
+  <script>
+    (function () {
+      var root = document.getElementById("mst-kruskal-demo");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function key(a,b) { return a < b ? a + "-" + b : b + "-" + a; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function copy(a) { return a.slice(); }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var vertices = ["A","B","C","D"];
+      var edges = [
+        { u:"C", v:"D", w:3 },
+        { u:"B", v:"D", w:4 },
+        { u:"B", v:"C", w:5, label:[302,158] },
+        { u:"A", v:"B", w:6 },
+        { u:"A", v:"D", w:8, label:[302,202] },
+        { u:"A", v:"C", w:10 }
+      ];
+      var pos = { A:[115,85], B:[425,85], C:[115,275], D:[425,275] };
+      function edgeKey(e) { return key(e.u,e.v); }
+      function edgeText(e) { return "(" + e.u + "," + e.v + "," + e.w + ")"; }
+      function keysText(keys) {
+        if (!keys.length) return "<code>-</code>";
+        return "<code>" + keys.map(function (k) {
+          return edgeText(edges.filter(function (e) { return edgeKey(e) === k; })[0]);
+        }).join(", ") + "</code>";
+      }
+      function find(parent,x) { if (parent[x] !== x) parent[x] = find(parent,parent[x]); return parent[x]; }
+      function componentText(parent) {
+        var groups = {};
+        vertices.forEach(function (v) {
+          var r = find(parent,v);
+          if (!groups[r]) groups[r] = [];
+          groups[r].push(v);
+        });
+        return Object.keys(groups).map(function (r) { return "{" + groups[r].join(",") + "}"; }).join(", ");
+      }
+      function selectedFromEdges(edgeKeys) {
+        var out = [];
+        edgeKeys.forEach(function (k) {
+          var e = edges.filter(function (x) { return edgeKey(x) === k; })[0];
+          if (!has(out,e.u)) out.push(e.u);
+          if (!has(out,e.v)) out.push(e.v);
+        });
+        return out;
+      }
+      function makeState(title, desc, current, accepted, rejected, selected, components) {
+        return { title:title, desc:desc, current:current ? edgeKey(current) : null, accepted:copy(accepted), rejected:copy(rejected), selected:copy(selected), components:components };
+      }
+      function buildStates() {
+        var parent = {}, accepted = [], rejected = [], states = [];
+        vertices.forEach(function (v) { parent[v] = v; });
+        states.push(makeState("Initial forest", "Start with singleton components and scan the sorted edge list.", null, accepted, rejected, [], componentText(parent)));
+        edges.some(function (e) {
+          var ru = find(parent,e.u), rv = find(parent,e.v);
+          if (ru !== rv) {
+            parent[rv] = ru;
+            accepted.push(edgeKey(e));
+            states.push(makeState("Accept " + edgeText(e), "The endpoints of `" + edgeText(e) + "` are in different components. Add it to the forest.", e, accepted, rejected, selectedFromEdges(accepted), componentText(parent)));
+          } else {
+            rejected.push(edgeKey(e));
+            states.push(makeState("Reject " + edgeText(e), "The endpoints of `" + edgeText(e) + "` are already connected. Adding it would create a cycle.", e, accepted, rejected, selectedFromEdges(accepted), componentText(parent)));
+          }
+          return accepted.length === vertices.length - 1;
+        });
+        states.push(makeState("Finished", "The forest has `|V|-1` accepted edges, hence it is a spanning tree.", null, accepted, rejected, vertices, componentText(parent)));
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function edgeClass(s,e) {
+        var k = edgeKey(e);
+        if (s.current === k) return "mstkv-edge mstkv-edge-current";
+        if (has(s.accepted,k)) return "mstkv-edge mstkv-edge-tree";
+        if (has(s.rejected,k)) return "mstkv-edge mstkv-edge-rejected";
+        return "mstkv-edge";
+      }
+      function nodeClass(s,v) {
+        if (s.current) {
+          var e = edges.filter(function (x) { return edgeKey(x) === s.current; })[0];
+          if (e && (e.u === v || e.v === v)) return "mstkv-node mstkv-node-current";
+        }
+        if (has(s.selected,v)) return "mstkv-node mstkv-node-selected";
+        return "mstkv-node";
+      }
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"0 0 540 360", role:"img", "aria-label":"Kruskal algorithm visualizer" });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v];
+          svg.appendChild(svgEl("line", { x1:a[0], y1:a[1], x2:b[0], y2:b[1], class:edgeClass(s,e), "stroke-linecap":"round" }));
+        });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v], x = e.label ? e.label[0] : (a[0]+b[0])/2, y = e.label ? e.label[1] : (a[1]+b[1])/2;
+          svg.appendChild(svgEl("rect", { x:x-13, y:y-11, width:26, height:22, rx:5, ry:5, class:"mstkv-edge-label-bg" }));
+          var t = svgEl("text", { x:x, y:y, class:"mstkv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v) {
+          var p = pos[v], g = svgEl("g", { class:nodeClass(s,v) });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:25 }));
+          var t = svgEl("text", { x:p[0], y:p[1] });
+          t.textContent = v;
+          g.appendChild(t);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("sorted").innerHTML = "<code>" + edges.map(edgeText).join(", ") + "</code>";
+        byRole("accepted").innerHTML = keysText(s.accepted);
+        byRole("components").innerHTML = "<code>" + esc(s.components) + "</code>";
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>
 
-<p>The edge with weight 5 is not added because it would form a cycle.</p>
+<p>Kruskal’s algorithm accepts $(C,D,3)$ and $(B,D,4)$ first.
+The edge $(B,C,5)$ is skipped because its endpoints are already in the same connected component.
+Then $(A,B,6)$ connects the remaining component, so the algorithm obtains an MST of total weight $13$.</p>
 
-<pre><code class="language-mermaid">graph LR
-    A((A)):::tree;B((B)):::tree;C((C)):::tree;D((D)):::tree;
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 0 stroke:red, stroke-width:2px;
-    linkStyle 5 stroke:red, stroke-width:2px;
-    linkStyle 3 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
+<h3 id="proof-of-correctness">Proof of Correctness</h3>
+
+<p>Let $G=(V,E)$ be a connected undirected graph with weight function $w:E\to\mathbb{R}$.
+For a set $A\subseteq E$, call $A$ <strong>promising</strong> if there exists an MST $T$ such that $A\subseteq T$.
+We first prove the following safe-edge lemma.</p>
+
+<p>Suppose that $A$ is promising, and let $(S,V\setminus S)$ be a cut such that no edge of $A$ crosses the cut.
+If $e$ is a minimum-weight edge among all edges crossing the cut, then $A\cup\Set{e}$ is also promising.</p>
+
+<p><em>Proof.</em>
+Since $A$ is promising, there exists an MST $T$ with $A\subseteq T$.
+If $e\in T$, then $T$ already contains $A\cup\Set{e}$.
+Assume $e\notin T$.</p>
+
+<p>Adding $e$ to $T$ creates exactly one cycle.
+Since $e$ crosses $(S,V\setminus S)$, this cycle must cross the cut an even number of times.
+Therefore there exists another edge $f\neq e$ on the cycle which also crosses the cut.
+Because no edge of $A$ crosses the cut, we have $f\notin A$.
+By the choice of $e$, we have $w(e)\le w(f)$.
+Define</p>
+
+<p>\[
+T^\prime = T - \Set{f} + \Set{e}
+\]</p>
+
+<p>Removing $f$ from the cycle and keeping $e$ preserves connectivity and removes the only cycle,
+so $T^\prime$ is a spanning tree.
+Moreover,</p>
+
+<p>\[
+w(T^\prime)=w(T)-w(f)+w(e)\le w(T)
+\]</p>
+
+<p>Since $T$ is an MST, $T^\prime$ must also be an MST.
+Also $A\subseteq T^\prime$ because $f\notin A$, and $e\in T^\prime$.
+Thus $A\cup\Set{e}$ is promising.</p>
+
+<p>Now let $A$ be the set of edges accepted by Kruskal’s algorithm.
+We prove by induction that after every accepted edge:</p>
+
+<ol>
+  <li>$A$ is acyclic.</li>
+  <li>$A$ is promising.</li>
+</ol>
+
+<p>Initially $A=\emptyset$, so both statements are trivial.</p>
+
+<p>Suppose that the statement is true before adding an edge $e=(u,v)$.
+Kruskal’s algorithm adds $e$ only when $u$ and $v$ are in different connected components of the forest $(V,A)$.
+Therefore adding $e$ cannot create a cycle, so acyclicity is preserved.</p>
+
+<p>Let $S$ be the vertex set of the component containing $u$.
+Then $e$ crosses the cut $(S,V\setminus S)$.
+No edge of $A$ crosses this cut, because every edge of $A$ lies inside one connected component of $(V,A)$.</p>
+
+<p>It remains to show that $e$ is a minimum-weight edge crossing this cut.
+Let $g$ be any edge crossing $(S,V\setminus S)$.
+Then the endpoints of $g$ are in different connected components of the current forest.
+Since components only merge as the algorithm proceeds, they were also in different components at the time $g$ was considered.
+If $w(g)&lt;w(e)$, then $g$ was considered before $e$ and would have been accepted, contradiction.
+Thus $w(e)\le w(g)$ for every crossing edge $g$.</p>
+
+<p>By the safe-edge lemma, $A\cup\Set{e}$ is promising.
+Hence both induction statements hold after adding $e$.</p>
+
+<p>When the algorithm terminates on a connected graph, $A$ has $\abs{V}-1$ edges.
+Since $A$ is acyclic, it is a spanning tree.
+Since $A$ is promising, there exists an MST $T$ such that $A\subseteq T$.
+But both $A$ and $T$ have exactly $\abs{V}-1$ edges, so $A=T$.
+Therefore Kruskal’s algorithm returns an MST.</p>
 
 <h3 id="complexity">Complexity</h3>
 
-<p>The time complexity of Kruskal’s Algorithm is $O(E \log E)$, where $E$ is the number of edges in the graph.
-The sorting step takes $O(E \log E)$, and the union-find operations take nearly constant time due to path compression and union by rank.</p>
+<p>Let $n=\abs{V}$ and $m=\abs{E}$.
+Sorting all edges takes</p>
+
+<p>\[
+O(m\log m)
+\]</p>
+
+<p>time.
+After sorting, the algorithm processes each edge once.
+For each edge, it performs two <code class="language-plaintext highlighter-rouge">find</code> operations and at most one <code class="language-plaintext highlighter-rouge">union</code> operation.
+Using disjoint-set forest with path compression and union by rank,
+each operation takes amortized $O(\alpha(n))$ time, where $\alpha$ is the inverse Ackermann function.
+Therefore, the total time after sorting is</p>
+
+<p>\[
+O(m\alpha(n))
+\]</p>
+
+<p>and the total time complexity is</p>
+
+<p>\[
+O(m\log m+m\alpha(n))=O(m\log m)
+\]</p>
+
+<p>Since $m\le n^2$, we also have $\log m=O(\log n)$, so this is often written as $O(m\log n)$.
+The space complexity is $O(n+m)$ if the edge list is stored explicitly.</p>
 
 <h3 id="code">Code</h3>
 
@@ -462,99 +717,284 @@ The sorting step takes $O(E \log E)$, and the union-find operations take nearly 
 
 <h3 id="explanation-1">Explanation</h3>
 
-<p>Start from the node A.</p>
+<p>The interactive demo below shows Prim’s algorithm on the same graph, starting from $A$.
+At every step, the algorithm chooses the minimum-weight edge crossing from the current tree to the outside.</p>
 
-<pre><code class="language-mermaid">graph LR
-    A((1));B((2));C((3));D((4));
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    %% linkStyle  stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ \mathrm{pq} = \Set{(A,0)} $
-</center>
-<p><br></p>
+<div id="mst-prim-demo" class="mstpv-root">
+  <style>
+    #mst-prim-demo { margin: 2rem 0; color: #1f2937; }
+    #mst-prim-demo * { box-sizing: border-box; }
+    #mst-prim-demo .mstpv-stack { display: grid; gap: 1rem; }
+    #mst-prim-demo .mstpv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
+    #mst-prim-demo .mstpv-graph svg { display: block; width: min(100%, 620px); min-width: 520px; height: auto; margin: 0 auto; }
+    #mst-prim-demo .mstpv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #mst-prim-demo .mstpv-status p { margin: 0; }
+    #mst-prim-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #mst-prim-demo .mstpv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
+    #mst-prim-demo .mstpv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #mst-prim-demo .mstpv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #mst-prim-demo .mstpv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #mst-prim-demo .mstpv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
+    #mst-prim-demo .mstpv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #mst-prim-demo .mstpv-line { overflow-x: auto; white-space: nowrap; }
+    #mst-prim-demo .mstpv-edge { stroke: #64748b; stroke-width: 2.2; }
+    #mst-prim-demo .mstpv-edge-frontier { stroke: #d97706; stroke-width: 3.2; }
+    #mst-prim-demo .mstpv-edge-tree { stroke: #2563eb; stroke-width: 4; }
+    #mst-prim-demo .mstpv-edge-current { stroke: #dc2626; stroke-width: 5; }
+    #mst-prim-demo .mstpv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
+    #mst-prim-demo .mstpv-edge-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #mst-prim-demo .mstpv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
+    #mst-prim-demo .mstpv-node-selected circle { fill: #dbeafe; stroke: #2563eb; }
+    #mst-prim-demo .mstpv-node-current circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 4; }
+    #mst-prim-demo .mstpv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #mst-prim-demo .mstpv-legend { font-size: 0.95em; line-height: 1.7; }
+    #mst-prim-demo .mstpv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #mst-prim-demo .mstpv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #mst-prim-demo .mstpv-swatch-current { background: #fee2e2; border-color: #dc2626; }
+    #mst-prim-demo .mstpv-swatch-tree { background: #dbeafe; border-color: #2563eb; }
+    #mst-prim-demo .mstpv-swatch-frontier { background: #fef3c7; border-color: #d97706; }
+  </style>
 
-<p>Add all edges from A to the priority queue.</p>
+  <div class="mstpv-stack">
+    <div class="mstpv-graph" data-role="graph"></div>
+    <div class="mstpv-status" data-role="status"></div>
+    <div class="mstpv-controls-shell">
+      <div class="mstpv-controls">
+        <button type="button" data-role="prev">Previous Step</button>
+        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="mstpv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+      </div>
+    </div>
+    <div class="mstpv-info">
+      <div class="mstpv-line">
+<strong>Selected vertices:</strong> <span data-role="selected"></span>
+</div>
+      <div class="mstpv-line">
+<strong>Accepted edges:</strong> <span data-role="accepted"></span>
+</div>
+      <div class="mstpv-line">
+<strong>Priority queue:</strong> <span data-role="queue"></span>
+</div>
+    </div>
+    <div class="mstpv-legend">
+      <div class="mstpv-legend-item">
+<span class="mstpv-swatch mstpv-swatch-current"></span> Edge currently chosen from the priority queue</div>
+      <div class="mstpv-legend-item">
+<span class="mstpv-swatch mstpv-swatch-tree"></span> Selected vertex or accepted edge</div>
+      <div class="mstpv-legend-item">
+<span class="mstpv-swatch mstpv-swatch-frontier"></span> Edge crossing from the tree to the outside</div>
+    </div>
+  </div>
 
-<pre><code class="language-mermaid">graph LR
-    A((A)):::tree;B((B));C((C));D((D));
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    %%linkStyle 3 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ \mathrm{pq} = \Set{(B,6), (D,8), (C,10)} $
-</center>
-<p><br></p>
+  <script>
+    (function () {
+      var root = document.getElementById("mst-prim-demo");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function html(s) { return "<p>" + esc(s).replace(/`([^`]+)`/g,"<code>$1</code>") + "</p>"; }
+      function key(a,b) { return a < b ? a + "-" + b : b + "-" + a; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function copy(a) { return a.slice(); }
+      var svgNS = "http://www.w3.org/2000/svg";
+      var vertices = ["A","B","C","D"];
+      var edges = [
+        { u:"C", v:"D", w:3 },
+        { u:"B", v:"D", w:4 },
+        { u:"B", v:"C", w:5, label:[302,158] },
+        { u:"A", v:"B", w:6 },
+        { u:"A", v:"D", w:8, label:[302,202] },
+        { u:"A", v:"C", w:10 }
+      ];
+      var pos = { A:[115,85], B:[425,85], C:[115,275], D:[425,275] };
+      function edgeKey(e) { return key(e.u,e.v); }
+      function edgeText(e) { return "(" + e.u + "," + e.v + "," + e.w + ")"; }
+      function keysText(keys) {
+        if (!keys.length) return "<code>-</code>";
+        return "<code>" + keys.map(function (k) {
+          return edgeText(edges.filter(function (e) { return edgeKey(e) === k; })[0]);
+        }).join(", ") + "</code>";
+      }
+      function queueText(queue) {
+        if (!queue.length) return "<code>-</code>";
+        return "<code>" + queue.slice().sort(function (a,b) {
+          return a.edge.w - b.edge.w || edgeText(a.edge).localeCompare(edgeText(b.edge));
+        }).map(function (x) { return edgeText(x.edge); }).join(", ") + "</code>";
+      }
+      function frontierKeys(queue, selected) {
+        return queue.filter(function (x) {
+          var left = has(selected,x.edge.u);
+          var right = has(selected,x.edge.v);
+          return left !== right;
+        }).map(function (x) { return edgeKey(x.edge); });
+      }
+      function makeState(title, desc, current, accepted, selected, queue) {
+        return { title:title, desc:desc, current:current ? edgeKey(current) : null, accepted:copy(accepted), selected:copy(selected), queue:queue.slice(), frontier:frontierKeys(queue,selected) };
+      }
+      function buildStates() {
+        var states = [], selected = ["A"], accepted = [];
+        var queue = [
+          { edge:edges[3], to:"B" },
+          { edge:edges[4], to:"D" },
+          { edge:edges[5], to:"C" }
+        ];
+        function pushFrom(v) {
+          edges.forEach(function (e) {
+            var other = null;
+            if (e.u === v) other = e.v;
+            if (e.v === v) other = e.u;
+            if (other && !has(selected,other)) queue.push({ edge:e, to:other });
+          });
+        }
+        states.push(makeState("Start at A", "The current tree contains only `A`. Insert all edges incident to `A`.", null, accepted, selected, queue));
+        while (accepted.length < vertices.length - 1) {
+          queue.sort(function (a,b) { return a.edge.w - b.edge.w || edgeText(a.edge).localeCompare(edgeText(b.edge)); });
+          var item = queue.shift();
+          if (has(selected,item.to)) continue;
+          accepted.push(edgeKey(item.edge));
+          selected.push(item.to);
+          pushFrom(item.to);
+          queue = queue.filter(function (x) { return !has(selected,x.to); });
+          states.push(makeState("Accept " + edgeText(item.edge), "This is the minimum edge crossing from the current tree to an unselected vertex.", item.edge, accepted, selected, queue));
+        }
+        states.push(makeState("Finished", "All vertices are selected, and the accepted edges form a spanning tree.", null, accepted, selected, []));
+        return states;
+      }
+      var states = buildStates(), index = 0;
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+      function edgeClass(s,e) {
+        var k = edgeKey(e);
+        if (s.current === k) return "mstpv-edge mstpv-edge-current";
+        if (has(s.accepted,k)) return "mstpv-edge mstpv-edge-tree";
+        if (has(s.frontier,k)) return "mstpv-edge mstpv-edge-frontier";
+        return "mstpv-edge";
+      }
+      function nodeClass(s,v) {
+        if (s.current) {
+          var e = edges.filter(function (x) { return edgeKey(x) === s.current; })[0];
+          if (e && (e.u === v || e.v === v)) return "mstpv-node mstpv-node-current";
+        }
+        if (has(s.selected,v)) return "mstpv-node mstpv-node-selected";
+        return "mstpv-node";
+      }
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"0 0 540 360", role:"img", "aria-label":"Prim algorithm visualizer" });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v];
+          svg.appendChild(svgEl("line", { x1:a[0], y1:a[1], x2:b[0], y2:b[1], class:edgeClass(s,e), "stroke-linecap":"round" }));
+        });
+        edges.forEach(function (e) {
+          var a = pos[e.u], b = pos[e.v], x = e.label ? e.label[0] : (a[0]+b[0])/2, y = e.label ? e.label[1] : (a[1]+b[1])/2;
+          svg.appendChild(svgEl("rect", { x:x-13, y:y-11, width:26, height:22, rx:5, ry:5, class:"mstpv-edge-label-bg" }));
+          var t = svgEl("text", { x:x, y:y, class:"mstpv-edge-label" });
+          t.textContent = String(e.w);
+          svg.appendChild(t);
+        });
+        vertices.forEach(function (v) {
+          var p = pos[v], g = svgEl("g", { class:nodeClass(s,v) });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:25 }));
+          var t = svgEl("text", { x:p[0], y:p[1] });
+          t.textContent = v;
+          g.appendChild(t);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+      function render() {
+        var s = states[index], last = states.length - 1;
+        byRole("counter").textContent = index + " / " + last;
+        byRole("status").innerHTML = html("Step " + index + ": " + s.title + ". " + s.desc);
+        byRole("selected").innerHTML = "<code>{" + s.selected.join(",") + "}</code>";
+        byRole("accepted").innerHTML = keysText(s.accepted);
+        byRole("queue").innerHTML = queueText(s.queue);
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === last;
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        render();
+      }
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
+      else start();
+    })();
+  </script>
+</div>
 
-<pre><code class="language-mermaid">graph LR
-    A((A)):::tree;B((B)):::tree;C((C));D((D));
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 0 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ \mathrm{pq} = \Set{(D,4), (C,5), (D,8), (C,10)} $
-</center>
-<p><br></p>
+<p>For this graph, it accepts</p>
 
-<pre><code class="language-mermaid">graph LR
-    A((A)):::tree;B((B)):::tree;C((C));D((D)):::tree;
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 0 stroke:red, stroke-width:2px;
-    linkStyle 3 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ \mathrm{pq} = \Set{(C,3), (C,5), (D,8), (C,10)} $
-</center>
-<p><br></p>
+<p>\[
+(A,B,6),(B,D,4),(C,D,3)
+\]</p>
 
-<pre><code class="language-mermaid">graph LR
-    A((A)):::tree;B((B)):::tree;C((C)):::tree;D((D)):::tree;
-    A ---|6| B;
-    A ---|10| C;
-    A ---|8| D;
-    B ---|4| D;
-    B ---|5| C;
-    C ---|3| D;
-    linkStyle 0 stroke:red, stroke-width:2px;
-    linkStyle 3 stroke:red, stroke-width:2px;
-    linkStyle 5 stroke:red, stroke-width:2px;
-    classDef tree fill:#faa,stroke:#f77,stroke-width:2px;
-</code></pre>
-<center>
-$ \mathrm{pq} = \Set{(C,5), (D,8), (C,10)} $
-</center>
-<p><br></p>
+<p>and again obtains an MST of total weight $13$.</p>
 
-<p>Then pop the priority queue until it is empty.</p>
+<h3 id="proof-of-correctness-1">Proof of Correctness</h3>
+
+<p>Let $S$ be the set of vertices already included in Prim’s tree, and let $A$ be the set of accepted edges.
+We prove by induction that after every iteration:</p>
+
+<ol>
+  <li>$(S,A)$ is a tree on the vertex set $S$.</li>
+  <li>$A$ is promising.</li>
+</ol>
+
+<p>Initially $S=\Set{s}$ for the starting vertex $s$, and $A=\emptyset$.
+Thus $(S,A)$ is a one-vertex tree, and $A$ is promising.</p>
+
+<p>Suppose that the invariant holds before an iteration and $S\neq V$.
+Since $G$ is connected, there exists at least one edge crossing the cut $(S,V\setminus S)$.
+Prim’s algorithm chooses an edge $e=(u,v)$ of minimum weight among all such crossing edges,
+where $u\in S$ and $v\notin S$.</p>
+
+<p>No edge of $A$ crosses $(S,V\setminus S)$, because all edges of $A$ have both endpoints in $S$.
+Since $A$ is promising, the safe-edge lemma implies that $A\cup\Set{e}$ is promising.
+Also, $e$ connects the existing tree to exactly one new vertex.
+Therefore</p>
+
+<p>\[
+S^\prime = S\cup\Set{v}, \quad A^\prime = A\cup\Set{e}
+\]</p>
+
+<p>is still connected and acyclic, so $(S^\prime,A^\prime)$ is a tree.
+Thus both induction statements are preserved.</p>
+
+<p>The algorithm adds exactly one new vertex in every iteration.
+After $\abs{V}-1$ iterations, we have $S=V$ and $\abs{A}=\abs{V}-1$.
+By the first invariant, $(V,A)$ is a spanning tree.
+By the second invariant, there exists an MST $T$ such that $A\subseteq T$.
+Since both $A$ and $T$ have $\abs{V}-1$ edges, we have $A=T$.
+Therefore Prim’s algorithm returns an MST.</p>
 
 <h3 id="complexity-1">Complexity</h3>
 
-<p>The time complexity of Prim’s Algorithm is $O(E \log V)$, where $E$ is the number of edges and $V$ is the number of vertices in the graph.
-Using a priority queue (min-heap) allows us to efficiently extract the minimum edge weight.</p>
+<p>Let $n=\abs{V}$ and $m=\abs{E}$.
+Assume that the graph is stored as an adjacency list and the priority queue is a binary heap.
+Whenever a vertex is added to the tree, we scan all edges incident to it.
+Over the whole algorithm, the total number of scanned adjacency-list entries is $O(m)$.</p>
+
+<p>Each candidate edge inserted into the priority queue is later removed at most once.
+Thus the number of heap operations is $O(m)$.
+Each heap operation costs $O(\log m)$ time.
+Since $m\le n^2$ in a simple graph, we have $\log m=O(\log n)$.
+Therefore the total running time is</p>
+
+<p>\[
+O(m\log m)=O(m\log n)
+\]</p>
+
+<p>The space complexity is $O(n+m)$ for the adjacency list, the visited array, and the priority queue.</p>
 
 <h3 id="code-1">Code</h3>
 
@@ -747,7 +1187,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd–Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd–Warshall Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman–Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman–Ford Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd–Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman–Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>      </ul></aside>
+                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd-Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd-Warshall Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/bellman-ford-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">Bellman-Ford Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/bellman-ford-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Bellman-Ford Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>          <li class="h4">  <a href="/computer-science/dijkstras-algorithm.html" class="flip-title">    <span>            Dijkstra's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-17T00:00:00+09:00">      17 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/dijkstras-algorithm.html"></span>  </li>      </ul></aside>
 
   
 
