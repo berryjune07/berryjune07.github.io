@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
+    INDEX_KEY: 'index--2026-05-16T03:53:53+09:00',
   };
 }(window);</script>
 
@@ -281,9 +281,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1009 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   16 min
 </span>
 
       </span>
@@ -303,6 +303,334 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#reduction-to-an-equivalent-one-body-problem" id="markdown-toc-reduction-to-an-equivalent-one-body-problem">Reduction to an Equivalent One-Body Problem</a></li>
+  <li><a href="#conservative-central-force" id="markdown-toc-conservative-central-force">Conservative Central Force</a></li>
+  <li><a href="#first-integrals" id="markdown-toc-first-integrals">First Integrals</a></li>
+  <li><a href="#equivalent-one-dimensional-problem" id="markdown-toc-equivalent-one-dimensional-problem">Equivalent One-Dimensional Problem</a></li>
+  <li><a href="#circular-orbits" id="markdown-toc-circular-orbits">Circular Orbits</a></li>
+  <li><a href="#classification-of-orbits" id="markdown-toc-classification-of-orbits">Classification of Orbits</a></li>
+</ul>
+
+<h2 id="reduction-to-an-equivalent-one-body-problem">Reduction to an Equivalent One-Body Problem</h2>
+
+<p>Consider two particles with masses $m_1$ and $m_2$, whose position vectors are $\b{r}_1$ and $\b{r}_2$.
+Suppose that their mutual interaction depends only on the relative displacement</p>
+
+<p>\[
+\b{r} = \b{r}_1 - \b{r}_2
+\]</p>
+
+<p>and not on the absolute position of the pair in space.
+We introduce the center of mass coordinate</p>
+
+<p>\[
+\b{R} = \frac{m_1 \b{r}_1 + m_2 \b{r}_2}{m_1 + m_2}
+\]</p>
+
+<p>and write</p>
+
+<p>\[
+M = m_1 + m_2, \qquad
+\mu = \frac{m_1 m_2}{m_1 + m_2}.
+\]</p>
+
+<p>Here $\mu$ is the <strong>reduced mass</strong>.
+Equivalently,</p>
+
+<p>\[
+\frac{1}{\mu} = \frac{1}{m_1} + \frac{1}{m_2}.
+\]</p>
+
+<p>Solving for the original coordinates gives</p>
+
+<p>\[
+\b{r}_1 = \b{R} + \frac{m_2}{M}\b{r}, \qquad
+\b{r}_2 = \b{R} - \frac{m_1}{M}\b{r}.
+\]</p>
+
+<p>Substituting these into the kinetic energy,</p>
+
+<p>\[
+T = \frac{1}{2}m_1 \dot{\b{r}}_1^2 + \frac{1}{2}m_2 \dot{\b{r}}_2^2,
+\]</p>
+
+<p>we obtain</p>
+
+<p>\[
+\begin{align*}
+T
+&amp;= \frac{1}{2}M\dot{\b{R}}^2 + \frac{1}{2}\mu\dot{\b{r}}^2.
+\end{align*}
+\]</p>
+
+<p>Thus, if the interaction potential is $V(\b{r})$, the Lagrangian is</p>
+
+<p>\[
+L = \frac{1}{2}M\dot{\b{R}}^2 + \frac{1}{2}\mu\dot{\b{r}}^2 - V(\b{r}).
+\]</p>
+
+<p>The coordinate $\b{R}$ is cyclic, so the center of mass moves uniformly.
+The remaining part of the motion is exactly the motion of one particle of mass $\mu$ in a fixed potential $V(\b{r})$.
+Therefore, the two-body central force problem reduces to an equivalent one-body problem.</p>
+
+<h2 id="conservative-central-force">Conservative Central Force</h2>
+
+<p>We now assume that the force is conservative and central:</p>
+
+<p>\[
+V(\b{r}) = V(r), \qquad r = \norm{\b{r}}.
+\]</p>
+
+<p>Then the force has the form</p>
+
+<p>\[
+\b{F} = f(r)\hat{\b{r}}
+= -\odv{V}{r}\hat{\b{r}}.
+\]</p>
+
+<p>Since the force is parallel to $\b{r}$, the torque about the origin is zero:</p>
+
+<p>\[
+\b{N} = \b{r}\times\b{F} = 0.
+\]</p>
+
+<p>Therefore the angular momentum</p>
+
+<p>\[
+\b{L} = \b{r}\times \b{p}
+\]</p>
+
+<p>is conserved.
+The fixed direction of $\b{L}$ implies that the motion lies in the plane perpendicular to $\b{L}$.
+If $\b{L}=0$, then $\b{r}$ and $\dot{\b{r}}$ are parallel, and the motion is purely radial.</p>
+
+<p>Thus, except for this radial special case, every central force motion is a plane motion.
+We may choose plane polar coordinates $(r,\theta)$ in this plane.
+The Lagrangian becomes</p>
+
+<p>\[
+L = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2)-V(r).
+\]</p>
+
+<h2 id="first-integrals">First Integrals</h2>
+
+<p>The coordinate $\theta$ is cyclic, so its conjugate momentum is conserved:</p>
+
+<p>\[
+p_\theta = \pdv{L}{\dot{\theta}}
+= \mu r^2\dot{\theta}
+= \ell.
+\]</p>
+
+<p>The constant $\ell$ is the magnitude of the angular momentum.
+Equivalently,</p>
+
+<p>\[
+r^2\dot{\theta} = \frac{\ell}{\mu}.
+\]</p>
+
+<p>Since the infinitesimal area swept out by the radius vector is</p>
+
+<p>\[
+\dd{A} = \frac{1}{2}r^2\dd{\theta},
+\]</p>
+
+<p>we have</p>
+
+<p>\[
+\odv{A}{t} = \frac{1}{2}r^2\dot{\theta}
+= \frac{\ell}{2\mu}.
+\]</p>
+
+<p>Hence the areal velocity is constant.
+This is Kepler’s second law, but the derivation shows that it is a theorem for every central force, not only for the inverse-square force.</p>
+
+<p>The radial Lagrange equation is</p>
+
+<p>\[
+\mu\ddot{r} - \mu r\dot{\theta}^2 = f(r).
+\]</p>
+
+<p>Using $\ell=\mu r^2\dot{\theta}$, this becomes</p>
+
+<p>\[
+\mu\ddot{r} - \frac{\ell^2}{\mu r^3} = f(r).
+\]</p>
+
+<p>The other first integral is the energy:</p>
+
+<p>\[
+E = \frac{1}{2}\mu(\dot{r}^2+r^2\dot{\theta}^2)+V(r).
+\]</p>
+
+<p>Eliminating $\dot{\theta}$, we get</p>
+
+<p>\[
+E = \frac{1}{2}\mu\dot{r}^2 + \frac{\ell^2}{2\mu r^2}+V(r).
+\]</p>
+
+<p>These two first integrals reduce the problem to quadratures.
+For instance,</p>
+
+<p>\[
+\dot{r}^2
+= \frac{2}{\mu}\left(E - V(r) - \frac{\ell^2}{2\mu r^2}\right),
+\]</p>
+
+<p>so that</p>
+
+<p>\[
+t-t_0
+= \int_{r_0}^{r}
+\frac{\dd{s}}
+{\sqrt{\dps \frac{2}{\mu}\left(E - V(s) - \frac{\ell^2}{2\mu s^2}\right)}}.
+\]</p>
+
+<p>Once $r(t)$ is obtained, $\theta(t)$ follows from</p>
+
+<p>\[
+\theta-\theta_0
+= \int_{t_0}^{t}\frac{\ell}{\mu r(t^\prime)^2}\dd{t^\prime}.
+\]</p>
+
+<p>This is a formal solution.
+The central force problem is therefore integrable up to two one-dimensional integrations, although those integrations need not be elementary.</p>
+
+<h2 id="equivalent-one-dimensional-problem">Equivalent One-Dimensional Problem</h2>
+
+<p>The radial equation has the same form as a one-dimensional motion in an effective potential.
+Define</p>
+
+<p>\[
+V_{\mathrm{eff}}(r)
+= V(r)+\frac{\ell^2}{2\mu r^2}.
+\]</p>
+
+<p>Then the energy equation is</p>
+
+<p>\[
+E = \frac{1}{2}\mu\dot{r}^2 + V_{\mathrm{eff}}(r).
+\]</p>
+
+<p>The second term in $V_{\mathrm{eff}}$ is the centrifugal potential.
+It is not a real interaction potential, but it records the obstruction to reaching the origin when $\ell\ne 0$.
+The radial force in the equivalent one-dimensional problem is</p>
+
+<p>\[
+-\odv{V_{\mathrm{eff}}}{r}
+= f(r)+\frac{\ell^2}{\mu r^3}.
+\]</p>
+
+<p>Thus the motion in $r$ is allowed only where</p>
+
+<p>\[
+E \ge V_{\mathrm{eff}}(r).
+\]</p>
+
+<p>The turning points are the roots of</p>
+
+<p>\[
+E = V_{\mathrm{eff}}(r).
+\]</p>
+
+<p>Between two such turning points the radial coordinate oscillates.
+If there is only one finite turning point, the particle may come in from infinity and go out again.</p>
+
+<h2 id="circular-orbits">Circular Orbits</h2>
+
+<p>A circular orbit at $r=r_0$ requires $\dot{r}=0$ and $\ddot{r}=0$.
+Equivalently, $r_0$ is an extremum of $V_{\mathrm{eff}}$:</p>
+
+<p>\[
+\eval{\odv{V_{\mathrm{eff}}}{r}}_{r=r_0}=0.
+\]</p>
+
+<p>Since</p>
+
+<p>\[
+\odv{V_{\mathrm{eff}}}{r}
+= -f(r)-\frac{\ell^2}{\mu r^3},
+\]</p>
+
+<p>the circularity condition is</p>
+
+<p>\[
+f(r_0) = -\frac{\ell^2}{\mu r_0^3}.
+\]</p>
+
+<p>Thus the force must be attractive.
+The energy of the circular orbit is</p>
+
+<p>\[
+E = V(r_0)+\frac{\ell^2}{2\mu r_0^2}.
+\]</p>
+
+<p>The circular orbit is stable if $V_{\mathrm{eff}}$ has a local minimum:</p>
+
+<p>\[
+\eval{\odvn{2}{V_{\mathrm{eff}}}{r}}_{r=r_0}&gt;0.
+\]</p>
+
+<p>In terms of the force this condition is</p>
+
+<p>\[
+-f^\prime(r_0)-\frac{3f(r_0)}{r_0}&gt;0.
+\]</p>
+
+<p>For an attractive power-law force $f(r)=-kr^n$, this becomes</p>
+
+<p>\[
+n&gt;-3.
+\]</p>
+
+<p>Hence an inverse-fourth force, for which $n=-4$, cannot have stable circular orbits.</p>
+
+<h2 id="classification-of-orbits">Classification of Orbits</h2>
+
+<p>The qualitative form of the orbit is already visible from $V_{\mathrm{eff}}$.
+If the allowed interval in $r$ is finite, the orbit is bounded.
+If $r$ can become arbitrarily large, the orbit is unbounded.
+If the lower turning point is positive, the particle never reaches the force center.
+If the angular momentum vanishes, then the centrifugal term disappears and the motion may pass through the origin, depending on the behavior of $V(r)$.</p>
+
+<p>One should distinguish between bounded and closed orbits.
+A bounded orbit only requires $r$ to remain between two finite values.
+A closed orbit requires the curve in the plane to retrace itself after a finite time.
+For a general central force, the radial motion and the angular motion need not have commensurable periods.
+Thus a bounded central orbit may fill an annular region without ever closing.</p>
+
+<p>The equivalent one-dimensional description therefore gives the basic classification without solving the full orbit:</p>
+
+<table class="centered">
+  <thead>
+    <tr>
+      <th>condition</th>
+      <th>meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$E&lt;V_{\mathrm{eff}}(r)$</td>
+      <td>forbidden radial region</td>
+    </tr>
+    <tr>
+      <td>$E=V_{\mathrm{eff}}(r)$</td>
+      <td>turning point</td>
+    </tr>
+    <tr>
+      <td>$V_{\mathrm{eff}}^\prime(r_0)=0$</td>
+      <td>circular orbit</td>
+    </tr>
+    <tr>
+      <td>$V_{\mathrm{eff}}^{\prime\prime}(r_0)&gt;0$</td>
+      <td>stable circular orbit</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The remaining problem is to determine the actual dependence of $r$ on $\theta$.
+This is the orbit equation, which will be derived after the virial theorem.</p>
 
   
 </article>
@@ -457,7 +785,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="flip-title">Energy Function and the Conservation of Energy</a>  </h3>      <a class="fill-card no-hover" href="/physics/energy-function-and-the-conservation-of-energy.html" tabindex="-1"><span class="sr-only">Continue reading Energy Function and the Conservation of Energy</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="flip-title">Conservation Theorems and Symmetry Properties</a>  </h3>      <a class="fill-card no-hover" href="/physics/conservation-theorems-and-symmetry-properties.html" tabindex="-1"><span class="sr-only">Continue reading Conservation Theorems and Symmetry Properties</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="flip-title">    <span>              [Classical Mechanics 1.6]            Energy Function and the Conservation of Energy    </span>  </a>      <time class="faded fine" datetime="2025-08-17T00:00:00+09:00">      17 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-function-and-the-conservation-of-energy.html"></span>  </li>          <li class="h4">  <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="flip-title">    <span>              [Classical Mechanics 1.5]            Conservation Theorems and Symmetry Properties    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/conservation-theorems-and-symmetry-properties.html"></span>  </li>      </ul></aside>
+                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/the-differential-equation-for-the-orbit-and-bertrands-theorem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/the-differential-equation-for-the-orbit-and-bertrands-theorem.html" class="flip-title">The Differential Equation for the Orbit and Bertrand's Theorem</a>  </h3>      <a class="fill-card no-hover" href="/physics/the-differential-equation-for-the-orbit-and-bertrands-theorem.html" tabindex="-1"><span class="sr-only">Continue reading The Differential Equation for the Orbit and Bertrand's Theorem</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/the-virial-theorem.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/the-virial-theorem.html" class="flip-title">The Virial Theorem</a>  </h3>      <a class="fill-card no-hover" href="/physics/the-virial-theorem.html" tabindex="-1"><span class="sr-only">Continue reading The Virial Theorem</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/the-differential-equation-for-the-orbit-and-bertrands-theorem.html" class="flip-title">    <span>              [Classical Mechanics 2.3]            The Differential Equation for the Orbit and Bertrand's Theorem    </span>  </a>      <time class="faded fine" datetime="2025-09-01T00:00:00+09:00">      01 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/the-differential-equation-for-the-orbit-and-bertrands-theorem.html"></span>  </li>          <li class="h4">  <a href="/physics/the-virial-theorem.html" class="flip-title">    <span>              [Classical Mechanics 2.2]            The Virial Theorem    </span>  </a>      <time class="faded fine" datetime="2025-08-28T00:00:00+09:00">      28 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/the-virial-theorem.html"></span>  </li>          <li class="h4">  <a href="/physics/energy-function-and-the-conservation-of-energy.html" class="flip-title">    <span>              [Classical Mechanics 1.6]            Energy Function and the Conservation of Energy    </span>  </a>      <time class="faded fine" datetime="2025-08-17T00:00:00+09:00">      17 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-function-and-the-conservation-of-energy.html"></span>  </li>          <li class="h4">  <a href="/physics/conservation-theorems-and-symmetry-properties.html" class="flip-title">    <span>              [Classical Mechanics 1.5]            Conservation Theorems and Symmetry Properties    </span>  </a>      <time class="faded fine" datetime="2025-08-15T00:00:00+09:00">      15 Aug 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/conservation-theorems-and-symmetry-properties.html"></span>  </li>      </ul></aside>
 
   
 
@@ -530,7 +858,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 <footer class="content" role="contentinfo">
   <hr>
   
-    <p><small class="copyright">© 2023. All rights reserved.
+    <p><small class="copyright">© 2026. All rights reserved.
 </small></p>
   
   

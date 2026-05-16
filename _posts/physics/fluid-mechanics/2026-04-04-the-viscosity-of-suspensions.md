@@ -16,8 +16,8 @@ tags: fluid-mechanics
 Consider a fluid containing many small rigid particles.
 If the characteristic length of the observed motion is large compared with the particle radius, the mixture may be
 regarded as a homogeneous medium.
-Its viscosity is then not the viscosity $\eta_0$ of the pure liquid, but an effective viscosity
-$\eta_{\mathrm{eff}}$.
+Its viscosity is then not the viscosity $\mu_0$ of the pure liquid, but an effective viscosity
+$\mu_{\mathrm{eff}}$.
 
 We shall assume that the concentration is small.
 Then the disturbance produced by each particle may be calculated as if the other particles were absent, and the total
@@ -59,10 +59,10 @@ The disturbance $\b{v}_1$ must vanish at infinity, while the no-slip condition o
 \b{v}=0\qquad (r=R).
 \\]
 
-Since the Reynolds number based on the particle radius is small, the disturbance satisfies the Stokes equations
+Since the particle-radius $\mathrm{Re}$ is small, the disturbance satisfies the Stokes equations
 
 \\[
-\eta_0\laplacian\b{v}_1-\grad p=0,\qquad
+\mu_0\laplacian\b{v}_1-\grad p=0,\qquad
 \div\b{v}_1=0.
 \\]
 
@@ -85,7 +85,7 @@ v_{1i}
 and the pressure deviation is
 
 \\[
-p=-5\eta_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
+p=-5\mu_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
 \\]
 
 These formulae are to be used only outside the solid sphere.
@@ -104,7 +104,7 @@ For the pure liquid,
 
 \\[
 \sigma_{ik}=-p\delta_{ik}
-+\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
++\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
 \\]
 
 Separate from this expression the stress which would be present in a homogeneous fluid with the same average velocity
@@ -112,11 +112,11 @@ gradient. Then
 
 \\[
 \bar{\sigma}\_{ik}
-=\eta_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
+=\mu_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
 +\frac{1}{V}\int_V
 \left\\{
 \sigma_{ik}
--\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
+-\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
 +p\delta_{ik}
 \right\\}dV.
 \\]
@@ -141,7 +141,7 @@ Only the terms of order $r^{-2}$ in the disturbance are needed.
 Using the solution above, the single-particle contribution gives
 
 \\[
-n\eta_0 \cdot 20\pi R^3
+n\mu_0 \cdot 20\pi R^3
 \left\\{
 5\alpha_{lm}\overline{n_i n_k n_l n_m}
 -\alpha_{il}\overline{n_kn_l}
@@ -165,27 +165,27 @@ The directional averages are
 Since $\alpha_{ll}=0$, the correction reduces to
 
 \\[
-5\eta_0\alpha_{ik}\frac{4\pi R^3n}{3}.
+5\mu_0\alpha_{ik}\frac{4\pi R^3n}{3}.
 \\]
 
 Thus
 
 \\[
 \bar{\sigma}\_{ik}
-=2\eta_0\alpha\_{ik}
-+5\eta_0\alpha\_{ik}\phi.
+=2\mu_0\alpha\_{ik}
++5\mu_0\alpha\_{ik}\phi.
 \\]
 
 On the other hand, by definition of the effective viscosity,
 
 \\[
-\bar{\sigma}\_{ik}=2\eta\_{\mathrm{eff}}\alpha\_{ik}.
+\bar{\sigma}\_{ik}=2\mu_{\mathrm{eff}}\alpha\_{ik}.
 \\]
 
 Therefore
 
 \\[
-\eta_{\mathrm{eff}}=\eta_0\left(1+\frac{5}{2}\phi\right).
+\mu_{\mathrm{eff}}=\mu_0\left(1+\frac{5}{2}\phi\right).
 \\]
 
 This is Einstein's formula for the viscosity of a dilute suspension of rigid spheres.
@@ -196,7 +196,7 @@ The coefficient $5/2$ is called the intrinsic viscosity of a dilute suspension o
 For spheroidal particles the same form is retained,
 
 \\[
-\eta_{\mathrm{eff}}=\eta_0(1+A\phi),
+\mu_{\mathrm{eff}}=\mu_0(1+A\phi),
 \\]
 
 but the coefficient $A$ depends on the aspect ratio.
@@ -223,7 +223,7 @@ valid only when the orientational distribution is prescribed or effectively isot
 Einstein's formula is the first term of a concentration expansion:
 
 \\[
-\frac{\eta_{\mathrm{eff}}}{\eta_0}
+\frac{\mu_{\mathrm{eff}}}{\mu_0}
 =1+\frac{5}{2}\phi+O(\phi^2).
 \\]
 

@@ -13,11 +13,11 @@ tags: fluid-mechanics
 
 ## Kinetic Energy Balance
 
-Let an incompressible viscous fluid have constant density $\rho$ and shear viscosity $\eta$.
+Let an incompressible viscous fluid have constant density $\rho$ and shear viscosity $\mu$.
 Then $\div \b{v}=0$, and the viscous part of the stress tensor is
 
 \\[
-\varepsilon_{ik}=\eta\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
+\varepsilon_{ik}=\mu\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
 \\]
 
 The incompressible Navier--Stokes equation without external force can be written in index notation as
@@ -79,7 +79,7 @@ Substituting the viscous stress tensor gives
 
 \\[
 \dot{E}_{\mathrm{kin}}
-=-\frac{\eta}{2}\int_V
+=-\frac{\mu}{2}\int_V
 \left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)^2 dV
 \\]
 
@@ -93,15 +93,15 @@ E_{ik}=\frac{1}{2}\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
 is the strain-rate tensor, then
 
 \\[
-\dot{E}\_{\mathrm{kin}}=-2\eta\int_V E_{ik}E_{ik}\,dV.
+\dot{E}\_{\mathrm{kin}}=-2\mu\int_V E_{ik}E_{ik}\,dV.
 \\]
 
 The quantity
 
 \\[
-\Phi=\frac{\eta}{2}
+\Phi=\frac{\mu}{2}
 \left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)^2
-=2\eta E_{ik}E_{ik}
+=2\mu E_{ik}E_{ik}
 \\]
 
 is called the **dissipation function**.
@@ -109,7 +109,7 @@ It is the mechanical energy lost per unit volume and unit time.
 Since the mechanical energy cannot increase by internal friction alone, we must have
 
 \\[
-\eta>0.
+\mu>0.
 \\]
 
 ## Potential Flow Form
@@ -136,7 +136,7 @@ The dissipation formula becomes
 
 \\[
 \dot{E}_{\mathrm{kin}}
-=-2\eta\int_V \left(\pdv{v_i}{x_k}\right)^2dV.
+=-2\mu\int_V \left(\pdv{v_i}{x_k}\right)^2dV.
 \\]
 
 Using integration by parts,
@@ -161,7 +161,7 @@ we obtain the surface form
 
 \\[
 \dot{E}_{\mathrm{kin}}
-=-\eta\oint_S \grad(v^2)\cdot d\b{f}
+=-\mu\oint_S \grad(v^2)\cdot d\b{f}
 \\]
 
 for an incompressible potential flow.

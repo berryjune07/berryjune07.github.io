@@ -117,11 +117,11 @@ By substituting the expression of strain rate tensor, we obtain:
 We usually separate the viscous stress tensor into two terms where one of them is traceless.
 
 \\[
-\bs{\varepsilon} = \eta \left\[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\] + \zeta (\div \b{v}) \b{I}
+\bs{\varepsilon} = \mu \left\[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\] + \zeta (\div \b{v}) \b{I}
 \\]
 
-where $\eta$ and $\zeta$ are **coefficients of viscosity**.
-Especially, $\eta$ is called the **shear viscosity** or **dynamic viscosity** and $\zeta$ is called the **bulk viscosity** or **volume viscosity**.
+where $\mu$ and $\zeta$ are **coefficients of viscosity**.
+Especially, $\mu$ is called the **shear viscosity** or **dynamic viscosity** and $\zeta$ is called the **bulk viscosity** or **volume viscosity**.
 As we will see later, these coefficients are always positive.
 
 ## Navier--Stokes equation
@@ -129,29 +129,29 @@ As we will see later, these coefficients are always positive.
 By substituting the expression of viscous stress tensor into the equation of motion, we obtain the **Navier--Stokes equation**:
 
 \\[
-\pdv{(\rho \b{v})}{t} + \div \left( \rho \b{v} \otimes \b{v} + \[ p - \zeta (\div \b{v}) \] \b{I} - \eta \left\[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\] \right) = \rho \b{a}
+\pdv{(\rho \b{v})}{t} + \div \left( \rho \b{v} \otimes \b{v} + \[ p - \zeta (\div \b{v}) \] \b{I} - \mu \left\[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\] \right) = \rho \b{a}
 \\]
 
 where $\b{a}$ is the acceleration due to external forces.
 We can write the Navier--Stokes equation also in a convective form, simplifying the equation above using a mass continuity equation:
 
 \\[
-\rho \mdv{\b{v}} = - \grad p + \div \left\[ \eta \left\\{ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\\} \right\] + \grad \[ \zeta (\div \b{v}) \] + \rho \b{a}
+\rho \mdv{\b{v}} = - \grad p + \div \left\[ \mu \left\\{ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\\} \right\] + \grad \[ \zeta (\div \b{v}) \] + \rho \b{a}
 \\]
 
-$\eta$ and $\zeta$ are functions of pressure and temperature. In general, $p$ and $T$ are not constant throughout the fluid, so 
-$\eta$ and $\zeta$ cannot be taken outside the graient operator. In most cases, however, the viscosity coefficients do not change noticeably in the fluid, i.e., 
-they may be regarded as constant. If then, $\eta$ and $\zeta$ can be taken outside the gradient operator.
+$\mu$ and $\zeta$ are functions of pressure and temperature. In general, $p$ and $T$ are not constant throughout the fluid, so 
+$\mu$ and $\zeta$ cannot be taken outside the graient operator. In most cases, however, the viscosity coefficients do not change noticeably in the fluid, i.e., 
+they may be regarded as constant. If then, $\mu$ and $\zeta$ can be taken outside the gradient operator.
 
 \\[
-\rho \mdv{\b{v}} = - \grad p + \eta \laplacian \b{v} + \left( \zeta + \frac{1}{3} \eta \right) \grad (\div \b{v}) + \rho \b{a}
+\rho \mdv{\b{v}} = - \grad p + \mu \laplacian \b{v} + \left( \zeta + \frac{1}{3} \mu \right) \grad (\div \b{v}) + \rho \b{a}
 \\]
 
 since $\div (\grad \b{v})^\top = \grad (\div \b{v})$.
 We also often use the following induced coefficients:
 
 \\[
-\nu = \frac{\eta}{\rho}, \quad \xi = \frac{\zeta}{\rho}
+\nu = \frac{\mu}{\rho}, \quad \xi = \frac{\zeta}{\rho}
 \\]
 
 where $\nu$ is called the **shear kinematic viscosity**(or simply just kinematic viscosity) and $\xi$ is called the **bulk kinematic viscosity**.

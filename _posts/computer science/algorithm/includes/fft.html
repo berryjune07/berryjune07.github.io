@@ -1,0 +1,378 @@
+{% assign viz_id = include.id | default: "fft-demo" %}
+<div id="{{ viz_id }}" class="fftv-root">
+  <style>
+    #{{ viz_id }} { margin: 2rem 0; color: #1f2937; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .fftv-stack { display: grid; gap: 1rem; }
+    #{{ viz_id }} .fftv-svg-wrap { width: 100%; }
+    #{{ viz_id }} .fftv-svg-wrap svg { display: block; width: 100%; max-width: 860px; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .fftv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #{{ viz_id }} .fftv-status p { margin: 0; }
+    #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .fftv-input-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.4rem; }
+    #{{ viz_id }} .fftv-input-grid input { width: 100%; height: 2.25rem; border: 1px solid rgba(82,96,113,0.24); border-radius: 0.5rem; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; text-align: center; outline: none; appearance: textfield; }
+    #{{ viz_id }} .fftv-input-grid input:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #{{ viz_id }} .fftv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+    #{{ viz_id }} .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .fftv-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .fftv-counter { opacity: 0.8; font-size: 0.95em; }
+    #{{ viz_id }} .fftv-info { display: grid; gap: 0.35rem; line-height: 1.7; }
+    #{{ viz_id }} .fftv-line { overflow-wrap: anywhere; }
+    #{{ viz_id }} .fftv-legend { display: grid; gap: 0.35rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .fftv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #{{ viz_id }} .fftv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #{{ viz_id }} .fftv-swatch-active { background: #dbeafe; border-color: #2563eb; }
+    #{{ viz_id }} .fftv-swatch-output { background: #fef3c7; border-color: #d97706; }
+    #{{ viz_id }} .fftv-swatch-muted { background: #f8fafc; border-color: #94a3b8; }
+    #{{ viz_id }} .fftv-link { fill: none; stroke: #94a3b8; stroke-width: 1.5; opacity: 0.35; }
+    #{{ viz_id }} .fftv-link-active { fill: none; stroke: #2563eb; stroke-width: 2.2; opacity: 0.72; }
+    #{{ viz_id }} .fftv-link-output { fill: none; stroke: #d97706; stroke-width: 2.2; opacity: 0.72; }
+    #{{ viz_id }} .fftv-node rect { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; ry: 6; }
+    #{{ viz_id }} .fftv-node-active rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.1; }
+    #{{ viz_id }} .fftv-node-output rect { fill: #fef3c7; stroke: #d97706; stroke-width: 2.1; }
+    #{{ viz_id }} .fftv-node-future rect { fill: #ffffff; stroke: #cbd5e1; stroke-dasharray: 4 3; }
+    #{{ viz_id }} .fftv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 12px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #{{ viz_id }} .fftv-node-future text { fill: #94a3b8; }
+    #{{ viz_id }} .fftv-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #{{ viz_id }} .fftv-index { fill: #64748b; font-family: Helvetica, Arial, sans-serif; font-size: 11px; text-anchor: end; dominant-baseline: central; }
+    @media (max-width: 640px) {
+      #{{ viz_id }} .fftv-input-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      #{{ viz_id }} .fftv-actions button { flex: 1 1 8.5rem; }
+    }
+  </style>
+
+  <div class="fftv-stack">
+    <div class="fftv-svg-wrap" data-role="svg"></div>
+    <div class="fftv-status" data-role="status"></div>
+    <div class="fftv-input-grid" data-role="inputs"></div>
+    <div class="fftv-actions">
+      <button type="button" data-role="apply">Run</button>
+      <button type="button" data-role="prev">Previous Step</button>
+      <button type="button" data-role="next">Next Step</button>
+      <button type="button" data-role="reset">Reset</button>
+      <span class="fftv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+    </div>
+    <div class="fftv-info">
+      <div class="fftv-line"><strong>Block length:</strong> <span data-role="length"></span></div>
+      <div class="fftv-line"><strong>Twiddle factors:</strong> <span data-role="twiddle"></span></div>
+    </div>
+    <div class="fftv-legend">
+      <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-active"></span> Values read by the current permutation or butterfly stage</div>
+      <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-output"></span> Values written by the current stage</div>
+      <div class="fftv-legend-item"><span class="fftv-swatch fftv-swatch-muted"></span> Values not yet computed at the current step</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+
+      function byRole(name) {
+        return root.querySelector('[data-role="' + name + '"]');
+      }
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function html(s) {
+        return "<p>" + esc(s).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
+      }
+
+      function c(re, im) {
+        return { re: re, im: im || 0 };
+      }
+
+      function add(a, b) {
+        return c(a.re + b.re, a.im + b.im);
+      }
+
+      function sub(a, b) {
+        return c(a.re - b.re, a.im - b.im);
+      }
+
+      function mul(a, b) {
+        return c(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+      }
+
+      function rootOfUnity(len, j) {
+        var ang = 2 * Math.PI * j / len;
+        return c(Math.cos(ang), Math.sin(ang));
+      }
+
+      function copyVec(v) {
+        return v.map(function (x) { return c(x.re, x.im); });
+      }
+
+      function bitReverse(x, bits) {
+        var y = 0;
+        for (var i = 0; i < bits; i++) {
+          y = (y << 1) | (x & 1);
+          x >>= 1;
+        }
+        return y;
+      }
+
+      function round(x) {
+        if (Math.abs(x) < 1e-9) x = 0;
+        var r = Math.round(x);
+        if (Math.abs(x - r) < 1e-9) return String(r);
+        return (Math.round(x * 100) / 100).toFixed(2);
+      }
+
+      function formatComplex(z) {
+        var reZero = Math.abs(z.re) < 1e-9;
+        var imZero = Math.abs(z.im) < 1e-9;
+        if (reZero && imZero) return "0";
+        if (imZero) return round(z.re);
+        var imAbs = Math.abs(z.im);
+        var imText = Math.abs(imAbs - 1) < 1e-9 ? "i" : round(imAbs) + "i";
+        if (reZero) return (z.im < 0 ? "-" : "") + imText;
+        return round(z.re) + (z.im < 0 ? "-" : "+") + imText;
+      }
+
+      function makeStates(values) {
+        var n = 8;
+        var bits = 3;
+        var initial = values.map(function (x) { return c(x, 0); });
+        var rev = new Array(n);
+        for (var i = 0; i < n; i++) rev[bitReverse(i, bits)] = initial[i];
+
+        var states = [
+          {
+            title: "Initial coefficients",
+            desc: "The input is the coefficient vector before any permutation.",
+            len: "-",
+            twiddle: "-",
+            columns: [{ label: "a", values: initial }],
+            active: [],
+            output: [],
+            links: []
+          },
+          {
+            title: "Bit-reversal permutation",
+            desc: "Move each index to the position obtained by reversing its binary representation.",
+            len: "-",
+            twiddle: "-",
+            columns: [{ label: "a", values: initial }, { label: "rev", values: rev }],
+            active: Array.from({ length: n }, function (_, i) { return "0-" + i; }),
+            output: Array.from({ length: n }, function (_, i) { return "1-" + bitReverse(i, bits); }),
+            links: Array.from({ length: n }, function (_, i) {
+              return { fromCol: 0, fromRow: i, toCol: 1, toRow: bitReverse(i, bits), kind: "active" };
+            })
+          }
+        ];
+
+        var cur = copyVec(rev);
+        var labels = ["a", "rev"];
+        var columns = [{ label: "a", values: initial }, { label: "rev", values: rev }];
+
+        for (var len = 2; len <= n; len <<= 1) {
+          var next = copyVec(cur);
+          var half = len >> 1;
+          var inCol = columns.length - 1;
+          var outCol = columns.length;
+          var links = [];
+          var active = [];
+          var output = [];
+          var twiddles = [];
+
+          for (var s = 0; s < n; s += len) {
+            for (var j = 0; j < half; j++) {
+              var top = s + j;
+              var bottom = s + j + half;
+              var w = rootOfUnity(len, j);
+              var u = cur[top];
+              var v = mul(cur[bottom], w);
+              next[top] = add(u, v);
+              next[bottom] = sub(u, v);
+              active.push(inCol + "-" + top, inCol + "-" + bottom);
+              output.push(outCol + "-" + top, outCol + "-" + bottom);
+              links.push({ fromCol: inCol, fromRow: top, toCol: outCol, toRow: top, kind: "output" });
+              links.push({ fromCol: inCol, fromRow: bottom, toCol: outCol, toRow: top, kind: "active" });
+              links.push({ fromCol: inCol, fromRow: top, toCol: outCol, toRow: bottom, kind: "active" });
+              links.push({ fromCol: inCol, fromRow: bottom, toCol: outCol, toRow: bottom, kind: "output" });
+              twiddles.push("w_" + len + "^" + j);
+            }
+          }
+
+          cur = next;
+          labels.push("len " + len);
+          columns.push({ label: len === n ? "DFT" : "len " + len, values: copyVec(cur) });
+          states.push({
+            title: "Butterflies of length " + len,
+            desc: "For each block, apply `(u,v) -> (u + wv, u - wv)` with the proper root of unity.",
+            len: String(len),
+            twiddle: twiddles.filter(function (x, i, a) { return a.indexOf(x) === i; }).join(", "),
+            columns: columns.map(function (col) { return { label: col.label, values: copyVec(col.values) }; }),
+            active: active,
+            output: output,
+            links: links
+          });
+        }
+
+        var allColumns = states[states.length - 1].columns.map(function (col) {
+          return { label: col.label, values: copyVec(col.values) };
+        });
+        states.forEach(function (state) {
+          state.visibleMax = state.columns.length - 1;
+          state.columns = allColumns;
+        });
+        return states;
+      }
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var defaults = [3, 1, 4, 1, 5, 9, 2, 6];
+      var states = makeStates(defaults);
+      var index = 0;
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS, name);
+        Object.keys(attrs || {}).forEach(function (k) {
+          el.setAttribute(k, attrs[k]);
+        });
+        return el;
+      }
+
+      function has(arr, x) {
+        return arr.indexOf(x) !== -1;
+      }
+
+      function nodeClass(col, row, maxCol, state) {
+        var key = col + "-" + row;
+        if (col > maxCol) return "fftv-node fftv-node-future";
+        if (has(state.output, key)) return "fftv-node fftv-node-output";
+        if (has(state.active, key)) return "fftv-node fftv-node-active";
+        return "fftv-node";
+      }
+
+      function draw(state) {
+        var target = byRole("svg");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox: "0 0 900 390", role: "img", "aria-label": "FFT butterfly stages" });
+        var cols = state.columns;
+        var maxCol = state.visibleMax;
+        var x0 = 78;
+        var dx = 190;
+        var y0 = 62;
+        var dy = 39;
+        var boxW = 84;
+        var boxH = 26;
+
+        for (var r = 0; r < 8; r++) {
+          var idx = svgEl("text", { x: 28, y: y0 + r * dy, class: "fftv-index" });
+          idx.textContent = String(r);
+          svg.appendChild(idx);
+        }
+
+        for (var cidx = 0; cidx < cols.length; cidx++) {
+          var label = svgEl("text", { x: x0 + cidx * dx, y: 24, class: "fftv-label" });
+          label.textContent = cols[cidx].label;
+          svg.appendChild(label);
+        }
+
+        state.links.forEach(function (e) {
+          var x1 = x0 + e.fromCol * dx + boxW / 2;
+          var y1 = y0 + e.fromRow * dy;
+          var x2 = x0 + e.toCol * dx - boxW / 2;
+          var y2 = y0 + e.toRow * dy;
+          var mid = (x1 + x2) / 2;
+          var path = svgEl("path", {
+            d: "M " + x1 + " " + y1 + " C " + mid + " " + y1 + ", " + mid + " " + y2 + ", " + x2 + " " + y2,
+            class: e.kind === "output" ? "fftv-link-output" : "fftv-link-active"
+          });
+          svg.appendChild(path);
+        });
+
+        cols.forEach(function (col, cidx) {
+          for (var r = 0; r < 8; r++) {
+            var x = x0 + cidx * dx;
+            var y = y0 + r * dy;
+            var g = svgEl("g", { class: nodeClass(cidx, r, maxCol, state) });
+            g.appendChild(svgEl("rect", { x: x - boxW / 2, y: y - boxH / 2, width: boxW, height: boxH }));
+            var t = svgEl("text", { x: x, y: y });
+            t.textContent = cidx <= maxCol ? formatComplex(col.values[r]) : "";
+            g.appendChild(t);
+            svg.appendChild(g);
+          }
+        });
+
+        target.appendChild(svg);
+      }
+
+      function readValues() {
+        return Array.from(root.querySelectorAll('[data-role^="input-"]')).map(function (input) {
+          var x = Number(input.value);
+          return Number.isFinite(x) ? x : 0;
+        });
+      }
+
+      function makeInputs() {
+        var box = byRole("inputs");
+        box.innerHTML = "";
+        defaults.forEach(function (v, i) {
+          var input = document.createElement("input");
+          input.type = "number";
+          input.step = "1";
+          input.min = "-99";
+          input.max = "99";
+          input.value = String(v);
+          input.setAttribute("aria-label", "Coefficient a" + i);
+          input.title = "a" + i;
+          input.setAttribute("data-role", "input-" + i);
+          box.appendChild(input);
+        });
+      }
+
+      function render() {
+        var state = states[index];
+        byRole("counter").textContent = index + " / " + (states.length - 1);
+        byRole("status").innerHTML = html("Step " + index + ": " + state.title + ". " + state.desc);
+        byRole("length").innerHTML = "<code>" + esc(state.len) + "</code>";
+        byRole("twiddle").innerHTML = "<code>" + esc(state.twiddle) + "</code>";
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === states.length - 1;
+        draw(state);
+      }
+
+      function recompute() {
+        states = makeStates(readValues());
+        index = 0;
+        render();
+      }
+
+      function reset() {
+        var inputs = root.querySelectorAll('[data-role^="input-"]');
+        defaults.forEach(function (v, i) { inputs[i].value = String(v); });
+        recompute();
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        makeInputs();
+        byRole("apply").addEventListener("click", recompute);
+        byRole("prev").addEventListener("click", function () {
+          if (index > 0) {
+            index -= 1;
+            render();
+          }
+        });
+        byRole("next").addEventListener("click", function () {
+          if (index < states.length - 1) {
+            index += 1;
+            render();
+          }
+        });
+        byRole("reset").addEventListener("click", reset);
+        render();
+      }
+
+      start();
+    })();
+  </script>
+</div>

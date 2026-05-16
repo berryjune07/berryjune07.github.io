@@ -17,7 +17,7 @@ Consider a steady incompressible flow past a body of fixed shape.
 If two bodies have the same shape and differ only by a change of all lengths in the same ratio, we say that they are
 **geometrically similar**.
 Then the shape is determined by one characteristic length $l$.
-Let $u$ be the velocity of the incident stream and let $\nu=\eta/\rho$ be the kinematic viscosity of the fluid.
+Let $u$ be the velocity of the incident stream and let $\nu=\mu/\rho$ be the kinematic viscosity of the fluid.
 The hydrodynamical problem is then specified, apart from the dimensionless shape, by
 
 \\[
@@ -33,10 +33,10 @@ Their dimensions are
 From these three quantities only one independent dimensionless quantity can be formed:
 
 \\[
-\mathrm{Re}=\frac{ul}{\nu}=\frac{\rho ul}{\eta}.
+\mathrm{Re}=\frac{ul}{\nu}=\frac{\rho ul}{\mu}.
 \\]
 
-This is the **Reynolds number**.
+This is $\mathrm{Re}$.
 It measures the ratio of the inertial term to the viscous term in the Navier--Stokes equation:
 
 \\[
@@ -71,7 +71,7 @@ p=p_0+\rho u^2 f\left(\frac{\b{r}}{l},\mathrm{Re}\right).
 \\]
 
 This is the simplest form of the **law of similarity**.
-Two geometrically similar steady incompressible flows are dynamically similar if their Reynolds numbers are equal.
+Two geometrically similar steady incompressible flows are dynamically similar if their values of $\mathrm{Re}$ are equal.
 
 For a quantity which is not a function of position, for example the drag force $D$, the same argument gives
 
@@ -79,7 +79,7 @@ For a quantity which is not a function of position, for example the drag force $
 D=\rho u^2l^2 C_D(\mathrm{Re})
 \\]
 
-where $C_D$ is a dimensionless function of the Reynolds number.
+where $C_D$ is a dimensionless function of $\mathrm{Re}$.
 
 ## Buckingham Pi Theorem
 
@@ -216,7 +216,7 @@ This proves the Buckingham pi theorem.
 As an example, for the drag force on a body in a viscous incompressible fluid we may take
 
 \\[
-D,\rho,u,l,\eta.
+D,\rho,u,l,\mu.
 \\]
 
 There are five dimensional quantities and three fundamental dimensions $M,L,T$.
@@ -224,7 +224,7 @@ Hence there are two independent dimensionless groups, which may be chosen as
 
 \\[
 \frac{D}{\rho u^2l^2},\qquad
-\frac{\rho ul}{\eta}.
+\frac{\rho ul}{\mu}.
 \\]
 
 Therefore
@@ -239,7 +239,7 @@ which is the drag form written above.
 
 If gravity is important, the quantities determining the flow include $g$ as well as $\nu,u,l$.
 Then there are two independent dimensionless parameters.
-One may take the Reynolds number and the Froude number
+One may take $\mathrm{Re}$ and the Froude number
 
 \\[
 \mathrm{Fr}=\frac{u}{\sqrt{gl}}

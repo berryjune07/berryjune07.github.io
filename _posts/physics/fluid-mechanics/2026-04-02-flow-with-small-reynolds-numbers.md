@@ -29,7 +29,7 @@ Then
 \nu\laplacian\b{v}\sim \frac{\nu u}{l^2}.
 \\]
 
-The ratio of these terms is the Reynolds number
+The ratio of these terms is $\mathrm{Re}$
 
 \\[
 \mathrm{Re}=\frac{ul}{\nu}.
@@ -39,7 +39,7 @@ When $\mathrm{Re}\ll 1$, the inertial term may be omitted in the first approxima
 The equation of motion becomes the **Stokes equation**
 
 \\[
-\eta\laplacian\b{v}-\grad p=0,\qquad
+\mu\laplacian\b{v}-\grad p=0,\qquad
 \div\b{v}=0.
 \\]
 
@@ -174,35 +174,35 @@ v_\theta=-u\sin\theta\left(1-\frac{3R}{4r}-\frac{R^3}{4r^3}\right).
 The pressure follows from the Stokes equation:
 
 \\[
-\grad p=\eta\laplacian\b{v}.
+\grad p=\mu\laplacian\b{v}.
 \\]
 
 Using the above solution, one obtains
 
 \\[
-p=p_0-\frac{3\eta Ru}{2r^2}\cos\theta.
+p=p_0-\frac{3\mu Ru}{2r^2}\cos\theta.
 \\]
 
 At the surface of the sphere,
 
 \\[
 \sigma_{rr}^{\prime}=0,\qquad
-\sigma_{r\theta}^{\prime}=-\frac{3\eta u}{2R}\sin\theta,
+\sigma_{r\theta}^{\prime}=-\frac{3\mu u}{2R}\sin\theta,
 \qquad
-p=p_0-\frac{3\eta u}{2R}\cos\theta,
+p=p_0-\frac{3\mu u}{2R}\cos\theta,
 \\]
 
 where $\sigma_{ij}^{\prime}$ denotes the viscous part of the stress tensor.
 Projecting the normal and tangential stresses on the direction of $\b{u}$ and integrating over the surface gives
 
 \\[
-D=6\pi\eta Ru.
+D=6\pi\mu Ru.
 \\]
 
 This is **Stokes' formula** for the drag on a slowly moving sphere.
 The force is proportional to the velocity and to the linear size of the body.
 This also follows from dimensional analysis of the Stokes equations, since $\rho$ no longer appears in the first
-approximation and the only force scale formed from $\eta,u,R$ is $\eta uR$.
+approximation and the only force scale formed from $\mu,u,R$ is $\mu uR$.
 
 ## Resistance Tensor
 
@@ -210,7 +210,7 @@ For a slowly moving body of arbitrary fixed shape, the drag need not be parallel
 By linearity, however, it must have the form
 
 \\[
-D_i=\eta a_{ik}u_k,
+D_i=\mu a_{ik}u_k,
 \\]
 
 where $a_{ik}$ is a tensor determined only by the shape and size of the body.
@@ -219,7 +219,7 @@ The symmetry is a particular case of the reciprocal relations for slow dissipati
 
 ## Limitation of Stokes' Formula
 
-The Stokes solution is not uniformly valid at arbitrarily large distances, even when the Reynolds number is small.
+The Stokes solution is not uniformly valid at arbitrarily large distances, even when $\mathrm{Re}$ is small.
 For the sphere solution, at large $r$ the disturbance is of order
 
 \\[
@@ -257,7 +257,7 @@ Replacing $\b{v}\cdot\grad$ by $\b{u}\cdot\grad$ gives Oseen's equation
 For a sphere, this gives the first correction to Stokes' drag:
 
 \\[
-D=6\pi\eta Ru\left(1+\frac{3}{8}\frac{uR}{\nu}\right).
+D=6\pi\mu Ru\left(1+\frac{3}{8}\frac{uR}{\nu}\right).
 \\]
 
 The necessity of this correction shows that the limit $\mathrm{Re}\to0$ is singular.
@@ -268,7 +268,7 @@ The Stokes equations alone cannot satisfy both the boundary condition on the cyl
 Using Oseen's equation from the beginning gives, for the drag per unit length,
 
 \\[
-D=\frac{4\pi\eta u}{\log(3.70\nu/uR)}.
+D=\frac{4\pi\mu u}{\log(3.70\nu/uR)}.
 \\]
 
-Thus even the leading expression contains a logarithm of the Reynolds number.
+Thus even the leading expression contains a logarithm of $\mathrm{Re}$.

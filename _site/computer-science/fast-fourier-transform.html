@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
+    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="0 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1119 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   18 min
 </span>
 
       </span>
@@ -300,6 +300,753 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
+  <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The <strong>discrete Fourier transform(DFT)</strong> changes a sequence from coefficient form to value form at roots of unity.
+The <strong>fast Fourier transform(FFT)</strong> is an algorithm which computes the DFT in $O(N\log N)$ time.</p>
+
+<p>Let $n$ be a positive integer and let $\omega_n$ be a primitive $n$-th root of unity.
+For a sequence</p>
+
+<p>\[
+a=(a_0,a_1,\cdots,a_{n-1}),
+\]</p>
+
+<p>the DFT is the sequence $\widehat a$ defined by</p>
+
+<p>\[
+\widehat a_k
+=\sum_{j=0}^{n-1} a_j\omega_n^{jk}
+\qquad (0\le k&lt;n).
+\]</p>
+
+<p>Equivalently, if</p>
+
+<p>\[
+A(x)=\sum_{j=0}^{n-1}a_jx^j,
+\]</p>
+
+<p>then</p>
+
+<p>\[
+\widehat a_k=A(\omega_n^k).
+\]</p>
+
+<p>Thus the DFT is polynomial evaluation at all $n$-th roots of unity.</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Assume first that $n=2^m$.
+Let</p>
+
+<p>\[
+A(x)=\sum_{j=0}^{n-1}a_jx^j.
+\]</p>
+
+<p>Separate the even and odd coefficients:</p>
+
+<p>\[
+A_0(x)=\sum_{j=0}^{n/2-1}a_{2j}x^j,
+\qquad
+A_1(x)=\sum_{j=0}^{n/2-1}a_{2j+1}x^j.
+\]</p>
+
+<p>Then</p>
+
+<p>\[
+A(x)=A_0(x^2)+xA_1(x^2).
+\]</p>
+
+<p>For $0\le k&lt;n/2$, we have</p>
+
+<p>\[
+(\omega_n^k)^2=\omega_{n/2}^k,
+\qquad
+\omega_n^{k+n/2}=-\omega_n^k.
+\]</p>
+
+<p>Therefore</p>
+
+<p>\[
+\begin{align*}
+A(\omega_n^k)
+&amp;=A_0(\omega_{n/2}^k)+\omega_n^kA_1(\omega_{n/2}^k), \nl
+A(\omega_n^{k+n/2})
+&amp;=A_0(\omega_{n/2}^k)-\omega_n^kA_1(\omega_{n/2}^k).
+\end{align*}
+\]</p>
+
+<p>Hence the DFT of length $n$ can be obtained from two DFTs of length $n/2$.
+The factor $\omega_n^k$ is called a <strong>twiddle factor</strong>.
+Each pair of equations above is called a <strong>butterfly</strong>:</p>
+
+<p>\[
+u=x,\qquad v=\omega_n^k y,
+\qquad
+(x,y)\mapsto (u+v,u-v).
+\]</p>
+
+<p>In recursive form, this gives the Cooley–Tukey FFT.
+In iterative form, we first reorder the sequence by bit reversal.
+After this permutation, we merge blocks of length</p>
+
+<p>\[
+2,4,8,\cdots,n.
+\]</p>
+
+<p>For a block of length $\ell$, let $\omega_\ell$ be a primitive $\ell$-th root of unity.
+For each block starting at $s$, and for $0\le j&lt;\ell/2$, set</p>
+
+<p>\[
+\begin{align*}
+u&amp;=a_{s+j}, \nl
+v&amp;=\omega_\ell^j a_{s+j+\ell/2}, \nl
+a_{s+j}&amp;=u+v, \nl
+a_{s+j+\ell/2}&amp;=u-v.
+\end{align*}
+\]</p>
+
+<p>After all block lengths have been processed, the array is the DFT.</p>
+
+<p>The visualizer below shows the bit-reversal permutation and the butterfly stages of an iterative length-$8$ transform.</p>
+
+<div id="fft-demo" class="fftv-root">
+  <style>
+    #fft-demo { margin: 2rem 0; color: #1f2937; }
+    #fft-demo * { box-sizing: border-box; }
+    #fft-demo .fftv-stack { display: grid; gap: 1rem; }
+    #fft-demo .fftv-svg-wrap { width: 100%; }
+    #fft-demo .fftv-svg-wrap svg { display: block; width: 100%; max-width: 860px; height: auto; margin: 0 auto; }
+    #fft-demo .fftv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #fft-demo .fftv-status p { margin: 0; }
+    #fft-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #fft-demo .fftv-input-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.4rem; }
+    #fft-demo .fftv-input-grid input { width: 100%; height: 2.25rem; border: 1px solid rgba(82,96,113,0.24); border-radius: 0.5rem; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; text-align: center; outline: none; appearance: textfield; }
+    #fft-demo .fftv-input-grid input:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #fft-demo .fftv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+    #fft-demo .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #fft-demo .fftv-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #fft-demo .fftv-counter { opacity: 0.8; font-size: 0.95em; }
+    #fft-demo .fftv-info { display: grid; gap: 0.35rem; line-height: 1.7; }
+    #fft-demo .fftv-line { overflow-wrap: anywhere; }
+    #fft-demo .fftv-legend { display: grid; gap: 0.35rem; font-size: 0.95em; line-height: 1.7; }
+    #fft-demo .fftv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
+    #fft-demo .fftv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
+    #fft-demo .fftv-swatch-active { background: #dbeafe; border-color: #2563eb; }
+    #fft-demo .fftv-swatch-output { background: #fef3c7; border-color: #d97706; }
+    #fft-demo .fftv-swatch-muted { background: #f8fafc; border-color: #94a3b8; }
+    #fft-demo .fftv-link { fill: none; stroke: #94a3b8; stroke-width: 1.5; opacity: 0.35; }
+    #fft-demo .fftv-link-active { fill: none; stroke: #2563eb; stroke-width: 2.2; opacity: 0.72; }
+    #fft-demo .fftv-link-output { fill: none; stroke: #d97706; stroke-width: 2.2; opacity: 0.72; }
+    #fft-demo .fftv-node rect { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; rx: 6; ry: 6; }
+    #fft-demo .fftv-node-active rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.1; }
+    #fft-demo .fftv-node-output rect { fill: #fef3c7; stroke: #d97706; stroke-width: 2.1; }
+    #fft-demo .fftv-node-future rect { fill: #ffffff; stroke: #cbd5e1; stroke-dasharray: 4 3; }
+    #fft-demo .fftv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 12px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+    #fft-demo .fftv-node-future text { fill: #94a3b8; }
+    #fft-demo .fftv-label { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    #fft-demo .fftv-index { fill: #64748b; font-family: Helvetica, Arial, sans-serif; font-size: 11px; text-anchor: end; dominant-baseline: central; }
+    @media (max-width: 640px) {
+      #fft-demo .fftv-input-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      #fft-demo .fftv-actions button { flex: 1 1 8.5rem; }
+    }
+  </style>
+
+  <div class="fftv-stack">
+    <div class="fftv-svg-wrap" data-role="svg"></div>
+    <div class="fftv-status" data-role="status"></div>
+    <div class="fftv-input-grid" data-role="inputs"></div>
+    <div class="fftv-actions">
+      <button type="button" data-role="apply">Run</button>
+      <button type="button" data-role="prev">Previous Step</button>
+      <button type="button" data-role="next">Next Step</button>
+      <button type="button" data-role="reset">Reset</button>
+      <span class="fftv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+    </div>
+    <div class="fftv-info">
+      <div class="fftv-line">
+<strong>Block length:</strong> <span data-role="length"></span>
+</div>
+      <div class="fftv-line">
+<strong>Twiddle factors:</strong> <span data-role="twiddle"></span>
+</div>
+    </div>
+    <div class="fftv-legend">
+      <div class="fftv-legend-item">
+<span class="fftv-swatch fftv-swatch-active"></span> Values read by the current permutation or butterfly stage</div>
+      <div class="fftv-legend-item">
+<span class="fftv-swatch fftv-swatch-output"></span> Values written by the current stage</div>
+      <div class="fftv-legend-item">
+<span class="fftv-swatch fftv-swatch-muted"></span> Values not yet computed at the current step</div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("fft-demo");
+      if (!root) return;
+
+      function byRole(name) {
+        return root.querySelector('[data-role="' + name + '"]');
+      }
+
+      function esc(s) {
+        return String(s)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+
+      function html(s) {
+        return "<p>" + esc(s).replace(/`([^`]+)`/g, "<code>$1</code>") + "</p>";
+      }
+
+      function c(re, im) {
+        return { re: re, im: im || 0 };
+      }
+
+      function add(a, b) {
+        return c(a.re + b.re, a.im + b.im);
+      }
+
+      function sub(a, b) {
+        return c(a.re - b.re, a.im - b.im);
+      }
+
+      function mul(a, b) {
+        return c(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+      }
+
+      function rootOfUnity(len, j) {
+        var ang = 2 * Math.PI * j / len;
+        return c(Math.cos(ang), Math.sin(ang));
+      }
+
+      function copyVec(v) {
+        return v.map(function (x) { return c(x.re, x.im); });
+      }
+
+      function bitReverse(x, bits) {
+        var y = 0;
+        for (var i = 0; i < bits; i++) {
+          y = (y << 1) | (x & 1);
+          x >>= 1;
+        }
+        return y;
+      }
+
+      function round(x) {
+        if (Math.abs(x) < 1e-9) x = 0;
+        var r = Math.round(x);
+        if (Math.abs(x - r) < 1e-9) return String(r);
+        return (Math.round(x * 100) / 100).toFixed(2);
+      }
+
+      function formatComplex(z) {
+        var reZero = Math.abs(z.re) < 1e-9;
+        var imZero = Math.abs(z.im) < 1e-9;
+        if (reZero && imZero) return "0";
+        if (imZero) return round(z.re);
+        var imAbs = Math.abs(z.im);
+        var imText = Math.abs(imAbs - 1) < 1e-9 ? "i" : round(imAbs) + "i";
+        if (reZero) return (z.im < 0 ? "-" : "") + imText;
+        return round(z.re) + (z.im < 0 ? "-" : "+") + imText;
+      }
+
+      function makeStates(values) {
+        var n = 8;
+        var bits = 3;
+        var initial = values.map(function (x) { return c(x, 0); });
+        var rev = new Array(n);
+        for (var i = 0; i < n; i++) rev[bitReverse(i, bits)] = initial[i];
+
+        var states = [
+          {
+            title: "Initial coefficients",
+            desc: "The input is the coefficient vector before any permutation.",
+            len: "-",
+            twiddle: "-",
+            columns: [{ label: "a", values: initial }],
+            active: [],
+            output: [],
+            links: []
+          },
+          {
+            title: "Bit-reversal permutation",
+            desc: "Move each index to the position obtained by reversing its binary representation.",
+            len: "-",
+            twiddle: "-",
+            columns: [{ label: "a", values: initial }, { label: "rev", values: rev }],
+            active: Array.from({ length: n }, function (_, i) { return "0-" + i; }),
+            output: Array.from({ length: n }, function (_, i) { return "1-" + bitReverse(i, bits); }),
+            links: Array.from({ length: n }, function (_, i) {
+              return { fromCol: 0, fromRow: i, toCol: 1, toRow: bitReverse(i, bits), kind: "active" };
+            })
+          }
+        ];
+
+        var cur = copyVec(rev);
+        var labels = ["a", "rev"];
+        var columns = [{ label: "a", values: initial }, { label: "rev", values: rev }];
+
+        for (var len = 2; len <= n; len <<= 1) {
+          var next = copyVec(cur);
+          var half = len >> 1;
+          var inCol = columns.length - 1;
+          var outCol = columns.length;
+          var links = [];
+          var active = [];
+          var output = [];
+          var twiddles = [];
+
+          for (var s = 0; s < n; s += len) {
+            for (var j = 0; j < half; j++) {
+              var top = s + j;
+              var bottom = s + j + half;
+              var w = rootOfUnity(len, j);
+              var u = cur[top];
+              var v = mul(cur[bottom], w);
+              next[top] = add(u, v);
+              next[bottom] = sub(u, v);
+              active.push(inCol + "-" + top, inCol + "-" + bottom);
+              output.push(outCol + "-" + top, outCol + "-" + bottom);
+              links.push({ fromCol: inCol, fromRow: top, toCol: outCol, toRow: top, kind: "output" });
+              links.push({ fromCol: inCol, fromRow: bottom, toCol: outCol, toRow: top, kind: "active" });
+              links.push({ fromCol: inCol, fromRow: top, toCol: outCol, toRow: bottom, kind: "active" });
+              links.push({ fromCol: inCol, fromRow: bottom, toCol: outCol, toRow: bottom, kind: "output" });
+              twiddles.push("w_" + len + "^" + j);
+            }
+          }
+
+          cur = next;
+          labels.push("len " + len);
+          columns.push({ label: len === n ? "DFT" : "len " + len, values: copyVec(cur) });
+          states.push({
+            title: "Butterflies of length " + len,
+            desc: "For each block, apply `(u,v) -> (u + wv, u - wv)` with the proper root of unity.",
+            len: String(len),
+            twiddle: twiddles.filter(function (x, i, a) { return a.indexOf(x) === i; }).join(", "),
+            columns: columns.map(function (col) { return { label: col.label, values: copyVec(col.values) }; }),
+            active: active,
+            output: output,
+            links: links
+          });
+        }
+
+        var allColumns = states[states.length - 1].columns.map(function (col) {
+          return { label: col.label, values: copyVec(col.values) };
+        });
+        states.forEach(function (state) {
+          state.visibleMax = state.columns.length - 1;
+          state.columns = allColumns;
+        });
+        return states;
+      }
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var defaults = [3, 1, 4, 1, 5, 9, 2, 6];
+      var states = makeStates(defaults);
+      var index = 0;
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS, name);
+        Object.keys(attrs || {}).forEach(function (k) {
+          el.setAttribute(k, attrs[k]);
+        });
+        return el;
+      }
+
+      function has(arr, x) {
+        return arr.indexOf(x) !== -1;
+      }
+
+      function nodeClass(col, row, maxCol, state) {
+        var key = col + "-" + row;
+        if (col > maxCol) return "fftv-node fftv-node-future";
+        if (has(state.output, key)) return "fftv-node fftv-node-output";
+        if (has(state.active, key)) return "fftv-node fftv-node-active";
+        return "fftv-node";
+      }
+
+      function draw(state) {
+        var target = byRole("svg");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox: "0 0 900 390", role: "img", "aria-label": "FFT butterfly stages" });
+        var cols = state.columns;
+        var maxCol = state.visibleMax;
+        var x0 = 78;
+        var dx = 190;
+        var y0 = 62;
+        var dy = 39;
+        var boxW = 84;
+        var boxH = 26;
+
+        for (var r = 0; r < 8; r++) {
+          var idx = svgEl("text", { x: 28, y: y0 + r * dy, class: "fftv-index" });
+          idx.textContent = String(r);
+          svg.appendChild(idx);
+        }
+
+        for (var cidx = 0; cidx < cols.length; cidx++) {
+          var label = svgEl("text", { x: x0 + cidx * dx, y: 24, class: "fftv-label" });
+          label.textContent = cols[cidx].label;
+          svg.appendChild(label);
+        }
+
+        state.links.forEach(function (e) {
+          var x1 = x0 + e.fromCol * dx + boxW / 2;
+          var y1 = y0 + e.fromRow * dy;
+          var x2 = x0 + e.toCol * dx - boxW / 2;
+          var y2 = y0 + e.toRow * dy;
+          var mid = (x1 + x2) / 2;
+          var path = svgEl("path", {
+            d: "M " + x1 + " " + y1 + " C " + mid + " " + y1 + ", " + mid + " " + y2 + ", " + x2 + " " + y2,
+            class: e.kind === "output" ? "fftv-link-output" : "fftv-link-active"
+          });
+          svg.appendChild(path);
+        });
+
+        cols.forEach(function (col, cidx) {
+          for (var r = 0; r < 8; r++) {
+            var x = x0 + cidx * dx;
+            var y = y0 + r * dy;
+            var g = svgEl("g", { class: nodeClass(cidx, r, maxCol, state) });
+            g.appendChild(svgEl("rect", { x: x - boxW / 2, y: y - boxH / 2, width: boxW, height: boxH }));
+            var t = svgEl("text", { x: x, y: y });
+            t.textContent = cidx <= maxCol ? formatComplex(col.values[r]) : "";
+            g.appendChild(t);
+            svg.appendChild(g);
+          }
+        });
+
+        target.appendChild(svg);
+      }
+
+      function readValues() {
+        return Array.from(root.querySelectorAll('[data-role^="input-"]')).map(function (input) {
+          var x = Number(input.value);
+          return Number.isFinite(x) ? x : 0;
+        });
+      }
+
+      function makeInputs() {
+        var box = byRole("inputs");
+        box.innerHTML = "";
+        defaults.forEach(function (v, i) {
+          var input = document.createElement("input");
+          input.type = "number";
+          input.step = "1";
+          input.min = "-99";
+          input.max = "99";
+          input.value = String(v);
+          input.setAttribute("aria-label", "Coefficient a" + i);
+          input.title = "a" + i;
+          input.setAttribute("data-role", "input-" + i);
+          box.appendChild(input);
+        });
+      }
+
+      function render() {
+        var state = states[index];
+        byRole("counter").textContent = index + " / " + (states.length - 1);
+        byRole("status").innerHTML = html("Step " + index + ": " + state.title + ". " + state.desc);
+        byRole("length").innerHTML = "<code>" + esc(state.len) + "</code>";
+        byRole("twiddle").innerHTML = "<code>" + esc(state.twiddle) + "</code>";
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === states.length - 1;
+        draw(state);
+      }
+
+      function recompute() {
+        states = makeStates(readValues());
+        index = 0;
+        render();
+      }
+
+      function reset() {
+        var inputs = root.querySelectorAll('[data-role^="input-"]');
+        defaults.forEach(function (v, i) { inputs[i].value = String(v); });
+        recompute();
+      }
+
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        makeInputs();
+        byRole("apply").addEventListener("click", recompute);
+        byRole("prev").addEventListener("click", function () {
+          if (index > 0) {
+            index -= 1;
+            render();
+          }
+        });
+        byRole("next").addEventListener("click", function () {
+          if (index < states.length - 1) {
+            index += 1;
+            render();
+          }
+        });
+        byRole("reset").addEventListener("click", reset);
+        render();
+      }
+
+      start();
+    })();
+  </script>
+</div>
+
+<p>The inverse transform is obtained by using $\omega_n^{-1}$ instead of $\omega_n$ and then dividing every entry by $n$:</p>
+
+<p>\[
+a_j
+=\frac{1}{n}\sum_{k=0}^{n-1}\widehat a_k\omega_n^{-jk}.
+\]</p>
+
+<p>If the original length is not a power of two, we usually pad the sequence with zeroes to the next power of two.
+This does not change the represented polynomial below the padded degree.</p>
+
+<h2 id="proof-of-correctness">Proof of Correctness</h2>
+
+<p>First we prove the butterfly recurrence.</p>
+
+<p><em>Proof.</em>
+For $0\le k&lt;n/2$,</p>
+
+<p>\[
+\begin{align*}
+A(\omega_n^k)
+&amp;=A_0((\omega_n^k)^2)+\omega_n^kA_1((\omega_n^k)^2) \nl
+&amp;=A_0(\omega_{n/2}^k)+\omega_n^kA_1(\omega_{n/2}^k).
+\end{align*}
+\]</p>
+
+<p>Also,</p>
+
+<p>\[
+\begin{align*}
+A(\omega_n^{k+n/2})
+&amp;=A_0((\omega_n^{k+n/2})^2)+\omega_n^{k+n/2}A_1((\omega_n^{k+n/2})^2) \nl
+&amp;=A_0(\omega_{n/2}^k)-\omega_n^kA_1(\omega_{n/2}^k),
+\end{align*}
+\]</p>
+
+<p>because $(\omega_n^{k+n/2})^2=\omega_{n/2}^k$ and $\omega_n^{n/2}=-1$.
+Thus one length-$n$ DFT is obtained by combining two length-$n/2$ DFTs with the butterfly formulas.</p>
+
+<hr>
+
+<p>Now we prove the correctness of the recursive FFT.</p>
+
+<p><em>Proof.</em>
+For $n=1$, the DFT is the identity map, so the algorithm is correct.
+Assume that the algorithm correctly computes every DFT of length $n/2$.
+It recursively computes the DFTs of the even and odd coefficient sequences, i.e.</p>
+
+<p>\[
+A_0(\omega_{n/2}^k),
+\qquad
+A_1(\omega_{n/2}^k)
+\qquad (0\le k&lt;n/2).
+\]</p>
+
+<p>By the butterfly recurrence, these values determine both
+$A(\omega_n^k)$ and $A(\omega_n^{k+n/2})$.
+Therefore the algorithm computes all values</p>
+
+<p>\[
+A(\omega_n^0),A(\omega_n^1),\cdots,A(\omega_n^{n-1}).
+\]</p>
+
+<p>By induction, the recursive FFT is correct for every power of two.
+The iterative algorithm performs the same merges in bottom-up order.
+Bit reversal places all length-$1$ subsequences in the order required by these merges, so the iterative algorithm computes the same values.</p>
+
+<hr>
+
+<p>It remains to justify the inverse transform.
+For $0\le s&lt;n$,</p>
+
+<p>\[
+\begin{align*}
+\frac{1}{n}\sum_{k=0}^{n-1}\widehat a_k\omega_n^{-ks}
+&amp;=\frac{1}{n}\sum_{k=0}^{n-1}
+\left(\sum_{j=0}^{n-1}a_j\omega_n^{jk}\right)\omega_n^{-ks} \nl
+&amp;=\sum_{j=0}^{n-1}a_j
+\left(\frac{1}{n}\sum_{k=0}^{n-1}\omega_n^{k(j-s)}\right).
+\end{align*}
+\]</p>
+
+<p>If $j=s$, the inner sum is $n$.
+If $j\ne s$, then $\omega_n^{j-s}\ne1$, and the inner sum is a finite geometric series:</p>
+
+<p>\[
+\sum_{k=0}^{n-1}\omega_n^{k(j-s)}
+=\frac{(\omega_n^{j-s})^n-1}{\omega_n^{j-s}-1}
+=0.
+\]</p>
+
+<p>Thus only the term $j=s$ remains, and the inverse formula returns $a_s$.</p>
+
+<h2 id="complexity">Complexity</h2>
+
+<p>Let $T(n)$ be the time needed to compute a length-$n$ DFT.
+The FFT performs two transforms of length $n/2$ and then $O(n)$ butterfly operations, so</p>
+
+<p>\[
+T(n)=2T(n/2)+O(n).
+\]</p>
+
+<p>Therefore</p>
+
+<p>\[
+T(n)=O(n\log n).
+\]</p>
+
+<p>The iterative implementation uses $O(n)$ additional space if the transform is done in place.
+The recursive implementation also needs $O(n)$ temporary storage in a careful implementation, together with $O(\log n)$ recursion depth.</p>
+
+<p>For polynomial multiplication, if the output degree is less than $n$, then two forward transforms, one pointwise multiplication, and one inverse transform give time complexity</p>
+
+<p>\[
+O(n\log n).
+\]</p>
+
+<h2 id="code">Code</h2>
+
+<p>The following implementation computes the DFT over complex numbers.
+The input length must be a power of two.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">cd</span> <span class="o">=</span> <span class="n">complex</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">double</span> <span class="n">PI</span> <span class="o">=</span> <span class="n">acos</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">fft</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">bit</span> <span class="o">=</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(;</span> <span class="n">j</span> <span class="o">&amp;</span> <span class="n">bit</span><span class="p">;</span> <span class="n">bit</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="n">j</span> <span class="o">^=</span> <span class="n">bit</span><span class="p">;</span>
+        <span class="n">j</span> <span class="o">^=</span> <span class="n">bit</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">)</span> <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">len</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">len</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">len</span><span class="o">&lt;&lt;=</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">ang</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">/</span> <span class="n">len</span> <span class="o">*</span> <span class="p">(</span><span class="n">invert</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">cd</span> <span class="n">wlen</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">));</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">l</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">l</span><span class="o">+=</span><span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">cd</span> <span class="n">w</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">len</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">cd</span> <span class="n">u</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="n">j</span><span class="p">];</span>
+                <span class="n">cd</span> <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="n">len</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">w</span><span class="p">;</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">;</span>
+                <span class="n">a</span><span class="p">[</span><span class="n">l</span><span class="o">+</span><span class="n">j</span><span class="o">+</span><span class="n">len</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">v</span><span class="p">;</span>
+                <span class="n">w</span> <span class="o">*=</span> <span class="n">wlen</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">cd</span><span class="o">&amp;</span> <span class="n">x</span><span class="o">:</span> <span class="n">a</span><span class="p">)</span> <span class="n">x</span> <span class="o">/=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The recursive implementation follows the even-odd decomposition directly.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">fft_recursive</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;</span> <span class="n">a0</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">a1</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">a0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">a1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="n">fft_recursive</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
+    <span class="n">fft_recursive</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
+
+    <span class="kt">double</span> <span class="n">ang</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">invert</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">cd</span> <span class="n">w</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">wn</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">));</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cd</span> <span class="n">u</span> <span class="o">=</span> <span class="n">a0</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">cd</span> <span class="n">v</span> <span class="o">=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">a1</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">v</span><span class="p">;</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">v</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+            <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">/=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">w</span> <span class="o">*=</span> <span class="n">wn</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Polynomial multiplication is obtained by evaluating both polynomials, multiplying values pointwise, and interpolating by the inverse FFT.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">multiply</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;</span> <span class="n">fa</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">a</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span> <span class="n">fb</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">b</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="kt">int</span> <span class="n">need</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">b</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">need</span><span class="p">)</span> <span class="n">n</span> <span class="o">&lt;&lt;=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">fa</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">fb</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+
+    <span class="n">fft</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    <span class="n">fft</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">fb</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">fft</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="n">need</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">need</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">llround</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">real</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If exact modular arithmetic is required, one usually uses a number-theoretic transform(NTT) instead of a complex FFT.
+The structure of the algorithm is the same, but the roots of unity are taken modulo a prime.</p>
+
+<h2 id="applications">Applications</h2>
+
+<p>The most common application is polynomial multiplication.
+Let</p>
+
+<p>\[
+A(x)=\sum_i a_ix^i,
+\qquad
+B(x)=\sum_i b_ix^i.
+\]</p>
+
+<p>Choose $n$ so that $n&gt;\deg A+\deg B$.
+After padding both coefficient arrays to length $n$,</p>
+
+<p>\[
+\operatorname{DFT}(AB)
+=\operatorname{DFT}(A)\cdot\operatorname{DFT}(B),
+\]</p>
+
+<p>where the product on the right is pointwise.
+Applying the inverse DFT gives the coefficients of $AB$.</p>
+
+<ul>
+  <li>Polynomial multiplication</li>
+  <li>Large integer multiplication</li>
+  <li>Convolution and correlation</li>
+  <li>Multiplication of formal power series</li>
+  <li>Number-theoretic transform modulo suitable primes</li>
+</ul>
 
   
 </article>
@@ -454,7 +1201,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/binary-search.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/binary-search.html" class="flip-title">Binary Search</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/binary-search.html" tabindex="-1"><span class="sr-only">Continue reading Binary Search</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/binary-search.html" class="flip-title">    <span>            Binary Search    </span>  </a>      <time class="faded fine" datetime="2026-02-17T00:00:00+09:00">      17 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/binary-search.html"></span>  </li>          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>      </ul></aside>
+                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/binary-search.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/binary-search.html" class="flip-title">Binary Search</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/binary-search.html" tabindex="-1"><span class="sr-only">Continue reading Binary Search</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/binary-search.html" class="flip-title">    <span>            Binary Search    </span>  </a>      <time class="faded fine" datetime="2026-02-17T00:00:00+09:00">      17 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/binary-search.html"></span>  </li>          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>      </ul></aside>
 
   
 
@@ -527,7 +1274,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 <footer class="content" role="contentinfo">
   <hr>
   
-    <p><small class="copyright">© 2023. All rights reserved.
+    <p><small class="copyright">© 2026. All rights reserved.
 </small></p>
   
   

@@ -1,5 +1,1925 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-14T03:06:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">The Viscosity of Suspensions</title><link href="http://localhost:4000/physics/the-viscosity-of-suspensions.html" rel="alternate" type="text/html" title="The Viscosity of Suspensions" /><published>2026-04-04T00:00:00+09:00</published><updated>2026-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-viscosity-of-suspensions</id><content type="html" xml:base="http://localhost:4000/physics/the-viscosity-of-suspensions.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-16T16:43:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Transition to Turbulence by Period Doubling</title><link href="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html" rel="alternate" type="text/html" title="Transition to Turbulence by Period Doubling" /><published>2026-04-17T00:00:00+09:00</published><updated>2026-04-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/transition-to-turbulence-by-period-doubling</id><content type="html" xml:base="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Period Doubling
+
+Another route from regular motion to irregular motion is **period doubling**.
+Suppose that after the first instability of a steady flow the observed motion
+is periodic with period $T$:
+
+\\[
+\b{v}(\b{r},t+T)=\b{v}(\b{r},t).
+\\]
+
+As $\mathrm{Re}$ is increased, this periodic motion may lose stability and be
+replaced by a new periodic motion with period $2T$:
+
+\\[
+\b{v}(\b{r},t+2T)=\b{v}(\b{r},t),
+\qquad
+\b{v}(\b{r},t+T)\ne\b{v}(\b{r},t).
+\\]
+
+The original frequency
+
+\\[
+\omega=\frac{2\pi}{T}
+\\]
+
+is then accompanied by the subharmonic frequency $\omega/2$. Further
+increase of $\mathrm{Re}$ may produce periods
+
+\\[
+4T,\;8T,\;16T,\;\cdots .
+\\]
+
+Thus the spectrum contains successive subharmonics
+
+\\[
+\frac{\omega}{2},\quad
+\frac{\omega}{4},\quad
+\frac{\omega}{8},\quad\cdots .
+\\]
+
+After infinitely many doublings, the period is no longer finite. This gives a
+possible transition to aperiodic deterministic motion.
+
+## Poincare Map Formulation
+
+Let $P_{\mathrm{Re}}$ be a Poincare map of the flow. A periodic solution of
+period $T$ is a fixed point
+
+\\[
+P_{\mathrm{Re}}(X_\ast)=X_\ast.
+\\]
+
+Linear stability of this periodic orbit is determined by the eigenvalues of
+the derivative
+
+\\[
+DP_{\mathrm{Re}}(X_\ast).
+\\]
+
+These eigenvalues are the Floquet multipliers. A period-doubling bifurcation
+occurs when one real multiplier crosses $-1$:
+
+\\[
+\lambda=-1.
+\\]
+
+After the crossing, the fixed point of $P_{\mathrm{Re}}$ is unstable, but
+there may be a stable orbit of period two:
+
+\\[
+P_{\mathrm{Re}}(X_1)=X_2,\qquad
+P_{\mathrm{Re}}(X_2)=X_1.
+\\]
+
+In the original continuous-time flow this is a periodic orbit of period
+$2T$.
+
+Near the bifurcation, the dynamics along the critical direction can often be
+reduced to a one-dimensional normal form
+
+\\[
+x_{n+1}=-(1+\epsilon)x_n+ax_n^3+\cdots .
+\\]
+
+The fixed point $x=0$ changes stability at $\epsilon=0$. A nonzero period-two
+orbit satisfies
+
+\\[
+f_{\epsilon}(x)=-x.
+\\]
+
+Using the normal form,
+
+\\[
+-(1+\epsilon)x+ax^3=-x,
+\\]
+
+and hence
+
+\\[
+x^2=\frac{\epsilon}{a}.
+\\]
+
+Thus, when $\epsilon/a&gt;0$, the amplitude of the doubled oscillation grows as
+
+\\[
+|x|\propto \sqrt{|\epsilon|}.
+\\]
+
+This square-root law is analogous to the amplitude scaling near a soft
+hydrodynamic instability.
+
+## Cascade
+
+Let the successive period-doubling thresholds be
+
+\\[
+\mathrm{Re}_1,\mathrm{Re}_2,\mathrm{Re}_3,\cdots .
+\\]
+
+At $\mathrm{Re}_1$ the period becomes $2T$, at $\mathrm{Re}_2$ it becomes
+$4T$, and so on. In many one-dimensional maps these thresholds accumulate at
+a finite value
+
+\\[
+\mathrm{Re}\_{\infty}
+=\lim_{n\to\infty}\mathrm{Re}_n.
+\\]
+
+For $\mathrm{Re}&lt;\mathrm{Re}\_\infty$, the motion is still periodic, although
+the period may be very large. At $\mathrm{Re}=\mathrm{Re}\_\infty$, the
+period-doubling cascade has no finite period left.
+
+The intervals between successive thresholds shrink geometrically. For a wide
+class of one-hump maps,
+
+\\[
+\delta
+=\lim_{n\to\infty}
+\frac{\mathrm{Re}\_n-\mathrm{Re}\_{n-1}}
+{\mathrm{Re}_{n+1}-\mathrm{Re}_n}
+\simeq4.6692016.
+\\]
+
+This number is the Feigenbaum constant. Its universality is not a direct
+consequence of the Navier-Stokes equation; it belongs to the reduced return
+map when that map has the appropriate structure. Nevertheless, it explains
+why very different physical systems can show similar period-doubling
+scaling.
+
+There is also a spatial scaling constant
+
+\\[
+\alpha\simeq2.5029079,
+\\]
+
+which describes the relative size of structures in the return map. These
+constants are useful diagnostics when experimental data show a clear
+period-doubling sequence.
+
+## Spectrum
+
+Before the first doubling, a measured quantity $u(t)$ has a Fourier expansion
+with frequencies
+
+\\[
+n\omega,\qquad n\in\mathbb{Z}.
+\\]
+
+After one doubling, the fundamental frequency is $\omega/2$, so the spectrum
+contains
+
+\\[
+\frac{n\omega}{2}.
+\\]
+
+After $m$ doublings, the fundamental frequency is
+
+\\[
+\frac{\omega}{2^m}.
+\\]
+
+Thus increasingly low subharmonics appear. Near the accumulation point the
+spectral lines become very dense on finite frequency intervals. Beyond the
+accumulation point the motion may become chaotic, and the spectrum usually
+develops a continuous component.
+
+This distinguishes period doubling from quasi-periodic transition. In
+quasi-periodic motion, new independent frequencies appear. In period
+doubling, the new frequencies are subharmonics of the old one.
+
+## Logistic Map as a Model
+
+A simple model which shows the period-doubling cascade is the logistic map
+
+\\[
+x_{n+1}=rx_n(1-x_n).
+\\]
+
+For small $r$ the attracting set is a fixed point. As $r$ increases, this
+fixed point loses stability and a stable period-two orbit appears. Further
+increase produces period-four, period-eight, and so on.
+
+This map is not a fluid equation. Its role is to model the return map near a
+low-dimensional transition. If a hydrodynamic Poincare map can be reduced to
+a similar one-dimensional map, the same cascade may appear in the fluid
+signal.
+
+## Hydrodynamical Interpretation
+
+In a fluid experiment, period doubling is observed by measuring a quantity
+such as velocity at a fixed point, pressure drop, or heat flux. If the
+original oscillation has period $T$, then the time series begins to alternate
+between two unequal cycles. This is the period-$2T$ state. Later it may
+alternate among four cycles, then eight, and so on.
+
+Such behavior has been observed in several hydrodynamic systems, including
+thermal convection, Taylor-Couette flow, and wakes. The exact thresholds are
+not universal; they depend on geometry, boundary conditions, and the chosen
+control parameter. What may be universal is the scaling of the return map
+once the dynamics has reduced to the appropriate form.
+
+Period doubling is therefore a route to turbulence, but not the only one.
+Other flows pass through quasi-periodic motion, intermittency, or a direct
+transition to a strange attractor. In high-dimensional fluid systems several
+routes may coexist. The useful point is that complicated turbulent motion can
+arise from a definite sequence of deterministic bifurcations rather than from
+external randomness.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Strange Attractors</title><link href="http://localhost:4000/physics/strange-attractors.html" rel="alternate" type="text/html" title="Strange Attractors" /><published>2026-04-15T00:00:00+09:00</published><updated>2026-04-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/strange-attractors</id><content type="html" xml:base="http://localhost:4000/physics/strange-attractors.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Attractors in a Dissipative Flow
+
+For a viscous fluid, the state at time $t$ may be regarded as a point $X(t)$
+in a phase space. Formally $X$ contains the velocity field, and possibly
+temperature or other fields, subject to the constraints and boundary
+conditions. The Navier-Stokes equation defines an evolution
+
+\\[
+X(t)=S_tX(0).
+\\]
+
+An invariant set $\mathcal{A}$ is called an attractor if
+
+\\[
+S_t\mathcal{A}=\mathcal{A}
+\\]
+
+and if all states in some neighborhood of $\mathcal{A}$ approach it as
+$t\to\infty$. In hydrodynamics this is natural because viscosity dissipates
+mechanical energy. Even when the phase space is infinite-dimensional, the
+long-time motion may be confined to a much smaller set.
+
+The simplest attractors are:
+
+1. A fixed point, corresponding to a steady flow.
+2. A limit cycle, corresponding to a periodic flow.
+3. An invariant torus, corresponding to quasi-periodic flow.
+
+A **strange attractor** is an attracting invariant set on which the motion is
+aperiodic and sensitive to initial conditions. It is not merely a high
+dimensional torus with many frequencies. Its geometry is folded and
+fractal-like, and nearby trajectories separate exponentially before being
+folded back by dissipation.
+
+## Lyapunov Exponents
+
+Let $X(t)$ and $X(t)+\delta X(t)$ be two nearby trajectories. Linearizing the
+evolution about $X(t)$ gives
+
+\\[
+\delta X(t)=DS_t(X(0))\delta X(0).
+\\]
+
+The largest Lyapunov exponent is defined by
+
+\\[
+\lambda_1
+=\lim_{t\to\infty}
+\frac{1}{t}
+\log\frac{\|\delta X(t)\|}{\|\delta X(0)\|},
+\\]
+
+for a generic small perturbation direction. If
+
+\\[
+\lambda_1&gt;0,
+\\]
+
+then nearby trajectories separate exponentially:
+
+\\[
+\|\delta X(t)\|\sim \|\delta X(0)\|e^{\lambda_1t}.
+\\]
+
+This is sensitive dependence on initial conditions. The motion is still
+deterministic, but long-time prediction from finite-precision initial data is
+impossible.
+
+For a full spectrum of Lyapunov exponents
+
+\\[
+\lambda_1\ge\lambda_2\ge\cdots,
+\\]
+
+a dissipative system has negative total volume growth in phase space. In a
+finite-dimensional truncation this means
+
+\\[
+\sum_i\lambda_i&lt;0.
+\\]
+
+Thus a strange attractor has both stretching and contraction: some directions
+expand, while the total phase volume contracts. The combination produces
+folding.
+
+## Stretching and Folding
+
+A useful model is a map which stretches a region, folds it, and places it
+back into itself. Stretching separates nearby points, while folding keeps the
+motion bounded. Repetition creates fine-scale structure.
+
+For a Poincare map $P$, a strange attractor is an invariant set satisfying
+
+\\[
+P(\mathcal{A})=\mathcal{A},
+\\]
+
+but the map on $\mathcal{A}$ is not equivalent to a rigid rotation on a
+circle or torus. The dynamics may have infinitely many unstable periodic
+orbits embedded in the attractor. A typical trajectory does not settle onto
+one of them, but wanders among their neighborhoods.
+
+This is the essential difference from quasi-periodic motion. On a torus,
+nearby trajectories neither separate exponentially nor converge. On a strange
+attractor, nearby trajectories separate exponentially along unstable
+directions, but the dissipative dynamics keeps them inside the same bounded
+set.
+
+## Dimension of an Attractor
+
+The dimension of a strange attractor need not be an integer. One practical
+estimate is the Kaplan-Yorke dimension. Suppose the Lyapunov exponents are
+ordered and let $m$ be the largest integer such that
+
+\\[
+\sum_{i=1}^m\lambda_i\ge0.
+\\]
+
+Then
+
+\\[
+D_{\mathrm{KY}}
+=m+\frac{\sum_{i=1}^m\lambda_i}{|\lambda_{m+1}|}.
+\\]
+
+This number measures how many effective degrees of freedom are active on the
+attractor. In a hydrodynamic problem the actual phase space is very large,
+but at moderate $\mathrm{Re}$ the attractor dimension may still be small
+enough for a reduced description to be meaningful.
+
+For developed turbulence, many Lyapunov exponents may be positive. Then the
+motion is not only chaotic in time but also complicated in space. The
+effective number of degrees of freedom grows with $\mathrm{Re}$.
+
+## Lorenz System
+
+The Lorenz system is not the full Navier-Stokes equation, but it is a
+classical low-dimensional model obtained from a truncation of thermal
+convection. It has the form
+
+\\[
+\begin{align\*}
+\dot X&amp;=\sigma(Y-X), \nl
+\dot Y&amp;=rX-Y-XZ, \nl
+\dot Z&amp;=XY-bZ.
+\end{align\*}
+\\]
+
+Here $r$ is proportional to the Rayleigh number, and $\sigma,b$ are positive
+parameters. For certain parameter values the system has a strange attractor.
+It illustrates several features relevant to hydrodynamics:
+
+1. The equations are deterministic.
+2. The phase volume contracts.
+3. The motion is aperiodic.
+4. The largest Lyapunov exponent is positive.
+
+Thus complicated irregular motion does not require random forcing. It may
+arise from deterministic nonlinear equations.
+
+## Relation with Transition to Turbulence
+
+The Landau-Hopf picture suggests that turbulence is obtained by adding more
+and more incommensurable frequencies. The discovery of strange attractors
+shows a different possibility. After only a few instabilities, an invariant
+torus may lose stability and be replaced by a strange attractor. This is the
+Ruelle-Takens scenario.
+
+In fluid mechanics this means that a flow can become irregular before a large
+number of independent frequencies have appeared. The observed signal may
+have a broadband spectrum, but this does not necessarily mean that it is a
+linear superposition of many independent oscillations. It may instead be the
+spectrum of deterministic chaotic motion on a strange attractor.
+
+The distinction is important. Quasi-periodic motion has a discrete Fourier
+spectrum. Chaotic motion has sensitive dependence and usually produces a
+continuous component in the spectrum. In experiments the difference is seen
+by studying return maps, Lyapunov exponents, and the geometry of the
+reconstructed attractor.
+
+For fully developed turbulence the attractor is expected to be very
+high-dimensional. Nevertheless, the idea of a strange attractor clarifies the
+onset of irregular motion: randomness is not required at the level of the
+equations. The apparent randomness is produced by nonlinear deterministic
+dynamics together with sensitivity to initial conditions.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Quasi-periodic Flow and Frequency Locking</title><link href="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html" rel="alternate" type="text/html" title="Quasi-periodic Flow and Frequency Locking" /><published>2026-04-14T00:00:00+09:00</published><updated>2026-04-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking</id><content type="html" xml:base="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## From Periodic to Quasi-periodic Motion
+
+After the first instability of a steady flow, the new motion is often
+periodic. If the first unstable mode has frequency $\omega_1$, then the
+velocity may be written schematically as
+
+\\[
+\b{v}(\b{r},t)
+=\b{V}(\b{r},\omega_1t),
+\qquad
+\b{V}(\b{r},\phi+2\pi)=\b{V}(\b{r},\phi).
+\\]
+
+The motion is a limit cycle in the phase space of the fluid.
+Increasing $\mathrm{Re}$ further may destabilize this periodic motion. A
+second independent frequency $\omega_2$ may then appear. The corresponding
+flow has the form
+
+\\[
+\b{v}(\b{r},t)
+=\b{V}(\b{r},\phi_1,\phi_2),
+\qquad
+\phi_i=\omega_it+\phi_i^0,
+\\]
+
+where
+
+\\[
+\b{V}(\b{r},\phi_1+2\pi,\phi_2)
+=\b{V}(\b{r},\phi_1,\phi_2+2\pi)
+=\b{V}(\b{r},\phi_1,\phi_2).
+\\]
+
+Thus the trajectory lies on a two-dimensional torus. More generally, after
+$m$ independent oscillatory instabilities one obtains
+
+\\[
+\b{v}(\b{r},t)
+=\b{V}(\b{r},\phi_1,\cdots,\phi_m),
+\qquad
+\phi_i=\omega_it+\phi_i^0,
+\\]
+
+with $\b{V}$ periodic in each phase. The motion is then on an $m$-torus.
+
+If the frequencies are rationally independent, i.e. if
+
+\\[
+n_1\omega_1+\cdots+n_m\omega_m=0,\qquad n_i\in\mathbb{Z},
+\\]
+
+implies $n_1=\cdots=n_m=0$, the orbit never closes. It is dense on the torus.
+The motion is not periodic, but it is not random: every value is still
+determined by the phases.
+
+The Fourier spectrum of such a motion is discrete. Since $\b{V}$ is periodic
+in each phase, it may be expanded as
+
+\\[
+\b{V}(\b{r},\phi_1,\cdots,\phi_m)
+=\sum_{\b{n}\in\mathbb{Z}^m}
+\b{V}_{\b{n}}(\b{r})
+e^{i(n_1\phi_1+\cdots+n_m\phi_m)}.
+\\]
+
+Hence
+
+\\[
+\b{v}(\b{r},t)
+=\sum_{\b{n}\in\mathbb{Z}^m}
+\b{V}_{\b{n}}(\b{r})
+e^{i(n_1\omega_1+\cdots+n_m\omega_m)t}.
+\\]
+
+The observed frequencies are all integer linear combinations of the basic
+frequencies.
+
+## Poincare Map
+
+A periodic flow can be studied by looking once per period. If the period is
+$T$, the time-$T$ map
+
+\\[
+P:X(0)\mapsto X(T)
+\\]
+
+is the Poincare map of the motion, where $X$ denotes the state of the fluid.
+A stable periodic motion is a stable fixed point of $P$.
+
+When this fixed point loses stability through a complex pair of multipliers,
+the Poincare map may acquire an invariant closed curve. In the continuous
+flow this corresponds to a two-torus. Motion on this invariant curve is
+described by an angle variable
+
+\\[
+\theta_{n+1}=\theta_n+2\pi\rho \pmod{2\pi},
+\\]
+
+where $\rho$ is the rotation number. If $\rho$ is rational, the orbit is
+periodic. If $\rho$ is irrational, the orbit is quasi-periodic and dense on
+the invariant curve.
+
+This gives another way to understand the appearance of a second frequency:
+the original period gives one phase, and the rotation on the Poincare section
+gives the second phase.
+
+## Frequency Locking
+
+The preceding discussion assumes that the frequencies remain independent.
+In nonlinear hydrodynamics this need not be true. Suppose two frequencies are
+close to a rational relation
+
+\\[
+q\omega_2-p\omega_1\simeq0,
+\qquad
+p,q\in\mathbb{Z}.
+\\]
+
+Then the slowly varying resonant phase is
+
+\\[
+\theta=q\phi_2-p\phi_1.
+\\]
+
+Nonlinear coupling may produce an equation of the form
+
+\\[
+\dot{\theta}
+=\Delta-K\sin\theta+\cdots,
+\qquad
+\Delta=q\omega_2-p\omega_1.
+\\]
+
+This is the standard phase-locking equation. If
+
+\\[
+|\Delta|&lt;|K|,
+\\]
+
+there is a stable fixed value of $\theta$. Then
+
+\\[
+q\omega_2-p\omega_1=0
+\\]
+
+in the observed motion, even if the uncoupled frequencies were only close to
+this relation. The flow becomes periodic rather than quasi-periodic. This is
+called **frequency locking**.
+
+If $|\Delta|&gt;|K|$, the phase $\theta$ drifts, and the two frequencies remain
+independent. Thus the transition between quasi-periodicity and locking is a
+competition between detuning and nonlinear coupling.
+
+## Arnold Tongues
+
+Let $\lambda$ be a parameter measuring the strength of the nonlinear coupling.
+Near a rational ratio $p/q$, the locked region in parameter space has the
+shape of a tongue:
+
+\\[
+|q\omega_2-p\omega_1|&lt;K(\lambda).
+\\]
+
+These regions are called **Arnold tongues**. Their widths are small for weak
+coupling and grow as the nonlinearity increases. Low-order resonances such as
+$1:1$, $1:2$, and $2:3$ are usually the most visible, because their coupling
+terms occur at relatively low order in the amplitudes.
+
+This explains why a hydrodynamic system whose linear modes have many possible
+frequencies may nevertheless show a simple periodic response. The nonlinear
+terms can select a rational relation between the phases and suppress the
+independent drift.
+
+## Relation with the Landau Picture
+
+The Landau picture of transition to turbulence may be described as a
+successive appearance of more and more independent frequencies:
+
+\\[
+\omega_1,\qquad
+\omega_1,\omega_2,\qquad
+\omega_1,\omega_2,\omega_3,\qquad \cdots .
+\\]
+
+With many incommensurable frequencies, the motion becomes very complicated
+and its spectrum contains many lines of the form
+
+\\[
+n_1\omega_1+n_2\omega_2+\cdots+n_m\omega_m.
+\\]
+
+However, this construction alone does not fully explain developed
+turbulence. First, frequency locking can reduce the number of independent
+frequencies by forcing rational relations. Second, nonlinear dynamics can
+destroy invariant tori and produce a strange attractor. Thus quasi-periodic
+motion is one possible route away from laminar flow, but it is not the only
+route to turbulence.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Stability of Flows</title><link href="http://localhost:4000/physics/stability-of-flows.html" rel="alternate" type="text/html" title="Stability of Flows" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/stability-of-flows</id><content type="html" xml:base="http://localhost:4000/physics/stability-of-flows.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc 
+{:toc}
+
+## Stability of Steady Flow
+
+For a prescribed steady viscous-flow problem, an exact steady solution of the
+Navier-Stokes equation may exist formally for every $\mathrm{Re}$. Such a
+solution is physically observed only if it is stable. That is, every
+sufficiently small perturbation must decay in time.
+
+Let the steady solution be $\b{v}_0(\b{r})$, $p_0(\b{r})$, and write
+
+\\[
+\b{v}=\b{v}_0+\b{v}_1,\qquad
+p=p_0+p_1.
+\\]
+
+The full equations are
+
+\\[
+\pdv{\b{v}}{t}+(\b{v}\cdot\grad)\b{v}
+=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},
+\qquad
+\div\b{v}=0.
+\\]
+
+The unperturbed flow satisfies
+
+\\[
+(\b{v}_0\cdot\grad)\b{v}_0
+=-\frac{1}{\rho}\grad p_0+\nu\laplacian\b{v}_0,
+\qquad
+\div\b{v}_0=0.
+\\]
+
+Keeping only terms of first order in $\b{v}_1$, we obtain the linearized
+equations
+
+\\[
+\pdv{\b{v}_1}{t}
++(\b{v}_0\cdot\grad)\b{v}_1
++(\b{v}_1\cdot\grad)\b{v}_0
+=-\frac{1}{\rho}\grad p_1+\nu\laplacian\b{v}_1,
+\qquad
+\div\b{v}_1=0.
+\\]
+
+On fixed solid boundaries,
+
+\\[
+\b{v}_1=0.
+\\]
+
+Since the coefficients in the linearized problem are independent of time, the
+perturbations may be decomposed into normal modes
+
+\\[
+\b{v}_1(\b{r},t)=\b{f}(\b{r})e^{-i\omega t}.
+\\]
+
+The frequency $\omega$ is in general complex. With this convention,
+
+\\[
+e^{-i\omega t}=e^{-i\Re( \omega) \,t}
+e^{\Im( \omega)\,t}.
+\\]
+
+Thus a mode grows if $\Im( \omega)&gt;0$. Stability requires
+
+\\[
+\Im( \omega)&lt;0
+\\]
+
+for every admissible perturbation mode.
+
+For sufficiently small $\mathrm{Re}$ the steady flow is stable. As
+$\mathrm{Re}$ increases, one often reaches a critical value $\mathrm{Re}_{\mathrm{cr}}$
+at which the first mode becomes neutral:
+
+\\[
+\Im (\omega)=0.
+\\]
+
+For $\mathrm{Re}&gt;\mathrm{Re}\_{\mathrm{cr}}$, the corresponding perturbation grows and the original
+steady flow can no longer be the observed flow. The number
+$\mathrm{Re}\_{\mathrm{cr}}$ is not universal; it depends on the geometry and on the
+boundary conditions.
+
+Near the first instability, suppose that the unstable mode has
+
+\\[
+\omega=\omega_1+i\gamma_1,
+\qquad
+\gamma_1&gt;0,\qquad
+\gamma_1\ll\omega_1.
+\\]
+
+Then initially
+
+\\[
+\b{v}_1=A(t)\b{f}(\b{r}),
+\qquad
+A(t)=A_0e^{\gamma_1t}e^{-i\omega_1t}.
+\\]
+
+This linear formula cannot remain valid indefinitely. The amplitude must be
+limited by nonlinear terms. Averaging over times long compared with
+$2\pi/\omega_1$ but short compared with $1/\gamma_1$, the amplitude equation
+has the form
+
+\\[
+\odv{|A|^2}{t}
+=2\gamma_1|A|^2-\alpha |A|^4+\cdots .
+\\]
+
+Here $\alpha$ is the Landau constant. If $\alpha&gt;0$, the perturbation saturates
+at
+
+\\[
+|A|_{\max}^2=\frac{2\gamma_1}{\alpha}.
+\\]
+
+Since
+
+\\[
+\gamma_1=C(\mathrm{Re}-\mathrm{Re}\_{\mathrm{cr}})
++O((\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}})^2),
+\\]
+
+we get
+
+\\[
+|A|\_{\max}\propto \sqrt{\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}}}.
+\\]
+
+This is a continuous, or soft, transition. If $\alpha&lt;0$, the fourth-order term
+is destabilizing and a stabilizing higher-order term is needed. Writing
+
+\\[
+\odv{|A|^2}{t}
+=2\gamma_1|A|^2+|\alpha||A|^4-\beta |A|^6,
+\qquad
+\beta&gt;0,
+\\]
+
+and putting $q=\|A\|^2$, the non-zero steady amplitudes satisfy
+
+\\[
+\beta q^2-|\alpha|q-2\gamma_1=0.
+\\]
+
+Thus
+
+\\[
+q
+=\frac{|\alpha|}{2\beta}
+\pm
+\sqrt{\frac{\alpha^2}{4\beta^2}+\frac{2\gamma_1}{\beta}}.
+\\]
+
+In this case the transition is subcritical. There may be a range below
+$\mathrm{Re}_{\mathrm{cr}}$ where the steady flow is stable to infinitesimal
+perturbations but unstable to finite perturbations.
+
+## Energy Estimate
+
+The preceding discussion is spectral. A useful complementary estimate is
+obtained by retaining the nonlinear term in the perturbation equation. In
+dimensionless variables,
+
+\\[
+\pdv{\b{v}_1}{t}
++(\b{v}_0\cdot\grad)\b{v}_1
++(\b{v}_1\cdot\grad)\b{v}_0
++(\b{v}_1\cdot\grad)\b{v}_1
+=-\grad p_1+\frac{1}{\mathrm{Re}}\laplacian\b{v}_1.
+\\]
+
+Taking the scalar product with $\b{v}_1$, using
+$\div\b{v}_0=\div\b{v}_1=0$, and integrating over the fluid region gives
+
+\\[
+\dot E_1=T-\frac{D}{\mathrm{Re}},
+\\]
+
+where
+
+\\[
+E_1=\int\frac{1}{2}v_1^2\,dV,
+\\]
+
+\\[
+T=-\int v_{1i}v_{1k}\pdv{v_{0i}}{x_k}\,dV,
+\qquad
+D=\int
+\left(\pdv{v_{1i}}{x_k}\right)^2\,dV.
+\\]
+
+The surface terms vanish because $\b{v}_1=0$ on fixed walls, or because the
+perturbation vanishes at infinity. The functional $D$ is positive, while $T$
+may have either sign. If
+
+\\[
+\mathrm{Re}&lt;\mathrm{Re}_E,\qquad
+\mathrm{Re}_E=\min\frac{D}{T},
+\\]
+
+where the minimum is taken over admissible solenoidal perturbations with
+$T&gt;0$, then $\dot E_1&lt;0$ for all perturbations. Hence the flow is stable in
+the energy sense. This gives a rigorous lower bound for the critical
+$\mathrm{Re}$, although the bound is usually much smaller than the observed value.
+
+## Stability of Rotary Flow
+
+Consider the flow between two coaxial cylinders of radii $R_1&lt;R_2$, rotating
+with angular velocities $\Omega_1$ and $\Omega_2$. For small viscosity and
+large $\mathrm{Re}$, the stability criterion can be obtained by Rayleigh&apos;s
+displacement argument.
+
+Let
+
+\\[
+\mu=r^2\Omega(r)
+\\]
+
+be the angular momentum per unit mass, up to a constant factor. If a fluid
+element is displaced from $r_0$ to $r&gt;r_0$ while keeping its angular momentum,
+the centrifugal force acting on it is determined by $\mu(r_0)$. For the
+displacement to be restored, this force must be smaller than the equilibrium
+centrifugal force at $r$. Thus the inviscid stability condition is
+
+\\[
+\mu\odv{\mu}{r}&gt;0.
+\\]
+
+Equivalently,
+
+\\[
+\frac{\d}{\d r}(r^2\Omega)^2&gt;0.
+\\]
+
+This is Rayleigh&apos;s criterion.
+
+For Couette flow between the cylinders,
+
+\\[
+\Omega(r)
+=\frac{\Omega_2R_2^2-\Omega_1R_1^2}{R_2^2-R_1^2}
++\frac{(\Omega_1-\Omega_2)R_1^2R_2^2}{R_2^2-R_1^2}\frac{1}{r^2}.
+\\]
+
+Substitution into Rayleigh&apos;s criterion gives
+
+\\[
+(\Omega_2R_2^2-\Omega_1R_1^2)\Omega(r)&gt;0.
+\\]
+
+If the cylinders rotate in opposite directions, this condition cannot hold
+throughout the whole annulus, and the flow is unstable. If they rotate in the
+same direction, $\Omega(r)&gt;0$, and the condition becomes
+
+\\[
+\Omega_2R_2^2&gt;\Omega_1R_1^2.
+\\]
+
+Thus, if the outer cylinder is at rest and the inner cylinder rotates, the
+inviscid criterion predicts instability. If the inner cylinder is at rest and
+the outer cylinder rotates, the flow is stable.
+
+For finite viscosity the full linearized problem must be used. Since the
+unperturbed flow depends only on $r$, perturbations may be written as
+
+\\[
+\b{v}_1(r,\phi,z,t)
+=e^{i(n\phi+kz-\omega t)}\b{f}(r),
+\\]
+
+where $n$ is an integer and $k$ is a continuous axial wave number. For given
+$n$ and $k$, the boundary conditions at $r=R_1,R_2$ determine a discrete set
+of eigenfrequencies. The first instability is usually axisymmetric
+$(n=0)$.
+
+At the threshold, the frequency of the critical Taylor-Couette mode is purely
+imaginary and actually vanishes. Hence the first new flow is steady. It
+consists of toroidal Taylor vortices arranged periodically along the axis.
+The period is
+
+\\[
+\frac{2\pi}{k_{\mathrm{cr}}},
+\\]
+
+and each period contains two vortices rotating in opposite directions.
+
+For a narrow gap
+
+\\[
+h=R_2-R_1\ll R_m=\frac{R_1+R_2}{2},
+\\]
+
+and with the outer cylinder at rest, the critical $\mathrm{Re}$ may be
+written as
+
+\\[
+\mathrm{Re}=\frac{h\Omega_1R_1}{\nu},
+\qquad
+\mathrm{Re}_{\mathrm{cr}}=41.2\sqrt{\frac{R_m}{h}}.
+\\]
+
+Viscosity has a stabilizing effect in this problem. A flow that is unstable in
+the inviscid Rayleigh criterion may become stable when viscous diffusion is
+included.
+
+The limiting case $h\to0$ gives plane Couette flow, namely flow between two
+parallel planes in relative motion. This flow is linearly stable to
+infinitesimal perturbations for every $\mathrm{Re}$, although finite
+amplitude perturbations can still produce transition at large $\mathrm{Re}$.
+
+## Stability of Flow in a Pipe
+
+For a parallel flow in the $x$ direction, the unperturbed velocity is
+independent of $x$. Perturbations may be written as wave packets composed of
+normal modes
+
+\\[
+\b{v}_1=e^{i(kx-\omega t)}\b{f}(y,z).
+\\]
+
+The growth rate is
+
+\\[
+\gamma(k)=\Im( \omega(k) ).
+\\]
+
+If $\gamma(k)&gt;0$ for a range of wave numbers, the corresponding packet is
+amplified. It is also transported downstream with group velocity
+
+\\[
+v_g=\odv{\Re( \omega )}{k}.
+\\]
+
+This introduces a distinction absent in the simplest bounded problems. An
+instability is absolute if the perturbation grows at a fixed spatial point. It
+is convected if the perturbation grows while being carried downstream, but
+decays at each fixed point after the packet passes.
+
+For a disturbance imposed with real frequency $\omega$ at a fixed point, the
+wave number $k$ is generally complex. The neutral stability curve is the curve
+in the $(\omega,\mathrm{Re})$ plane for which
+
+\\[
+\Im( k(\omega,\mathrm{Re}) )=0.
+\\]
+
+It separates perturbations that grow downstream from perturbations that decay
+downstream.
+
+For plane Poiseuille flow, between two parallel planes, one may write
+
+\\[
+\b{v}_1
+=e^{i(k_xx+k_zz-\omega t)}\b{f}(y).
+\\]
+
+The first neutral mode is two-dimensional:
+
+\\[
+k_z=0.
+\\]
+
+This is the content of Squire&apos;s theorem in this setting: for a fixed wave
+number, the first unstable mode of a parallel shear flow may be taken
+two-dimensional. Thus it is enough to study disturbances in the plane of the
+base flow.
+
+For plane Poiseuille flow the critical $\mathrm{Re}$ is
+
+\\[
+\mathrm{Re}_{\mathrm{cr}}=5772,
+\\]
+
+where
+
+\\[
+\mathrm{Re}=\frac{U_{\max}h}{2\nu},
+\\]
+
+$U_{\max}$ is the maximum velocity and $h$ is the distance between the planes.
+The critical wave number is approximately
+
+\\[
+k_{\mathrm{cr}}\simeq \frac{2.04}{h}.
+\\]
+
+For flow in a circular pipe, the classical linear problem gives no unstable
+infinitesimal modes. Axisymmetric perturbations are damped, and no unstable
+non-axisymmetric mode is found. Nevertheless, pipe flow undergoes transition
+in experiments. The transition is therefore subcritical: sufficiently large
+finite perturbations can trigger turbulence even though infinitesimal
+perturbations decay.
+
+With
+
+\\[
+\mathrm{Re}=\frac{U_{\max}d}{2\nu}=\frac{\overline U d}{\nu},
+\\]
+
+where $d$ is the pipe diameter, carefully prepared laminar pipe flow may be
+maintained up to very large $\mathrm{Re}$. In ordinary experiments, however, finite
+disturbances often trigger turbulence for
+
+\\[
+\mathrm{Re}\simeq 1800
+\\]
+
+or above. For plane channel flow, finite-amplitude turbulent regions may
+appear for $\mathrm{Re}$ of order $1000$. This is a hard transition: the drag changes
+discontinuously between the laminar and turbulent states.
+
+## Orr-Sommerfeld Formulation
+
+For a plane parallel base flow
+
+\\[
+\b{v}_0=U(y)\b{e}_x,
+\\]
+
+a two-dimensional incompressible perturbation can be written with a stream
+function
+
+\\[
+\psi(y)e^{i(kx-\omega t)}.
+\\]
+
+Let
+
+\\[
+c=\frac{\omega}{k}.
+\\]
+
+The linearized Navier-Stokes equations reduce to the Orr-Sommerfeld equation
+
+\\[
+(U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi
+=\frac{1}{ik\mathrm{Re}}
+(\psi^{\prime\prime\prime\prime}-2k^2\psi^{\prime\prime}+k^4\psi).
+\\]
+
+For no-slip walls,
+
+\\[
+\psi=0,\qquad \psi^\prime=0.
+\\]
+
+In the inviscid limit $\mathrm{Re}\to\infty$, this becomes Rayleigh&apos;s equation
+
+\\[
+(U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi=0.
+\\]
+
+Rayleigh&apos;s inflection-point theorem says that inviscid instability of a
+smooth parallel shear flow requires an inflection point:
+
+\\[
+U^{\prime\prime}(y)=0
+\\]
+
+somewhere in the flow. This condition is necessary, not sufficient. It is one
+reason why shear layers with inflectional velocity profiles are much more
+unstable than plane Couette flow.
+
+## Instability of Tangential Discontinuities
+
+Consider two layers of inviscid incompressible fluid moving tangentially past
+one another. The separating surface is a surface of tangential discontinuity.
+Let the interface be $z=0$. In a frame where the lower fluid is at rest, take
+
+\\[
+\b{U}_1=U\b{e}_x,\qquad
+\b{U}_2=0,
+\\]
+
+with densities $\rho_1$ and $\rho_2$. We neglect gravity and surface tension
+first.
+
+Let the interface displacement be
+
+\\[
+\zeta=\zeta_0e^{i(kx-\omega t)}.
+\\]
+
+In each fluid, the perturbation pressure satisfies Laplace&apos;s equation,
+
+\\[
+\laplacian p^\prime=0.
+\\]
+
+For the upper fluid $z&gt;0$ the decaying solution is
+
+\\[
+p_1^\prime=C_1e^{i(kx-\omega t)}e^{-kz}.
+\\]
+
+The linearized Euler equation in the upper fluid is
+
+\\[
+\pdv{\b{v}_1^\prime}{t}
++U\pdv{\b{v}_1^\prime}{x}
+=-\frac{1}{\rho_1}\grad p_1^\prime.
+\\]
+
+Its $z$-component gives, at $z=0$,
+
+\\[
+v_{1z}^\prime=\frac{k p_1^\prime}{i\rho_1(kU-\omega)}.
+\\]
+
+The kinematic condition at the moving interface is
+
+\\[
+\pdv{\zeta}{t}
+=v_{1z}^\prime-U\pdv{\zeta}{x}.
+\\]
+
+Therefore
+
+\\[
+v_{1z}^\prime=i\zeta(kU-\omega),
+\\]
+
+and hence
+
+\\[
+p_1^\prime=-\frac{\rho_1\zeta}{k}(kU-\omega)^2.
+\\]
+
+For the lower fluid $z&lt;0$,
+
+\\[
+p_2^\prime=C_2e^{i(kx-\omega t)}e^{kz},
+\\]
+
+and the same calculation, now with $U_2=0$, gives
+
+\\[
+p_2^\prime=\frac{\rho_2\zeta}{k}\omega^2.
+\\]
+
+Continuity of pressure at the interface gives
+
+\\[
+\rho_1(kU-\omega)^2=-\rho_2\omega^2.
+\\]
+
+Solving for $\omega$,
+
+\\[
+\omega
+=kU\frac{\rho_1\pm i\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
+\\]
+
+There is always a root with positive imaginary part. Therefore an ideal
+tangential discontinuity is unstable to infinitesimal perturbations. This is
+the Kelvin-Helmholtz instability.
+
+For arbitrary tangential velocities $U_1$ and $U_2$, the same result is
+
+\\[
+\omega
+=k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
+\pm i k(U_1-U_2)
+\frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2},
+\\]
+
+where the sign is chosen so that one mode grows. The growth rate is
+
+\\[
+\gamma
+=k|U_1-U_2|\frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
+\\]
+
+The ideal discontinuity has no intrinsic length scale, so the growth rate
+increases without bound as $k\to\infty$. This is not physical. In a real fluid
+the velocity changes over a finite shear-layer thickness, and viscosity
+regularizes the shortest wavelengths.
+
+If gravity and surface tension are included, the dispersion relation becomes
+
+\\[
+\omega
+=k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
+\pm
+\left\[
+\frac{gk(\rho_2-\rho_1)+\sigma k^3}{\rho_1+\rho_2}
+-\frac{\rho_1\rho_2k^2(U_1-U_2)^2}{(\rho_1+\rho_2)^2}
+\right\]^{1/2},
+\\]
+
+where the lower fluid has density $\rho_2$ and the upper fluid has density
+$\rho_1$. The interface is unstable when the expression under the square root
+is negative. Thus gravity and surface tension are stabilizing when
+
+\\[
+gk(\rho_2-\rho_1)+\sigma k^3&gt;0,
+\\]
+
+while the velocity jump is destabilizing.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Damping of Gravity Waves</title><link href="http://localhost:4000/physics/damping-of-gravity-waves.html" rel="alternate" type="text/html" title="Damping of Gravity Waves" /><published>2026-04-08T00:00:00+09:00</published><updated>2026-04-08T00:00:00+09:00</updated><id>http://localhost:4000/physics/damping-of-gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/damping-of-gravity-waves.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Surface Layer
+
+Consider gravity waves on the free surface of a viscous incompressible fluid.
+Let $k$ be the wave number, $\lambda=2\pi/k$ the wavelength, and $\omega$ the
+frequency. We assume that the amplitude is small and that
+
+\\[
+\frac{\nu}{\lambda^2}\ll\omega.
+\\]
+
+Equivalently, the viscous diffusion length during one period is much smaller
+than the wavelength:
+
+\\[
+\delta=\sqrt{\frac{2\nu}{\omega}}\ll\lambda.
+\\]
+
+Thus the main motion is the potential motion of an ideal fluid. Viscosity only
+produces a thin rotational layer near the free surface, together with a slow
+decay of the wave amplitude.
+
+There is an important difference from a solid boundary. At a solid wall,
+viscosity must change the tangential velocity from its ideal value to zero,
+which produces large velocity gradients. At a free surface, there is no no-slip
+condition. The viscous correction is only needed to make the tangential stress
+vanish. Therefore the leading dissipation may be computed directly from the
+ideal potential flow in the bulk.
+
+## Energy Dissipation
+
+For an incompressible viscous fluid, the rate of viscous loss of mechanical
+energy is
+
+\\[
+\dot E_{\mathrm{mech}}
+=-\frac{\mu}{2}
+\int
+\left(
+\pdv{v_i}{x_k}+\pdv{v_k}{x_i}
+\right)^2\,dV.
+\\]
+
+In the leading approximation the flow is potential:
+
+\\[
+\b{v}=\grad\phi.
+\\]
+
+Hence
+
+\\[
+\pdv{v_i}{x_k}=\pdvs{\phi}{x_i}{x_k},
+\\]
+
+and the dissipation becomes
+
+\\[
+\dot E_{\mathrm{mech}}
+=-2\mu
+\int
+\left(
+\pdvs{\phi}{x_i}{x_k}
+\right)^2\,dV.
+\\]
+
+For a deep-water wave propagating in the $x$ direction, with the undisturbed
+surface at $z=0$ and the fluid occupying $z&lt;0$, the velocity potential has the
+form
+
+\\[
+\phi=\phi_0e^{kz}\cos(kx-\omega t+\alpha).
+\\]
+
+It satisfies
+
+\\[
+\laplacian\phi=0,\qquad z&lt;0,
+\\]
+
+and decays as $z\to-\infty$. Since each second derivative gives a factor of
+order $k^2$, a direct calculation gives
+
+\\[
+\overline{\dot E}_{\mathrm{mech}}
+=-8\mu k^4\int\overline{\phi^2}\,dV.
+\\]
+
+The mean kinetic and potential energies of a small gravity wave are equal.
+Therefore the mean total mechanical energy may be written as twice the mean
+kinetic energy:
+
+\\[
+\overline{E}_{\mathrm{mech}}
+=\rho\int\overline{v^2}\,dV
+=\rho\int\overline{
+\left(\pdv{\phi}{x_i}\right)^2
+}\,dV.
+\\]
+
+For the above potential,
+
+\\[
+\int\overline{
+\left(\pdv{\phi}{x_i}\right)^2
+}\,dV
+=2k^2\int\overline{\phi^2}\,dV.
+\\]
+
+Thus
+
+\\[
+\overline{E}_{\mathrm{mech}}
+=2\rho k^2\int\overline{\phi^2}\,dV.
+\\]
+
+## Damping Coefficient
+
+Let the wave amplitude be proportional to $e^{-\gamma t}$. Then the energy,
+being quadratic in the amplitude, is proportional to $e^{-2\gamma t}$. Hence
+
+\\[
+2\gamma
+=-\frac{\overline{\dot E}\_{\mathrm{mech}}}
+{\overline{E}_{\mathrm{mech}}}.
+\\]
+
+Using the expressions above,
+
+\\[
+2\gamma
+=\frac{8\mu k^4}{2\rho k^2}
+=4\nu k^2.
+\\]
+
+Therefore
+
+\\[
+\gamma=2\nu k^2.
+\\]
+
+For deep-water gravity waves,
+
+\\[
+\omega^2=gk.
+\\]
+
+Thus the damping coefficient may also be written as
+
+\\[
+\gamma=2\nu\frac{\omega^4}{g^2}.
+\\]
+
+The result is small under the assumption $\nu k^2\ll\omega$. It is therefore a
+correction to the inviscid wave motion, not a change of the leading dispersion
+relation.
+
+## Arbitrary Viscosity
+
+When the viscosity is not small, one must solve the linearized equations
+directly. For a two-dimensional disturbance proportional to
+$e^{ikx-i\omega t}$, the equations are
+
+\\[
+\begin{aligned}
+\pdv{v_x}{t}
+&amp;=-\frac{1}{\rho}\pdv{p}{x}
++\nu\left(\pdvn{2}{v_x}{x}+\pdvn{2}{v_x}{z}\right), \nl
+\pdv{v_z}{t}
+&amp;=-\frac{1}{\rho}\pdv{p}{z}
++\nu\left(\pdvn{2}{v_z}{x}+\pdvn{2}{v_z}{z}\right)-g, \nl
+\pdv{v_x}{x}+\pdv{v_z}{z}&amp;=0.
+\end{aligned}
+\\]
+
+At the free surface the tangential and normal stresses vanish, to first order
+in the wave amplitude:
+
+\\[
+\sigma_{xz}
+=\mu\left(\pdv{v_x}{z}+\pdv{v_z}{x}\right)=0,
+\\]
+
+\\[
+\sigma_{zz}
+=-p+2\mu\pdv{v_z}{z}=0.
+\\]
+
+Solving the linear system with decay as $z\to-\infty$ gives the dispersion
+relation
+
+\\[
+\left(2-\frac{i\omega}{\nu k^2}\right)^2
++\frac{g}{\nu^2k^3}
+=4\sqrt{1-\frac{i\omega}{\nu k^2}}.
+\\]
+
+In the weak-viscosity limit this gives
+
+\\[
+\omega=\pm\sqrt{gk}-2i\nu k^2.
+\\]
+
+Thus the imaginary part reproduces the damping coefficient found from the
+energy method. In the opposite limit,
+
+\\[
+\nu k^2\gg\sqrt{gk},
+\\]
+
+the motion is no longer an oscillatory wave with slow damping. The disturbance
+decays aperiodically. The slowest decay has the order
+
+\\[
+\omega\simeq -\,i\frac{g}{2\nu k}.
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Oscillatory Motion in a Viscous Fluid</title><link href="http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid.html" rel="alternate" type="text/html" title="Oscillatory Motion in a Viscous Fluid" /><published>2026-04-07T00:00:00+09:00</published><updated>2026-04-07T00:00:00+09:00</updated><id>http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid</id><content type="html" xml:base="http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Oscillating Plane
+
+Consider a plane solid surface $x=0$ bounding a viscous fluid in $x&gt;0$.
+Suppose that the surface oscillates parallel to itself, in the $y$ direction,
+with velocity
+
+\\[
+u(t)=\Re\left( \{u_0e^{-i\omega t}\} \right).
+\\]
+
+If the pressure is uniform and the motion depends only on $x$ and $t$, then
+the Navier-Stokes equation is reduced to
+
+\\[
+\pdv{v_y}{t}=\nu\pdvn{2}{v_y}{x}.
+\\]
+
+Writing
+
+\\[
+v_y=\Re \left( \{u_0e^{i(kx-\omega t)}\} \right),
+\\]
+
+we have
+
+\\[
+i\omega=\nu k^2.
+\\]
+
+The solution which decays as $x\to\infty$ is obtained from
+
+\\[
+k=\frac{1+i}{\delta},\qquad
+\delta=\sqrt{\frac{2\nu}{\omega}}.
+\\]
+
+Thus, for real $u_0$,
+
+\\[
+v_y(x,t)=u_0e^{-x/\delta}\cos\left(\omega t-\frac{x}{\delta}\right).
+\\]
+
+The quantity $\delta$ is the penetration depth of the oscillatory motion. The
+velocity amplitude decreases exponentially, and the phase is delayed by
+$x/\delta$.
+
+The shear stress is
+
+\\[
+\sigma_{xy}=\mu\pdv{v_y}{x}.
+\\]
+
+In complex notation, at the wall,
+
+\\[
+\sigma_{xy}(0,t)=\Re \left\\{
+\sqrt{\frac{\omega\mu\rho}{2}}(i-1)u_0e^{-i\omega t}
+\right\\}.
+\\]
+
+Equivalently, the force exerted by the fluid on unit area of the wall is
+
+\\[
+f_y=-u_0\sqrt{\omega\mu\rho}\cos\left(\omega t+\frac{\pi}{4}\right).
+\\]
+
+Hence the mean rate of dissipation per unit area is
+
+\\[
+\overline{\dot E}
+=\frac{1}{2}u_0^2\sqrt{\frac{\omega\mu\rho}{2}}.
+\\]
+
+More generally, if the wall velocity $u(t)$ is not sinusoidal, the tangential
+force per unit area is
+
+\\[
+f_y(t)
+=-\sqrt{\frac{\mu\rho}{\pi}}
+\int_{-\infty}^t
+\frac{\dot u(t^\prime)}{\sqrt{t-t^\prime}}\,dt^\prime.
+\\]
+
+This formula shows explicitly that the force is not determined by the
+instantaneous velocity alone. It depends on the previous motion of the wall.
+
+## Oscillating Body
+
+For small oscillations of a body, the convective term in the Navier-Stokes
+equation may be omitted. Then
+
+\\[
+\pdv{\b{v}}{t}
+=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},
+\qquad
+\div\b{v}=0.
+\\]
+
+Taking the curl gives
+
+\\[
+\pdv{}{t}\curl\b{v}
+=\nu\laplacian\curl\b{v}.
+\\]
+
+Thus the vorticity satisfies a diffusion equation. During one period it
+diffuses through a distance of order
+
+\\[
+\delta=\sqrt{\frac{2\nu}{\omega}}.
+\\]
+
+If the characteristic length $l$ of the body satisfies
+
+\\[
+l^2\omega\ll\nu,
+\\]
+
+then $\delta\gg l$, and the viscous diffusion is effectively instantaneous on
+the scale of the body. The motion is then quasi-steady. For example, a slowly
+oscillating sphere of radius $R$ experiences, to leading order,
+
+\\[
+\b{F}=6\pi\mu R\b{u}(t),
+\\]
+
+provided the oscillatory $\mathrm{Re}$ is small.
+
+The opposite case is
+
+\\[
+l^2\omega\gg\nu.
+\\]
+
+Then vorticity is confined to a thin layer near the surface. Outside this
+layer the fluid is practically ideal and irrotational:
+
+\\[
+\curl\b{v}=0,\qquad \div\b{v}=0.
+\\]
+
+The outer flow is therefore a potential flow, determined by the impermeability
+condition on the moving surface. The tangential no-slip condition is restored
+inside the thin viscous layer.
+
+Let $x$ be the distance measured normally from the surface into the fluid, and
+let $v_0e^{-i\omega t}$ be the tangential velocity of the inviscid outer flow
+at the surface, in the reference frame of the body. Then the boundary-layer
+correction has the same form as for the oscillating plane:
+
+\\[
+v_y(x,t)
+=v_0e^{-i\omega t}
+\left(1-\exp\left[-(1-i)\frac{x}{\delta}\right]\right),
+\\]
+
+The mean loss of mechanical energy is then
+
+\\[
+\overline{\dot E}_{\mathrm{mech}}
+=-\frac{1}{2}\sqrt{\frac{\omega\mu\rho}{2}}
+\int v_0^2\,df,
+\\]
+
+where the integral is taken over the surface of the body and $v_0$ denotes the
+amplitude of the tangential velocity of the potential flow at the surface.
+
+## Complex Drag
+
+For a body oscillating with velocity
+
+\\[
+\b{u}=\b{u}_0e^{-i\omega t},
+\\]
+
+the hydrodynamic force is usually written as
+
+\\[
+\b{F}=\beta\b{u},\qquad
+\beta=\beta_1+i\beta_2.
+\\]
+
+In real notation this means
+
+\\[
+\b{F}
+=\beta_1\b{u}-\frac{\beta_2}{\omega}\dot{\b{u}}.
+\\]
+
+The term with $\beta_1$ is dissipative, while the term with $\beta_2$ is an
+inertial correction. The mean rate of loss of mechanical energy is
+
+\\[
+\overline{\dot E}_{\mathrm{mech}}
+=-\frac{1}{2}\beta_1u_0^2.
+\\]
+
+For a sphere of radius $R$, the exact linear solution gives
+
+\\[
+\b{F}
+=6\pi\mu R\left(1+\frac{R}{\delta}\right)\b{u}
++3\pi R^2\sqrt{\frac{2\mu\rho}{\omega}}
+\left(1+\frac{2R}{9\delta}\right)\dot{\b{u}},
+\qquad
+\delta=\sqrt{\frac{2\nu}{\omega}}.
+\\]
+
+The first part is the viscous drag, and the second part is the force required
+to accelerate the surrounding fluid. In the limit $\omega\to0$ this reduces to
+Stokes&apos; law. In the opposite limit $R\gg\delta$,
+
+\\[
+\b{F}
+=3\pi R^2\sqrt{2\mu\rho\omega}\,\b{u}
++\frac{2}{3}\pi\rho R^3\dot{\b{u}},
+\\]
+
+which is the sum of the boundary-layer friction and the added-mass force.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Exact Solutions of the Navier–Stokes Equation</title><link href="http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation.html" rel="alternate" type="text/html" title="Exact Solutions of the Navier–Stokes Equation" /><published>2026-04-06T00:00:00+09:00</published><updated>2026-04-06T00:00:00+09:00</updated><id>http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation</id><content type="html" xml:base="http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Rotating Disk
+
+Exact solutions of the Navier--Stokes equation are rare when the nonlinear term does not vanish identically.
+One important example is the motion caused by an infinite plane disk rotating uniformly about its axis.
+Let the disk be the plane $z=0$, the fluid occupy $z&gt;0$, and the disk rotate with angular velocity $\Omega$.
+The boundary conditions are
+
+\\[
+v_r=0,\qquad v_\phi=\Omega r,\qquad v_z=0 \quad (z=0),
+\\]
+
+and
+
+\\[
+v_r=0,\qquad v_\phi=0 \quad (z\to\infty).
+\\]
+
+The similarity form is
+
+\\[
+v_r=r\Omega F(\zeta),\qquad
+v_\phi=r\Omega G(\zeta),\qquad
+v_z=\sqrt{\nu\Omega}\,H(\zeta),
+\\]
+
+\\[
+p=-\rho\nu\Omega P(\zeta),\qquad
+\zeta=\sqrt{\frac{\Omega}{\nu}}z.
+\\]
+
+The radial and azimuthal velocities are proportional to $r$, while the axial velocity is constant on each plane
+$z=\mathrm{const.}$.
+Substitution into the Navier--Stokes equation and into $\div\b{v}=0$ gives
+
+\\[
+\begin{align\*}
+F^2-G^2+F^\prime H &amp;= F^{\prime\prime}, \nl
+2FG+G^\prime H &amp;= G^{\prime\prime}, \nl
+HH^\prime &amp;= P^\prime+H^{\prime\prime}, \nl
+2F+H^\prime &amp;= 0,
+\end{align\*}
+\\]
+
+where the prime denotes differentiation with respect to $\zeta$.
+The boundary conditions are
+
+\\[
+F(0)=0,\qquad G(0)=1,\qquad H(0)=0,
+\\]
+
+\\[
+F(\infty)=0,\qquad G(\infty)=0.
+\\]
+
+The problem is reduced to a system of ordinary differential equations.
+Its solution must be found numerically.
+The axial velocity at infinity is not zero; rather,
+
+\\[
+v_z(\infty)=H(\infty)\sqrt{\nu\Omega},
+\\]
+
+where $H(\infty)&lt;0$.
+This vertical flow is necessary because the rotating disk throws fluid radially outward near the surface.
+
+The tangential stress on the disk is
+
+\\[
+\sigma_{z\phi}
+=\mu\left(\pdv{v_\phi}{z}\right)_{z=0}
+=\mu r\Omega\sqrt{\frac{\Omega}{\nu}}\,G^\prime(0).
+\\]
+
+For a disk of large finite radius $R$, neglecting edge effects, the moment of the frictional forces on both sides is
+
+\\[
+M
+=2\int_0^R 2\pi r^2\sigma_{z\phi}\,dr
+=\pi R^4\rho\sqrt{\nu\Omega^3}\,G^\prime(0).
+\\]
+
+Numerically,
+
+\\[
+M\simeq -1.94\,R^4\rho\sqrt{\nu\Omega^3}.
+\\]
+
+The sign indicates that the viscous moment opposes the rotation of the disk.
+
+## Hamel Flow
+
+Another exact solution is the steady radial flow between two plane walls meeting at an angle $\alpha$.
+Use cylindrical coordinates $(r,\phi,z)$, where the $z$-axis is the line of intersection of the planes.
+Assume that the flow is uniform in the $z$-direction and purely radial:
+
+\\[
+v_\phi=v_z=0,\qquad v_r=v(r,\phi).
+\\]
+
+The equation of continuity gives
+
+\\[
+\pdv{(rv_r)}{r}=0,
+\\]
+
+so that $rv_r$ is a function only of $\phi$.
+Introduce
+
+\\[
+u(\phi)=\frac{rv_r}{6\nu}.
+\\]
+
+Then the angular component of the equation of motion gives
+
+\\[
+\frac{1}{\rho}\pdv{p}{\phi}
+=\frac{12\nu^2}{r^2}\odv{u}{\phi}.
+\\]
+
+Thus
+
+\\[
+\frac{p}{\rho}
+=\frac{12\nu^2}{r^2}u(\phi)+f(r).
+\\]
+
+Substitution into the radial component separates the variables and gives
+
+\\[
+\frac{p}{\rho}
+=\frac{6\nu^2}{r^2}(2u-C_1)+\mathrm{const.},
+\\]
+
+where $u$ satisfies
+
+\\[
+u^{\prime\prime}+4u+6u^2=2C_1.
+\\]
+
+Multiplying by $u^\prime$ and integrating once,
+
+\\[
+\frac{1}{2}(u^\prime)^2+2u^2+2u^3-2C_1u-2C_2=0.
+\\]
+
+Equivalently,
+
+\\[
+2\phi
+=\pm\int\frac{du}{\sqrt{-u^3-u^2+C_1u+C_2}}+C_3.
+\\]
+
+The constants are determined by the no-slip conditions
+
+\\[
+u\left(\pm\frac{\alpha}{2}\right)=0
+\\]
+
+and by the mass flux through any section $r=\mathrm{const.}$:
+
+\\[
+Q
+=\rho\int_{-\alpha/2}^{\alpha/2}v_r r\,d\phi
+=6\nu\rho\int_{-\alpha/2}^{\alpha/2}u(\phi)\,d\phi.
+\\]
+
+The dimensionless parameter
+
+\\[
+\mathrm{Re}=\frac{|Q|}{\nu\rho}
+\\]
+
+is the corresponding $\mathrm{Re}$.
+For converging flow $(Q&lt;0)$, a symmetric solution exists for any aperture $\alpha&lt;\pi$ and any $\mathrm{Re}$.
+For large $\mathrm{Re}$ the flow is almost potential in the middle of the channel and differs from it mainly in narrow
+layers near the walls.
+For diverging flow $(Q&gt;0)$, the symmetric everywhere-diverging solution exists only up to a maximum value
+$\mathrm{Re}_{\max}(\alpha)$.
+Beyond this value asymmetric solutions appear, and the steady diverging flow is in practice unstable.
+
+## Submerged Jet
+
+Consider a jet emerging from a narrow tube into an infinite viscous fluid.
+Take spherical coordinates $(r,\theta,\phi)$ with the polar axis in the direction of the jet.
+For an axially symmetric solution,
+
+\\[
+v_\phi=0,\qquad
+v_r=\frac{F(\theta)}{r},\qquad
+v_\theta=\frac{f(\theta)}{r}.
+\\]
+
+The continuity equation gives
+
+\\[
+F(\theta)=-\odv{f}{\theta}-f\cot\theta.
+\\]
+
+For this form, the equations of motion are satisfied by
+
+\\[
+f(\theta)=-\frac{2\nu\sin\theta}{A-\cos\theta},
+\\]
+
+and hence
+
+\\[
+F(\theta)
+=2\nu\left\\{\frac{A^2-1}{(A-\cos\theta)^2}-1\right\\}.
+\\]
+
+The pressure distribution is
+
+\\[
+p-p_0
+=-\frac{4\rho\nu^2(A\cos\theta-1)}{r^2(A-\cos\theta)^2}.
+\\]
+
+The constant $A&gt;1$ is determined by the momentum flux of the jet.
+If $P$ denotes this momentum flux, then
+
+\\[
+P
+=16\pi\rho\nu^2 A
+\left[
+1+\frac{4}{3(A^2-1)}
+-\frac{A}{2}\log\frac{A+1}{A-1}
+\right].
+\\]
+
+The streamlines satisfy
+
+\\[
+\frac{r\sin^2\theta}{A-\cos\theta}=\mathrm{const.}
+\\]
+
+In the weak-jet limit, $A\gg 1$, and
+
+\\[
+P\simeq \frac{16\pi\rho\nu^2}{A}.
+\\]
+
+The corresponding velocity field is
+
+\\[
+v_\theta=-\frac{P}{8\pi\rho\nu}\frac{\sin\theta}{r},\qquad
+v_r=\frac{P}{4\pi\rho\nu}\frac{\cos\theta}{r}.
+\\]
+
+In the strong-jet limit, $A\to 1$ and the jet is concentrated near the axis.
+Then the solution is no longer a small perturbation of the surrounding fluid, although it is still an exact solution of
+the steady Navier--Stokes equations for a point jet.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Viscosity of Suspensions</title><link href="http://localhost:4000/physics/the-viscosity-of-suspensions.html" rel="alternate" type="text/html" title="The Viscosity of Suspensions" /><published>2026-04-04T00:00:00+09:00</published><updated>2026-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-viscosity-of-suspensions</id><content type="html" xml:base="http://localhost:4000/physics/the-viscosity-of-suspensions.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc 
 {:toc}
 
@@ -8,8 +1928,8 @@
 Consider a fluid containing many small rigid particles.
 If the characteristic length of the observed motion is large compared with the particle radius, the mixture may be
 regarded as a homogeneous medium.
-Its viscosity is then not the viscosity $\eta_0$ of the pure liquid, but an effective viscosity
-$\eta_{\mathrm{eff}}$.
+Its viscosity is then not the viscosity $\mu_0$ of the pure liquid, but an effective viscosity
+$\mu_{\mathrm{eff}}$.
 
 We shall assume that the concentration is small.
 Then the disturbance produced by each particle may be calculated as if the other particles were absent, and the total
@@ -51,10 +1971,10 @@ The disturbance $\b{v}_1$ must vanish at infinity, while the no-slip condition o
 \b{v}=0\qquad (r=R).
 \\]
 
-Since the Reynolds number based on the particle radius is small, the disturbance satisfies the Stokes equations
+Since the particle-radius $\mathrm{Re}$ is small, the disturbance satisfies the Stokes equations
 
 \\[
-\eta_0\laplacian\b{v}_1-\grad p=0,\qquad
+\mu_0\laplacian\b{v}_1-\grad p=0,\qquad
 \div\b{v}_1=0.
 \\]
 
@@ -77,7 +1997,7 @@ v_{1i}
 and the pressure deviation is
 
 \\[
-p=-5\eta_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
+p=-5\mu_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
 \\]
 
 These formulae are to be used only outside the solid sphere.
@@ -96,7 +2016,7 @@ For the pure liquid,
 
 \\[
 \sigma_{ik}=-p\delta_{ik}
-+\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
++\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
 \\]
 
 Separate from this expression the stress which would be present in a homogeneous fluid with the same average velocity
@@ -104,11 +2024,11 @@ gradient. Then
 
 \\[
 \bar{\sigma}\_{ik}
-=\eta_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
+=\mu_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
 +\frac{1}{V}\int_V
 \left\\{
 \sigma_{ik}
--\eta_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
+-\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
 +p\delta_{ik}
 \right\\}dV.
 \\]
@@ -133,7 +2053,7 @@ Only the terms of order $r^{-2}$ in the disturbance are needed.
 Using the solution above, the single-particle contribution gives
 
 \\[
-n\eta_0 \cdot 20\pi R^3
+n\mu_0 \cdot 20\pi R^3
 \left\\{
 5\alpha_{lm}\overline{n_i n_k n_l n_m}
 -\alpha_{il}\overline{n_kn_l}
@@ -157,27 +2077,27 @@ The directional averages are
 Since $\alpha_{ll}=0$, the correction reduces to
 
 \\[
-5\eta_0\alpha_{ik}\frac{4\pi R^3n}{3}.
+5\mu_0\alpha_{ik}\frac{4\pi R^3n}{3}.
 \\]
 
 Thus
 
 \\[
 \bar{\sigma}\_{ik}
-=2\eta_0\alpha\_{ik}
-+5\eta_0\alpha\_{ik}\phi.
+=2\mu_0\alpha\_{ik}
++5\mu_0\alpha\_{ik}\phi.
 \\]
 
 On the other hand, by definition of the effective viscosity,
 
 \\[
-\bar{\sigma}\_{ik}=2\eta\_{\mathrm{eff}}\alpha\_{ik}.
+\bar{\sigma}\_{ik}=2\mu_{\mathrm{eff}}\alpha\_{ik}.
 \\]
 
 Therefore
 
 \\[
-\eta_{\mathrm{eff}}=\eta_0\left(1+\frac{5}{2}\phi\right).
+\mu_{\mathrm{eff}}=\mu_0\left(1+\frac{5}{2}\phi\right).
 \\]
 
 This is Einstein&apos;s formula for the viscosity of a dilute suspension of rigid spheres.
@@ -188,7 +2108,7 @@ The coefficient $5/2$ is called the intrinsic viscosity of a dilute suspension o
 For spheroidal particles the same form is retained,
 
 \\[
-\eta_{\mathrm{eff}}=\eta_0(1+A\phi),
+\mu_{\mathrm{eff}}=\mu_0(1+A\phi),
 \\]
 
 but the coefficient $A$ depends on the aspect ratio.
@@ -215,7 +2135,7 @@ valid only when the orientational distribution is prescribed or effectively isot
 Einstein&apos;s formula is the first term of a concentration expansion:
 
 \\[
-\frac{\eta_{\mathrm{eff}}}{\eta_0}
+\frac{\mu_{\mathrm{eff}}}{\mu_0}
 =1+\frac{5}{2}\phi+O(\phi^2).
 \\]
 
@@ -586,929 +2506,4 @@ The following terms are also employed in the context of linear transformations:
 - **Monomorphism**: An injective linear transformation, olso called an **embedding**.
 - **Epimorphism**: A surjective linear transformation.
 - **Isomorphism**: A bijective linear transformation.
-- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Flow with Small Reynolds Numbers</title><link href="http://localhost:4000/physics/flow-with-small-reynolds-numbers.html" rel="alternate" type="text/html" title="Flow with Small Reynolds Numbers" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/physics/flow-with-small-reynolds-numbers</id><content type="html" xml:base="http://localhost:4000/physics/flow-with-small-reynolds-numbers.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Stokes Approximation
-
-For steady incompressible flow of a viscous fluid, the Navier--Stokes equation is
-
-\\[
-(\b{v}\cdot\grad)\b{v}
-=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},\qquad
-\div\b{v}=0.
-\\]
-
-Let $u$ and $l$ be the characteristic velocity and length.
-Then
-
-\\[
-(\b{v}\cdot\grad)\b{v}\sim \frac{u^2}{l},\qquad
-\nu\laplacian\b{v}\sim \frac{\nu u}{l^2}.
-\\]
-
-The ratio of these terms is the Reynolds number
-
-\\[
-\mathrm{Re}=\frac{ul}{\nu}.
-\\]
-
-When $\mathrm{Re}\ll 1$, the inertial term may be omitted in the first approximation.
-The equation of motion becomes the **Stokes equation**
-
-\\[
-\eta\laplacian\b{v}-\grad p=0,\qquad
-\div\b{v}=0.
-\\]
-
-Taking the divergence gives
-
-\\[
-\laplacian p=0,
-\\]
-
-and taking the curl gives
-
-\\[
-\laplacian(\curl\b{v})=0.
-\\]
-
-These equations are linear.
-Therefore if all boundary velocities are reversed, the velocity field and all hydrodynamical forces are reversed.
-This reversibility is a basic feature of creeping motion and disappears as soon as inertia becomes important.
-
-## Flow Past a Sphere
-
-Consider a sphere of radius $R$ fixed at the origin, with a uniform velocity $\b{u}=u\hat{\b{z}}$ at infinity.
-The flow is axisymmetric and has no azimuthal component, so we introduce a Stokes stream function $\psi(r,\theta)$ by
-
-\\[
-v_r=\frac{1}{r^2\sin\theta}\pdv{\psi}{\theta},\qquad
-v_\theta=-\frac{1}{r\sin\theta}\pdv{\psi}{r},\qquad
-v_\phi=0.
-\\]
-
-This representation satisfies $\div\b{v}=0$ identically.
-The only non-zero component of the vorticity is
-
-\\[
-\omega_\phi
-=\frac{1}{r}\left(\pdv{(rv_\theta)}{r}-\pdv{v_r}{\theta}\right)
-=-\frac{1}{r\sin\theta}E^2\psi,
-\\]
-
-where
-
-\\[
-E^2\psi
-=\pdvn{2}{\psi}{r}
-+\frac{\sin\theta}{r^2}\pdv{}{\theta}
-\left(\frac{1}{\sin\theta}\pdv{\psi}{\theta}\right).
-\\]
-
-Taking the curl of the Stokes equation eliminates the pressure and gives
-
-\\[
-\laplacian(\curl\b{v})=0.
-\\]
-
-For the present axisymmetric flow this is equivalent to the biharmonic equation
-
-\\[
-E^2(E^2\psi)=0.
-\\]
-
-The incident uniform flow has stream function
-
-\\[
-\psi_\infty=\frac{1}{2}ur^2\sin^2\theta.
-\\]
-
-Thus we seek a solution of the form
-
-\\[
-\psi=f(r)\sin^2\theta.
-\\]
-
-For this form,
-
-\\[
-E^2\psi=\left(f^{\prime\prime}-\frac{2f}{r^2}\right)\sin^2\theta,
-\\]
-
-and the biharmonic equation reduces to
-
-\\[
-\left(\frac{d^2}{dr^2}-\frac{2}{r^2}\right)^2f=0.
-\\]
-
-Hence
-
-\\[
-f=Ar^4+Br^2+Cr+\frac{D}{r}.
-\\]
-
-The term $Ar^4$ must be absent, since the velocity cannot grow faster than the imposed uniform flow at infinity.
-The coefficient of the uniform flow is
-
-\\[
-B=\frac{u}{2}.
-\\]
-
-The no-slip condition on the surface of the sphere is
-
-\\[
-v_r(R,\theta)=0,\qquad v_\theta(R,\theta)=0.
-\\]
-
-In terms of $f$, this gives
-
-\\[
-f(R)=0,\qquad f^\prime(R)=0.
-\\]
-
-Therefore
-
-\\[
-C=-\frac{3uR}{4},\qquad D=\frac{uR^3}{4}.
-\\]
-
-The stream function is consequently
-
-\\[
-\psi
-=\frac{1}{2}ur^2\sin^2\theta
-\left(1-\frac{3R}{2r}+\frac{R^3}{2r^3}\right).
-\\]
-
-The velocity components are
-
-\\[
-v_r=u\cos\theta\left(1-\frac{3R}{2r}+\frac{R^3}{2r^3}\right),
-\qquad
-v_\theta=-u\sin\theta\left(1-\frac{3R}{4r}-\frac{R^3}{4r^3}\right).
-\\]
-
-The pressure follows from the Stokes equation:
-
-\\[
-\grad p=\eta\laplacian\b{v}.
-\\]
-
-Using the above solution, one obtains
-
-\\[
-p=p_0-\frac{3\eta Ru}{2r^2}\cos\theta.
-\\]
-
-At the surface of the sphere,
-
-\\[
-\sigma_{rr}^{\prime}=0,\qquad
-\sigma_{r\theta}^{\prime}=-\frac{3\eta u}{2R}\sin\theta,
-\qquad
-p=p_0-\frac{3\eta u}{2R}\cos\theta,
-\\]
-
-where $\sigma_{ij}^{\prime}$ denotes the viscous part of the stress tensor.
-Projecting the normal and tangential stresses on the direction of $\b{u}$ and integrating over the surface gives
-
-\\[
-D=6\pi\eta Ru.
-\\]
-
-This is **Stokes&apos; formula** for the drag on a slowly moving sphere.
-The force is proportional to the velocity and to the linear size of the body.
-This also follows from dimensional analysis of the Stokes equations, since $\rho$ no longer appears in the first
-approximation and the only force scale formed from $\eta,u,R$ is $\eta uR$.
-
-## Resistance Tensor
-
-For a slowly moving body of arbitrary fixed shape, the drag need not be parallel to the velocity.
-By linearity, however, it must have the form
-
-\\[
-D_i=\eta a_{ik}u_k,
-\\]
-
-where $a_{ik}$ is a tensor determined only by the shape and size of the body.
-This tensor is symmetric.
-The symmetry is a particular case of the reciprocal relations for slow dissipative motion.
-
-## Limitation of Stokes&apos; Formula
-
-The Stokes solution is not uniformly valid at arbitrarily large distances, even when the Reynolds number is small.
-For the sphere solution, at large $r$ the disturbance is of order
-
-\\[
-\abs{\b{v}-\b{u}}\sim \frac{uR}{r}.
-\\]
-
-Hence
-
-\\[
-(\b{v}\cdot\grad)\b{v}\sim \frac{u^2R}{r^2},
-\qquad
-\nu\laplacian\b{v}\sim \frac{\nu uR}{r^3}.
-\\]
-
-The neglected inertial term is small compared with the retained viscous term only if
-
-\\[
-r\ll \frac{\nu}{u}.
-\\]
-
-Equivalently, if $\mathrm{Re}=uR/\nu$, then the Stokes solution is valid in the near region
-
-\\[
-\frac{r}{R}\ll \frac{1}{\mathrm{Re}}.
-\\]
-
-At larger distances, the convective term must be kept in a linearized form.
-Replacing $\b{v}\cdot\grad$ by $\b{u}\cdot\grad$ gives Oseen&apos;s equation
-
-\\[
-(\b{u}\cdot\grad)\b{v}
-=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v}.
-\\]
-
-For a sphere, this gives the first correction to Stokes&apos; drag:
-
-\\[
-D=6\pi\eta Ru\left(1+\frac{3}{8}\frac{uR}{\nu}\right).
-\\]
-
-The necessity of this correction shows that the limit $\mathrm{Re}\to0$ is singular.
-The first approximation is local near the body; the far field enters through matching.
-
-For an infinite circular cylinder, the difficulty is stronger.
-The Stokes equations alone cannot satisfy both the boundary condition on the cylinder and the condition at infinity.
-Using Oseen&apos;s equation from the beginning gives, for the drag per unit length,
-
-\\[
-D=\frac{4\pi\eta u}{\log(3.70\nu/uR)}.
-\\]
-
-Thus even the leading expression contains a logarithm of the Reynolds number.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Law of Similarity and Reynolds Number</title><link href="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html" rel="alternate" type="text/html" title="The Law of Similarity and Reynolds Number" /><published>2026-04-01T00:00:00+09:00</published><updated>2026-04-01T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number</id><content type="html" xml:base="http://localhost:4000/physics/the-law-of-similarity-and-reynolds-number.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Dimensional Form of a Flow
-
-Consider a steady incompressible flow past a body of fixed shape.
-If two bodies have the same shape and differ only by a change of all lengths in the same ratio, we say that they are
-**geometrically similar**.
-Then the shape is determined by one characteristic length $l$.
-Let $u$ be the velocity of the incident stream and let $\nu=\eta/\rho$ be the kinematic viscosity of the fluid.
-The hydrodynamical problem is then specified, apart from the dimensionless shape, by
-
-\\[
-\nu,\qquad u,\qquad l.
-\\]
-
-Their dimensions are
-
-\\[
-[\nu]=L^2T^{-1},\qquad [u]=LT^{-1},\qquad [l]=L.
-\\]
-
-From these three quantities only one independent dimensionless quantity can be formed:
-
-\\[
-\mathrm{Re}=\frac{ul}{\nu}=\frac{\rho ul}{\eta}.
-\\]
-
-This is the **Reynolds number**.
-It measures the ratio of the inertial term to the viscous term in the Navier--Stokes equation:
-
-\\[
-\frac{(\b{v}\cdot\grad)\b{v}}{\nu\laplacian\b{v}}
-\sim
-\frac{u^2/l}{\nu u/l^2}
-=\frac{ul}{\nu}.
-\\]
-
-If we introduce dimensionless variables
-
-\\[
-\b{r}=l\b{r}^{\prime},\qquad
-\b{v}=u\b{v}^{\prime},\qquad
-p=p_0+\rho u^2 p^{\prime},
-\\]
-
-then the steady incompressible Navier--Stokes equation becomes
-
-\\[
-(\b{v}^{\prime}\cdot\grad^{\prime})\b{v}^{\prime}
-=-\grad^{\prime}p^{\prime}
-+\frac{1}{\mathrm{Re}}{\laplacian}^{\prime}\b{v}^{\prime},\qquad
-\div^{\prime}\b{v}^{\prime}=0.
-\\]
-
-Thus the dimensionless velocity and pressure have the form
-
-\\[
-\b{v}=u\,\b{f}\left(\frac{\b{r}}{l},\mathrm{Re}\right),\qquad
-p=p_0+\rho u^2 f\left(\frac{\b{r}}{l},\mathrm{Re}\right).
-\\]
-
-This is the simplest form of the **law of similarity**.
-Two geometrically similar steady incompressible flows are dynamically similar if their Reynolds numbers are equal.
-
-For a quantity which is not a function of position, for example the drag force $D$, the same argument gives
-
-\\[
-D=\rho u^2l^2 C_D(\mathrm{Re})
-\\]
-
-where $C_D$ is a dimensionless function of the Reynolds number.
-
-## Buckingham Pi Theorem
-
-The above argument is a special case of the Buckingham pi theorem.
-
-_Theorem._
-Suppose that a physical law contains $n$ dimensional quantities $q_1,\ldots,q_n$, and let the dimension matrix of these
-quantities have rank $s$.
-Then there exist $n-s$ independent dimensionless products
-
-\\[
-\Pi_1,\ldots,\Pi_{n-s}
-\\]
-
-such that every dimensionally homogeneous relation
-
-\\[
-F(q_1,\ldots,q_n)=0
-\\]
-
-can be written in the form
-
-\\[
-\Phi(\Pi_1,\ldots,\Pi_{n-s})=0.
-\\]
-
-Thus the number of independent dimensionless parameters is the number of dimensional quantities minus the rank of the
-dimension matrix.
-
-&lt;details markdown=&quot;1&quot;&gt; &lt;summary&gt; Proof &lt;/summary&gt;
-
-Suppose that a physical relation involves non-zero quantities
-
-\\[
-q_1,\ldots,q_n
-\\]
-
-and fundamental dimensions $D_1,\ldots,D_m$.
-Write the dimension of $q_j$ as
-
-\\[
-[q_j]=D_1^{a_{1j}}\cdots D_m^{a_{mj}}.
-\\]
-
-Let
-
-\\[
-A=(a_{ij})\in \mathbb{R}^{m\times n}
-\\]
-
-be the dimension matrix, and let $s=\operatorname{rank} A$.
-A monomial
-
-\\[
-\Pi=q_1^{b_1}\cdots q_n^{b_n}
-\\]
-
-is dimensionless if and only if
-
-\\[
-Ab=0.
-\\]
-
-Hence the number of independent dimensionless monomials is
-
-\\[
-\dim\ker A=n-s.
-\\]
-
-Choose $s$ quantities whose dimension vectors are linearly independent.
-After reordering, let these be $q_1,\ldots,q_s$, and write
-
-\\[
-A=\begin{bmatrix} B &amp; C \end{bmatrix},
-\\]
-
-where $B$ is an invertible $s\times s$ matrix after restricting to the independent rows.
-For each remaining quantity $q_{s+\alpha}$, let $c_\alpha$ be the corresponding column of $C$ and define
-
-\\[
-\beta^{(\alpha)}=-B^{-1}c_\alpha.
-\\]
-
-Then
-
-\\[
-\Pi_\alpha
-=q_{s+\alpha}\prod_{i=1}^s q_i^{\beta_i^{(\alpha)}},
-\qquad
-\alpha=1,\ldots,n-s
-\\]
-
-is dimensionless, since its dimension vector is
-
-\\[
-c_\alpha+B\beta^{(\alpha)}=0.
-\\]
-
-It remains to show that every dimensionally homogeneous physical law can be written using only these $\Pi_\alpha$.
-Changing the fundamental units multiplies the quantities by
-
-\\[
-q_j\mapsto \lambda_1^{a_{1j}}\cdots \lambda_m^{a_{mj}}q_j.
-\\]
-
-A physical law cannot depend on this arbitrary choice of units.
-Therefore its truth value is constant along the orbits of this scaling action.
-Because $B$ is invertible, the $s$ independent scaling parameters may be chosen so that
-$q_1,\ldots,q_s$ are changed to any prescribed positive reference values.
-After this normalization, the only remaining coordinates of the orbit space are precisely
-
-\\[
-\Pi_1,\ldots,\Pi_{n-s}.
-\\]
-
-Thus a dimensionally homogeneous relation
-
-\\[
-F(q_1,\ldots,q_n)=0
-\\]
-
-is equivalent to
-
-\\[
-\Phi(\Pi_1,\ldots,\Pi_{n-s})=0.
-\\]
-
-This proves the Buckingham pi theorem.
-
-&lt;/details&gt;
-
----
-
-As an example, for the drag force on a body in a viscous incompressible fluid we may take
-
-\\[
-D,\rho,u,l,\eta.
-\\]
-
-There are five dimensional quantities and three fundamental dimensions $M,L,T$.
-Hence there are two independent dimensionless groups, which may be chosen as
-
-\\[
-\frac{D}{\rho u^2l^2},\qquad
-\frac{\rho ul}{\eta}.
-\\]
-
-Therefore
-
-\\[
-\frac{D}{\rho u^2l^2}=C_D(\mathrm{Re}),
-\\]
-
-which is the drag form written above.
-
-## Other Similarity Numbers
-
-If gravity is important, the quantities determining the flow include $g$ as well as $\nu,u,l$.
-Then there are two independent dimensionless parameters.
-One may take the Reynolds number and the Froude number
-
-\\[
-\mathrm{Fr}=\frac{u}{\sqrt{gl}}
-\\]
-
-or, equivalently, $\mathrm{Fr}^2=u^2/(gl)$.
-Free-surface flows are usually governed by both $\mathrm{Re}$ and $\mathrm{Fr}$; a model and the original motion are
-fully similar only when both are equal.
-
-If the motion is non-steady and has a characteristic time $\tau$, a further dimensionless quantity appears:
-
-\\[
-\mathrm{St}=\frac{l}{u\tau}.
-\\]
-
-Landau uses the reciprocal form $S=u\tau/l$.
-The equality of this parameter expresses similarity of the time scale of the motion.
-For externally forced oscillations, $\tau$ is the period of forcing.
-For spontaneous oscillations of a given type, the dimensionless period is not arbitrary but is determined by the other
-dimensionless parameters, for example
-
-\\[
-\mathrm{St}=f(\mathrm{Re}).
-\\]
-
-Other effects introduce their own similarity parameters.
-For compressible flow, the Mach number
-
-\\[
-\mathrm{Ma}=\frac{u}{c}
-\\]
-
-compares the flow speed with the sound speed.
-For capillary motion, the Weber number
-
-\\[
-\mathrm{We}=\frac{\rho u^2l}{\sigma}
-\\]
-
-compares inertia with surface tension.
-For heat transfer in fluids, the Prandtl number
-
-\\[
-\mathrm{Pr}=\frac{\nu}{\chi}
-\\]
-
-compares momentum diffusion with thermal diffusion.
-The relevant list is not universal; it is determined by the physical terms retained in the equations and boundary
-conditions.
-
-## Kinematic and Dynamic Similarity
-
-There are several levels of similarity.
-
-Two flows are **geometrically similar** if their boundaries and bodies are obtained from each other by one scale factor.
-They are **kinematically similar** if, after the transformations
-
-\\[
-\b{r}^{\prime}=\frac{\b{r}}{l},\qquad
-t^{\prime}=\frac{ut}{l},\qquad
-\b{v}^{\prime}=\frac{\b{v}}{u},
-\\]
-
-the dimensionless velocity fields are the same.
-Thus streamlines, pathlines, and periods correspond after rescaling.
-
-They are **dynamically similar** if the dimensionless governing equations and dimensionless boundary conditions are the
-same.
-Equivalently, all independent dimensionless numbers which enter the problem have the same values.
-Dynamic similarity implies the equality of all dimensionless force coefficients, pressure coefficients, and velocity
-profiles.
-
-There is also **complete similarity** in a limiting problem when a dimensionless solution tends to a finite limit
-independent of a parameter, for example the inviscid limit away from boundary layers.
-In contrast, **incomplete similarity** occurs when a parameter remains in the asymptotic form through powers or
-logarithms.
-This distinction appears repeatedly in viscous flows, since a small viscosity may disappear from the main equation but
-remain essential in boundary conditions, wakes, and thin layers.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Ordered Bases and Coordinate Matrices</title><link href="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html" rel="alternate" type="text/html" title="Ordered Bases and Coordinate Matrices" /><published>2026-03-31T00:00:00+09:00</published><updated>2026-03-31T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices</id><content type="html" xml:base="http://localhost:4000/mathematics/ordered-bases-and-coordinate-matrices.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Ordered Basis
-
-Let $V$ be a vector space of dimension $n$ on a field $F$. An **ordered basis** for $V$ is an ordered $n$-tuple of vectors $(\b{v}_1, \dots, \b{v}_n)$
-such that $\Set{\b{v}_1, \dots, \b{v}_n}$ is a basis of $V$.
-If $\mathcal{B} = (\b{v}_1, \dots, \b{v}_n)$ is an ordered basis of $V$, then for each vector $\b{v} \in V$,
-there exist unique ordered $n$-tuples of scalars $(a_1, \dots, a_n)$ such that
-
-\\[
-\b{v} = \sum_{i=1}^n a_i \b{v}_i
-\\]
-
-## Coordinate Map and Coordinate Matrix
-
-Accordingly, we can define the **coordinate map** $\phi_\mathcal{B} : V \to F^n$ by
-
-\\[
-\phi_\mathcal{B}(\b{v}) = \[\b{v}\]_\mathcal{B} = \begin{bmatrix}
-a_1 \nl \vdots \nl  a_n
-\end{bmatrix}
-\\]
-
-where the column matrix $\[\b{v}\]\_\mathcal{B}$ is called the **coordinate matrix** of $\b{v}$ relative to $\mathcal{B}$.
-Clearly, knowing $\mathcal{B}$ and $\[\b{v}\]\_\mathcal{B}$ allows us to reconstruct $\b{v}$.
-
-Furthermore, it is easy to see that the coordinate map $\phi_\mathcal{B}$ is bijective and preserves the vector space operations, that is:
-
-\\[
-\phi_\mathcal{B}(\b{v} + \b{w}) = \phi_\mathcal{B}(\b{v}) + \phi_\mathcal{B}(\b{w}) \nl
-\phi_\mathcal{B}(c \b{v}) = c \phi_\mathcal{B}(\b{v})
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Bases and Dimension</title><link href="http://localhost:4000/mathematics/bases-and-dimension.html" rel="alternate" type="text/html" title="Bases and Dimension" /><published>2026-03-18T00:00:00+09:00</published><updated>2026-03-18T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/bases-and-dimension</id><content type="html" xml:base="http://localhost:4000/mathematics/bases-and-dimension.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Basis of a Vector Space
-
-For $S \subset V$, the following are equivalent:
-
-1. $S$ is linearly independent and spans $V$.
-2. Every nonzero vector $\b{v} \in V$ is an essentially unique linear combination of vectors in $S$.
-3. $S$ is a **minimal spanning set** of $V$, that is, $S$ spans $V$ but no proper subset of $S$ spans $V$.
-4. $S$ is a **maximal linearly independent set**, that is, $S$ is linearly independent but no proper superset of $S$ is linearly independent.
-
-A set of vectors satisfying any of the above equivalent conditions is called a **basis** of $V$.
-
-_Proof._
-
-We&apos;ve seen that (1) and (2) are equivalent.
-
-(1) $\Rightarrow$ (3): If some proper subset $S^\prime \subset S$ spans $V$, then any vector in $S \setminus S^\prime$ can be written as a linear combination of vectors in $S^\prime$, contradicting the linear independence of $S$.
-
-(3) $\Rightarrow$ (1): If $S$ is not linearly independent, then some vector $\b{v} \in S$ can be written as a linear combination of other vectors in $S$. Then $S \setminus \Set{\b{v}}$ still spans $V$, contradicting the minimality of $S$.
-
-(1) $\Rightarrow$ (4): If some proper superset $S^\prime \supset S$ is linearly independent, then any vector in $S^\prime \setminus S$ can be written as a linear combination of vectors in $S$, contradicting the linear independence of $S^\prime$.
-
-(4) $\Rightarrow$ (1): If $S$ does not span $V$, then there exists a vector $\b{v} \in V \setminus \span(S)$. Then $S \cup \Set{\b{v}}$ is still linearly independent, contradicting the maximality of $S$.
-
-### Standard Basis
-
-A finite set $S=\Set{\b{v}_1, \dots, \b{v}_n}\subset V$ is a basis of $V$ if and only if:
-
-\\[
-V = \bigoplus_{i=1}^n \span \\{ \b{v}_i \\}
-\\]
-
-The most common example of a basis is the **standard basis** of $\mathbb{R}^n$.
-The $i$-th standard basis vector $\b{e}_i$ is the vector in $\mathbb{R}^n$ with a $1$ in the $i$-th coordinate and $0$ in all other coordinates.
-
-\\[
-e_1 = (1, 0, \dots, 0) \nl
-e_2 = (0, 1, \dots, 0) \nl
-\vdots \nl
-e_n = (0, 0, \dots, 1)
-\\]
-
-The set $\Set{\b{e}_1, \dots, \b{e}_n}$ is a standard basis of $\mathbb{R}^n$.
-
-### Existence of a Basis
-
-Now, let&apos;s prove that every nontrivial vector space has a basis.
-
-Let $V$ be a nontrivial vector space and $I\subset V$ be a linearly independent set.
-Let $S \supset I$ be a spanning set of $V$; $\span(S) = V$.
-Then there exists a subset basis $\mathcal{B}$ for $V$ which $I \subseteq \mathcal{B} \subseteq S$. In particular,
-
-* Any vector space, except the trivial vector space, has a basis.
-* Any linearly independent set in $V$ is contained in some basis of $V$.
-* Any spanning set of $V$ contains some basis of $V$.
-
-_Proof._
-
-Consider the collection $\mathcal{A} = \Set{ A \subseteq S \| I \subseteq A, A \text{ is linearly independent} }$.
-Then $\mathcal{A}$ is nonempty since $I \in \mathcal{A}$. Consider the partial order on $\mathcal{A}$ given by set inclusion.
-Let $\mathcal{C} \subseteq \mathcal{A}$ be a chain in $\mathcal{A}$ and $U = \bigcup_{A \in \mathcal{C}} A$.
-$U$ is an upper bound of $\mathcal{C}$ since $I \subseteq U$ and $U$ is linearly independent.
-Then according to [Zorn&apos;s lemma](https://en.wikipedia.org/wiki/Zorn%27s_lemma), $\mathcal{A}$ has a maximal element $\mathcal{B}$, which is linearly independent.
-
-Now let&apos;s show that $\mathcal{B}$ is a basis of $V$. By the definition of $\mathcal{A}$, we have $\mathcal{B} \subseteq S$, so $\span(\mathcal{B}) \subseteq \span(S)$.
-Also, if any $\b{s}\in S$ is $\b{s} \notin \span(\mathcal{B})$, then $\mathcal{B} \cup \Set{\b{s}}$ is linearly independent, contradicting the maximality of $\mathcal{B}$.
-Hence, $\b{s} \in \span(\mathcal{B})$ for all $\b{s} \in S$, so $\span(S) \subseteq \span(\mathcal{B})$.
-Therefore, $\span(\mathcal{B}) = \span(S) = V$, so $\mathcal{B}$ is a basis of $V$.
-
----
-
-We can show that any subspace of a vector space has a complementary subspace using this theorem,
-which was introduced [here](/mathematics/subspace-and-span.html#complementary-subspace).
-
-## Dimension of a Vector Space
-
-### Replacement Theorem
-
-&gt; If $V$ be a vector space and assume that the vectors $\b{v}_1,\dots,\b{v}_n$ are linearly independent
-and the vectors $\b{s}_1,\dots,\b{s}_m$ span $V$. Then $n \leq m$.
-
-_Proof._
-
-Suppose $n &gt; m$. Denote $S = \Set{ \b{s}_1, \dots, \b{s}_m }$,
-then $\b{v}_1\in V=\span(S)$, so:
-
-\\[
-\b{v}\_1 = \sum_{i=1}^m a_i \b{s}_i
-\\]
-
-with at least one coefficient, WLOG $a_1 \neq 0$.
-Then we can express $\b{s}_1$ as a linear combination of $\b{v}_1$ and the other $\b{s}_i$&apos;s:
-
-\\[
-\b{s}\_1 = a_1^{-1} \left( \b{v}\_1 - \sum_{i=2}^m a_i \b{s}_i \right)
-\\]
-
-Therefore, $\b{s}_k \in \span((S\cup \Set{\b{v}_1}) \setminus \Set{\b{s}_k})$.
-Since $\span(S\cup \Set{\b{v}_1}) = V$, we have $\span((S\cup \Set{\b{v}_1}) \setminus \Set{\b{s}_k}) = V$.
-Then we can repeat the above process for $\b{v}_2, \cdots$ until we get a spanning set without vectors in $S$.
-
-\\[
-\b{v}\_j = \sum_{i=1}^{j-1} a_i \b{v}\_i + \sum_{i=j}^m a_i \b{s}_i
-\\]
-
-If $\forall i \geq j, a_i = 0$, then $\b{v}\_j \in \span(\Set{\b{v}\_1, \dots, \b{v}\_{j-1}})$, contradicting the linear independence of $\b{v}\_1,\dots,\b{v}\_n$.
-Therefore, there exists some $i \geq j$ such that $a_i \neq 0$, WLOG $a_j \neq 0$, which guarantees the repeatability of the above process.
-Finally, we get a spanning set $\Set{\b{v}\_1, \dots, \b{v}\_m}$ of $V$, contradicting the linear independence.
-Thus, $n \leq m$.
-
----
-
-By the corollary of the replacement theorem, if any vector space has a finite spanning set, then all its bases have the same number of vectors.
-Suppose that $V$ has two bases $\mathcal{B}$ and $\mathcal{C}$.
-Then $\mathcal{B}$ is a linearly independent set and $\mathcal{C}$ is a spanning set, so $|\mathcal{B}| \leq |\mathcal{C}|$.
-Similarly, $\mathcal{C}$ is a linearly independent set and $\mathcal{B}$ is a spanning set, so $|\mathcal{C}| \leq |\mathcal{B}|$.
-Therefore, $|\mathcal{B}| = |\mathcal{C}|$.
-
-### Infinite-Dimensional Vector Spaces
-
-A vector space is called **finite-dimensional** if it has a finite spanning set, and **infinite-dimensional** otherwise.
-For infinite-dimensional cases, we can also show that all bases have the same cardinality.
-Let $\mathcal{B} = \Set{ \b{b}_i \| i \in B}$ and $\mathcal{C} = \Set{ \b{c}_j \| j \in C}$ be two bases of $V$.
-Then any vector $\b{c} \in \mathcal{C}$ can be written as a finite linear combination of vectors in $\mathcal{B}$, where all of the coefficients are nonzero, say:
-
-\\[
-\b{c} = \sum_{i \in U_\b{c}} r_i \b{b}_i
-\\]
-
-But because $\mathcal{C}$ is a basis, we must have:
-
-\\[
-\bigcup_{\b{c} \in \mathcal{C}} U_\b{c} = B
-\\]
-
-for if the vectors in $\mathcal{C}$ can be expressed as finite linear combinations of a proper subset $\mathcal{B}^\prime \subset \mathcal{B}$,
-then $\mathcal{B}^\prime$ would also span $V$, which is contradictory.
-Then since $U_\b{c} &lt; \aleph_0$ for all $\b{c} \in \mathcal{C}$, we have:
-
-\\[
-|\mathcal{B}| = |B| \le \aleph_0 \cdot |\mathcal{C}| = |\mathcal{C}|
-\\]
-
-By reversing the role of $\mathcal{B}$ and $\mathcal{C}$, we also have $\|\mathcal{C}\| \le \|\mathcal{B}\|$, so $\|\mathcal{B}\| = \|\mathcal{C}\|$.
-
----
-
-The common cardinality of all bases of a vector space $V$ is called the **dimension** of $V$, denoted by $\dim(V)$.
-If $\dim(V) = \kappa$ for some cardinal $\kappa$, then we say that $V$ is **$\kappa$-dimensional**.
-A vector space is finite-dimensional if and only if its dimension is finite, and infinite-dimensional otherwise.
-We can easily verify the following properties of dimension:
-
-* If $\dim(V)=n&lt;\infty$, then any finite generating set of $V$ has at least $n$ vectors, and any linearly independent set in $V$ has at most $n$ vectors. If any of these sets has exactly $n$ vectors, then it is a basis for $V$.
-* Every linearly independent subset of $V$ can be extended to a basis for $V$.
-* If $W$ is a subspace of $V$, then $\dim(W) \leq \dim(V)$, and if $\dim(W) = \dim(V) &lt; \infty$, then $W = V$.
-
-Let&apos;s see some examples of dimensions of vector spaces. For any field $F$,
-
-* $\dim( \\{ \b{0} \\}) = 0$
-* $\dim(F^n) = n$
-* $\dim(\mathcal{M}_{m \times n}(F)) = mn$
-* $\dim(\mathrm{Sym}_n(F)) = \frac{n(n+1)}{2}$
-* $\dim(\mathrm{Skew}_n(F)) = \frac{n(n-1)}{2}$
-* $\dim(\mathcal{P}_n(F)) = n+1$
-* $\dim(F[x]) = \aleph_0$
-* $\dim(\mathcal{F}(X, F)) = \|F\|^{\|X\|}$
-
-Specifying the base field is important when determining the dimension of a vector space.
-For example, $\mathbb{C}^n$ can be regarded as a vector space over $\mathbb{C}$ or $\mathbb{R}$, and we have $\dim_\mathbb{C}(\mathbb{C}^n) = n$ but $\dim_\mathbb{R}(\mathbb{C}^n) = 2n$.
-
-Also, let&apos;s see the following theorems. Let $V$ be a vector space.
-- If $\mathcal{B}$ is a basis of $V$ and $\mathcal{B} = \mathcal{B}_1 \sqcup \mathcal{B}_2$, then
-
-\\[
-V = \span(\mathcal{B}_1) \oplus \span(\mathcal{B}_2)
-\\]
-
-- Let $V = S_1 \oplus S_2$ and $\mathcal{B}_i$ be a basis of $S_i$, then $\mathcal{B}_1 \sqcup \mathcal{B}_2$ is a basis of $V$.
-- Let $S_1$ and $S_2$ be subspaces of vector space $V$. Then
-
-\\[
-\dim(S_1) + \dim(S_2) = \dim(S_1 + S_2) + \dim(S_1 \cap S_2)
-\\]
-
-In particular, if they are complementary,
-
-\\[
-\dim(S_1 \oplus S_2) = \dim(S_1) + \dim(S_2)
-\\]
-
-We omit the proofs here.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Rotating Calipers</title><link href="http://localhost:4000/computer-science/rotating-calipers.html" rel="alternate" type="text/html" title="Rotating Calipers" /><published>2026-03-17T00:00:00+09:00</published><updated>2026-03-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/rotating-calipers</id><content type="html" xml:base="http://localhost:4000/computer-science/rotating-calipers.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Linear Combination and Independence</title><link href="http://localhost:4000/mathematics/linear-combination-and-independence.html" rel="alternate" type="text/html" title="Linear Combination and Independence" /><published>2026-03-16T00:00:00+09:00</published><updated>2026-03-16T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-combination-and-independence</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-combination-and-independence.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Linear combination and span
-
-Given a subset $S \subseteq V$ of a vector space $V$, a **linear combination** of the vectors in $S$ is any vector that can be expressed as a finite sum of scalar multiples of vectors in $S$.
-
-\\[
-\sum_{i=1}^n c_i \b{v}_i
-\\]
-
-where $c_i \in F$ and $\b{v}_i \in S$ for $i=1,\cdots,n$.
-Here, $c_i$ are called the **coefficients** of the linear combination.
-
-The set of all linear combinations of vectors in $S$ is called the **span** of $S$, denoted by $\span(S)$.
-
-\\[
-\span(S) = \Set{ \sum_{i=1}^n c_i \b{v}_i \| n \in \mathbb{N}, c_i \in F, \b{v}_i \in S }
-\\]
-
-If $V = \span(S)$, then we say that $S$ **spans** or **generates** $V$, and $S$ is called a **spanning set** of $V$.
-Let&apos;s see some properties of the span. For $S,S_1,S_2 \subseteq V$,
-
-* $\span(\emptyset) = \\{\b{0}\\}$
-* $S \subseteq \span(S)$
-* $\span(S) \leq V$
-* $\span(V) = V$
-* $W \leq V \iff \span(W) = W$
-* $S_1 \subseteq S_2 \implies \span(S_1) \subseteq \span(S_2)$
-* $\span(S_1 \cup S_2) = \span(S_1) + \span(S_2)$
-* $\span(S_1 \cap S_2) \subseteq (\span(S_1) \cap \span(S_2))$
-
-These can be easily verified by the definition of span and the properties of vector spaces.
-
-## Linear independence
-
-A subset $S \subseteq V$ is called **linearly independent** if the only linear combination of vectors in $S$ that equals the zero vector is the trivial linear combination where all coefficients are zero.
-
-\\[
-\sum_{i=1}^n c_i \b{v}_i = \b{0} \implies \forall i, c_i = 0
-\\]
-
-for any finite collection of vectors $\b{v}_1, \cdots, \b{v}_n$ in $S$ and scalars $c_1, \cdots, c_n$ in $F$.
-If $S$ is not linearly independent, then it is called **linearly dependent**.
-It means that there exists a nonzero coefficient $c_i$ such that the linear combination of vectors in $S$ equals the zero vector.
-
-* $\emptyset$ is linearly independent.
-* $\b{0}\in S$ implies that $S$ is linearly dependent.
-* A singleton set $\\{\b{v}\\}$ is linearly independent if and only if $\b{v} \neq \b{0}$.
-* For $S_1\subseteq S_2 \subseteq V$, if $S_1$ is linearly dependent, then $S_2$ is also linearly dependent.
-* For $S_1\subseteq S_2 \subseteq V$, if $S_2$ is linearly independent, then $S_1$ is also linearly independent.
-
-We can easily verify the first three properties by the definition of linear independence.
-The last property is the contrapositive of the third property, so it also holds.
-Let&apos;s see the following theorem.
-
-Let $S \subset V$ be a linearly independent set and $\b{v} \in V$ be a vector that is not in $S$. Then we have:
-
-&gt; $S \cup \\{\b{v}\\}$ is linearly independent if and only if $\b{v} \notin \span(S)$.
-
-_Proof._
-
-($\Rightarrow$) Assume that $\b{v} \in \span(S)$. Then there exist $c_1, \cdots, c_n \in F$ and $\b{v}\_1, \cdots, \b{v}\_n \in S$ such that $\b{v} = \sum\_{i=1}^n c_i \b{v}_i$. Hence:
-
-\\[
-\sum_{i=1}^n c_i \b{v}_i + (-1)\b{v} = \b{0}
-\\]
-
-so the set $\\{ \b{v}_1, \cdots, \b{v}_n, \b{v} \\}$ is linearly dependent, and thus $S \cup \\{\b{v}\\}$ is also linearly dependent.
-
-($\Leftarrow$) Assume that $S \cup \\{\b{v}\\}$ is linearly dependent. Then there exist nonzero scalars $c_1, \cdots, c_n \in F$ and $\b{v}\_1, \cdots, \b{v}\_n \in (S \cup \\{\b{v}\\})$ such that
-$\sum\_{i=1}^n c_i \b{v}_i = \b{0}$. Since $S$ is linearly independent, at least one of the $\b{v}_i$ must be $\b{v}$. Without loss of generality, assume that $\b{v}_n = \b{v}$. Then we have:
-
-\\[
-\b{v} = -c_n^{-1} \sum_{i=1}^{n-1} c_i \b{v}_i = \sum\_{i=1}^{n-1} (-c_n^{-1} c_i) \b{v}_i
-\\]
-
-so $\b{v} \in \span(S)$.
-
-### Essentially unique representation
-
-Let $S \subset V$ be a nonempty se. To say that a nonzero vector $\b{v} \in V$
-is an **essentially unique** linear combination of vectors in $S$ means that,
-up to order of terms, there is only one way to express $\b{v}$ as a linear combination of vectors in $S$.
-
-\\[
-\b{v} = \sum_{i=1}^n c_i \b{v}_i
-\\]
-
-where $c_i$ are nonzero coefficients and $\b{v}\_i$ are distinct vectors.
-More explicitly, if $\b{v} = \sum\_{i=1}^n c_i \b{v}_i = \sum\_{j=1}^m d_j \b{w}_j$,
-then $n = m$ and there exists a permutation $\sigma \in \mathcal{S}_n$ such that $c\_i = d\_{\sigma(i)}$ and $\b{v}\_i = \b{w}\_{\sigma(i)}$ for all $i$.
-
-We may characterize linear independence as follows.
-For $\emptyset \neq S \subset V$, the following are equivalent:
-1. $S$ is linearly independent.
-2. Every nonzero vector $\b{v} \in \span(S)$ is an essentially unique linear combination of vectors in $S$.
-3. No vector in $S$ is a linear combination of the other vectors in $S$.
-
-This can be proved cyclically by the definition of linear independence and the properties of linear combinations.
-
-_Proof._
-
-(1) $\Rightarrow$ (2): Suppose the following linear combination equals a nonzero vector $\b{v} \in \span(S)$:
-
-\\[
-\b{0} \neq \b{v} = \sum_{i=1}^n a_i \b{u}\_i = \sum\_{i=1}^m b_i \b{w}_i
-\\]
-
-where $a_i, b_i$ are nonzero coefficients and $\b{u}\_i, \b{w}\_i$ are distinct vectors in $S$.
-By subtracting and grouping $\b{u}$&apos;s and $\b{w}$&apos;s that are equal, we can write:
-
-\\[
-\b{0} = \sum_{j=1}^k (a_{i_j} - b_{i_j}) \b{v}\_{i_j} + \sum_{j=k+1}^n a_{i_j} \b{u}\_{i_j} - \sum_{j=k+1}^m b_{i_j} \b{w}_{i_j}
-\\]
-
-Since $S$ is linearly independent, all coefficients must be zero, so $n=m=k$ and $a_{i_j} = b_{i_j}$ for all $j=1,\cdots,k$.
-
-(2) $\Rightarrow$ (3): If some vector $\b{v} \in S$ is a linear combination of the other vectors in $S$, then $\b{v}$ can be expressed as a linear combination of vectors in $S$ in at least two different ways: $\b{v}$ itself and the linear combination of the other vectors, contradicting the essential uniqueness.
-
-(3) $\Rightarrow$ (1): If $S$ is linearly dependent, then some vector $\b{v} \in S$ can be written as a linear combination of the other vectors in $S$, contradicting the assumption.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry><entry><title type="html">Binary Search</title><link href="http://localhost:4000/computer-science/binary-search.html" rel="alternate" type="text/html" title="Binary Search" /><published>2026-02-17T00:00:00+09:00</published><updated>2026-02-17T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/binary-search</id><content type="html" xml:base="http://localhost:4000/computer-science/binary-search.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc 
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry></feed>
+- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry></feed>

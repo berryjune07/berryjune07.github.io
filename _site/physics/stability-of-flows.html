@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Stability of Flows | Jiho’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Stability of Flows">
+<meta name="author" content="Jiho Jun">
+<meta property="og:locale" content="en">
+<meta name="description" content="noting down my thoughts and experiences">
+<meta property="og:description" content="noting down my thoughts and experiences">
+<link rel="canonical" href="http://localhost:4000/physics/stability-of-flows.html">
+<meta property="og:url" content="http://localhost:4000/physics/stability-of-flows.html">
+<meta property="og:site_name" content="Jiho’s Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-04-13T00:00:00+09:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Stability of Flows">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2026-04-13T00:00:00+09:00","datePublished":"2026-04-13T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"Stability of Flows","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/physics/stability-of-flows.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/physics/stability-of-flows.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="Development,C++,Rust,Jekyll">
+  
+
+
+
+  <meta name="theme-color" content="rgb(31,55,75)">
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Jiho's Blog">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="Jiho's Blog">
+
+<meta name="generator" content="Hydejack v9.1.6">
+
+
+
+<link rel="alternate" href="http://localhost:4000/physics/stability-of-flows.html" hreflang="en">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
+
+
+<link rel="shortcut icon" href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+  <link rel="dns-prefetch" href="/assets/js/search-worker-9.1.6.js" as="worker" id="_hrefSearch">
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css">
+  <script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+
+<!-- For sidebar folder -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+  <link rel="stylesheet" href="/assets/css/lightbox.css">
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-VMBTN8BX5P"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        gtag('js', new Date());
+        gtag('config', 'G-VMBTN8BX5P');
+    });
+</script>
+
+<script>!function(r,c){"use strict";function a(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}r.loadJS=function(e,t){var n=c.createElement("script"),e=(n.src=e,t&&a(n,"load",t,{once:!0}),c.scripts[0]);return e.parentNode.insertBefore(n,e),n},r._loaded=!1,r.loadJSDeferred=function(e,t){var n=c.createElement("script");function o(){r._loaded=!0,t&&a(n,"load",t,{once:!0});var e=c.scripts[0];e.parentNode.insertBefore(n,e)}return n.src=e,r._loaded?o():a(r,"load",o,{once:!0}),n},r.setRel=r.setRelStylesheet=function(e){a(c.getElementById(e),"load",function(){this.rel="stylesheet"},{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+  w._advertise = false;
+  w._search = {
+    DATA_URL: '/assets/sitedata.json?no-cache',
+    STORAGE_KEY: 'mini-search/',
+    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+  };
+}(window);</script>
+
+<!-- font awesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+
+<!-- KATEX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/copy-tex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mhchem.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/mathtex-script-type.min.js"></script>
+
+<script src="/assets/js/katex.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    render_KaTeX();
+  });
+</script>
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.1.6.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans+KR%7CJetBrains+Mono%7CNanum+Gothic+Coding&amp;display=swap" id="_fontsPreload">
+
+
+
+
+<!--<![endif]-->
+
+
+
+
+
+</head>
+
+<body class="no-break-layout no-large-headings">
+  
+<script>
+  window._sunrise = 6;
+  window._sunset =  18;
+  !function(e,s){var d="light-mode",o="dark-mode",a=(new Date).getHours();"matchMedia"in e&&e.matchMedia("(prefers-color-scheme)")||(e=(a=a<=e._sunrise||a>=e._sunset?o:d)==o?d:o,s.body.classList.add(a),s.body.classList.remove(e))}(window,document);
+
+</script>
+
+
+
+<hy-push-state id="_pushState" replace-selector="#_main" link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)" script-selector="script" duration="500" hashchange>
+  
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden>
+
+  <main id="_main" class="content layout-post" role="main">
+  <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+    <li><a href="/">home</a></li>
+    
+      <li>
+        
+          <span>/</span>
+          
+          
+          <a href="/physics/">physics</a>
+        
+      </li>
+    
+      <li>
+        
+          <span>/</span>
+          <span>stability-of-flows.html</span>
+        
+      </li>
+    
+  
+</ul></nav>
+
+  
+
+
+
+
+
+
+
+
+
+
+<article id="post-physics-stability-of-flows" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        Stability of Flows
+        
+          <br>
+          <span style="font-size:1.5rem;font-style:italic;"> - Fluid Mechanics 3.1</span>
+        
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <span class="ellipsis mr1">
+        <time datetime="2026-04-13T00:00:00+09:00">13 Apr 2026</time> in <a href="/physics/" class="flip-title">Physics</a> on <a href="/tag-fluid-mechanics/" class="flip-title">Fluid Mechanics</a>
+      </span>
+      
+        
+      
+
+      <span class="additional-info" style="font-size:1rem">
+          <!--
+        <span class="page-pv">
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/physics/stability-of-flows.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+        </span>
+          -->
+        ·
+        <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+<!-- words per minute  -->
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1809 words">
+  <i class="fa-regular fa-hourglass-half"></i>
+   30 min
+</span>
+
+      </span>
+    </div>
+
+    
+    
+
+    
+
+
+
+  <div class="hr pb0"></div>
+
+
+  </header>
+
+  
+    <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#stability-of-steady-flow" id="markdown-toc-stability-of-steady-flow">Stability of Steady Flow</a></li>
+  <li><a href="#energy-estimate" id="markdown-toc-energy-estimate">Energy Estimate</a></li>
+  <li><a href="#stability-of-rotary-flow" id="markdown-toc-stability-of-rotary-flow">Stability of Rotary Flow</a></li>
+  <li><a href="#stability-of-flow-in-a-pipe" id="markdown-toc-stability-of-flow-in-a-pipe">Stability of Flow in a Pipe</a></li>
+  <li><a href="#orr-sommerfeld-formulation" id="markdown-toc-orr-sommerfeld-formulation">Orr-Sommerfeld Formulation</a></li>
+  <li><a href="#instability-of-tangential-discontinuities" id="markdown-toc-instability-of-tangential-discontinuities">Instability of Tangential Discontinuities</a></li>
+</ul>
+
+<h2 id="stability-of-steady-flow">Stability of Steady Flow</h2>
+
+<p>For a prescribed steady viscous-flow problem, an exact steady solution of the
+Navier-Stokes equation may exist formally for every $\mathrm{Re}$. Such a
+solution is physically observed only if it is stable. That is, every
+sufficiently small perturbation must decay in time.</p>
+
+<p>Let the steady solution be $\b{v}_0(\b{r})$, $p_0(\b{r})$, and write</p>
+
+<p>\[
+\b{v}=\b{v}_0+\b{v}_1,\qquad
+p=p_0+p_1.
+\]</p>
+
+<p>The full equations are</p>
+
+<p>\[
+\pdv{\b{v}}{t}+(\b{v}\cdot\grad)\b{v}
+=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},
+\qquad
+\div\b{v}=0.
+\]</p>
+
+<p>The unperturbed flow satisfies</p>
+
+<p>\[
+(\b{v}_0\cdot\grad)\b{v}_0
+=-\frac{1}{\rho}\grad p_0+\nu\laplacian\b{v}_0,
+\qquad
+\div\b{v}_0=0.
+\]</p>
+
+<p>Keeping only terms of first order in $\b{v}_1$, we obtain the linearized
+equations</p>
+
+<p>\[
+\pdv{\b{v}_1}{t}
++(\b{v}_0\cdot\grad)\b{v}_1
++(\b{v}_1\cdot\grad)\b{v}_0
+=-\frac{1}{\rho}\grad p_1+\nu\laplacian\b{v}_1,
+\qquad
+\div\b{v}_1=0.
+\]</p>
+
+<p>On fixed solid boundaries,</p>
+
+<p>\[
+\b{v}_1=0.
+\]</p>
+
+<p>Since the coefficients in the linearized problem are independent of time, the
+perturbations may be decomposed into normal modes</p>
+
+<p>\[
+\b{v}_1(\b{r},t)=\b{f}(\b{r})e^{-i\omega t}.
+\]</p>
+
+<p>The frequency $\omega$ is in general complex. With this convention,</p>
+
+<p>\[
+e^{-i\omega t}=e^{-i\Re( \omega) \,t}
+e^{\Im( \omega)\,t}.
+\]</p>
+
+<p>Thus a mode grows if $\Im( \omega)&gt;0$. Stability requires</p>
+
+<p>\[
+\Im( \omega)&lt;0
+\]</p>
+
+<p>for every admissible perturbation mode.</p>
+
+<p>For sufficiently small $\mathrm{Re}$ the steady flow is stable. As
+$\mathrm{Re}$ increases, one often reaches a critical value $\mathrm{Re}_{\mathrm{cr}}$
+at which the first mode becomes neutral:</p>
+
+<p>\[
+\Im (\omega)=0.
+\]</p>
+
+<p>For $\mathrm{Re}&gt;\mathrm{Re}_{\mathrm{cr}}$, the corresponding perturbation grows and the original
+steady flow can no longer be the observed flow. The number
+$\mathrm{Re}_{\mathrm{cr}}$ is not universal; it depends on the geometry and on the
+boundary conditions.</p>
+
+<p>Near the first instability, suppose that the unstable mode has</p>
+
+<p>\[
+\omega=\omega_1+i\gamma_1,
+\qquad
+\gamma_1&gt;0,\qquad
+\gamma_1\ll\omega_1.
+\]</p>
+
+<p>Then initially</p>
+
+<p>\[
+\b{v}_1=A(t)\b{f}(\b{r}),
+\qquad
+A(t)=A_0e^{\gamma_1t}e^{-i\omega_1t}.
+\]</p>
+
+<p>This linear formula cannot remain valid indefinitely. The amplitude must be
+limited by nonlinear terms. Averaging over times long compared with
+$2\pi/\omega_1$ but short compared with $1/\gamma_1$, the amplitude equation
+has the form</p>
+
+<p>\[
+\odv{|A|^2}{t}
+=2\gamma_1|A|^2-\alpha |A|^4+\cdots .
+\]</p>
+
+<p>Here $\alpha$ is the Landau constant. If $\alpha&gt;0$, the perturbation saturates
+at</p>
+
+<p>\[
+|A|_{\max}^2=\frac{2\gamma_1}{\alpha}.
+\]</p>
+
+<p>Since</p>
+
+<p>\[
+\gamma_1=C(\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}})
++O((\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}})^2),
+\]</p>
+
+<p>we get</p>
+
+<p>\[
+|A|_{\max}\propto \sqrt{\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}}}.
+\]</p>
+
+<p>This is a continuous, or soft, transition. If $\alpha&lt;0$, the fourth-order term
+is destabilizing and a stabilizing higher-order term is needed. Writing</p>
+
+<p>\[
+\odv{|A|^2}{t}
+=2\gamma_1|A|^2+|\alpha||A|^4-\beta |A|^6,
+\qquad
+\beta&gt;0,
+\]</p>
+
+<p>and putting $q=|A|^2$, the non-zero steady amplitudes satisfy</p>
+
+<p>\[
+\beta q^2-|\alpha|q-2\gamma_1=0.
+\]</p>
+
+<p>Thus</p>
+
+<p>\[
+q
+=\frac{|\alpha|}{2\beta}
+\pm
+\sqrt{\frac{\alpha^2}{4\beta^2}+\frac{2\gamma_1}{\beta}}.
+\]</p>
+
+<p>In this case the transition is subcritical. There may be a range below
+$\mathrm{Re}_{\mathrm{cr}}$ where the steady flow is stable to infinitesimal
+perturbations but unstable to finite perturbations.</p>
+
+<h2 id="energy-estimate">Energy Estimate</h2>
+
+<p>The preceding discussion is spectral. A useful complementary estimate is
+obtained by retaining the nonlinear term in the perturbation equation. In
+dimensionless variables,</p>
+
+<p>\[
+\pdv{\b{v}_1}{t}
++(\b{v}_0\cdot\grad)\b{v}_1
++(\b{v}_1\cdot\grad)\b{v}_0
++(\b{v}_1\cdot\grad)\b{v}_1
+=-\grad p_1+\frac{1}{\mathrm{Re}}\laplacian\b{v}_1.
+\]</p>
+
+<p>Taking the scalar product with $\b{v}_1$, using
+$\div\b{v}_0=\div\b{v}_1=0$, and integrating over the fluid region gives</p>
+
+<p>\[
+\dot E_1=T-\frac{D}{\mathrm{Re}},
+\]</p>
+
+<p>where</p>
+
+<p>\[
+E_1=\int\frac{1}{2}v_1^2\,dV,
+\]</p>
+
+<p>\[
+T=-\int v_{1i}v_{1k}\pdv{v_{0i}}{x_k}\,dV,
+\qquad
+D=\int
+\left(\pdv{v_{1i}}{x_k}\right)^2\,dV.
+\]</p>
+
+<p>The surface terms vanish because $\b{v}_1=0$ on fixed walls, or because the
+perturbation vanishes at infinity. The functional $D$ is positive, while $T$
+may have either sign. If</p>
+
+<p>\[
+\mathrm{Re}&lt;\mathrm{Re}_E,\qquad
+\mathrm{Re}_E=\min\frac{D}{T},
+\]</p>
+
+<p>where the minimum is taken over admissible solenoidal perturbations with
+$T&gt;0$, then $\dot E_1&lt;0$ for all perturbations. Hence the flow is stable in
+the energy sense. This gives a rigorous lower bound for the critical
+$\mathrm{Re}$, although the bound is usually much smaller than the observed value.</p>
+
+<h2 id="stability-of-rotary-flow">Stability of Rotary Flow</h2>
+
+<p>Consider the flow between two coaxial cylinders of radii $R_1&lt;R_2$, rotating
+with angular velocities $\Omega_1$ and $\Omega_2$. For small viscosity and
+large $\mathrm{Re}$, the stability criterion can be obtained by Rayleigh’s
+displacement argument.</p>
+
+<p>Let</p>
+
+<p>\[
+\mu=r^2\Omega(r)
+\]</p>
+
+<p>be the angular momentum per unit mass, up to a constant factor. If a fluid
+element is displaced from $r_0$ to $r&gt;r_0$ while keeping its angular momentum,
+the centrifugal force acting on it is determined by $\mu(r_0)$. For the
+displacement to be restored, this force must be smaller than the equilibrium
+centrifugal force at $r$. Thus the inviscid stability condition is</p>
+
+<p>\[
+\mu\odv{\mu}{r}&gt;0.
+\]</p>
+
+<p>Equivalently,</p>
+
+<p>\[
+\frac{\d}{\d r}(r^2\Omega)^2&gt;0.
+\]</p>
+
+<p>This is Rayleigh’s criterion.</p>
+
+<p>For Couette flow between the cylinders,</p>
+
+<p>\[
+\Omega(r)
+=\frac{\Omega_2R_2^2-\Omega_1R_1^2}{R_2^2-R_1^2}
++\frac{(\Omega_1-\Omega_2)R_1^2R_2^2}{R_2^2-R_1^2}\frac{1}{r^2}.
+\]</p>
+
+<p>Substitution into Rayleigh’s criterion gives</p>
+
+<p>\[
+(\Omega_2R_2^2-\Omega_1R_1^2)\Omega(r)&gt;0.
+\]</p>
+
+<p>If the cylinders rotate in opposite directions, this condition cannot hold
+throughout the whole annulus, and the flow is unstable. If they rotate in the
+same direction, $\Omega(r)&gt;0$, and the condition becomes</p>
+
+<p>\[
+\Omega_2R_2^2&gt;\Omega_1R_1^2.
+\]</p>
+
+<p>Thus, if the outer cylinder is at rest and the inner cylinder rotates, the
+inviscid criterion predicts instability. If the inner cylinder is at rest and
+the outer cylinder rotates, the flow is stable.</p>
+
+<p>For finite viscosity the full linearized problem must be used. Since the
+unperturbed flow depends only on $r$, perturbations may be written as</p>
+
+<p>\[
+\b{v}_1(r,\phi,z,t)
+=e^{i(n\phi+kz-\omega t)}\b{f}(r),
+\]</p>
+
+<p>where $n$ is an integer and $k$ is a continuous axial wave number. For given
+$n$ and $k$, the boundary conditions at $r=R_1,R_2$ determine a discrete set
+of eigenfrequencies. The first instability is usually axisymmetric
+$(n=0)$.</p>
+
+<p>At the threshold, the frequency of the critical Taylor-Couette mode is purely
+imaginary and actually vanishes. Hence the first new flow is steady. It
+consists of toroidal Taylor vortices arranged periodically along the axis.
+The period is</p>
+
+<p>\[
+\frac{2\pi}{k_{\mathrm{cr}}},
+\]</p>
+
+<p>and each period contains two vortices rotating in opposite directions.</p>
+
+<p>For a narrow gap</p>
+
+<p>\[
+h=R_2-R_1\ll R_m=\frac{R_1+R_2}{2},
+\]</p>
+
+<p>and with the outer cylinder at rest, the critical $\mathrm{Re}$ may be
+written as</p>
+
+<p>\[
+\mathrm{Re}=\frac{h\Omega_1R_1}{\nu},
+\qquad
+\mathrm{Re}_{\mathrm{cr}}=41.2\sqrt{\frac{R_m}{h}}.
+\]</p>
+
+<p>Viscosity has a stabilizing effect in this problem. A flow that is unstable in
+the inviscid Rayleigh criterion may become stable when viscous diffusion is
+included.</p>
+
+<p>The limiting case $h\to0$ gives plane Couette flow, namely flow between two
+parallel planes in relative motion. This flow is linearly stable to
+infinitesimal perturbations for every $\mathrm{Re}$, although finite
+amplitude perturbations can still produce transition at large $\mathrm{Re}$.</p>
+
+<h2 id="stability-of-flow-in-a-pipe">Stability of Flow in a Pipe</h2>
+
+<p>For a parallel flow in the $x$ direction, the unperturbed velocity is
+independent of $x$. Perturbations may be written as wave packets composed of
+normal modes</p>
+
+<p>\[
+\b{v}_1=e^{i(kx-\omega t)}\b{f}(y,z).
+\]</p>
+
+<p>The growth rate is</p>
+
+<p>\[
+\gamma(k)=\Im( \omega(k) ).
+\]</p>
+
+<p>If $\gamma(k)&gt;0$ for a range of wave numbers, the corresponding packet is
+amplified. It is also transported downstream with group velocity</p>
+
+<p>\[
+v_g=\odv{\Re( \omega )}{k}.
+\]</p>
+
+<p>This introduces a distinction absent in the simplest bounded problems. An
+instability is absolute if the perturbation grows at a fixed spatial point. It
+is convected if the perturbation grows while being carried downstream, but
+decays at each fixed point after the packet passes.</p>
+
+<p>For a disturbance imposed with real frequency $\omega$ at a fixed point, the
+wave number $k$ is generally complex. The neutral stability curve is the curve
+in the $(\omega,\mathrm{Re})$ plane for which</p>
+
+<p>\[
+\Im( k(\omega,\mathrm{Re}) )=0.
+\]</p>
+
+<p>It separates perturbations that grow downstream from perturbations that decay
+downstream.</p>
+
+<p>For plane Poiseuille flow, between two parallel planes, one may write</p>
+
+<p>\[
+\b{v}_1
+=e^{i(k_xx+k_zz-\omega t)}\b{f}(y).
+\]</p>
+
+<p>The first neutral mode is two-dimensional:</p>
+
+<p>\[
+k_z=0.
+\]</p>
+
+<p>This is the content of Squire’s theorem in this setting: for a fixed wave
+number, the first unstable mode of a parallel shear flow may be taken
+two-dimensional. Thus it is enough to study disturbances in the plane of the
+base flow.</p>
+
+<p>For plane Poiseuille flow the critical $\mathrm{Re}$ is</p>
+
+<p>\[
+\mathrm{Re}_{\mathrm{cr}}=5772,
+\]</p>
+
+<p>where</p>
+
+<p>\[
+\mathrm{Re}=\frac{U_{\max}h}{2\nu},
+\]</p>
+
+<p>$U_{\max}$ is the maximum velocity and $h$ is the distance between the planes.
+The critical wave number is approximately</p>
+
+<p>\[
+k_{\mathrm{cr}}\simeq \frac{2.04}{h}.
+\]</p>
+
+<p>For flow in a circular pipe, the classical linear problem gives no unstable
+infinitesimal modes. Axisymmetric perturbations are damped, and no unstable
+non-axisymmetric mode is found. Nevertheless, pipe flow undergoes transition
+in experiments. The transition is therefore subcritical: sufficiently large
+finite perturbations can trigger turbulence even though infinitesimal
+perturbations decay.</p>
+
+<p>With</p>
+
+<p>\[
+\mathrm{Re}=\frac{U_{\max}d}{2\nu}=\frac{\overline U d}{\nu},
+\]</p>
+
+<p>where $d$ is the pipe diameter, carefully prepared laminar pipe flow may be
+maintained up to very large $\mathrm{Re}$. In ordinary experiments, however, finite
+disturbances often trigger turbulence for</p>
+
+<p>\[
+\mathrm{Re}\simeq 1800
+\]</p>
+
+<p>or above. For plane channel flow, finite-amplitude turbulent regions may
+appear for $\mathrm{Re}$ of order $1000$. This is a hard transition: the drag changes
+discontinuously between the laminar and turbulent states.</p>
+
+<h2 id="orr-sommerfeld-formulation">Orr-Sommerfeld Formulation</h2>
+
+<p>For a plane parallel base flow</p>
+
+<p>\[
+\b{v}_0=U(y)\b{e}_x,
+\]</p>
+
+<p>a two-dimensional incompressible perturbation can be written with a stream
+function</p>
+
+<p>\[
+\psi(y)e^{i(kx-\omega t)}.
+\]</p>
+
+<p>Let</p>
+
+<p>\[
+c=\frac{\omega}{k}.
+\]</p>
+
+<p>The linearized Navier-Stokes equations reduce to the Orr-Sommerfeld equation</p>
+
+<p>\[
+(U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi
+=\frac{1}{ik\mathrm{Re}}
+(\psi^{\prime\prime\prime\prime}-2k^2\psi^{\prime\prime}+k^4\psi).
+\]</p>
+
+<p>For no-slip walls,</p>
+
+<p>\[
+\psi=0,\qquad \psi^\prime=0.
+\]</p>
+
+<p>In the inviscid limit $\mathrm{Re}\to\infty$, this becomes Rayleigh’s equation</p>
+
+<p>\[
+(U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi=0.
+\]</p>
+
+<p>Rayleigh’s inflection-point theorem says that inviscid instability of a
+smooth parallel shear flow requires an inflection point:</p>
+
+<p>\[
+U^{\prime\prime}(y)=0
+\]</p>
+
+<p>somewhere in the flow. This condition is necessary, not sufficient. It is one
+reason why shear layers with inflectional velocity profiles are much more
+unstable than plane Couette flow.</p>
+
+<h2 id="instability-of-tangential-discontinuities">Instability of Tangential Discontinuities</h2>
+
+<p>Consider two layers of inviscid incompressible fluid moving tangentially past
+one another. The separating surface is a surface of tangential discontinuity.
+Let the interface be $z=0$. In a frame where the lower fluid is at rest, take</p>
+
+<p>\[
+\b{U}_1=U\b{e}_x,\qquad
+\b{U}_2=0,
+\]</p>
+
+<p>with densities $\rho_1$ and $\rho_2$. We neglect gravity and surface tension
+first.</p>
+
+<p>Let the interface displacement be</p>
+
+<p>\[
+\zeta=\zeta_0e^{i(kx-\omega t)}.
+\]</p>
+
+<p>In each fluid, the perturbation pressure satisfies Laplace’s equation,</p>
+
+<p>\[
+\laplacian p^\prime=0.
+\]</p>
+
+<p>For the upper fluid $z&gt;0$ the decaying solution is</p>
+
+<p>\[
+p_1^\prime=C_1e^{i(kx-\omega t)}e^{-kz}.
+\]</p>
+
+<p>The linearized Euler equation in the upper fluid is</p>
+
+<p>\[
+\pdv{\b{v}_1^\prime}{t}
++U\pdv{\b{v}_1^\prime}{x}
+=-\frac{1}{\rho_1}\grad p_1^\prime.
+\]</p>
+
+<p>Its $z$-component gives, at $z=0$,</p>
+
+<p>\[
+v_{1z}^\prime=\frac{k p_1^\prime}{i\rho_1(kU-\omega)}.
+\]</p>
+
+<p>The kinematic condition at the moving interface is</p>
+
+<p>\[
+\pdv{\zeta}{t}
+=v_{1z}^\prime-U\pdv{\zeta}{x}.
+\]</p>
+
+<p>Therefore</p>
+
+<p>\[
+v_{1z}^\prime=i\zeta(kU-\omega),
+\]</p>
+
+<p>and hence</p>
+
+<p>\[
+p_1^\prime=-\frac{\rho_1\zeta}{k}(kU-\omega)^2.
+\]</p>
+
+<p>For the lower fluid $z&lt;0$,</p>
+
+<p>\[
+p_2^\prime=C_2e^{i(kx-\omega t)}e^{kz},
+\]</p>
+
+<p>and the same calculation, now with $U_2=0$, gives</p>
+
+<p>\[
+p_2^\prime=\frac{\rho_2\zeta}{k}\omega^2.
+\]</p>
+
+<p>Continuity of pressure at the interface gives</p>
+
+<p>\[
+\rho_1(kU-\omega)^2=-\rho_2\omega^2.
+\]</p>
+
+<p>Solving for $\omega$,</p>
+
+<p>\[
+\omega
+=kU\frac{\rho_1\pm i\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
+\]</p>
+
+<p>There is always a root with positive imaginary part. Therefore an ideal
+tangential discontinuity is unstable to infinitesimal perturbations. This is
+the Kelvin-Helmholtz instability.</p>
+
+<p>For arbitrary tangential velocities $U_1$ and $U_2$, the same result is</p>
+
+<p>\[
+\omega
+=k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
+\pm i k(U_1-U_2)
+\frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2},
+\]</p>
+
+<p>where the sign is chosen so that one mode grows. The growth rate is</p>
+
+<p>\[
+\gamma
+=k|U_1-U_2|\frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
+\]</p>
+
+<p>The ideal discontinuity has no intrinsic length scale, so the growth rate
+increases without bound as $k\to\infty$. This is not physical. In a real fluid
+the velocity changes over a finite shear-layer thickness, and viscosity
+regularizes the shortest wavelengths.</p>
+
+<p>If gravity and surface tension are included, the dispersion relation becomes</p>
+
+<p>\[
+\omega
+=k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
+\pm
+\left[
+\frac{gk(\rho_2-\rho_1)+\sigma k^3}{\rho_1+\rho_2}
+-\frac{\rho_1\rho_2k^2(U_1-U_2)^2}{(\rho_1+\rho_2)^2}
+\right]^{1/2},
+\]</p>
+
+<p>where the lower fluid has density $\rho_2$ and the upper fluid has density
+$\rho_1$. The interface is unstable when the expression under the square root
+is negative. Thus gravity and surface tension are stabilizing when</p>
+
+<p>\[
+gk(\rho_2-\rho_1)+\sigma k^3&gt;0,
+\]</p>
+
+<p>while the velocity jump is destabilizing.</p>
+
+  
+</article>
+
+
+
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/physics/stability-of-flows.html">
+  </applause-button>
+
+
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img src="/assets/img/piano.png" alt="Jiho Jun" class="avatar" width="120" height="120" loading="lazy">
+
+  
+
+  
+  
+  <h2 class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p>Hello. <br>
+Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
+
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+    
+
+
+  
+
+  
+    
+
+
+                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/strange-attractors.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/strange-attractors.html" class="flip-title">Strange Attractors</a>  </h3>      <a class="fill-card no-hover" href="/physics/strange-attractors.html" tabindex="-1"><span class="sr-only">Continue reading Strange Attractors</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/quasi-periodic-flow-and-frequency-locking.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/quasi-periodic-flow-and-frequency-locking.html" class="flip-title">Quasi-periodic Flow and Frequency Locking</a>  </h3>      <a class="fill-card no-hover" href="/physics/quasi-periodic-flow-and-frequency-locking.html" tabindex="-1"><span class="sr-only">Continue reading Quasi-periodic Flow and Frequency Locking</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/strange-attractors.html" class="flip-title">    <span>              [Fluid Mechanics 3.3]            Strange Attractors    </span>  </a>      <time class="faded fine" datetime="2026-04-15T00:00:00+09:00">      15 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/strange-attractors.html"></span>  </li>          <li class="h4">  <a href="/physics/quasi-periodic-flow-and-frequency-locking.html" class="flip-title">    <span>              [Fluid Mechanics 3.2]            Quasi-periodic Flow and Frequency Locking    </span>  </a>      <time class="faded fine" datetime="2026-04-14T00:00:00+09:00">      14 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html"></span>  </li>          <li class="h4">  <a href="/physics/damping-of-gravity-waves.html" class="flip-title">    <span>              [Fluid Mechanics 2.10]            Damping of Gravity Waves    </span>  </a>      <time class="faded fine" datetime="2026-04-08T00:00:00+09:00">      08 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/damping-of-gravity-waves.html"></span>  </li>          <li class="h4">  <a href="/physics/oscillatory-motion-in-a-viscous-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 2.9]            Oscillatory Motion in a Viscous Fluid    </span>  </a>      <time class="faded fine" datetime="2026-04-07T00:00:00+09:00">      07 Apr 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid.html"></span>  </li>      </ul></aside>
+
+  
+
+  
+    
+<aside class="comments related" role="complementary">
+  <h2 class="hr-bottom">Comments</h2>
+  
+
+  
+  
+    <!--
+    <script type="text/javascript">
+      $(function () {
+        const origin = "https://giscus.app";
+        const iframe = "iframe.giscus-frame";
+        const lightTheme = "light";
+        const darkTheme = "dark_dimmed";
+
+        let giscusAttributes = {
+          "src": "https://giscus.app/client.js",
+          "data-repo": "berryjune07/berryjune07.github.io",
+          "data-repo-id": "",
+          "data-category": "General",
+          "data-category-id": "",
+          "data-mapping": "pathname",
+          "data-strict": "0",
+          "data-reactions-enabled": "",
+          "data-emit-metadata": "0",
+          "data-input-position": "",
+          "data-theme": "light",
+          "data-lang": "en",
+          "data-loading": "lazy",
+          "crossorigin": "anonymous",
+          "async": ""
+        };
+        let giscusScript = document.createElement("script");
+        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+        document.getElementById("tail-wrapper").appendChild(giscusScript);
+        addEventListener("message", (event) => {
+          if (event.source === window && event.data &&
+                  event.data.direction === ModeToggle.ID) {
+            /* global theme mode changed */
+            const mode = event.data.message;
+            const theme = (mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme);
+            const message = {
+              setConfig: {
+                theme: theme
+              }
+            };
+            const giscus = document.querySelector(iframe).contentWindow;
+            giscus.postMessage({ giscus: message }, origin);
+          }
+        });
+      });
+    </script>
+    -->
+
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    </script>
+  
+
+
+</aside>
+
+
+  
+
+  
+<footer class="content" role="contentinfo">
+  <hr>
+  
+    <p><small class="copyright">© 2026. All rights reserved.
+</small></p>
+  
+  
+    <nav class="legal"><small>
+    
+      
+      <a class="heading flip-title" href="/licenses/">LICENSES</a>
+      |
+    
+      
+      <a class="heading flip-title" href="/cookies-policy/">COOKIES POLICY</a>
+      
+    
+    </small></nav>
+  
+  
+  <hr class="sr-only">
+</footer>
+
+
+</main>
+
+  <hy-drawer id="_drawer" class="" side="left" threshold="10" noscroll>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg " style="background:center / cover url(/assets/img/note.jpg)"></div>
+
+    <div class="sidebar-sticky no-fouc">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/berry.jpg" class="avatar" alt="Jiho's Blog" width="120" height="120" loading="lazy">
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">Jiho's Blog</h2></a>
+    
+    
+      <p class="">
+        <em>Appassionato</em>
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+  
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/about/" class="sidebar-nav-item">About</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-10">
+          
+          <div class="list-wrapper">
+            <a href="/mathematics/" class="sidebar-nav-item">Mathematics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(10)">
+                <label id="spread-icon-10" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-statistics/">Statistics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-number-theory/">Number Theory</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-linear-algebra/">Linear Algebra</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-calculus/">Calculus</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-topology/">Topology</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-differential-geometry/">Differential Geometry</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-11">
+          
+          <div class="list-wrapper">
+            <a href="/physics/" class="sidebar-nav-item">Physics</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(11)">
+                <label id="spread-icon-11" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-electromagnetism/">Classical Electromagnetism</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-quantum-mechanics/">Quantum Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-fluid-mechanics/">Fluid Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-classical-mechanics/">Classical Mechanics</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-elementary-physics/">Elementary Physics</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-12">
+          
+          <div class="list-wrapper">
+            <a href="/computer-science/" class="sidebar-nav-item">Computer Science</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(12)">
+                <label id="spread-icon-12" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-problem-solving/">Problem Solving</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-algorithms/">Algorithms</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-artificial-intelligence/">Artificial Intelligence</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+            <input type="checkbox" id="folder-checkbox-13">
+          
+          <div class="list-wrapper">
+            <a href="/classical-music/" class="sidebar-nav-item">Classical Music</a>
+            
+              <button class="spread-btn" onclick="javascript:spread(13)">
+                <label id="spread-icon-13" class="material-icons">arrow_right</label>
+              </button>
+            
+          </div>
+          
+            <ul class="list-body">
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-ravel/">Ravel</a>
+                </li>
+            
+          
+            
+                <li>
+                  <a class="sidebar-nav-subitem" href="/tag-rachmaninoff/">Rachmaninoff</a>
+                </li>
+            </ul>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/posts.html" class="sidebar-nav-item">Posts</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/tags/" class="sidebar-nav-item">Tags</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/gallery.html" class="sidebar-nav-item">Gallery</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+    
+      
+        
+        
+        <li>
+          
+          <div class="list-wrapper">
+            <a href="/resume/" class="sidebar-nav-item">Resume</a>
+            
+          </div>
+          
+        </li>
+      
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://github.com/phylosopher07" title="GitHub" class="no-mark-external">
+      <span class="icon-github"></span>
+      <span class="sr-only">GitHub</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:pianoforte0203@gmail.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://facebook.com/100078342350761" title="Facebook" class="no-mark-external">
+      <span class="icon-facebook"></span>
+      <span class="sr-only">Facebook</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+
+  <!--
+  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Visitors&edge_flat=false"/>
+  -->
+
+</div>
+
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden>
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+<script nomodule>!function(){var t,n=document.createElement("script");!("noModule"in n)&&"onbeforeload"in n&&(t=!1,document.addEventListener("beforeload",function(e){if(e.target===n)t=!0;else if(!e.target.hasAttribute("nomodule")||!t)return;e.preventDefault()},!0),n.type="module",n.src=".",document.head.appendChild(n),n.remove())}();
+</script>
+<script src="/assets/js/hydejack-9.1.6.js" type="module"></script>
+<script src="/assets/js/LEGACY-hydejack-9.1.6.js" nomodule defer></script>
+<script src="/assets/js/sidebar-folder.js"></script>
+<script src="/assets/js/clap-button.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+  <script src="/assets/js/lightbox.js"></script>
+
+
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  let config = {
+    startOnLoad: true,
+    fontFamily: "JetBrains Mono",
+    theme: "neutral"
+  };
+  mermaid.initialize(config);
+  mermaid.run({ querySelector: ".language-mermaid" });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      mermaid.run({ querySelector: ".language-mermaid" });
+    });
+</script>
+
+<script>
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-load", function () {
+      get_clap_count();
+      apply_lightbox();
+    });
+  document
+    .getElementById("_pushState")
+    .addEventListener("hy-push-state-after", function () {
+      render_KaTeX();
+    });
+</script>
+
+
+  <script>!function(w, d) {
+    w.ga=w.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+    /**/
+      if (navigator.CookiesOK) {
+        ga('create', 'G-VMBTN8BX5P', 'auto');
+      } else if (d.cookie.indexOf("hy--cookies-ok=true") > -1) {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none',
+          'clientId': localStorage ? localStorage.getItem('ga--client-id') : undefined
+        });
+      } else {
+        ga('create', 'G-VMBTN8BX5P', {
+          'storage': 'none'
+        });
+        ga('set', 'forceSSL', true);
+        ga('set', 'anonymizeIp', true);
+      }
+    /**/
+
+    var pushStateEl = d.getElementById('_pushState');
+    var timeoutId;
+    pushStateEl.addEventListener('hy-push-state-load', function() {
+      w.clearTimeout(timeoutId);
+      timeoutId = w.setTimeout(function() {
+        ga('set', 'page', w.location.pathname);
+        ga('send', 'pageview');
+      }, 500);
+    });
+
+    d.addEventListener('hy--cookies-ok', function () {
+      w.ga(function(tracker) {
+        w.ga("set", "anonymizeIp", undefined);
+        localStorage && localStorage.setItem("ga--client-id", tracker.get("clientId"));
+      });
+    });
+
+    w.loadJSDeferred('https://www.google-analytics.com/analytics.js');
+  }(window, document);</script>
+
+
+<script type="module">
+  if ('serviceWorker' in navigator) {
+    /**/
+    navigator.serviceWorker.getRegistration()
+      .then(r => r.unregister())
+      .catch(() => {});
+    /**/
+  }
+</script>
+<!--<![endif]-->
+
+  <!--
+<style>
+:root {
+  --cat-eye-x: 0px;
+  --cat-eye-y: 0px;
+}
+
+#floating-cat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 130px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#floating-cat .cat,
+#floating-cat .cat * {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#floating-cat .cat,
+#floating-cat .ears,
+#floating-cat .eyes,
+#floating-cat .muzzle,
+#floating-cat .body,
+#floating-cat .paw,
+#floating-cat .tail,
+#floating-cat .tail-segment {
+  position: relative;
+}
+
+#floating-cat .head,
+#floating-cat .body,
+#floating-cat .paw,
+#floating-cat .tail-segment {
+  background-color: #000;
+}
+
+#floating-cat .left { float: left; }
+#floating-cat .right { float: right; }
+
+#floating-cat .cat {
+  margin-top: 8px;
+  transform: scale(0.45);
+  transform-origin: top right;
+  animation: cat-purr 5s infinite cubic-bezier(0,.75,1,.25);
+}
+
+/* ---------- HEAD ---------- */
+#floating-cat .head {
+  width: 100px;
+  height: 90px;
+  border-radius: 50%;
+  z-index: 100;
+  animation: cat-head-bob 5s infinite ease-in-out;
+}
+
+/* ---------- EARS ---------- */
+#floating-cat .ears {
+  top: -20px;
+  z-index: -100;
+}
+
+#floating-cat .ear {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #000;
+}
+
+#floating-cat .ear.left {
+  transform: rotate(-20deg) translateX(-10px);
+}
+
+#floating-cat .ear.right {
+  transform: rotate(20deg) translateX(10px);
+}
+
+/* ---------- EYES ---------- */
+#floating-cat .eyes {
+  top: -18px;
+  width: 60%;
+}
+
+#floating-cat .eye {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #FFD700;
+  animation: cat-eye-blink 5s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+#floating-cat .pupil {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    calc(-50% + var(--cat-eye-x)),
+    calc(-50% + var(--cat-eye-y))
+  );
+  transition: transform 0.05s linear;
+}
+
+/* ---------- MUZZLE ---------- */
+#floating-cat .muzzle {
+  top: 50px;
+}
+
+#floating-cat .nose {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #666;
+}
+
+/* ---------- BODY ---------- */
+#floating-cat .body {
+  width: 200px;
+  height: 120px;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  border-bottom-right-radius: 20px;
+  top: -75px;
+  left: 90px;
+  z-index: -10;
+}
+
+#floating-cat .paw {
+  height: 30px;
+  width: 50px;
+  border-radius: 25px;
+  left: -100px;
+  top: 90px;
+}
+
+/* ---------- TAIL ---------- */
+#floating-cat .tail {
+  left: 178.5px;
+  top: -100px;
+  transform: rotate(90deg);
+}
+
+#floating-cat .tail-segment {
+  height: 20px;
+  width: 30px;
+  border-radius: 25px;
+  top: 0;
+  left: 10px;
+  animation: cat-tail-swish 5s infinite cubic-bezier(.8,0,.2,1);
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes cat-tail-swish {
+  0%,10% {transform: rotate(12deg);}
+  40% {transform: rotate(-5deg);}
+  50% {transform: rotate(5deg);}
+  60% {transform: rotate(-5deg);}
+  100% {transform: rotate(12deg);}
+}
+
+@keyframes cat-head-bob {
+  0%,10% {transform: translate(-15px, 45px);}
+  30%,75% {transform: translate(0, 0);}
+  90%,100% {transform: translate(-15px, 45px);}
+}
+
+@keyframes cat-eye-blink {
+  0%,10%,95%,100% {transform: scaleY(0);}
+  15%,48%,52%,90% {transform: scaleY(1);}
+  50% {transform: scaleY(0);}
+}
+
+@keyframes cat-purr {
+  0%,2%,4%,6%,8%,10%,12%,14%,16%,18%,20%,95%,97%,99% {left: -1px;}
+  1%,3%,5%,7%,9%,11%,13%,15%,17%,19%,21%,94%,96%,98%,100% {left: 0;}
+}
+</style>
+
+<div id="floating-cat" aria-hidden="true">
+  <div class="cat">
+    <div class="head">
+      <div class="ears">
+        <div class="ear left"></div>
+        <div class="ear right"></div>
+      </div>
+
+      <div class="eyes">
+        <div class="eye left"><div class="pupil"></div></div>
+        <div class="eye right"><div class="pupil"></div></div>
+      </div>
+
+      <div class="muzzle">
+        <div class="nose"></div>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="paw"></div>
+    </div>
+
+    <div class="tail">
+      <div class="tail-segment">
+        <div class="tail-segment">
+          <div class="tail-segment">
+            <div class="tail-segment">
+              <div class="tail-segment">
+                <div class="tail-segment">
+                  <div class="tail-segment">
+                    <div class="tail-segment">
+                      <div class="tail-segment">
+                        <div class="tail-segment">
+                          <div class="tail-segment">
+                            <div class="tail-segment">
+                              <div class="tail-segment">
+                                <div class="tail-segment"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var box = document.getElementById('floating-cat');
+  var toc = document.getElementById('markdown-toc');
+  if (!box) return;
+
+  var MAX_OFFSET = 4;
+  var GAP = 12;
+  var MIN_EDGE = 12;
+
+  function hideCat() {
+    box.style.display = 'none';
+  }
+
+  function placeCat() {
+    if (!toc) {
+      hideCat();
+      return;
+    }
+
+    var tocRect = toc.getBoundingClientRect();
+    var width = box.offsetWidth || 0;
+    var height = box.offsetHeight || 0;
+    var scrollX = window.pageXOffset || document.documentElement.scrollLeft || 0;
+    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+
+    if (!tocRect.width || !tocRect.height || !width || !height) {
+      hideCat();
+      return;
+    }
+
+    var left = tocRect.left + scrollX + (tocRect.width - width) / 2;
+    var maxLeft = scrollX + window.innerWidth - width - MIN_EDGE;
+    var minLeft = scrollX + MIN_EDGE;
+    left = Math.min(Math.max(left, minLeft), maxLeft);
+
+    var top = tocRect.top + scrollY - height - GAP;
+    var minTop = scrollY + MIN_EDGE;
+    top = Math.max(top, minTop);
+
+    box.style.display = 'block';
+    box.style.left = left + 'px';
+    box.style.top = top + 'px';
+  }
+
+  function updateEyes(e) {
+    var rect = box.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+
+    var centerX = rect.width / 2;
+    var centerY = rect.height / 2;
+
+    var dx = x - centerX;
+    var dy = y - centerY;
+
+    var dist = Math.hypot(dx, dy) || 1;
+    dx /= dist;
+    dy /= dist;
+
+    root.style.setProperty('--cat-eye-x', dx * MAX_OFFSET + 'px');
+    root.style.setProperty('--cat-eye-y', dy * MAX_OFFSET + 'px');
+  }
+
+  function resetEyes() {
+    root.style.setProperty('--cat-eye-x', '0px');
+    root.style.setProperty('--cat-eye-y', '0px');
+  }
+
+  window.addEventListener('mousemove', updateEyes);
+  window.addEventListener('mouseleave', resetEyes);
+  window.addEventListener('scroll', placeCat, { passive: true });
+  window.addEventListener('resize', placeCat);
+  window.addEventListener('load', placeCat);
+  placeCat();
+  requestAnimationFrame(placeCat);
+})();
+</script>
+-->
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <nav id="breadcrumbs" class="screen-only"><ul>
+  
+  
+</ul></nav>
+
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+  
+    <template id="_cookies-banner-template">
+  <div id="_cookies-banner" class="navbar fixed-bottom CookiesOK">
+    <div class="content">
+      <div class="nav-btn-bar">
+        <small class="faded">
+          <span>This site uses cookies. <a href="/cookies-policy/">Cookies Policy</a>.
+</span>
+          <button id="_cookies-ok" class="btn btn-primary btn-sm">Okay</button>
+        </small>
+      </div>
+    </div>
+  </div>
+</template>
+
+  
+  
+    <template id="_dark-mode-template">
+  <button id="_dark-mode" class="nav-btn no-hover">
+    <span class="sr-only">Dark Mode</span>
+    <span class="icon-brightness-contrast"></span>
+  </button>
+</template>
+
+  
+  
+    <template id="_search-template">
+  <button id="_search" class="nav-btn no-hover">
+    <label class="sr-only" for="_search-input">Search</label>
+    <span class="icon-search"></span>
+  </button>
+  <div id="_search-box">
+    <div class="nav-btn">
+      <span class="icon-search"></span>
+    </div>
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <button type="reset" class="nav-btn no-hover">
+      <span class="sr-only">Close</span>
+      <span class="icon-cross"></span>
+    </button>
+  </div>
+  <div id="_hits"></div>
+</template>
+
+  
+</div>
+
+<script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+<div class="elfsight-app-72805aa7-c85a-4e3d-ac49-24dba36d6185" data-elfsight-app-lazy></div>
+</body>
+</html>

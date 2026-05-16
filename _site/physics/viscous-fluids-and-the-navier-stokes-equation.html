@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
+    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
   };
 }(window);</script>
 
@@ -423,11 +423,11 @@ Thus, the viscous stress tensor for an isotropic Newtonian fluid can be written 
 <p>We usually separate the viscous stress tensor into two terms where one of them is traceless.</p>
 
 <p>\[
-\bs{\varepsilon} = \eta \left[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right] + \zeta (\div \b{v}) \b{I}
+\bs{\varepsilon} = \mu \left[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right] + \zeta (\div \b{v}) \b{I}
 \]</p>
 
-<p>where $\eta$ and $\zeta$ are <strong>coefficients of viscosity</strong>.
-Especially, $\eta$ is called the <strong>shear viscosity</strong> or <strong>dynamic viscosity</strong> and $\zeta$ is called the <strong>bulk viscosity</strong> or <strong>volume viscosity</strong>.
+<p>where $\mu$ and $\zeta$ are <strong>coefficients of viscosity</strong>.
+Especially, $\mu$ is called the <strong>shear viscosity</strong> or <strong>dynamic viscosity</strong> and $\zeta$ is called the <strong>bulk viscosity</strong> or <strong>volume viscosity</strong>.
 As we will see later, these coefficients are always positive.</p>
 
 <h2 id="navierstokes-equation">Navier–Stokes equation</h2>
@@ -435,29 +435,29 @@ As we will see later, these coefficients are always positive.</p>
 <p>By substituting the expression of viscous stress tensor into the equation of motion, we obtain the <strong>Navier–Stokes equation</strong>:</p>
 
 <p>\[
-\pdv{(\rho \b{v})}{t} + \div \left( \rho \b{v} \otimes \b{v} + [ p - \zeta (\div \b{v}) ] \b{I} - \eta \left[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right] \right) = \rho \b{a}
+\pdv{(\rho \b{v})}{t} + \div \left( \rho \b{v} \otimes \b{v} + [ p - \zeta (\div \b{v}) ] \b{I} - \mu \left[ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right] \right) = \rho \b{a}
 \]</p>
 
 <p>where $\b{a}$ is the acceleration due to external forces.
 We can write the Navier–Stokes equation also in a convective form, simplifying the equation above using a mass continuity equation:</p>
 
 <p>\[
-\rho \mdv{\b{v}} = - \grad p + \div \left[ \eta \left\{ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\} \right] + \grad [ \zeta (\div \b{v}) ] + \rho \b{a}
+\rho \mdv{\b{v}} = - \grad p + \div \left[ \mu \left\{ \grad \b{v} + (\grad \b{v})^\top - \frac{2}{3} (\div \b{v}) \b{I} \right\} \right] + \grad [ \zeta (\div \b{v}) ] + \rho \b{a}
 \]</p>
 
-<p>$\eta$ and $\zeta$ are functions of pressure and temperature. In general, $p$ and $T$ are not constant throughout the fluid, so 
-$\eta$ and $\zeta$ cannot be taken outside the graient operator. In most cases, however, the viscosity coefficients do not change noticeably in the fluid, i.e., 
-they may be regarded as constant. If then, $\eta$ and $\zeta$ can be taken outside the gradient operator.</p>
+<p>$\mu$ and $\zeta$ are functions of pressure and temperature. In general, $p$ and $T$ are not constant throughout the fluid, so 
+$\mu$ and $\zeta$ cannot be taken outside the graient operator. In most cases, however, the viscosity coefficients do not change noticeably in the fluid, i.e., 
+they may be regarded as constant. If then, $\mu$ and $\zeta$ can be taken outside the gradient operator.</p>
 
 <p>\[
-\rho \mdv{\b{v}} = - \grad p + \eta \laplacian \b{v} + \left( \zeta + \frac{1}{3} \eta \right) \grad (\div \b{v}) + \rho \b{a}
+\rho \mdv{\b{v}} = - \grad p + \mu \laplacian \b{v} + \left( \zeta + \frac{1}{3} \mu \right) \grad (\div \b{v}) + \rho \b{a}
 \]</p>
 
 <p>since $\div (\grad \b{v})^\top = \grad (\div \b{v})$.
 We also often use the following induced coefficients:</p>
 
 <p>\[
-\nu = \frac{\eta}{\rho}, \quad \xi = \frac{\zeta}{\rho}
+\nu = \frac{\mu}{\rho}, \quad \xi = \frac{\zeta}{\rho}
 \]</p>
 
 <p>where $\nu$ is called the <strong>shear kinematic viscosity</strong>(or simply just kinematic viscosity) and $\xi$ is called the <strong>bulk kinematic viscosity</strong>.
@@ -679,7 +679,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">Couette Flow and Poiseuille Flow</a>  </h3>      <a class="fill-card no-hover" href="/physics/couette-flow-and-poiseuille-flow.html" tabindex="-1"><span class="sr-only">Continue reading Couette Flow and Poiseuille Flow</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">Energy Dissipation in an Incompressible Fluid</a>  </h3>      <a class="fill-card no-hover" href="/physics/energy-dissipation-in-an-incompressible-fluid.html" tabindex="-1"><span class="sr-only">Continue reading Energy Dissipation in an Incompressible Fluid</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">    <span>              [Fluid Mechanics 2.3]            Couette Flow and Poiseuille Flow    </span>  </a>      <time class="faded fine" datetime="2026-01-20T00:00:00+09:00">      20 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html"></span>  </li>          <li class="h4">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 2.2]            Energy Dissipation in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2026-01-19T00:00:00+09:00">      19 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/internal-waves-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 1.10]            Internal Waves in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2025-10-26T00:00:00+09:00">      26 Oct 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/gravity-waves.html" class="flip-title">    <span>              [Fluid Mechanics 1.9]            Gravity Waves    </span>  </a>      <time class="faded fine" datetime="2025-09-17T00:00:00+09:00">      17 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/gravity-waves.html"></span>  </li>      </ul></aside>
+                                                                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">Couette Flow and Poiseuille Flow</a>  </h3>      <a class="fill-card no-hover" href="/physics/couette-flow-and-poiseuille-flow.html" tabindex="-1"><span class="sr-only">Continue reading Couette Flow and Poiseuille Flow</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">Energy Dissipation in an Incompressible Fluid</a>  </h3>      <a class="fill-card no-hover" href="/physics/energy-dissipation-in-an-incompressible-fluid.html" tabindex="-1"><span class="sr-only">Continue reading Energy Dissipation in an Incompressible Fluid</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/physics/couette-flow-and-poiseuille-flow.html" class="flip-title">    <span>              [Fluid Mechanics 2.3]            Couette Flow and Poiseuille Flow    </span>  </a>      <time class="faded fine" datetime="2026-01-20T00:00:00+09:00">      20 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/couette-flow-and-poiseuille-flow.html"></span>  </li>          <li class="h4">  <a href="/physics/energy-dissipation-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 2.2]            Energy Dissipation in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2026-01-19T00:00:00+09:00">      19 Jan 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/energy-dissipation-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/internal-waves-in-an-incompressible-fluid.html" class="flip-title">    <span>              [Fluid Mechanics 1.10]            Internal Waves in an Incompressible Fluid    </span>  </a>      <time class="faded fine" datetime="2025-10-26T00:00:00+09:00">      26 Oct 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/internal-waves-in-an-incompressible-fluid.html"></span>  </li>          <li class="h4">  <a href="/physics/gravity-waves.html" class="flip-title">    <span>              [Fluid Mechanics 1.9]            Gravity Waves    </span>  </a>      <time class="faded fine" datetime="2025-09-17T00:00:00+09:00">      17 Sep 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/physics/gravity-waves.html"></span>  </li>      </ul></aside>
 
   
 
@@ -752,7 +752,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 <footer class="content" role="contentinfo">
   <hr>
   
-    <p><small class="copyright">© 2023. All rights reserved.
+    <p><small class="copyright">© 2026. All rights reserved.
 </small></p>
   
   

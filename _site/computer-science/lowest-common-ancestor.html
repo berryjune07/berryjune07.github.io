@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-14T02:49:44+09:00',
+    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1065 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   1 min
+   17 min
 </span>
 
       </span>
@@ -300,8 +300,272 @@
 
   
     <!--more-->
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
+  <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
+</ul>
 
-<p>##</p>
+<h2 id="introduction">Introduction</h2>
+
+<p>Let $T$ be a rooted tree.
+For two vertices $u$ and $v$, their <strong>lowest common ancestor(LCA)</strong> is the deepest vertex which is an ancestor of both vertices.</p>
+
+<p>LCA is used very often in tree problems, because it allows us to convert many path problems into root-path problems.
+If $\operatorname{depth}[u]$ denotes the depth of $u$, then the distance between two vertices can be written as</p>
+
+<p>\[
+\operatorname{dist}(u,v)
+=\operatorname{depth}[u]+\operatorname{depth}[v]
+-2\operatorname{depth}[\operatorname{LCA}(u,v)].
+\]</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>The standard method for LCA is <strong>binary lifting</strong>.
+The data structure supports the following operations on a rooted tree:</p>
+
+<ol>
+  <li>
+<strong>Build</strong>: preprocess ancestor information for every vertex.</li>
+  <li>
+<strong>Lift</strong>: given a vertex $v$ and an integer $d$, find the $d$-th ancestor of $v$.</li>
+  <li>
+<strong>LCA query</strong>: given two vertices $u$ and $v$, find $\operatorname{LCA}(u,v)$.</li>
+</ol>
+
+<p>Let</p>
+
+<p>\[
+\operatorname{parent}[v]
+\]</p>
+
+<p>be the parent of $v$.
+Define</p>
+
+<p>\[
+\operatorname{up}[k][v]
+=\text{the }2^k\text{-th ancestor of }v.
+\]</p>
+
+<p>Then</p>
+
+<p>\[
+\operatorname{up}[0][v]=\operatorname{parent}[v],
+\qquad
+\operatorname{up}[k][v]
+=\operatorname{up}[k-1][\operatorname{up}[k-1][v]].
+\]</p>
+
+<p>This is because the $2^k$-th ancestor is obtained by moving up $2^{k-1}$ steps twice.</p>
+
+<p>After computing the table, we can answer $\operatorname{LCA}(u,v)$ as follows.</p>
+
+<p>First, if the two vertices have different depths, lift the deeper vertex by</p>
+
+<p>\[
+\abs{\operatorname{depth}[u]-\operatorname{depth}[v]}
+\]</p>
+
+<p>steps, so that the depths become equal.
+If the two vertices are now equal, this vertex is the LCA.</p>
+
+<p>Otherwise, for $k$ from large to small, check whether</p>
+
+<p>\[
+\operatorname{up}[k][u]\neq \operatorname{up}[k][v].
+\]</p>
+
+<p>If so, lift both $u$ and $v$ by $2^k$.
+After all such jumps, $u$ and $v$ are different children of the LCA.
+Therefore,</p>
+
+<p>\[
+\operatorname{LCA}(u,v)=\operatorname{up}[0][u].
+\]</p>
+
+<p>There is another general formulation using Euler tour and sparse table.
+Perform a DFS from the root and record each vertex when the DFS enters it and whenever the DFS returns to it.
+Let the resulting Euler tour be</p>
+
+<p>\[
+E=[e_1,e_2,\cdots,e_M].
+\]</p>
+
+<p>For each position $i$, define</p>
+
+<p>\[
+D_i=\operatorname{depth}[e_i].
+\]</p>
+
+<p>Also define $\operatorname{first}[v]$ as the first position where $v$ appears in $E$.
+Then $\operatorname{LCA}(u,v)$ is the vertex in the interval</p>
+
+<p>\[
+[\operatorname{first}[u]:\operatorname{first}[v]]
+\]</p>
+
+<p>whose depth is minimum, after swapping the endpoints if necessary.
+Thus LCA can be reduced to a range minimum query on the Euler tour depth array.</p>
+
+<h2 id="proof-of-correctness">Proof of Correctness</h2>
+
+<p>We first prove the correctness of the binary lifting table.</p>
+
+<p><em>Proof.</em>
+For $k=0$, $\operatorname{up}[0][v]$ is defined as the parent of $v$, so it is the $2^0$-th ancestor.
+Assume that $\operatorname{up}[k-1][v]$ is the $2^{k-1}$-th ancestor of $v$ for every vertex $v$.
+Then</p>
+
+<p>\[
+\operatorname{up}[k-1][\operatorname{up}[k-1][v]]
+\]</p>
+
+<p>is the $2^{k-1}$-th ancestor of the $2^{k-1}$-th ancestor of $v$.
+Therefore it is the $2^k$-th ancestor of $v$.
+By induction, the table is correct for every $k$.</p>
+
+<hr>
+
+<p>Now consider the query algorithm.
+Let $w=\operatorname{LCA}(u,v)$.
+Lifting the deeper vertex by the depth difference only moves it along the path to the root.
+Since $w$ is an ancestor of both original vertices, this operation does not change the LCA.
+After this step, $u$ and $v$ have the same depth.</p>
+
+<p>If $u=v$, then the common vertex is clearly the lowest common ancestor.
+Otherwise, suppose $u\neq v$.
+When the algorithm checks powers of two from large to small, it moves $u$ and $v$ upward only when their $2^k$-th ancestors are different.
+Therefore it never moves either vertex above $w$, because above $w$ the ancestors of both vertices are the same.</p>
+
+<p>At the end, there is no $k$ such that $\operatorname{up}[k][u]\neq \operatorname{up}[k][v]$.
+In particular,</p>
+
+<p>\[
+\operatorname{up}[0][u]=\operatorname{up}[0][v].
+\]</p>
+
+<p>Since $u\neq v$, this common parent is an ancestor of both vertices.
+Also, the algorithm has moved them as high as possible while keeping them below different branches.
+Thus their common parent is exactly the lowest common ancestor.</p>
+
+<p>For the Euler tour formulation, consider the first occurrences of $u$ and $v$ in the Euler tour.
+Let $w=\operatorname{LCA}(u,v)$.
+Assume without loss of generality that $\operatorname{first}[u]\le \operatorname{first}[v]$.
+After the first occurrence of $u$ and before the first occurrence of $v$, DFS must return from $u$ to $w$ and then enter the child subtree of $w$ which contains $v$.
+During this part of the Euler tour, DFS never goes above $w$; otherwise $w$ would not be the lowest common ancestor.
+Therefore every recorded vertex in the interval has depth at least $\operatorname{depth}[w]$.
+Also, $w$ itself is recorded in this interval when DFS returns to it from the side containing $u$ before moving toward the side containing $v$.
+Thus the minimum-depth vertex in the interval is exactly $w$.
+Hence the Euler tour reduction to RMQ is correct.</p>
+
+<h2 id="complexity">Complexity</h2>
+
+<p>Let $N$ be the number of vertices.
+Set</p>
+
+<p>\[
+K=\lceil\log_2 N\rceil+1.
+\]</p>
+
+<p>⁣1. <strong>Preprocessing</strong>: $O(N\log N)$</p>
+
+<p>We compute $K$ ancestors for each vertex.</p>
+
+<p>⁣2. <strong>Query</strong>: $O(\log N)$</p>
+
+<p>Each query checks at most $K$ jump sizes.</p>
+
+<p>⁣3. <strong>Space Complexity</strong>: $O(N\log N)$</p>
+
+<p>The table $\operatorname{up}[k][v]$ has $O(N\log N)$ entries.</p>
+
+<p>For the Euler tour method, the Euler tour has length $O(N)$.
+Using a sparse table for RMQ also gives $O(N\log N)$ preprocessing, $O(1)$ query time, and $O(N\log N)$ space.</p>
+
+<h2 id="code">Code</h2>
+
+<p>Let’s see the sample code.
+The tree is assumed to be 1-indexed, and the root is $1$.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">MAXN</span> <span class="o">=</span> <span class="mi">200000</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">LOG</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">G</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">up</span><span class="p">[</span><span class="n">LOG</span><span class="p">][</span><span class="n">MAXN</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">depth</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">now</span><span class="p">,</span> <span class="kt">int</span> <span class="n">prev</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">up</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">now</span><span class="p">]</span> <span class="o">=</span> <span class="n">prev</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">LOG</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">now</span><span class="p">]</span> <span class="o">=</span> <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">now</span><span class="p">]];</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">next</span><span class="o">:</span> <span class="n">G</span><span class="p">[</span><span class="n">now</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">next</span> <span class="o">==</span> <span class="n">prev</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+        <span class="n">depth</span><span class="p">[</span><span class="n">next</span><span class="p">]</span> <span class="o">=</span> <span class="n">depth</span><span class="p">[</span><span class="n">now</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">next</span><span class="p">,</span> <span class="n">now</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">lift</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">LOG</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">k</span><span class="p">))</span> <span class="n">x</span> <span class="o">=</span> <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">x</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">lca</span><span class="p">(</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> <span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">);</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">lift</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">-</span> <span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="p">)</span> <span class="k">return</span> <span class="n">u</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="n">LOG</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">u</span><span class="p">]</span> <span class="o">!=</span> <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">v</span><span class="p">])</span> <span class="p">{</span>
+            <span class="n">u</span> <span class="o">=</span> <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">u</span><span class="p">];</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">up</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">v</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">up</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">u</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">build</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">depth</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">dfs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If $N$ is not fixed at compile time, set <code class="language-plaintext highlighter-rouge">LOG</code> dynamically.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">LOG</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">while</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">LOG</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">)</span> <span class="n">LOG</span><span class="o">++</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>For the Euler tour formulation, we can store pairs $(\operatorname{depth}[v],v)$ in a sparse table and merge by smaller depth.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">dep</span><span class="p">,</span> <span class="n">v</span><span class="p">;</span>
+    <span class="k">static</span> <span class="n">Node</span> <span class="n">merge</span><span class="p">(</span><span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Node</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">dep</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">dep</span><span class="p">)</span> <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">dep</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">dep</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">v</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">v</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="applications">Applications</h2>
+
+<ul>
+  <li>Distance between two vertices in a tree</li>
+  <li>Finding the $k$-th ancestor of a vertex</li>
+  <li>Checking whether one vertex is an ancestor of another</li>
+  <li>Path queries together with prefix values or heavy-light decomposition</li>
+  <li>Reducing tree RMQ problems to array RMQ by Euler tour</li>
+</ul>
 
   
 </article>
@@ -456,7 +720,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/fast-fourier-transform.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/fast-fourier-transform.html" class="flip-title">Fast Fourier Transform</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/fast-fourier-transform.html" tabindex="-1"><span class="sr-only">Continue reading Fast Fourier Transform</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/fast-fourier-transform.html" class="flip-title">    <span>            Fast Fourier Transform    </span>  </a>      <time class="faded fine" datetime="2025-12-17T00:00:00+09:00">      17 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/fast-fourier-transform.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>          <li class="h4">  <a href="/computer-science/topological-sorting.html" class="flip-title">    <span>            Topological Sorting    </span>  </a>      <time class="faded fine" datetime="2025-11-27T00:00:00+09:00">      27 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/topological-sorting.html"></span>  </li>      </ul></aside>
+                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/fast-fourier-transform.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/fast-fourier-transform.html" class="flip-title">Fast Fourier Transform</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/fast-fourier-transform.html" tabindex="-1"><span class="sr-only">Continue reading Fast Fourier Transform</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/fast-fourier-transform.html" class="flip-title">    <span>            Fast Fourier Transform    </span>  </a>      <time class="faded fine" datetime="2025-12-17T00:00:00+09:00">      17 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/fast-fourier-transform.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>      </ul></aside>
 
   
 
@@ -529,7 +793,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
 <footer class="content" role="contentinfo">
   <hr>
   
-    <p><small class="copyright">© 2023. All rights reserved.
+    <p><small class="copyright">© 2026. All rights reserved.
 </small></p>
   
   
