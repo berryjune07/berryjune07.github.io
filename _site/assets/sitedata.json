@@ -1847,7 +1847,7 @@
     },{
       
       "title": "Classical Music",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Analysis, reviews, and performances.\n",
       "content": "\n",
       "categories": [],
@@ -1858,7 +1858,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "The study of algorithms and computer programming\n",
       "content": "\n",
       "categories": [],
@@ -1869,7 +1869,7 @@
     },{
       
       "title": "Games",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Game playthroughs and reviews.\n",
       "content": "\n",
       "categories": [],
@@ -1880,7 +1880,7 @@
     },{
       
       "title": "Mathematics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "The foundation of all academic disciplines\n",
       "content": "\n",
       "categories": [],
@@ -1891,7 +1891,7 @@
     },{
       
       "title": "Physics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "The intrinsic nature of the universe\n",
       "content": "\n",
       "categories": [],
@@ -1902,7 +1902,7 @@
     },{
       
       "title": "Algorithms",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Algorithms\n",
       "content": "\n",
       "categories": ["computer-science"],
@@ -1913,7 +1913,7 @@
     },{
       
       "title": "Artificial Intelligence",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Artificial Intelligence\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\hat{f} = \\argmin_f \\sum_i \\mathcal{L} ( f(x_i), y_i )\\) }\\]\n",
       "categories": ["computer-science"],
@@ -1924,7 +1924,7 @@
     },{
       
       "title": "Calculus",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "calculus\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\nf(x) = \\odv{}{x} \\int_a^x f(x') \\dd{x'}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -1935,7 +1935,7 @@
     },{
       
       "title": "Classical Electromagnetism",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Classical electromagnetism\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\partial_\\mu \\partial^\\mu A^\\nu = \\mu_0 J^\\nu\\) }\\]\n",
       "categories": ["physics"],
@@ -1946,7 +1946,7 @@
     },{
       
       "title": "Classical Mechanics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Classical mechanics\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\delta S = 0\\) }\\]\n",
       "categories": ["physics"],
@@ -1957,7 +1957,7 @@
     },{
       
       "title": "Differential Geometry",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Differential Geometry\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\mathcal{L}_X=\\mathrm{d}\\iota_X+\\iota_X\\mathrm{d}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -1968,7 +1968,7 @@
     },{
       
       "title": "Elementary Physics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Elementary physics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\b{F}=m\\b{a}\\) }\\]\n",
       "categories": ["physics"],
@@ -1979,7 +1979,7 @@
     },{
       
       "title": "Factorio",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Factorio\n",
       "content": "\n",
       "categories": ["games"],
@@ -1990,7 +1990,7 @@
     },{
       
       "title": "Fluid Mechanics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Fluid mechanics\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\rho \\mdv{\\b{v}} = - \\grad p + \\div \\left[ \\eta \\left\\{ \\grad \\b{v} + (\\grad \\b{v})^\\top - \\frac{2}{3} (\\div \\b{v}) \\b{I} \\right\\} \\right] + \\grad [ \\zeta (\\div \\b{v}) ] + \\rho \\b{a}\\) }\\]\n",
       "categories": ["physics"],
@@ -2001,7 +2001,7 @@
     },{
       
       "title": "Linear Algebra",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Linear algebra\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\nf(\\b{u})+f(\\b{v})=f(\\b{u}+\\b{v})\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2012,7 +2012,7 @@
     },{
       
       "title": "Number Theory",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Number theory\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\zeta(s)=\\sum_{n=1}^\\infty \\frac{1}{n^s} = \\prod_{p\\in\\mathbb{P}} \\frac{1}{1-p^{-s}}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2023,7 +2023,7 @@
     },{
       
       "title": "Problem Solving",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Problem Solving  BOJ: \n",
       "content": "\n",
       "categories": ["computer-science"],
@@ -2034,7 +2034,7 @@
     },{
       
       "title": "Quantum Mechanics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Quantum mechanics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\hat{H}\\ket{\\psi} = i\\hbar\\frac{\\partial}{\\partial t}\\ket{\\psi}\\) }\\]\n",
       "categories": ["physics"],
@@ -2045,7 +2045,7 @@
     },{
       
       "title": "Rachmaninoff",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Мой любимый русский виртуоз - Рахманинов.\n",
       "content": "Серге́й Васи́льевич Рахма́нинов (1873-1943), Post Romantic composer, pianist, and conductor.\n\n",
       "categories": ["classical-music"],
@@ -2056,7 +2056,7 @@
     },{
       
       "title": "Ravel",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Ravel, avec ses mélodies fluides et sa technique redoutable\n",
       "content": "Joseph Maurice Ravel (1875-1937), Impressionist composer, pianist, and conductor.\n\n",
       "categories": ["classical-music"],
@@ -2067,7 +2067,7 @@
     },{
       
       "title": "Statistics",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "statistics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\frac{\\bar{X}_n - \\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{d} \\mathcal{N}(0,1)\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2078,7 +2078,7 @@
     },{
       
       "title": "Topology",
-      "date": "2026-08-13 00:22:33 +0900",
+      "date": "2026-08-13 01:01:56 +0900",
       "description": "Topology\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n(X,\\mathcal{T})\\) }\\]\n",
       "categories": ["mathematics"],

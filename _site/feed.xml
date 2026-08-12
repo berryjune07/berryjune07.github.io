@@ -1,1868 +1,2273 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-08-13T00:28:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Sum over Subsets(SOS) DP</title><link href="http://localhost:4000/computer-science/sos-dp.html" rel="alternate" type="text/html" title="Sum over Subsets(SOS) DP" /><published>2026-08-12T00:00:00+09:00</published><updated>2026-08-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/sos-dp</id><content type="html" xml:base="http://localhost:4000/computer-science/sos-dp.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Convex Hull Trick</title><link href="http://localhost:4000/computer-science/convex-hull-trick.html" rel="alternate" type="text/html" title="Convex Hull Trick" /><published>2026-06-30T00:00:00+09:00</published><updated>2026-06-30T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/convex-hull-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/convex-hull-trick.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Segment Tree Beats</title><link href="http://localhost:4000/computer-science/segment-tree-beats.html" rel="alternate" type="text/html" title="Segment Tree Beats" /><published>2026-06-23T00:00:00+09:00</published><updated>2026-06-23T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree-beats</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree-beats.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Transition to Turbulence by Period Doubling</title><link href="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html" rel="alternate" type="text/html" title="Transition to Turbulence by Period Doubling" /><published>2026-04-17T00:00:00+09:00</published><updated>2026-04-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/transition-to-turbulence-by-period-doubling</id><content type="html" xml:base="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-08-13T01:01:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Sum over Subsets(SOS) DP</title><link href="http://localhost:4000/computer-science/sos-dp.html" rel="alternate" type="text/html" title="Sum over Subsets(SOS) DP" /><published>2026-08-12T00:00:00+09:00</published><updated>2026-08-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/sos-dp</id><content type="html" xml:base="http://localhost:4000/computer-science/sos-dp.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Convex Hull Trick</title><link href="http://localhost:4000/computer-science/convex-hull-trick.html" rel="alternate" type="text/html" title="Convex Hull Trick" /><published>2026-06-30T00:00:00+09:00</published><updated>2026-06-30T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/convex-hull-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/convex-hull-trick.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Segment Tree Beats</title><link href="http://localhost:4000/computer-science/segment-tree-beats.html" rel="alternate" type="text/html" title="Segment Tree Beats" /><published>2026-06-23T00:00:00+09:00</published><updated>2026-06-23T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree-beats</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree-beats.html">&lt;!--more--&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Transition to Turbulence by Period Doubling</title><link href="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html" rel="alternate" type="text/html" title="Transition to Turbulence by Period Doubling" /><published>2026-04-17T00:00:00+09:00</published><updated>2026-04-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/transition-to-turbulence-by-period-doubling</id><content type="html" xml:base="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#period-doubling&quot; id=&quot;markdown-toc-period-doubling&quot;&gt;Period Doubling&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#poincare-map-formulation&quot; id=&quot;markdown-toc-poincare-map-formulation&quot;&gt;Poincare Map Formulation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#cascade&quot; id=&quot;markdown-toc-cascade&quot;&gt;Cascade&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#spectrum&quot; id=&quot;markdown-toc-spectrum&quot;&gt;Spectrum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#logistic-map-as-a-model&quot; id=&quot;markdown-toc-logistic-map-as-a-model&quot;&gt;Logistic Map as a Model&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hydrodynamical-interpretation&quot; id=&quot;markdown-toc-hydrodynamical-interpretation&quot;&gt;Hydrodynamical Interpretation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Period Doubling
+&lt;h2 id=&quot;period-doubling&quot;&gt;Period Doubling&lt;/h2&gt;
 
-Another route from regular motion to irregular motion is **period doubling**.
+&lt;p&gt;Another route from regular motion to irregular motion is &lt;strong&gt;period doubling&lt;/strong&gt;.
 Suppose that after the first instability of a steady flow the observed motion
-is periodic with period $T$:
+is periodic with period $T$:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t+T)=\b{v}(\b{r},t).
-\\]
+\]&lt;/p&gt;
 
-As $\mathrm{Re}$ is increased, this periodic motion may lose stability and be
-replaced by a new periodic motion with period $2T$:
+&lt;p&gt;As $\mathrm{Re}$ is increased, this periodic motion may lose stability and be
+replaced by a new periodic motion with period $2T$:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t+2T)=\b{v}(\b{r},t),
 \qquad
 \b{v}(\b{r},t+T)\ne\b{v}(\b{r},t).
-\\]
+\]&lt;/p&gt;
 
-The original frequency
+&lt;p&gt;The original frequency&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega=\frac{2\pi}{T}
-\\]
+\]&lt;/p&gt;
 
-is then accompanied by the subharmonic frequency $\omega/2$. Further
-increase of $\mathrm{Re}$ may produce periods
+&lt;p&gt;is then accompanied by the subharmonic frequency $\omega/2$. Further
+increase of $\mathrm{Re}$ may produce periods&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 4T,\;8T,\;16T,\;\cdots .
-\\]
+\]&lt;/p&gt;
 
-Thus the spectrum contains successive subharmonics
+&lt;p&gt;Thus the spectrum contains successive subharmonics&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\omega}{2},\quad
 \frac{\omega}{4},\quad
 \frac{\omega}{8},\quad\cdots .
-\\]
+\]&lt;/p&gt;
 
-After infinitely many doublings, the period is no longer finite. This gives a
-possible transition to aperiodic deterministic motion.
+&lt;p&gt;After infinitely many doublings, the period is no longer finite. This gives a
+possible transition to aperiodic deterministic motion.&lt;/p&gt;
 
-## Poincare Map Formulation
+&lt;h2 id=&quot;poincare-map-formulation&quot;&gt;Poincare Map Formulation&lt;/h2&gt;
 
-Let $P_{\mathrm{Re}}$ be a Poincare map of the flow. A periodic solution of
-period $T$ is a fixed point
+&lt;p&gt;Let $P_{\mathrm{Re}}$ be a Poincare map of the flow. A periodic solution of
+period $T$ is a fixed point&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 P_{\mathrm{Re}}(X_\ast)=X_\ast.
-\\]
+\]&lt;/p&gt;
 
-Linear stability of this periodic orbit is determined by the eigenvalues of
-the derivative
+&lt;p&gt;Linear stability of this periodic orbit is determined by the eigenvalues of
+the derivative&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 DP_{\mathrm{Re}}(X_\ast).
-\\]
+\]&lt;/p&gt;
 
-These eigenvalues are the Floquet multipliers. A period-doubling bifurcation
-occurs when one real multiplier crosses $-1$:
+&lt;p&gt;These eigenvalues are the Floquet multipliers. A period-doubling bifurcation
+occurs when one real multiplier crosses $-1$:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \lambda=-1.
-\\]
+\]&lt;/p&gt;
 
-After the crossing, the fixed point of $P_{\mathrm{Re}}$ is unstable, but
-there may be a stable orbit of period two:
+&lt;p&gt;After the crossing, the fixed point of $P_{\mathrm{Re}}$ is unstable, but
+there may be a stable orbit of period two:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 P_{\mathrm{Re}}(X_1)=X_2,\qquad
 P_{\mathrm{Re}}(X_2)=X_1.
-\\]
+\]&lt;/p&gt;
 
-In the original continuous-time flow this is a periodic orbit of period
-$2T$.
+&lt;p&gt;In the original continuous-time flow this is a periodic orbit of period
+$2T$.&lt;/p&gt;
 
-Near the bifurcation, the dynamics along the critical direction can often be
-reduced to a one-dimensional normal form
+&lt;p&gt;Near the bifurcation, the dynamics along the critical direction can often be
+reduced to a one-dimensional normal form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 x_{n+1}=-(1+\epsilon)x_n+ax_n^3+\cdots .
-\\]
+\]&lt;/p&gt;
 
-The fixed point $x=0$ changes stability at $\epsilon=0$. A nonzero period-two
-orbit satisfies
+&lt;p&gt;The fixed point $x=0$ changes stability at $\epsilon=0$. A nonzero period-two
+orbit satisfies&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 f_{\epsilon}(x)=-x.
-\\]
+\]&lt;/p&gt;
 
-Using the normal form,
+&lt;p&gt;Using the normal form,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 -(1+\epsilon)x+ax^3=-x,
-\\]
+\]&lt;/p&gt;
 
-and hence
+&lt;p&gt;and hence&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 x^2=\frac{\epsilon}{a}.
-\\]
+\]&lt;/p&gt;
 
-Thus, when $\epsilon/a&gt;0$, the amplitude of the doubled oscillation grows as
+&lt;p&gt;Thus, when $\epsilon/a&amp;gt;0$, the amplitude of the doubled oscillation grows as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 |x|\propto \sqrt{|\epsilon|}.
-\\]
+\]&lt;/p&gt;
 
-This square-root law is analogous to the amplitude scaling near a soft
-hydrodynamic instability.
+&lt;p&gt;This square-root law is analogous to the amplitude scaling near a soft
+hydrodynamic instability.&lt;/p&gt;
 
-## Cascade
+&lt;h2 id=&quot;cascade&quot;&gt;Cascade&lt;/h2&gt;
 
-Let the successive period-doubling thresholds be
+&lt;p&gt;Let the successive period-doubling thresholds be&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}_1,\mathrm{Re}_2,\mathrm{Re}_3,\cdots .
-\\]
+\]&lt;/p&gt;
 
-At $\mathrm{Re}_1$ the period becomes $2T$, at $\mathrm{Re}_2$ it becomes
+&lt;p&gt;At $\mathrm{Re}_1$ the period becomes $2T$, at $\mathrm{Re}_2$ it becomes
 $4T$, and so on. In many one-dimensional maps these thresholds accumulate at
-a finite value
+a finite value&lt;/p&gt;
 
-\\[
-\mathrm{Re}\_{\infty}
+&lt;p&gt;\[
+\mathrm{Re}_{\infty}
 =\lim_{n\to\infty}\mathrm{Re}_n.
-\\]
+\]&lt;/p&gt;
 
-For $\mathrm{Re}&lt;\mathrm{Re}\_\infty$, the motion is still periodic, although
-the period may be very large. At $\mathrm{Re}=\mathrm{Re}\_\infty$, the
-period-doubling cascade has no finite period left.
+&lt;p&gt;For $\mathrm{Re}&amp;lt;\mathrm{Re}_\infty$, the motion is still periodic, although
+the period may be very large. At $\mathrm{Re}=\mathrm{Re}_\infty$, the
+period-doubling cascade has no finite period left.&lt;/p&gt;
 
-The intervals between successive thresholds shrink geometrically. For a wide
-class of one-hump maps,
+&lt;p&gt;The intervals between successive thresholds shrink geometrically. For a wide
+class of one-hump maps,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \delta
 =\lim_{n\to\infty}
-\frac{\mathrm{Re}\_n-\mathrm{Re}\_{n-1}}
+\frac{\mathrm{Re}_n-\mathrm{Re}_{n-1}}
 {\mathrm{Re}_{n+1}-\mathrm{Re}_n}
 \simeq4.6692016.
-\\]
+\]&lt;/p&gt;
 
-This number is the Feigenbaum constant. Its universality is not a direct
+&lt;p&gt;This number is the Feigenbaum constant. Its universality is not a direct
 consequence of the Navier-Stokes equation; it belongs to the reduced return
 map when that map has the appropriate structure. Nevertheless, it explains
 why very different physical systems can show similar period-doubling
-scaling.
+scaling.&lt;/p&gt;
 
-There is also a spatial scaling constant
+&lt;p&gt;There is also a spatial scaling constant&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \alpha\simeq2.5029079,
-\\]
+\]&lt;/p&gt;
 
-which describes the relative size of structures in the return map. These
+&lt;p&gt;which describes the relative size of structures in the return map. These
 constants are useful diagnostics when experimental data show a clear
-period-doubling sequence.
+period-doubling sequence.&lt;/p&gt;
 
-## Spectrum
+&lt;h2 id=&quot;spectrum&quot;&gt;Spectrum&lt;/h2&gt;
 
-Before the first doubling, a measured quantity $u(t)$ has a Fourier expansion
-with frequencies
+&lt;p&gt;Before the first doubling, a measured quantity $u(t)$ has a Fourier expansion
+with frequencies&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 n\omega,\qquad n\in\mathbb{Z}.
-\\]
+\]&lt;/p&gt;
 
-After one doubling, the fundamental frequency is $\omega/2$, so the spectrum
-contains
+&lt;p&gt;After one doubling, the fundamental frequency is $\omega/2$, so the spectrum
+contains&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{n\omega}{2}.
-\\]
+\]&lt;/p&gt;
 
-After $m$ doublings, the fundamental frequency is
+&lt;p&gt;After $m$ doublings, the fundamental frequency is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\omega}{2^m}.
-\\]
+\]&lt;/p&gt;
 
-Thus increasingly low subharmonics appear. Near the accumulation point the
+&lt;p&gt;Thus increasingly low subharmonics appear. Near the accumulation point the
 spectral lines become very dense on finite frequency intervals. Beyond the
 accumulation point the motion may become chaotic, and the spectrum usually
-develops a continuous component.
+develops a continuous component.&lt;/p&gt;
 
-This distinguishes period doubling from quasi-periodic transition. In
+&lt;p&gt;This distinguishes period doubling from quasi-periodic transition. In
 quasi-periodic motion, new independent frequencies appear. In period
-doubling, the new frequencies are subharmonics of the old one.
+doubling, the new frequencies are subharmonics of the old one.&lt;/p&gt;
 
-## Logistic Map as a Model
+&lt;h2 id=&quot;logistic-map-as-a-model&quot;&gt;Logistic Map as a Model&lt;/h2&gt;
 
-A simple model which shows the period-doubling cascade is the logistic map
+&lt;p&gt;A simple model which shows the period-doubling cascade is the logistic map&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 x_{n+1}=rx_n(1-x_n).
-\\]
+\]&lt;/p&gt;
 
-For small $r$ the attracting set is a fixed point. As $r$ increases, this
+&lt;p&gt;For small $r$ the attracting set is a fixed point. As $r$ increases, this
 fixed point loses stability and a stable period-two orbit appears. Further
-increase produces period-four, period-eight, and so on.
+increase produces period-four, period-eight, and so on.&lt;/p&gt;
 
-This map is not a fluid equation. Its role is to model the return map near a
+&lt;p&gt;This map is not a fluid equation. Its role is to model the return map near a
 low-dimensional transition. If a hydrodynamic Poincare map can be reduced to
 a similar one-dimensional map, the same cascade may appear in the fluid
-signal.
+signal.&lt;/p&gt;
 
-## Hydrodynamical Interpretation
+&lt;h2 id=&quot;hydrodynamical-interpretation&quot;&gt;Hydrodynamical Interpretation&lt;/h2&gt;
 
-In a fluid experiment, period doubling is observed by measuring a quantity
+&lt;p&gt;In a fluid experiment, period doubling is observed by measuring a quantity
 such as velocity at a fixed point, pressure drop, or heat flux. If the
 original oscillation has period $T$, then the time series begins to alternate
 between two unequal cycles. This is the period-$2T$ state. Later it may
-alternate among four cycles, then eight, and so on.
+alternate among four cycles, then eight, and so on.&lt;/p&gt;
 
-Such behavior has been observed in several hydrodynamic systems, including
+&lt;p&gt;Such behavior has been observed in several hydrodynamic systems, including
 thermal convection, Taylor-Couette flow, and wakes. The exact thresholds are
 not universal; they depend on geometry, boundary conditions, and the chosen
 control parameter. What may be universal is the scaling of the return map
-once the dynamics has reduced to the appropriate form.
+once the dynamics has reduced to the appropriate form.&lt;/p&gt;
 
-Period doubling is therefore a route to turbulence, but not the only one.
+&lt;p&gt;Period doubling is therefore a route to turbulence, but not the only one.
 Other flows pass through quasi-periodic motion, intermittency, or a direct
 transition to a strange attractor. In high-dimensional fluid systems several
 routes may coexist. The useful point is that complicated turbulent motion can
 arise from a definite sequence of deterministic bifurcations rather than from
-external randomness.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Strange Attractors</title><link href="http://localhost:4000/physics/strange-attractors.html" rel="alternate" type="text/html" title="Strange Attractors" /><published>2026-04-15T00:00:00+09:00</published><updated>2026-04-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/strange-attractors</id><content type="html" xml:base="http://localhost:4000/physics/strange-attractors.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+external randomness.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Strange Attractors</title><link href="http://localhost:4000/physics/strange-attractors.html" rel="alternate" type="text/html" title="Strange Attractors" /><published>2026-04-15T00:00:00+09:00</published><updated>2026-04-15T00:00:00+09:00</updated><id>http://localhost:4000/physics/strange-attractors</id><content type="html" xml:base="http://localhost:4000/physics/strange-attractors.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#attractors-in-a-dissipative-flow&quot; id=&quot;markdown-toc-attractors-in-a-dissipative-flow&quot;&gt;Attractors in a Dissipative Flow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lyapunov-exponents&quot; id=&quot;markdown-toc-lyapunov-exponents&quot;&gt;Lyapunov Exponents&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#stretching-and-folding&quot; id=&quot;markdown-toc-stretching-and-folding&quot;&gt;Stretching and Folding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dimension-of-an-attractor&quot; id=&quot;markdown-toc-dimension-of-an-attractor&quot;&gt;Dimension of an Attractor&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#lorenz-system&quot; id=&quot;markdown-toc-lorenz-system&quot;&gt;Lorenz System&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#relation-with-transition-to-turbulence&quot; id=&quot;markdown-toc-relation-with-transition-to-turbulence&quot;&gt;Relation with Transition to Turbulence&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Attractors in a Dissipative Flow
+&lt;h2 id=&quot;attractors-in-a-dissipative-flow&quot;&gt;Attractors in a Dissipative Flow&lt;/h2&gt;
 
-For a viscous fluid, the state at time $t$ may be regarded as a point $X(t)$
+&lt;p&gt;For a viscous fluid, the state at time $t$ may be regarded as a point $X(t)$
 in a phase space. Formally $X$ contains the velocity field, and possibly
 temperature or other fields, subject to the constraints and boundary
-conditions. The Navier-Stokes equation defines an evolution
+conditions. The Navier-Stokes equation defines an evolution&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 X(t)=S_tX(0).
-\\]
+\]&lt;/p&gt;
 
-An invariant set $\mathcal{A}$ is called an attractor if
+&lt;p&gt;An invariant set $\mathcal{A}$ is called an attractor if&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 S_t\mathcal{A}=\mathcal{A}
-\\]
+\]&lt;/p&gt;
 
-and if all states in some neighborhood of $\mathcal{A}$ approach it as
+&lt;p&gt;and if all states in some neighborhood of $\mathcal{A}$ approach it as
 $t\to\infty$. In hydrodynamics this is natural because viscosity dissipates
 mechanical energy. Even when the phase space is infinite-dimensional, the
-long-time motion may be confined to a much smaller set.
+long-time motion may be confined to a much smaller set.&lt;/p&gt;
 
-The simplest attractors are:
+&lt;p&gt;The simplest attractors are:&lt;/p&gt;
 
-1. A fixed point, corresponding to a steady flow.
-2. A limit cycle, corresponding to a periodic flow.
-3. An invariant torus, corresponding to quasi-periodic flow.
+&lt;ol&gt;
+  &lt;li&gt;A fixed point, corresponding to a steady flow.&lt;/li&gt;
+  &lt;li&gt;A limit cycle, corresponding to a periodic flow.&lt;/li&gt;
+  &lt;li&gt;An invariant torus, corresponding to quasi-periodic flow.&lt;/li&gt;
+&lt;/ol&gt;
 
-A **strange attractor** is an attracting invariant set on which the motion is
+&lt;p&gt;A &lt;strong&gt;strange attractor&lt;/strong&gt; is an attracting invariant set on which the motion is
 aperiodic and sensitive to initial conditions. It is not merely a high
 dimensional torus with many frequencies. Its geometry is folded and
 fractal-like, and nearby trajectories separate exponentially before being
-folded back by dissipation.
+folded back by dissipation.&lt;/p&gt;
 
-## Lyapunov Exponents
+&lt;h2 id=&quot;lyapunov-exponents&quot;&gt;Lyapunov Exponents&lt;/h2&gt;
 
-Let $X(t)$ and $X(t)+\delta X(t)$ be two nearby trajectories. Linearizing the
-evolution about $X(t)$ gives
+&lt;p&gt;Let $X(t)$ and $X(t)+\delta X(t)$ be two nearby trajectories. Linearizing the
+evolution about $X(t)$ gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \delta X(t)=DS_t(X(0))\delta X(0).
-\\]
+\]&lt;/p&gt;
 
-The largest Lyapunov exponent is defined by
+&lt;p&gt;The largest Lyapunov exponent is defined by&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \lambda_1
 =\lim_{t\to\infty}
 \frac{1}{t}
-\log\frac{\|\delta X(t)\|}{\|\delta X(0)\|},
-\\]
+\log\frac{|\delta X(t)|}{|\delta X(0)|},
+\]&lt;/p&gt;
 
-for a generic small perturbation direction. If
+&lt;p&gt;for a generic small perturbation direction. If&lt;/p&gt;
 
-\\[
-\lambda_1&gt;0,
-\\]
+&lt;p&gt;\[
+\lambda_1&amp;gt;0,
+\]&lt;/p&gt;
 
-then nearby trajectories separate exponentially:
+&lt;p&gt;then nearby trajectories separate exponentially:&lt;/p&gt;
 
-\\[
-\|\delta X(t)\|\sim \|\delta X(0)\|e^{\lambda_1t}.
-\\]
+&lt;p&gt;\[
+|\delta X(t)|\sim |\delta X(0)|e^{\lambda_1t}.
+\]&lt;/p&gt;
 
-This is sensitive dependence on initial conditions. The motion is still
+&lt;p&gt;This is sensitive dependence on initial conditions. The motion is still
 deterministic, but long-time prediction from finite-precision initial data is
-impossible.
+impossible.&lt;/p&gt;
 
-For a full spectrum of Lyapunov exponents
+&lt;p&gt;For a full spectrum of Lyapunov exponents&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \lambda_1\ge\lambda_2\ge\cdots,
-\\]
+\]&lt;/p&gt;
 
-a dissipative system has negative total volume growth in phase space. In a
-finite-dimensional truncation this means
+&lt;p&gt;a dissipative system has negative total volume growth in phase space. In a
+finite-dimensional truncation this means&lt;/p&gt;
 
-\\[
-\sum_i\lambda_i&lt;0.
-\\]
+&lt;p&gt;\[
+\sum_i\lambda_i&amp;lt;0.
+\]&lt;/p&gt;
 
-Thus a strange attractor has both stretching and contraction: some directions
+&lt;p&gt;Thus a strange attractor has both stretching and contraction: some directions
 expand, while the total phase volume contracts. The combination produces
-folding.
+folding.&lt;/p&gt;
 
-## Stretching and Folding
+&lt;h2 id=&quot;stretching-and-folding&quot;&gt;Stretching and Folding&lt;/h2&gt;
 
-A useful model is a map which stretches a region, folds it, and places it
+&lt;p&gt;A useful model is a map which stretches a region, folds it, and places it
 back into itself. Stretching separates nearby points, while folding keeps the
-motion bounded. Repetition creates fine-scale structure.
+motion bounded. Repetition creates fine-scale structure.&lt;/p&gt;
 
-For a Poincare map $P$, a strange attractor is an invariant set satisfying
+&lt;p&gt;For a Poincare map $P$, a strange attractor is an invariant set satisfying&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 P(\mathcal{A})=\mathcal{A},
-\\]
+\]&lt;/p&gt;
 
-but the map on $\mathcal{A}$ is not equivalent to a rigid rotation on a
+&lt;p&gt;but the map on $\mathcal{A}$ is not equivalent to a rigid rotation on a
 circle or torus. The dynamics may have infinitely many unstable periodic
 orbits embedded in the attractor. A typical trajectory does not settle onto
-one of them, but wanders among their neighborhoods.
+one of them, but wanders among their neighborhoods.&lt;/p&gt;
 
-This is the essential difference from quasi-periodic motion. On a torus,
+&lt;p&gt;This is the essential difference from quasi-periodic motion. On a torus,
 nearby trajectories neither separate exponentially nor converge. On a strange
 attractor, nearby trajectories separate exponentially along unstable
 directions, but the dissipative dynamics keeps them inside the same bounded
-set.
+set.&lt;/p&gt;
 
-## Dimension of an Attractor
+&lt;h2 id=&quot;dimension-of-an-attractor&quot;&gt;Dimension of an Attractor&lt;/h2&gt;
 
-The dimension of a strange attractor need not be an integer. One practical
+&lt;p&gt;The dimension of a strange attractor need not be an integer. One practical
 estimate is the Kaplan-Yorke dimension. Suppose the Lyapunov exponents are
-ordered and let $m$ be the largest integer such that
+ordered and let $m$ be the largest integer such that&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sum_{i=1}^m\lambda_i\ge0.
-\\]
+\]&lt;/p&gt;
 
-Then
+&lt;p&gt;Then&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 D_{\mathrm{KY}}
 =m+\frac{\sum_{i=1}^m\lambda_i}{|\lambda_{m+1}|}.
-\\]
+\]&lt;/p&gt;
 
-This number measures how many effective degrees of freedom are active on the
+&lt;p&gt;This number measures how many effective degrees of freedom are active on the
 attractor. In a hydrodynamic problem the actual phase space is very large,
 but at moderate $\mathrm{Re}$ the attractor dimension may still be small
-enough for a reduced description to be meaningful.
+enough for a reduced description to be meaningful.&lt;/p&gt;
 
-For developed turbulence, many Lyapunov exponents may be positive. Then the
+&lt;p&gt;For developed turbulence, many Lyapunov exponents may be positive. Then the
 motion is not only chaotic in time but also complicated in space. The
-effective number of degrees of freedom grows with $\mathrm{Re}$.
+effective number of degrees of freedom grows with $\mathrm{Re}$.&lt;/p&gt;
 
-## Lorenz System
+&lt;h2 id=&quot;lorenz-system&quot;&gt;Lorenz System&lt;/h2&gt;
 
-The Lorenz system is not the full Navier-Stokes equation, but it is a
+&lt;p&gt;The Lorenz system is not the full Navier-Stokes equation, but it is a
 classical low-dimensional model obtained from a truncation of thermal
-convection. It has the form
+convection. It has the form&lt;/p&gt;
 
-\\[
-\begin{align\*}
-\dot X&amp;=\sigma(Y-X), \nl
-\dot Y&amp;=rX-Y-XZ, \nl
-\dot Z&amp;=XY-bZ.
-\end{align\*}
-\\]
+&lt;p&gt;\[
+\begin{align*}
+\dot X&amp;amp;=\sigma(Y-X), \nl
+\dot Y&amp;amp;=rX-Y-XZ, \nl
+\dot Z&amp;amp;=XY-bZ.
+\end{align*}
+\]&lt;/p&gt;
 
-Here $r$ is proportional to the Rayleigh number, and $\sigma,b$ are positive
+&lt;p&gt;Here $r$ is proportional to the Rayleigh number, and $\sigma,b$ are positive
 parameters. For certain parameter values the system has a strange attractor.
-It illustrates several features relevant to hydrodynamics:
+It illustrates several features relevant to hydrodynamics:&lt;/p&gt;
 
-1. The equations are deterministic.
-2. The phase volume contracts.
-3. The motion is aperiodic.
-4. The largest Lyapunov exponent is positive.
+&lt;ol&gt;
+  &lt;li&gt;The equations are deterministic.&lt;/li&gt;
+  &lt;li&gt;The phase volume contracts.&lt;/li&gt;
+  &lt;li&gt;The motion is aperiodic.&lt;/li&gt;
+  &lt;li&gt;The largest Lyapunov exponent is positive.&lt;/li&gt;
+&lt;/ol&gt;
 
-Thus complicated irregular motion does not require random forcing. It may
-arise from deterministic nonlinear equations.
+&lt;p&gt;Thus complicated irregular motion does not require random forcing. It may
+arise from deterministic nonlinear equations.&lt;/p&gt;
 
-## Relation with Transition to Turbulence
+&lt;h2 id=&quot;relation-with-transition-to-turbulence&quot;&gt;Relation with Transition to Turbulence&lt;/h2&gt;
 
-The Landau-Hopf picture suggests that turbulence is obtained by adding more
+&lt;p&gt;The Landau-Hopf picture suggests that turbulence is obtained by adding more
 and more incommensurable frequencies. The discovery of strange attractors
 shows a different possibility. After only a few instabilities, an invariant
 torus may lose stability and be replaced by a strange attractor. This is the
-Ruelle-Takens scenario.
+Ruelle-Takens scenario.&lt;/p&gt;
 
-In fluid mechanics this means that a flow can become irregular before a large
+&lt;p&gt;In fluid mechanics this means that a flow can become irregular before a large
 number of independent frequencies have appeared. The observed signal may
 have a broadband spectrum, but this does not necessarily mean that it is a
 linear superposition of many independent oscillations. It may instead be the
-spectrum of deterministic chaotic motion on a strange attractor.
+spectrum of deterministic chaotic motion on a strange attractor.&lt;/p&gt;
 
-The distinction is important. Quasi-periodic motion has a discrete Fourier
+&lt;p&gt;The distinction is important. Quasi-periodic motion has a discrete Fourier
 spectrum. Chaotic motion has sensitive dependence and usually produces a
 continuous component in the spectrum. In experiments the difference is seen
 by studying return maps, Lyapunov exponents, and the geometry of the
-reconstructed attractor.
+reconstructed attractor.&lt;/p&gt;
 
-For fully developed turbulence the attractor is expected to be very
+&lt;p&gt;For fully developed turbulence the attractor is expected to be very
 high-dimensional. Nevertheless, the idea of a strange attractor clarifies the
 onset of irregular motion: randomness is not required at the level of the
 equations. The apparent randomness is produced by nonlinear deterministic
-dynamics together with sensitivity to initial conditions.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Quasi-periodic Flow and Frequency Locking</title><link href="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html" rel="alternate" type="text/html" title="Quasi-periodic Flow and Frequency Locking" /><published>2026-04-14T00:00:00+09:00</published><updated>2026-04-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking</id><content type="html" xml:base="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+dynamics together with sensitivity to initial conditions.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Quasi-periodic Flow and Frequency Locking</title><link href="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html" rel="alternate" type="text/html" title="Quasi-periodic Flow and Frequency Locking" /><published>2026-04-14T00:00:00+09:00</published><updated>2026-04-14T00:00:00+09:00</updated><id>http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking</id><content type="html" xml:base="http://localhost:4000/physics/quasi-periodic-flow-and-frequency-locking.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#from-periodic-to-quasi-periodic-motion&quot; id=&quot;markdown-toc-from-periodic-to-quasi-periodic-motion&quot;&gt;From Periodic to Quasi-periodic Motion&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#poincare-map&quot; id=&quot;markdown-toc-poincare-map&quot;&gt;Poincare Map&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#frequency-locking&quot; id=&quot;markdown-toc-frequency-locking&quot;&gt;Frequency Locking&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#arnold-tongues&quot; id=&quot;markdown-toc-arnold-tongues&quot;&gt;Arnold Tongues&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#relation-with-the-landau-picture&quot; id=&quot;markdown-toc-relation-with-the-landau-picture&quot;&gt;Relation with the Landau Picture&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## From Periodic to Quasi-periodic Motion
+&lt;h2 id=&quot;from-periodic-to-quasi-periodic-motion&quot;&gt;From Periodic to Quasi-periodic Motion&lt;/h2&gt;
 
-After the first instability of a steady flow, the new motion is often
+&lt;p&gt;After the first instability of a steady flow, the new motion is often
 periodic. If the first unstable mode has frequency $\omega_1$, then the
-velocity may be written schematically as
+velocity may be written schematically as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t)
 =\b{V}(\b{r},\omega_1t),
 \qquad
 \b{V}(\b{r},\phi+2\pi)=\b{V}(\b{r},\phi).
-\\]
+\]&lt;/p&gt;
 
-The motion is a limit cycle in the phase space of the fluid.
+&lt;p&gt;The motion is a limit cycle in the phase space of the fluid.
 Increasing $\mathrm{Re}$ further may destabilize this periodic motion. A
 second independent frequency $\omega_2$ may then appear. The corresponding
-flow has the form
+flow has the form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t)
 =\b{V}(\b{r},\phi_1,\phi_2),
 \qquad
 \phi_i=\omega_it+\phi_i^0,
-\\]
+\]&lt;/p&gt;
 
-where
+&lt;p&gt;where&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{V}(\b{r},\phi_1+2\pi,\phi_2)
 =\b{V}(\b{r},\phi_1,\phi_2+2\pi)
 =\b{V}(\b{r},\phi_1,\phi_2).
-\\]
+\]&lt;/p&gt;
 
-Thus the trajectory lies on a two-dimensional torus. More generally, after
-$m$ independent oscillatory instabilities one obtains
+&lt;p&gt;Thus the trajectory lies on a two-dimensional torus. More generally, after
+$m$ independent oscillatory instabilities one obtains&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t)
 =\b{V}(\b{r},\phi_1,\cdots,\phi_m),
 \qquad
 \phi_i=\omega_it+\phi_i^0,
-\\]
+\]&lt;/p&gt;
 
-with $\b{V}$ periodic in each phase. The motion is then on an $m$-torus.
+&lt;p&gt;with $\b{V}$ periodic in each phase. The motion is then on an $m$-torus.&lt;/p&gt;
 
-If the frequencies are rationally independent, i.e. if
+&lt;p&gt;If the frequencies are rationally independent, i.e. if&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 n_1\omega_1+\cdots+n_m\omega_m=0,\qquad n_i\in\mathbb{Z},
-\\]
+\]&lt;/p&gt;
 
-implies $n_1=\cdots=n_m=0$, the orbit never closes. It is dense on the torus.
+&lt;p&gt;implies $n_1=\cdots=n_m=0$, the orbit never closes. It is dense on the torus.
 The motion is not periodic, but it is not random: every value is still
-determined by the phases.
+determined by the phases.&lt;/p&gt;
 
-The Fourier spectrum of such a motion is discrete. Since $\b{V}$ is periodic
-in each phase, it may be expanded as
+&lt;p&gt;The Fourier spectrum of such a motion is discrete. Since $\b{V}$ is periodic
+in each phase, it may be expanded as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{V}(\b{r},\phi_1,\cdots,\phi_m)
 =\sum_{\b{n}\in\mathbb{Z}^m}
 \b{V}_{\b{n}}(\b{r})
 e^{i(n_1\phi_1+\cdots+n_m\phi_m)}.
-\\]
+\]&lt;/p&gt;
 
-Hence
+&lt;p&gt;Hence&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}(\b{r},t)
 =\sum_{\b{n}\in\mathbb{Z}^m}
 \b{V}_{\b{n}}(\b{r})
 e^{i(n_1\omega_1+\cdots+n_m\omega_m)t}.
-\\]
+\]&lt;/p&gt;
 
-The observed frequencies are all integer linear combinations of the basic
-frequencies.
+&lt;p&gt;The observed frequencies are all integer linear combinations of the basic
+frequencies.&lt;/p&gt;
 
-## Poincare Map
+&lt;h2 id=&quot;poincare-map&quot;&gt;Poincare Map&lt;/h2&gt;
 
-A periodic flow can be studied by looking once per period. If the period is
-$T$, the time-$T$ map
+&lt;p&gt;A periodic flow can be studied by looking once per period. If the period is
+$T$, the time-$T$ map&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 P:X(0)\mapsto X(T)
-\\]
+\]&lt;/p&gt;
 
-is the Poincare map of the motion, where $X$ denotes the state of the fluid.
-A stable periodic motion is a stable fixed point of $P$.
+&lt;p&gt;is the Poincare map of the motion, where $X$ denotes the state of the fluid.
+A stable periodic motion is a stable fixed point of $P$.&lt;/p&gt;
 
-When this fixed point loses stability through a complex pair of multipliers,
+&lt;p&gt;When this fixed point loses stability through a complex pair of multipliers,
 the Poincare map may acquire an invariant closed curve. In the continuous
 flow this corresponds to a two-torus. Motion on this invariant curve is
-described by an angle variable
+described by an angle variable&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \theta_{n+1}=\theta_n+2\pi\rho \pmod{2\pi},
-\\]
+\]&lt;/p&gt;
 
-where $\rho$ is the rotation number. If $\rho$ is rational, the orbit is
+&lt;p&gt;where $\rho$ is the rotation number. If $\rho$ is rational, the orbit is
 periodic. If $\rho$ is irrational, the orbit is quasi-periodic and dense on
-the invariant curve.
+the invariant curve.&lt;/p&gt;
 
-This gives another way to understand the appearance of a second frequency:
+&lt;p&gt;This gives another way to understand the appearance of a second frequency:
 the original period gives one phase, and the rotation on the Poincare section
-gives the second phase.
+gives the second phase.&lt;/p&gt;
 
-## Frequency Locking
+&lt;h2 id=&quot;frequency-locking&quot;&gt;Frequency Locking&lt;/h2&gt;
 
-The preceding discussion assumes that the frequencies remain independent.
+&lt;p&gt;The preceding discussion assumes that the frequencies remain independent.
 In nonlinear hydrodynamics this need not be true. Suppose two frequencies are
-close to a rational relation
+close to a rational relation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 q\omega_2-p\omega_1\simeq0,
 \qquad
 p,q\in\mathbb{Z}.
-\\]
+\]&lt;/p&gt;
 
-Then the slowly varying resonant phase is
+&lt;p&gt;Then the slowly varying resonant phase is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \theta=q\phi_2-p\phi_1.
-\\]
+\]&lt;/p&gt;
 
-Nonlinear coupling may produce an equation of the form
+&lt;p&gt;Nonlinear coupling may produce an equation of the form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \dot{\theta}
 =\Delta-K\sin\theta+\cdots,
 \qquad
 \Delta=q\omega_2-p\omega_1.
-\\]
+\]&lt;/p&gt;
 
-This is the standard phase-locking equation. If
+&lt;p&gt;This is the standard phase-locking equation. If&lt;/p&gt;
 
-\\[
-|\Delta|&lt;|K|,
-\\]
+&lt;p&gt;\[
+|\Delta|&amp;lt;|K|,
+\]&lt;/p&gt;
 
-there is a stable fixed value of $\theta$. Then
+&lt;p&gt;there is a stable fixed value of $\theta$. Then&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 q\omega_2-p\omega_1=0
-\\]
+\]&lt;/p&gt;
 
-in the observed motion, even if the uncoupled frequencies were only close to
+&lt;p&gt;in the observed motion, even if the uncoupled frequencies were only close to
 this relation. The flow becomes periodic rather than quasi-periodic. This is
-called **frequency locking**.
+called &lt;strong&gt;frequency locking&lt;/strong&gt;.&lt;/p&gt;
 
-If $|\Delta|&gt;|K|$, the phase $\theta$ drifts, and the two frequencies remain
+&lt;p&gt;If $|\Delta|&amp;gt;|K|$, the phase $\theta$ drifts, and the two frequencies remain
 independent. Thus the transition between quasi-periodicity and locking is a
-competition between detuning and nonlinear coupling.
+competition between detuning and nonlinear coupling.&lt;/p&gt;
 
-## Arnold Tongues
+&lt;h2 id=&quot;arnold-tongues&quot;&gt;Arnold Tongues&lt;/h2&gt;
 
-Let $\lambda$ be a parameter measuring the strength of the nonlinear coupling.
+&lt;p&gt;Let $\lambda$ be a parameter measuring the strength of the nonlinear coupling.
 Near a rational ratio $p/q$, the locked region in parameter space has the
-shape of a tongue:
+shape of a tongue:&lt;/p&gt;
 
-\\[
-|q\omega_2-p\omega_1|&lt;K(\lambda).
-\\]
+&lt;p&gt;\[
+|q\omega_2-p\omega_1|&amp;lt;K(\lambda).
+\]&lt;/p&gt;
 
-These regions are called **Arnold tongues**. Their widths are small for weak
+&lt;p&gt;These regions are called &lt;strong&gt;Arnold tongues&lt;/strong&gt;. Their widths are small for weak
 coupling and grow as the nonlinearity increases. Low-order resonances such as
 $1:1$, $1:2$, and $2:3$ are usually the most visible, because their coupling
-terms occur at relatively low order in the amplitudes.
+terms occur at relatively low order in the amplitudes.&lt;/p&gt;
 
-This explains why a hydrodynamic system whose linear modes have many possible
+&lt;p&gt;This explains why a hydrodynamic system whose linear modes have many possible
 frequencies may nevertheless show a simple periodic response. The nonlinear
 terms can select a rational relation between the phases and suppress the
-independent drift.
+independent drift.&lt;/p&gt;
 
-## Relation with the Landau Picture
+&lt;h2 id=&quot;relation-with-the-landau-picture&quot;&gt;Relation with the Landau Picture&lt;/h2&gt;
 
-The Landau picture of transition to turbulence may be described as a
-successive appearance of more and more independent frequencies:
+&lt;p&gt;The Landau picture of transition to turbulence may be described as a
+successive appearance of more and more independent frequencies:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega_1,\qquad
 \omega_1,\omega_2,\qquad
 \omega_1,\omega_2,\omega_3,\qquad \cdots .
-\\]
+\]&lt;/p&gt;
 
-With many incommensurable frequencies, the motion becomes very complicated
-and its spectrum contains many lines of the form
+&lt;p&gt;With many incommensurable frequencies, the motion becomes very complicated
+and its spectrum contains many lines of the form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 n_1\omega_1+n_2\omega_2+\cdots+n_m\omega_m.
-\\]
+\]&lt;/p&gt;
 
-However, this construction alone does not fully explain developed
+&lt;p&gt;However, this construction alone does not fully explain developed
 turbulence. First, frequency locking can reduce the number of independent
 frequencies by forcing rational relations. Second, nonlinear dynamics can
 destroy invariant tori and produce a strange attractor. Thus quasi-periodic
 motion is one possible route away from laminar flow, but it is not the only
-route to turbulence.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Multidimensional Segment Tree</title><link href="http://localhost:4000/computer-science/multidimensional-segment-tree.html" rel="alternate" type="text/html" title="Multidimensional Segment Tree" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/multidimensional-segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/multidimensional-segment-tree.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+route to turbulence.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Multidimensional Segment Tree</title><link href="http://localhost:4000/computer-science/multidimensional-segment-tree.html" rel="alternate" type="text/html" title="Multidimensional Segment Tree" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/multidimensional-segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/multidimensional-segment-tree.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Introduction
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-A **multidimensional segment tree** is a segment tree applied recursively over several coordinates.
-It is the natural extension of the ordinary segment tree from intervals to rectangles, boxes, and higher-dimensional orthogonal ranges.
+&lt;p&gt;A &lt;strong&gt;multidimensional segment tree&lt;/strong&gt; is a segment tree applied recursively over several coordinates.
+It is the natural extension of the ordinary segment tree from intervals to rectangles, boxes, and higher-dimensional orthogonal ranges.&lt;/p&gt;
 
-For example, in two dimensions, the data structure supports queries over rectangles
+&lt;p&gt;For example, in two dimensions, the data structure supports queries over rectangles&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 [x_1:x_2]\times[y_1:y_2].
-\\]
+\]&lt;/p&gt;
 
-The algebraic part is unchanged.
-Each node stores an element of a monoid $(M,\ast,e)$, and query answers are obtained by merging canonical disjoint regions.
+&lt;p&gt;The algebraic part is unchanged.
+Each node stores an element of a monoid $(M,\ast,e)$, and query answers are obtained by merging canonical disjoint regions.&lt;/p&gt;
 
-## Explanation
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
 
-Consider a two-dimensional array
+&lt;p&gt;Consider a two-dimensional array&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 A_{i,j}\in M
 \qquad
 (1\le i\le N,\ 1\le j\le M).
-\\]
+\]&lt;/p&gt;
 
-A two-dimensional segment tree may be viewed as:
+&lt;p&gt;A two-dimensional segment tree may be viewed as:&lt;/p&gt;
 
-1. an outer segment tree over the $x$-coordinate;
-2. for every outer node, an inner segment tree over the $y$-coordinate.
+&lt;ol&gt;
+  &lt;li&gt;an outer segment tree over the $x$-coordinate;&lt;/li&gt;
+  &lt;li&gt;for every outer node, an inner segment tree over the $y$-coordinate.&lt;/li&gt;
+&lt;/ol&gt;
 
-An outer node $v$ represents an interval $I_v$ of $x$-coordinates.
-Its inner tree stores aggregates over rectangles of the form
+&lt;p&gt;An outer node $v$ represents an interval $I_v$ of $x$-coordinates.
+Its inner tree stores aggregates over rectangles of the form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 I_v\times J,
-\\]
+\]&lt;/p&gt;
 
-where $J$ is an interval of $y$-coordinates.
-Thus an inner node represents
+&lt;p&gt;where $J$ is an interval of $y$-coordinates.
+Thus an inner node represents&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \prod_{i\in I_v,\ j\in J} A_{i,j}.
-\\]
+\]&lt;/p&gt;
 
-The build process is also recursive.
-At an outer leaf $x=i$, the inner tree is built from the row
+&lt;p&gt;The build process is also recursive.
+At an outer leaf $x=i$, the inner tree is built from the row&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 A_{i,1},A_{i,2},\ldots,A_{i,M}.
-\\]
+\]&lt;/p&gt;
 
-At an outer internal node, the inner tree is obtained by merging the corresponding inner trees of the two children pointwise.
+&lt;p&gt;At an outer internal node, the inner tree is obtained by merging the corresponding inner trees of the two children pointwise.&lt;/p&gt;
 
-For a point update at $(x,y)$, update the inner tree at the outer leaf $x$.
-Then, while returning to the root of the outer tree, recompute the affected inner-tree nodes by merging the two outer children.
+&lt;p&gt;For a point update at $(x,y)$, update the inner tree at the outer leaf $x$.
+Then, while returning to the root of the outer tree, recompute the affected inner-tree nodes by merging the two outer children.&lt;/p&gt;
 
-For a rectangle query, first decompose the $x$-range into canonical outer nodes.
+&lt;p&gt;For a rectangle query, first decompose the $x$-range into canonical outer nodes.
 For each selected outer node, query its inner tree on the $y$-range.
-Finally, merge all returned values.
+Finally, merge all returned values.&lt;/p&gt;
 
-The same idea extends to $d$ dimensions by recursively storing a $(d-1)$-dimensional segment tree inside each node of the first dimension.
-The cost grows by a logarithmic factor for each dimension.
+&lt;p&gt;The same idea extends to $d$ dimensions by recursively storing a $(d-1)$-dimensional segment tree inside each node of the first dimension.
+The cost grows by a logarithmic factor for each dimension.&lt;/p&gt;
 
-The interactive demo below shows this product structure for a $4\times 4$ sum table.
-A rectangle query is decomposed into canonical $x$-intervals and canonical $y$-intervals, whose products form the selected rectangles.
+&lt;p&gt;The interactive demo below shows this product structure for a $4\times 4$ sum table.
+A rectangle query is decomposed into canonical $x$-intervals and canonical $y$-intervals, whose products form the selected rectangles.&lt;/p&gt;
 
-{% include_relative includes/multidimensional-segment-tree.html %}
+&lt;div id=&quot;multidimensional-segment-tree-demo&quot; class=&quot;mdstv-root&quot;&gt;
+  &lt;style&gt;
+    #multidimensional-segment-tree-demo { width: 100%; max-width: 900px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
+    #multidimensional-segment-tree-demo * { box-sizing: border-box; }
+    #multidimensional-segment-tree-demo .mdstv-controls-shell { overflow: hidden; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #multidimensional-segment-tree-demo .mdstv-controls { display: flex; flex-wrap: nowrap; gap: 0.28rem; align-items: center; width: 100%; padding: 0.55rem 0.6rem; }
+    #multidimensional-segment-tree-demo .mdstv-controls label { display: inline-flex; align-items: center; gap: 0.18rem; white-space: nowrap; }
+    #multidimensional-segment-tree-demo input, #multidimensional-segment-tree-demo button { min-height: 1.8rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; font: inherit; font-size: 0.82rem; line-height: 1; }
+    #multidimensional-segment-tree-demo input { width: 3.05rem; padding: 0 0.4rem; }
+    #multidimensional-segment-tree-demo button { padding: 0.4rem 0.55rem; cursor: pointer; white-space: nowrap; }
+    #multidimensional-segment-tree-demo button:hover { background: #e6edf5; }
+    #multidimensional-segment-tree-demo .mdstv-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; padding: 0.85rem; background: #fff; }
+    @media (min-width: 720px) { #multidimensional-segment-tree-demo .mdstv-body { grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr); } }
+    #multidimensional-segment-tree-demo .mdstv-grid { display: grid; grid-template-columns: repeat(4, minmax(48px, 1fr)); gap: 0.35rem; align-content: start; }
+    #multidimensional-segment-tree-demo .mdstv-cell { min-height: 3.2rem; border: 1px solid #94a3b8; border-radius: 6px; background: #f8fafc; display: grid; place-items: center; text-align: center; line-height: 1.2; }
+    #multidimensional-segment-tree-demo .mdstv-cell-query { background: #dbeafe; border-color: #2563eb; border-width: 2px; }
+    #multidimensional-segment-tree-demo .mdstv-cell-update { background: #fee2e2; border-color: #dc2626; border-width: 2px; }
+    #multidimensional-segment-tree-demo .mdstv-value { font-weight: 700; }
+    #multidimensional-segment-tree-demo .mdstv-index { font-size: 0.72rem; color: #64748b; }
+    #multidimensional-segment-tree-demo .mdstv-info { display: grid; gap: 0.45rem; line-height: 1.65; align-content: start; }
+    #multidimensional-segment-tree-demo .mdstv-info-line { overflow-x: auto; white-space: nowrap; }
+    #multidimensional-segment-tree-demo .mdstv-info-line-status { overflow-x: visible; white-space: normal; }
+    #multidimensional-segment-tree-demo .mdstv-info-line-status code { white-space: normal; overflow-wrap: anywhere; }
+    #multidimensional-segment-tree-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #multidimensional-segment-tree-demo .mdstv-rect-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    #multidimensional-segment-tree-demo .mdstv-rect { border: 1px solid #cbd5e1; border-radius: 999px; background: #f8fafc; padding: 0.2rem 0.55rem; font-size: 0.9em; }
+  &lt;/style&gt;
 
-## Complexity
+  &lt;div class=&quot;mdstv-controls-shell&quot;&gt;
+    &lt;div class=&quot;mdstv-controls&quot;&gt;
+      &lt;label&gt;x1 &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;2&quot; data-role=&quot;x1&quot; /&gt;&lt;/label&gt;
+      &lt;label&gt;x2 &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;4&quot; data-role=&quot;x2&quot; /&gt;&lt;/label&gt;
+      &lt;label&gt;y1 &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;2&quot; data-role=&quot;y1&quot; /&gt;&lt;/label&gt;
+      &lt;label&gt;y2 &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;3&quot; data-role=&quot;y2&quot; /&gt;&lt;/label&gt;
+      &lt;button type=&quot;button&quot; data-role=&quot;query&quot;&gt;Query&lt;/button&gt;
+      &lt;label&gt;x &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;3&quot; data-role=&quot;ux&quot; /&gt;&lt;/label&gt;
+      &lt;label&gt;y &lt;input type=&quot;number&quot; min=&quot;1&quot; max=&quot;4&quot; step=&quot;1&quot; value=&quot;2&quot; data-role=&quot;uy&quot; /&gt;&lt;/label&gt;
+      &lt;label&gt;val &lt;input type=&quot;number&quot; min=&quot;-99&quot; max=&quot;99&quot; step=&quot;1&quot; value=&quot;9&quot; data-role=&quot;uv&quot; /&gt;&lt;/label&gt;
+      &lt;button type=&quot;button&quot; data-role=&quot;update&quot;&gt;Update&lt;/button&gt;
+      &lt;button type=&quot;button&quot; data-role=&quot;reset&quot;&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;mdstv-body&quot;&gt;
+    &lt;div class=&quot;mdstv-grid&quot; data-role=&quot;grid&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;mdstv-info&quot;&gt;
+      &lt;div class=&quot;mdstv-info-line mdstv-info-line-status&quot;&gt;&lt;strong&gt;Status:&lt;/strong&gt; &lt;span data-role=&quot;status&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mdstv-info-line&quot;&gt;&lt;strong&gt;x canonical intervals:&lt;/strong&gt; &lt;span data-role=&quot;x-cover&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mdstv-info-line&quot;&gt;&lt;strong&gt;y canonical intervals:&lt;/strong&gt; &lt;span data-role=&quot;y-cover&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div&gt;&lt;strong&gt;Product rectangles:&lt;/strong&gt; &lt;span class=&quot;mdstv-rect-list&quot; data-role=&quot;rectangles&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+      &lt;div class=&quot;mdstv-info-line&quot;&gt;&lt;strong&gt;Answer:&lt;/strong&gt; &lt;span data-role=&quot;answer&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 
-Assume that every dimension has size at most $N$ and one merge takes $O(T)$ time.
-For a dense $d$-dimensional segment tree, the memory usage is
+  &lt;script&gt;
+    (function () {
+      var root = document.getElementById(&quot;multidimensional-segment-tree-demo&quot;);
+      if (!root) return;
+      function byRole(name) { return root.querySelector(&apos;[data-role=&quot;&apos; + name + &apos;&quot;]&apos;); }
+      function esc(s) { return String(s).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&lt;/g,&quot;&amp;lt;&quot;).replace(/&gt;/g,&quot;&amp;gt;&quot;); }
+      function code(s) { return &quot;&lt;code&gt;&quot; + esc(s) + &quot;&lt;/code&gt;&quot;; }
 
-\\[
+      var initial = [
+        [0,0,0,0,0],
+        [0,2,1,3,4],
+        [0,5,6,2,1],
+        [0,4,3,7,2],
+        [0,1,8,5,6]
+      ];
+      var a = initial.map(function (row) { return row.slice(); });
+      var last = { type:&quot;query&quot;, x1:2, x2:4, y1:2, y2:3, ux:null, uy:null, answer:null, xCover:[], yCover:[], rects:[], status:&quot;Query a rectangle to see the product decomposition.&quot; };
+
+      function read(role, lo, hi) {
+        var input = byRole(role);
+        var x = Number(input.value);
+        if (!Number.isInteger(x)) x = lo;
+        x = Math.max(lo, Math.min(hi, x));
+        input.value = x;
+        return x;
+      }
+
+      function decompose(l,r,lo,hi,out) {
+        if (r &lt; lo || hi &lt; l) return;
+        if (l &lt;= lo &amp;&amp; hi &lt;= r) {
+          out.push([lo,hi]);
+          return;
+        }
+        var m = Math.floor((lo + hi) / 2);
+        decompose(l,r,lo,m,out);
+        decompose(l,r,m+1,hi,out);
+      }
+
+      function intervalText(p) {
+        return p[0] === p[1] ? &quot;[&quot; + p[0] + &quot;]&quot; : &quot;[&quot; + p[0] + &quot;:&quot; + p[1] + &quot;]&quot;;
+      }
+
+      function doQuery() {
+        var x1 = read(&quot;x1&quot;,1,4), x2 = read(&quot;x2&quot;,1,4);
+        var y1 = read(&quot;y1&quot;,1,4), y2 = read(&quot;y2&quot;,1,4);
+        if (x1 &gt; x2) { var tx = x1; x1 = x2; x2 = tx; byRole(&quot;x1&quot;).value = x1; byRole(&quot;x2&quot;).value = x2; }
+        if (y1 &gt; y2) { var ty = y1; y1 = y2; y2 = ty; byRole(&quot;y1&quot;).value = y1; byRole(&quot;y2&quot;).value = y2; }
+        var xs = [], ys = [], rects = [], sum = 0;
+        decompose(x1,x2,1,4,xs);
+        decompose(y1,y2,1,4,ys);
+        xs.forEach(function (xi) {
+          ys.forEach(function (yi) {
+            rects.push([xi,yi]);
+            for (var x = xi[0]; x &lt;= xi[1]; x++) for (var y = yi[0]; y &lt;= yi[1]; y++) sum += a[x][y];
+          });
+        });
+        last = { type:&quot;query&quot;, x1:x1, x2:x2, y1:y1, y2:y2, ux:null, uy:null, answer:sum, xCover:xs, yCover:ys, rects:rects, status:&quot;The rectangle is decomposed into canonical x-intervals and y-intervals.&quot; };
+        render();
+      }
+
+      function doUpdate() {
+        var x = read(&quot;ux&quot;,1,4), y = read(&quot;uy&quot;,1,4), v = read(&quot;uv&quot;,-99,99);
+        a[x][y] = v;
+        last = { type:&quot;update&quot;, x1:x, x2:x, y1:y, y2:y, ux:x, uy:y, answer:null, xCover:[], yCover:[], rects:[], status:&quot;A point update changes one cell and recomputes the affected inner trees along the outer path.&quot; };
+        render();
+      }
+
+      function inQuery(x,y) {
+        return last.type === &quot;query&quot; &amp;&amp; last.x1 &lt;= x &amp;&amp; x &lt;= last.x2 &amp;&amp; last.y1 &lt;= y &amp;&amp; y &lt;= last.y2;
+      }
+
+      function renderGrid() {
+        var out = &quot;&quot;;
+        for (var x = 1; x &lt;= 4; x++) {
+          for (var y = 1; y &lt;= 4; y++) {
+            var cls = &quot;mdstv-cell&quot;;
+            if (inQuery(x,y)) cls += &quot; mdstv-cell-query&quot;;
+            if (last.type === &quot;update&quot; &amp;&amp; last.ux === x &amp;&amp; last.uy === y) cls += &quot; mdstv-cell-update&quot;;
+            out += &apos;&lt;div class=&quot;&apos; + cls + &apos;&quot;&gt;&lt;div&gt;&lt;span class=&quot;mdstv-index&quot;&gt;(&apos; + x + &apos;,&apos; + y + &apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;mdstv-value&quot;&gt;&apos; + a[x][y] + &apos;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&apos;;
+          }
+        }
+        byRole(&quot;grid&quot;).innerHTML = out;
+      }
+
+      function renderIntervals(role, list) {
+        byRole(role).innerHTML = list.length ? code(list.map(intervalText).join(&quot;, &quot;)) : code(&quot;-&quot;);
+      }
+
+      function renderRects() {
+        if (!last.rects.length) {
+          byRole(&quot;rectangles&quot;).innerHTML = &apos;&lt;span class=&quot;mdstv-rect&quot;&gt;-&lt;/span&gt;&apos;;
+          return;
+        }
+        byRole(&quot;rectangles&quot;).innerHTML = last.rects.map(function (r) {
+          return &apos;&lt;span class=&quot;mdstv-rect&quot;&gt;&apos; + intervalText(r[0]) + &apos; x &apos; + intervalText(r[1]) + &apos;&lt;/span&gt;&apos;;
+        }).join(&quot;&quot;);
+      }
+
+      function render() {
+        renderGrid();
+        byRole(&quot;status&quot;).innerHTML = code(last.status);
+        renderIntervals(&quot;x-cover&quot;, last.xCover);
+        renderIntervals(&quot;y-cover&quot;, last.yCover);
+        renderRects();
+        byRole(&quot;answer&quot;).innerHTML = last.answer == null ? code(&quot;-&quot;) : code(String(last.answer));
+      }
+
+      byRole(&quot;query&quot;).addEventListener(&quot;click&quot;, doQuery);
+      byRole(&quot;update&quot;).addEventListener(&quot;click&quot;, doUpdate);
+      byRole(&quot;reset&quot;).addEventListener(&quot;click&quot;, function () {
+        a = initial.map(function (row) { return row.slice(); });
+        last = { type:&quot;query&quot;, x1:2, x2:4, y1:2, y2:3, ux:null, uy:null, answer:null, xCover:[], yCover:[], rects:[], status:&quot;Query a rectangle to see the product decomposition.&quot; };
+        render();
+      });
+      doQuery();
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
+
+&lt;p&gt;Assume that every dimension has size at most $N$ and one merge takes $O(T)$ time.
+For a dense $d$-dimensional segment tree, the memory usage is&lt;/p&gt;
+
+&lt;p&gt;\[
 O(N^d).
-\\]
+\]&lt;/p&gt;
 
-A point update and an orthogonal range query both take
+&lt;p&gt;A point update and an orthogonal range query both take&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 O(T\log^d N)
-\\]
+\]&lt;/p&gt;
 
-time.
+&lt;p&gt;time.&lt;/p&gt;
 
-For two dimensions with sizes $N$ and $M$, this becomes
+&lt;p&gt;For two dimensions with sizes $N$ and $M$, this becomes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 O(T\log N\log M)
-\\]
+\]&lt;/p&gt;
 
-per update or query.
+&lt;p&gt;per update or query.&lt;/p&gt;
 
-In sparse problems, one often compresses the coordinates inside each outer node.
-Then the memory becomes
+&lt;p&gt;In sparse problems, one often compresses the coordinates inside each outer node.
+Then the memory becomes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 O(K\log N)
-\\]
+\]&lt;/p&gt;
 
-for $K$ stored points in the two-dimensional static-coordinate case, because each point appears in $O(\log N)$ outer nodes.
+&lt;p&gt;for $K$ stored points in the two-dimensional static-coordinate case, because each point appears in $O(\log N)$ outer nodes.&lt;/p&gt;
 
-## Code
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
 
-The following dense two-dimensional segment tree uses the same `Node` abstraction as the ordinary segment tree post.
-The array is 1-indexed in both coordinates.
+&lt;p&gt;The following dense two-dimensional segment tree uses the same &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Node&lt;/code&gt; abstraction as the ordinary segment tree post.
+The array is 1-indexed in both coordinates.&lt;/p&gt;
 
-```cpp
-struct Node {
-    ...
-    static Node merge(const Node&amp; a, const Node&amp; b);
-    static Node identity();
-};
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-template &lt;class Node&gt;
-struct SegTree2D {
-    int n, m;
-    vector&lt;vector&lt;Node&gt;&gt; tree;
+&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SegTree2D&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    SegTree2D() {}
+    &lt;span class=&quot;n&quot;&gt;SegTree2D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
 
-    SegTree2D(const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
-        build(a);
-    }
+    &lt;span class=&quot;n&quot;&gt;SegTree2D&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void init(int n_, int m_) {
-        n = n_;
-        m = m_;
-        tree.assign(4 * n + 5, vector&lt;Node&gt;(4 * m + 5, Node::identity()));
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void build_y(int vx, int lx, int rx, int vy, int ly, int ry,
-                 const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
-        if(ly == ry) {
-            if(lx == rx) tree[vx][vy] = a[lx][ly];
-            else tree[vx][vy] = Node::merge(tree[vx &lt;&lt; 1][vy], tree[vx &lt;&lt; 1 | 1][vy]);
-            return;
-        }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                 &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-        int my = (ly + ry) &gt;&gt; 1;
-        build_y(vx, lx, rx, vy &lt;&lt; 1, ly, my, a);
-        build_y(vx, lx, rx, vy &lt;&lt; 1 | 1, my + 1, ry, a);
-        tree[vx][vy] = Node::merge(tree[vx][vy &lt;&lt; 1], tree[vx][vy &lt;&lt; 1 | 1]);
-    }
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;build_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;build_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void build_x(int vx, int lx, int rx, const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
-        if(lx != rx) {
-            int mx = (lx + rx) &gt;&gt; 1;
-            build_x(vx &lt;&lt; 1, lx, mx, a);
-            build_x(vx &lt;&lt; 1 | 1, mx + 1, rx, a);
-        }
-        build_y(vx, lx, rx, 1, 1, m, a);
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;build_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;build_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;build_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void build(const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
-        init((int)a.size() - 1, (int)a[1].size() - 1);
-        build_x(1, 1, n, a);
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;build_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void update_y(int vx, int lx, int rx, int vy, int ly, int ry,
-                  int x, int y, const Node&amp; val) {
-        if(ly == ry) {
-            if(lx == rx) tree[vx][vy] = val;
-            else tree[vx][vy] = Node::merge(tree[vx &lt;&lt; 1][vy], tree[vx &lt;&lt; 1 | 1][vy]);
-            return;
-        }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-        int my = (ly + ry) &gt;&gt; 1;
-        if(y &lt;= my) update_y(vx, lx, rx, vy &lt;&lt; 1, ly, my, x, y, val);
-        else update_y(vx, lx, rx, vy &lt;&lt; 1 | 1, my + 1, ry, x, y, val);
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-        tree[vx][vy] = Node::merge(tree[vx][vy &lt;&lt; 1], tree[vx][vy &lt;&lt; 1 | 1]);
-    }
+        &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void update_x(int vx, int lx, int rx, int x, int y, const Node&amp; val) {
-        if(lx != rx) {
-            int mx = (lx + rx) &gt;&gt; 1;
-            if(x &lt;= mx) update_x(vx &lt;&lt; 1, lx, mx, x, y, val);
-            else update_x(vx &lt;&lt; 1 | 1, mx + 1, rx, x, y, val);
-        }
-        update_y(vx, lx, rx, 1, 1, m, x, y, val);
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;update_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    Node query_y(int vx, int vy, int ly, int ry, int ql, int qr) const {
-        if(qr &lt; ly || ry &lt; ql) return Node::identity();
-        if(ql &lt;= ly &amp;&amp; ry &lt;= qr) return tree[vx][vy];
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
 
-        int my = (ly + ry) &gt;&gt; 1;
-        return Node::merge(
-            query_y(vx, vy &lt;&lt; 1, ly, my, ql, qr),
-            query_y(vx, vy &lt;&lt; 1 | 1, my + 1, ry, ql, qr)
-        );
-    }
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;query_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;query_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    Node query_x(int vx, int lx, int rx, int x1, int x2, int y1, int y2) const {
-        if(x2 &lt; lx || rx &lt; x1) return Node::identity();
-        if(x1 &lt;= lx &amp;&amp; rx &lt;= x2) return query_y(vx, 1, 1, m, y1, y2);
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-        int mx = (lx + rx) &gt;&gt; 1;
-        return Node::merge(
-            query_x(vx &lt;&lt; 1, lx, mx, x1, x2, y1, y2),
-            query_x(vx &lt;&lt; 1 | 1, mx + 1, rx, x1, x2, y1, y2)
-        );
-    }
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;query_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;query_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void update(int x, int y, const Node&amp; val) {
-        update_x(1, 1, n, x, y, val);
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;update_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    Node query(int x1, int x2, int y1, int y2) const {
-        return query_x(1, 1, n, x1, x2, y1, y2);
-    }
-};
-```
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-For sparse static points, the dense inner arrays should not be built.
+&lt;p&gt;For sparse static points, the dense inner arrays should not be built.
 Instead, collect the $y$-coordinates that appear in each outer node, sort and unique them, and build only those compressed inner trees.
-This gives the usual segment-tree-of-vectors implementation.
+This gives the usual segment-tree-of-vectors implementation.&lt;/p&gt;
 
-## Applications
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
 
-* Rectangle sum/min/max queries
-* Dynamic orthogonal range queries
-* Offline geometry with coordinate compression
-* Two-dimensional sweep-line data structures
-* Higher-dimensional range aggregation</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Stability of Flows</title><link href="http://localhost:4000/physics/stability-of-flows.html" rel="alternate" type="text/html" title="Stability of Flows" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/stability-of-flows</id><content type="html" xml:base="http://localhost:4000/physics/stability-of-flows.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc 
-{:toc}
+&lt;ul&gt;
+  &lt;li&gt;Rectangle sum/min/max queries&lt;/li&gt;
+  &lt;li&gt;Dynamic orthogonal range queries&lt;/li&gt;
+  &lt;li&gt;Offline geometry with coordinate compression&lt;/li&gt;
+  &lt;li&gt;Two-dimensional sweep-line data structures&lt;/li&gt;
+  &lt;li&gt;Higher-dimensional range aggregation&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Stability of Flows</title><link href="http://localhost:4000/physics/stability-of-flows.html" rel="alternate" type="text/html" title="Stability of Flows" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/stability-of-flows</id><content type="html" xml:base="http://localhost:4000/physics/stability-of-flows.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#stability-of-steady-flow&quot; id=&quot;markdown-toc-stability-of-steady-flow&quot;&gt;Stability of Steady Flow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#energy-estimate&quot; id=&quot;markdown-toc-energy-estimate&quot;&gt;Energy Estimate&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#stability-of-rotary-flow&quot; id=&quot;markdown-toc-stability-of-rotary-flow&quot;&gt;Stability of Rotary Flow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#stability-of-flow-in-a-pipe&quot; id=&quot;markdown-toc-stability-of-flow-in-a-pipe&quot;&gt;Stability of Flow in a Pipe&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#orr-sommerfeld-formulation&quot; id=&quot;markdown-toc-orr-sommerfeld-formulation&quot;&gt;Orr-Sommerfeld Formulation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#instability-of-tangential-discontinuities&quot; id=&quot;markdown-toc-instability-of-tangential-discontinuities&quot;&gt;Instability of Tangential Discontinuities&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Stability of Steady Flow
+&lt;h2 id=&quot;stability-of-steady-flow&quot;&gt;Stability of Steady Flow&lt;/h2&gt;
 
-For a prescribed steady viscous-flow problem, an exact steady solution of the
+&lt;p&gt;For a prescribed steady viscous-flow problem, an exact steady solution of the
 Navier-Stokes equation may exist formally for every $\mathrm{Re}$. Such a
 solution is physically observed only if it is stable. That is, every
-sufficiently small perturbation must decay in time.
+sufficiently small perturbation must decay in time.&lt;/p&gt;
 
-Let the steady solution be $\b{v}_0(\b{r})$, $p_0(\b{r})$, and write
+&lt;p&gt;Let the steady solution be $\b{v}_0(\b{r})$, $p_0(\b{r})$, and write&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}=\b{v}_0+\b{v}_1,\qquad
 p=p_0+p_1.
-\\]
+\]&lt;/p&gt;
 
-The full equations are
+&lt;p&gt;The full equations are&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{\b{v}}{t}+(\b{v}\cdot\grad)\b{v}
 =-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},
 \qquad
 \div\b{v}=0.
-\\]
+\]&lt;/p&gt;
 
-The unperturbed flow satisfies
+&lt;p&gt;The unperturbed flow satisfies&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 (\b{v}_0\cdot\grad)\b{v}_0
 =-\frac{1}{\rho}\grad p_0+\nu\laplacian\b{v}_0,
 \qquad
 \div\b{v}_0=0.
-\\]
+\]&lt;/p&gt;
 
-Keeping only terms of first order in $\b{v}_1$, we obtain the linearized
-equations
+&lt;p&gt;Keeping only terms of first order in $\b{v}_1$, we obtain the linearized
+equations&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{\b{v}_1}{t}
 +(\b{v}_0\cdot\grad)\b{v}_1
 +(\b{v}_1\cdot\grad)\b{v}_0
 =-\frac{1}{\rho}\grad p_1+\nu\laplacian\b{v}_1,
 \qquad
 \div\b{v}_1=0.
-\\]
+\]&lt;/p&gt;
 
-On fixed solid boundaries,
+&lt;p&gt;On fixed solid boundaries,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1=0.
-\\]
+\]&lt;/p&gt;
 
-Since the coefficients in the linearized problem are independent of time, the
-perturbations may be decomposed into normal modes
+&lt;p&gt;Since the coefficients in the linearized problem are independent of time, the
+perturbations may be decomposed into normal modes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1(\b{r},t)=\b{f}(\b{r})e^{-i\omega t}.
-\\]
+\]&lt;/p&gt;
 
-The frequency $\omega$ is in general complex. With this convention,
+&lt;p&gt;The frequency $\omega$ is in general complex. With this convention,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 e^{-i\omega t}=e^{-i\Re( \omega) \,t}
 e^{\Im( \omega)\,t}.
-\\]
+\]&lt;/p&gt;
 
-Thus a mode grows if $\Im( \omega)&gt;0$. Stability requires
+&lt;p&gt;Thus a mode grows if $\Im( \omega)&amp;gt;0$. Stability requires&lt;/p&gt;
 
-\\[
-\Im( \omega)&lt;0
-\\]
+&lt;p&gt;\[
+\Im( \omega)&amp;lt;0
+\]&lt;/p&gt;
 
-for every admissible perturbation mode.
+&lt;p&gt;for every admissible perturbation mode.&lt;/p&gt;
 
-For sufficiently small $\mathrm{Re}$ the steady flow is stable. As
+&lt;p&gt;For sufficiently small $\mathrm{Re}$ the steady flow is stable. As
 $\mathrm{Re}$ increases, one often reaches a critical value $\mathrm{Re}_{\mathrm{cr}}$
-at which the first mode becomes neutral:
+at which the first mode becomes neutral:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \Im (\omega)=0.
-\\]
+\]&lt;/p&gt;
 
-For $\mathrm{Re}&gt;\mathrm{Re}\_{\mathrm{cr}}$, the corresponding perturbation grows and the original
+&lt;p&gt;For $\mathrm{Re}&amp;gt;\mathrm{Re}_{\mathrm{cr}}$, the corresponding perturbation grows and the original
 steady flow can no longer be the observed flow. The number
-$\mathrm{Re}\_{\mathrm{cr}}$ is not universal; it depends on the geometry and on the
-boundary conditions.
+$\mathrm{Re}_{\mathrm{cr}}$ is not universal; it depends on the geometry and on the
+boundary conditions.&lt;/p&gt;
 
-Near the first instability, suppose that the unstable mode has
+&lt;p&gt;Near the first instability, suppose that the unstable mode has&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega=\omega_1+i\gamma_1,
 \qquad
-\gamma_1&gt;0,\qquad
+\gamma_1&amp;gt;0,\qquad
 \gamma_1\ll\omega_1.
-\\]
+\]&lt;/p&gt;
 
-Then initially
+&lt;p&gt;Then initially&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1=A(t)\b{f}(\b{r}),
 \qquad
 A(t)=A_0e^{\gamma_1t}e^{-i\omega_1t}.
-\\]
+\]&lt;/p&gt;
 
-This linear formula cannot remain valid indefinitely. The amplitude must be
+&lt;p&gt;This linear formula cannot remain valid indefinitely. The amplitude must be
 limited by nonlinear terms. Averaging over times long compared with
 $2\pi/\omega_1$ but short compared with $1/\gamma_1$, the amplitude equation
-has the form
+has the form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \odv{|A|^2}{t}
 =2\gamma_1|A|^2-\alpha |A|^4+\cdots .
-\\]
+\]&lt;/p&gt;
 
-Here $\alpha$ is the Landau constant. If $\alpha&gt;0$, the perturbation saturates
-at
+&lt;p&gt;Here $\alpha$ is the Landau constant. If $\alpha&amp;gt;0$, the perturbation saturates
+at&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 |A|_{\max}^2=\frac{2\gamma_1}{\alpha}.
-\\]
+\]&lt;/p&gt;
 
-Since
+&lt;p&gt;Since&lt;/p&gt;
 
-\\[
-\gamma_1=C(\mathrm{Re}-\mathrm{Re}\_{\mathrm{cr}})
+&lt;p&gt;\[
+\gamma_1=C(\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}})
 +O((\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}})^2),
-\\]
+\]&lt;/p&gt;
 
-we get
+&lt;p&gt;we get&lt;/p&gt;
 
-\\[
-|A|\_{\max}\propto \sqrt{\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}}}.
-\\]
+&lt;p&gt;\[
+|A|_{\max}\propto \sqrt{\mathrm{Re}-\mathrm{Re}_{\mathrm{cr}}}.
+\]&lt;/p&gt;
 
-This is a continuous, or soft, transition. If $\alpha&lt;0$, the fourth-order term
-is destabilizing and a stabilizing higher-order term is needed. Writing
+&lt;p&gt;This is a continuous, or soft, transition. If $\alpha&amp;lt;0$, the fourth-order term
+is destabilizing and a stabilizing higher-order term is needed. Writing&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \odv{|A|^2}{t}
 =2\gamma_1|A|^2+|\alpha||A|^4-\beta |A|^6,
 \qquad
-\beta&gt;0,
-\\]
+\beta&amp;gt;0,
+\]&lt;/p&gt;
 
-and putting $q=\|A\|^2$, the non-zero steady amplitudes satisfy
+&lt;p&gt;and putting $q=|A|^2$, the non-zero steady amplitudes satisfy&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \beta q^2-|\alpha|q-2\gamma_1=0.
-\\]
+\]&lt;/p&gt;
 
-Thus
+&lt;p&gt;Thus&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 q
 =\frac{|\alpha|}{2\beta}
 \pm
 \sqrt{\frac{\alpha^2}{4\beta^2}+\frac{2\gamma_1}{\beta}}.
-\\]
+\]&lt;/p&gt;
 
-In this case the transition is subcritical. There may be a range below
+&lt;p&gt;In this case the transition is subcritical. There may be a range below
 $\mathrm{Re}_{\mathrm{cr}}$ where the steady flow is stable to infinitesimal
-perturbations but unstable to finite perturbations.
+perturbations but unstable to finite perturbations.&lt;/p&gt;
 
-## Energy Estimate
+&lt;h2 id=&quot;energy-estimate&quot;&gt;Energy Estimate&lt;/h2&gt;
 
-The preceding discussion is spectral. A useful complementary estimate is
+&lt;p&gt;The preceding discussion is spectral. A useful complementary estimate is
 obtained by retaining the nonlinear term in the perturbation equation. In
-dimensionless variables,
+dimensionless variables,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{\b{v}_1}{t}
 +(\b{v}_0\cdot\grad)\b{v}_1
 +(\b{v}_1\cdot\grad)\b{v}_0
 +(\b{v}_1\cdot\grad)\b{v}_1
 =-\grad p_1+\frac{1}{\mathrm{Re}}\laplacian\b{v}_1.
-\\]
+\]&lt;/p&gt;
 
-Taking the scalar product with $\b{v}_1$, using
-$\div\b{v}_0=\div\b{v}_1=0$, and integrating over the fluid region gives
+&lt;p&gt;Taking the scalar product with $\b{v}_1$, using
+$\div\b{v}_0=\div\b{v}_1=0$, and integrating over the fluid region gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \dot E_1=T-\frac{D}{\mathrm{Re}},
-\\]
+\]&lt;/p&gt;
 
-where
+&lt;p&gt;where&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 E_1=\int\frac{1}{2}v_1^2\,dV,
-\\]
+\]&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 T=-\int v_{1i}v_{1k}\pdv{v_{0i}}{x_k}\,dV,
 \qquad
 D=\int
 \left(\pdv{v_{1i}}{x_k}\right)^2\,dV.
-\\]
+\]&lt;/p&gt;
 
-The surface terms vanish because $\b{v}_1=0$ on fixed walls, or because the
+&lt;p&gt;The surface terms vanish because $\b{v}_1=0$ on fixed walls, or because the
 perturbation vanishes at infinity. The functional $D$ is positive, while $T$
-may have either sign. If
+may have either sign. If&lt;/p&gt;
 
-\\[
-\mathrm{Re}&lt;\mathrm{Re}_E,\qquad
+&lt;p&gt;\[
+\mathrm{Re}&amp;lt;\mathrm{Re}_E,\qquad
 \mathrm{Re}_E=\min\frac{D}{T},
-\\]
+\]&lt;/p&gt;
 
-where the minimum is taken over admissible solenoidal perturbations with
-$T&gt;0$, then $\dot E_1&lt;0$ for all perturbations. Hence the flow is stable in
+&lt;p&gt;where the minimum is taken over admissible solenoidal perturbations with
+$T&amp;gt;0$, then $\dot E_1&amp;lt;0$ for all perturbations. Hence the flow is stable in
 the energy sense. This gives a rigorous lower bound for the critical
-$\mathrm{Re}$, although the bound is usually much smaller than the observed value.
+$\mathrm{Re}$, although the bound is usually much smaller than the observed value.&lt;/p&gt;
 
-## Stability of Rotary Flow
+&lt;h2 id=&quot;stability-of-rotary-flow&quot;&gt;Stability of Rotary Flow&lt;/h2&gt;
 
-Consider the flow between two coaxial cylinders of radii $R_1&lt;R_2$, rotating
+&lt;p&gt;Consider the flow between two coaxial cylinders of radii $R_1&amp;lt;R_2$, rotating
 with angular velocities $\Omega_1$ and $\Omega_2$. For small viscosity and
-large $\mathrm{Re}$, the stability criterion can be obtained by Rayleigh&apos;s
-displacement argument.
+large $\mathrm{Re}$, the stability criterion can be obtained by Rayleigh’s
+displacement argument.&lt;/p&gt;
 
-Let
+&lt;p&gt;Let&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mu=r^2\Omega(r)
-\\]
+\]&lt;/p&gt;
 
-be the angular momentum per unit mass, up to a constant factor. If a fluid
-element is displaced from $r_0$ to $r&gt;r_0$ while keeping its angular momentum,
+&lt;p&gt;be the angular momentum per unit mass, up to a constant factor. If a fluid
+element is displaced from $r_0$ to $r&amp;gt;r_0$ while keeping its angular momentum,
 the centrifugal force acting on it is determined by $\mu(r_0)$. For the
 displacement to be restored, this force must be smaller than the equilibrium
-centrifugal force at $r$. Thus the inviscid stability condition is
+centrifugal force at $r$. Thus the inviscid stability condition is&lt;/p&gt;
 
-\\[
-\mu\odv{\mu}{r}&gt;0.
-\\]
+&lt;p&gt;\[
+\mu\odv{\mu}{r}&amp;gt;0.
+\]&lt;/p&gt;
 
-Equivalently,
+&lt;p&gt;Equivalently,&lt;/p&gt;
 
-\\[
-\frac{\d}{\d r}(r^2\Omega)^2&gt;0.
-\\]
+&lt;p&gt;\[
+\frac{\d}{\d r}(r^2\Omega)^2&amp;gt;0.
+\]&lt;/p&gt;
 
-This is Rayleigh&apos;s criterion.
+&lt;p&gt;This is Rayleigh’s criterion.&lt;/p&gt;
 
-For Couette flow between the cylinders,
+&lt;p&gt;For Couette flow between the cylinders,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \Omega(r)
 =\frac{\Omega_2R_2^2-\Omega_1R_1^2}{R_2^2-R_1^2}
 +\frac{(\Omega_1-\Omega_2)R_1^2R_2^2}{R_2^2-R_1^2}\frac{1}{r^2}.
-\\]
+\]&lt;/p&gt;
 
-Substitution into Rayleigh&apos;s criterion gives
+&lt;p&gt;Substitution into Rayleigh’s criterion gives&lt;/p&gt;
 
-\\[
-(\Omega_2R_2^2-\Omega_1R_1^2)\Omega(r)&gt;0.
-\\]
+&lt;p&gt;\[
+(\Omega_2R_2^2-\Omega_1R_1^2)\Omega(r)&amp;gt;0.
+\]&lt;/p&gt;
 
-If the cylinders rotate in opposite directions, this condition cannot hold
+&lt;p&gt;If the cylinders rotate in opposite directions, this condition cannot hold
 throughout the whole annulus, and the flow is unstable. If they rotate in the
-same direction, $\Omega(r)&gt;0$, and the condition becomes
+same direction, $\Omega(r)&amp;gt;0$, and the condition becomes&lt;/p&gt;
 
-\\[
-\Omega_2R_2^2&gt;\Omega_1R_1^2.
-\\]
+&lt;p&gt;\[
+\Omega_2R_2^2&amp;gt;\Omega_1R_1^2.
+\]&lt;/p&gt;
 
-Thus, if the outer cylinder is at rest and the inner cylinder rotates, the
+&lt;p&gt;Thus, if the outer cylinder is at rest and the inner cylinder rotates, the
 inviscid criterion predicts instability. If the inner cylinder is at rest and
-the outer cylinder rotates, the flow is stable.
+the outer cylinder rotates, the flow is stable.&lt;/p&gt;
 
-For finite viscosity the full linearized problem must be used. Since the
-unperturbed flow depends only on $r$, perturbations may be written as
+&lt;p&gt;For finite viscosity the full linearized problem must be used. Since the
+unperturbed flow depends only on $r$, perturbations may be written as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1(r,\phi,z,t)
 =e^{i(n\phi+kz-\omega t)}\b{f}(r),
-\\]
+\]&lt;/p&gt;
 
-where $n$ is an integer and $k$ is a continuous axial wave number. For given
+&lt;p&gt;where $n$ is an integer and $k$ is a continuous axial wave number. For given
 $n$ and $k$, the boundary conditions at $r=R_1,R_2$ determine a discrete set
 of eigenfrequencies. The first instability is usually axisymmetric
-$(n=0)$.
+$(n=0)$.&lt;/p&gt;
 
-At the threshold, the frequency of the critical Taylor-Couette mode is purely
+&lt;p&gt;At the threshold, the frequency of the critical Taylor-Couette mode is purely
 imaginary and actually vanishes. Hence the first new flow is steady. It
 consists of toroidal Taylor vortices arranged periodically along the axis.
-The period is
+The period is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{2\pi}{k_{\mathrm{cr}}},
-\\]
+\]&lt;/p&gt;
 
-and each period contains two vortices rotating in opposite directions.
+&lt;p&gt;and each period contains two vortices rotating in opposite directions.&lt;/p&gt;
 
-For a narrow gap
+&lt;p&gt;For a narrow gap&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 h=R_2-R_1\ll R_m=\frac{R_1+R_2}{2},
-\\]
+\]&lt;/p&gt;
 
-and with the outer cylinder at rest, the critical $\mathrm{Re}$ may be
-written as
+&lt;p&gt;and with the outer cylinder at rest, the critical $\mathrm{Re}$ may be
+written as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}=\frac{h\Omega_1R_1}{\nu},
 \qquad
 \mathrm{Re}_{\mathrm{cr}}=41.2\sqrt{\frac{R_m}{h}}.
-\\]
+\]&lt;/p&gt;
 
-Viscosity has a stabilizing effect in this problem. A flow that is unstable in
+&lt;p&gt;Viscosity has a stabilizing effect in this problem. A flow that is unstable in
 the inviscid Rayleigh criterion may become stable when viscous diffusion is
-included.
+included.&lt;/p&gt;
 
-The limiting case $h\to0$ gives plane Couette flow, namely flow between two
+&lt;p&gt;The limiting case $h\to0$ gives plane Couette flow, namely flow between two
 parallel planes in relative motion. This flow is linearly stable to
 infinitesimal perturbations for every $\mathrm{Re}$, although finite
-amplitude perturbations can still produce transition at large $\mathrm{Re}$.
+amplitude perturbations can still produce transition at large $\mathrm{Re}$.&lt;/p&gt;
 
-## Stability of Flow in a Pipe
+&lt;h2 id=&quot;stability-of-flow-in-a-pipe&quot;&gt;Stability of Flow in a Pipe&lt;/h2&gt;
 
-For a parallel flow in the $x$ direction, the unperturbed velocity is
+&lt;p&gt;For a parallel flow in the $x$ direction, the unperturbed velocity is
 independent of $x$. Perturbations may be written as wave packets composed of
-normal modes
+normal modes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1=e^{i(kx-\omega t)}\b{f}(y,z).
-\\]
+\]&lt;/p&gt;
 
-The growth rate is
+&lt;p&gt;The growth rate is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \gamma(k)=\Im( \omega(k) ).
-\\]
+\]&lt;/p&gt;
 
-If $\gamma(k)&gt;0$ for a range of wave numbers, the corresponding packet is
-amplified. It is also transported downstream with group velocity
+&lt;p&gt;If $\gamma(k)&amp;gt;0$ for a range of wave numbers, the corresponding packet is
+amplified. It is also transported downstream with group velocity&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 v_g=\odv{\Re( \omega )}{k}.
-\\]
+\]&lt;/p&gt;
 
-This introduces a distinction absent in the simplest bounded problems. An
+&lt;p&gt;This introduces a distinction absent in the simplest bounded problems. An
 instability is absolute if the perturbation grows at a fixed spatial point. It
 is convected if the perturbation grows while being carried downstream, but
-decays at each fixed point after the packet passes.
+decays at each fixed point after the packet passes.&lt;/p&gt;
 
-For a disturbance imposed with real frequency $\omega$ at a fixed point, the
+&lt;p&gt;For a disturbance imposed with real frequency $\omega$ at a fixed point, the
 wave number $k$ is generally complex. The neutral stability curve is the curve
-in the $(\omega,\mathrm{Re})$ plane for which
+in the $(\omega,\mathrm{Re})$ plane for which&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \Im( k(\omega,\mathrm{Re}) )=0.
-\\]
+\]&lt;/p&gt;
 
-It separates perturbations that grow downstream from perturbations that decay
-downstream.
+&lt;p&gt;It separates perturbations that grow downstream from perturbations that decay
+downstream.&lt;/p&gt;
 
-For plane Poiseuille flow, between two parallel planes, one may write
+&lt;p&gt;For plane Poiseuille flow, between two parallel planes, one may write&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_1
 =e^{i(k_xx+k_zz-\omega t)}\b{f}(y).
-\\]
+\]&lt;/p&gt;
 
-The first neutral mode is two-dimensional:
+&lt;p&gt;The first neutral mode is two-dimensional:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 k_z=0.
-\\]
+\]&lt;/p&gt;
 
-This is the content of Squire&apos;s theorem in this setting: for a fixed wave
+&lt;p&gt;This is the content of Squire’s theorem in this setting: for a fixed wave
 number, the first unstable mode of a parallel shear flow may be taken
 two-dimensional. Thus it is enough to study disturbances in the plane of the
-base flow.
+base flow.&lt;/p&gt;
 
-For plane Poiseuille flow the critical $\mathrm{Re}$ is
+&lt;p&gt;For plane Poiseuille flow the critical $\mathrm{Re}$ is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}_{\mathrm{cr}}=5772,
-\\]
+\]&lt;/p&gt;
 
-where
+&lt;p&gt;where&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}=\frac{U_{\max}h}{2\nu},
-\\]
+\]&lt;/p&gt;
 
-$U_{\max}$ is the maximum velocity and $h$ is the distance between the planes.
-The critical wave number is approximately
+&lt;p&gt;$U_{\max}$ is the maximum velocity and $h$ is the distance between the planes.
+The critical wave number is approximately&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 k_{\mathrm{cr}}\simeq \frac{2.04}{h}.
-\\]
+\]&lt;/p&gt;
 
-For flow in a circular pipe, the classical linear problem gives no unstable
+&lt;p&gt;For flow in a circular pipe, the classical linear problem gives no unstable
 infinitesimal modes. Axisymmetric perturbations are damped, and no unstable
 non-axisymmetric mode is found. Nevertheless, pipe flow undergoes transition
 in experiments. The transition is therefore subcritical: sufficiently large
 finite perturbations can trigger turbulence even though infinitesimal
-perturbations decay.
+perturbations decay.&lt;/p&gt;
 
-With
+&lt;p&gt;With&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}=\frac{U_{\max}d}{2\nu}=\frac{\overline U d}{\nu},
-\\]
+\]&lt;/p&gt;
 
-where $d$ is the pipe diameter, carefully prepared laminar pipe flow may be
+&lt;p&gt;where $d$ is the pipe diameter, carefully prepared laminar pipe flow may be
 maintained up to very large $\mathrm{Re}$. In ordinary experiments, however, finite
-disturbances often trigger turbulence for
+disturbances often trigger turbulence for&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \mathrm{Re}\simeq 1800
-\\]
+\]&lt;/p&gt;
 
-or above. For plane channel flow, finite-amplitude turbulent regions may
+&lt;p&gt;or above. For plane channel flow, finite-amplitude turbulent regions may
 appear for $\mathrm{Re}$ of order $1000$. This is a hard transition: the drag changes
-discontinuously between the laminar and turbulent states.
+discontinuously between the laminar and turbulent states.&lt;/p&gt;
 
-## Orr-Sommerfeld Formulation
+&lt;h2 id=&quot;orr-sommerfeld-formulation&quot;&gt;Orr-Sommerfeld Formulation&lt;/h2&gt;
 
-For a plane parallel base flow
+&lt;p&gt;For a plane parallel base flow&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}_0=U(y)\b{e}_x,
-\\]
+\]&lt;/p&gt;
 
-a two-dimensional incompressible perturbation can be written with a stream
-function
+&lt;p&gt;a two-dimensional incompressible perturbation can be written with a stream
+function&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \psi(y)e^{i(kx-\omega t)}.
-\\]
+\]&lt;/p&gt;
 
-Let
+&lt;p&gt;Let&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 c=\frac{\omega}{k}.
-\\]
+\]&lt;/p&gt;
 
-The linearized Navier-Stokes equations reduce to the Orr-Sommerfeld equation
+&lt;p&gt;The linearized Navier-Stokes equations reduce to the Orr-Sommerfeld equation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 (U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi
 =\frac{1}{ik\mathrm{Re}}
 (\psi^{\prime\prime\prime\prime}-2k^2\psi^{\prime\prime}+k^4\psi).
-\\]
+\]&lt;/p&gt;
 
-For no-slip walls,
+&lt;p&gt;For no-slip walls,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \psi=0,\qquad \psi^\prime=0.
-\\]
+\]&lt;/p&gt;
 
-In the inviscid limit $\mathrm{Re}\to\infty$, this becomes Rayleigh&apos;s equation
+&lt;p&gt;In the inviscid limit $\mathrm{Re}\to\infty$, this becomes Rayleigh’s equation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 (U-c)(\psi^{\prime\prime}-k^2\psi)-U^{\prime\prime}\psi=0.
-\\]
+\]&lt;/p&gt;
 
-Rayleigh&apos;s inflection-point theorem says that inviscid instability of a
-smooth parallel shear flow requires an inflection point:
+&lt;p&gt;Rayleigh’s inflection-point theorem says that inviscid instability of a
+smooth parallel shear flow requires an inflection point:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 U^{\prime\prime}(y)=0
-\\]
+\]&lt;/p&gt;
 
-somewhere in the flow. This condition is necessary, not sufficient. It is one
+&lt;p&gt;somewhere in the flow. This condition is necessary, not sufficient. It is one
 reason why shear layers with inflectional velocity profiles are much more
-unstable than plane Couette flow.
+unstable than plane Couette flow.&lt;/p&gt;
 
-## Instability of Tangential Discontinuities
+&lt;h2 id=&quot;instability-of-tangential-discontinuities&quot;&gt;Instability of Tangential Discontinuities&lt;/h2&gt;
 
-Consider two layers of inviscid incompressible fluid moving tangentially past
+&lt;p&gt;Consider two layers of inviscid incompressible fluid moving tangentially past
 one another. The separating surface is a surface of tangential discontinuity.
-Let the interface be $z=0$. In a frame where the lower fluid is at rest, take
+Let the interface be $z=0$. In a frame where the lower fluid is at rest, take&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{U}_1=U\b{e}_x,\qquad
 \b{U}_2=0,
-\\]
+\]&lt;/p&gt;
 
-with densities $\rho_1$ and $\rho_2$. We neglect gravity and surface tension
-first.
+&lt;p&gt;with densities $\rho_1$ and $\rho_2$. We neglect gravity and surface tension
+first.&lt;/p&gt;
 
-Let the interface displacement be
+&lt;p&gt;Let the interface displacement be&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \zeta=\zeta_0e^{i(kx-\omega t)}.
-\\]
+\]&lt;/p&gt;
 
-In each fluid, the perturbation pressure satisfies Laplace&apos;s equation,
+&lt;p&gt;In each fluid, the perturbation pressure satisfies Laplace’s equation,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \laplacian p^\prime=0.
-\\]
+\]&lt;/p&gt;
 
-For the upper fluid $z&gt;0$ the decaying solution is
+&lt;p&gt;For the upper fluid $z&amp;gt;0$ the decaying solution is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 p_1^\prime=C_1e^{i(kx-\omega t)}e^{-kz}.
-\\]
+\]&lt;/p&gt;
 
-The linearized Euler equation in the upper fluid is
+&lt;p&gt;The linearized Euler equation in the upper fluid is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{\b{v}_1^\prime}{t}
 +U\pdv{\b{v}_1^\prime}{x}
 =-\frac{1}{\rho_1}\grad p_1^\prime.
-\\]
+\]&lt;/p&gt;
 
-Its $z$-component gives, at $z=0$,
+&lt;p&gt;Its $z$-component gives, at $z=0$,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 v_{1z}^\prime=\frac{k p_1^\prime}{i\rho_1(kU-\omega)}.
-\\]
+\]&lt;/p&gt;
 
-The kinematic condition at the moving interface is
+&lt;p&gt;The kinematic condition at the moving interface is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{\zeta}{t}
 =v_{1z}^\prime-U\pdv{\zeta}{x}.
-\\]
+\]&lt;/p&gt;
 
-Therefore
+&lt;p&gt;Therefore&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 v_{1z}^\prime=i\zeta(kU-\omega),
-\\]
+\]&lt;/p&gt;
 
-and hence
+&lt;p&gt;and hence&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 p_1^\prime=-\frac{\rho_1\zeta}{k}(kU-\omega)^2.
-\\]
+\]&lt;/p&gt;
 
-For the lower fluid $z&lt;0$,
+&lt;p&gt;For the lower fluid $z&amp;lt;0$,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 p_2^\prime=C_2e^{i(kx-\omega t)}e^{kz},
-\\]
+\]&lt;/p&gt;
 
-and the same calculation, now with $U_2=0$, gives
+&lt;p&gt;and the same calculation, now with $U_2=0$, gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 p_2^\prime=\frac{\rho_2\zeta}{k}\omega^2.
-\\]
+\]&lt;/p&gt;
 
-Continuity of pressure at the interface gives
+&lt;p&gt;Continuity of pressure at the interface gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \rho_1(kU-\omega)^2=-\rho_2\omega^2.
-\\]
+\]&lt;/p&gt;
 
-Solving for $\omega$,
+&lt;p&gt;Solving for $\omega$,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega
 =kU\frac{\rho_1\pm i\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
-\\]
+\]&lt;/p&gt;
 
-There is always a root with positive imaginary part. Therefore an ideal
+&lt;p&gt;There is always a root with positive imaginary part. Therefore an ideal
 tangential discontinuity is unstable to infinitesimal perturbations. This is
-the Kelvin-Helmholtz instability.
+the Kelvin-Helmholtz instability.&lt;/p&gt;
 
-For arbitrary tangential velocities $U_1$ and $U_2$, the same result is
+&lt;p&gt;For arbitrary tangential velocities $U_1$ and $U_2$, the same result is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega
 =k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
 \pm i k(U_1-U_2)
 \frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2},
-\\]
+\]&lt;/p&gt;
 
-where the sign is chosen so that one mode grows. The growth rate is
+&lt;p&gt;where the sign is chosen so that one mode grows. The growth rate is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \gamma
 =k|U_1-U_2|\frac{\sqrt{\rho_1\rho_2}}{\rho_1+\rho_2}.
-\\]
+\]&lt;/p&gt;
 
-The ideal discontinuity has no intrinsic length scale, so the growth rate
+&lt;p&gt;The ideal discontinuity has no intrinsic length scale, so the growth rate
 increases without bound as $k\to\infty$. This is not physical. In a real fluid
 the velocity changes over a finite shear-layer thickness, and viscosity
-regularizes the shortest wavelengths.
+regularizes the shortest wavelengths.&lt;/p&gt;
 
-If gravity and surface tension are included, the dispersion relation becomes
+&lt;p&gt;If gravity and surface tension are included, the dispersion relation becomes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega
 =k\frac{\rho_1U_1+\rho_2U_2}{\rho_1+\rho_2}
 \pm
-\left\[
+\left[
 \frac{gk(\rho_2-\rho_1)+\sigma k^3}{\rho_1+\rho_2}
 -\frac{\rho_1\rho_2k^2(U_1-U_2)^2}{(\rho_1+\rho_2)^2}
-\right\]^{1/2},
-\\]
+\right]^{1/2},
+\]&lt;/p&gt;
 
-where the lower fluid has density $\rho_2$ and the upper fluid has density
+&lt;p&gt;where the lower fluid has density $\rho_2$ and the upper fluid has density
 $\rho_1$. The interface is unstable when the expression under the square root
-is negative. Thus gravity and surface tension are stabilizing when
+is negative. Thus gravity and surface tension are stabilizing when&lt;/p&gt;
 
-\\[
-gk(\rho_2-\rho_1)+\sigma k^3&gt;0,
-\\]
+&lt;p&gt;\[
+gk(\rho_2-\rho_1)+\sigma k^3&amp;gt;0,
+\]&lt;/p&gt;
 
-while the velocity jump is destabilizing.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Fenwick Tree</title><link href="http://localhost:4000/computer-science/fenwick-tree.html" rel="alternate" type="text/html" title="Fenwick Tree" /><published>2026-04-11T00:00:00+09:00</published><updated>2026-04-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fenwick-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/fenwick-tree.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;p&gt;while the velocity jump is destabilizing.&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Fenwick Tree</title><link href="http://localhost:4000/computer-science/fenwick-tree.html" rel="alternate" type="text/html" title="Fenwick Tree" /><published>2026-04-11T00:00:00+09:00</published><updated>2026-04-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fenwick-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/fenwick-tree.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#explanation&quot; id=&quot;markdown-toc-explanation&quot;&gt;Explanation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#proof-of-correctness&quot; id=&quot;markdown-toc-proof-of-correctness&quot;&gt;Proof of Correctness&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#complexity&quot; id=&quot;markdown-toc-complexity&quot;&gt;Complexity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#applications&quot; id=&quot;markdown-toc-applications&quot;&gt;Applications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Introduction
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-A **Fenwick tree**, or **binary indexed tree**, is a data structure for prefix queries and point updates.
-It is more compact than a segment tree and is especially convenient when every query is reducible to prefix aggregates.
+&lt;p&gt;A &lt;strong&gt;Fenwick tree&lt;/strong&gt;, or &lt;strong&gt;binary indexed tree&lt;/strong&gt;, is a data structure for prefix queries and point updates.
+It is more compact than a segment tree and is especially convenient when every query is reducible to prefix aggregates.&lt;/p&gt;
 
-Let $(G,\ast,e)$ be an abelian group.
-Given an array
+&lt;p&gt;Let $(G,\ast,e)$ be an abelian group.
+Given an array&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 A=[a_1,\ldots,a_N],
-\\]
+\]&lt;/p&gt;
 
-Fenwick tree supports:
+&lt;p&gt;Fenwick tree supports:&lt;/p&gt;
 
-1. point update: multiply one position by a value;
-2. prefix query: compute $a_1\ast\cdots\ast a_i$;
-3. range query: compute $a_l\ast\cdots\ast a_r$ using inverses.
+&lt;ol&gt;
+  &lt;li&gt;point update: multiply one position by a value;&lt;/li&gt;
+  &lt;li&gt;prefix query: compute $a_1\ast\cdots\ast a_i$;&lt;/li&gt;
+  &lt;li&gt;range query: compute $a_l\ast\cdots\ast a_r$ using inverses.&lt;/li&gt;
+&lt;/ol&gt;
 
-For ordinary sums, $\ast$ is addition and the inverse is negation.
+&lt;p&gt;For ordinary sums, $\ast$ is addition and the inverse is negation.&lt;/p&gt;
 
-## Explanation
+&lt;h2 id=&quot;explanation&quot;&gt;Explanation&lt;/h2&gt;
 
-For a positive integer $i$, define
+&lt;p&gt;For a positive integer $i$, define&lt;/p&gt;
 
-\\[
-\operatorname{lowbit}(i)=i\&amp;(-i).
-\\]
+&lt;p&gt;\[
+\operatorname{lowbit}(i)=i\&amp;amp;(-i).
+\]&lt;/p&gt;
 
-This is the largest power of two dividing $i$.
-The Fenwick tree array `bit` is defined by the invariant
+&lt;p&gt;This is the largest power of two dividing $i$.
+The Fenwick tree array &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit&lt;/code&gt; is defined by the invariant&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \operatorname{bit}[i]
 =a_{i-\operatorname{lowbit}(i)+1}
 \ast\cdots\ast a_i.
-\\]
+\]&lt;/p&gt;
 
-Thus `bit[i]` stores the aggregate of the interval
+&lt;p&gt;Thus &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit[i]&lt;/code&gt; stores the aggregate of the interval&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 [i-\operatorname{lowbit}(i)+1:i].
-\\]
+\]&lt;/p&gt;
 
-To compute a prefix query at $i$, take `bit[i]`, then remove the interval it covers by setting
+&lt;p&gt;To compute a prefix query at $i$, take &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit[i]&lt;/code&gt;, then remove the interval it covers by setting&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 i\gets i-\operatorname{lowbit}(i).
-\\]
+\]&lt;/p&gt;
 
-Repeating this decomposes $[1:i]$ into disjoint power-of-two suffix intervals.
-Merging their stored values gives the prefix aggregate.
+&lt;p&gt;Repeating this decomposes $[1:i]$ into disjoint power-of-two suffix intervals.
+Merging their stored values gives the prefix aggregate.&lt;/p&gt;
 
-To update position $p$, every `bit[i]` whose interval contains $p$ must be updated.
-These indices are obtained by
+&lt;p&gt;To update position $p$, every &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit[i]&lt;/code&gt; whose interval contains $p$ must be updated.
+These indices are obtained by&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 i\gets i+\operatorname{lowbit}(i)
-\\]
+\]&lt;/p&gt;
 
-starting from $p$.
-This walks through the Fenwick intervals that cover $p$.
+&lt;p&gt;starting from $p$.
+This walks through the Fenwick intervals that cover $p$.&lt;/p&gt;
 
-The visualizer below shows both the prefix decomposition and the update path.
+&lt;p&gt;The visualizer below shows both the prefix decomposition and the update path.&lt;/p&gt;
 
-{% include_relative includes/fenwick-tree.html %}
+&lt;div id=&quot;fenwick-tree-visualizer&quot; class=&quot;ftv-panel&quot;&gt;
+  &lt;div class=&quot;ftv-toolbar&quot;&gt;
+    &lt;button type=&quot;button&quot; data-action=&quot;mode&quot;&gt;Update Path&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-action=&quot;prev&quot;&gt;Prev&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-action=&quot;step&quot;&gt;Step&lt;/button&gt;
+    &lt;button type=&quot;button&quot; data-action=&quot;reset&quot;&gt;Reset&lt;/button&gt;
+    &lt;span class=&quot;ftv-status&quot; data-role=&quot;status&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;canvas aria-label=&quot;Fenwick tree visualizer&quot;&gt;&lt;/canvas&gt;
+&lt;/div&gt;
 
-## Proof of Correctness
+&lt;style&gt;
+  .ftv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
 
-The definition of `bit[i]` is the main invariant.
-For prefix query, the update
+  .ftv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
 
-\\[
+  .ftv-toolbar button {
+    min-height: 2rem;
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .ftv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .ftv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .ftv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  const root = document.getElementById(&quot;fenwick-tree-visualizer&quot;);
+  if (!root) return;
+
+  const canvas = root.querySelector(&quot;canvas&quot;);
+  const ctx = canvas.getContext(&quot;2d&quot;);
+  const status = root.querySelector(&quot;[data-role=&apos;status&apos;]&quot;);
+  const modeButton = root.querySelector(&quot;[data-action=&apos;mode&apos;]&quot;);
+  const buttons = root.querySelectorAll(&quot;button[data-action]&quot;);
+
+  const n = 8;
+  let mode = &quot;prefix&quot;;
+  let step = 0;
+
+  function lowbit(x) {
+    return x &amp; -x;
+  }
+
+  function prefixPath(idx) {
+    const out = [];
+    for (let i = idx; i &gt; 0; i -= lowbit(i)) out.push(i);
+    return out;
+  }
+
+  function updatePath(idx) {
+    const out = [];
+    for (let i = idx; i &lt;= n; i += lowbit(i)) out.push(i);
+    return out;
+  }
+
+  function states() {
+    return mode === &quot;prefix&quot; ? prefixPath(7) : updatePath(3);
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function drawText(text, x, y, color, size) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif`;
+    ctx.textAlign = &quot;center&quot;;
+    ctx.textBaseline = &quot;middle&quot;;
+    ctx.fillText(text, x, y);
+  }
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const path = states();
+    const active = path[Math.min(step, path.length - 1)];
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    const pad = 34;
+    const gap = 8;
+    const cellW = (rect.width - 2 * pad - gap * (n - 1)) / n;
+    const y = rect.height * 0.46;
+
+    for (let i = 1; i &lt;= n; i++) {
+      const x = pad + (i - 1) * (cellW + gap);
+      const l = i - lowbit(i) + 1;
+      const inPath = path.includes(i);
+      const isActive = i === active;
+      ctx.fillStyle = isActive ? &quot;#bfdbfe&quot; : inPath ? &quot;#fef3c7&quot; : &quot;#f8fafc&quot;;
+      ctx.strokeStyle = isActive ? &quot;#2563eb&quot; : &quot;#94a3b8&quot;;
+      ctx.lineWidth = isActive ? 2.5 : 1.4;
+      ctx.beginPath();
+      ctx.roundRect(x, y, cellW, 56, 6);
+      ctx.fill();
+      ctx.stroke();
+      drawText(&quot;bit[&quot; + i + &quot;]&quot;, x + cellW / 2, y + 17, &quot;#0f172a&quot;, 13);
+      drawText(&quot;[&quot; + l + &quot;,&quot; + i + &quot;]&quot;, x + cellW / 2, y + 39, &quot;#64748b&quot;, 12);
+
+      const ix = x + cellW / 2;
+      ctx.strokeStyle = inPath ? &quot;#2563eb&quot; : &quot;#cbd5e1&quot;;
+      ctx.lineWidth = inPath ? 2 : 1;
+      ctx.beginPath();
+      ctx.moveTo(ix, y - 12);
+      ctx.lineTo(ix, y - 34 - lowbit(i) * 4);
+      ctx.stroke();
+    }
+
+    const title = mode === &quot;prefix&quot;
+      ? &quot;prefix(7): 7 -&gt; 6 -&gt; 4&quot;
+      : &quot;update(3): 3 -&gt; 4 -&gt; 8&quot;;
+    drawText(title, rect.width / 2, 30, &quot;#0f172a&quot;, 15);
+    drawText(&quot;Each box stores the aggregate of its shown interval.&quot;, rect.width / 2, rect.height - 30, &quot;#475569&quot;, 13);
+
+    status.textContent = (step + 1) + &quot; / &quot; + path.length + &quot;  active bit[&quot; + active + &quot;]&quot;;
+    modeButton.textContent = mode === &quot;prefix&quot; ? &quot;Update Path&quot; : &quot;Prefix Query&quot;;
+  }
+
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      this.moveTo(x + rr, y);
+      this.arcTo(x + w, y, x + w, y + h, rr);
+      this.arcTo(x + w, y + h, x, y + h, rr);
+      this.arcTo(x, y + h, x, y, rr);
+      this.arcTo(x, y, x + w, y, rr);
+      return this;
+    };
+  }
+
+  buttons.forEach(button =&gt; {
+    button.addEventListener(&quot;click&quot;, () =&gt; {
+      const action = button.dataset.action;
+      const path = states();
+      if (action === &quot;mode&quot;) {
+        mode = mode === &quot;prefix&quot; ? &quot;update&quot; : &quot;prefix&quot;;
+        step = 0;
+      } else if (action === &quot;prev&quot;) {
+        step = Math.max(0, step - 1);
+      } else if (action === &quot;step&quot;) {
+        step = Math.min(path.length - 1, step + 1);
+      } else if (action === &quot;reset&quot;) {
+        step = 0;
+      }
+      draw();
+    });
+  });
+
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+&lt;/script&gt;
+
+&lt;h2 id=&quot;proof-of-correctness&quot;&gt;Proof of Correctness&lt;/h2&gt;
+
+&lt;p&gt;The definition of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit[i]&lt;/code&gt; is the main invariant.
+For prefix query, the update&lt;/p&gt;
+
+&lt;p&gt;\[
 i\gets i-\operatorname{lowbit}(i)
-\\]
+\]&lt;/p&gt;
 
-removes exactly the interval represented by the current `bit[i]`.
+&lt;p&gt;removes exactly the interval represented by the current &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bit[i]&lt;/code&gt;.
 These removed intervals are disjoint and their union is $[1:i]$ from the original query.
-Thus the merged value is the prefix aggregate.
+Thus the merged value is the prefix aggregate.&lt;/p&gt;
 
-For point update at $p$, the loop
+&lt;p&gt;For point update at $p$, the loop&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 i\gets i+\operatorname{lowbit}(i)
-\\]
+\]&lt;/p&gt;
 
-visits exactly the Fenwick nodes whose stored intervals contain $p$.
+&lt;p&gt;visits exactly the Fenwick nodes whose stored intervals contain $p$.
 Updating those nodes and no others preserves the invariant.
-Therefore prefix and range queries are correct.
+Therefore prefix and range queries are correct.&lt;/p&gt;
 
-## Complexity
+&lt;h2 id=&quot;complexity&quot;&gt;Complexity&lt;/h2&gt;
 
-Each step changes at least one binary digit of the index.
-Hence both prefix query and point update take
+&lt;p&gt;Each step changes at least one binary digit of the index.
+Hence both prefix query and point update take&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 O(\log N)
-\\]
+\]&lt;/p&gt;
 
-time.
-The memory usage is
+&lt;p&gt;time.
+The memory usage is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 O(N).
-\\]
+\]&lt;/p&gt;
 
-If the array is known in advance, the tree can be built by calling update for every position in $O(N\log N)$ time, or by a linear build in $O(N)$ time.
+&lt;p&gt;If the array is known in advance, the tree can be built by calling update for every position in $O(N\log N)$ time, or by a linear build in $O(N)$ time.&lt;/p&gt;
 
-## Code
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
 
-The following code uses the same abstract style as the segment tree posts.
-The type `Node` represents an abelian group.
+&lt;p&gt;The following code uses the same abstract style as the segment tree posts.
+The type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Node&lt;/code&gt; represents an abelian group.&lt;/p&gt;
 
-```cpp
-struct Node {
-    ...
-    static Node merge(const Node&amp; a, const Node&amp; b);
-    static Node inverse(const Node&amp; x);
-    static Node identity();
-};
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 
-template &lt;class Node&gt;
-struct Fenwick {
-    int n;
-    vector&lt;Node&gt; bit;
+&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Fenwick&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    Fenwick(int n=0) {
-        init(n);
-    }
+    &lt;span class=&quot;n&quot;&gt;Fenwick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void init(int n_) {
-        n = n_;
-        bit.assign(n + 1, Node::identity());
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    void update(int idx, const Node&amp; delta) {
-        for(int i=idx; i&lt;=n; i+=i&amp;-i) {
-            bit[i] = Node::merge(bit[i], delta);
-        }
-    }
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    Node prefix(int idx) const {
-        Node res = Node::identity();
-        for(int i=idx; i&gt;0; i-=i&amp;-i) {
-            res = Node::merge(res, bit[i]);
-        }
-        return res;
-    }
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    Node query(int l, int r) const {
-        return Node::merge(prefix(r), Node::inverse(prefix(l - 1)));
-    }
-};
-```
+    &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-For range sums, define:
+&lt;p&gt;For range sums, define:&lt;/p&gt;
 
-```cpp
-using ll = long long;
+&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ll&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-struct Node {
-    ll v;
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    static Node merge(const Node&amp; a, const Node&amp; b) {
-        return {a.v + b.v};
-    }
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    static Node inverse(const Node&amp; x) {
-        return {-x.v};
-    }
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-    static Node identity() {
-        return {0};
-    }
-};
-```
+    &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Node&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Fenwick tree can also support range update and point query by applying the difference-array idea.
-Range update and range query can be done with two Fenwick trees.
+&lt;p&gt;Fenwick tree can also support range update and point query by applying the difference-array idea.
+Range update and range query can be done with two Fenwick trees.&lt;/p&gt;
 
-## Applications
+&lt;h2 id=&quot;applications&quot;&gt;Applications&lt;/h2&gt;
 
-* Prefix sums
-* Range sums with point updates
-* Inversion counting
-* Order statistics with binary lifting on frequencies
-* Difference-array range updates</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Damping of Gravity Waves</title><link href="http://localhost:4000/physics/damping-of-gravity-waves.html" rel="alternate" type="text/html" title="Damping of Gravity Waves" /><published>2026-04-08T00:00:00+09:00</published><updated>2026-04-08T00:00:00+09:00</updated><id>http://localhost:4000/physics/damping-of-gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/damping-of-gravity-waves.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
+&lt;ul&gt;
+  &lt;li&gt;Prefix sums&lt;/li&gt;
+  &lt;li&gt;Range sums with point updates&lt;/li&gt;
+  &lt;li&gt;Inversion counting&lt;/li&gt;
+  &lt;li&gt;Order statistics with binary lifting on frequencies&lt;/li&gt;
+  &lt;li&gt;Difference-array range updates&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Damping of Gravity Waves</title><link href="http://localhost:4000/physics/damping-of-gravity-waves.html" rel="alternate" type="text/html" title="Damping of Gravity Waves" /><published>2026-04-08T00:00:00+09:00</published><updated>2026-04-08T00:00:00+09:00</updated><id>http://localhost:4000/physics/damping-of-gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/damping-of-gravity-waves.html">&lt;!--more--&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#surface-layer&quot; id=&quot;markdown-toc-surface-layer&quot;&gt;Surface Layer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#energy-dissipation&quot; id=&quot;markdown-toc-energy-dissipation&quot;&gt;Energy Dissipation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#damping-coefficient&quot; id=&quot;markdown-toc-damping-coefficient&quot;&gt;Damping Coefficient&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#arbitrary-viscosity&quot; id=&quot;markdown-toc-arbitrary-viscosity&quot;&gt;Arbitrary Viscosity&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-## Surface Layer
+&lt;h2 id=&quot;surface-layer&quot;&gt;Surface Layer&lt;/h2&gt;
 
-Consider gravity waves on the free surface of a viscous incompressible fluid.
+&lt;p&gt;Consider gravity waves on the free surface of a viscous incompressible fluid.
 Let $k$ be the wave number, $\lambda=2\pi/k$ the wavelength, and $\omega$ the
-frequency. We assume that the amplitude is small and that
+frequency. We assume that the amplitude is small and that&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \frac{\nu}{\lambda^2}\ll\omega.
-\\]
+\]&lt;/p&gt;
 
-Equivalently, the viscous diffusion length during one period is much smaller
-than the wavelength:
+&lt;p&gt;Equivalently, the viscous diffusion length during one period is much smaller
+than the wavelength:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \delta=\sqrt{\frac{2\nu}{\omega}}\ll\lambda.
-\\]
+\]&lt;/p&gt;
 
-Thus the main motion is the potential motion of an ideal fluid. Viscosity only
+&lt;p&gt;Thus the main motion is the potential motion of an ideal fluid. Viscosity only
 produces a thin rotational layer near the free surface, together with a slow
-decay of the wave amplitude.
+decay of the wave amplitude.&lt;/p&gt;
 
-There is an important difference from a solid boundary. At a solid wall,
+&lt;p&gt;There is an important difference from a solid boundary. At a solid wall,
 viscosity must change the tangential velocity from its ideal value to zero,
 which produces large velocity gradients. At a free surface, there is no no-slip
 condition. The viscous correction is only needed to make the tangential stress
 vanish. Therefore the leading dissipation may be computed directly from the
-ideal potential flow in the bulk.
+ideal potential flow in the bulk.&lt;/p&gt;
 
-## Energy Dissipation
+&lt;h2 id=&quot;energy-dissipation&quot;&gt;Energy Dissipation&lt;/h2&gt;
 
-For an incompressible viscous fluid, the rate of viscous loss of mechanical
-energy is
+&lt;p&gt;For an incompressible viscous fluid, the rate of viscous loss of mechanical
+energy is&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \dot E_{\mathrm{mech}}
 =-\frac{\mu}{2}
 \int
 \left(
 \pdv{v_i}{x_k}+\pdv{v_k}{x_i}
 \right)^2\,dV.
-\\]
+\]&lt;/p&gt;
 
-In the leading approximation the flow is potential:
+&lt;p&gt;In the leading approximation the flow is potential:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \b{v}=\grad\phi.
-\\]
+\]&lt;/p&gt;
 
-Hence
+&lt;p&gt;Hence&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \pdv{v_i}{x_k}=\pdvs{\phi}{x_i}{x_k},
-\\]
+\]&lt;/p&gt;
 
-and the dissipation becomes
+&lt;p&gt;and the dissipation becomes&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \dot E_{\mathrm{mech}}
 =-2\mu
 \int
 \left(
 \pdvs{\phi}{x_i}{x_k}
 \right)^2\,dV.
-\\]
+\]&lt;/p&gt;
 
-For a deep-water wave propagating in the $x$ direction, with the undisturbed
-surface at $z=0$ and the fluid occupying $z&lt;0$, the velocity potential has the
-form
+&lt;p&gt;For a deep-water wave propagating in the $x$ direction, with the undisturbed
+surface at $z=0$ and the fluid occupying $z&amp;lt;0$, the velocity potential has the
+form&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \phi=\phi_0e^{kz}\cos(kx-\omega t+\alpha).
-\\]
+\]&lt;/p&gt;
 
-It satisfies
+&lt;p&gt;It satisfies&lt;/p&gt;
 
-\\[
-\laplacian\phi=0,\qquad z&lt;0,
-\\]
+&lt;p&gt;\[
+\laplacian\phi=0,\qquad z&amp;lt;0,
+\]&lt;/p&gt;
 
-and decays as $z\to-\infty$. Since each second derivative gives a factor of
-order $k^2$, a direct calculation gives
+&lt;p&gt;and decays as $z\to-\infty$. Since each second derivative gives a factor of
+order $k^2$, a direct calculation gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \overline{\dot E}_{\mathrm{mech}}
 =-8\mu k^4\int\overline{\phi^2}\,dV.
-\\]
+\]&lt;/p&gt;
 
-The mean kinetic and potential energies of a small gravity wave are equal.
+&lt;p&gt;The mean kinetic and potential energies of a small gravity wave are equal.
 Therefore the mean total mechanical energy may be written as twice the mean
-kinetic energy:
+kinetic energy:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \overline{E}_{\mathrm{mech}}
 =\rho\int\overline{v^2}\,dV
 =\rho\int\overline{
 \left(\pdv{\phi}{x_i}\right)^2
 }\,dV.
-\\]
+\]&lt;/p&gt;
 
-For the above potential,
+&lt;p&gt;For the above potential,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \int\overline{
 \left(\pdv{\phi}{x_i}\right)^2
 }\,dV
 =2k^2\int\overline{\phi^2}\,dV.
-\\]
+\]&lt;/p&gt;
 
-Thus
+&lt;p&gt;Thus&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \overline{E}_{\mathrm{mech}}
 =2\rho k^2\int\overline{\phi^2}\,dV.
-\\]
+\]&lt;/p&gt;
 
-## Damping Coefficient
+&lt;h2 id=&quot;damping-coefficient&quot;&gt;Damping Coefficient&lt;/h2&gt;
 
-Let the wave amplitude be proportional to $e^{-\gamma t}$. Then the energy,
-being quadratic in the amplitude, is proportional to $e^{-2\gamma t}$. Hence
+&lt;p&gt;Let the wave amplitude be proportional to $e^{-\gamma t}$. Then the energy,
+being quadratic in the amplitude, is proportional to $e^{-2\gamma t}$. Hence&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 2\gamma
-=-\frac{\overline{\dot E}\_{\mathrm{mech}}}
+=-\frac{\overline{\dot E}_{\mathrm{mech}}}
 {\overline{E}_{\mathrm{mech}}}.
-\\]
+\]&lt;/p&gt;
 
-Using the expressions above,
+&lt;p&gt;Using the expressions above,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 2\gamma
 =\frac{8\mu k^4}{2\rho k^2}
 =4\nu k^2.
-\\]
+\]&lt;/p&gt;
 
-Therefore
+&lt;p&gt;Therefore&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \gamma=2\nu k^2.
-\\]
+\]&lt;/p&gt;
 
-For deep-water gravity waves,
+&lt;p&gt;For deep-water gravity waves,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega^2=gk.
-\\]
+\]&lt;/p&gt;
 
-Thus the damping coefficient may also be written as
+&lt;p&gt;Thus the damping coefficient may also be written as&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \gamma=2\nu\frac{\omega^4}{g^2}.
-\\]
+\]&lt;/p&gt;
 
-The result is small under the assumption $\nu k^2\ll\omega$. It is therefore a
+&lt;p&gt;The result is small under the assumption $\nu k^2\ll\omega$. It is therefore a
 correction to the inviscid wave motion, not a change of the leading dispersion
-relation.
+relation.&lt;/p&gt;
 
-## Arbitrary Viscosity
+&lt;h2 id=&quot;arbitrary-viscosity&quot;&gt;Arbitrary Viscosity&lt;/h2&gt;
 
-When the viscosity is not small, one must solve the linearized equations
+&lt;p&gt;When the viscosity is not small, one must solve the linearized equations
 directly. For a two-dimensional disturbance proportional to
-$e^{ikx-i\omega t}$, the equations are
+$e^{ikx-i\omega t}$, the equations are&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \begin{aligned}
 \pdv{v_x}{t}
-&amp;=-\frac{1}{\rho}\pdv{p}{x}
+&amp;amp;=-\frac{1}{\rho}\pdv{p}{x}
 +\nu\left(\pdvn{2}{v_x}{x}+\pdvn{2}{v_x}{z}\right), \nl
 \pdv{v_z}{t}
-&amp;=-\frac{1}{\rho}\pdv{p}{z}
+&amp;amp;=-\frac{1}{\rho}\pdv{p}{z}
 +\nu\left(\pdvn{2}{v_z}{x}+\pdvn{2}{v_z}{z}\right)-g, \nl
-\pdv{v_x}{x}+\pdv{v_z}{z}&amp;=0.
+\pdv{v_x}{x}+\pdv{v_z}{z}&amp;amp;=0.
 \end{aligned}
-\\]
+\]&lt;/p&gt;
 
-At the free surface the tangential and normal stresses vanish, to first order
-in the wave amplitude:
+&lt;p&gt;At the free surface the tangential and normal stresses vanish, to first order
+in the wave amplitude:&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sigma_{xz}
 =\mu\left(\pdv{v_x}{z}+\pdv{v_z}{x}\right)=0,
-\\]
+\]&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \sigma_{zz}
 =-p+2\mu\pdv{v_z}{z}=0.
-\\]
+\]&lt;/p&gt;
 
-Solving the linear system with decay as $z\to-\infty$ gives the dispersion
-relation
+&lt;p&gt;Solving the linear system with decay as $z\to-\infty$ gives the dispersion
+relation&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \left(2-\frac{i\omega}{\nu k^2}\right)^2
 +\frac{g}{\nu^2k^3}
 =4\sqrt{1-\frac{i\omega}{\nu k^2}}.
-\\]
+\]&lt;/p&gt;
 
-In the weak-viscosity limit this gives
+&lt;p&gt;In the weak-viscosity limit this gives&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega=\pm\sqrt{gk}-2i\nu k^2.
-\\]
+\]&lt;/p&gt;
 
-Thus the imaginary part reproduces the damping coefficient found from the
-energy method. In the opposite limit,
+&lt;p&gt;Thus the imaginary part reproduces the damping coefficient found from the
+energy method. In the opposite limit,&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \nu k^2\gg\sqrt{gk},
-\\]
+\]&lt;/p&gt;
 
-the motion is no longer an oscillatory wave with slow damping. The disturbance
-decays aperiodically. The slowest decay has the order
+&lt;p&gt;the motion is no longer an oscillatory wave with slow damping. The disturbance
+decays aperiodically. The slowest decay has the order&lt;/p&gt;
 
-\\[
+&lt;p&gt;\[
 \omega\simeq -\,i\frac{g}{2\nu k}.
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>
+\]&lt;/p&gt;</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>
