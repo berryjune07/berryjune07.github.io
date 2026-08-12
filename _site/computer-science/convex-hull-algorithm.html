@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="191 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1267 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   3 min
+   21 min
 </span>
 
       </span>
@@ -302,36 +302,916 @@
     <!--more-->
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li><a href="#grahams-scan" id="markdown-toc-grahams-scan">Graham’s Scan</a></li>
+  <li>
+<a href="#graham-scan" id="markdown-toc-graham-scan">Graham Scan</a>    <ul>
+      <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+      <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
+      <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+      <li><a href="#code" id="markdown-toc-code">Code</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#monotone-chain-algorithm" id="markdown-toc-monotone-chain-algorithm">Monotone Chain Algorithm</a>    <ul>
+      <li><a href="#explanation-1" id="markdown-toc-explanation-1">Explanation</a></li>
+      <li><a href="#proof-of-correctness-1" id="markdown-toc-proof-of-correctness-1">Proof of Correctness</a></li>
+      <li><a href="#complexity-1" id="markdown-toc-complexity-1">Complexity</a></li>
+      <li><a href="#code-1" id="markdown-toc-code-1">Code</a></li>
+    </ul>
+  </li>
+  <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
 
-<p>The convex hull of a shape is the smallest convex set that contains the shape.</p>
+<p>Let $P$ be a finite set of points in $\mathbb{R}^2$.
+The <strong>convex hull</strong> of $P$ is the smallest convex set containing $P$.</p>
 
 <p>\[
-\text{conv}(S) = \bigcap \Set{ C \subseteq \mathbb{R}^n | S \subseteq C, C \text{ is convex} }
+\operatorname{conv}(P)
+= \bigcap \Set{ C \subseteq \mathbb{R}^2 | P \subseteq C,\ C \text{ is convex} }.
 \]</p>
 
-<p class="centered"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/ConvexHull.svg/3840px-ConvexHull.svg.png" alt="Convex Hull" width="50%"></p>
-<p class="figcaption">Convex hull of a set of points</p>
-
-<p>It can be visualized as the shape formed by stretching a rubber band around the outermost points of the shape.
-The convex hull is a fundamental concept in computational geometry and has applications in various fields such as computer graphics, pattern recognition, and geographic information systems.
-Here, we will explore the <strong>convex hull algorithm</strong>, which is used to compute the convex hull of a set of finite points in the plane.
-There are several algorithms to compute the convex hull, including <strong>Graham’s scan</strong> and <strong>Monotone chain algorithm</strong>, which are most simple and efficient algorithms.</p>
-
-<p>We will use the following notations:</p>
+<p>For finite $P$, the convex hull is a convex polygon whose vertices are points of $P$.
+The computational problem is to output these vertices in cyclic order.
+We use the orientation function</p>
 
 <p>\[
 \begin{align*}
-\text{CCW}(\b{p}, \b{q}, \b{r}) &amp;= \left[ \overrightarrow{\b{pq}} \times \overrightarrow{\b{pr}} \right]_z \nl
-&amp;= (q_x - p_x)(r_y - p_y) - (q_y - p_y)(r_x - p_x) \nl
-&amp;= p_x q_y + q_x r_y + r_x p_y - p_y q_x - q_y r_x - r_y p_x
+\operatorname{ccw}(\b{p}, \b{q}, \b{r})
+&amp;= \left[ \overrightarrow{\b{pq}} \times \overrightarrow{\b{pr}} \right]_z \nl
+&amp;= (q_x - p_x)(r_y - p_y) - (q_y - p_y)(r_x - p_x).
 \end{align*}
 \]</p>
 
-<h2 id="grahams-scan">Graham’s Scan</h2>
+<p>Then $\operatorname{ccw}(\b{p},\b{q},\b{r})&gt;0$ means that the three points make a left turn,
+$\operatorname{ccw}(\b{p},\b{q},\b{r})&lt;0$ means that they make a right turn,
+and $\operatorname{ccw}(\b{p},\b{q},\b{r})=0$ means that they are collinear.</p>
+
+<p>We describe two standard algorithms:</p>
+
+<ol>
+  <li><strong>Graham Scan</strong></li>
+  <li><strong>Monotone Chain Algorithm</strong></li>
+</ol>
+
+<p>Both algorithms sort the points and then maintain a stack whose consecutive triples must make valid turns.</p>
+
+<h2 id="graham-scan">Graham Scan</h2>
+
+<p>Graham Scan constructs the convex hull by sorting points by polar angle around a pivot.</p>
+
+<h3 id="explanation">Explanation</h3>
+
+<p>Choose the pivot $\b{o}$ as the point with minimum $y$-coordinate, breaking ties by minimum $x$-coordinate.
+Sort all other points by the polar angle of the vector $\b{p}-\b{o}$.
+If two points have the same polar angle, keep the nearer point first.</p>
+
+<p>Let the sorted sequence be</p>
+
+<p>\[
+\b{o},\b{p}<em>1,\b{p}_2,\ldots,\b{p}</em>{N-1}.
+\]</p>
+
+<p>Process this sequence from left to right with a stack $S$.
+When inserting a point $\b{p}$, repeatedly remove the last point of $S$ while the last two points and $\b{p}$ do not make a left turn:</p>
+
+<p>\[
+\operatorname{ccw}(S_{k-1},S_k,\b{p}) \le 0.
+\]</p>
+
+<p>After the invalid suffix is removed, push $\b{p}$.
+At the end, the stack is the convex hull in counterclockwise order.
+If all boundary collinear points should be kept, the comparison should be changed carefully according to the desired collinear ordering.</p>
+
+<p>The visualizer below shows the polar-angle order and the stack changes of Graham Scan.</p>
+
+<div id="graham-scan-visualizer" class="ghv-panel">
+  <div class="ghv-toolbar">
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="run">Run</button>
+    <button type="button" data-action="reset">Reset</button>
+    <button type="button" data-action="random">Random</button>
+    <span class="ghv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Graham scan visualizer"></canvas>
+</div>
+
+<style>
+  .ghv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .ghv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .ghv-toolbar button {
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .ghv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .ghv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .ghv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #ffffff;
+    cursor: crosshair;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("graham-scan-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const buttons = root.querySelectorAll("button[data-action]");
+
+  let points = [
+    {x: 12, y: 70}, {x: 18, y: 34}, {x: 28, y: 84}, {x: 37, y: 45},
+    {x: 48, y: 67}, {x: 54, y: 23}, {x: 63, y: 80}, {x: 72, y: 38},
+    {x: 83, y: 61}, {x: 88, y: 18}, {x: 35, y: 17}, {x: 68, y: 11}
+  ];
+
+  let states = [];
+  let step = 0;
+  let timer = null;
+  let view = {scale: 1, ox: 0, oy: 0, h: 1};
+
+  function cross(a, b, c) {
+    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+  }
+
+  function dist2(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return dx * dx + dy * dy;
+  }
+
+  function key(p) {
+    return p.x.toFixed(3) + "," + p.y.toFixed(3);
+  }
+
+  function clone(p) {
+    return p ? {x: p.x, y: p.y} : null;
+  }
+
+  function cloneChain(chain) {
+    return chain.map(clone);
+  }
+
+  function orderedPoints() {
+    const unique = [];
+    const seen = new Set();
+    for (const p of points) {
+      const k = key(p);
+      if (!seen.has(k)) {
+        unique.push(p);
+        seen.add(k);
+      }
+    }
+    unique.sort((a, b) => a.y === b.y ? a.x - b.x : a.y - b.y);
+    const pivot = unique[0];
+    const rest = unique.slice(1).sort((a, b) => {
+      const c = cross(pivot, a, b);
+      if (c !== 0) return c > 0 ? -1 : 1;
+      return dist2(pivot, a) - dist2(pivot, b);
+    });
+    return {pivot, ordered: pivot ? [pivot].concat(rest) : []};
+  }
+
+  function buildStates() {
+    const {pivot, ordered} = orderedPoints();
+    const hull = [];
+    const next = [];
+
+    const pushState = (phase, candidate, removed) => {
+      next.push({
+        phase,
+        pivot: clone(pivot),
+        ordered: cloneChain(ordered),
+        hull: cloneChain(hull),
+        candidate: clone(candidate),
+        removed: clone(removed)
+      });
+    };
+
+    pushState("polar sort", null, null);
+    for (const p of ordered) {
+      while (hull.length >= 2 && cross(hull[hull.length - 2], hull[hull.length - 1], p) <= 0) {
+        const removed = hull[hull.length - 1];
+        pushState("pop", p, removed);
+        hull.pop();
+      }
+      hull.push(p);
+      pushState("push", p, null);
+    }
+    pushState("hull", null, null);
+    states = next;
+    step = Math.min(step, states.length - 1);
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function computeView(all) {
+    const rect = canvas.getBoundingClientRect();
+    const pad = 30;
+    const minX = Math.min(...all.map(p => p.x));
+    const maxX = Math.max(...all.map(p => p.x));
+    const minY = Math.min(...all.map(p => p.y));
+    const maxY = Math.max(...all.map(p => p.y));
+    const w = Math.max(1, maxX - minX);
+    const h = Math.max(1, maxY - minY);
+    const scale = Math.min((rect.width - 2 * pad) / w, (rect.height - 2 * pad) / h);
+    view = {
+      scale,
+      ox: pad - minX * scale + ((rect.width - 2 * pad) - w * scale) / 2,
+      oy: pad - minY * scale + ((rect.height - 2 * pad) - h * scale) / 2,
+      h: rect.height
+    };
+  }
+
+  function sx(p) { return view.ox + p.x * view.scale; }
+  function sy(p) { return view.h - (view.oy + p.y * view.scale); }
+
+  function worldFromEvent(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: Math.max(0, Math.min(100, (event.clientX - rect.left - view.ox) / view.scale)),
+      y: Math.max(0, Math.min(100, ((rect.height - (event.clientY - rect.top)) - view.oy) / view.scale))
+    };
+  }
+
+  function drawPoint(p, fill, radius) {
+    ctx.beginPath();
+    ctx.arc(sx(p), sy(p), radius, 0, Math.PI * 2);
+    ctx.fillStyle = fill;
+    ctx.fill();
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+  }
+
+  function drawChain(chain, color, width, close) {
+    if (!chain.length) return;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.moveTo(sx(chain[0]), sy(chain[0]));
+    for (let i = 1; i < chain.length; i++) ctx.lineTo(sx(chain[i]), sy(chain[i]));
+    if (close && chain.length > 2) ctx.closePath();
+    ctx.stroke();
+  }
+
+  function draw() {
+    if (!states.length) buildStates();
+    const state = states[step];
+    const rect = canvas.getBoundingClientRect();
+    computeView(points);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    for (const p of points) drawPoint(p, "#64748b", 4.1);
+    if (state.pivot) drawPoint(state.pivot, "#7c3aed", 6);
+
+    if (state.pivot && state.ordered.length > 1) {
+      ctx.strokeStyle = "rgba(124, 58, 237, 0.22)";
+      ctx.lineWidth = 1.2;
+      for (const p of state.ordered.slice(1)) {
+        ctx.beginPath();
+        ctx.moveTo(sx(state.pivot), sy(state.pivot));
+        ctx.lineTo(sx(p), sy(p));
+        ctx.stroke();
+      }
+    }
+
+    drawChain(state.hull, state.phase === "hull" ? "#0f172a" : "#059669", 3, state.phase === "hull");
+    if (state.removed) drawPoint(state.removed, "#dc2626", 6);
+    if (state.candidate) drawPoint(state.candidate, "#2563eb", 6);
+
+    status.textContent = (step + 1) + " / " + states.length + "  " + state.phase;
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  function rebuild() {
+    stop();
+    buildStates();
+    step = 0;
+    draw();
+  }
+
+  function randomPoints() {
+    points = Array.from({length: 14}, () => ({
+      x: 8 + Math.random() * 84,
+      y: 8 + Math.random() * 84
+    }));
+    rebuild();
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      if (action === "prev") {
+        stop();
+        step = Math.max(0, step - 1);
+      } else if (action === "step") {
+        stop();
+        step = Math.min(states.length - 1, step + 1);
+      } else if (action === "run") {
+        if (timer) stop();
+        else {
+          timer = setInterval(() => {
+            if (step >= states.length - 1) stop();
+            else {
+              step++;
+              draw();
+            }
+          }, 540);
+        }
+      } else if (action === "reset") {
+        rebuild();
+        return;
+      } else if (action === "random") {
+        randomPoints();
+        return;
+      }
+      draw();
+    });
+  });
+
+  canvas.addEventListener("click", event => {
+    points.push(worldFromEvent(event));
+    rebuild();
+  });
+
+  buildStates();
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>
+
+<h3 id="proof-of-correctness">Proof of Correctness</h3>
+
+<p><em>Proof.</em>
+The polar-angle ordering around $\b{o}$ is the cyclic order in which a ray from $\b{o}$ meets possible hull vertices.
+Thus any counterclockwise convex polygon containing $P$ and starting from $\b{o}$ must visit its remaining vertices in this order.</p>
+
+<p>During the scan, the stack always consists of points in increasing polar-angle order.
+Whenever</p>
+
+<p>\[
+\operatorname{ccw}(S_{k-1},S_k,\b{p})\le0,
+\]</p>
+
+<p>the point $S_k$ cannot be a convex hull vertex of the processed points.
+Indeed, the segment from $S_{k-1}$ to $\b{p}$ lies outside or on the same supporting direction as $S_k$,
+so keeping $S_k$ would create a right turn or a redundant collinear point.
+Removing it does not remove any extreme point.</p>
+
+<p>When the while loop stops, every consecutive triple in the stack makes a left turn.
+Therefore the stack is a convex chain containing all processed extreme points in their angular order.
+By induction over the sorted sequence, after all points are processed the stack is exactly the boundary of $\operatorname{conv}(P)$.</p>
+
+<h3 id="complexity">Complexity</h3>
+
+<p>Sorting by polar angle takes $O(N\log N)$ time.
+Each point is pushed once and popped at most once.
+Thus the scan takes $O(N)$ time, and the total time complexity is</p>
+
+<p>\[
+O(N\log N).
+\]</p>
+
+<p>The memory usage is $O(N)$.</p>
+
+<h3 id="code">Code</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">ll</span> <span class="o">=</span> <span class="kt">long</span> <span class="kt">long</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">Point</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="k">return</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">other</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">other</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">==</span> <span class="n">other</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">__int128</span> <span class="nf">ccw</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">__int128</span><span class="p">)(</span><span class="n">b</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+         <span class="o">-</span> <span class="p">(</span><span class="n">__int128</span><span class="p">)(</span><span class="n">b</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">__int128</span> <span class="nf">dist2</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ll</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="n">ll</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">dy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">graham_scan</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">p</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+
+    <span class="n">Point</span> <span class="n">o</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">__int128</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ccw</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">dist2</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">dist2</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">hull</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="o">:</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span>
+              <span class="n">ccw</span><span class="p">(</span><span class="n">hull</span><span class="p">[</span><span class="n">hull</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> <span class="n">hull</span><span class="p">.</span><span class="n">back</span><span class="p">(),</span> <span class="n">pt</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">hull</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">hull</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">hull</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="monotone-chain-algorithm">Monotone Chain Algorithm</h2>
+
+<p>The monotone chain algorithm constructs the lower hull and upper hull separately.
+It is often simpler to implement than Graham Scan because it only needs lexicographic sorting.</p>
+
+<h3 id="explanation-1">Explanation</h3>
+
+<p>Sort the points lexicographically by $(x,y)$, and remove duplicate points.
+Let the sorted sequence be</p>
+
+<p>\[
+\b{p}_1,\b{p}_2,\ldots,\b{p}_N.
+\]</p>
+
+<p>The lower hull is the boundary chain from $\b{p}_1$ to $\b{p}_N$.
+The upper hull is the boundary chain from $\b{p}_N$ to $\b{p}_1$.
+Both are $x$-monotone.</p>
+
+<p>To construct the lower hull, process the sorted points from left to right and maintain a stack $S$.
+When inserting $\b{p}$, repeatedly remove the last point while</p>
+
+<p>\[
+\operatorname{ccw}(S_{k-1},S_k,\b{p})\le0.
+\]</p>
+
+<p>Then push $\b{p}$.
+The upper hull is constructed in the same way after reversing the sorted order.
+Finally, concatenate the lower and upper chains, omitting the duplicated endpoints.</p>
+
+<p>The visualizer below shows the lower hull and upper hull construction separately.</p>
+
+<div id="monotone-chain-visualizer" class="mcv-panel">
+  <div class="mcv-toolbar">
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="run">Run</button>
+    <button type="button" data-action="reset">Reset</button>
+    <button type="button" data-action="random">Random</button>
+    <span class="mcv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Monotone chain convex hull visualizer"></canvas>
+</div>
+
+<style>
+  .mcv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .mcv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .mcv-toolbar button {
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .mcv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .mcv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .mcv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #ffffff;
+    cursor: crosshair;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("monotone-chain-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const buttons = root.querySelectorAll("button[data-action]");
+
+  let points = [
+    {x: 12, y: 70}, {x: 18, y: 34}, {x: 28, y: 84}, {x: 37, y: 45},
+    {x: 48, y: 67}, {x: 54, y: 23}, {x: 63, y: 80}, {x: 72, y: 38},
+    {x: 83, y: 61}, {x: 88, y: 18}, {x: 35, y: 17}, {x: 68, y: 11}
+  ];
+
+  let states = [];
+  let step = 0;
+  let timer = null;
+  let view = {scale: 1, ox: 0, oy: 0, h: 1};
+
+  function cross(a, b, c) {
+    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+  }
+
+  function key(p) {
+    return p.x.toFixed(3) + "," + p.y.toFixed(3);
+  }
+
+  function clone(p) {
+    return p ? {x: p.x, y: p.y} : null;
+  }
+
+  function cloneChain(chain) {
+    return chain.map(clone);
+  }
+
+  function sortedUnique() {
+    const seen = new Set();
+    return points.slice().sort((a, b) => a.x === b.x ? a.y - b.y : a.x - b.x).filter(p => {
+      const k = key(p);
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+  }
+
+  function buildStates() {
+    const sorted = sortedUnique();
+    const lower = [];
+    const upper = [];
+    const next = [];
+
+    const pushState = (phase, candidate, removed, hull) => {
+      next.push({
+        phase,
+        candidate: clone(candidate),
+        removed: clone(removed),
+        lower: cloneChain(lower),
+        upper: cloneChain(upper),
+        hull: hull ? cloneChain(hull) : null
+      });
+    };
+
+    pushState("lexicographic sort", null, null, null);
+    for (const p of sorted) {
+      while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], p) <= 0) {
+        const removed = lower[lower.length - 1];
+        pushState("lower pop", p, removed, null);
+        lower.pop();
+      }
+      lower.push(p);
+      pushState("lower push", p, null, null);
+    }
+
+    for (let i = sorted.length - 1; i >= 0; i--) {
+      const p = sorted[i];
+      while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], p) <= 0) {
+        const removed = upper[upper.length - 1];
+        pushState("upper pop", p, removed, null);
+        upper.pop();
+      }
+      upper.push(p);
+      pushState("upper push", p, null, null);
+    }
+
+    const hull = lower.slice(0, -1).concat(upper.slice(0, -1));
+    pushState("hull", null, null, hull);
+    states = next;
+    step = Math.min(step, states.length - 1);
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function computeView(all) {
+    const rect = canvas.getBoundingClientRect();
+    const pad = 30;
+    const minX = Math.min(...all.map(p => p.x));
+    const maxX = Math.max(...all.map(p => p.x));
+    const minY = Math.min(...all.map(p => p.y));
+    const maxY = Math.max(...all.map(p => p.y));
+    const w = Math.max(1, maxX - minX);
+    const h = Math.max(1, maxY - minY);
+    const scale = Math.min((rect.width - 2 * pad) / w, (rect.height - 2 * pad) / h);
+    view = {
+      scale,
+      ox: pad - minX * scale + ((rect.width - 2 * pad) - w * scale) / 2,
+      oy: pad - minY * scale + ((rect.height - 2 * pad) - h * scale) / 2,
+      h: rect.height
+    };
+  }
+
+  function sx(p) { return view.ox + p.x * view.scale; }
+  function sy(p) { return view.h - (view.oy + p.y * view.scale); }
+
+  function worldFromEvent(event) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: Math.max(0, Math.min(100, (event.clientX - rect.left - view.ox) / view.scale)),
+      y: Math.max(0, Math.min(100, ((rect.height - (event.clientY - rect.top)) - view.oy) / view.scale))
+    };
+  }
+
+  function drawPoint(p, fill, radius) {
+    ctx.beginPath();
+    ctx.arc(sx(p), sy(p), radius, 0, Math.PI * 2);
+    ctx.fillStyle = fill;
+    ctx.fill();
+    ctx.strokeStyle = "#ffffff";
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+  }
+
+  function drawChain(chain, color, width, close) {
+    if (!chain || !chain.length) return;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.moveTo(sx(chain[0]), sy(chain[0]));
+    for (let i = 1; i < chain.length; i++) ctx.lineTo(sx(chain[i]), sy(chain[i]));
+    if (close && chain.length > 2) ctx.closePath();
+    ctx.stroke();
+  }
+
+  function draw() {
+    if (!states.length) buildStates();
+    const state = states[step];
+    const rect = canvas.getBoundingClientRect();
+    computeView(points);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    for (const p of points) drawPoint(p, "#64748b", 4.1);
+    drawChain(state.lower, "#059669", 3, false);
+    drawChain(state.upper, "#d97706", 3, false);
+    if (state.hull) drawChain(state.hull, "#0f172a", 3.5, true);
+    if (state.removed) drawPoint(state.removed, "#dc2626", 6);
+    if (state.candidate) drawPoint(state.candidate, "#2563eb", 6);
+
+    status.textContent = (step + 1) + " / " + states.length + "  " + state.phase;
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  function rebuild() {
+    stop();
+    buildStates();
+    step = 0;
+    draw();
+  }
+
+  function randomPoints() {
+    points = Array.from({length: 14}, () => ({
+      x: 8 + Math.random() * 84,
+      y: 8 + Math.random() * 84
+    }));
+    rebuild();
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      if (action === "prev") {
+        stop();
+        step = Math.max(0, step - 1);
+      } else if (action === "step") {
+        stop();
+        step = Math.min(states.length - 1, step + 1);
+      } else if (action === "run") {
+        if (timer) stop();
+        else {
+          timer = setInterval(() => {
+            if (step >= states.length - 1) stop();
+            else {
+              step++;
+              draw();
+            }
+          }, 540);
+        }
+      } else if (action === "reset") {
+        rebuild();
+        return;
+      } else if (action === "random") {
+        randomPoints();
+        return;
+      }
+      draw();
+    });
+  });
+
+  canvas.addEventListener("click", event => {
+    points.push(worldFromEvent(event));
+    rebuild();
+  });
+
+  buildStates();
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>
+
+<h3 id="proof-of-correctness-1">Proof of Correctness</h3>
+
+<p><em>Proof.</em>
+We prove the lower hull part.
+After processing the first $i$ sorted points, let $S$ be the maintained stack.
+We claim that $S$ is exactly the lower hull of</p>
+
+<p>\[
+P_i=\Set{\b{p}_1,\ldots,\b{p}_i}.
+\]</p>
+
+<p>For $i=1$, the claim is immediate.
+Assume that the claim holds before inserting $\b{p}_i$.
+If the last two points of $S$ are $\b{a},\b{b}$ and</p>
+
+<p>\[
+\operatorname{ccw}(\b{a},\b{b},\b{p}_i)\le0,
+\]</p>
+
+<p>then $\b{b}$ cannot be a vertex of the lower hull of $P_i$.
+The segment $\overline{\b{a}\b{p}_i}$ lies on or below $\b{b}$, so $\b{b}$ is either inside the convex hull or is a collinear non-extreme point.
+Thus removing $\b{b}$ preserves the lower hull.</p>
+
+<p>When the loop stops, every consecutive triple in $S$ makes a left turn.
+The resulting chain is convex, lies below all processed points, and has the leftmost and rightmost processed points as endpoints.
+Therefore it is the lower hull of $P_i$.
+By induction, the lower hull is correct.</p>
+
+<p>The upper hull follows by the same argument on the reversed order.
+The convex hull boundary is exactly the lower hull and upper hull joined at their endpoints.</p>
+
+<h3 id="complexity-1">Complexity</h3>
+
+<p>Sorting the points takes $O(N\log N)$ time.
+Each point is pushed to and popped from each stack at most once, so the two scans take $O(N)$ time.
+Thus the total time complexity is</p>
+
+<p>\[
+O(N\log N).
+\]</p>
+
+<p>The memory usage is $O(N)$.</p>
+
+<h3 id="code-1">Code</h3>
+
+<p>The following implementation removes collinear non-vertex points on the boundary.
+The returned polygon has no repeated first point at the end.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">monotone_chain</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="p">[](</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+    <span class="p">});</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span> <span class="n">p</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">p</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">p</span><span class="p">;</span>
+
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">Point</span><span class="o">&gt;</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="o">:</span> <span class="n">p</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">lower</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span>
+              <span class="n">ccw</span><span class="p">(</span><span class="n">lower</span><span class="p">[</span><span class="n">lower</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> <span class="n">lower</span><span class="p">.</span><span class="n">back</span><span class="p">(),</span> <span class="n">pt</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">lower</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">lower</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="n">Point</span><span class="o">&amp;</span> <span class="n">pt</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">upper</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span>
+              <span class="n">ccw</span><span class="p">(</span><span class="n">upper</span><span class="p">[</span><span class="n">upper</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">],</span> <span class="n">upper</span><span class="p">.</span><span class="n">back</span><span class="p">(),</span> <span class="n">pt</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">upper</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">upper</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pt</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">lower</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="n">upper</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span>
+    <span class="n">lower</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">lower</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">upper</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">upper</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">lower</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If collinear boundary points should also be included, change both conditions</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ccw</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>to</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ccw</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>after deciding how duplicate collinear points should be ordered.</p>
+
+<h2 id="applications">Applications</h2>
+
+<ul>
+  <li>Rotating calipers</li>
+  <li>Diameter of a point set</li>
+  <li>Minimum width of a point set</li>
+  <li>Point-in-convex-polygon queries</li>
+  <li>Minkowski sum of convex polygons</li>
+  <li>Collision detection for convex shapes</li>
+</ul>
 
   
 </article>
@@ -486,7 +1366,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/sqrt-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/sqrt-decomposition.html" class="flip-title">Sqrt Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/sqrt-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Sqrt Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/sqrt-decomposition.html" class="flip-title">    <span>            Sqrt Decomposition    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sqrt-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>      </ul></aside>
+                                                                                                                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/sqrt-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/sqrt-decomposition.html" class="flip-title">Sqrt Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/sqrt-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Sqrt Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/sqrt-decomposition.html" class="flip-title">    <span>            Sqrt Decomposition    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sqrt-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>      </ul></aside>
 
   
 
@@ -509,14 +1389,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -545,7 +1425,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1545,7 +2425,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

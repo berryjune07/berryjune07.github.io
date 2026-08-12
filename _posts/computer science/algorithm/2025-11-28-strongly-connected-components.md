@@ -173,6 +173,26 @@ graph LR
     classDef s3 fill:#8df,stroke:#333,stroke-width:2px;
 ```
 
+### Proof of Correctness
+
+_Proof._
+Contract every strongly connected component into a single vertex.
+The resulting condensation graph is a DAG.
+If there were a directed cycle among components, then all components on the cycle would be mutually reachable and should have formed one larger SCC.
+
+In the first DFS of Kosaraju's Algorithm, vertices are ordered by decreasing finishing time.
+Consider an edge from component $C$ to component $D$ in the condensation graph.
+There is no path from $D$ back to $C$.
+Thus the finishing time of $C$ is larger than the finishing time of $D$ in the component-level DFS order.
+Therefore the first unassigned vertex popped from the stack always belongs to a source component of the remaining condensation graph.
+
+After transposing the graph, this source component becomes a sink component.
+A DFS from any vertex in it cannot leave the component in the transposed graph, because that would correspond to an incoming edge to the source component in the original remaining condensation graph.
+Since all vertices inside the component are mutually reachable, the DFS visits exactly that SCC.
+
+Repeating this process removes one SCC at a time.
+Hence every reported set is exactly one strongly connected component, and all components are eventually reported.
+
 ### Complexity
 
 The time complexity of Kosaraju's Algorithm is $ O(V + E)$ since all we do is a DFS traversal of the graph.
@@ -340,6 +360,26 @@ Finally, we get the strongly connected components of the graph, exactly the same
 <center>
 $ \text{SCC} = \Set{ \Set{A,B,C}, \Set{D}, \Set{E,F} } $
 </center> <br>
+
+### Proof of Correctness
+
+_Proof._
+During Tarjan's DFS, `time[u]` is the discovery time of $u$.
+The value `low[u]` is the smallest discovery time reachable from $u$ by using zero or more tree edges followed by at most one edge to a vertex still on the stack.
+The stack contains exactly the vertices whose SCC has not yet been determined.
+
+If DFS explores an unvisited vertex $v$ from $u$, then every vertex reachable through that tree edge is accounted for by `low[v]`, so `low[u]` is updated by `low[v]`.
+If an edge goes from $u$ to a vertex $v$ still on the stack, then $u$ can reach an unfinished ancestor or unfinished vertex in the same active region, so `low[u]` is updated by `time[v]`.
+Edges to vertices already removed from the stack are ignored because their SCCs are already closed and cannot merge with the current active component.
+
+When `low[u] = time[u]`, no vertex in the DFS subtree of $u$ can reach a proper ancestor of $u$ through unfinished vertices.
+Thus $u$ is the root of one SCC.
+All vertices above $u$ on the stack can reach $u$ through DFS-tree paths and can be reached from $u$ by the paths that kept their low-link values inside this root.
+They form exactly one strongly connected component.
+
+If `low[u] < time[u]`, then $u$ can reach an earlier unfinished vertex, so its SCC is not closed yet.
+Therefore a component is popped exactly when its root is found.
+Since each vertex is pushed once and popped once, all and only the SCCs are reported.
 
 ### Complexity
 

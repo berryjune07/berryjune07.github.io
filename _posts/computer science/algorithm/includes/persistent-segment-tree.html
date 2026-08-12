@@ -1,0 +1,245 @@
+<div id="persistent-segment-tree-visualizer" class="psv-panel">
+  <div class="psv-toolbar">
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="reset">Reset</button>
+    <span class="psv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Persistent segment tree visualizer"></canvas>
+</div>
+
+<style>
+  .psv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .psv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .psv-toolbar button {
+    min-height: 2rem;
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .psv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .psv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .psv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("persistent-segment-tree-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const buttons = root.querySelectorAll("button[data-action]");
+
+  const states = [
+    {
+      title: "version 0",
+      roots: [{id: "r0", to: "a"}],
+      nodes: [
+        {id: "a", text: "[1,4]\nT", x: 0.50, y: 0.18, kind: "old"},
+        {id: "b", text: "[1,2]\nL", x: 0.30, y: 0.42, kind: "old"},
+        {id: "c", text: "[3,4]\nR", x: 0.70, y: 0.42, kind: "old"},
+        {id: "d", text: "[1]\na1", x: 0.20, y: 0.68, kind: "old"},
+        {id: "e", text: "[2]\na2", x: 0.40, y: 0.68, kind: "old"},
+        {id: "f", text: "[3]\na3", x: 0.60, y: 0.68, kind: "old"},
+        {id: "g", text: "[4]\na4", x: 0.80, y: 0.68, kind: "old"}
+      ],
+      edges: [["a","b"],["a","c"],["b","d"],["b","e"],["c","f"],["c","g"]],
+      copied: [],
+      shared: []
+    },
+    {
+      title: "copy root for update at index 3",
+      roots: [{id: "r0", to: "a"}, {id: "r1", to: "a1"}],
+      nodes: [
+        {id: "a", text: "[1,4]\nT", x: 0.38, y: 0.18, kind: "old"},
+        {id: "a1", text: "[1,4]\nnew", x: 0.62, y: 0.18, kind: "new"},
+        {id: "b", text: "[1,2]\nL", x: 0.25, y: 0.42, kind: "old"},
+        {id: "c", text: "[3,4]\nR", x: 0.55, y: 0.42, kind: "old"},
+        {id: "d", text: "[1]\na1", x: 0.16, y: 0.68, kind: "old"},
+        {id: "e", text: "[2]\na2", x: 0.34, y: 0.68, kind: "old"},
+        {id: "f", text: "[3]\na3", x: 0.50, y: 0.68, kind: "old"},
+        {id: "g", text: "[4]\na4", x: 0.70, y: 0.68, kind: "old"}
+      ],
+      edges: [["a","b"],["a","c"],["a1","b"],["a1","c"],["b","d"],["b","e"],["c","f"],["c","g"]],
+      copied: ["a1"],
+      shared: ["b"]
+    },
+    {
+      title: "copy the right child",
+      roots: [{id: "r0", to: "a"}, {id: "r1", to: "a1"}],
+      nodes: [
+        {id: "a", text: "[1,4]\nT", x: 0.32, y: 0.18, kind: "old"},
+        {id: "a1", text: "[1,4]\nnew", x: 0.62, y: 0.18, kind: "new"},
+        {id: "b", text: "[1,2]\nL", x: 0.20, y: 0.42, kind: "old"},
+        {id: "c", text: "[3,4]\nR", x: 0.48, y: 0.42, kind: "old"},
+        {id: "c1", text: "[3,4]\nnew", x: 0.72, y: 0.42, kind: "new"},
+        {id: "d", text: "[1]\na1", x: 0.12, y: 0.68, kind: "old"},
+        {id: "e", text: "[2]\na2", x: 0.28, y: 0.68, kind: "old"},
+        {id: "f", text: "[3]\na3", x: 0.50, y: 0.68, kind: "old"},
+        {id: "g", text: "[4]\na4", x: 0.82, y: 0.68, kind: "old"}
+      ],
+      edges: [["a","b"],["a","c"],["a1","b"],["a1","c1"],["b","d"],["b","e"],["c","f"],["c","g"],["c1","f"],["c1","g"]],
+      copied: ["a1","c1"],
+      shared: ["b","g"]
+    },
+    {
+      title: "copy the leaf and recompute",
+      roots: [{id: "r0", to: "a"}, {id: "r1", to: "a1"}],
+      nodes: [
+        {id: "a", text: "[1,4]\nT", x: 0.30, y: 0.18, kind: "old"},
+        {id: "a1", text: "[1,4]\nT1", x: 0.66, y: 0.18, kind: "new"},
+        {id: "b", text: "[1,2]\nL", x: 0.18, y: 0.42, kind: "old"},
+        {id: "c", text: "[3,4]\nR", x: 0.44, y: 0.42, kind: "old"},
+        {id: "c1", text: "[3,4]\nR1", x: 0.72, y: 0.42, kind: "new"},
+        {id: "d", text: "[1]\na1", x: 0.10, y: 0.68, kind: "old"},
+        {id: "e", text: "[2]\na2", x: 0.26, y: 0.68, kind: "old"},
+        {id: "f", text: "[3]\na3", x: 0.44, y: 0.68, kind: "old"},
+        {id: "f1", text: "[3]\nb3", x: 0.64, y: 0.68, kind: "new"},
+        {id: "g", text: "[4]\na4", x: 0.86, y: 0.68, kind: "old"}
+      ],
+      edges: [["a","b"],["a","c"],["a1","b"],["a1","c1"],["b","d"],["b","e"],["c","f"],["c","g"],["c1","f1"],["c1","g"]],
+      copied: ["a1","c1","f1"],
+      shared: ["b","g"]
+    }
+  ];
+
+  let step = 0;
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function pos(node, rect) {
+    return {x: node.x * rect.width, y: node.y * rect.height};
+  }
+
+  function drawText(text, x, y, color, size) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lines = text.split("\n");
+    lines.forEach((line, i) => ctx.fillText(line, x, y + (i - (lines.length - 1) / 2) * 14));
+  }
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const state = states[step];
+    const map = new Map(state.nodes.map(n => [n.id, n]));
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    state.edges.forEach(([a, b]) => {
+      const pa = pos(map.get(a), rect);
+      const pb = pos(map.get(b), rect);
+      const shared = state.shared.includes(b);
+      ctx.strokeStyle = shared ? "#94a3b8" : "#64748b";
+      ctx.lineWidth = shared ? 1.5 : 2.1;
+      ctx.setLineDash(shared ? [5, 5] : []);
+      ctx.beginPath();
+      ctx.moveTo(pa.x, pa.y + 22);
+      ctx.lineTo(pb.x, pb.y - 22);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    });
+
+    state.nodes.forEach(node => {
+      const p = pos(node, rect);
+      const isNew = state.copied.includes(node.id);
+      ctx.beginPath();
+      ctx.roundRect(p.x - 34, p.y - 22, 68, 44, 7);
+      ctx.fillStyle = isNew ? "#dbeafe" : "#f8fafc";
+      ctx.strokeStyle = isNew ? "#2563eb" : "#475569";
+      ctx.lineWidth = isNew ? 2.5 : 1.8;
+      ctx.fill();
+      ctx.stroke();
+      drawText(node.text, p.x, p.y, "#0f172a", 12);
+    });
+
+    state.roots.forEach((r, i) => {
+      const target = pos(map.get(r.to), rect);
+      const x = target.x;
+      const y = 24 + i * 20;
+      ctx.strokeStyle = i === 0 ? "#64748b" : "#2563eb";
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(x, y + 8);
+      ctx.lineTo(target.x, target.y - 28);
+      ctx.stroke();
+      drawText(r.id, x, y, i === 0 ? "#64748b" : "#2563eb", 12);
+    });
+
+    status.textContent = (step + 1) + " / " + states.length + "  " + state.title;
+  }
+
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      this.moveTo(x + rr, y);
+      this.arcTo(x + w, y, x + w, y + h, rr);
+      this.arcTo(x + w, y + h, x, y + h, rr);
+      this.arcTo(x, y + h, x, y, rr);
+      this.arcTo(x, y, x + w, y, rr);
+      return this;
+    };
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      if (action === "prev") step = Math.max(0, step - 1);
+      if (action === "step") step = Math.min(states.length - 1, step + 1);
+      if (action === "reset") step = 0;
+      draw();
+    });
+  });
+
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>

@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="435 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="765 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   7 min
+   12 min
 </span>
 
       </span>
@@ -303,6 +303,7 @@
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
   <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
   <li><a href="#code" id="markdown-toc-code">Code</a></li>
   <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
@@ -339,20 +340,21 @@ The relaxation process updates the shortest path estimate for each vertex based 
 
 <div id="bellman-ford-demo" class="bfv-root">
   <style>
-    #bellman-ford-demo { margin: 2rem 0; color: #1f2937; }
+    #bellman-ford-demo { width: 100%; max-width: 760px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #bellman-ford-demo * { box-sizing: border-box; }
-    #bellman-ford-demo .bfv-stack { display: grid; gap: 1rem; }
-    #bellman-ford-demo .bfv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
-    #bellman-ford-demo .bfv-graph svg { display: block; width: min(100%, 680px); min-width: 560px; height: auto; margin: 0 auto; }
-    #bellman-ford-demo .bfv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #bellman-ford-demo .bfv-stack { display: grid; gap: 0; }
+    #bellman-ford-demo .bfv-graph { width: 100%; padding: 0.65rem 0.75rem 0.45rem; background: #ffffff; overflow: hidden; }
+    #bellman-ford-demo .bfv-graph svg { display: block; width: 100%; max-width: 650px; height: auto; margin: 0 auto; }
+    #bellman-ford-demo .bfv-status { margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #f8fafc; line-height: 1.65; }
     #bellman-ford-demo .bfv-status p { margin: 0; }
     #bellman-ford-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
-    #bellman-ford-demo .bfv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
-    #bellman-ford-demo .bfv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
-    #bellman-ford-demo .bfv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #bellman-ford-demo .bfv-controls-shell { padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #bellman-ford-demo .bfv-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+    #bellman-ford-demo .bfv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; border-radius: 6px; padding: 0.45rem 0.65rem; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; white-space: nowrap; }
+    #bellman-ford-demo .bfv-controls button:hover { background: #e6edf5; }
     #bellman-ford-demo .bfv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #bellman-ford-demo .bfv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
-    #bellman-ford-demo .bfv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #bellman-ford-demo .bfv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #bellman-ford-demo .bfv-info { display: grid; gap: 0.45rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
     #bellman-ford-demo .bfv-line { overflow-x: auto; white-space: nowrap; }
     #bellman-ford-demo .bfv-edge { fill: none; stroke: #64748b; stroke-width: 2.2; }
     #bellman-ford-demo .bfv-edge-updated { stroke: #2563eb; stroke-width: 4; }
@@ -366,7 +368,7 @@ The relaxation process updates the shortest path estimate for each vertex based 
     #bellman-ford-demo .bfv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
     #bellman-ford-demo .bfv-node-name { font-size: 17px; font-weight: 700; }
     #bellman-ford-demo .bfv-node-dist { font-size: 12px; font-weight: 600; }
-    #bellman-ford-demo .bfv-legend { font-size: 0.95em; line-height: 1.7; }
+    #bellman-ford-demo .bfv-legend { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; font-size: 0.9em; line-height: 1.55; }
     #bellman-ford-demo .bfv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #bellman-ford-demo .bfv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #bellman-ford-demo .bfv-swatch-source { background: #dbeafe; border-color: #2563eb; }
@@ -375,16 +377,17 @@ The relaxation process updates the shortest path estimate for each vertex based 
   </style>
 
   <div class="bfv-stack">
-    <div class="bfv-graph" data-role="graph"></div>
-    <div class="bfv-status" data-role="status"></div>
     <div class="bfv-controls-shell">
       <div class="bfv-controls">
-        <button type="button" data-role="prev">Previous Step</button>
-        <button type="button" data-role="next">Next Step</button>
+        <button type="button" data-role="prev">Prev</button>
+        <button type="button" data-role="next">Step</button>
+        <button type="button" data-role="run">Run</button>
         <button type="button" data-role="reset">Reset</button>
-        <span class="bfv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+        <span class="bfv-counter">Step <span data-role="counter"></span></span>
       </div>
     </div>
+    <div class="bfv-graph" data-role="graph"></div>
+    <div class="bfv-status" data-role="status"></div>
     <div class="bfv-info">
       <div class="bfv-line">
 <strong>Distances:</strong> <span data-role="distances"></span>
@@ -471,7 +474,7 @@ The relaxation process updates the shortest path estimate for each vertex based 
         }
         return states;
       }
-      var states = buildStates(), index = 0;
+      var states = buildStates(), index = 0, timer = null;
       function svgEl(name, attrs) {
         var el = document.createElementNS(svgNS,name);
         Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
@@ -550,14 +553,44 @@ The relaxation process updates the shortest path estimate for each vertex based 
         byRole("relaxed").innerHTML = formatEdges(s.relaxed);
         byRole("prev").disabled = index === 0;
         byRole("next").disabled = index === last;
+        byRole("run").textContent = timer ? "Pause" : "Run";
         draw(s);
+      }
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+      function stepForward() {
+        if (index >= states.length - 1) {
+          stopRun();
+          return false;
+        }
+        index += 1;
+        render();
+        if (index >= states.length - 1) stopRun();
+        return true;
+      }
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (index >= states.length - 1) {
+          index = 0;
+          render();
+        }
+        timer = setInterval(stepForward, 850);
+        byRole("run").textContent = "Pause";
       }
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
-        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
-        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
-        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        byRole("prev").addEventListener("click", function () { stopRun(); if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { stopRun(); stepForward(); });
+        byRole("run").addEventListener("click", toggleRun);
+        byRole("reset").addEventListener("click", function () { stopRun(); index = 0; render(); });
         render();
       }
       if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
@@ -576,6 +609,49 @@ C\to E\to C
 \]</p>
 
 <p>has total weight $-7+(-13)=-20$.</p>
+
+<h2 id="proof-of-correctness">Proof of Correctness</h2>
+
+<p>Let $\delta_k(v)$ be the minimum weight of a path from the source $s$ to $v$ among all paths using at most $k$ edges.
+If no such path exists, let $\delta_k(v)=\infty$.
+After the $k$-th full relaxation pass, the Bellman–Ford distance satisfies</p>
+
+<p>\[
+d[v]\le \delta_k(v)
+\]</p>
+
+<p>for every vertex $v$.
+In fact, if there is no reachable negative cycle, equality holds for shortest paths with at most $k$ edges.</p>
+
+<p><em>Proof.</em>
+For $k=0$, only the source is reachable with zero edges, and the initialization gives</p>
+
+<p>\[
+d[s]=0,\qquad d[v]=\infty\quad (v\ne s).
+\]</p>
+
+<p>Assume the statement after $k-1$ passes.
+Let a shortest path with at most $k$ edges to $v$ end with the edge $u\to v$.
+Then the prefix path to $u$ has at most $k-1$ edges.
+By the induction hypothesis, after $k-1$ passes the value $d[u]$ is at most the weight of this prefix.
+During the next full pass, relaxing $u\to v$ gives</p>
+
+<p>\[
+d[v]\le d[u]+w(u,v)\le \delta_k(v).
+\]</p>
+
+<p>Since every relaxation only assigns the weight of an actual source-to-vertex walk, the distances cannot become smaller than the best such walk with the allowed number of edges unless a negative cycle permits indefinitely decreasing walks.
+Thus after $k$ passes, the distances represent the best paths using at most $k$ edges.</p>
+
+<p>If there is no reachable negative cycle, every shortest path can be chosen simple.
+A simple path in a graph with $V$ vertices uses at most $V-1$ edges.
+Therefore after $V-1$ passes, all shortest distances have been found.</p>
+
+<p>Finally, suppose a relaxation is still possible on the $V$-th pass.
+Then there exists a source-to-vertex walk of smaller weight using at least $V$ edges.
+Such a walk repeats a vertex and therefore contains a cycle.
+Removing a nonnegative cycle cannot improve the walk, so the repeated part must contain a negative cycle reachable from the source.
+Conversely, if a reachable negative cycle exists and can reach some vertex, distances along walks going around the cycle keep decreasing, so some relaxation remains possible.</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -773,7 +849,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd-Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd-Warshall Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>      </ul></aside>
+                                                                                                                                                                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/floyd-warshall-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">Floyd-Warshall Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/floyd-warshall-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Floyd-Warshall Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/floyd-warshall-algorithm.html" class="flip-title">    <span>            Floyd-Warshall Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/floyd-warshall-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>      </ul></aside>
 
   
 
@@ -796,14 +872,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -832,7 +908,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1832,7 +1908,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

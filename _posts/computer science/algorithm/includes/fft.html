@@ -1,24 +1,26 @@
 {% assign viz_id = include.id | default: "fft-demo" %}
 <div id="{{ viz_id }}" class="fftv-root">
   <style>
-    #{{ viz_id }} { margin: 2rem 0; color: #1f2937; }
+    #{{ viz_id }} { width: 100%; max-width: 860px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #{{ viz_id }} * { box-sizing: border-box; }
-    #{{ viz_id }} .fftv-stack { display: grid; gap: 1rem; }
-    #{{ viz_id }} .fftv-svg-wrap { width: 100%; }
+    #{{ viz_id }} .fftv-stack { display: grid; gap: 0; }
+    #{{ viz_id }} .fftv-svg-wrap { width: 100%; padding: 0.75rem; background: #ffffff; overflow: hidden; }
     #{{ viz_id }} .fftv-svg-wrap svg { display: block; width: 100%; max-width: 860px; height: auto; margin: 0 auto; }
-    #{{ viz_id }} .fftv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #{{ viz_id }} .fftv-status { margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #f8fafc; line-height: 1.65; }
     #{{ viz_id }} .fftv-status p { margin: 0; }
     #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .fftv-toolbar { display: grid; gap: 0.55rem; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
     #{{ viz_id }} .fftv-input-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.4rem; }
-    #{{ viz_id }} .fftv-input-grid input { width: 100%; height: 2.25rem; border: 1px solid rgba(82,96,113,0.24); border-radius: 0.5rem; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; text-align: center; outline: none; appearance: textfield; }
-    #{{ viz_id }} .fftv-input-grid input:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #{{ viz_id }} .fftv-input-grid input { width: 100%; min-height: 2rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; font-size: 0.85rem; text-align: center; outline: none; appearance: textfield; }
+    #{{ viz_id }} .fftv-input-grid input:focus { border-color: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.18); }
     #{{ viz_id }} .fftv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-    #{{ viz_id }} .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; border-radius: 6px; padding: 0.45rem 0.65rem; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .fftv-actions button:hover { background: #e6edf5; }
     #{{ viz_id }} .fftv-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #{{ viz_id }} .fftv-counter { opacity: 0.8; font-size: 0.95em; }
-    #{{ viz_id }} .fftv-info { display: grid; gap: 0.35rem; line-height: 1.7; }
+    #{{ viz_id }} .fftv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #{{ viz_id }} .fftv-info { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
     #{{ viz_id }} .fftv-line { overflow-wrap: anywhere; }
-    #{{ viz_id }} .fftv-legend { display: grid; gap: 0.35rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .fftv-legend { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; font-size: 0.9em; line-height: 1.55; }
     #{{ viz_id }} .fftv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #{{ viz_id }} .fftv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #{{ viz_id }} .fftv-swatch-active { background: #dbeafe; border-color: #2563eb; }
@@ -42,16 +44,19 @@
   </style>
 
   <div class="fftv-stack">
+    <div class="fftv-toolbar">
+      <div class="fftv-input-grid" data-role="inputs"></div>
+      <div class="fftv-actions">
+        <button type="button" data-role="apply">Apply</button>
+        <button type="button" data-role="prev">Prev</button>
+        <button type="button" data-role="next">Step</button>
+        <button type="button" data-role="run">Run</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="fftv-counter">Step <span data-role="counter"></span></span>
+      </div>
+    </div>
     <div class="fftv-svg-wrap" data-role="svg"></div>
     <div class="fftv-status" data-role="status"></div>
-    <div class="fftv-input-grid" data-role="inputs"></div>
-    <div class="fftv-actions">
-      <button type="button" data-role="apply">Run</button>
-      <button type="button" data-role="prev">Previous Step</button>
-      <button type="button" data-role="next">Next Step</button>
-      <button type="button" data-role="reset">Reset</button>
-      <span class="fftv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
-    </div>
     <div class="fftv-info">
       <div class="fftv-line"><strong>Block length:</strong> <span data-role="length"></span></div>
       <div class="fftv-line"><strong>Twiddle factors:</strong> <span data-role="twiddle"></span></div>
@@ -229,6 +234,7 @@
       var defaults = [3, 1, 4, 1, 5, 9, 2, 6];
       var states = makeStates(defaults);
       var index = 0;
+      var timer = null;
 
       function svgEl(name, attrs) {
         var el = document.createElementNS(svgNS, name);
@@ -336,10 +342,12 @@
         byRole("twiddle").innerHTML = "<code>" + esc(state.twiddle) + "</code>";
         byRole("prev").disabled = index === 0;
         byRole("next").disabled = index === states.length - 1;
+        byRole("run").textContent = timer ? "Pause" : "Run";
         draw(state);
       }
 
       function recompute() {
+        stopRun();
         states = makeStates(readValues());
         index = 0;
         render();
@@ -351,23 +359,54 @@
         recompute();
       }
 
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+
+      function stepForward() {
+        if (index >= states.length - 1) {
+          stopRun();
+          return false;
+        }
+        index += 1;
+        render();
+        if (index >= states.length - 1) stopRun();
+        return true;
+      }
+
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (index >= states.length - 1) {
+          index = 0;
+          render();
+        }
+        timer = setInterval(stepForward, 720);
+        byRole("run").textContent = "Pause";
+      }
+
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
         makeInputs();
         byRole("apply").addEventListener("click", recompute);
         byRole("prev").addEventListener("click", function () {
+          stopRun();
           if (index > 0) {
             index -= 1;
             render();
           }
         });
         byRole("next").addEventListener("click", function () {
-          if (index < states.length - 1) {
-            index += 1;
-            render();
-          }
+          stopRun();
+          stepForward();
         });
+        byRole("run").addEventListener("click", toggleRun);
         byRole("reset").addEventListener("click", reset);
         render();
       }

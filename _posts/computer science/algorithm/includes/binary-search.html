@@ -1,0 +1,366 @@
+<div id="binary-search-visualizer" class="bsv-panel">
+  <div class="bsv-toolbar">
+    <button type="button" data-action="mode">Real Search</button>
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="run">Run</button>
+    <button type="button" data-action="reset">Reset</button>
+    <button type="button" data-action="random">Random</button>
+    <span class="bsv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Binary search visualizer"></canvas>
+</div>
+
+<style>
+  .bsv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .bsv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .bsv-toolbar button {
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .bsv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .bsv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .bsv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("binary-search-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const buttons = root.querySelectorAll("button[data-action]");
+  const modeButton = root.querySelector("button[data-action='mode']");
+
+  let mode = "array";
+  let timer = null;
+  let step = 0;
+  let states = [];
+
+  let arrayData = {
+    a: [2, 4, 7, 7, 9, 13, 18, 21, 28, 35, 35, 42],
+    x: 14
+  };
+
+  let answerData = {
+    lo: 0,
+    hi: 64,
+    threshold: 37.35,
+    eps: 0.25
+  };
+
+  function makeArrayStates() {
+    const a = arrayData.a;
+    const x = arrayData.x;
+    const result = a.findIndex(v => v >= x);
+    let l = -1;
+    let r = a.length;
+    const out = [{phase: "start", l, r, m: null, value: null, result}];
+    while (r - l > 1) {
+      const m = l + Math.floor((r - l) / 2);
+      const ok = a[m] >= x;
+      out.push({phase: ok ? "true" : "false", l, r, m, value: a[m], ok, result});
+      if (ok) r = m;
+      else l = m;
+      out.push({phase: "shrink", l, r, m, value: a[m], ok, result});
+    }
+    out.push({phase: "done", l, r, m: null, value: null, result: r});
+    return out;
+  }
+
+  function makeAnswerStates() {
+    const threshold = answerData.threshold;
+    let l = answerData.lo;
+    let r = answerData.hi;
+    const out = [{phase: "start", l, r, m: null, ok: null, result: threshold}];
+    while (r - l > answerData.eps && out.length < 32) {
+      const m = (l + r) / 2;
+      const ok = m >= threshold;
+      out.push({phase: ok ? "feasible" : "infeasible", l, r, m, ok, result: threshold});
+      if (ok) r = m;
+      else l = m;
+      out.push({phase: "shrink", l, r, m, ok, result: threshold});
+    }
+    out.push({phase: "done", l, r, m: null, ok: null, result: r});
+    return out;
+  }
+
+  function rebuild() {
+    stop();
+    states = mode === "array" ? makeArrayStates() : makeAnswerStates();
+    step = 0;
+    draw();
+  }
+
+  function randomize() {
+    stop();
+    if (mode === "array") {
+      const n = 10 + Math.floor(Math.random() * 5);
+      let v = 1 + Math.floor(Math.random() * 4);
+      const a = [];
+      for (let i = 0; i < n; i++) {
+        v += Math.floor(Math.random() * 6);
+        a.push(v);
+      }
+      arrayData = {
+        a,
+        x: 1 + Math.floor(Math.random() * (v + 8))
+      };
+    } else {
+      const hi = 48 + Math.floor(Math.random() * 40);
+      answerData = {
+        lo: 0,
+        hi,
+        threshold: 1 + Math.random() * (hi - 2),
+        eps: 0.25
+      };
+    }
+    rebuild();
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function drawText(text, x, y, color, size, align) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign = align || "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x, y);
+  }
+
+  function drawArray(state, rect) {
+    const a = arrayData.a;
+    const x = arrayData.x;
+    const pad = 32;
+    const gap = 6;
+    const top = rect.height * 0.35;
+    const cellW = (rect.width - 2 * pad - gap * (a.length - 1)) / a.length;
+    const cellH = Math.min(54, rect.height * 0.18);
+
+    drawText("lower_bound for x = " + x, rect.width / 2, 34, "#0f172a", 16);
+
+    for (let i = 0; i < a.length; i++) {
+      const x0 = pad + i * (cellW + gap);
+      let fill = "#e2e8f0";
+      if (i <= state.l) fill = "#fecaca";
+      if (i >= state.r) fill = "#bfdbfe";
+      if (i === state.m) fill = state.ok ? "#93c5fd" : "#fca5a5";
+      if (state.phase === "done" && i === state.r) fill = "#86efac";
+
+      ctx.fillStyle = fill;
+      ctx.strokeStyle = "#94a3b8";
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.roundRect(x0, top, cellW, cellH, 6);
+      ctx.fill();
+      ctx.stroke();
+
+      drawText(String(a[i]), x0 + cellW / 2, top + cellH / 2, "#0f172a", 15);
+      drawText(String(i), x0 + cellW / 2, top + cellH + 18, "#64748b", 12);
+    }
+
+    const labelY = top + cellH + 44;
+    if (state.l >= 0) {
+      drawText("l", pad + state.l * (cellW + gap) + cellW / 2, labelY, "#dc2626", 14);
+    }
+    if (state.r < a.length) {
+      drawText("r", pad + state.r * (cellW + gap) + cellW / 2, labelY, "#2563eb", 14);
+    } else {
+      drawText("r=N", rect.width - pad, labelY, "#2563eb", 14, "right");
+    }
+    if (state.m !== null) {
+      drawText("m", pad + state.m * (cellW + gap) + cellW / 2, top - 18, "#0f172a", 14);
+    }
+
+    const resultText = state.phase === "done"
+      ? "answer index = " + state.r
+      : "invariant: P(l)=false, P(r)=true";
+    drawText(resultText, rect.width / 2, rect.height - 34, "#475569", 14);
+  }
+
+  function drawAnswer(state, rect) {
+    const pad = 42;
+    const y = rect.height * 0.48;
+    const w = rect.width - 2 * pad;
+    const lo0 = answerData.lo;
+    const hi0 = answerData.hi;
+    const threshold = answerData.threshold;
+    const scale = w / (hi0 - lo0);
+    const px = v => pad + (v - lo0) * scale;
+
+    drawText("minimum feasible real value", rect.width / 2, 34, "#0f172a", 16);
+
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.moveTo(pad, y);
+    ctx.lineTo(rect.width - pad, y);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#fecaca";
+    ctx.beginPath();
+    ctx.moveTo(pad, y);
+    ctx.lineTo(px(threshold), y);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#bfdbfe";
+    ctx.beginPath();
+    ctx.moveTo(px(threshold), y);
+    ctx.lineTo(rect.width - pad, y);
+    ctx.stroke();
+
+    ctx.strokeStyle = "#0f172a";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(px(state.l), y - 28);
+    ctx.lineTo(px(state.l), y + 28);
+    ctx.stroke();
+    drawText("l", px(state.l), y + 46, "#dc2626", 14);
+
+    ctx.beginPath();
+    ctx.moveTo(px(state.r), y - 28);
+    ctx.lineTo(px(state.r), y + 28);
+    ctx.stroke();
+    drawText("r", px(state.r), y + 46, "#2563eb", 14);
+
+    if (state.m !== null) {
+      ctx.strokeStyle = state.ok ? "#2563eb" : "#dc2626";
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(px(state.m), y - 45);
+      ctx.lineTo(px(state.m), y + 45);
+      ctx.stroke();
+      drawText("m=" + state.m.toFixed(2), px(state.m), y - 62, "#0f172a", 14);
+    }
+
+    drawText("false", (pad + px(threshold)) / 2, y - 25, "#dc2626", 13);
+    drawText("true", (px(threshold) + rect.width - pad) / 2, y - 25, "#2563eb", 13);
+    drawText("threshold = " + threshold.toFixed(2), px(threshold), y + 72, "#059669", 14);
+
+    const resultText = state.phase === "done"
+      ? "minimum feasible value ~ " + state.r.toFixed(3)
+      : "ok(x) is false before the boundary and true after it";
+    drawText(resultText, rect.width / 2, rect.height - 34, "#475569", 14);
+  }
+
+  function draw() {
+    if (!states.length) rebuild();
+    const state = states[Math.min(step, states.length - 1)];
+    const rect = canvas.getBoundingClientRect();
+    ctx.clearRect(0, 0, rect.width, rect.height);
+    if (mode === "array") drawArray(state, rect);
+    else drawAnswer(state, rect);
+
+    const label = mode === "array" ? "sorted sequence" : "real answer";
+    status.textContent = (step + 1) + " / " + states.length + "  " + label + "  " + state.phase;
+    modeButton.textContent = mode === "array" ? "Real Search" : "Sorted Array";
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      if (action === "mode") {
+        mode = mode === "array" ? "answer" : "array";
+        rebuild();
+        return;
+      }
+      if (action === "prev") {
+        stop();
+        step = Math.max(0, step - 1);
+      } else if (action === "step") {
+        stop();
+        step = Math.min(states.length - 1, step + 1);
+      } else if (action === "run") {
+        if (timer) {
+          stop();
+        } else {
+          timer = setInterval(() => {
+            if (step >= states.length - 1) stop();
+            else {
+              step++;
+              draw();
+            }
+          }, 650);
+        }
+      } else if (action === "reset") {
+        rebuild();
+        return;
+      } else if (action === "random") {
+        randomize();
+        return;
+      }
+      draw();
+    });
+  });
+
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      this.moveTo(x + rr, y);
+      this.arcTo(x + w, y, x + w, y + h, rr);
+      this.arcTo(x + w, y + h, x, y + h, rr);
+      this.arcTo(x, y + h, x, y, rr);
+      this.arcTo(x, y, x + w, y, rr);
+      return this;
+    };
+  }
+
+  rebuild();
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>

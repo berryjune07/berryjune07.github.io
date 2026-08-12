@@ -191,7 +191,7 @@ Let's define $\b{r}_{ij} = \b{r}_i - \b{r}_j$ as the position vector of the $i$-
 
 \\[
 \begin{align\*}
-\odv{\b{L}}{t} &= \sum_i \odv{}{t} (\b{r}\_i \times m_i \odv{\b{r}\_i}{t}) \nl
+\odv{\b{L}}{t} &= \sum_i \odv{}{t} \left( \b{r}\_i \times m_i \odv{\b{r}\_i}{t} \right) \nl
 &= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i\neq j} \b{r}\_i \times \b{F}\_{ij} \nl
 &= \sum_i \b{r}\_i \times \b{F}\_i^\text{ext} + \sum_{i < j} \b{r}\_{ij} \times \b{F}\_{ij}
 \end{align\*}
@@ -244,7 +244,7 @@ This means that the angular momentum of the system can be decomposed into two pa
 2. The angular momentum of the particles with respect to the center of mass
 
 This emphasizes that $\b{L}$ depends on the choice of the point $\b{O}$, only through $\b{R}$.
-Only if $b{R}$ is rest with respect to $\b{O}$, $\b{L}$ will be independent of the point of reference.
+Only if $\b{R}$ is rest with respect to $\b{O}$, $\b{L}$ will be independent of the point of reference.
 
 The total kinetic energy of the system is given by
 

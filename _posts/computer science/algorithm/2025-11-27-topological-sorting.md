@@ -109,6 +109,24 @@ Continue this process until the queue is empty. The final topological order will
 $ \text{Top} = [A,E,B,C,D,F] $
 </center>
 
+### Proof of Correctness
+
+_Proof._
+At every step, the queue contains exactly the vertices whose remaining in-degree is $0$.
+Such a vertex has no incoming edge from any unprocessed vertex.
+Therefore placing it next in the ordering cannot violate any dependency.
+
+When a vertex $u$ is removed, all outgoing edges $u\to v$ are deleted from the remaining graph by decreasing the in-degree of $v$.
+Thus the maintained in-degrees are exactly the in-degrees in the graph induced by the unprocessed vertices.
+By induction, every vertex appended to the output is placed after all of its predecessors that remain relevant.
+
+If all vertices are processed, then for every edge $u\to v$, vertex $u$ was removed before the edge contributed to the in-degree of $v$ becoming $0$.
+Hence $u$ appears before $v$ in the output, so the output is a topological ordering.
+
+If the algorithm stops before processing every vertex, then every remaining vertex has positive in-degree in the remaining graph.
+Following one incoming edge repeatedly among the finite remaining vertices eventually repeats a vertex, producing a directed cycle.
+Therefore no topological ordering exists.
+
 ### Complexity
 
 It takes $O(V + E)$ time, where $V$ is the number of vertices and $E$ is the number of edges in the graph,
@@ -181,6 +199,22 @@ Finally, we perform DFS starting from vertex E, and push it onto the stack, and 
 $ \text{Stack} = [F,D,C,B,A,E] \nl
 \text{Top} = [E,A,B,C,D,F] $
 </center>
+
+### Proof of Correctness
+
+_Proof._
+In DFS, a vertex is pushed only after all vertices reachable through its outgoing edges have been processed.
+Therefore, for every edge $u\to v$, if DFS visits $v$ from $u$, then $v$ is pushed before $u$.
+After reversing the finishing order, $u$ appears before $v$.
+
+If $v$ was already visited before the DFS call from $u$, then in a DAG it cannot be an ancestor of $u$ in the current DFS recursion stack.
+Otherwise there would be a directed cycle.
+Thus $v$ has already finished, or belongs to a previously completed DFS tree.
+Again, $v$ is pushed before $u$ whenever the edge $u\to v$ is considered.
+
+Hence every directed edge goes from a later finishing vertex to an earlier finishing vertex.
+Reversing the finishing order gives an ordering in which every edge points forward.
+Therefore the reversed DFS finishing order is a topological ordering.
 
 ### Complexity
 

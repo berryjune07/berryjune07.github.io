@@ -1,0 +1,370 @@
+<div id="ternary-search-visualizer" class="tsv-panel">
+  <div class="tsv-toolbar">
+    <button type="button" data-action="mode">Discrete</button>
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="run">Run</button>
+    <button type="button" data-action="reset">Reset</button>
+    <button type="button" data-action="random">Random</button>
+    <span class="tsv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Ternary search visualizer"></canvas>
+</div>
+
+<style>
+  .tsv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .tsv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .tsv-toolbar button {
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .tsv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .tsv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .tsv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("ternary-search-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const buttons = root.querySelectorAll("button[data-action]");
+  const modeButton = root.querySelector("button[data-action='mode']");
+
+  let mode = "continuous";
+  let step = 0;
+  let timer = null;
+  let states = [];
+
+  let continuousData = {
+    lo: 0,
+    hi: 100,
+    peak: 58,
+    height: 92,
+    curvature: 0.035
+  };
+
+  let discreteData = {
+    values: [9, 15, 23, 34, 48, 63, 79, 91, 84, 72, 55, 39, 26, 18, 11]
+  };
+
+  function f(x) {
+    const d = x - continuousData.peak;
+    return continuousData.height - continuousData.curvature * d * d;
+  }
+
+  function makeContinuousStates() {
+    let l = continuousData.lo;
+    let r = continuousData.hi;
+    const out = [{phase: "start", l, r, m1: null, m2: null, v1: null, v2: null}];
+    while (r - l > 0.8 && out.length < 34) {
+      const m1 = l + (r - l) / 3;
+      const m2 = r - (r - l) / 3;
+      const v1 = f(m1);
+      const v2 = f(m2);
+      out.push({phase: "compare", l, r, m1, m2, v1, v2});
+      if (v1 < v2) {
+        l = m1;
+        out.push({phase: "discard left", l, r, m1, m2, v1, v2});
+      } else {
+        r = m2;
+        out.push({phase: "discard right", l, r, m1, m2, v1, v2});
+      }
+    }
+    out.push({phase: "done", l, r, m1: null, m2: null, v1: null, v2: null});
+    return out;
+  }
+
+  function makeDiscreteStates() {
+    const a = discreteData.values;
+    let l = 0;
+    let r = a.length - 1;
+    const out = [{phase: "start", l, r, m1: null, m2: null}];
+    while (r - l > 3) {
+      const m1 = l + Math.floor((r - l) / 3);
+      const m2 = r - Math.floor((r - l) / 3);
+      out.push({phase: "compare", l, r, m1, m2});
+      if (a[m1] < a[m2]) {
+        l = m1;
+        out.push({phase: "discard left", l, r, m1, m2});
+      } else {
+        r = m2;
+        out.push({phase: "discard right", l, r, m1, m2});
+      }
+    }
+    let best = l;
+    for (let i = l + 1; i <= r; i++) {
+      if (a[i] > a[best]) best = i;
+    }
+    out.push({phase: "scan remainder", l, r, m1: null, m2: null, best});
+    out.push({phase: "done", l, r, m1: null, m2: null, best});
+    return out;
+  }
+
+  function rebuild() {
+    stop();
+    states = mode === "continuous" ? makeContinuousStates() : makeDiscreteStates();
+    step = 0;
+    draw();
+  }
+
+  function randomize() {
+    stop();
+    if (mode === "continuous") {
+      continuousData = {
+        lo: 0,
+        hi: 100,
+        peak: 20 + Math.random() * 60,
+        height: 82 + Math.random() * 16,
+        curvature: 0.025 + Math.random() * 0.025
+      };
+    } else {
+      const n = 12 + Math.floor(Math.random() * 7);
+      const peak = 2 + Math.floor(Math.random() * (n - 4));
+      const values = [];
+      for (let i = 0; i < n; i++) {
+        const d = Math.abs(i - peak);
+        const noise = Math.floor(Math.random() * 3);
+        values.push(92 - d * d * 3 - d * 6 - noise);
+      }
+      discreteData = {values};
+    }
+    rebuild();
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function drawText(text, x, y, color, size, align) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign = align || "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x, y);
+  }
+
+  function drawContinuous(state, rect) {
+    const pad = 46;
+    const top = 38;
+    const bottom = rect.height - 48;
+    const lo = continuousData.lo;
+    const hi = continuousData.hi;
+    const yMin = 0;
+    const yMax = 100;
+    const sx = x => pad + (x - lo) / (hi - lo) * (rect.width - 2 * pad);
+    const sy = y => bottom - (y - yMin) / (yMax - yMin) * (bottom - top);
+
+    ctx.strokeStyle = "#cbd5e1";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pad, bottom);
+    ctx.lineTo(rect.width - pad, bottom);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(148, 163, 184, 0.13)";
+    ctx.fillRect(sx(state.l), top, sx(state.r) - sx(state.l), bottom - top);
+
+    ctx.strokeStyle = "#0f172a";
+    ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    for (let i = 0; i <= 160; i++) {
+      const x = lo + (hi - lo) * i / 160;
+      const y = f(x);
+      if (i === 0) ctx.moveTo(sx(x), sy(y));
+      else ctx.lineTo(sx(x), sy(y));
+    }
+    ctx.stroke();
+
+    drawMarker(state.l, "l", "#dc2626");
+    drawMarker(state.r, "r", "#2563eb");
+
+    if (state.m1 !== null) {
+      drawMarker(state.m1, "m1", "#f97316");
+      drawMarker(state.m2, "m2", "#7c3aed");
+      drawPoint(state.m1, state.v1, "#f97316");
+      drawPoint(state.m2, state.v2, "#7c3aed");
+    }
+
+    ctx.setLineDash([5, 5]);
+    ctx.strokeStyle = "#059669";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(sx(continuousData.peak), top);
+    ctx.lineTo(sx(continuousData.peak), bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    drawText("peak", sx(continuousData.peak), top + 12, "#059669", 13);
+
+    drawText("continuous ternary search for maximum", rect.width / 2, 20, "#0f172a", 15);
+    drawText("current interval length = " + (state.r - state.l).toFixed(2), rect.width / 2, rect.height - 20, "#475569", 13);
+
+    function drawMarker(x, label, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(sx(x), top);
+      ctx.lineTo(sx(x), bottom);
+      ctx.stroke();
+      drawText(label, sx(x), bottom + 18, color, 13);
+    }
+
+    function drawPoint(x, y, color) {
+      ctx.beginPath();
+      ctx.arc(sx(x), sy(y), 5, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+  }
+
+  function drawDiscrete(state, rect) {
+    const a = discreteData.values;
+    const pad = 34;
+    const top = 38;
+    const bottom = rect.height - 54;
+    const gap = 6;
+    const maxV = Math.max(...a);
+    const minV = Math.min(0, ...a);
+    const barW = (rect.width - 2 * pad - gap * (a.length - 1)) / a.length;
+
+    drawText("integer ternary search for maximum", rect.width / 2, 20, "#0f172a", 15);
+
+    for (let i = 0; i < a.length; i++) {
+      const x = pad + i * (barW + gap);
+      const h = (a[i] - minV) / (maxV - minV) * (bottom - top);
+      let fill = "#e2e8f0";
+      if (i < state.l || i > state.r) fill = "#f1f5f9";
+      if (i === state.m1) fill = "#fdba74";
+      if (i === state.m2) fill = "#c4b5fd";
+      if ((state.phase === "scan remainder" || state.phase === "done") && i >= state.l && i <= state.r) fill = "#bfdbfe";
+      if (state.best === i) fill = "#86efac";
+
+      ctx.fillStyle = fill;
+      ctx.strokeStyle = "#94a3b8";
+      ctx.lineWidth = 1.2;
+      ctx.fillRect(x, bottom - h, barW, h);
+      ctx.strokeRect(x, bottom - h, barW, h);
+
+      drawText(String(i), x + barW / 2, bottom + 15, "#64748b", 11);
+      if (i === state.l) drawText("l", x + barW / 2, bottom + 31, "#dc2626", 12);
+      if (i === state.r) drawText("r", x + barW / 2, bottom + 31, "#2563eb", 12);
+      if (i === state.m1) drawText("m1", x + barW / 2, bottom - h - 12, "#f97316", 12);
+      if (i === state.m2) drawText("m2", x + barW / 2, bottom - h - 12, "#7c3aed", 12);
+    }
+
+    const text = state.phase === "done"
+      ? "best index = " + state.best + ", value = " + a[state.best]
+      : "shrink while r - l > 3, then scan the remaining candidates";
+    drawText(text, rect.width / 2, rect.height - 20, "#475569", 13);
+  }
+
+  function draw() {
+    if (!states.length) rebuild();
+    const state = states[Math.min(step, states.length - 1)];
+    const rect = canvas.getBoundingClientRect();
+    ctx.clearRect(0, 0, rect.width, rect.height);
+    if (mode === "continuous") drawContinuous(state, rect);
+    else drawDiscrete(state, rect);
+
+    status.textContent = (step + 1) + " / " + states.length + "  " + state.phase;
+    modeButton.textContent = mode === "continuous" ? "Discrete" : "Continuous";
+  }
+
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      if (action === "mode") {
+        mode = mode === "continuous" ? "discrete" : "continuous";
+        rebuild();
+        return;
+      }
+      if (action === "prev") {
+        stop();
+        step = Math.max(0, step - 1);
+      } else if (action === "step") {
+        stop();
+        step = Math.min(states.length - 1, step + 1);
+      } else if (action === "run") {
+        if (timer) {
+          stop();
+        } else {
+          timer = setInterval(() => {
+            if (step >= states.length - 1) stop();
+            else {
+              step++;
+              draw();
+            }
+          }, 620);
+        }
+      } else if (action === "reset") {
+        rebuild();
+        return;
+      } else if (action === "random") {
+        randomize();
+        return;
+      }
+      draw();
+    });
+  });
+
+  rebuild();
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>

@@ -83,6 +83,11 @@ Therefore,
 \operatorname{LCA}(u,v)=\operatorname{up}[0][u].
 \\]
 
+The interactive demo below shows the binary lifting query process on a fixed rooted tree.
+Choose two vertices and step through the depth equalization and simultaneous upward jumps.
+
+{% include_relative includes/lowest-common-ancestor.html %}
+
 There is another general formulation using Euler tour and sparse table.
 Perform a DFS from the root and record each vertex when the DFS enters it and whenever the DFS returns to it.
 Let the resulting Euler tour be

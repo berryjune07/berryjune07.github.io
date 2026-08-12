@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,7 +278,7 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="710 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="695 words">
   <i class="fa-regular fa-hourglass-half"></i>
    11 min
 </span>
@@ -332,21 +332,22 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
 
 <div id="dijkstra-demo" class="dv-root">
   <style>
-    #dijkstra-demo { margin: 2rem 0; }
+    #dijkstra-demo { width: 100%; max-width: 760px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #dijkstra-demo * { box-sizing: border-box; }
-    #dijkstra-demo .dv-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0 0 1rem 0; }
-    #dijkstra-demo .dv-controls button { appearance: none; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0.45rem 0.8rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; cursor: pointer; }
+    #dijkstra-demo .dv-controls { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #dijkstra-demo .dv-controls button { appearance: none; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; padding: 0.45rem 0.65rem; border-radius: 6px; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; }
+    #dijkstra-demo .dv-controls button:hover { background: #e6edf5; }
     #dijkstra-demo .dv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #dijkstra-demo .dv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
-    #dijkstra-demo .dv-graph { width: 100%; overflow-x: auto; padding: 0.5rem 0; }
+    #dijkstra-demo .dv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #dijkstra-demo .dv-graph { width: 100%; padding: 0.75rem; background: #ffffff; overflow: hidden; }
     #dijkstra-demo .dv-graph svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
-    #dijkstra-demo .dv-divider { border: 0; border-top: 1px solid rgba(127,127,127,0.25); margin: 1.5rem 0; }
-    #dijkstra-demo .dv-step-title { margin: 0 0 0.5rem 0; font-size: 1.05em; font-weight: 700; }
-    #dijkstra-demo .dv-step-text { margin: 0; line-height: 1.7; }
-    #dijkstra-demo .dv-info-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0 0 0; }
+    #dijkstra-demo .dv-divider { display: none; }
+    #dijkstra-demo .dv-step-title { margin: 0; padding: 0.75rem 0.85rem 0; border-top: 1px solid #d8dee8; font-size: 1em; font-weight: 700; }
+    #dijkstra-demo .dv-step-text { margin: 0; padding: 0.35rem 0.85rem 0.75rem; line-height: 1.65; }
+    #dijkstra-demo .dv-info-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; }
     #dijkstra-demo .dv-info-block h4 { margin: 0 0 0.5rem 0; font-size: 1em; }
     #dijkstra-demo .dv-math-line { min-height: 1.8rem; line-height: 1.8; overflow-x: auto; overflow-y: hidden; }
-    #dijkstra-demo .dv-legend { margin-top: 0.75rem; font-size: 0.95em; line-height: 1.7; }
+    #dijkstra-demo .dv-legend { display: grid; gap: 0.35rem; margin-top: 0.25rem; font-size: 0.9em; line-height: 1.55; }
     #dijkstra-demo .dv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #dijkstra-demo .dv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #dijkstra-demo .dv-swatch-current { background: #fee2e2; border-color: #dc2626; }
@@ -355,12 +356,12 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
     #dijkstra-demo .dv-swatch-normal { background: #f8fafc; border-color: #475569; }
   </style>
 
-  <p class="dv-description">Click the buttons to move through Dijkstra's algorithm one step at a time.</p>
   <div class="dv-controls">
-    <button type="button" data-role="prev">Previous Step</button>
-    <button type="button" data-role="next">Next Step</button>
+    <button type="button" data-role="prev">Prev</button>
+    <button type="button" data-role="next">Step</button>
+    <button type="button" data-role="run">Run</button>
     <button type="button" data-role="reset">Reset</button>
-    <span class="dv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+    <span class="dv-counter">Step <span data-role="counter"></span></span>
   </div>
   <div class="dv-graph" data-role="graph"></div>
   <hr class="dv-divider">
@@ -488,9 +489,76 @@ Commonly used in routing and navigation systems, Dijkstra’s algorithm is effic
         out.push('}'); return out.join("\n");
       }
       function draw(s) { var target = byRole("graph"); target.innerHTML = ""; target.appendChild(viz.renderSVGElement(dot(s), { engine: "neato" })); }
-      function render() { var s = history[history.length-1]; byRole("counter").textContent = String(history.length-1); byRole("step-title").textContent = "Step " + (history.length-1) + " - " + s.caption; byRole("step-desc").innerHTML = h(s.desc).replace(/`([^`]+)`/g,"<code>$1</code>"); byRole("pq-state").innerHTML = math(pqTex(s.pq)); root.querySelector('[data-role="prev"]').disabled = history.length <= 1; root.querySelector('[data-role="next"]').disabled = s.done; draw(s); }
-      function start() { if (root.dataset.initialized === "true") return; root.dataset.initialized = "true"; Promise.all([getKatex(), getViz()]).then(function(libs){ katex = libs[0]; viz = libs[1]; history = [initial()]; render(); root.querySelector('[data-role="prev"]').addEventListener("click", function(){ if (history.length > 1) { history.pop(); render(); } }); root.querySelector('[data-role="next"]').addEventListener("click", function(){ if (!history[history.length-1].done) { history.push(next(history[history.length-1])); render(); } }); root.querySelector('[data-role="reset"]').addEventListener("click", function(){ history = [initial()]; render(); }); }).catch(function(err){ byRole("graph").textContent = err && err.message ? err.message : "Failed to initialize visualizer."; }); }
-      var katex = null, viz = null, history = [];
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+      function stepForward() {
+        var s = history[history.length - 1];
+        if (s.done) {
+          stopRun();
+          return false;
+        }
+        history.push(next(s));
+        render();
+        if (history[history.length - 1].done) stopRun();
+        return true;
+      }
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (history.length && history[history.length - 1].done) {
+          history = [initial()];
+          render();
+        }
+        timer = setInterval(stepForward, 850);
+        byRole("run").textContent = "Pause";
+      }
+      function render() {
+        var s = history[history.length - 1];
+        byRole("counter").textContent = String(history.length - 1);
+        byRole("step-title").textContent = "Step " + (history.length - 1) + " - " + s.caption;
+        byRole("step-desc").innerHTML = h(s.desc).replace(/`([^`]+)`/g, "<code>$1</code>");
+        byRole("pq-state").innerHTML = math(pqTex(s.pq));
+        root.querySelector('[data-role="prev"]').disabled = history.length <= 1;
+        root.querySelector('[data-role="next"]').disabled = s.done;
+        byRole("run").textContent = timer ? "Pause" : "Run";
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        Promise.all([getKatex(), getViz()]).then(function(libs) {
+          katex = libs[0];
+          viz = libs[1];
+          history = [initial()];
+          render();
+          root.querySelector('[data-role="prev"]').addEventListener("click", function() {
+            stopRun();
+            if (history.length > 1) {
+              history.pop();
+              render();
+            }
+          });
+          root.querySelector('[data-role="next"]').addEventListener("click", function() {
+            stopRun();
+            stepForward();
+          });
+          root.querySelector('[data-role="run"]').addEventListener("click", toggleRun);
+          root.querySelector('[data-role="reset"]').addEventListener("click", function() {
+            stopRun();
+            history = [initial()];
+            render();
+          });
+        }).catch(function(err) {
+          byRole("graph").textContent = err && err.message ? err.message : "Failed to initialize visualizer.";
+        });
+      }
+      var katex = null, viz = null, history = [], timer = null;
       if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
     })();
   </script>
@@ -743,7 +811,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                                          <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/disjoint-set-forest.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/disjoint-set-forest.html" class="flip-title">Disjoint-Set Forest</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/disjoint-set-forest.html" tabindex="-1"><span class="sr-only">Continue reading Disjoint-Set Forest</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>          <li class="h4">  <a href="/computer-science/segment-tree.html" class="flip-title">    <span>            Segment Tree    </span>  </a>      <time class="faded fine" datetime="2024-07-29T00:00:00+09:00">      29 Jul 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/segment-tree.html"></span>  </li>      </ul></aside>
+                                                                                                                                                                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/minimum-spanning-tree.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">Minimum Spanning Tree</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/minimum-spanning-tree.html" tabindex="-1"><span class="sr-only">Continue reading Minimum Spanning Tree</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/disjoint-set-forest.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/disjoint-set-forest.html" class="flip-title">Disjoint-Set Forest</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/disjoint-set-forest.html" tabindex="-1"><span class="sr-only">Continue reading Disjoint-Set Forest</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>          <li class="h4">  <a href="/computer-science/disjoint-set-forest.html" class="flip-title">    <span>            Disjoint-Set Forest    </span>  </a>      <time class="faded fine" datetime="2025-07-20T00:00:00+09:00">      20 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/disjoint-set-forest.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lazy-propagation.html" class="flip-title">    <span>            Lazy Propagation    </span>  </a>      <time class="faded fine" datetime="2024-08-02T00:00:00+09:00">      02 Aug 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lazy-propagation.html"></span>  </li>          <li class="h4">  <a href="/computer-science/segment-tree.html" class="flip-title">    <span>            Segment Tree    </span>  </a>      <time class="faded fine" datetime="2024-07-29T00:00:00+09:00">      29 Jul 2024    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/segment-tree.html"></span>  </li>      </ul></aside>
 
   
 
@@ -766,14 +834,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -802,7 +870,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1802,7 +1870,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

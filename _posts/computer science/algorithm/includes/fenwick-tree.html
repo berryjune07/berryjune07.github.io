@@ -1,0 +1,195 @@
+<div id="fenwick-tree-visualizer" class="ftv-panel">
+  <div class="ftv-toolbar">
+    <button type="button" data-action="mode">Update Path</button>
+    <button type="button" data-action="prev">Prev</button>
+    <button type="button" data-action="step">Step</button>
+    <button type="button" data-action="reset">Reset</button>
+    <span class="ftv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Fenwick tree visualizer"></canvas>
+</div>
+
+<style>
+  .ftv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .ftv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .ftv-toolbar button {
+    min-height: 2rem;
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+    cursor: pointer;
+  }
+
+  .ftv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .ftv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .ftv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("fenwick-tree-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const modeButton = root.querySelector("[data-action='mode']");
+  const buttons = root.querySelectorAll("button[data-action]");
+
+  const n = 8;
+  let mode = "prefix";
+  let step = 0;
+
+  function lowbit(x) {
+    return x & -x;
+  }
+
+  function prefixPath(idx) {
+    const out = [];
+    for (let i = idx; i > 0; i -= lowbit(i)) out.push(i);
+    return out;
+  }
+
+  function updatePath(idx) {
+    const out = [];
+    for (let i = idx; i <= n; i += lowbit(i)) out.push(i);
+    return out;
+  }
+
+  function states() {
+    return mode === "prefix" ? prefixPath(7) : updatePath(3);
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function drawText(text, x, y, color, size) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x, y);
+  }
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    const path = states();
+    const active = path[Math.min(step, path.length - 1)];
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    const pad = 34;
+    const gap = 8;
+    const cellW = (rect.width - 2 * pad - gap * (n - 1)) / n;
+    const y = rect.height * 0.46;
+
+    for (let i = 1; i <= n; i++) {
+      const x = pad + (i - 1) * (cellW + gap);
+      const l = i - lowbit(i) + 1;
+      const inPath = path.includes(i);
+      const isActive = i === active;
+      ctx.fillStyle = isActive ? "#bfdbfe" : inPath ? "#fef3c7" : "#f8fafc";
+      ctx.strokeStyle = isActive ? "#2563eb" : "#94a3b8";
+      ctx.lineWidth = isActive ? 2.5 : 1.4;
+      ctx.beginPath();
+      ctx.roundRect(x, y, cellW, 56, 6);
+      ctx.fill();
+      ctx.stroke();
+      drawText("bit[" + i + "]", x + cellW / 2, y + 17, "#0f172a", 13);
+      drawText("[" + l + "," + i + "]", x + cellW / 2, y + 39, "#64748b", 12);
+
+      const ix = x + cellW / 2;
+      ctx.strokeStyle = inPath ? "#2563eb" : "#cbd5e1";
+      ctx.lineWidth = inPath ? 2 : 1;
+      ctx.beginPath();
+      ctx.moveTo(ix, y - 12);
+      ctx.lineTo(ix, y - 34 - lowbit(i) * 4);
+      ctx.stroke();
+    }
+
+    const title = mode === "prefix"
+      ? "prefix(7): 7 -> 6 -> 4"
+      : "update(3): 3 -> 4 -> 8";
+    drawText(title, rect.width / 2, 30, "#0f172a", 15);
+    drawText("Each box stores the aggregate of its shown interval.", rect.width / 2, rect.height - 30, "#475569", 13);
+
+    status.textContent = (step + 1) + " / " + path.length + "  active bit[" + active + "]";
+    modeButton.textContent = mode === "prefix" ? "Update Path" : "Prefix Query";
+  }
+
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+      const rr = Math.min(r, w / 2, h / 2);
+      this.moveTo(x + rr, y);
+      this.arcTo(x + w, y, x + w, y + h, rr);
+      this.arcTo(x + w, y + h, x, y + h, rr);
+      this.arcTo(x, y + h, x, y, rr);
+      this.arcTo(x, y, x + w, y, rr);
+      return this;
+    };
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const action = button.dataset.action;
+      const path = states();
+      if (action === "mode") {
+        mode = mode === "prefix" ? "update" : "prefix";
+        step = 0;
+      } else if (action === "prev") {
+        step = Math.max(0, step - 1);
+      } else if (action === "step") {
+        step = Math.min(path.length - 1, step + 1);
+      } else if (action === "reset") {
+        step = 0;
+      }
+      draw();
+    });
+  });
+
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>

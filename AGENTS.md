@@ -31,7 +31,7 @@ Important paths:
 - `_includes/`, `_layouts/`, `_sass/`, `assets/`: Hydejack/theme customization, scripts, CSS/Sass, images, math rendering scripts.
 - `assets/js/katex.js`: custom KaTeX macro definitions. Math posts depend on these macros.
 - `_site/`: generated site output. This repository currently tracks `_site`.
-- `.github/workflows/jekyll.yml`: deployment workflow. It uploads `./_site` directly to GitHub Pages.
+- `.github/workflows/jekyll.yml`: deployment workflow. It builds the source with `JEKYLL_ENV=production`, then uploads `./_site` to GitHub Pages.
 - `Gemfile`: Ruby/Jekyll dependencies.
 - `package.json`: minimal npm dependency list. Do not assume a large frontend build system.
 
@@ -45,12 +45,12 @@ bundle exec jekyll serve
 bundle exec jekyll build
 ```
 
-Important deployment caveat: the current GitHub Pages workflow uploads the existing `./_site` directory directly. It does **not** run `bundle exec jekyll build` inside the workflow before upload. Therefore:
+The GitHub Pages workflow runs `bundle exec jekyll build` with `JEKYLL_ENV=production` before uploading `./_site`. Therefore:
 
 - For normal source/content edits, edit `_posts`, `_featured_*`, `_config.yml`, layouts, includes, Sass, or assets as appropriate.
 - Do not hand-edit generated HTML under `_site` to "fix" content.
-- If the user wants the deployed site to reflect source edits immediately under the current workflow, rebuild `_site` with Jekyll and commit the regenerated `_site` output.
-- If the task is only to prepare source changes, leave `_site` untouched unless explicitly requested.
+- Source edits are rebuilt automatically during deployment; committing regenerated `_site` output is not required.
+- Leave the tracked `_site` directory untouched unless the user explicitly requests regenerated local output.
 - Never patch `_site` in ways that diverge from the source Markdown.
 
 ## Post directory map
@@ -435,10 +435,10 @@ The author's display equations often use `\nl` and `\nt` instead of raw `\\`:
 
 ```latex
 \\[
-\begin{align\*}
+\begin{align\\*}
 A &= B \nl
   &= C
-\end{align\*}
+\end{align\\*}
 \\]
 ```
 
@@ -733,14 +733,14 @@ Do not change these without explicit user instruction:
 
 ## Generated output policy
 
-`_site/` is generated output, but the repository's deployment workflow currently depends on it.
+`_site/` is generated output. The deployment workflow rebuilds it from source before upload.
 
 Therefore:
 
 - Never edit `_site` by hand as the primary fix.
 - For content changes, edit source Markdown first.
-- If deployment-ready output is requested, run `bundle exec jekyll build` and commit the generated `_site` changes.
-- If only drafting or source-only editing is requested, do not touch `_site`.
+- Run `bundle exec jekyll build` when local generated output is explicitly requested or needed for verification; committing `_site` is not required for deployment.
+- For ordinary source or content edits, do not touch `_site`.
 - If `_site` and source disagree, source files are the truth.
 
 ## Formatting rules
@@ -768,7 +768,7 @@ Before committing changes, verify:
 - Did I match the local math macro/vector notation style?
 - Did I avoid deleting placeholder posts?
 - Did I avoid hand-editing `_site`?
-- If deployment-ready output is needed, did I rebuild with `bundle exec jekyll build`?
+- If local generated output was requested, did I rebuild with `bundle exec jekyll build`?
 - Did I keep the prose compact, academic, and non-generic?
 - Did I avoid unrelated theme/config/social/comment changes?
 

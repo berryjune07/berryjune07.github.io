@@ -1,5 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-16T16:43:25+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
-</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Transition to Turbulence by Period Doubling</title><link href="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html" rel="alternate" type="text/html" title="Transition to Turbulence by Period Doubling" /><published>2026-04-17T00:00:00+09:00</published><updated>2026-04-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/transition-to-turbulence-by-period-doubling</id><content type="html" xml:base="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-08-13T00:28:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jiho’s Blog</title><subtitle>noting down my thoughts and experiences
+</subtitle><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><entry><title type="html">Sum over Subsets(SOS) DP</title><link href="http://localhost:4000/computer-science/sos-dp.html" rel="alternate" type="text/html" title="Sum over Subsets(SOS) DP" /><published>2026-08-12T00:00:00+09:00</published><updated>2026-08-12T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/sos-dp</id><content type="html" xml:base="http://localhost:4000/computer-science/sos-dp.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Convex Hull Trick</title><link href="http://localhost:4000/computer-science/convex-hull-trick.html" rel="alternate" type="text/html" title="Convex Hull Trick" /><published>2026-06-30T00:00:00+09:00</published><updated>2026-06-30T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/convex-hull-trick</id><content type="html" xml:base="http://localhost:4000/computer-science/convex-hull-trick.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Segment Tree Beats</title><link href="http://localhost:4000/computer-science/segment-tree-beats.html" rel="alternate" type="text/html" title="Segment Tree Beats" /><published>2026-06-23T00:00:00+09:00</published><updated>2026-06-23T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/segment-tree-beats</id><content type="html" xml:base="http://localhost:4000/computer-science/segment-tree-beats.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Transition to Turbulence by Period Doubling</title><link href="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html" rel="alternate" type="text/html" title="Transition to Turbulence by Period Doubling" /><published>2026-04-17T00:00:00+09:00</published><updated>2026-04-17T00:00:00+09:00</updated><id>http://localhost:4000/physics/transition-to-turbulence-by-period-doubling</id><content type="html" xml:base="http://localhost:4000/physics/transition-to-turbulence-by-period-doubling.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -618,7 +624,235 @@ turbulence. First, frequency locking can reduce the number of independent
 frequencies by forcing rational relations. Second, nonlinear dynamics can
 destroy invariant tori and produce a strange attractor. Thus quasi-periodic
 motion is one possible route away from laminar flow, but it is not the only
-route to turbulence.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Stability of Flows</title><link href="http://localhost:4000/physics/stability-of-flows.html" rel="alternate" type="text/html" title="Stability of Flows" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/stability-of-flows</id><content type="html" xml:base="http://localhost:4000/physics/stability-of-flows.html">&lt;!--more--&gt;
+route to turbulence.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Multidimensional Segment Tree</title><link href="http://localhost:4000/computer-science/multidimensional-segment-tree.html" rel="alternate" type="text/html" title="Multidimensional Segment Tree" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/multidimensional-segment-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/multidimensional-segment-tree.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Introduction
+
+A **multidimensional segment tree** is a segment tree applied recursively over several coordinates.
+It is the natural extension of the ordinary segment tree from intervals to rectangles, boxes, and higher-dimensional orthogonal ranges.
+
+For example, in two dimensions, the data structure supports queries over rectangles
+
+\\[
+[x_1:x_2]\times[y_1:y_2].
+\\]
+
+The algebraic part is unchanged.
+Each node stores an element of a monoid $(M,\ast,e)$, and query answers are obtained by merging canonical disjoint regions.
+
+## Explanation
+
+Consider a two-dimensional array
+
+\\[
+A_{i,j}\in M
+\qquad
+(1\le i\le N,\ 1\le j\le M).
+\\]
+
+A two-dimensional segment tree may be viewed as:
+
+1. an outer segment tree over the $x$-coordinate;
+2. for every outer node, an inner segment tree over the $y$-coordinate.
+
+An outer node $v$ represents an interval $I_v$ of $x$-coordinates.
+Its inner tree stores aggregates over rectangles of the form
+
+\\[
+I_v\times J,
+\\]
+
+where $J$ is an interval of $y$-coordinates.
+Thus an inner node represents
+
+\\[
+\prod_{i\in I_v,\ j\in J} A_{i,j}.
+\\]
+
+The build process is also recursive.
+At an outer leaf $x=i$, the inner tree is built from the row
+
+\\[
+A_{i,1},A_{i,2},\ldots,A_{i,M}.
+\\]
+
+At an outer internal node, the inner tree is obtained by merging the corresponding inner trees of the two children pointwise.
+
+For a point update at $(x,y)$, update the inner tree at the outer leaf $x$.
+Then, while returning to the root of the outer tree, recompute the affected inner-tree nodes by merging the two outer children.
+
+For a rectangle query, first decompose the $x$-range into canonical outer nodes.
+For each selected outer node, query its inner tree on the $y$-range.
+Finally, merge all returned values.
+
+The same idea extends to $d$ dimensions by recursively storing a $(d-1)$-dimensional segment tree inside each node of the first dimension.
+The cost grows by a logarithmic factor for each dimension.
+
+The interactive demo below shows this product structure for a $4\times 4$ sum table.
+A rectangle query is decomposed into canonical $x$-intervals and canonical $y$-intervals, whose products form the selected rectangles.
+
+{% include_relative includes/multidimensional-segment-tree.html %}
+
+## Complexity
+
+Assume that every dimension has size at most $N$ and one merge takes $O(T)$ time.
+For a dense $d$-dimensional segment tree, the memory usage is
+
+\\[
+O(N^d).
+\\]
+
+A point update and an orthogonal range query both take
+
+\\[
+O(T\log^d N)
+\\]
+
+time.
+
+For two dimensions with sizes $N$ and $M$, this becomes
+
+\\[
+O(T\log N\log M)
+\\]
+
+per update or query.
+
+In sparse problems, one often compresses the coordinates inside each outer node.
+Then the memory becomes
+
+\\[
+O(K\log N)
+\\]
+
+for $K$ stored points in the two-dimensional static-coordinate case, because each point appears in $O(\log N)$ outer nodes.
+
+## Code
+
+The following dense two-dimensional segment tree uses the same `Node` abstraction as the ordinary segment tree post.
+The array is 1-indexed in both coordinates.
+
+```cpp
+struct Node {
+    ...
+    static Node merge(const Node&amp; a, const Node&amp; b);
+    static Node identity();
+};
+
+template &lt;class Node&gt;
+struct SegTree2D {
+    int n, m;
+    vector&lt;vector&lt;Node&gt;&gt; tree;
+
+    SegTree2D() {}
+
+    SegTree2D(const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
+        build(a);
+    }
+
+    void init(int n_, int m_) {
+        n = n_;
+        m = m_;
+        tree.assign(4 * n + 5, vector&lt;Node&gt;(4 * m + 5, Node::identity()));
+    }
+
+    void build_y(int vx, int lx, int rx, int vy, int ly, int ry,
+                 const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
+        if(ly == ry) {
+            if(lx == rx) tree[vx][vy] = a[lx][ly];
+            else tree[vx][vy] = Node::merge(tree[vx &lt;&lt; 1][vy], tree[vx &lt;&lt; 1 | 1][vy]);
+            return;
+        }
+
+        int my = (ly + ry) &gt;&gt; 1;
+        build_y(vx, lx, rx, vy &lt;&lt; 1, ly, my, a);
+        build_y(vx, lx, rx, vy &lt;&lt; 1 | 1, my + 1, ry, a);
+        tree[vx][vy] = Node::merge(tree[vx][vy &lt;&lt; 1], tree[vx][vy &lt;&lt; 1 | 1]);
+    }
+
+    void build_x(int vx, int lx, int rx, const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
+        if(lx != rx) {
+            int mx = (lx + rx) &gt;&gt; 1;
+            build_x(vx &lt;&lt; 1, lx, mx, a);
+            build_x(vx &lt;&lt; 1 | 1, mx + 1, rx, a);
+        }
+        build_y(vx, lx, rx, 1, 1, m, a);
+    }
+
+    void build(const vector&lt;vector&lt;Node&gt;&gt;&amp; a) {
+        init((int)a.size() - 1, (int)a[1].size() - 1);
+        build_x(1, 1, n, a);
+    }
+
+    void update_y(int vx, int lx, int rx, int vy, int ly, int ry,
+                  int x, int y, const Node&amp; val) {
+        if(ly == ry) {
+            if(lx == rx) tree[vx][vy] = val;
+            else tree[vx][vy] = Node::merge(tree[vx &lt;&lt; 1][vy], tree[vx &lt;&lt; 1 | 1][vy]);
+            return;
+        }
+
+        int my = (ly + ry) &gt;&gt; 1;
+        if(y &lt;= my) update_y(vx, lx, rx, vy &lt;&lt; 1, ly, my, x, y, val);
+        else update_y(vx, lx, rx, vy &lt;&lt; 1 | 1, my + 1, ry, x, y, val);
+
+        tree[vx][vy] = Node::merge(tree[vx][vy &lt;&lt; 1], tree[vx][vy &lt;&lt; 1 | 1]);
+    }
+
+    void update_x(int vx, int lx, int rx, int x, int y, const Node&amp; val) {
+        if(lx != rx) {
+            int mx = (lx + rx) &gt;&gt; 1;
+            if(x &lt;= mx) update_x(vx &lt;&lt; 1, lx, mx, x, y, val);
+            else update_x(vx &lt;&lt; 1 | 1, mx + 1, rx, x, y, val);
+        }
+        update_y(vx, lx, rx, 1, 1, m, x, y, val);
+    }
+
+    Node query_y(int vx, int vy, int ly, int ry, int ql, int qr) const {
+        if(qr &lt; ly || ry &lt; ql) return Node::identity();
+        if(ql &lt;= ly &amp;&amp; ry &lt;= qr) return tree[vx][vy];
+
+        int my = (ly + ry) &gt;&gt; 1;
+        return Node::merge(
+            query_y(vx, vy &lt;&lt; 1, ly, my, ql, qr),
+            query_y(vx, vy &lt;&lt; 1 | 1, my + 1, ry, ql, qr)
+        );
+    }
+
+    Node query_x(int vx, int lx, int rx, int x1, int x2, int y1, int y2) const {
+        if(x2 &lt; lx || rx &lt; x1) return Node::identity();
+        if(x1 &lt;= lx &amp;&amp; rx &lt;= x2) return query_y(vx, 1, 1, m, y1, y2);
+
+        int mx = (lx + rx) &gt;&gt; 1;
+        return Node::merge(
+            query_x(vx &lt;&lt; 1, lx, mx, x1, x2, y1, y2),
+            query_x(vx &lt;&lt; 1 | 1, mx + 1, rx, x1, x2, y1, y2)
+        );
+    }
+
+    void update(int x, int y, const Node&amp; val) {
+        update_x(1, 1, n, x, y, val);
+    }
+
+    Node query(int x1, int x2, int y1, int y2) const {
+        return query_x(1, 1, n, x1, x2, y1, y2);
+    }
+};
+```
+
+For sparse static points, the dense inner arrays should not be built.
+Instead, collect the $y$-coordinates that appear in each outer node, sort and unique them, and build only those compressed inner trees.
+This gives the usual segment-tree-of-vectors implementation.
+
+## Applications
+
+* Rectangle sum/min/max queries
+* Dynamic orthogonal range queries
+* Offline geometry with coordinate compression
+* Two-dimensional sweep-line data structures
+* Higher-dimensional range aggregation</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Stability of Flows</title><link href="http://localhost:4000/physics/stability-of-flows.html" rel="alternate" type="text/html" title="Stability of Flows" /><published>2026-04-13T00:00:00+09:00</published><updated>2026-04-13T00:00:00+09:00</updated><id>http://localhost:4000/physics/stability-of-flows</id><content type="html" xml:base="http://localhost:4000/physics/stability-of-flows.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc 
 {:toc}
 
@@ -1224,7 +1458,196 @@ is negative. Thus gravity and surface tension are stabilizing when
 gk(\rho_2-\rho_1)+\sigma k^3&gt;0,
 \\]
 
-while the velocity jump is destabilizing.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Damping of Gravity Waves</title><link href="http://localhost:4000/physics/damping-of-gravity-waves.html" rel="alternate" type="text/html" title="Damping of Gravity Waves" /><published>2026-04-08T00:00:00+09:00</published><updated>2026-04-08T00:00:00+09:00</updated><id>http://localhost:4000/physics/damping-of-gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/damping-of-gravity-waves.html">&lt;!--more--&gt;
+while the velocity jump is destabilizing.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Fenwick Tree</title><link href="http://localhost:4000/computer-science/fenwick-tree.html" rel="alternate" type="text/html" title="Fenwick Tree" /><published>2026-04-11T00:00:00+09:00</published><updated>2026-04-11T00:00:00+09:00</updated><id>http://localhost:4000/computer-science/fenwick-tree</id><content type="html" xml:base="http://localhost:4000/computer-science/fenwick-tree.html">&lt;!--more--&gt;
+* this unordered seed list will be replaced by the toc
+{:toc}
+
+## Introduction
+
+A **Fenwick tree**, or **binary indexed tree**, is a data structure for prefix queries and point updates.
+It is more compact than a segment tree and is especially convenient when every query is reducible to prefix aggregates.
+
+Let $(G,\ast,e)$ be an abelian group.
+Given an array
+
+\\[
+A=[a_1,\ldots,a_N],
+\\]
+
+Fenwick tree supports:
+
+1. point update: multiply one position by a value;
+2. prefix query: compute $a_1\ast\cdots\ast a_i$;
+3. range query: compute $a_l\ast\cdots\ast a_r$ using inverses.
+
+For ordinary sums, $\ast$ is addition and the inverse is negation.
+
+## Explanation
+
+For a positive integer $i$, define
+
+\\[
+\operatorname{lowbit}(i)=i\&amp;(-i).
+\\]
+
+This is the largest power of two dividing $i$.
+The Fenwick tree array `bit` is defined by the invariant
+
+\\[
+\operatorname{bit}[i]
+=a_{i-\operatorname{lowbit}(i)+1}
+\ast\cdots\ast a_i.
+\\]
+
+Thus `bit[i]` stores the aggregate of the interval
+
+\\[
+[i-\operatorname{lowbit}(i)+1:i].
+\\]
+
+To compute a prefix query at $i$, take `bit[i]`, then remove the interval it covers by setting
+
+\\[
+i\gets i-\operatorname{lowbit}(i).
+\\]
+
+Repeating this decomposes $[1:i]$ into disjoint power-of-two suffix intervals.
+Merging their stored values gives the prefix aggregate.
+
+To update position $p$, every `bit[i]` whose interval contains $p$ must be updated.
+These indices are obtained by
+
+\\[
+i\gets i+\operatorname{lowbit}(i)
+\\]
+
+starting from $p$.
+This walks through the Fenwick intervals that cover $p$.
+
+The visualizer below shows both the prefix decomposition and the update path.
+
+{% include_relative includes/fenwick-tree.html %}
+
+## Proof of Correctness
+
+The definition of `bit[i]` is the main invariant.
+For prefix query, the update
+
+\\[
+i\gets i-\operatorname{lowbit}(i)
+\\]
+
+removes exactly the interval represented by the current `bit[i]`.
+These removed intervals are disjoint and their union is $[1:i]$ from the original query.
+Thus the merged value is the prefix aggregate.
+
+For point update at $p$, the loop
+
+\\[
+i\gets i+\operatorname{lowbit}(i)
+\\]
+
+visits exactly the Fenwick nodes whose stored intervals contain $p$.
+Updating those nodes and no others preserves the invariant.
+Therefore prefix and range queries are correct.
+
+## Complexity
+
+Each step changes at least one binary digit of the index.
+Hence both prefix query and point update take
+
+\\[
+O(\log N)
+\\]
+
+time.
+The memory usage is
+
+\\[
+O(N).
+\\]
+
+If the array is known in advance, the tree can be built by calling update for every position in $O(N\log N)$ time, or by a linear build in $O(N)$ time.
+
+## Code
+
+The following code uses the same abstract style as the segment tree posts.
+The type `Node` represents an abelian group.
+
+```cpp
+struct Node {
+    ...
+    static Node merge(const Node&amp; a, const Node&amp; b);
+    static Node inverse(const Node&amp; x);
+    static Node identity();
+};
+
+template &lt;class Node&gt;
+struct Fenwick {
+    int n;
+    vector&lt;Node&gt; bit;
+
+    Fenwick(int n=0) {
+        init(n);
+    }
+
+    void init(int n_) {
+        n = n_;
+        bit.assign(n + 1, Node::identity());
+    }
+
+    void update(int idx, const Node&amp; delta) {
+        for(int i=idx; i&lt;=n; i+=i&amp;-i) {
+            bit[i] = Node::merge(bit[i], delta);
+        }
+    }
+
+    Node prefix(int idx) const {
+        Node res = Node::identity();
+        for(int i=idx; i&gt;0; i-=i&amp;-i) {
+            res = Node::merge(res, bit[i]);
+        }
+        return res;
+    }
+
+    Node query(int l, int r) const {
+        return Node::merge(prefix(r), Node::inverse(prefix(l - 1)));
+    }
+};
+```
+
+For range sums, define:
+
+```cpp
+using ll = long long;
+
+struct Node {
+    ll v;
+
+    static Node merge(const Node&amp; a, const Node&amp; b) {
+        return {a.v + b.v};
+    }
+
+    static Node inverse(const Node&amp; x) {
+        return {-x.v};
+    }
+
+    static Node identity() {
+        return {0};
+    }
+};
+```
+
+Fenwick tree can also support range update and point query by applying the difference-array idea.
+Range update and range query can be done with two Fenwick trees.
+
+## Applications
+
+* Prefix sums
+* Range sums with point updates
+* Inversion counting
+* Order statistics with binary lifting on frequencies
+* Difference-array range updates</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="computer-science" /><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Damping of Gravity Waves</title><link href="http://localhost:4000/physics/damping-of-gravity-waves.html" rel="alternate" type="text/html" title="Damping of Gravity Waves" /><published>2026-04-08T00:00:00+09:00</published><updated>2026-04-08T00:00:00+09:00</updated><id>http://localhost:4000/physics/damping-of-gravity-waves</id><content type="html" xml:base="http://localhost:4000/physics/damping-of-gravity-waves.html">&lt;!--more--&gt;
 * this unordered seed list will be replaced by the toc
 {:toc}
 
@@ -1442,1068 +1865,4 @@ decays aperiodically. The slowest decay has the order
 
 \\[
 \omega\simeq -\,i\frac{g}{2\nu k}.
-\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Oscillatory Motion in a Viscous Fluid</title><link href="http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid.html" rel="alternate" type="text/html" title="Oscillatory Motion in a Viscous Fluid" /><published>2026-04-07T00:00:00+09:00</published><updated>2026-04-07T00:00:00+09:00</updated><id>http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid</id><content type="html" xml:base="http://localhost:4000/physics/oscillatory-motion-in-a-viscous-fluid.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Oscillating Plane
-
-Consider a plane solid surface $x=0$ bounding a viscous fluid in $x&gt;0$.
-Suppose that the surface oscillates parallel to itself, in the $y$ direction,
-with velocity
-
-\\[
-u(t)=\Re\left( \{u_0e^{-i\omega t}\} \right).
-\\]
-
-If the pressure is uniform and the motion depends only on $x$ and $t$, then
-the Navier-Stokes equation is reduced to
-
-\\[
-\pdv{v_y}{t}=\nu\pdvn{2}{v_y}{x}.
-\\]
-
-Writing
-
-\\[
-v_y=\Re \left( \{u_0e^{i(kx-\omega t)}\} \right),
-\\]
-
-we have
-
-\\[
-i\omega=\nu k^2.
-\\]
-
-The solution which decays as $x\to\infty$ is obtained from
-
-\\[
-k=\frac{1+i}{\delta},\qquad
-\delta=\sqrt{\frac{2\nu}{\omega}}.
-\\]
-
-Thus, for real $u_0$,
-
-\\[
-v_y(x,t)=u_0e^{-x/\delta}\cos\left(\omega t-\frac{x}{\delta}\right).
-\\]
-
-The quantity $\delta$ is the penetration depth of the oscillatory motion. The
-velocity amplitude decreases exponentially, and the phase is delayed by
-$x/\delta$.
-
-The shear stress is
-
-\\[
-\sigma_{xy}=\mu\pdv{v_y}{x}.
-\\]
-
-In complex notation, at the wall,
-
-\\[
-\sigma_{xy}(0,t)=\Re \left\\{
-\sqrt{\frac{\omega\mu\rho}{2}}(i-1)u_0e^{-i\omega t}
-\right\\}.
-\\]
-
-Equivalently, the force exerted by the fluid on unit area of the wall is
-
-\\[
-f_y=-u_0\sqrt{\omega\mu\rho}\cos\left(\omega t+\frac{\pi}{4}\right).
-\\]
-
-Hence the mean rate of dissipation per unit area is
-
-\\[
-\overline{\dot E}
-=\frac{1}{2}u_0^2\sqrt{\frac{\omega\mu\rho}{2}}.
-\\]
-
-More generally, if the wall velocity $u(t)$ is not sinusoidal, the tangential
-force per unit area is
-
-\\[
-f_y(t)
-=-\sqrt{\frac{\mu\rho}{\pi}}
-\int_{-\infty}^t
-\frac{\dot u(t^\prime)}{\sqrt{t-t^\prime}}\,dt^\prime.
-\\]
-
-This formula shows explicitly that the force is not determined by the
-instantaneous velocity alone. It depends on the previous motion of the wall.
-
-## Oscillating Body
-
-For small oscillations of a body, the convective term in the Navier-Stokes
-equation may be omitted. Then
-
-\\[
-\pdv{\b{v}}{t}
-=-\frac{1}{\rho}\grad p+\nu\laplacian\b{v},
-\qquad
-\div\b{v}=0.
-\\]
-
-Taking the curl gives
-
-\\[
-\pdv{}{t}\curl\b{v}
-=\nu\laplacian\curl\b{v}.
-\\]
-
-Thus the vorticity satisfies a diffusion equation. During one period it
-diffuses through a distance of order
-
-\\[
-\delta=\sqrt{\frac{2\nu}{\omega}}.
-\\]
-
-If the characteristic length $l$ of the body satisfies
-
-\\[
-l^2\omega\ll\nu,
-\\]
-
-then $\delta\gg l$, and the viscous diffusion is effectively instantaneous on
-the scale of the body. The motion is then quasi-steady. For example, a slowly
-oscillating sphere of radius $R$ experiences, to leading order,
-
-\\[
-\b{F}=6\pi\mu R\b{u}(t),
-\\]
-
-provided the oscillatory $\mathrm{Re}$ is small.
-
-The opposite case is
-
-\\[
-l^2\omega\gg\nu.
-\\]
-
-Then vorticity is confined to a thin layer near the surface. Outside this
-layer the fluid is practically ideal and irrotational:
-
-\\[
-\curl\b{v}=0,\qquad \div\b{v}=0.
-\\]
-
-The outer flow is therefore a potential flow, determined by the impermeability
-condition on the moving surface. The tangential no-slip condition is restored
-inside the thin viscous layer.
-
-Let $x$ be the distance measured normally from the surface into the fluid, and
-let $v_0e^{-i\omega t}$ be the tangential velocity of the inviscid outer flow
-at the surface, in the reference frame of the body. Then the boundary-layer
-correction has the same form as for the oscillating plane:
-
-\\[
-v_y(x,t)
-=v_0e^{-i\omega t}
-\left(1-\exp\left[-(1-i)\frac{x}{\delta}\right]\right),
-\\]
-
-The mean loss of mechanical energy is then
-
-\\[
-\overline{\dot E}_{\mathrm{mech}}
-=-\frac{1}{2}\sqrt{\frac{\omega\mu\rho}{2}}
-\int v_0^2\,df,
-\\]
-
-where the integral is taken over the surface of the body and $v_0$ denotes the
-amplitude of the tangential velocity of the potential flow at the surface.
-
-## Complex Drag
-
-For a body oscillating with velocity
-
-\\[
-\b{u}=\b{u}_0e^{-i\omega t},
-\\]
-
-the hydrodynamic force is usually written as
-
-\\[
-\b{F}=\beta\b{u},\qquad
-\beta=\beta_1+i\beta_2.
-\\]
-
-In real notation this means
-
-\\[
-\b{F}
-=\beta_1\b{u}-\frac{\beta_2}{\omega}\dot{\b{u}}.
-\\]
-
-The term with $\beta_1$ is dissipative, while the term with $\beta_2$ is an
-inertial correction. The mean rate of loss of mechanical energy is
-
-\\[
-\overline{\dot E}_{\mathrm{mech}}
-=-\frac{1}{2}\beta_1u_0^2.
-\\]
-
-For a sphere of radius $R$, the exact linear solution gives
-
-\\[
-\b{F}
-=6\pi\mu R\left(1+\frac{R}{\delta}\right)\b{u}
-+3\pi R^2\sqrt{\frac{2\mu\rho}{\omega}}
-\left(1+\frac{2R}{9\delta}\right)\dot{\b{u}},
-\qquad
-\delta=\sqrt{\frac{2\nu}{\omega}}.
-\\]
-
-The first part is the viscous drag, and the second part is the force required
-to accelerate the surrounding fluid. In the limit $\omega\to0$ this reduces to
-Stokes&apos; law. In the opposite limit $R\gg\delta$,
-
-\\[
-\b{F}
-=3\pi R^2\sqrt{2\mu\rho\omega}\,\b{u}
-+\frac{2}{3}\pi\rho R^3\dot{\b{u}},
-\\]
-
-which is the sum of the boundary-layer friction and the added-mass force.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Exact Solutions of the Navier–Stokes Equation</title><link href="http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation.html" rel="alternate" type="text/html" title="Exact Solutions of the Navier–Stokes Equation" /><published>2026-04-06T00:00:00+09:00</published><updated>2026-04-06T00:00:00+09:00</updated><id>http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation</id><content type="html" xml:base="http://localhost:4000/physics/exact-solutions-of-the-navier-stokes-equation.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Rotating Disk
-
-Exact solutions of the Navier--Stokes equation are rare when the nonlinear term does not vanish identically.
-One important example is the motion caused by an infinite plane disk rotating uniformly about its axis.
-Let the disk be the plane $z=0$, the fluid occupy $z&gt;0$, and the disk rotate with angular velocity $\Omega$.
-The boundary conditions are
-
-\\[
-v_r=0,\qquad v_\phi=\Omega r,\qquad v_z=0 \quad (z=0),
-\\]
-
-and
-
-\\[
-v_r=0,\qquad v_\phi=0 \quad (z\to\infty).
-\\]
-
-The similarity form is
-
-\\[
-v_r=r\Omega F(\zeta),\qquad
-v_\phi=r\Omega G(\zeta),\qquad
-v_z=\sqrt{\nu\Omega}\,H(\zeta),
-\\]
-
-\\[
-p=-\rho\nu\Omega P(\zeta),\qquad
-\zeta=\sqrt{\frac{\Omega}{\nu}}z.
-\\]
-
-The radial and azimuthal velocities are proportional to $r$, while the axial velocity is constant on each plane
-$z=\mathrm{const.}$.
-Substitution into the Navier--Stokes equation and into $\div\b{v}=0$ gives
-
-\\[
-\begin{align\*}
-F^2-G^2+F^\prime H &amp;= F^{\prime\prime}, \nl
-2FG+G^\prime H &amp;= G^{\prime\prime}, \nl
-HH^\prime &amp;= P^\prime+H^{\prime\prime}, \nl
-2F+H^\prime &amp;= 0,
-\end{align\*}
-\\]
-
-where the prime denotes differentiation with respect to $\zeta$.
-The boundary conditions are
-
-\\[
-F(0)=0,\qquad G(0)=1,\qquad H(0)=0,
-\\]
-
-\\[
-F(\infty)=0,\qquad G(\infty)=0.
-\\]
-
-The problem is reduced to a system of ordinary differential equations.
-Its solution must be found numerically.
-The axial velocity at infinity is not zero; rather,
-
-\\[
-v_z(\infty)=H(\infty)\sqrt{\nu\Omega},
-\\]
-
-where $H(\infty)&lt;0$.
-This vertical flow is necessary because the rotating disk throws fluid radially outward near the surface.
-
-The tangential stress on the disk is
-
-\\[
-\sigma_{z\phi}
-=\mu\left(\pdv{v_\phi}{z}\right)_{z=0}
-=\mu r\Omega\sqrt{\frac{\Omega}{\nu}}\,G^\prime(0).
-\\]
-
-For a disk of large finite radius $R$, neglecting edge effects, the moment of the frictional forces on both sides is
-
-\\[
-M
-=2\int_0^R 2\pi r^2\sigma_{z\phi}\,dr
-=\pi R^4\rho\sqrt{\nu\Omega^3}\,G^\prime(0).
-\\]
-
-Numerically,
-
-\\[
-M\simeq -1.94\,R^4\rho\sqrt{\nu\Omega^3}.
-\\]
-
-The sign indicates that the viscous moment opposes the rotation of the disk.
-
-## Hamel Flow
-
-Another exact solution is the steady radial flow between two plane walls meeting at an angle $\alpha$.
-Use cylindrical coordinates $(r,\phi,z)$, where the $z$-axis is the line of intersection of the planes.
-Assume that the flow is uniform in the $z$-direction and purely radial:
-
-\\[
-v_\phi=v_z=0,\qquad v_r=v(r,\phi).
-\\]
-
-The equation of continuity gives
-
-\\[
-\pdv{(rv_r)}{r}=0,
-\\]
-
-so that $rv_r$ is a function only of $\phi$.
-Introduce
-
-\\[
-u(\phi)=\frac{rv_r}{6\nu}.
-\\]
-
-Then the angular component of the equation of motion gives
-
-\\[
-\frac{1}{\rho}\pdv{p}{\phi}
-=\frac{12\nu^2}{r^2}\odv{u}{\phi}.
-\\]
-
-Thus
-
-\\[
-\frac{p}{\rho}
-=\frac{12\nu^2}{r^2}u(\phi)+f(r).
-\\]
-
-Substitution into the radial component separates the variables and gives
-
-\\[
-\frac{p}{\rho}
-=\frac{6\nu^2}{r^2}(2u-C_1)+\mathrm{const.},
-\\]
-
-where $u$ satisfies
-
-\\[
-u^{\prime\prime}+4u+6u^2=2C_1.
-\\]
-
-Multiplying by $u^\prime$ and integrating once,
-
-\\[
-\frac{1}{2}(u^\prime)^2+2u^2+2u^3-2C_1u-2C_2=0.
-\\]
-
-Equivalently,
-
-\\[
-2\phi
-=\pm\int\frac{du}{\sqrt{-u^3-u^2+C_1u+C_2}}+C_3.
-\\]
-
-The constants are determined by the no-slip conditions
-
-\\[
-u\left(\pm\frac{\alpha}{2}\right)=0
-\\]
-
-and by the mass flux through any section $r=\mathrm{const.}$:
-
-\\[
-Q
-=\rho\int_{-\alpha/2}^{\alpha/2}v_r r\,d\phi
-=6\nu\rho\int_{-\alpha/2}^{\alpha/2}u(\phi)\,d\phi.
-\\]
-
-The dimensionless parameter
-
-\\[
-\mathrm{Re}=\frac{|Q|}{\nu\rho}
-\\]
-
-is the corresponding $\mathrm{Re}$.
-For converging flow $(Q&lt;0)$, a symmetric solution exists for any aperture $\alpha&lt;\pi$ and any $\mathrm{Re}$.
-For large $\mathrm{Re}$ the flow is almost potential in the middle of the channel and differs from it mainly in narrow
-layers near the walls.
-For diverging flow $(Q&gt;0)$, the symmetric everywhere-diverging solution exists only up to a maximum value
-$\mathrm{Re}_{\max}(\alpha)$.
-Beyond this value asymmetric solutions appear, and the steady diverging flow is in practice unstable.
-
-## Submerged Jet
-
-Consider a jet emerging from a narrow tube into an infinite viscous fluid.
-Take spherical coordinates $(r,\theta,\phi)$ with the polar axis in the direction of the jet.
-For an axially symmetric solution,
-
-\\[
-v_\phi=0,\qquad
-v_r=\frac{F(\theta)}{r},\qquad
-v_\theta=\frac{f(\theta)}{r}.
-\\]
-
-The continuity equation gives
-
-\\[
-F(\theta)=-\odv{f}{\theta}-f\cot\theta.
-\\]
-
-For this form, the equations of motion are satisfied by
-
-\\[
-f(\theta)=-\frac{2\nu\sin\theta}{A-\cos\theta},
-\\]
-
-and hence
-
-\\[
-F(\theta)
-=2\nu\left\\{\frac{A^2-1}{(A-\cos\theta)^2}-1\right\\}.
-\\]
-
-The pressure distribution is
-
-\\[
-p-p_0
-=-\frac{4\rho\nu^2(A\cos\theta-1)}{r^2(A-\cos\theta)^2}.
-\\]
-
-The constant $A&gt;1$ is determined by the momentum flux of the jet.
-If $P$ denotes this momentum flux, then
-
-\\[
-P
-=16\pi\rho\nu^2 A
-\left[
-1+\frac{4}{3(A^2-1)}
--\frac{A}{2}\log\frac{A+1}{A-1}
-\right].
-\\]
-
-The streamlines satisfy
-
-\\[
-\frac{r\sin^2\theta}{A-\cos\theta}=\mathrm{const.}
-\\]
-
-In the weak-jet limit, $A\gg 1$, and
-
-\\[
-P\simeq \frac{16\pi\rho\nu^2}{A}.
-\\]
-
-The corresponding velocity field is
-
-\\[
-v_\theta=-\frac{P}{8\pi\rho\nu}\frac{\sin\theta}{r},\qquad
-v_r=\frac{P}{4\pi\rho\nu}\frac{\cos\theta}{r}.
-\\]
-
-In the strong-jet limit, $A\to 1$ and the jet is concentrated near the axis.
-Then the solution is no longer a small perturbation of the surrounding fluid, although it is still an exact solution of
-the steady Navier--Stokes equations for a point jet.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Viscosity of Suspensions</title><link href="http://localhost:4000/physics/the-viscosity-of-suspensions.html" rel="alternate" type="text/html" title="The Viscosity of Suspensions" /><published>2026-04-04T00:00:00+09:00</published><updated>2026-04-04T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-viscosity-of-suspensions</id><content type="html" xml:base="http://localhost:4000/physics/the-viscosity-of-suspensions.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc 
-{:toc}
-
-## Dilute Suspension
-
-Consider a fluid containing many small rigid particles.
-If the characteristic length of the observed motion is large compared with the particle radius, the mixture may be
-regarded as a homogeneous medium.
-Its viscosity is then not the viscosity $\mu_0$ of the pure liquid, but an effective viscosity
-$\mu_{\mathrm{eff}}$.
-
-We shall assume that the concentration is small.
-Then the disturbance produced by each particle may be calculated as if the other particles were absent, and the total
-correction is obtained by multiplying the single-particle result by the number density $n$.
-For spherical particles of radius $R$, the volume fraction is
-
-\\[
-\phi=\frac{4\pi R^3}{3}n.
-\\]
-
-The calculation is local.
-Near each particle the undisturbed flow may be replaced by its linear part:
-
-\\[
-v_{0i}=\alpha_{ik}x_k,
-\\]
-
-where $\alpha_{ik}$ is constant and symmetric.
-For an incompressible fluid,
-
-\\[
-\alpha_{ii}=0.
-\\]
-
-The pressure of this undisturbed linear flow is constant, and we may take this constant to be zero.
-
-## Disturbance by One Sphere
-
-Place one rigid sphere at the origin.
-Let
-
-\\[
-\b{v}=\b{v}_0+\b{v}_1.
-\\]
-
-The disturbance $\b{v}_1$ must vanish at infinity, while the no-slip condition on the sphere is
-
-\\[
-\b{v}=0\qquad (r=R).
-\\]
-
-Since the particle-radius $\mathrm{Re}$ is small, the disturbance satisfies the Stokes equations
-
-\\[
-\mu_0\laplacian\b{v}_1-\grad p=0,\qquad
-\div\b{v}_1=0.
-\\]
-
-The solution can be obtained from the same scalar function used in the Stokes-flow problem for a translating sphere.
-In index notation, with
-
-\\[
-n_i=\frac{x_i}{r},
-\\]
-
-the result is
-
-\\[
-v_{1i}
-=\frac{5}{2}\left(\frac{R^5}{r^4}-\frac{R^3}{r^2}\right)
-\alpha_{kl}n_in_kn_l
--\frac{R^5}{r^4}\alpha_{ik}n_k,
-\\]
-
-and the pressure deviation is
-
-\\[
-p=-5\mu_0\frac{R^3}{r^3}\alpha_{ik}n_in_k.
-\\]
-
-These formulae are to be used only outside the solid sphere.
-They vanish at infinity and make the total velocity zero at $r=R$.
-
-## Mean Stress
-
-The effective viscosity is determined by comparing the mean stress with the mean velocity gradient.
-Let the average be taken over a large volume $V$:
-
-\\[
-\bar{\sigma}\_{ik}=\frac{1}{V}\int_V \sigma_{ik}\,dV.
-\\]
-
-For the pure liquid,
-
-\\[
-\sigma_{ik}=-p\delta_{ik}
-+\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right).
-\\]
-
-Separate from this expression the stress which would be present in a homogeneous fluid with the same average velocity
-gradient. Then
-
-\\[
-\bar{\sigma}\_{ik}
-=\mu_0\left(\pdv{\bar{v}\_i}{x_k}+\pdv{\bar{v}\_k}{x_i}\right)-\bar{p}\delta_{ik}
-+\frac{1}{V}\int_V
-\left\\{
-\sigma_{ik}
--\mu_0\left(\pdv{v_i}{x_k}+\pdv{v_k}{x_i}\right)
-+p\delta_{ik}
-\right\\}dV.
-\\]
-
-The integrand in the last term is zero in the liquid except for the disturbance caused by the solid particles.
-In the dilute limit, we evaluate the correction for one sphere and multiply by $n$.
-The direct volume integral would require the unknown internal stress inside the rigid particle.
-This is avoided by using the equilibrium equation
-
-\\[
-\pdv{\sigma_{il}}{x_l}=0.
-\\]
-
-Since
-
-\\[
-\sigma_{ik}=\pdv{}{x_l}(\sigma_{il}x_k),
-\\]
-
-the volume integral can be transformed into a surface integral over a large sphere lying entirely in the liquid.
-Only the terms of order $r^{-2}$ in the disturbance are needed.
-Using the solution above, the single-particle contribution gives
-
-\\[
-n\mu_0 \cdot 20\pi R^3
-\left\\{
-5\alpha_{lm}\overline{n_i n_k n_l n_m}
--\alpha_{il}\overline{n_kn_l}
-\right\\}.
-\\]
-
-The directional averages are
-
-\\[
-\overline{n_in_k}=\frac{1}{3}\delta_{ik},
-\qquad
-\overline{n_in_kn_ln_m}
-=\frac{1}{15}
-\left(
-\delta_{ik}\delta_{lm}
-+\delta_{il}\delta_{km}
-+\delta_{im}\delta_{kl}
-\right).
-\\]
-
-Since $\alpha_{ll}=0$, the correction reduces to
-
-\\[
-5\mu_0\alpha_{ik}\frac{4\pi R^3n}{3}.
-\\]
-
-Thus
-
-\\[
-\bar{\sigma}\_{ik}
-=2\mu_0\alpha\_{ik}
-+5\mu_0\alpha\_{ik}\phi.
-\\]
-
-On the other hand, by definition of the effective viscosity,
-
-\\[
-\bar{\sigma}\_{ik}=2\mu_{\mathrm{eff}}\alpha\_{ik}.
-\\]
-
-Therefore
-
-\\[
-\mu_{\mathrm{eff}}=\mu_0\left(1+\frac{5}{2}\phi\right).
-\\]
-
-This is Einstein&apos;s formula for the viscosity of a dilute suspension of rigid spheres.
-The coefficient $5/2$ is called the intrinsic viscosity of a dilute suspension of spheres.
-
-## Non-spherical Particles
-
-For spheroidal particles the same form is retained,
-
-\\[
-\mu_{\mathrm{eff}}=\mu_0(1+A\phi),
-\\]
-
-but the coefficient $A$ depends on the aspect ratio.
-If the semi-axes are $a,b,b$, then
-
-\\[
-\phi=\frac{4\pi ab^2}{3}n.
-\\]
-
-Landau gives, for several values of $a/b$,
-
-| $a/b$ | $0.1$  | $0.2$  | $0.5$  | $1.0$ | $2$    | $5$    | $10$   |
-|-------|--------|--------|--------|-------|--------|--------|--------|
-| $A$   | $8.04$ | $4.71$ | $2.85$ | $2.5$ | $2.91$ | $5.81$ | $13.6$ |
-{:.centered}
-
-The correction is smallest near the spherical case and increases as the particle becomes either flattened or elongated.
-For non-spherical particles, velocity gradients also orient the particles.
-Thus the distribution of orientations becomes part of the hydrodynamical problem; the simple scalar correction above is
-valid only when the orientational distribution is prescribed or effectively isotropic.
-
-## Range of Validity
-
-Einstein&apos;s formula is the first term of a concentration expansion:
-
-\\[
-\frac{\mu_{\mathrm{eff}}}{\mu_0}
-=1+\frac{5}{2}\phi+O(\phi^2).
-\\]
-
-The $O(\phi^2)$ terms come from hydrodynamical interactions between particles and from correlations in their positions.
-Hence the formula is valid only for dilute suspensions, on length scales large compared with the particle size, and for
-slow enough motion that the Stokes approximation is applicable around each particle.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">The Laminar Wake</title><link href="http://localhost:4000/physics/the-laminar-wake.html" rel="alternate" type="text/html" title="The Laminar Wake" /><published>2026-04-03T00:00:00+09:00</published><updated>2026-04-03T00:00:00+09:00</updated><id>http://localhost:4000/physics/the-laminar-wake</id><content type="html" xml:base="http://localhost:4000/physics/the-laminar-wake.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Momentum Deficit
-
-Consider a steady flow of a viscous fluid past a solid body.
-Let the velocity of the incident current be
-
-\\[
-\b{U}=U\hat{\b{x}},
-\\]
-
-and write the actual velocity as
-
-\\[
-\b{U}+\b{v},
-\\]
-
-where $\b{v}$ is the disturbance velocity and $\b{v}\to 0$ at infinity.
-Far behind the body, $\b{v}$ is appreciable only in a narrow region near the $x$-axis.
-This region is called the **laminar wake**.
-
-The wake contains vorticity produced at the surface of the body.
-Outside the wake the flow may be regarded as potential, since the streamlines there have not passed close to the body.
-Thus the far field is potential flow except in the wake.
-
-The momentum flux density tensor is
-
-\\[
-\Pi_{ik}=p\delta_{ik}+\rho(U_i+v_i)(U_k+v_k).
-\\]
-
-Write
-
-\\[
-p=p_0+p^\prime,
-\\]
-
-where $p_0$ is the pressure at infinity.
-On a large closed surface surrounding the body, the constant term $p_0\delta_{ik}$ gives no net contribution.
-Also the term linear in the mass flux vanishes by conservation of mass.
-Since $\b{v}$ is small far from the body, the quadratic term $\rho v_i v_k$ may be neglected.
-Thus the relevant momentum flux is
-
-\\[
-p^\prime\delta_{ik}+\rho U_i v_k.
-\\]
-
-Take two infinite planes $x=x_2$ far in front of the body and $x=x_1$ far behind it.
-The contribution from the lateral surface at infinity vanishes.
-Hence the force on the body is the difference between the momentum flux entering through the forward plane and that
-leaving through the backward plane.
-For the drag component,
-
-\\[
-F_x
-=\left(\iint_{x=x_2}-\iint_{x=x_1}\right)
-(p^\prime+\rho Uv_x)\,dy\,dz.
-\\]
-
-Outside the wake the flow is potential, and Bernoulli&apos;s equation gives, to first order in $\b{v}$,
-
-\\[
-p+\frac{1}{2}\rho(\b{U}+\b{v})^2
-=p_0+\frac{1}{2}\rho U^2,
-\\]
-
-so that
-
-\\[
-p^\prime=-\rho Uv_x.
-\\]
-
-Therefore the integrand vanishes outside the wake.
-The forward plane does not intersect the wake, and on the backward plane the pressure term is of smaller order than
-$\rho Uv_x$ inside the wake.
-Thus
-
-\\[
-F_x=-\rho U\iint_{\mathrm{wake}} v_x\,dy\,dz.
-\\]
-
-Here $v_x&lt;0$ in the wake, since the fluid moves more slowly than it would in the absence of the body.
-The integral is the deficit of discharge through the wake.
-
-The transverse components give the lift:
-
-\\[
-F_y=-\rho U\iint_{\mathrm{wake}} v_y\,dy\,dz,\qquad
-F_z=-\rho U\iint_{\mathrm{wake}} v_z\,dy\,dz.
-\\]
-
-If the body has an axis of symmetry parallel to the incident flow, then the wake has the same symmetry and the lift is
-zero.
-
-## Width of the Wake
-
-Let $Y$ be the order of magnitude of the transverse width of the wake at distance $x$ behind the body.
-Inside the wake, transverse derivatives are much larger than longitudinal derivatives:
-
-\\[
-\pdvn{2}{\b{v}}{y},\ \pdvn{2}{\b{v}}{z}
-\gg
-\pdvn{2}{\b{v}}{x}.
-\\]
-
-The two important terms in the Navier--Stokes equation have orders
-
-\\[
-(\b{v}\cdot\grad)\b{v}\sim U\pdv{\b{v}}{x}\sim \frac{Uv}{x},
-\qquad
-\nu\laplacian\b{v}\sim \nu\frac{v}{Y^2}.
-\\]
-
-Equating these two orders gives
-
-\\[
-Y\sim \sqrt{\frac{\nu x}{U}}.
-\\]
-
-Thus the laminar wake broadens only as the square root of the distance from the body.
-This is small compared with $x$ when $Ux/\nu\gg 1$, which is precisely the far-wake condition.
-
-Using the drag formula,
-
-\\[
-F_x\sim \rho U vY^2,
-\\]
-
-we also obtain the order of the velocity deficit:
-
-\\[
-v\sim \frac{F_x}{\rho\nu x}.
-\\]
-
-## Flow Inside the Wake
-
-Far from the body we use Oseen&apos;s approximation.
-In the steady equation
-
-\\[
-(\b{v}\cdot\grad)\b{v}
-=-\grad\left(\frac{p}{\rho}\right)+\nu\laplacian\b{v},
-\\]
-
-replace the convective derivative by $U\partial/\partial x$ and neglect the longitudinal part of the Laplacian in
-comparison with the transverse part.
-Then
-
-\\[
-U\pdv{\b{v}}{x}
-=-\grad\left(\frac{p}{\rho}\right)
-+\nu\left(\pdvn{2}{\b{v}}{y}+\pdvn{2}{\b{v}}{z}\right).
-\\]
-
-First omit the pressure-gradient part.
-Then each component satisfies
-
-\\[
-U\pdv{v}{x}
-=\nu\left(\pdvn{2}{v}{y}+\pdvn{2}{v}{z}\right).
-\\]
-
-This is the two-dimensional heat equation with $x/U$ in place of time and $\nu$ in place of thermal diffusivity.
-The solution which becomes concentrated at the origin as $x\to0$ and whose integral gives the drag is
-
-\\[
-v_x
-=-\frac{F_x}{4\pi\rho\nu x}
-\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right].
-\\]
-
-The coefficient is fixed by
-
-\\[
-F_x=-\rho U\iint v_x\,dy\,dz.
-\\]
-
-In spherical coordinates with the polar axis along the $x$-axis, the wake corresponds to $\theta\ll1$ and
-$y^2+z^2\simeq r^2\theta^2$, $x\simeq r$.
-Thus
-
-\\[
-v_x
-=-\frac{F_x}{4\pi\rho\nu r}
-\exp\left[-\frac{Ur\theta^2}{4\nu}\right].
-\\]
-
-For the transverse flow, take the lift to be in the $y$-direction, so $F_z=0$.
-The pressure-gradient part may be represented by a potential $\Phi$.
-Then
-
-\\[
-v_y
-=-\frac{F_y}{4\pi\rho\nu x}
-\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right]
-+\pdv{\Phi}{y},
-\qquad
-v_z=\pdv{\Phi}{z}.
-\\]
-
-The continuity equation gives, neglecting the longitudinal derivative,
-
-\\[
-\pdv{v_y}{y}+\pdv{v_z}{z}=0.
-\\]
-
-Using the heat equation for the first term of $v_y$, this yields
-
-\\[
-\pdv{\Phi}{x}
-=-\frac{\nu}{U}\pdv{}{y}
-\left(
--\frac{F_y}{4\pi\rho\nu x}
-\exp\left[-\frac{U(y^2+z^2)}{4\nu x}\right]
-\right).
-\\]
-
-After integration in $x$, choosing the constant so that $\Phi$ is finite on the axis, we get
-
-\\[
-\Phi
-=-\frac{F_y}{2\pi\rho U}
-\frac{y}{y^2+z^2}
-\left\\{
-\exp\left\[-\frac{U(y^2+z^2)}{4\nu x}\right\]-1
-\right\\}.
-\\]
-
-Equivalently, in spherical coordinates,
-
-\\[
-\Phi
-=-\frac{F_y}{2\pi\rho U}
-\frac{\cos\phi}{r\theta}
-\left\\{
-\exp\left\[-\frac{Ur\theta^2}{4\nu}\right\]-1
-\right\\}.
-\\]
-
-If there is no lift, the wake is axially symmetric and $\Phi=0$.
-
-## Flow Outside the Wake
-
-Outside the wake the flow is potential:
-
-\\[
-\b{v}=\grad\Phi,\qquad \laplacian\Phi=0.
-\\]
-
-We need only the terms which decrease least rapidly at large distances.
-Write
-
-\\[
-\Phi=\frac{a}{r}+\frac{\cos\phi}{r}f(\theta),
-\\]
-
-where the first term is associated with the drag and the second with the lift.
-Substitution into Laplace&apos;s equation gives
-
-\\[
-\odv{}{\theta}\left(\sin\theta\odv{f}{\theta}\right)
--\frac{f}{\sin\theta}=0.
-\\]
-
-The solution finite as $\theta\to\pi$ is
-
-\\[
-f=b\cot\frac{\theta}{2}.
-\\]
-
-The constant $b$ is found by matching with the inside-wake potential in the overlap region
-
-\\[
-\sqrt{\frac{\nu}{Ur}}\ll \theta\ll 1.
-\\]
-
-Since
-
-\\[
-\cot\frac{\theta}{2}\sim \frac{2}{\theta},
-\\]
-
-comparison with the inside expression gives
-
-\\[
-b=\frac{F_y}{4\pi\rho U}.
-\\]
-
-The constant $a$ is determined from conservation of mass through a large sphere.
-The inflow deficit through the part cut out by the wake is
-
-\\[
--\iint_{\mathrm{wake}} v_x\,dy\,dz=\frac{F_x}{\rho U}.
-\\]
-
-The same amount must leave through the rest of the large sphere, and hence
-
-\\[
-\oint \b{v}\cdot d\b{f}
-=\oint \grad\Phi\cdot d\b{f}
-=-4\pi a
-=\frac{F_x}{\rho U}.
-\\]
-
-Therefore
-
-\\[
-a=-\frac{F_x}{4\pi\rho U}.
-\\]
-
-The potential outside the wake is finally
-
-\\[
-\Phi
-=\frac{1}{4\pi\rho Ur}
-\left(
--F_x+F_y\cos\phi\cot\frac{\theta}{2}
-\right).
-\\]
-
-It decreases as $1/r$, while the velocity outside the wake decreases as $1/r^2$.
-When the lift is zero, the far field outside the wake is axially symmetric.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry><entry><title type="html">Linear Transformations and their Kernels and Images</title><link href="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html" rel="alternate" type="text/html" title="Linear Transformations and their Kernels and Images" /><published>2026-04-02T00:00:00+09:00</published><updated>2026-04-02T00:00:00+09:00</updated><id>http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images</id><content type="html" xml:base="http://localhost:4000/mathematics/linear-transformations-and-their-kernels-and-images.html">&lt;!--more--&gt;
-* this unordered seed list will be replaced by the toc
-{:toc}
-
-## Linear Transformations
-
-Let $V$ and $W$ be vector spaces over a field $F$. A function $T: V \to W$ is called a **linear transformation** if for all $\mathbf{u}, \mathbf{v} \in V$ and all scalars $c \in F$, the following properties hold:
-- **Additivity**: $T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})$
-- **Homogeneity**: $T(c\mathbf{u}) = cT(\mathbf{u})$
-
-Then we naturally have the following properties:
-
-- $T(\mathbf{0}_V) = \mathbf{0}_W$
-- $T\left( \sum\_{i=1}^n c_i \mathbf{v}\_i \right) = \sum\_{i=1}^n c_i T(\mathbf{v}\_i)$ for any finite collection of vectors $\mathbf{v}_1, \mathbf{v}_2, \ldots, \mathbf{v}_n$ in $V$ and scalars $c_1, c_2, \ldots, c_n$ in $F$.
-
-We have so many examples of linear transformations, such as rotations, reflections, projections, and scaling transformations in geometry, as well as differentiation and integration in calculus.
-Especially, we define the following special linear transformations:
-- **identity transformation**: $\iota_V: V \to V$ defined by $\iota_V(\mathbf{v}) = \mathbf{v}$ for all $\mathbf{v} \in V$.
-- **zero transformation**: $0\_{V,W}: V \to W$ defined by $0\_{V,W}(\mathbf{v}) = \mathbf{0}_W$ for all $\mathbf{v} \in V$.
-
-### Vector Space of Linear Transformations
-
-The set of all linear transformations from $V$ to $W$ is denoted by $\mathcal{L}(V, W)$.
-We can define addition and scalar multiplication on $\mathcal{L}(V, W)$ as follows.
-For $T_1, T_2 \in \mathcal{L}(V, W)$ and $c \in F$, we define:
-- $(T_1 + T_2)(\mathbf{v}) = T_1(\mathbf{v}) + T_2(\mathbf{v})$
-- $(cT_1)(\mathbf{v}) = c(T_1(\mathbf{v}))$
-
-With these operations, $\mathcal{L}(V, W)$ forms a _vector space_ over $F$ where
-the zero vector in $\mathcal{L}(V, W)$ is the zero transformation $0\_{V,W}$, and the additive inverse of a linear transformation $T$ is given by $-T$.
-
-A linear transformation from $V$ to $V$ is called a **linear operator** on $V$, and the set of all linear operators on $V$ is denoted by $\mathcal{L}(V) = \mathcal{L}(V, V)$.
-Especially, linear operators on a real vector space is called a _real operator_ and linear operators on a complex vector space is called a _complex operator_.
-Also, a linear transformation from $V$ to the base field $F$ is called a **linear functional** on $V$, and specifically the set of all linear functionals on $V$ is
-called the **dual space** of $V$, denoted by $V^\ast = \mathcal{L}(V, F)$.
-
-The following terms are also employed in the context of linear transformations:
-- **Homomorphism**: A linear transformation. Their set is denoted by $\mathrm{Hom}(V, W) = \mathcal{L}(V, W)$.
-- **Endomorphism**: A linear operator. Their set is denoted by $\mathrm{End}(V) = \mathcal{L}(V)$.
-- **Monomorphism**: An injective linear transformation, olso called an **embedding**.
-- **Epimorphism**: A surjective linear transformation.
-- **Isomorphism**: A bijective linear transformation.
-- **Automorphism**: A bijective linear operator. Their set is denoted by $\mathrm{Aut}(V)$.</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="mathematics" /><category term="linear-algebra" /><summary type="html"></summary></entry></feed>
+\\]</content><author><name>Jiho Jun</name><email>pianoforte0203@gmail.com</email></author><category term="physics" /><category term="fluid-mechanics" /><summary type="html"></summary></entry></feed>

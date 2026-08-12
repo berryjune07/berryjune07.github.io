@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="335 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="570 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   5 min
+   9 min
 </span>
 
       </span>
@@ -303,6 +303,7 @@
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
   <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
   <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
   <li><a href="#code" id="markdown-toc-code">Code</a></li>
   <li><a href="#applications" id="markdown-toc-applications">Applications</a></li>
@@ -335,12 +336,12 @@ A,B,C,D.
 
 <div id="floyd-warshall-demo" class="fwv-root">
   <style>
-    #floyd-warshall-demo { margin: 2rem 0; color: #1f2937; }
+    #floyd-warshall-demo { width: 100%; max-width: 760px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #floyd-warshall-demo * { box-sizing: border-box; }
-    #floyd-warshall-demo .fwv-stack { display: grid; gap: 1rem; }
-    #floyd-warshall-demo .fwv-main { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 250px); align-items: center; justify-content: center; gap: 1.25rem 2.25rem; }
+    #floyd-warshall-demo .fwv-stack { display: grid; gap: 0; }
+    #floyd-warshall-demo .fwv-main { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 250px); align-items: center; justify-content: center; gap: 1.1rem 2.25rem; padding: 0.75rem; background: #ffffff; }
     @media (max-width: 720px) { #floyd-warshall-demo .fwv-main { grid-template-columns: minmax(0, 1fr); } }
-    #floyd-warshall-demo .fwv-graph { width: 100%; max-width: 360px; min-width: 0; justify-self: center; padding: 0.25rem 0; }
+    #floyd-warshall-demo .fwv-graph { width: 100%; max-width: 360px; min-width: 0; justify-self: center; padding: 0; }
     #floyd-warshall-demo .fwv-graph svg { display: block; width: 100%; height: auto; margin: 0 auto; }
     #floyd-warshall-demo .fwv-matrix-wrap { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 250px; min-width: 0; justify-self: center; }
     #floyd-warshall-demo .fwv-matrix { border-collapse: collapse; width: 100%; margin: 0 auto; table-layout: fixed; font-size: 0.95em; }
@@ -349,15 +350,16 @@ A,B,C,D.
     #floyd-warshall-demo .fwv-matrix th { background: #f8fafc; font-weight: 700; }
     #floyd-warshall-demo .fwv-matrix .is-k { background: #dbeafe; color: #1d4ed8; }
     #floyd-warshall-demo .fwv-matrix .is-changed { background: #fef3c7; color: #92400e; font-weight: 700; }
-    #floyd-warshall-demo .fwv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-status { margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #f8fafc; line-height: 1.65; }
     #floyd-warshall-demo .fwv-status p { margin: 0; }
     #floyd-warshall-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
-    #floyd-warshall-demo .fwv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
-    #floyd-warshall-demo .fwv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
-    #floyd-warshall-demo .fwv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #floyd-warshall-demo .fwv-controls-shell { padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #floyd-warshall-demo .fwv-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+    #floyd-warshall-demo .fwv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; border-radius: 6px; padding: 0.45rem 0.65rem; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; white-space: nowrap; }
+    #floyd-warshall-demo .fwv-controls button:hover { background: #e6edf5; }
     #floyd-warshall-demo .fwv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #floyd-warshall-demo .fwv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
-    #floyd-warshall-demo .fwv-info { display: grid; gap: 0.5rem; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #floyd-warshall-demo .fwv-info { display: grid; gap: 0.45rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
     #floyd-warshall-demo .fwv-line { overflow-x: auto; white-space: nowrap; }
     #floyd-warshall-demo .fwv-edge { fill: none; stroke: #64748b; stroke-width: 2.2; }
     #floyd-warshall-demo .fwv-edge-label-bg { fill: #ffffff; stroke: rgba(100,116,139,0.35); stroke-width: 1; }
@@ -365,7 +367,7 @@ A,B,C,D.
     #floyd-warshall-demo .fwv-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.5; }
     #floyd-warshall-demo .fwv-node-k circle { fill: #dbeafe; stroke: #2563eb; stroke-width: 4; }
     #floyd-warshall-demo .fwv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
-    #floyd-warshall-demo .fwv-legend { font-size: 0.95em; line-height: 1.7; }
+    #floyd-warshall-demo .fwv-legend { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; font-size: 0.9em; line-height: 1.55; }
     #floyd-warshall-demo .fwv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #floyd-warshall-demo .fwv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #floyd-warshall-demo .fwv-swatch-k { background: #dbeafe; border-color: #2563eb; }
@@ -373,19 +375,20 @@ A,B,C,D.
   </style>
 
   <div class="fwv-stack">
+    <div class="fwv-controls-shell">
+      <div class="fwv-controls">
+        <button type="button" data-role="prev">Prev</button>
+        <button type="button" data-role="next">Step</button>
+        <button type="button" data-role="run">Run</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="fwv-counter">Step <span data-role="counter"></span></span>
+      </div>
+    </div>
     <div class="fwv-main">
       <div class="fwv-graph" data-role="graph"></div>
       <div class="fwv-matrix-wrap" data-role="matrix"></div>
     </div>
     <div class="fwv-status" data-role="status"></div>
-    <div class="fwv-controls-shell">
-      <div class="fwv-controls">
-        <button type="button" data-role="prev">Previous Step</button>
-        <button type="button" data-role="next">Next Step</button>
-        <button type="button" data-role="reset">Reset</button>
-        <span class="fwv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
-      </div>
-    </div>
     <div class="fwv-info">
       <div class="fwv-line">
 <strong>Allowed intermediate vertices:</strong> <span data-role="allowed"></span>
@@ -457,7 +460,7 @@ A,B,C,D.
         }
         return states;
       }
-      var states = buildStates(), index = 0;
+      var states = buildStates(), index = 0, timer = null;
       function svgEl(name, attrs) {
         var el = document.createElementNS(svgNS,name);
         Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
@@ -551,15 +554,45 @@ A,B,C,D.
         byRole("changed").innerHTML = changedText(s);
         byRole("prev").disabled = index === 0;
         byRole("next").disabled = index === last;
+        byRole("run").textContent = timer ? "Pause" : "Run";
         drawGraph(s);
         drawMatrix(s);
+      }
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+      function stepForward() {
+        if (index >= states.length - 1) {
+          stopRun();
+          return false;
+        }
+        index += 1;
+        render();
+        if (index >= states.length - 1) stopRun();
+        return true;
+      }
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (index >= states.length - 1) {
+          index = 0;
+          render();
+        }
+        timer = setInterval(stepForward, 900);
+        byRole("run").textContent = "Pause";
       }
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
-        byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
-        byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
-        byRole("reset").addEventListener("click", function () { index = 0; render(); });
+        byRole("prev").addEventListener("click", function () { stopRun(); if (index > 0) { index -= 1; render(); } });
+        byRole("next").addEventListener("click", function () { stopRun(); stepForward(); });
+        byRole("run").addEventListener("click", toggleRun);
+        byRole("reset").addEventListener("click", function () { stopRun(); index = 0; render(); });
         render();
       }
       if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once:true });
@@ -573,6 +606,56 @@ A,B,C,D.
 <p>\[
 \mathrm{dist}[B][C]+\mathrm{dist}[C][D] = -3+4=1.
 \]</p>
+
+<h2 id="proof-of-correctness">Proof of Correctness</h2>
+
+<p>Order the vertices as</p>
+
+<p>\[
+1,2,\ldots,V.
+\]</p>
+
+<p>Let $D_k[i][j]$ be the minimum weight of a path from $i$ to $j$ whose internal vertices are contained in</p>
+
+<p>\[
+\Set{1,2,\ldots,k}.
+\]</p>
+
+<p>The Floyd–Warshall invariant is that after finishing the iteration for $k$, the matrix entry <code class="language-plaintext highlighter-rouge">dist[i][j]</code> is exactly $D_k[i][j]$.</p>
+
+<p><em>Proof.</em>
+For $k=0$, no internal vertex is allowed.
+Thus the best path from $i$ to $j$ is either the direct edge $i\to j$, the empty path when $i=j$, or no path.
+This is exactly the initialization of the distance matrix.</p>
+
+<p>Assume the invariant holds after iteration $k-1$.
+Consider a shortest path counted by $D_k[i][j]$.
+Either it does not use vertex $k$ as an internal vertex, in which case its weight is $D_{k-1}[i][j]$, or it uses $k$.
+In the second case, split the path at $k$.
+The subpath from $i$ to $k$ and the subpath from $k$ to $j$ have internal vertices only in</p>
+
+<p>\[
+\Set{1,2,\ldots,k-1}.
+\]</p>
+
+<p>Hence the best such path has weight</p>
+
+<p>\[
+D_{k-1}[i][k]+D_{k-1}[k][j].
+\]</p>
+
+<p>Therefore</p>
+
+<p>\[
+D_k[i][j]
+=\min\left(D_{k-1}[i][j],D_{k-1}[i][k]+D_{k-1}[k][j]\right).
+\]</p>
+
+<p>This is exactly the update performed by the algorithm.
+By induction, after $k=V$ all vertices are allowed as internal vertices, so every shortest path is considered.</p>
+
+<p>If a negative cycle is reachable from $i$ and can reach $j$, the shortest distance from $i$ to $j$ is not well-defined as a finite value.
+This is why the usual shortest-path interpretation assumes no negative cycles.</p>
 
 <h2 id="complexity">Complexity</h2>
 
@@ -763,7 +846,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>      </ul></aside>
+                                                                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mertens-trick.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mertens-trick.html" class="flip-title">Mertens Trick</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mertens-trick.html" tabindex="-1"><span class="sr-only">Continue reading Mertens Trick</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/convex-hull-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">Convex Hull Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/convex-hull-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Convex Hull Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>          <li class="h4">  <a href="/computer-science/convex-hull-algorithm.html" class="flip-title">    <span>            Convex Hull Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-26T00:00:00+09:00">      26 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/convex-hull-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/bellman-ford-algorithm.html" class="flip-title">    <span>            Bellman-Ford Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-07-24T00:00:00+09:00">      24 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/bellman-ford-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/minimum-spanning-tree.html" class="flip-title">    <span>            Minimum Spanning Tree    </span>  </a>      <time class="faded fine" datetime="2025-07-21T00:00:00+09:00">      21 Jul 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/minimum-spanning-tree.html"></span>  </li>      </ul></aside>
 
   
 
@@ -786,14 +869,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -822,7 +905,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1822,7 +1905,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

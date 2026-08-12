@@ -58,44 +58,11 @@ r_1 < r_2 & \text{if } \dps \left\lfloor \frac{l_1}{B} \right\rfloor = \left\lfl
 \\]
 
 where $B = \left\lceil \sqrt{N} \right\rceil$ is the block size.
-Let's look at an example. For the following range queries,
 
-\\[
-\Set{(4,6),(5,9),(2,7),(3,4)}
-\\]
+The interactive demo below uses range-distinct queries.
+The queries are sorted by Mo's ordering, and each step moves from the previous range to the next range in the sorted order.
 
-we process them in the following order:
-
-```mermaid
-graph LR
-    subgraph A["Block 1"]
-        direction LR;
-        A1((1)); A2((2)); A3((3));
-    end
-    subgraph B["Block 2"]
-        direction LR;
-        B1((4)); B2((5)); B3((6));
-    end
-    subgraph C["Block 3"]
-        direction LR;
-        C1((7)); C2((8)); C3((9));
-    end
-    A1 --- A2 --- A3 --- B1 --- B2 --- B3 --- C1 --- C2 --- C3;
-    A3 --> A2 --> B1 --> B2;
-    B1 -.-> C1 -.-> B3 -.-> C3;
-    linkStyle 0,1,2,3,4,5,6,7 stroke:transparent;
-    A2:::q1; C1:::q1;
-    A3:::q2; B1:::q2;
-    B3:::q3;
-    B2:::q4; C3:::q4;
-    classDef q1 fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef q2 fill:#9bf,stroke:#333,stroke-width:2px;
-    classDef q3 fill:#fdb,stroke:#333,stroke-width:2px;
-    classDef q4 fill:#faa,stroke:#333,stroke-width:2px;
-```
-
-The solid lines are the shift of left pointers, and the dotted lines are the shift of right pointers.
-Though it is not the global optimal minimum of the shifts, this method gives enough time complexity to handle lots of queries.
+{% include_relative includes/mos-algorithm.html %}
 
 ## Complexity
 
@@ -168,9 +135,7 @@ void Mo(){
 }
 ```
 
-### Example
-
-Consider counting the number of distinct elements in a range.
+For example, consider counting the number of distinct elements in a range.
 
 ```cpp
 const int RANGE;

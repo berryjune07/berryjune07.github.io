@@ -1,21 +1,22 @@
 {% assign viz_id = include.id | default: "dijkstra-demo" %}
 <div id="{{ viz_id }}" class="dv-root">
   <style>
-    #{{ viz_id }} { margin: 2rem 0; }
+    #{{ viz_id }} { width: 100%; max-width: 760px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #{{ viz_id }} * { box-sizing: border-box; }
-    #{{ viz_id }} .dv-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 0 0 1rem 0; }
-    #{{ viz_id }} .dv-controls button { appearance: none; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0.45rem 0.8rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; cursor: pointer; }
+    #{{ viz_id }} .dv-controls { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; margin: 0; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #{{ viz_id }} .dv-controls button { appearance: none; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; padding: 0.45rem 0.65rem; border-radius: 6px; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; }
+    #{{ viz_id }} .dv-controls button:hover { background: #e6edf5; }
     #{{ viz_id }} .dv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #{{ viz_id }} .dv-counter { margin-left: 0.25rem; opacity: 0.8; font-size: 0.95em; }
-    #{{ viz_id }} .dv-graph { width: 100%; overflow-x: auto; padding: 0.5rem 0; }
+    #{{ viz_id }} .dv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #{{ viz_id }} .dv-graph { width: 100%; padding: 0.75rem; background: #ffffff; overflow: hidden; }
     #{{ viz_id }} .dv-graph svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
-    #{{ viz_id }} .dv-divider { border: 0; border-top: 1px solid rgba(127,127,127,0.25); margin: 1.5rem 0; }
-    #{{ viz_id }} .dv-step-title { margin: 0 0 0.5rem 0; font-size: 1.05em; font-weight: 700; }
-    #{{ viz_id }} .dv-step-text { margin: 0; line-height: 1.7; }
-    #{{ viz_id }} .dv-info-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 1rem 0 0 0; }
+    #{{ viz_id }} .dv-divider { display: none; }
+    #{{ viz_id }} .dv-step-title { margin: 0; padding: 0.75rem 0.85rem 0; border-top: 1px solid #d8dee8; font-size: 1em; font-weight: 700; }
+    #{{ viz_id }} .dv-step-text { margin: 0; padding: 0.35rem 0.85rem 0.75rem; line-height: 1.65; }
+    #{{ viz_id }} .dv-info-grid { display: grid; grid-template-columns: 1fr; gap: 0.65rem; margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; }
     #{{ viz_id }} .dv-info-block h4 { margin: 0 0 0.5rem 0; font-size: 1em; }
     #{{ viz_id }} .dv-math-line { min-height: 1.8rem; line-height: 1.8; overflow-x: auto; overflow-y: hidden; }
-    #{{ viz_id }} .dv-legend { margin-top: 0.75rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .dv-legend { display: grid; gap: 0.35rem; margin-top: 0.25rem; font-size: 0.9em; line-height: 1.55; }
     #{{ viz_id }} .dv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #{{ viz_id }} .dv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #{{ viz_id }} .dv-swatch-current { background: #fee2e2; border-color: #dc2626; }
@@ -24,12 +25,12 @@
     #{{ viz_id }} .dv-swatch-normal { background: #f8fafc; border-color: #475569; }
   </style>
 
-  <p class="dv-description">Click the buttons to move through Dijkstra's algorithm one step at a time.</p>
   <div class="dv-controls">
-    <button type="button" data-role="prev">Previous Step</button>
-    <button type="button" data-role="next">Next Step</button>
+    <button type="button" data-role="prev">Prev</button>
+    <button type="button" data-role="next">Step</button>
+    <button type="button" data-role="run">Run</button>
     <button type="button" data-role="reset">Reset</button>
-    <span class="dv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
+    <span class="dv-counter">Step <span data-role="counter"></span></span>
   </div>
   <div class="dv-graph" data-role="graph"></div>
   <hr class="dv-divider">
@@ -145,9 +146,76 @@
         out.push('}'); return out.join("\n");
       }
       function draw(s) { var target = byRole("graph"); target.innerHTML = ""; target.appendChild(viz.renderSVGElement(dot(s), { engine: "neato" })); }
-      function render() { var s = history[history.length-1]; byRole("counter").textContent = String(history.length-1); byRole("step-title").textContent = "Step " + (history.length-1) + " - " + s.caption; byRole("step-desc").innerHTML = h(s.desc).replace(/`([^`]+)`/g,"<code>$1</code>"); byRole("pq-state").innerHTML = math(pqTex(s.pq)); root.querySelector('[data-role="prev"]').disabled = history.length <= 1; root.querySelector('[data-role="next"]').disabled = s.done; draw(s); }
-      function start() { if (root.dataset.initialized === "true") return; root.dataset.initialized = "true"; Promise.all([getKatex(), getViz()]).then(function(libs){ katex = libs[0]; viz = libs[1]; history = [initial()]; render(); root.querySelector('[data-role="prev"]').addEventListener("click", function(){ if (history.length > 1) { history.pop(); render(); } }); root.querySelector('[data-role="next"]').addEventListener("click", function(){ if (!history[history.length-1].done) { history.push(next(history[history.length-1])); render(); } }); root.querySelector('[data-role="reset"]').addEventListener("click", function(){ history = [initial()]; render(); }); }).catch(function(err){ byRole("graph").textContent = err && err.message ? err.message : "Failed to initialize visualizer."; }); }
-      var katex = null, viz = null, history = [];
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+      function stepForward() {
+        var s = history[history.length - 1];
+        if (s.done) {
+          stopRun();
+          return false;
+        }
+        history.push(next(s));
+        render();
+        if (history[history.length - 1].done) stopRun();
+        return true;
+      }
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (history.length && history[history.length - 1].done) {
+          history = [initial()];
+          render();
+        }
+        timer = setInterval(stepForward, 850);
+        byRole("run").textContent = "Pause";
+      }
+      function render() {
+        var s = history[history.length - 1];
+        byRole("counter").textContent = String(history.length - 1);
+        byRole("step-title").textContent = "Step " + (history.length - 1) + " - " + s.caption;
+        byRole("step-desc").innerHTML = h(s.desc).replace(/`([^`]+)`/g, "<code>$1</code>");
+        byRole("pq-state").innerHTML = math(pqTex(s.pq));
+        root.querySelector('[data-role="prev"]').disabled = history.length <= 1;
+        root.querySelector('[data-role="next"]').disabled = s.done;
+        byRole("run").textContent = timer ? "Pause" : "Run";
+        draw(s);
+      }
+      function start() {
+        if (root.dataset.initialized === "true") return;
+        root.dataset.initialized = "true";
+        Promise.all([getKatex(), getViz()]).then(function(libs) {
+          katex = libs[0];
+          viz = libs[1];
+          history = [initial()];
+          render();
+          root.querySelector('[data-role="prev"]').addEventListener("click", function() {
+            stopRun();
+            if (history.length > 1) {
+              history.pop();
+              render();
+            }
+          });
+          root.querySelector('[data-role="next"]').addEventListener("click", function() {
+            stopRun();
+            stepForward();
+          });
+          root.querySelector('[data-role="run"]').addEventListener("click", toggleRun);
+          root.querySelector('[data-role="reset"]').addEventListener("click", function() {
+            stopRun();
+            history = [initial()];
+            render();
+          });
+        }).catch(function(err) {
+          byRole("graph").textContent = err && err.message ? err.message : "Failed to initialize visualizer.";
+        });
+      }
+      var katex = null, viz = null, history = [], timer = null;
       if (document.readyState === "complete") start(); else window.addEventListener("load", start, { once: true });
     })();
   </script>

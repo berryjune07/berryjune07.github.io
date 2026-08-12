@@ -41,6 +41,56 @@ For example, when $k=C$, the entry from $B$ to $D$ improves because
 \mathrm{dist}[B][C]+\mathrm{dist}[C][D] = -3+4=1.
 \\]
 
+## Proof of Correctness
+
+Order the vertices as
+
+\\[
+1,2,\ldots,V.
+\\]
+
+Let $D_k[i][j]$ be the minimum weight of a path from $i$ to $j$ whose internal vertices are contained in
+
+\\[
+\Set{1,2,\ldots,k}.
+\\]
+
+The Floyd--Warshall invariant is that after finishing the iteration for $k$, the matrix entry `dist[i][j]` is exactly $D_k[i][j]$.
+
+_Proof._
+For $k=0$, no internal vertex is allowed.
+Thus the best path from $i$ to $j$ is either the direct edge $i\to j$, the empty path when $i=j$, or no path.
+This is exactly the initialization of the distance matrix.
+
+Assume the invariant holds after iteration $k-1$.
+Consider a shortest path counted by $D_k[i][j]$.
+Either it does not use vertex $k$ as an internal vertex, in which case its weight is $D_{k-1}[i][j]$, or it uses $k$.
+In the second case, split the path at $k$.
+The subpath from $i$ to $k$ and the subpath from $k$ to $j$ have internal vertices only in
+
+\\[
+\Set{1,2,\ldots,k-1}.
+\\]
+
+Hence the best such path has weight
+
+\\[
+D_{k-1}[i][k]+D_{k-1}[k][j].
+\\]
+
+Therefore
+
+\\[
+D_k[i][j]
+=\min\left(D_{k-1}[i][j],D_{k-1}[i][k]+D_{k-1}[k][j]\right).
+\\]
+
+This is exactly the update performed by the algorithm.
+By induction, after $k=V$ all vertices are allowed as internal vertices, so every shortest path is considered.
+
+If a negative cycle is reachable from $i$ and can reach $j$, the shortest distance from $i$ to $j$ is not well-defined as a finite value.
+This is why the usual shortest-path interpretation assumes no negative cycles.
+
 ## Complexity
 
 The time complexity of the Floyd--Warshall algorithm is $O(V^3)$, where $V$ is the number of vertices in the graph.

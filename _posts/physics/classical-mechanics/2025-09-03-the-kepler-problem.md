@@ -295,7 +295,7 @@ Using $\b{L}=\b{r}\times\b{p}$ and the triple product identity,
 \begin{align\*}
 \dot{\b{p}}\times\b{L}
 &= -\frac{k}{r^3}\b{r}\times(\b{r}\times\b{p}) \nl
-&= -\frac{k}{r^3}\left[\b{r}(\b{r}\cdot\b{p})-r^2\b{p}\right] \nl
+&= -\frac{k}{r^3}\left\[\b{r}(\b{r}\cdot\b{p})-r^2\b{p}\right\] \nl
 &= \mu k\odv{}{t}\left(\frac{\b{r}}{r}\right).
 \end{align\*}
 \\]

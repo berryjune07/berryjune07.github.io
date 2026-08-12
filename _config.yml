@@ -365,10 +365,14 @@ exclude:
   - .jekyll-cache
   - .sass-cache
   - '*.toml'
+  - AGENTS.md
   - vendor
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
 include:
   - .well-known
   - LICENSE.md

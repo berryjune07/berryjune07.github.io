@@ -15,9 +15,7 @@ tags: algorithms
 A **merge sort tree** is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
 It usually does not support updates efficiently.
 
-## Merge Sort Tree
-
-### Explanation
+## Explanation
 
 A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
 The tree is constructed by recursively dividing the array into segments and merging the sorted lists of child nodes.
@@ -50,7 +48,7 @@ graph TD;
     C4 --> D7; C4 --> D8;
 ```
 
-### Complexity
+## Complexity
 
 Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.
 
@@ -119,8 +117,6 @@ q Query(int l,int r,int nd,int s,int e){
     return G(Query(l,m,nd*2,s,e),Query(m+1,r,nd*2+1,s,e));
 }
 ```
-
-### Example
 
 Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.
 

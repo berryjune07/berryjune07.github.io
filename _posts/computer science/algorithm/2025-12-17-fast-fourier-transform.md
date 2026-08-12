@@ -282,7 +282,7 @@ void fft(vector<cd>& a, bool invert) {
 The recursive implementation follows the even-odd decomposition directly.
 
 ```cpp
-void fft_recursive(vector<cd>& a, bool invert) {
+void fft(vector<cd>& a, bool invert) {
     int n = (int)a.size();
     if(n == 1) return;
 
@@ -292,8 +292,8 @@ void fft_recursive(vector<cd>& a, bool invert) {
         a1[i] = a[2*i+1];
     }
 
-    fft_recursive(a0, invert);
-    fft_recursive(a1, invert);
+    fft(a0, invert);
+    fft(a1, invert);
 
     double ang = 2 * PI / n * (invert ? -1 : 1);
     cd w(1), wn(cos(ang), sin(ang));
@@ -317,7 +317,9 @@ void fft_recursive(vector<cd>& a, bool invert) {
 Polynomial multiplication is obtained by evaluating both polynomials, multiplying values pointwise, and interpolating by the inverse FFT.
 
 ```cpp
-vector<long long> multiply(vector<long long> a, vector<long long> b) {
+using ll = long long;
+
+vector<ll> multiply(vector<ll> a, vector<ll> b) {
     vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
     int need = (int)a.size() + (int)b.size() - 1;
     int n = 1;
@@ -330,7 +332,7 @@ vector<long long> multiply(vector<long long> a, vector<long long> b) {
     for(int i=0; i<n; i++) fa[i] *= fb[i];
     fft(fa, true);
 
-    vector<long long> res(need);
+    vector<ll> res(need);
     for(int i=0; i<need; i++) res[i] = llround(fa[i].real());
     return res;
 }

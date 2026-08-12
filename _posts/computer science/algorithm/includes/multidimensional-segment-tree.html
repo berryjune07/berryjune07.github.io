@@ -1,0 +1,172 @@
+{% assign viz_id = include.id | default: "multidimensional-segment-tree-demo" %}
+<div id="{{ viz_id }}" class="mdstv-root">
+  <style>
+    #{{ viz_id }} { width: 100%; max-width: 900px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .mdstv-controls-shell { overflow: hidden; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #{{ viz_id }} .mdstv-controls { display: flex; flex-wrap: nowrap; gap: 0.28rem; align-items: center; width: 100%; padding: 0.55rem 0.6rem; }
+    #{{ viz_id }} .mdstv-controls label { display: inline-flex; align-items: center; gap: 0.18rem; white-space: nowrap; }
+    #{{ viz_id }} input, #{{ viz_id }} button { min-height: 1.8rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; font: inherit; font-size: 0.82rem; line-height: 1; }
+    #{{ viz_id }} input { width: 3.05rem; padding: 0 0.4rem; }
+    #{{ viz_id }} button { padding: 0.4rem 0.55rem; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} button:hover { background: #e6edf5; }
+    #{{ viz_id }} .mdstv-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.85rem; padding: 0.85rem; background: #fff; }
+    @media (min-width: 720px) { #{{ viz_id }} .mdstv-body { grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr); } }
+    #{{ viz_id }} .mdstv-grid { display: grid; grid-template-columns: repeat(4, minmax(48px, 1fr)); gap: 0.35rem; align-content: start; }
+    #{{ viz_id }} .mdstv-cell { min-height: 3.2rem; border: 1px solid #94a3b8; border-radius: 6px; background: #f8fafc; display: grid; place-items: center; text-align: center; line-height: 1.2; }
+    #{{ viz_id }} .mdstv-cell-query { background: #dbeafe; border-color: #2563eb; border-width: 2px; }
+    #{{ viz_id }} .mdstv-cell-update { background: #fee2e2; border-color: #dc2626; border-width: 2px; }
+    #{{ viz_id }} .mdstv-value { font-weight: 700; }
+    #{{ viz_id }} .mdstv-index { font-size: 0.72rem; color: #64748b; }
+    #{{ viz_id }} .mdstv-info { display: grid; gap: 0.45rem; line-height: 1.65; align-content: start; }
+    #{{ viz_id }} .mdstv-info-line { overflow-x: auto; white-space: nowrap; }
+    #{{ viz_id }} .mdstv-info-line-status { overflow-x: visible; white-space: normal; }
+    #{{ viz_id }} .mdstv-info-line-status code { white-space: normal; overflow-wrap: anywhere; }
+    #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .mdstv-rect-list { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    #{{ viz_id }} .mdstv-rect { border: 1px solid #cbd5e1; border-radius: 999px; background: #f8fafc; padding: 0.2rem 0.55rem; font-size: 0.9em; }
+  </style>
+
+  <div class="mdstv-controls-shell">
+    <div class="mdstv-controls">
+      <label>x1 <input type="number" min="1" max="4" step="1" value="2" data-role="x1"></label>
+      <label>x2 <input type="number" min="1" max="4" step="1" value="4" data-role="x2"></label>
+      <label>y1 <input type="number" min="1" max="4" step="1" value="2" data-role="y1"></label>
+      <label>y2 <input type="number" min="1" max="4" step="1" value="3" data-role="y2"></label>
+      <button type="button" data-role="query">Query</button>
+      <label>x <input type="number" min="1" max="4" step="1" value="3" data-role="ux"></label>
+      <label>y <input type="number" min="1" max="4" step="1" value="2" data-role="uy"></label>
+      <label>val <input type="number" min="-99" max="99" step="1" value="9" data-role="uv"></label>
+      <button type="button" data-role="update">Update</button>
+      <button type="button" data-role="reset">Reset</button>
+    </div>
+  </div>
+  <div class="mdstv-body">
+    <div class="mdstv-grid" data-role="grid"></div>
+    <div class="mdstv-info">
+      <div class="mdstv-info-line mdstv-info-line-status"><strong>Status:</strong> <span data-role="status"></span></div>
+      <div class="mdstv-info-line"><strong>x canonical intervals:</strong> <span data-role="x-cover"></span></div>
+      <div class="mdstv-info-line"><strong>y canonical intervals:</strong> <span data-role="y-cover"></span></div>
+      <div><strong>Product rectangles:</strong> <span class="mdstv-rect-list" data-role="rectangles"></span></div>
+      <div class="mdstv-info-line"><strong>Answer:</strong> <span data-role="answer"></span></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function code(s) { return "<code>" + esc(s) + "</code>"; }
+
+      var initial = [
+        [0,0,0,0,0],
+        [0,2,1,3,4],
+        [0,5,6,2,1],
+        [0,4,3,7,2],
+        [0,1,8,5,6]
+      ];
+      var a = initial.map(function (row) { return row.slice(); });
+      var last = { type:"query", x1:2, x2:4, y1:2, y2:3, ux:null, uy:null, answer:null, xCover:[], yCover:[], rects:[], status:"Query a rectangle to see the product decomposition." };
+
+      function read(role, lo, hi) {
+        var input = byRole(role);
+        var x = Number(input.value);
+        if (!Number.isInteger(x)) x = lo;
+        x = Math.max(lo, Math.min(hi, x));
+        input.value = x;
+        return x;
+      }
+
+      function decompose(l,r,lo,hi,out) {
+        if (r < lo || hi < l) return;
+        if (l <= lo && hi <= r) {
+          out.push([lo,hi]);
+          return;
+        }
+        var m = Math.floor((lo + hi) / 2);
+        decompose(l,r,lo,m,out);
+        decompose(l,r,m+1,hi,out);
+      }
+
+      function intervalText(p) {
+        return p[0] === p[1] ? "[" + p[0] + "]" : "[" + p[0] + ":" + p[1] + "]";
+      }
+
+      function doQuery() {
+        var x1 = read("x1",1,4), x2 = read("x2",1,4);
+        var y1 = read("y1",1,4), y2 = read("y2",1,4);
+        if (x1 > x2) { var tx = x1; x1 = x2; x2 = tx; byRole("x1").value = x1; byRole("x2").value = x2; }
+        if (y1 > y2) { var ty = y1; y1 = y2; y2 = ty; byRole("y1").value = y1; byRole("y2").value = y2; }
+        var xs = [], ys = [], rects = [], sum = 0;
+        decompose(x1,x2,1,4,xs);
+        decompose(y1,y2,1,4,ys);
+        xs.forEach(function (xi) {
+          ys.forEach(function (yi) {
+            rects.push([xi,yi]);
+            for (var x = xi[0]; x <= xi[1]; x++) for (var y = yi[0]; y <= yi[1]; y++) sum += a[x][y];
+          });
+        });
+        last = { type:"query", x1:x1, x2:x2, y1:y1, y2:y2, ux:null, uy:null, answer:sum, xCover:xs, yCover:ys, rects:rects, status:"The rectangle is decomposed into canonical x-intervals and y-intervals." };
+        render();
+      }
+
+      function doUpdate() {
+        var x = read("ux",1,4), y = read("uy",1,4), v = read("uv",-99,99);
+        a[x][y] = v;
+        last = { type:"update", x1:x, x2:x, y1:y, y2:y, ux:x, uy:y, answer:null, xCover:[], yCover:[], rects:[], status:"A point update changes one cell and recomputes the affected inner trees along the outer path." };
+        render();
+      }
+
+      function inQuery(x,y) {
+        return last.type === "query" && last.x1 <= x && x <= last.x2 && last.y1 <= y && y <= last.y2;
+      }
+
+      function renderGrid() {
+        var out = "";
+        for (var x = 1; x <= 4; x++) {
+          for (var y = 1; y <= 4; y++) {
+            var cls = "mdstv-cell";
+            if (inQuery(x,y)) cls += " mdstv-cell-query";
+            if (last.type === "update" && last.ux === x && last.uy === y) cls += " mdstv-cell-update";
+            out += '<div class="' + cls + '"><div><span class="mdstv-index">(' + x + ',' + y + ')</span><br><span class="mdstv-value">' + a[x][y] + '</span></div></div>';
+          }
+        }
+        byRole("grid").innerHTML = out;
+      }
+
+      function renderIntervals(role, list) {
+        byRole(role).innerHTML = list.length ? code(list.map(intervalText).join(", ")) : code("-");
+      }
+
+      function renderRects() {
+        if (!last.rects.length) {
+          byRole("rectangles").innerHTML = '<span class="mdstv-rect">-</span>';
+          return;
+        }
+        byRole("rectangles").innerHTML = last.rects.map(function (r) {
+          return '<span class="mdstv-rect">' + intervalText(r[0]) + ' x ' + intervalText(r[1]) + '</span>';
+        }).join("");
+      }
+
+      function render() {
+        renderGrid();
+        byRole("status").innerHTML = code(last.status);
+        renderIntervals("x-cover", last.xCover);
+        renderIntervals("y-cover", last.yCover);
+        renderRects();
+        byRole("answer").innerHTML = last.answer == null ? code("-") : code(String(last.answer));
+      }
+
+      byRole("query").addEventListener("click", doQuery);
+      byRole("update").addEventListener("click", doUpdate);
+      byRole("reset").addEventListener("click", function () {
+        a = initial.map(function (row) { return row.slice(); });
+        last = { type:"query", x1:2, x2:4, y1:2, y2:3, ux:null, uy:null, answer:null, xCover:[], yCover:[], rects:[], status:"Query a rectangle to see the product decomposition." };
+        render();
+      });
+      doQuery();
+    })();
+  </script>
+</div>

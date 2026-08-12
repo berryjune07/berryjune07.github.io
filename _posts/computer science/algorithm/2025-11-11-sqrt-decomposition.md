@@ -125,9 +125,7 @@ struct SqrtDecomposition {
 };
 ```
 
-### Example
-
-Consider calculating the remainder of the range product with modulo $p$.
+For example, consider calculating the remainder of the range product with modulo $p$.
 
 ```cpp
 int identity(){ return 1; }

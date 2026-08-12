@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1065 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1105 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   17 min
+   18 min
 </span>
 
       </span>
@@ -386,6 +386,212 @@ Therefore,</p>
 <p>\[
 \operatorname{LCA}(u,v)=\operatorname{up}[0][u].
 \]</p>
+
+<p>The interactive demo below shows the binary lifting query process on a fixed rooted tree.
+Choose two vertices and step through the depth equalization and simultaneous upward jumps.</p>
+
+<div id="lca-demo" class="lcav-root">
+  <style>
+    #lca-demo { width: 100%; max-width: 900px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
+    #lca-demo * { box-sizing: border-box; }
+    #lca-demo .lcav-controls { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #lca-demo input, #lca-demo button { min-height: 2rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; font: inherit; font-size: 0.85rem; line-height: 1; }
+    #lca-demo input { width: 4.4rem; padding: 0 0.5rem; }
+    #lca-demo button { padding: 0.45rem 0.65rem; cursor: pointer; }
+    #lca-demo button:hover { background: #e6edf5; }
+    #lca-demo button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #lca-demo .lcav-status { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #lca-demo .lcav-graph { width: 100%; padding: 0.75rem; background: #fff; overflow: hidden; }
+    #lca-demo .lcav-graph svg { display: block; width: 100%; height: auto; margin: 0 auto; }
+    #lca-demo .lcav-info { display: grid; gap: 0.45rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
+    #lca-demo .lcav-info-line { overflow-x: auto; white-space: nowrap; }
+    #lca-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #lca-demo .lcav-edge { stroke: #94a3b8; stroke-width: 2; }
+    #lca-demo .lcav-edge-active { stroke: #2563eb; stroke-width: 4; }
+    #lca-demo .lcav-node circle { fill: #f8fafc; stroke: #475569; stroke-width: 2.2; }
+    #lca-demo .lcav-node-current circle { fill: #fee2e2; stroke: #dc2626; stroke-width: 3.5; }
+    #lca-demo .lcav-node-jump circle { fill: #fef3c7; stroke: #d97706; stroke-width: 3; }
+    #lca-demo .lcav-node-answer circle { fill: #dbeafe; stroke: #2563eb; stroke-width: 4; }
+    #lca-demo .lcav-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; text-anchor: middle; pointer-events: none; }
+    #lca-demo .lcav-name { font-size: 18px; font-weight: 700; dominant-baseline: central; }
+    #lca-demo .lcav-depth { font-size: 12px; dominant-baseline: central; fill: #64748b; }
+  </style>
+
+  <div class="lcav-controls">
+    <label>u <input type="number" min="1" max="17" step="1" value="17" data-role="u"></label>
+    <label>v <input type="number" min="1" max="17" step="1" value="13" data-role="v"></label>
+    <button type="button" data-role="query">Query</button>
+    <button type="button" data-role="prev">Previous Step</button>
+    <button type="button" data-role="next">Next Step</button>
+    <button type="button" data-role="reset">Reset</button>
+    <span class="lcav-status" data-role="status"></span>
+  </div>
+  <div class="lcav-graph" data-role="graph"></div>
+  <div class="lcav-info">
+    <div class="lcav-info-line">
+<strong>Current pair:</strong> <span data-role="pair"></span>
+</div>
+    <div class="lcav-info-line">
+<strong>Operation:</strong> <span data-role="desc"></span>
+</div>
+    <div class="lcav-info-line">
+<strong>Answer:</strong> <span data-role="answer"></span>
+</div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("lca-demo");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function code(s) { return "<code>" + esc(s) + "</code>"; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+
+      var svgNS = "http://www.w3.org/2000/svg";
+      var nodes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+      var parent = {
+        1:1,
+        2:1, 3:1, 4:1,
+        5:2, 6:2, 7:3, 8:3, 9:4, 10:4,
+        11:5, 12:5, 13:6, 14:8, 15:8, 16:10,
+        17:15
+      };
+      var depth = {
+        1:0,
+        2:1, 3:1, 4:1,
+        5:2, 6:2, 7:2, 8:2, 9:2, 10:2,
+        11:3, 12:3, 13:3, 14:3, 15:3, 16:3,
+        17:4
+      };
+      var edges = [[1,2],[1,3],[1,4],[2,5],[2,6],[3,7],[3,8],[4,9],[4,10],[5,11],[5,12],[6,13],[8,14],[8,15],[10,16],[15,17]];
+      var pos = {
+        1:[450,48],
+        2:[170,142], 3:[450,142], 4:[730,142],
+        5:[95,250], 6:[245,250], 7:[370,250], 8:[530,250], 9:[665,250], 10:[805,250],
+        11:[55,352], 12:[135,352], 13:[245,352], 14:[490,352], 15:[570,352], 16:[805,352],
+        17:[570,455]
+      };
+      var LOG = 5;
+      var up = [];
+      for (var k = 0; k < LOG; k++) up[k] = {};
+      nodes.forEach(function (v) { up[0][v] = parent[v]; });
+      for (var kk = 1; kk < LOG; kk++) {
+        nodes.forEach(function (v) { up[kk][v] = up[kk - 1][up[kk - 1][v]]; });
+      }
+
+      function read(role) {
+        var input = byRole(role);
+        var x = Number(input.value);
+        if (!Number.isInteger(x) || x < 1 || x > 17) {
+          input.value = role === "u" ? 17 : 13;
+          return Number(input.value);
+        }
+        return x;
+      }
+
+      function makeState(title, u, v, active, answer) {
+        return { title:title, u:u, v:v, active:active.slice(), answer:answer || null };
+      }
+
+      function trace(u0, v0) {
+        var states = [];
+        var u = u0, v = v0;
+        states.push(makeState("Start from the two query vertices.", u, v, [u, v], null));
+        if (depth[u] < depth[v]) {
+          var tmp = u; u = v; v = tmp;
+          states.push(makeState("Swap so that `u` is not shallower than `v`.", u, v, [u, v], null));
+        }
+        var diff = depth[u] - depth[v];
+        for (var k = LOG - 1; k >= 0; k--) {
+          if (diff & (1 << k)) {
+            var old = u;
+            u = up[k][u];
+            states.push(makeState("Lift the deeper vertex by `2^" + k + "`: `" + old + " -> " + u + "`.", u, v, [old, u, v], null));
+          }
+        }
+        if (u === v) {
+          states.push(makeState("The vertices coincide after depth equalization.", u, v, [u], u));
+          return states;
+        }
+        for (var j = LOG - 1; j >= 0; j--) {
+          if (up[j][u] !== up[j][v]) {
+            var ou = u, ov = v;
+            u = up[j][u];
+            v = up[j][v];
+            states.push(makeState("Their `2^" + j + "`-th ancestors differ, so lift both vertices.", u, v, [ou, ov, u, v], null));
+          }
+        }
+        states.push(makeState("The two vertices are now different children of the LCA.", u, v, [u, v, parent[u]], parent[u]));
+        return states;
+      }
+
+      var states = trace(17, 13);
+      var index = 0;
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS, name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      function edgeActive(s, a, b) {
+        if (!s.active.length) return false;
+        return has(s.active, a) && has(s.active, b) && (parent[a] === b || parent[b] === a);
+      }
+
+      function nodeClass(s, v) {
+        if (s.answer === v) return "lcav-node lcav-node-answer";
+        if (v === s.u || v === s.v) return "lcav-node lcav-node-current";
+        if (has(s.active, v)) return "lcav-node lcav-node-jump";
+        return "lcav-node";
+      }
+
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var svg = svgEl("svg", { viewBox:"0 0 900 500", role:"img", "aria-label":"Lowest common ancestor visualizer" });
+        edges.forEach(function (e) {
+          var a = pos[e[0]], b = pos[e[1]];
+          svg.appendChild(svgEl("line", { x1:a[0], y1:a[1], x2:b[0], y2:b[1], class: edgeActive(s,e[0],e[1]) ? "lcav-edge lcav-edge-active" : "lcav-edge" }));
+        });
+        nodes.forEach(function (v) {
+          var p = pos[v], g = svgEl("g", { class:nodeClass(s,v) });
+          g.appendChild(svgEl("circle", { cx:p[0], cy:p[1], r:24 }));
+          var name = svgEl("text", { x:p[0], y:p[1] - 5, class:"lcav-name" });
+          name.textContent = String(v);
+          var dep = svgEl("text", { x:p[0], y:p[1] + 12, class:"lcav-depth" });
+          dep.textContent = "d=" + depth[v];
+          g.appendChild(name);
+          g.appendChild(dep);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+
+      function render() {
+        var s = states[index];
+        byRole("status").textContent = index + " / " + (states.length - 1);
+        byRole("pair").innerHTML = code("(" + s.u + ", " + s.v + ")");
+        byRole("desc").innerHTML = code(s.title);
+        byRole("answer").innerHTML = s.answer ? code("LCA = " + s.answer) : code("-");
+        byRole("prev").disabled = index === 0;
+        byRole("next").disabled = index === states.length - 1;
+        draw(s);
+      }
+
+      byRole("query").addEventListener("click", function () {
+        states = trace(read("u"), read("v"));
+        index = 0;
+        render();
+      });
+      byRole("prev").addEventListener("click", function () { if (index > 0) { index -= 1; render(); } });
+      byRole("next").addEventListener("click", function () { if (index < states.length - 1) { index += 1; render(); } });
+      byRole("reset").addEventListener("click", function () { index = 0; render(); });
+      render();
+    })();
+  </script>
+</div>
 
 <p>There is another general formulation using Euler tour and sparse table.
 Perform a DFS from the root and record each vertex when the DFS enters it and whenever the DFS returns to it.
@@ -720,7 +926,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/fast-fourier-transform.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/fast-fourier-transform.html" class="flip-title">Fast Fourier Transform</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/fast-fourier-transform.html" tabindex="-1"><span class="sr-only">Continue reading Fast Fourier Transform</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/fast-fourier-transform.html" class="flip-title">    <span>            Fast Fourier Transform    </span>  </a>      <time class="faded fine" datetime="2025-12-17T00:00:00+09:00">      17 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/fast-fourier-transform.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>      </ul></aside>
+                                                                                                            <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/fast-fourier-transform.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/fast-fourier-transform.html" class="flip-title">Fast Fourier Transform</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/fast-fourier-transform.html" tabindex="-1"><span class="sr-only">Continue reading Fast Fourier Transform</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/fast-fourier-transform.html" class="flip-title">    <span>            Fast Fourier Transform    </span>  </a>      <time class="faded fine" datetime="2025-12-17T00:00:00+09:00">      17 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/fast-fourier-transform.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>          <li class="h4">  <a href="/computer-science/strongly-connected-components.html" class="flip-title">    <span>            Strongly Connected Components    </span>  </a>      <time class="faded fine" datetime="2025-11-28T00:00:00+09:00">      28 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/strongly-connected-components.html"></span>  </li>      </ul></aside>
 
   
 
@@ -743,14 +949,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -779,7 +985,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1779,7 +1985,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

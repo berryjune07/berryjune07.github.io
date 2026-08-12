@@ -1,0 +1,269 @@
+{% assign viz_id = include.id | default: "dynamic-segment-tree-demo" %}
+<div id="{{ viz_id }}" class="dstv-root">
+  <style>
+    #{{ viz_id }} { width: 100%; max-width: 820px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
+    #{{ viz_id }} * { box-sizing: border-box; }
+    #{{ viz_id }} .dstv-controls { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #{{ viz_id }} input, #{{ viz_id }} button { min-height: 2rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; font: inherit; font-size: 0.85rem; line-height: 1; }
+    #{{ viz_id }} input { width: 4.4rem; padding: 0 0.5rem; }
+    #{{ viz_id }} button { padding: 0.45rem 0.65rem; cursor: pointer; }
+    #{{ viz_id }} button:hover { background: #e6edf5; }
+    #{{ viz_id }} button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #{{ viz_id }} .dstv-graph { width: 100%; padding: 0.75rem; background: #fff; overflow-x: auto; }
+    #{{ viz_id }} .dstv-graph svg { display: block; width: 100%; min-width: 900px; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .dstv-info { display: grid; gap: 0.45rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
+    #{{ viz_id }} .dstv-info-line { overflow-x: auto; white-space: nowrap; }
+    #{{ viz_id }} code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #{{ viz_id }} .dstv-edge { stroke: #94a3b8; stroke-width: 2; }
+    #{{ viz_id }} .dstv-node rect { fill: #f8fafc; stroke: #475569; stroke-width: 2; rx: 7; ry: 7; }
+    #{{ viz_id }} .dstv-node-created rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.8; }
+    #{{ viz_id }} .dstv-node-selected rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2.8; }
+    #{{ viz_id }} .dstv-node-touched rect { fill: #fef3c7; stroke: #d97706; stroke-width: 2.5; }
+    #{{ viz_id }} .dstv-node-current rect { fill: #fee2e2; stroke: #dc2626; stroke-width: 3; }
+    #{{ viz_id }} .dstv-node text { fill: #111827; font-family: Helvetica, Arial, sans-serif; text-anchor: middle; pointer-events: none; }
+    #{{ viz_id }} .dstv-interval { font-size: 11px; font-weight: 700; }
+    #{{ viz_id }} .dstv-value { font-size: 11px; }
+  </style>
+
+  <div class="dstv-controls">
+    <label>idx <input type="number" min="1" max="16" step="1" value="11" data-role="update-index"></label>
+    <label>val <input type="number" min="-99" max="99" step="1" value="7" data-role="update-value"></label>
+    <button type="button" data-role="update">Update</button>
+    <label>l <input type="number" min="1" max="16" step="1" value="3" data-role="query-left"></label>
+    <label>r <input type="number" min="1" max="16" step="1" value="12" data-role="query-right"></label>
+    <button type="button" data-role="query">Query</button>
+    <button type="button" data-role="undo">Undo</button>
+    <button type="button" data-role="reset">Reset</button>
+  </div>
+  <div class="dstv-graph" data-role="graph"></div>
+  <div class="dstv-info">
+    <div class="dstv-info-line"><strong>Status:</strong> <span data-role="status"></span></div>
+    <div class="dstv-info-line"><strong>Stored points:</strong> <span data-role="points"></span></div>
+    <div class="dstv-info-line"><strong>Allocated nodes:</strong> <span data-role="count"></span></div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById("{{ viz_id }}");
+      if (!root) return;
+      function byRole(name) { return root.querySelector('[data-role="' + name + '"]'); }
+      function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+      function code(s) { return "<code>" + esc(s) + "</code>"; }
+      function has(a,x) { return a.indexOf(x) !== -1; }
+      function add(a,x) { if (!has(a,x)) a.push(x); }
+      var svgNS = "http://www.w3.org/2000/svg";
+
+      function initial() {
+        return {
+          nodes: [{ id:0, l:1, r:16, val:0, left:null, right:null }],
+          nextId: 1,
+          points: {},
+          highlight: { created:[], touched:[], selected:[], current:[] },
+          status: "The root interval `[1:16]` is allocated. All missing children have value `0`."
+        };
+      }
+
+      function clone(s) {
+        return {
+          nodes: s.nodes.map(function (n) { return { id:n.id, l:n.l, r:n.r, val:n.val, left:n.left, right:n.right }; }),
+          nextId: s.nextId,
+          points: Object.assign({}, s.points),
+          highlight: {
+            created: s.highlight.created.slice(),
+            touched: s.highlight.touched.slice(),
+            selected: s.highlight.selected.slice(),
+            current: s.highlight.current.slice()
+          },
+          status: s.status
+        };
+      }
+
+      function node(s,id) { return s.nodes.filter(function (n) { return n.id === id; })[0]; }
+      function value(s,id) { return id == null ? 0 : node(s,id).val; }
+      function mid(n) { return Math.floor((n.l + n.r) / 2); }
+      function newNode(s,l,r,created) {
+        var id = s.nextId++;
+        s.nodes.push({ id:id, l:l, r:r, val:0, left:null, right:null });
+        add(created,id);
+        return id;
+      }
+      function ensureChild(s,n,side,created) {
+        var m = mid(n);
+        if (side === "left") {
+          if (n.left == null) n.left = newNode(s,n.l,m,created);
+          return n.left;
+        }
+        if (n.right == null) n.right = newNode(s,m+1,n.r,created);
+        return n.right;
+      }
+      function pull(s,n) { n.val = value(s,n.left) + value(s,n.right); }
+
+      function updateRec(s,id,idx,val,h) {
+        var n = node(s,id);
+        add(h.touched,id);
+        if (n.l === n.r) {
+          n.val = val;
+          add(h.current,id);
+          return;
+        }
+        var child = idx <= mid(n) ? ensureChild(s,n,"left",h.created) : ensureChild(s,n,"right",h.created);
+        updateRec(s,child,idx,val,h);
+        pull(s,n);
+      }
+
+      function queryRec(s,id,l,r,h) {
+        if (id == null) return 0;
+        var n = node(s,id);
+        if (r < n.l || n.r < l) return 0;
+        add(h.touched,id);
+        if (l <= n.l && n.r <= r) {
+          add(h.selected,id);
+          return n.val;
+        }
+        return queryRec(s,n.left,l,r,h) + queryRec(s,n.right,l,r,h);
+      }
+
+      var history = [initial()];
+
+      function read(role, lo, hi) {
+        var input = byRole(role);
+        var x = Number(input.value);
+        if (!Number.isInteger(x)) x = lo;
+        x = Math.max(lo, Math.min(hi, x));
+        input.value = x;
+        return x;
+      }
+
+      function commit(s) {
+        history.push(s);
+        render();
+      }
+
+      function doUpdate() {
+        var s = clone(history[history.length - 1]);
+        var idx = read("update-index",1,16);
+        var val = read("update-value",-99,99);
+        var h = { created:[], touched:[], selected:[], current:[] };
+        updateRec(s,0,idx,val,h);
+        s.points[idx] = val;
+        s.highlight = h;
+        s.status = "`set_point(" + idx + ", " + val + ")` creates missing nodes on the root-to-leaf path and recomputes their sums.";
+        commit(s);
+      }
+
+      function doQuery() {
+        var s = clone(history[history.length - 1]);
+        var l = read("query-left",1,16);
+        var r = read("query-right",1,16);
+        if (l > r) { var t = l; l = r; r = t; byRole("query-left").value = l; byRole("query-right").value = r; }
+        var h = { created:[], touched:[], selected:[], current:[] };
+        var ans = queryRec(s,0,l,r,h);
+        s.highlight = h;
+        s.status = "`query(" + l + ", " + r + ") = " + ans + "`. Missing children contribute the identity value `0`.";
+        commit(s);
+      }
+
+      function svgEl(name, attrs) {
+        var el = document.createElementNS(svgNS,name);
+        Object.keys(attrs || {}).forEach(function (k) { el.setAttribute(k,attrs[k]); });
+        return el;
+      }
+
+      function layout(s) {
+        var coords = {};
+        var order = 0;
+        var maxLevel = 0;
+        var xGap = 96;
+        var yGap = 78;
+        var margin = 54;
+
+        function visit(id, level) {
+          var n = node(s,id);
+          maxLevel = Math.max(maxLevel, level);
+          var children = [];
+          if (n.left != null) children.push(n.left);
+          if (n.right != null) children.push(n.right);
+
+          if (!children.length) {
+            coords[id] = { x: margin + order * xGap, y: 38 + level * yGap };
+            order += 1;
+            return;
+          }
+
+          children.forEach(function (child) { visit(child, level + 1); });
+          coords[id] = {
+            x: children.reduce(function (sum, child) { return sum + coords[child].x; }, 0) / children.length,
+            y: 38 + level * yGap
+          };
+        }
+
+        visit(0, 0);
+        return {
+          coords: coords,
+          width: Math.max(900, margin * 2 + Math.max(0, order - 1) * xGap),
+          height: Math.max(430, 78 + maxLevel * yGap)
+        };
+      }
+
+      function nodeClass(s,id) {
+        var h = s.highlight;
+        if (has(h.current,id)) return "dstv-node dstv-node-current";
+        if (has(h.created,id)) return "dstv-node dstv-node-created";
+        if (has(h.selected,id)) return "dstv-node dstv-node-selected";
+        if (has(h.touched,id)) return "dstv-node dstv-node-touched";
+        return "dstv-node";
+      }
+
+      function draw(s) {
+        var target = byRole("graph");
+        target.innerHTML = "";
+        var l = layout(s);
+        var svg = svgEl("svg", { viewBox:"0 0 " + l.width + " " + l.height, role:"img", "aria-label":"Dynamic segment tree visualizer" });
+        s.nodes.forEach(function (n) {
+          [["left", n.left], ["right", n.right]].forEach(function (p) {
+            if (p[1] == null) return;
+            var c = node(s,p[1]);
+            var pn = l.coords[n.id];
+            var pc = l.coords[c.id];
+            svg.appendChild(svgEl("line", { x1:pn.x, y1:pn.y+24, x2:pc.x, y2:pc.y-24, class:"dstv-edge" }));
+          });
+        });
+        s.nodes.forEach(function (n) {
+          var p = l.coords[n.id];
+          var x = p.x, y = p.y;
+          var g = svgEl("g", { class:nodeClass(s,n.id) });
+          g.appendChild(svgEl("rect", { x:x-34, y:y-22, width:68, height:44, rx:7, ry:7 }));
+          var a = svgEl("text", { x:x, y:y-7, class:"dstv-interval" });
+          a.textContent = "[" + n.l + ":" + n.r + "]";
+          var b = svgEl("text", { x:x, y:y+11, class:"dstv-value" });
+          b.textContent = "sum=" + n.val;
+          g.appendChild(a);
+          g.appendChild(b);
+          svg.appendChild(g);
+        });
+        target.appendChild(svg);
+      }
+
+      function pointsText(s) {
+        var keys = Object.keys(s.points).sort(function (a,b) { return Number(a) - Number(b); });
+        if (!keys.length) return "-";
+        return keys.map(function (k) { return k + ":" + s.points[k]; }).join(", ");
+      }
+
+      function render() {
+        var s = history[history.length - 1];
+        byRole("status").innerHTML = code(s.status);
+        byRole("points").innerHTML = code(pointsText(s));
+        byRole("count").innerHTML = code(String(s.nodes.length));
+        byRole("undo").disabled = history.length <= 1;
+        draw(s);
+      }
+
+      byRole("update").addEventListener("click", doUpdate);
+      byRole("query").addEventListener("click", doQuery);
+      byRole("undo").addEventListener("click", function () { if (history.length > 1) { history.pop(); render(); } });
+      byRole("reset").addEventListener("click", function () { history = [initial()]; render(); });
+      render();
+    })();
+  </script>
+</div>

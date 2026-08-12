@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,7 +278,7 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="685 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="677 words">
   <i class="fa-regular fa-hourglass-half"></i>
    11 min
 </span>
@@ -302,17 +302,9 @@
     <!--more-->
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li>
-<a href="#merge-sort-tree" id="markdown-toc-merge-sort-tree">Merge Sort Tree</a>    <ul>
-      <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
-      <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
-    </ul>
-  </li>
-  <li>
-<a href="#code" id="markdown-toc-code">Code</a>    <ul>
-      <li><a href="#example" id="markdown-toc-example">Example</a></li>
-    </ul>
-  </li>
+  <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+  <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
+  <li><a href="#code" id="markdown-toc-code">Code</a></li>
 </ul>
 
 <h2 id="introduction">Introduction</h2>
@@ -320,9 +312,7 @@
 <p>A <strong>merge sort tree</strong> is a specialized data structure that combines the properties of a segment tree with the ability to efficiently perform range queries on sorted data.
 It usually does not support updates efficiently.</p>
 
-<h2 id="merge-sort-tree">Merge Sort Tree</h2>
-
-<h3 id="explanation">Explanation</h3>
+<h2 id="explanation">Explanation</h2>
 
 <p>A merge sort tree is built on top of a segment tree, where each node contains a sorted list of elements corresponding to the segment it represents.
 The tree is constructed by recursively dividing the array into segments and merging the sorted lists of child nodes.
@@ -356,7 +346,7 @@ and $F$ only depends on the order statistics of the array.</p>
     C4 --&gt; D7; C4 --&gt; D8;
 </code></pre>
 
-<h3 id="complexity">Complexity</h3>
+<h2 id="complexity">Complexity</h2>
 
 <p>Suppose the size of the input array is $N$, it takes $O(T(N))$ time to compute the query for a segment.</p>
 
@@ -424,8 +414,6 @@ Therefore, the total time complexity for a range query is $O(T(N) \log N)$.</p>
     <span class="k">return</span> <span class="n">G</span><span class="p">(</span><span class="n">Query</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">),</span><span class="n">Query</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">nd</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div></div>
-
-<h3 id="example">Example</h3>
 
 <p>Suppose we want to count the number of elements less than or equal to a given value $K$ in a range $[L, R]$ of the array.</p>
 
@@ -601,7 +589,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                                          <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/euler-tour-technique.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/euler-tour-technique.html" class="flip-title">Euler Tour Technique</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/euler-tour-technique.html" tabindex="-1"><span class="sr-only">Continue reading Euler Tour Technique</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mos-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mos-algorithm.html" class="flip-title">Mo's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mos-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Mo's Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sqrt-decomposition.html" class="flip-title">    <span>            Sqrt Decomposition    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sqrt-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>      </ul></aside>
+                                                                                                                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/euler-tour-technique.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/euler-tour-technique.html" class="flip-title">Euler Tour Technique</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/euler-tour-technique.html" tabindex="-1"><span class="sr-only">Continue reading Euler Tour Technique</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/mos-algorithm.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/mos-algorithm.html" class="flip-title">Mo's Algorithm</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/mos-algorithm.html" tabindex="-1"><span class="sr-only">Continue reading Mo's Algorithm</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mos-algorithm.html" class="flip-title">    <span>            Mo's Algorithm    </span>  </a>      <time class="faded fine" datetime="2025-11-12T00:00:00+09:00">      12 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mos-algorithm.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sqrt-decomposition.html" class="flip-title">    <span>            Sqrt Decomposition    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sqrt-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/mertens-trick.html" class="flip-title">    <span>            Mertens Trick    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/mertens-trick.html"></span>  </li>      </ul></aside>
 
   
 
@@ -624,14 +612,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -660,7 +648,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1660,7 +1648,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

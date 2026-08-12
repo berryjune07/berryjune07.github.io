@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,7 +278,7 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1119 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1118 words">
   <i class="fa-regular fa-hourglass-half"></i>
    18 min
 </span>
@@ -421,24 +421,26 @@ a_{s+j+\ell/2}&amp;=u-v.
 
 <div id="fft-demo" class="fftv-root">
   <style>
-    #fft-demo { margin: 2rem 0; color: #1f2937; }
+    #fft-demo { width: 100%; max-width: 860px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #fft-demo * { box-sizing: border-box; }
-    #fft-demo .fftv-stack { display: grid; gap: 1rem; }
-    #fft-demo .fftv-svg-wrap { width: 100%; }
+    #fft-demo .fftv-stack { display: grid; gap: 0; }
+    #fft-demo .fftv-svg-wrap { width: 100%; padding: 0.75rem; background: #ffffff; overflow: hidden; }
     #fft-demo .fftv-svg-wrap svg { display: block; width: 100%; max-width: 860px; height: auto; margin: 0 auto; }
-    #fft-demo .fftv-status { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; line-height: 1.7; }
+    #fft-demo .fftv-status { margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #f8fafc; line-height: 1.65; }
     #fft-demo .fftv-status p { margin: 0; }
     #fft-demo code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
+    #fft-demo .fftv-toolbar { display: grid; gap: 0.55rem; padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
     #fft-demo .fftv-input-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0.4rem; }
-    #fft-demo .fftv-input-grid input { width: 100%; height: 2.25rem; border: 1px solid rgba(82,96,113,0.24); border-radius: 0.5rem; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; text-align: center; outline: none; appearance: textfield; }
-    #fft-demo .fftv-input-grid input:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
+    #fft-demo .fftv-input-grid input { width: 100%; min-height: 2rem; border: 1px solid #b9c5d6; border-radius: 6px; background: #fff; color: #1f2937; padding: 0 0.45rem; font: inherit; font-size: 0.85rem; text-align: center; outline: none; appearance: textfield; }
+    #fft-demo .fftv-input-grid input:focus { border-color: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.18); }
     #fft-demo .fftv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-    #fft-demo .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2.35rem; border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 0.5rem; padding: 0 0.85rem; font: inherit; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+    #fft-demo .fftv-actions button { appearance: none; display: inline-flex; align-items: center; justify-content: center; min-height: 2rem; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; border-radius: 6px; padding: 0.45rem 0.65rem; font: inherit; font-size: 0.85rem; line-height: 1; cursor: pointer; white-space: nowrap; }
+    #fft-demo .fftv-actions button:hover { background: #e6edf5; }
     #fft-demo .fftv-actions button:disabled { opacity: 0.45; cursor: not-allowed; }
-    #fft-demo .fftv-counter { opacity: 0.8; font-size: 0.95em; }
-    #fft-demo .fftv-info { display: grid; gap: 0.35rem; line-height: 1.7; }
+    #fft-demo .fftv-counter { margin-left: auto; color: #475569; font-size: 0.85rem; white-space: nowrap; }
+    #fft-demo .fftv-info { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; line-height: 1.65; }
     #fft-demo .fftv-line { overflow-wrap: anywhere; }
-    #fft-demo .fftv-legend { display: grid; gap: 0.35rem; font-size: 0.95em; line-height: 1.7; }
+    #fft-demo .fftv-legend { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; font-size: 0.9em; line-height: 1.55; }
     #fft-demo .fftv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #fft-demo .fftv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #fft-demo .fftv-swatch-active { background: #dbeafe; border-color: #2563eb; }
@@ -462,16 +464,19 @@ a_{s+j+\ell/2}&amp;=u-v.
   </style>
 
   <div class="fftv-stack">
+    <div class="fftv-toolbar">
+      <div class="fftv-input-grid" data-role="inputs"></div>
+      <div class="fftv-actions">
+        <button type="button" data-role="apply">Apply</button>
+        <button type="button" data-role="prev">Prev</button>
+        <button type="button" data-role="next">Step</button>
+        <button type="button" data-role="run">Run</button>
+        <button type="button" data-role="reset">Reset</button>
+        <span class="fftv-counter">Step <span data-role="counter"></span></span>
+      </div>
+    </div>
     <div class="fftv-svg-wrap" data-role="svg"></div>
     <div class="fftv-status" data-role="status"></div>
-    <div class="fftv-input-grid" data-role="inputs"></div>
-    <div class="fftv-actions">
-      <button type="button" data-role="apply">Run</button>
-      <button type="button" data-role="prev">Previous Step</button>
-      <button type="button" data-role="next">Next Step</button>
-      <button type="button" data-role="reset">Reset</button>
-      <span class="fftv-counter"><strong>Current step:</strong> <span data-role="counter"></span></span>
-    </div>
     <div class="fftv-info">
       <div class="fftv-line">
 <strong>Block length:</strong> <span data-role="length"></span>
@@ -656,6 +661,7 @@ a_{s+j+\ell/2}&amp;=u-v.
       var defaults = [3, 1, 4, 1, 5, 9, 2, 6];
       var states = makeStates(defaults);
       var index = 0;
+      var timer = null;
 
       function svgEl(name, attrs) {
         var el = document.createElementNS(svgNS, name);
@@ -763,10 +769,12 @@ a_{s+j+\ell/2}&amp;=u-v.
         byRole("twiddle").innerHTML = "<code>" + esc(state.twiddle) + "</code>";
         byRole("prev").disabled = index === 0;
         byRole("next").disabled = index === states.length - 1;
+        byRole("run").textContent = timer ? "Pause" : "Run";
         draw(state);
       }
 
       function recompute() {
+        stopRun();
         states = makeStates(readValues());
         index = 0;
         render();
@@ -778,23 +786,54 @@ a_{s+j+\ell/2}&amp;=u-v.
         recompute();
       }
 
+      function stopRun() {
+        if (timer) clearInterval(timer);
+        timer = null;
+        var button = byRole("run");
+        if (button) button.textContent = "Run";
+      }
+
+      function stepForward() {
+        if (index >= states.length - 1) {
+          stopRun();
+          return false;
+        }
+        index += 1;
+        render();
+        if (index >= states.length - 1) stopRun();
+        return true;
+      }
+
+      function toggleRun() {
+        if (timer) {
+          stopRun();
+          return;
+        }
+        if (index >= states.length - 1) {
+          index = 0;
+          render();
+        }
+        timer = setInterval(stepForward, 720);
+        byRole("run").textContent = "Pause";
+      }
+
       function start() {
         if (root.dataset.initialized === "true") return;
         root.dataset.initialized = "true";
         makeInputs();
         byRole("apply").addEventListener("click", recompute);
         byRole("prev").addEventListener("click", function () {
+          stopRun();
           if (index > 0) {
             index -= 1;
             render();
           }
         });
         byRole("next").addEventListener("click", function () {
-          if (index < states.length - 1) {
-            index += 1;
-            render();
-          }
+          stopRun();
+          stepForward();
         });
+        byRole("run").addEventListener("click", toggleRun);
         byRole("reset").addEventListener("click", reset);
         render();
       }
@@ -962,7 +1001,7 @@ The input length must be a power of two.</p>
 
 <p>The recursive implementation follows the even-odd decomposition directly.</p>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">fft_recursive</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">fft</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">invert</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
     <span class="k">if</span><span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
 
@@ -972,8 +1011,8 @@ The input length must be a power of two.</p>
         <span class="n">a1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
     <span class="p">}</span>
 
-    <span class="n">fft_recursive</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
-    <span class="n">fft_recursive</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
+    <span class="n">fft</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
+    <span class="n">fft</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">invert</span><span class="p">);</span>
 
     <span class="kt">double</span> <span class="n">ang</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">PI</span> <span class="o">/</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">invert</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">cd</span> <span class="n">w</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">wn</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">ang</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">ang</span><span class="p">));</span>
@@ -996,7 +1035,9 @@ The input length must be a power of two.</p>
 
 <p>Polynomial multiplication is obtained by evaluating both polynomials, multiplying values pointwise, and interpolating by the inverse FFT.</p>
 
-<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">multiply</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="n">ll</span> <span class="o">=</span> <span class="kt">long</span> <span class="kt">long</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">multiply</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">vector</span><span class="o">&lt;</span><span class="n">cd</span><span class="o">&gt;</span> <span class="n">fa</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">a</span><span class="p">.</span><span class="n">end</span><span class="p">()),</span> <span class="n">fb</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">b</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
     <span class="kt">int</span> <span class="n">need</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">b</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -1009,7 +1050,7 @@ The input length must be a power of two.</p>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">fb</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
     <span class="n">fft</span><span class="p">(</span><span class="n">fa</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
 
-    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">long</span> <span class="kt">long</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="n">need</span><span class="p">);</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">ll</span><span class="o">&gt;</span> <span class="n">res</span><span class="p">(</span><span class="n">need</span><span class="p">);</span>
     <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">need</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">llround</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">real</span><span class="p">());</span>
     <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
@@ -1201,7 +1242,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/binary-search.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/binary-search.html" class="flip-title">Binary Search</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/binary-search.html" tabindex="-1"><span class="sr-only">Continue reading Binary Search</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/binary-search.html" class="flip-title">    <span>            Binary Search    </span>  </a>      <time class="faded fine" datetime="2026-02-17T00:00:00+09:00">      17 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/binary-search.html"></span>  </li>          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>      </ul></aside>
+                                                                                                      <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/binary-search.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/binary-search.html" class="flip-title">Binary Search</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/binary-search.html" tabindex="-1"><span class="sr-only">Continue reading Binary Search</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/heavy-light-decomposition.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">Heavy-Light Decomposition</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/heavy-light-decomposition.html" tabindex="-1"><span class="sr-only">Continue reading Heavy-Light Decomposition</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/binary-search.html" class="flip-title">    <span>            Binary Search    </span>  </a>      <time class="faded fine" datetime="2026-02-17T00:00:00+09:00">      17 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/binary-search.html"></span>  </li>          <li class="h4">  <a href="/computer-science/heavy-light-decomposition.html" class="flip-title">    <span>            Heavy-Light Decomposition    </span>  </a>      <time class="faded fine" datetime="2026-02-12T00:00:00+09:00">      12 Feb 2026    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/heavy-light-decomposition.html"></span>  </li>          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>      </ul></aside>
 
   
 
@@ -1224,14 +1265,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -1260,7 +1301,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -2260,7 +2301,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

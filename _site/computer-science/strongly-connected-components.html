@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-05-16T03:49:41+09:00',
+    INDEX_KEY: 'index--2026-08-13T00:22:33+09:00',
   };
 }(window);</script>
 
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1515 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1983 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   25 min
+   33 min
 </span>
 
       </span>
@@ -305,6 +305,7 @@
   <li>
 <a href="#kosarajus-algorithm" id="markdown-toc-kosarajus-algorithm">Kosaraju’s Algorithm</a>    <ul>
       <li><a href="#explanation" id="markdown-toc-explanation">Explanation</a></li>
+      <li><a href="#proof-of-correctness" id="markdown-toc-proof-of-correctness">Proof of Correctness</a></li>
       <li><a href="#complexity" id="markdown-toc-complexity">Complexity</a></li>
       <li><a href="#code" id="markdown-toc-code">Code</a></li>
     </ul>
@@ -312,6 +313,7 @@
   <li>
 <a href="#tarjans-algorithm" id="markdown-toc-tarjans-algorithm">Tarjan’s Algorithm</a>    <ul>
       <li><a href="#explanation-1" id="markdown-toc-explanation-1">Explanation</a></li>
+      <li><a href="#proof-of-correctness-1" id="markdown-toc-proof-of-correctness-1">Proof of Correctness</a></li>
       <li><a href="#complexity-1" id="markdown-toc-complexity-1">Complexity</a></li>
       <li><a href="#code-1" id="markdown-toc-code-1">Code</a></li>
     </ul>
@@ -481,6 +483,26 @@ $ \text{SCC} = \Set{ \Set{A,B,C}, \Set{D}, \Set{E,F} } $
     classDef s2 fill:#9ec,stroke:#333,stroke-width:2px;
     classDef s3 fill:#8df,stroke:#333,stroke-width:2px;
 </code></pre>
+
+<h3 id="proof-of-correctness">Proof of Correctness</h3>
+
+<p><em>Proof.</em>
+Contract every strongly connected component into a single vertex.
+The resulting condensation graph is a DAG.
+If there were a directed cycle among components, then all components on the cycle would be mutually reachable and should have formed one larger SCC.</p>
+
+<p>In the first DFS of Kosaraju’s Algorithm, vertices are ordered by decreasing finishing time.
+Consider an edge from component $C$ to component $D$ in the condensation graph.
+There is no path from $D$ back to $C$.
+Thus the finishing time of $C$ is larger than the finishing time of $D$ in the component-level DFS order.
+Therefore the first unassigned vertex popped from the stack always belongs to a source component of the remaining condensation graph.</p>
+
+<p>After transposing the graph, this source component becomes a sink component.
+A DFS from any vertex in it cannot leave the component in the transposed graph, because that would correspond to an incoming edge to the source component in the original remaining condensation graph.
+Since all vertices inside the component are mutually reachable, the DFS visits exactly that SCC.</p>
+
+<p>Repeating this process removes one SCC at a time.
+Hence every reported set is exactly one strongly connected component, and all components are eventually reported.</p>
 
 <h3 id="complexity">Complexity</h3>
 
@@ -658,6 +680,26 @@ $ \text{Stack} = () \nl \text{Time} = (1,2,5,6,3,4) \nl \text{Low} = (1,1,1,6,3,
 $ \text{SCC} = \Set{ \Set{A,B,C}, \Set{D}, \Set{E,F} } $
 </center>
 <p><br></p>
+
+<h3 id="proof-of-correctness-1">Proof of Correctness</h3>
+
+<p><em>Proof.</em>
+During Tarjan’s DFS, <code class="language-plaintext highlighter-rouge">time[u]</code> is the discovery time of $u$.
+The value <code class="language-plaintext highlighter-rouge">low[u]</code> is the smallest discovery time reachable from $u$ by using zero or more tree edges followed by at most one edge to a vertex still on the stack.
+The stack contains exactly the vertices whose SCC has not yet been determined.</p>
+
+<p>If DFS explores an unvisited vertex $v$ from $u$, then every vertex reachable through that tree edge is accounted for by <code class="language-plaintext highlighter-rouge">low[v]</code>, so <code class="language-plaintext highlighter-rouge">low[u]</code> is updated by <code class="language-plaintext highlighter-rouge">low[v]</code>.
+If an edge goes from $u$ to a vertex $v$ still on the stack, then $u$ can reach an unfinished ancestor or unfinished vertex in the same active region, so <code class="language-plaintext highlighter-rouge">low[u]</code> is updated by <code class="language-plaintext highlighter-rouge">time[v]</code>.
+Edges to vertices already removed from the stack are ignored because their SCCs are already closed and cannot merge with the current active component.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">low[u] = time[u]</code>, no vertex in the DFS subtree of $u$ can reach a proper ancestor of $u$ through unfinished vertices.
+Thus $u$ is the root of one SCC.
+All vertices above $u$ on the stack can reach $u$ through DFS-tree paths and can be reached from $u$ by the paths that kept their low-link values inside this root.
+They form exactly one strongly connected component.</p>
+
+<p>If <code class="language-plaintext highlighter-rouge">low[u] &lt; time[u]</code>, then $u$ can reach an earlier unfinished vertex, so its SCC is not closed yet.
+Therefore a component is popped exactly when its root is found.
+Since each vertex is pushed once and popped once, all and only the SCCs are reported.</p>
 
 <h3 id="complexity-1">Complexity</h3>
 
@@ -887,7 +929,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                                                  <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/lowest-common-ancestor.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">Lowest Common Ancestor</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/lowest-common-ancestor.html" tabindex="-1"><span class="sr-only">Continue reading Lowest Common Ancestor</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/sparse-table.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/sparse-table.html" class="flip-title">Sparse Table</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/sparse-table.html" tabindex="-1"><span class="sr-only">Continue reading Sparse Table</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>          <li class="h4">  <a href="/computer-science/topological-sorting.html" class="flip-title">    <span>            Topological Sorting    </span>  </a>      <time class="faded fine" datetime="2025-11-27T00:00:00+09:00">      27 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/topological-sorting.html"></span>  </li>          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>      </ul></aside>
+                                                                                                                        <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/lowest-common-ancestor.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">Lowest Common Ancestor</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/lowest-common-ancestor.html" tabindex="-1"><span class="sr-only">Continue reading Lowest Common Ancestor</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/sparse-table.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/sparse-table.html" class="flip-title">Sparse Table</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/sparse-table.html" tabindex="-1"><span class="sr-only">Continue reading Sparse Table</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/lowest-common-ancestor.html" class="flip-title">    <span>            Lowest Common Ancestor    </span>  </a>      <time class="faded fine" datetime="2025-11-30T00:00:00+09:00">      30 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/lowest-common-ancestor.html"></span>  </li>          <li class="h4">  <a href="/computer-science/sparse-table.html" class="flip-title">    <span>            Sparse Table    </span>  </a>      <time class="faded fine" datetime="2025-11-29T00:00:00+09:00">      29 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/sparse-table.html"></span>  </li>          <li class="h4">  <a href="/computer-science/topological-sorting.html" class="flip-title">    <span>            Topological Sorting    </span>  </a>      <time class="faded fine" datetime="2025-11-27T00:00:00+09:00">      27 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/topological-sorting.html"></span>  </li>          <li class="h4">  <a href="/computer-science/euler-tour-technique.html" class="flip-title">    <span>            Euler Tour Technique    </span>  </a>      <time class="faded fine" datetime="2025-11-26T00:00:00+09:00">      26 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/euler-tour-technique.html"></span>  </li>      </ul></aside>
 
   
 
@@ -910,14 +952,14 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
         let giscusAttributes = {
           "src": "https://giscus.app/client.js",
           "data-repo": "berryjune07/berryjune07.github.io",
-          "data-repo-id": "",
+          "data-repo-id": "R_kgDOIzH5VQ",
           "data-category": "General",
-          "data-category-id": "",
+          "data-category-id": "DIC_kwDOIzH5Vc4CUUyX",
           "data-mapping": "pathname",
           "data-strict": "0",
-          "data-reactions-enabled": "",
+          "data-reactions-enabled": "1",
           "data-emit-metadata": "0",
-          "data-input-position": "",
+          "data-input-position": "top",
           "data-theme": "light",
           "data-lang": "en",
           "data-loading": "lazy",
@@ -946,7 +988,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     </script>
     -->
 
-    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="" data-category="General" data-category-id="" data-mapping="pathname" data-strict="0" data-reactions-enabled="" data-emit-metadata="0" data-input-position="" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+    <script src="https://giscus.app/client.js" data-repo="berryjune07/berryjune07.github.io" data-repo-id="R_kgDOIzH5VQ" data-category="General" data-category-id="DIC_kwDOIzH5Vc4CUUyX" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
     </script>
   
 
@@ -1946,7 +1988,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     <div class="nav-btn">
       <span class="icon-search"></span>
     </div>
-    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Build with JEKYLL_ENV=production to enable search.">
+    <input id="_search-input" type="search" class="form-control form-control-lg nav-btn" placeholder="Type something…">
     <button type="reset" class="nav-btn no-hover">
       <span class="sr-only">Close</span>
       <span class="icon-cross"></span>

@@ -1,0 +1,227 @@
+<div id="trie-visualizer" class="trv-panel">
+  <div class="trv-toolbar">
+    <select data-role="word" aria-label="Word">
+      <option value="to">to</option>
+      <option value="tea">tea</option>
+      <option value="ted">ted</option>
+      <option value="ten">ten</option>
+      <option value="in">in</option>
+      <option value="inn">inn</option>
+    </select>
+    <button type="button" data-action="insert">Insert</button>
+    <button type="button" data-action="search">Search</button>
+    <button type="button" data-action="reset">Reset</button>
+    <span class="trv-status" data-role="status"></span>
+  </div>
+  <canvas aria-label="Trie visualizer"></canvas>
+</div>
+
+<style>
+  .trv-panel {
+    width: 100%;
+    max-width: 760px;
+    margin: 1.25rem auto;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    background: #f8fafc;
+    overflow: hidden;
+  }
+
+  .trv-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem;
+    border-bottom: 1px solid #d8dee8;
+    background: #eef3f8;
+  }
+
+  .trv-toolbar button,
+  .trv-toolbar select {
+    min-height: 2rem;
+    border: 1px solid #b9c5d6;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font: inherit;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .trv-toolbar button {
+    cursor: pointer;
+  }
+
+  .trv-toolbar button:hover {
+    background: #e6edf5;
+  }
+
+  .trv-status {
+    margin-left: auto;
+    color: #475569;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .trv-panel canvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #ffffff;
+  }
+</style>
+
+<script>
+(() => {
+  const root = document.getElementById("trie-visualizer");
+  if (!root) return;
+
+  const canvas = root.querySelector("canvas");
+  const ctx = canvas.getContext("2d");
+  const status = root.querySelector("[data-role='status']");
+  const wordInput = root.querySelector("[data-role='word']");
+  const buttons = root.querySelectorAll("button[data-action]");
+
+  let nodes = [];
+  let activePath = [];
+  let activeEdges = [];
+  let mode = "empty";
+
+  function makeNode(depth, label) {
+    return {children: {}, term: 0, pass: 0, depth, label, x: 0, y: 0};
+  }
+
+  function reset() {
+    nodes = [makeNode(0, "root")];
+    activePath = [0];
+    activeEdges = [];
+    mode = "empty";
+    draw();
+  }
+
+  function insert(word) {
+    let v = 0;
+    nodes[v].pass++;
+    activePath = [0];
+    activeEdges = [];
+    for (const ch of word) {
+      if (nodes[v].children[ch] === undefined) {
+        nodes[v].children[ch] = nodes.length;
+        nodes.push(makeNode(nodes[v].depth + 1, ch));
+      }
+      const u = nodes[v].children[ch];
+      activeEdges.push(v + "-" + u);
+      v = u;
+      nodes[v].pass++;
+      activePath.push(v);
+    }
+    nodes[v].term++;
+    mode = "insert " + word;
+    draw();
+  }
+
+  function search(word) {
+    let v = 0;
+    activePath = [0];
+    activeEdges = [];
+    for (const ch of word) {
+      if (nodes[v].children[ch] === undefined) {
+        mode = "missing " + word;
+        draw();
+        return;
+      }
+      const u = nodes[v].children[ch];
+      activeEdges.push(v + "-" + u);
+      v = u;
+      activePath.push(v);
+    }
+    mode = nodes[v].term > 0 ? "found " + word : "prefix only " + word;
+    draw();
+  }
+
+  function fitCanvas() {
+    const ratio = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.max(1, Math.floor(rect.width * ratio));
+    canvas.height = Math.max(1, Math.floor(rect.height * ratio));
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    draw();
+  }
+
+  function layout(rect) {
+    const levels = new Map();
+    nodes.forEach((node, i) => {
+      if (!levels.has(node.depth)) levels.set(node.depth, []);
+      levels.get(node.depth).push(i);
+    });
+    const maxDepth = Math.max(...nodes.map(n => n.depth), 1);
+    levels.forEach((ids, depth) => {
+      ids.forEach((id, k) => {
+        nodes[id].x = rect.width * (k + 1) / (ids.length + 1);
+        nodes[id].y = 48 + depth * ((rect.height - 96) / maxDepth);
+      });
+    });
+  }
+
+  function drawText(text, x, y, color, size) {
+    ctx.fillStyle = color;
+    ctx.font = `${size}px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x, y);
+  }
+
+  function draw() {
+    if (!nodes.length) return;
+    const rect = canvas.getBoundingClientRect();
+    layout(rect);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+
+    nodes.forEach((node, i) => {
+      Object.entries(node.children).forEach(([ch, j]) => {
+        const child = nodes[j];
+        const key = i + "-" + j;
+        ctx.strokeStyle = activeEdges.includes(key) ? "#2563eb" : "#94a3b8";
+        ctx.lineWidth = activeEdges.includes(key) ? 3 : 1.6;
+        ctx.beginPath();
+        ctx.moveTo(node.x, node.y);
+        ctx.lineTo(child.x, child.y);
+        ctx.stroke();
+        drawText(ch, (node.x + child.x) / 2, (node.y + child.y) / 2 - 8, "#475569", 13);
+      });
+    });
+
+    nodes.forEach((node, i) => {
+      const active = activePath.includes(i);
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, 22, 0, Math.PI * 2);
+      ctx.fillStyle = active ? "#dbeafe" : "#f8fafc";
+      if (node.term > 0) ctx.fillStyle = active ? "#bfdbfe" : "#fef3c7";
+      ctx.strokeStyle = active ? "#2563eb" : "#475569";
+      ctx.lineWidth = active ? 3 : 2;
+      ctx.fill();
+      ctx.stroke();
+      drawText(i === 0 ? "root" : node.label, node.x, node.y - 5, "#0f172a", i === 0 ? 11 : 15);
+      drawText("p" + node.pass + " t" + node.term, node.x, node.y + 10, "#64748b", 10);
+    });
+
+    status.textContent = mode;
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const word = wordInput.value;
+      const action = button.dataset.action;
+      if (action === "insert") insert(word);
+      if (action === "search") search(word);
+      if (action === "reset") reset();
+    });
+  });
+
+  reset();
+  new ResizeObserver(fitCanvas).observe(canvas);
+  fitCanvas();
+})();
+</script>

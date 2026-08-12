@@ -50,6 +50,49 @@ C\to E\to C
 
 has total weight $-7+(-13)=-20$.
 
+## Proof of Correctness
+
+Let $\delta_k(v)$ be the minimum weight of a path from the source $s$ to $v$ among all paths using at most $k$ edges.
+If no such path exists, let $\delta_k(v)=\infty$.
+After the $k$-th full relaxation pass, the Bellman--Ford distance satisfies
+
+\\[
+d[v]\le \delta_k(v)
+\\]
+
+for every vertex $v$.
+In fact, if there is no reachable negative cycle, equality holds for shortest paths with at most $k$ edges.
+
+_Proof._
+For $k=0$, only the source is reachable with zero edges, and the initialization gives
+
+\\[
+d[s]=0,\qquad d[v]=\infty\quad (v\ne s).
+\\]
+
+Assume the statement after $k-1$ passes.
+Let a shortest path with at most $k$ edges to $v$ end with the edge $u\to v$.
+Then the prefix path to $u$ has at most $k-1$ edges.
+By the induction hypothesis, after $k-1$ passes the value $d[u]$ is at most the weight of this prefix.
+During the next full pass, relaxing $u\to v$ gives
+
+\\[
+d[v]\le d[u]+w(u,v)\le \delta_k(v).
+\\]
+
+Since every relaxation only assigns the weight of an actual source-to-vertex walk, the distances cannot become smaller than the best such walk with the allowed number of edges unless a negative cycle permits indefinitely decreasing walks.
+Thus after $k$ passes, the distances represent the best paths using at most $k$ edges.
+
+If there is no reachable negative cycle, every shortest path can be chosen simple.
+A simple path in a graph with $V$ vertices uses at most $V-1$ edges.
+Therefore after $V-1$ passes, all shortest distances have been found.
+
+Finally, suppose a relaxation is still possible on the $V$-th pass.
+Then there exists a source-to-vertex walk of smaller weight using at least $V$ edges.
+Such a walk repeats a vertex and therefore contains a cycle.
+Removing a nonnegative cycle cannot improve the walk, so the repeated part must contain a negative cycle reachable from the source.
+Conversely, if a reachable negative cycle exists and can reach some vertex, distances along walks going around the cycle keep decreasing, so some relaxation remains possible.
+
 ## Complexity
 
 The time complexity of the Bellman--Ford algorithm is $O(VE)$, where $V$ is the number of vertices and $E$ is the number of edges in the graph.

@@ -1,7 +1,7 @@
 ---
 sitemap: false
 ---
-{% unless site.hydejack.no_search or jekyll.environment == 'development' %}
+{% unless site.hydejack.no_search %}
 {% assign pages = site.html_pages | where_exp:"page","page.sitemap != false" %}
 {% assign docs = site.documents | where_exp:"doc","doc.sitemap != false" %}
 {

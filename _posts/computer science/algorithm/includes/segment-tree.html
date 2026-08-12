@@ -1,21 +1,22 @@
 {% assign viz_id = include.id | default: "segment-tree-demo" %}
 <div id="{{ viz_id }}" class="stv-root">
   <style>
-    #{{ viz_id }} { margin: 2rem 0; color: #1f2937; }
+    #{{ viz_id }} { width: 100%; max-width: 780px; margin: 1.25rem auto; border: 1px solid #d8dee8; border-radius: 8px; background: #f8fafc; color: #1f2937; overflow: hidden; }
     #{{ viz_id }} * { box-sizing: border-box; }
-    #{{ viz_id }} .stv-stack { display: grid; gap: 1rem; }
-    #{{ viz_id }} .stv-graph { width: 100%; overflow-x: auto; padding: 0.25rem 0; }
-    #{{ viz_id }} .stv-graph svg { display: block; width: min(100%, 780px); min-width: 620px; height: auto; margin: 0 auto; }
-    #{{ viz_id }} .stv-status-text { margin: 0; padding: 0.85rem 1rem; border: 1px solid rgba(82,96,113,0.18); border-radius: 0.55rem; background: #f8fafc; color: #1f2937; line-height: 1.7; }
+    #{{ viz_id }} .stv-stack { display: grid; gap: 0; }
+    #{{ viz_id }} .stv-graph { width: 100%; padding: 0.75rem; background: #ffffff; overflow: hidden; }
+    #{{ viz_id }} .stv-graph svg { display: block; width: 100%; max-width: 780px; height: auto; margin: 0 auto; }
+    #{{ viz_id }} .stv-status-text { margin: 0; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #f8fafc; color: #1f2937; line-height: 1.65; }
     #{{ viz_id }} .stv-status-text p { margin: 0; }
     #{{ viz_id }} .stv-status-text code { padding: 0.08rem 0.38rem; border-radius: 0.35rem; background: rgba(148,163,184,0.14); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.94em; }
-    #{{ viz_id }} .stv-controls-shell { overflow-x: auto; padding-bottom: 0.1rem; }
-    #{{ viz_id }} .stv-controls { display: flex; flex-wrap: nowrap; align-items: center; gap: 0.5rem; min-width: max-content; }
+    #{{ viz_id }} .stv-controls-shell { padding: 0.65rem; border-bottom: 1px solid #d8dee8; background: #eef3f8; }
+    #{{ viz_id }} .stv-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
     #{{ viz_id }} .stv-controls > * { flex: 0 0 auto; margin: 0; vertical-align: middle; }
-    #{{ viz_id }} .stv-controls input[type="number"], #{{ viz_id }} .stv-controls button { height: 2.35rem; border-radius: 0.5rem; font: inherit; line-height: 1.2; box-sizing: border-box; }
-    #{{ viz_id }} .stv-controls input[type="number"] { width: 6rem; min-width: 0; border: 1px solid rgba(82,96,113,0.24); background: #fff; color: #1f2937; padding: 0 0.75rem; outline: none; appearance: textfield; }
-    #{{ viz_id }} .stv-controls input[type="number"]:focus { border-color: rgba(31,41,55,0.45); box-shadow: 0 0 0 3px rgba(31,41,55,0.08); }
-    #{{ viz_id }} .stv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; border: 1px solid currentColor; background: transparent; color: inherit; padding: 0 0.85rem; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .stv-controls input[type="number"], #{{ viz_id }} .stv-controls button { min-height: 2rem; border-radius: 6px; font: inherit; font-size: 0.85rem; line-height: 1; box-sizing: border-box; }
+    #{{ viz_id }} .stv-controls input[type="number"] { width: 4.6rem; min-width: 0; border: 1px solid #b9c5d6; background: #fff; color: #1f2937; padding: 0 0.5rem; outline: none; appearance: textfield; }
+    #{{ viz_id }} .stv-controls input[type="number"]:focus { border-color: #64748b; box-shadow: 0 0 0 3px rgba(100,116,139,0.18); }
+    #{{ viz_id }} .stv-controls button { appearance: none; display: inline-flex; align-items: center; justify-content: center; border: 1px solid #b9c5d6; background: #ffffff; color: #1f2937; padding: 0.45rem 0.65rem; cursor: pointer; white-space: nowrap; }
+    #{{ viz_id }} .stv-controls button:hover { background: #e6edf5; }
     #{{ viz_id }} .stv-controls button:disabled { opacity: 0.45; cursor: not-allowed; }
     #{{ viz_id }} .stv-edge { stroke: #64748b; stroke-width: 2; }
     #{{ viz_id }} .stv-node rect { fill: #f8fafc; stroke: #475569; stroke-width: 2; rx: 7; ry: 7; }
@@ -32,7 +33,7 @@
     #{{ viz_id }} .stv-array-cell-range rect { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
     #{{ viz_id }} .stv-array-cell .stv-array-value { font-size: 14px; font-weight: 700; dominant-baseline: central; }
     #{{ viz_id }} .stv-array-cell .stv-array-index { font-size: 11px; dominant-baseline: central; opacity: 0.8; }
-    #{{ viz_id }} .stv-legend { margin-top: 0.25rem; font-size: 0.95em; line-height: 1.7; }
+    #{{ viz_id }} .stv-legend { display: grid; gap: 0.35rem; padding: 0.75rem 0.85rem; border-top: 1px solid #d8dee8; background: #ffffff; font-size: 0.9em; line-height: 1.55; }
     #{{ viz_id }} .stv-legend-item { display: flex; gap: 0.55rem; align-items: center; }
     #{{ viz_id }} .stv-swatch { width: 0.95rem; height: 0.95rem; border-radius: 999px; flex: 0 0 auto; border: 2px solid transparent; }
     #{{ viz_id }} .stv-swatch-current { background: #fee2e2; border-color: #dc2626; }
@@ -42,8 +43,6 @@
   </style>
 
   <div class="stv-stack">
-    <div class="stv-graph" data-role="graph"></div>
-    <div class="stv-status-text" data-role="status-text"></div>
     <div class="stv-controls-shell">
       <div class="stv-controls">
         <input type="number" min="1" max="8" step="1" value="5" aria-label="Update index" title="Update index" data-role="update-index">
@@ -56,6 +55,8 @@
         <button type="button" data-role="reset-btn">Reset</button>
       </div>
     </div>
+    <div class="stv-graph" data-role="graph"></div>
+    <div class="stv-status-text" data-role="status-text"></div>
     <div class="stv-legend">
       <div class="stv-legend-item"><span class="stv-swatch stv-swatch-current"></span> Leaf changed by the active update</div>
       <div class="stv-legend-item"><span class="stv-swatch stv-swatch-selected"></span> Recomputed node or canonical cover node</div>
