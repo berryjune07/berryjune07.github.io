@@ -30,6 +30,7 @@ function render_KaTeX() {
             "\\norm": "\\lVert #1 \\rVert",
             "\\card": "\\abs{#1}",
             "\\span": "\\operatorname{span}",
+            "\\rank": "\\operatorname{rank}",
             "\\cross": "\\times",
             "\\supp": "\\operatorname{supp}",
             "\\sech": "\\operatorname{sech}",

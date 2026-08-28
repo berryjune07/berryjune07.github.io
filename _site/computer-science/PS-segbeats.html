@@ -19,22 +19,22 @@
   
     
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>[BOJ 32240] 비로소 서로소 | Jiho’s Blog</title>
+<title>PS: Segment Tree Beats | Jiho’s Blog</title>
 <meta name="generator" content="Jekyll v3.9.2">
-<meta property="og:title" content="[BOJ 32240] 비로소 서로소">
+<meta property="og:title" content="PS: Segment Tree Beats">
 <meta name="author" content="Jiho Jun">
 <meta property="og:locale" content="en">
-<meta name="description" content="https://www.acmicpc.net/problem/32240">
-<meta property="og:description" content="https://www.acmicpc.net/problem/32240">
-<link rel="canonical" href="http://localhost:4000/computer-science/boj32240.html">
-<meta property="og:url" content="http://localhost:4000/computer-science/boj32240.html">
+<meta name="description" content="noting down my thoughts and experiences">
+<meta property="og:description" content="noting down my thoughts and experiences">
+<link rel="canonical" href="http://localhost:4000/computer-science/PS-segbeats.html">
+<meta property="og:url" content="http://localhost:4000/computer-science/PS-segbeats.html">
 <meta property="og:site_name" content="Jiho’s Blog">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2025-11-11T00:00:00+09:00">
+<meta property="article:published_time" content="2026-07-29T00:00:00+09:00">
 <meta name="twitter:card" content="summary">
-<meta property="twitter:title" content="[BOJ 32240] 비로소 서로소">
+<meta property="twitter:title" content="PS: Segment Tree Beats">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2025-11-11T00:00:00+09:00","datePublished":"2025-11-11T00:00:00+09:00","description":"https://www.acmicpc.net/problem/32240","headline":"[BOJ 32240] 비로소 서로소","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/boj32240.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/boj32240.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Jiho Jun"},"dateModified":"2026-07-29T00:00:00+09:00","datePublished":"2026-07-29T00:00:00+09:00","description":"noting down my thoughts and experiences","headline":"PS: Segment Tree Beats","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/computer-science/PS-segbeats.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/berry.jpg"},"name":"Jiho Jun"},"url":"http://localhost:4000/computer-science/PS-segbeats.html"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -65,7 +65,7 @@
 
 
 
-<link rel="alternate" href="http://localhost:4000/computer-science/boj32240.html" hreflang="en">
+<link rel="alternate" href="http://localhost:4000/computer-science/PS-segbeats.html" hreflang="en">
 
 <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Jiho's Blog">
 
@@ -129,7 +129,7 @@
   w._search = {
     DATA_URL: '/assets/sitedata.json?no-cache',
     STORAGE_KEY: 'mini-search/',
-    INDEX_KEY: 'index--2026-08-13T01:01:56+09:00',
+    INDEX_KEY: 'index--2026-08-29T03:45:48+09:00',
   };
 }(window);</script>
 
@@ -219,7 +219,7 @@
       <li>
         
           <span>/</span>
-          <span>boj32240.html</span>
+          <span>PS-segbeats.html</span>
         
       </li>
     
@@ -237,11 +237,11 @@
 
 
 
-<article id="post-computer-science-boj32240" class="page post mb6" role="article">
+<article id="post-computer-science-PS-segbeats" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
-        [BOJ 32240] 비로소 서로소
+        PS: Segment Tree Beats
         
       
     </h1>
@@ -249,7 +249,7 @@
     <div class="post-date">
       
       <span class="ellipsis mr1">
-        <time datetime="2025-11-11T00:00:00+09:00">11 Nov 2025</time> in <a href="/computer-science/" class="flip-title">Computer Science</a> on <a href="/tag-problem-solving/" class="flip-title">Problem Solving</a>
+        <time datetime="2026-07-29T00:00:00+09:00">29 Jul 2026</time> in <a href="/computer-science/" class="flip-title">Computer Science</a> on <a href="/tag-problem-solving/" class="flip-title">Problem Solving</a>
       </span>
       
         
@@ -258,7 +258,7 @@
       <span class="additional-info" style="font-size:1rem">
           <!--
         <span class="page-pv">
-          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/computer-science/boj32240.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
+          <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http://localhost:4000/computer-science/PS-segbeats.html&count_bg=%23000000&title_bg=%23000000&icon=openstreetmap.svg&icon_color=%23E7E7E7&title=Views&edge_flat=false"/>
         </span>
           -->
         ·
@@ -278,9 +278,9 @@
 
 
 <!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="383 words">
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="10 words">
   <i class="fa-regular fa-hourglass-half"></i>
-   6 min
+   1 min
 </span>
 
       </span>
@@ -299,91 +299,19 @@
   </header>
 
   
-    <p><a href="https://www.acmicpc.net/problem/32240">https://www.acmicpc.net/problem/32240</a></p>
-
-<!--more-->
+    <!--more-->
 <ul id="markdown-toc">
-  <li><a href="#task" id="markdown-toc-task">Task</a></li>
-  <li><a href="#solution" id="markdown-toc-solution">Solution</a></li>
-  <li><a href="#optimization" id="markdown-toc-optimization">Optimization</a></li>
+  <li><a href="#boj-14899-%EC%88%98%EC%97%B4%EA%B3%BC-%EC%BF%BC%EB%A6%AC-19" id="markdown-toc-boj-14899-수열과-쿼리-19">[BOJ 14899] 수열과 쿼리 19</a></li>
 </ul>
 
-<h2 id="task">Task</h2>
-
-<p>Compute:</p>
-
-<p>\[
-\sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) [\gcd(i,j) = 1]
-\]</p>
-
-<p>for given integer $N$.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Computing directly would take more than $O(N^2)$ time, which is too slow for large $N$.
-Instead, we transform the sum as follows:</p>
-
-<p>\[
-\begin{align*}
-&amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) [\gcd(i,j) = 1] \nl
-=&amp; \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d | \gcd(i,j)} \mu(d)
-= \sum_{i=1}^{N} \sum_{j=1}^{N} (i+j) \sum_{d=1}^{\min(i,j)} \mu(d) [d | i] [d | j] \nl
-=&amp; \sum_{d=1}^{N} \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (di + dj)
-= \sum_{d=1}^{N} d \mu(d) \sum_{i=1}^{\lfloor N/d \rfloor} \sum_{j=1}^{\lfloor N/d \rfloor} (i + j) \nl
-=&amp; \sum_{d=1}^{N} d \mu(d) \left\lfloor \frac{N}{d} \right\rfloor^2 \left( \left\lfloor \frac{N}{d} \right\rfloor + 1 \right)
-\end{align*}
-\]</p>
-
-<p>Computing this transformed sum takes $O(N \log \log N)$ time to precompute the Möbius function values and $O(N)$ time to
-compute the final sum. However, this is not enough for the given constraints.</p>
-
-<h2 id="optimization">Optimization</h2>
-
-<p>Let’s optimize the summation by grouping terms with the same value of $\left\lfloor \frac{N}{d} \right\rfloor$.
-Denote $d_0 = 1$ and $a_i = \left\lfloor \frac{N}{d_i} \right\rfloor$.</p>
-
-<p>\[
-d_{i+1} = \left\lfloor \frac{N}{a_i} \right\rfloor + 1
-\]</p>
-
-<p>Then, we can rewrite the sum as follows:</p>
-
-<p>\[
-\sum_{i:d_i \le N} \left( \sum_{j=d_i}^{d_{i+1}-1} d \mu(d) \right) a_i^2 (a_i + 1)
-\]</p>
-
-<p>This reduces the number of terms in the summation to $O(\sqrt{N})$.
-Next, we have to efficiently compute the inner sum $\sum_{j=d_i}^{d_{i+1}-1} d \mu(d)$.
-Precomputing $\mu(d)$ naively takes $O(N \log \log N)$ time, which is still too slow.
-Instead, we can use the <a href="/computer-science/mertens-trick.html"><strong>Mertens trick</strong></a> to compute the inner sum in $O\left(N^{2/3}\right)$ time.
-Let $f(n) = n \mu(n)$ and we should compute $S_f(n)$ quickly.
-We should find a function $g(n)$ such that $S_g(n)$ and $S_{f * g}(n)$ can be computed in almost $O(1)$ time.
-We can choose $g = \text{Id}$, so that $f * g = \varepsilon$.
-Then, we have:</p>
-
-<p>\[
-\begin{align*}
-S_f(n) &amp;= \frac{1}{g(1)} \left( S_{f * g}(n) - \sum_{i:2\le d_i \le n} S_f\left( a_i \right) \left( S_g(d_{i+1}-1) - S_g(d_i-1) \right) \right) \nl
-&amp;= 1 - \sum_{i:2\le d_i \le n} S_f\left( a_i \right)
-\frac{(d_{i+1}-1)d_{i+1}-d_i(d_i-1)}{2}
-\end{align*}
-\]</p>
-
-<p>Using memoization, we can compute $S_f(n)$ in $O\left(N^{2/3}\right)$ time.
-The final sum is written as:</p>
-
-<p>\[
-\sum_{i:d_i \le N} \left( S_f(d_{i+1}-1) - S_f(d_i-1) \right) a_i^2 (a_i + 1)
-\]</p>
-
-<p>The overall time complexity is $O\left(N^{2/3}+\sqrt{N}\right)=O\left(N^{2/3}\right)$, which is efficient enough for the given constraints.</p>
+<h2 id="boj-14899-수열과-쿼리-19"><a href="https://www.acmicpc.net/problem/14899">[BOJ 14899] 수열과 쿼리 19</a></h2>
 
   
 </article>
 
 
 
-<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/computer-science/boj32240.html">
+<applause-button class="mb6" color="rgb(0,174,239)" url="http://localhost:4000/computer-science/PS-segbeats.html">
   </applause-button>
 
 
@@ -531,7 +459,7 @@ Please check my <a href="/resume/">Resume</a> to find out more about me!<br></p>
     
 
 
-                                    <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/boj22849.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/boj22849.html" class="flip-title">[BOJ 22849] 수식 알아맞히기 퀴즈 게임</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/boj22849.html" tabindex="-1"><span class="sr-only">Continue reading [BOJ 22849] 수식 알아맞히기 퀴즈 게임</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/boj19549.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/boj19549.html" class="flip-title">[BOJ 19549] 레이저 연구소</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/boj19549.html" tabindex="-1"><span class="sr-only">Continue reading [BOJ 19549] 레이저 연구소</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/boj22849.html" class="flip-title">    <span>            [BOJ 22849] 수식 알아맞히기 퀴즈 게임    </span>  </a>      <time class="faded fine" datetime="2025-12-16T00:00:00+09:00">      16 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/boj22849.html"></span>  </li>          <li class="h4">  <a href="/computer-science/boj19549.html" class="flip-title">    <span>            [BOJ 19549] 레이저 연구소    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/boj19549.html"></span>  </li>          <li class="h4">  <a href="/computer-science/boj16164.html" class="flip-title">    <span>            [BOJ 16164] Möbius Madness    </span>  </a>      <time class="faded fine" datetime="2025-11-11T00:00:00+09:00">      11 Nov 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/boj16164.html"></span>  </li>      </ul></aside>
+                              <!--<aside class="other-projects related mb0" role="complementary">  <h2>Related Posts</h2>  <div class="columns">          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/boj26194.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/boj26194.html" class="flip-title">[BOJ 26194] Money Laundering</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/boj26194.html" tabindex="-1"><span class="sr-only">Continue reading [BOJ 26194] Money Laundering</span></a></article>              </div>          <div class="column column-1-2">                  <article class="project-card">  <a href="/computer-science/boj7139-rank.html" class="no-hover no-print-link flip-project" tabindex="-1">    <div class="project-card-img aspect-ratio sixteen-nine fallback-img">          </div>  </a>  <h3 class="project-card-title flip-project-title">    <a href="/computer-science/boj7139-rank.html" class="flip-title">[BOJ 7139] Toll</a>  </h3>      <a class="fill-card no-hover" href="/computer-science/boj7139-rank.html" tabindex="-1"><span class="sr-only">Continue reading [BOJ 7139] Toll</span></a></article>              </div>      </div></aside>--><aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">          <li class="h4">  <a href="/computer-science/boj26194.html" class="flip-title">    <span>            [BOJ 26194] Money Laundering    </span>  </a>      <time class="faded fine" datetime="2025-12-06T00:00:00+09:00">      06 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/boj26194.html"></span>  </li>          <li class="h4">  <a href="/computer-science/boj7139-rank.html" class="flip-title">    <span>            [BOJ 7139] Toll    </span>  </a>      <time class="faded fine" datetime="2025-12-04T00:00:00+09:00">      04 Dec 2025    </time>        <span class="clap-count" data-url="http://localhost:4000/computer-science/boj7139-rank.html"></span>  </li>      </ul></aside>
 
   
 

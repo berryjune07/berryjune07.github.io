@@ -900,28 +900,6 @@
       "url": "/computer-science/convex-hull-algorithm.html"
     },{
       
-      "title": "[BOJ 1865] 웜홀",
-      "date": "2025-07-26 00:00:00 +0900",
-      
-      "content": "https://www.acmicpc.net/problem/1865\n\n\n",
-      "categories": ["computer-science"],
-      "tags": ["problem-solving"],
-      
-      "collection": "posts",
-      "url": "/computer-science/boj1865.html"
-    },{
-      
-      "title": "[BOJ 28399] 황혼",
-      "date": "2025-07-26 00:00:00 +0900",
-      
-      "content": "https://www.acmicpc.net/problem/28399\n\n\n",
-      "categories": ["computer-science"],
-      "tags": ["problem-solving"],
-      
-      "collection": "posts",
-      "url": "/computer-science/boj28399.html"
-    },{
-      
       "title": "Conditional Distributions and Independence",
       "date": "2025-07-27 00:00:00 +0900",
       
@@ -1288,7 +1266,7 @@
       "title": "[BOJ 13714] 약수의 개수",
       "date": "2025-11-03 00:00:00 +0900",
       
-      "content": "https://www.acmicpc.net/problem/13714\n\n\n\n  Task\n  Solution\n  Complexity\n\n\nTask\n\nCompute:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk)\n\\]\n\nfor given integers $a$, $b$, and $c$, where $\\tau(n)$ is the number of divisors of $n$.\n\nSolution\n\nComputing directly is inefficient.\nInstead, we observe that:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) = \n\\sum_{m=1}^{ab} \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } }\n\\sum_{k=1}^{c} \\tau(mk)\n\\]\n\nDenote:\n\n\\[\nf(m) = \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } } \\nl\nS(m) = \\sum_{k=1}^{c} \\tau(mk)\n\\]\n\nThen, we have:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) = \n\\sum_{m=1}^{ab} f(m) S(m)\n\\]\n\nComputing $f(m)$ up to $ab$ can be done naively in $O(ab)$ time.\nLet’s focus on computing $S(m)$ efficiently.\n\n\\[\nS(m) = \\sum_{k=1}^{c} \\sum_{t | mk} 1 = \\sum_{t=1}^{mc} \\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; t | mk } }\n\\]\n\nLet’s denote $u=\\gcd(t,m)$ and $t=us, m=uq$.\nThen, $t | mk$ is equivalent to $s | k$.\nThus, we have:\n\n\\[\n\\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; t | mk } } =\n\\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; s | k } } = \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nTherefore, we can rewrite $S(m)$ as:\n\n\\[\nS(m) = \\sum_{q | m} \\sum_{\\substack{1 \\leq s \\leq c \\nl \\gcd(s,q) = 1}} \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nLet’s denote:\n\n\\[\nG(q) = \\sum_{\\substack{1 \\leq s \\leq c \\nl \\gcd(s,q) = 1}} \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nThen, we have:\n\n\\[\nS(m) = \\sum_{q | m} G(q)\n\\]\n\nNow we need to compute $G(q)$ efficiently. Using the property of the Mobius function, we have:\n\n\\[\n\\begin{align*}\nG(q) &amp;= \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor [\\gcd(s,q) = 1] \\nl\n&amp;= \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor \\sum_{d | \\gcd(s,q)} \\mu(d) \\nl\n&amp;= \\sum_{d | q} \\mu(d) \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor [d | s] \\nl\n&amp;= \\sum_{d | q} \\mu(d) \\sum_{s^\\prime=1}^{\\left\\lfloor c/d \\right\\rfloor} \\left\\lfloor \\frac{c}{d s^\\prime} \\right\\rfloor\n\\end{align*}\n\\]\n\nThe inner sum only depends on $d$, so let’s denote it as $A(d)$.\nSummarizing, we have:\n\n\\[\n\\begin{align*}\nf(m) &amp;= \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } } \\nl\nA(d) &amp;= \\sum_{s^\\prime=1}^{\\left\\lfloor c/d \\right\\rfloor} \\left\\lfloor \\frac{c}{d s^\\prime} \\right\\rfloor \\nl\nG(q) &amp;= \\sum_{d | q} \\mu(d) A(d) \\nl\nS(m) &amp;= \\sum_{q | m} G(q) \\nl\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) &amp;= \n\\sum_{m=1}^{ab} f(m) S(m)\n\\end{align*}\n\\]\n\nComplexity\n\nPrecomputing the Mobius function up to $ab$ can be done in $O(ab \\log \\log ab)$ time using a sieve method.\nComputing $f(m)$ up to $ab$ takes $O(ab)$ time.\nComputing $A(d)$ up to $c$ takes $O(c \\log c)$ time.\nComputing $G(q)$ up to $ab$ takes $O(ab \\log c)$ time.\nComputing $S(m)$ up to $ab$ takes $O(ab \\log ab)$ time.\nFinally, computing the final sum takes $O(ab)$ time.\nConstraints are given as $1 \\leq a, b, c \\leq N$.\nThus, the overall time complexity is:\n\n\\[\nO\\left( N^2 \\log N \\right)\n\\]\n\nThis is efficient enough for the given constraints.\n",
+      "content": "[BOJ 13714] 약수의 개수\n\n\n\n  Task\n  Solution\n  Complexity\n\n\nTask\n\nCompute:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk)\n\\]\n\nfor given integers $a$, $b$, and $c$, where $\\tau(n)$ is the number of divisors of $n$.\n\nSolution\n\nComputing directly is inefficient.\nInstead, we observe that:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) = \n\\sum_{m=1}^{ab} \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } }\n\\sum_{k=1}^{c} \\tau(mk)\n\\]\n\nDenote:\n\n\\[\nf(m) = \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } } \\nl\nS(m) = \\sum_{k=1}^{c} \\tau(mk)\n\\]\n\nThen, we have:\n\n\\[\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) = \n\\sum_{m=1}^{ab} f(m) S(m)\n\\]\n\nComputing $f(m)$ up to $ab$ can be done naively in $O(ab)$ time.\nLet’s focus on computing $S(m)$ efficiently.\n\n\\[\nS(m) = \\sum_{k=1}^{c} \\sum_{t | mk} 1 = \\sum_{t=1}^{mc} \\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; t | mk } }\n\\]\n\nLet’s denote $u=\\gcd(t,m)$ and $t=us, m=uq$.\nThen, $t | mk$ is equivalent to $s | k$.\nThus, we have:\n\n\\[\n\\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; t | mk } } =\n\\abs{ \\Set{ k | 1 \\leq k \\leq c, \\; s | k } } = \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nTherefore, we can rewrite $S(m)$ as:\n\n\\[\nS(m) = \\sum_{q | m} \\sum_{\\substack{1 \\leq s \\leq c \\nl \\gcd(s,q) = 1}} \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nLet’s denote:\n\n\\[\nG(q) = \\sum_{\\substack{1 \\leq s \\leq c \\nl \\gcd(s,q) = 1}} \\left\\lfloor \\frac{c}{s} \\right\\rfloor\n\\]\n\nThen, we have:\n\n\\[\nS(m) = \\sum_{q | m} G(q)\n\\]\n\nNow we need to compute $G(q)$ efficiently. Using the property of the Mobius function, we have:\n\n\\[\n\\begin{align*}\nG(q) &amp;= \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor [\\gcd(s,q) = 1] \\nl\n&amp;= \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor \\sum_{d | \\gcd(s,q)} \\mu(d) \\nl\n&amp;= \\sum_{d | q} \\mu(d) \\sum_{s=1}^{c} \\left\\lfloor \\frac{c}{s} \\right\\rfloor [d | s] \\nl\n&amp;= \\sum_{d | q} \\mu(d) \\sum_{s^\\prime=1}^{\\left\\lfloor c/d \\right\\rfloor} \\left\\lfloor \\frac{c}{d s^\\prime} \\right\\rfloor\n\\end{align*}\n\\]\n\nThe inner sum only depends on $d$, so let’s denote it as $A(d)$.\nSummarizing, we have:\n\n\\[\n\\begin{align*}\nf(m) &amp;= \\abs{ \\Set{ (i,j) | 1 \\leq i \\leq a, \\; 1 \\leq j \\leq b, \\; ij = m } } \\nl\nA(d) &amp;= \\sum_{s^\\prime=1}^{\\left\\lfloor c/d \\right\\rfloor} \\left\\lfloor \\frac{c}{d s^\\prime} \\right\\rfloor \\nl\nG(q) &amp;= \\sum_{d | q} \\mu(d) A(d) \\nl\nS(m) &amp;= \\sum_{q | m} G(q) \\nl\n\\sum_{i=1}^{a}\\sum_{j=1}^{b}\\sum_{k=1}^{c} \\tau(ijk) &amp;= \n\\sum_{m=1}^{ab} f(m) S(m)\n\\end{align*}\n\\]\n\nComplexity\n\nPrecomputing the Mobius function up to $ab$ can be done in $O(ab \\log \\log ab)$ time using a sieve method.\nComputing $f(m)$ up to $ab$ takes $O(ab)$ time.\nComputing $A(d)$ up to $c$ takes $O(c \\log c)$ time.\nComputing $G(q)$ up to $ab$ takes $O(ab \\log c)$ time.\nComputing $S(m)$ up to $ab$ takes $O(ab \\log ab)$ time.\nFinally, computing the final sum takes $O(ab)$ time.\nConstraints are given as $1 \\leq a, b, c \\leq N$.\nThus, the overall time complexity is:\n\n\\[\nO\\left( N^2 \\log N \\right)\n\\]\n\nThis is efficient enough for the given constraints.\n",
       "categories": ["computer-science"],
       "tags": ["problem-solving"],
       
@@ -1299,7 +1277,7 @@
       "title": "[BOJ 1792] 공약수",
       "date": "2025-11-03 00:00:00 +0900",
       
-      "content": "https://www.acmicpc.net/problem/1792\n\n\n\n  Task\n  Solution\n  Optimization\n\n\nTask\n\nCompute:\n\n\\[\n\\abs{ \\Set{ (x,y) | 1 \\leq x \\leq a, \\; 1 \\leq y \\leq b, \\; \\gcd(x,y) = c } }\n\\]\n\nfor $N$ queries $(a,b,c)$.\n\nSolution\n\n\\[\n\\Set{ (x,y) | 1 \\leq x \\leq a, \\; 1 \\leq y \\leq b, \\; \\gcd(x,y) = c } \\nl\n= \\Set{ (x^\\prime, y^\\prime) | 1 \\leq x^\\prime \\leq \\left\\lfloor a/c \\right\\rfloor, \\; 1 \\leq y^\\prime \\leq \\left\\lfloor b/c \\right\\rfloor, \\; \\gcd(x^\\prime,y^\\prime) = 1 }\n\\]\n\nDenote $A = \\left\\lfloor a/c \\right\\rfloor$ and $B = \\left\\lfloor b/c \\right\\rfloor$.\n\nSince $\\sum_{d | n} \\mu(d) = [n = 1]$, we have:\n\n\\[\n\\sum_{d | \\gcd(x^\\prime,y^\\prime)} \\mu(d) = [\\gcd(x^\\prime,y^\\prime) = 1]\n\\]\n\nThus:\n\n\\[\n\\begin{align*}\n&amp; \\abs{ \\Set{ (x^\\prime, y^\\prime) | 1 \\leq x^\\prime \\leq A, \\; 1 \\leq y^\\prime \\leq B, \\; \\gcd(x^\\prime,y^\\prime) = 1 } } \\nl\n= &amp; \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} [\\gcd(x^\\prime,y^\\prime) = 1]\n= \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} \\sum_{d | \\gcd(x^\\prime,y^\\prime)} \\mu(d) \\nl\n= &amp; \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} \\sum_{d \\ge 1} \\mu(d) [d | x^\\prime ] [d | y^\\prime ] \\nl\n= &amp; \\sum_{d \\ge 1} \\mu(d) \\sum_{x^\\prime=1}^{A} [d | x^\\prime] \\sum_{y^\\prime=1}^{B} [d | y^\\prime ]\n= \\sum_{d \\ge 1} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor \\nl\n= &amp; \\sum_{d=1}^{\\min(A,B)} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor\n\\end{align*}\n\\]\n\nTherefore, the answer for each query is:\n\n\\[\n\\sum_{d=1}^{\\min(A,B)} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor\n\\]\n\nOptimization\n\nPrecomputing the Mobius function up to $\\text{MAX}$ can be done in $O(\\text{MAX} \\log \\log \\text{MAX})$ time using a sieve method.\nIf we compute each query naively, the time complexity is:\n\n\\[\nO\\left( N \\min(A,B) \\right)\n\\]\n\nand this is too slow. To optimize, we can group the terms with the same value of $\\left\\lfloor A/d \\right\\rfloor$ and $\\left\\lfloor B/d \\right\\rfloor$.\nLet $p(d) = \\left\\lfloor A/d \\right\\rfloor$ and $q(d) = \\left\\lfloor B/d \\right\\rfloor$.\nDenote $d_0 = 1$ and let $d_1, \\ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.\nRelation between $d_i$ and $d_{i+1}$ is:\n\n\\[\nd_{i+1} = \\min\\left( \\left\\lfloor \\frac{A}{p(d_i)} \\right\\rfloor, \\; \\left\\lfloor \\frac{B}{q(d_i)} \\right\\rfloor \\right) + 1\n\\]\n\nIf we denote $M(n) = \\sum_{k=1}^{n} \\mu(k)$, then the answer can be computed as:\n\n\\[\n\\sum_{i: d_i \\leq \\min(A,B)} \\left( M(d_{i+1}-1) - M(d_i-1) \\right) p(d_i) q(d_i)\n\\]\n\nThe complexity of this approach is:\n\n\\[\nO\\left( N \\sqrt{\\min(A,B)} \\right)\n\\]\n\nThis is efficient enough for the given constraints.\n",
+      "content": "[BOJ 1792] 공약수\n\n\n\n  Task\n  Solution\n  Optimization\n\n\nTask\n\nCompute:\n\n\\[\n\\abs{ \\Set{ (x,y) | 1 \\leq x \\leq a, \\; 1 \\leq y \\leq b, \\; \\gcd(x,y) = c } }\n\\]\n\nfor $N$ queries $(a,b,c)$.\n\nSolution\n\n\\[\n\\Set{ (x,y) | 1 \\leq x \\leq a, \\; 1 \\leq y \\leq b, \\; \\gcd(x,y) = c } \\nl\n= \\Set{ (x^\\prime, y^\\prime) | 1 \\leq x^\\prime \\leq \\left\\lfloor a/c \\right\\rfloor, \\; 1 \\leq y^\\prime \\leq \\left\\lfloor b/c \\right\\rfloor, \\; \\gcd(x^\\prime,y^\\prime) = 1 }\n\\]\n\nDenote $A = \\left\\lfloor a/c \\right\\rfloor$ and $B = \\left\\lfloor b/c \\right\\rfloor$.\n\nSince $\\sum_{d | n} \\mu(d) = [n = 1]$, we have:\n\n\\[\n\\sum_{d | \\gcd(x^\\prime,y^\\prime)} \\mu(d) = [\\gcd(x^\\prime,y^\\prime) = 1]\n\\]\n\nThus:\n\n\\[\n\\begin{align*}\n&amp; \\abs{ \\Set{ (x^\\prime, y^\\prime) | 1 \\leq x^\\prime \\leq A, \\; 1 \\leq y^\\prime \\leq B, \\; \\gcd(x^\\prime,y^\\prime) = 1 } } \\nl\n= &amp; \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} [\\gcd(x^\\prime,y^\\prime) = 1]\n= \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} \\sum_{d | \\gcd(x^\\prime,y^\\prime)} \\mu(d) \\nl\n= &amp; \\sum_{x^\\prime=1}^{A} \\sum_{y^\\prime=1}^{B} \\sum_{d \\ge 1} \\mu(d) [d | x^\\prime ] [d | y^\\prime ] \\nl\n= &amp; \\sum_{d \\ge 1} \\mu(d) \\sum_{x^\\prime=1}^{A} [d | x^\\prime] \\sum_{y^\\prime=1}^{B} [d | y^\\prime ]\n= \\sum_{d \\ge 1} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor \\nl\n= &amp; \\sum_{d=1}^{\\min(A,B)} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor\n\\end{align*}\n\\]\n\nTherefore, the answer for each query is:\n\n\\[\n\\sum_{d=1}^{\\min(A,B)} \\mu(d) \\left\\lfloor \\frac{A}{d} \\right\\rfloor \\left\\lfloor \\frac{B}{d} \\right\\rfloor\n\\]\n\nOptimization\n\nPrecomputing the Mobius function up to $\\text{MAX}$ can be done in $O(\\text{MAX} \\log \\log \\text{MAX})$ time using a sieve method.\nIf we compute each query naively, the time complexity is:\n\n\\[\nO\\left( N \\min(A,B) \\right)\n\\]\n\nand this is too slow. To optimize, we can group the terms with the same value of $\\left\\lfloor A/d \\right\\rfloor$ and $\\left\\lfloor B/d \\right\\rfloor$.\nLet $p(d) = \\left\\lfloor A/d \\right\\rfloor$ and $q(d) = \\left\\lfloor B/d \\right\\rfloor$.\nDenote $d_0 = 1$ and let $d_1, \\ldots$ be the values of $d$ such that $p(d)$ or $q(d)$ changes.\nRelation between $d_i$ and $d_{i+1}$ is:\n\n\\[\nd_{i+1} = \\min\\left( \\left\\lfloor \\frac{A}{p(d_i)} \\right\\rfloor, \\; \\left\\lfloor \\frac{B}{q(d_i)} \\right\\rfloor \\right) + 1\n\\]\n\nIf we denote $M(n) = \\sum_{k=1}^{n} \\mu(k)$, then the answer can be computed as:\n\n\\[\n\\sum_{i: d_i \\leq \\min(A,B)} \\left( M(d_{i+1}-1) - M(d_i-1) \\right) p(d_i) q(d_i)\n\\]\n\nThe complexity of this approach is:\n\n\\[\nO\\left( N \\sqrt{\\min(A,B)} \\right)\n\\]\n\nThis is efficient enough for the given constraints.\n",
       "categories": ["computer-science"],
       "tags": ["problem-solving"],
       
@@ -1329,37 +1307,15 @@
       "url": "/computer-science/sqrt-decomposition.html"
     },{
       
-      "title": "[BOJ 16164] Möbius Madness",
+      "title": "PS: Mertens Trick",
       "date": "2025-11-11 00:00:00 +0900",
       
-      "content": "https://www.acmicpc.net/problem/16164\n\n\n\n  Task\n  Solution\n\n\nTask\n\nCompute:\n\n\\[\n\\sum_{d=1}^{N} \\mu(Ld) \\left\\lfloor \\frac{N}{d} \\right\\rfloor^{K}\n\\]\n\nfor given integers $N$, $K$, and $L$.\n\nSolution\n\nFirst, we observe that if $\\mu(L) = 0$, the entire sum becomes zero.\nThus, we only need to consider the case where $\\mu(L) \\neq 0$.\nIn this case, we can factor out $\\mu(L)$ from the sum:\n\n\\[\n\\mu(L) \\sum_{d=1}^{N} \\frac{\\mu(Ld)}{\\mu(L)} \\left\\lfloor \\frac{N}{d} \\right\\rfloor^{K}\n\\]\n\nLet’s denote as:\n\n\\[\n\\mu_L(d) = \\frac{\\mu(Ld)}{\\mu(L)} = \\mu(d) [ \\gcd(d, L) = 1 ]\n\\]\n\nThen, our task reduces to computing:\n\n\\[\n\\mu(L) \\sum_{i:d_i \\le N} \\left( S_{\\mu_L}(d_{i+1}-1) - S_{\\mu_L}(d_i - 1) \\right) a_i^{K}\n\\]\n\nwhere $d_0 = 1$, $a_i = \\left\\lfloor \\frac{N}{d_i} \\right\\rfloor$, and $d_{i+1} = \\left\\lfloor \\frac{N}{a_i} \\right\\rfloor + 1$.\nTo compute this efficiently, we need to find a way to compute $S_{\\mu_L}(n) = \\sum_{i=1}^{n} \\mu_L(i)$ quickly.\nLet’s use the Mertens trick.\nWe can verify that $\\mu_L(d)$ is a multiplicative function.\nSpecifically, for a prime $p$:\n\n  If $p | L$, then $\\mu_L(p) = 0$.\n  If $p \\nmid L$, then $\\mu_L(p) = -1$\n  $\\mu_L(1) = 1$\n  $\\mu_L(p^k) = 0$ for $k \\ge 2$.\n\n\nRemining that $\\mu_L * 1$ is also multiplicative, we have:\n\n\\[\n(\\mu_L * 1)(n) = \\prod_{p^k | n} (1 + \\mu_L(p))\n\\]\n\nLet’s denote $P(n) = \\Set{p \\in \\mathbb{P} | p | n}$.\nThen, we can express $(\\mu_L * 1)(n)$ as:\n\n\\[\n(\\mu_L * 1)(n) = [ P(n) \\subseteq P(L) ]\n\\]\n\nThus, the recursion for $S_{\\mu_L}(n)$ becomes:\n\n\\[\n\\begin{align*}\nS_{\\mu_L}(n) &amp;= \\frac{1}{1(1)} \\left( S_{\\mu_L * 1}(n) - \\sum_{i:2\\le d_i \\le n} S_{\\mu_L}(a_i) \\left( S_1(d_{i+1}-1) - S_1(d_i-1) \\right) \\right) \\nl\n&amp;= S_{\\mu_L * 1}(n) - \\sum_{i:2\\le d_i \\le n} S_{\\mu_L}(a_i) \\left( d_{i+1}-d_i \\right)\n\\end{align*}\n\\]\n\nWe need to compute $S_{\\mu_L * 1}(n)$ efficiently.\n\n\\[\nS_{\\mu_L * 1}(n) = \\sum_{i=1}^{n} [ P(i) \\subseteq P(L) ]\n\\]\n\nwhich counts the integers up to $n$ whose prime factors are all in $P(L)$.\nWe can compute this using a depth-first search (DFS) approach.\nStarting from 1, we can multiply by each prime in $P(L)$ and generate all valid integers up to $n$.\n\n\\[\nV = \\Set{ n \\le N | P(n) \\subseteq P(L) }\n\\]\n\nAfter generating these integers, counting integers less than or equal to $n$ can be done using binary search.\nHere, we can estimate as $|V| = O\\left((\\log N)^{c}\\right)$ for some small constant $c$.\nComputing $S_{\\mu_L * 1}$ at each step takes $O(\\log |V|) = O(\\log \\log N)$ time due to binary search.\nPrecomputing $S_{\\mu_L}(n)$ up to $M$ takes $O(M \\log \\log M)$ time.\nThus, the overall time complexity for computing $S_{\\mu_L}(N)$ becomes:\n\n\\[\nO\\left( M \\log \\log M + \\frac{2N}{\\sqrt{M}} + \\frac{N}{M} \\log \\log N \\right)\n\\]\n\nChoosing $M \\approx N^{2/3}$ balances the terms, leading to an optimized complexity of:\n\n\\[\nO\\left( N^{2/3} \\log \\log N \\right)\n\\]\n\nFactorizing $L$ requires $O(L^{1/4})$ time using Pollard’s rho algorithm.\nConducting the DFS takes $O(|V| \\cdot |P(L)|) &lt; O\\left((\\log N)^{c} \\log L\\right)$ time.\nCalculating the final sum takes $O(\\sqrt{N} \\log K)$ time.\nThus, the overall time complexity is:\n\n\\[\nO\\left( N^{2/3} \\log \\log N + L^{1/4} + (\\log N)^c \\log L + \\sqrt{N} \\log K \\right)\n\\]\n\nwhich is efficient enough for the given constraints.\n",
+      "content": "\n\n  [BOJ 16164] Möbius Madness    \n      Task\n      Solution\n    \n  \n  [BOJ 19549] 레이저 연구소    \n      Task\n      Solution\n    \n  \n  [BOJ 32240] 비로소 서로소    \n      Task\n      Solution\n      Optimization\n    \n  \n\n\n[BOJ 16164] Möbius Madness\n\nTask\n\nCompute:\n\n\\[\n\\sum_{d=1}^{N} \\mu(Ld) \\left\\lfloor \\frac{N}{d} \\right\\rfloor^{K}\n\\]\n\nfor given integers $N$, $K$, and $L$.\n\nSolution\n\nFirst, we observe that if $\\mu(L) = 0$, the entire sum becomes zero.\nThus, we only need to consider the case where $\\mu(L) \\neq 0$.\nIn this case, we can factor out $\\mu(L)$ from the sum:\n\n\\[\n\\mu(L) \\sum_{d=1}^{N} \\frac{\\mu(Ld)}{\\mu(L)} \\left\\lfloor \\frac{N}{d} \\right\\rfloor^{K}\n\\]\n\nLet’s denote as:\n\n\\[\n\\mu_L(d) = \\frac{\\mu(Ld)}{\\mu(L)} = \\mu(d) [ \\gcd(d, L) = 1 ]\n\\]\n\nThen, our task reduces to computing:\n\n\\[\n\\mu(L) \\sum_{i:d_i \\le N} \\left( S_{\\mu_L}(d_{i+1}-1) - S_{\\mu_L}(d_i - 1) \\right) a_i^{K}\n\\]\n\nwhere $d_0 = 1$, $a_i = \\left\\lfloor \\frac{N}{d_i} \\right\\rfloor$, and $d_{i+1} = \\left\\lfloor \\frac{N}{a_i} \\right\\rfloor + 1$.\nTo compute this efficiently, we need to find a way to compute $S_{\\mu_L}(n) = \\sum_{i=1}^{n} \\mu_L(i)$ quickly.\nLet’s use the Mertens trick.\nWe can verify that $\\mu_L(d)$ is a multiplicative function.\nSpecifically, for a prime $p$:\n\n  If $p | L$, then $\\mu_L(p) = 0$.\n  If $p \\nmid L$, then $\\mu_L(p) = -1$\n  $\\mu_L(1) = 1$\n  $\\mu_L(p^k) = 0$ for $k \\ge 2$.\n\n\nRemining that $\\mu_L * 1$ is also multiplicative, we have:\n\n\\[\n(\\mu_L * 1)(n) = \\prod_{p^k | n} (1 + \\mu_L(p))\n\\]\n\nLet’s denote $P(n) = \\Set{p \\in \\mathbb{P} | p | n}$.\nThen, we can express $(\\mu_L * 1)(n)$ as:\n\n\\[\n(\\mu_L * 1)(n) = [ P(n) \\subseteq P(L) ]\n\\]\n\nThus, the recursion for $S_{\\mu_L}(n)$ becomes:\n\n\\[\n\\begin{align*}\nS_{\\mu_L}(n) &amp;= \\frac{1}{1(1)} \\left( S_{\\mu_L * 1}(n) - \\sum_{i:2\\le d_i \\le n} S_{\\mu_L}(a_i) \\left( S_1(d_{i+1}-1) - S_1(d_i-1) \\right) \\right) \\nl\n&amp;= S_{\\mu_L * 1}(n) - \\sum_{i:2\\le d_i \\le n} S_{\\mu_L}(a_i) \\left( d_{i+1}-d_i \\right)\n\\end{align*}\n\\]\n\nWe need to compute $S_{\\mu_L * 1}(n)$ efficiently.\n\n\\[\nS_{\\mu_L * 1}(n) = \\sum_{i=1}^{n} [ P(i) \\subseteq P(L) ]\n\\]\n\nwhich counts the integers up to $n$ whose prime factors are all in $P(L)$.\nWe can compute this using a depth-first search (DFS) approach.\nStarting from 1, we can multiply by each prime in $P(L)$ and generate all valid integers up to $n$.\n\n\\[\nV = \\Set{ n \\le N | P(n) \\subseteq P(L) }\n\\]\n\nAfter generating these integers, counting integers less than or equal to $n$ can be done using binary search.\nHere, we can estimate as $|V| = O\\left((\\log N)^{c}\\right)$ for some small constant $c$.\nComputing $S_{\\mu_L * 1}$ at each step takes $O(\\log |V|) = O(\\log \\log N)$ time due to binary search.\nPrecomputing $S_{\\mu_L}(n)$ up to $M$ takes $O(M \\log \\log M)$ time.\nThus, the overall time complexity for computing $S_{\\mu_L}(N)$ becomes:\n\n\\[\nO\\left( M \\log \\log M + \\frac{2N}{\\sqrt{M}} + \\frac{N}{M} \\log \\log N \\right)\n\\]\n\nChoosing $M \\approx N^{2/3}$ balances the terms, leading to an optimized complexity of:\n\n\\[\nO\\left( N^{2/3} \\log \\log N \\right)\n\\]\n\nFactorizing $L$ requires $O(L^{1/4})$ time using Pollard’s rho algorithm.\nConducting the DFS takes $O(|V| \\cdot |P(L)|) &lt; O\\left((\\log N)^{c} \\log L\\right)$ time.\nCalculating the final sum takes $O(\\sqrt{N} \\log K)$ time.\nThus, the overall time complexity is:\n\n\\[\nO\\left( N^{2/3} \\log \\log N + L^{1/4} + (\\log N)^c \\log L + \\sqrt{N} \\log K \\right)\n\\]\n\nwhich is efficient enough for the given constraints.\n\n[BOJ 19549] 레이저 연구소\n\nTask\n\nWe have an $N\\times M$ grid of unit squares:\n\n  $(N+1)(M+1)$ buildings at grid points\n  $2NM + N + M$ walls on edges\n\n\nA laser is fired between every pair of buildings (not parallel to x/y axes).\nEach shot burns:\n\n  all buildings on the line (cost $A$ each)\n  all crossed walls (cost $B$ each)\n\n\nAfter every shot, everything is repaired.\nFind the total repair cost for all valid laser shots.\n\nSolution\n\nSuppose firing a laser from building $(0,0)$ to $(n,m)$.\n\n  It burns $\\gcd(n,m) + 1$ buildings.\n  It crosses $(n-\\gcd(n,m)) + (m-\\gcd(n,m)) = n+m-2\\gcd(n,m)$ walls.\n\n\nThus, the cost for this shot is:\n\n\\[\nA + (n+m)B + \\gcd(n,m)(A - 2B)\n\\]\n\nTo find the total cost, we sum over all pairs of buildings.\nThere are $(N+1-n)(M+1-m)$ pairs of buildings with relative position $(n,m)$.\nAlso, we can fire lasers in four distinct ways for each pair, since there are two diagonals and two directions for each rectangle.\nThus, the total cost is:\n\n\\[\n4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) \\left( A + (i+j)B + \\gcd(i,j)(A - 2B) \\right)\n\\]\n\nWe can sum up the first two terms easily.\n\n\\[\n4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) A = 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} Aij = AN(N+1)M(M+1) \\nl\n\\]\n\n\\[\n\\begin{aligned}\n&amp; 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \\nl\n= &amp; 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} i(N+1-i)jB + 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} j(N+1-i)jB \\nl\n= &amp; 4 \\cdot \\frac{N(N+1)(N+2)}{6} \\cdot \\frac{M(M+1)}{2} B + 4 \\cdot \\frac{M(M+1)(M+2)}{6} \\cdot \\frac{N(N+1)}{2} B \\nl\n= &amp; \\frac{BN(N+1)M(M+1)(N+M+4)}{3}\n\\end{aligned}\n\\]\n\nTo compute the last term, let’s define a sum:\n\n\\[\nS_{ab} = \\sum_{i=1}^{N} \\sum_{j=1}^{M} i^a j^b \\gcd(i,j)\n\\]\n\nThen, we can express the last term as:\n\n\\[\n4(A - 2B) \\left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \\right]\n\\]\n\nThen, the total cost is:\n\n\\[\nN(N+1)M(M+1) \\left( A + \\frac{B(N+M+4)}{3} \\right) + 4(A - 2B) \\left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \\right]\n\\]\n\nNow, we need to compute $S_{ab}$ efficiently.\nLet’s transform the sum by grouping terms with the same gcd.\n\n\\[\n\\begin{aligned}\nS_{ab} &amp; = \\sum_{i=1}^{N} \\sum_{j=1}^{M} i^a j^b \\gcd(i,j) \\nl\n&amp; = \\sum_{i=1}^N \\sum_{j=1}^M i^a j^b \\sum_{d=1}^{\\min(i,j)} d \\cdot [\\gcd(i,j) = d] \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor M/d \\rfloor} (di)^a (dj)^b d \\cdot [\\gcd(i,j) = 1] \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor M/d \\rfloor} d^{a+b+1} i^a j^b \\sum_{t|i,j} \\mu(t) \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{t\\ge 1} d^{a+b+1} \\mu(t) \\sum_{i=1}^{\\lfloor N/dt \\rfloor} \\sum_{j=1}^{\\lfloor M/dt \\rfloor} (it)^a (jt)^b \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{t\\ge 1} d^{a+b+1} t^{a+b} \\mu(t) \\sum_{i=1}^{\\lfloor N/dt \\rfloor} i^a \\sum_{j=1}^{\\lfloor M/dt \\rfloor} j^b \\nl\n&amp; = \\sum_{k=1}^{\\min(N,M)} \\sum_{t|k} \\frac{k^{a+b+1}}{t} \\mu(t) \\sum_{i=1}^{\\lfloor N/k \\rfloor} i^a \\sum_{j=1}^{\\lfloor M/k \\rfloor} j^b \\nl\n&amp; = \\sum_{k=1}^{\\min(N,M)} k^{a+b+1} \\cdot \\frac{\\phi(k)}{k} \\cdot S_{\\text{Id}_a}\\left(\\left\\lfloor \\frac{N}{k} \\right\\rfloor\\right) S_{\\text{Id}_b}\\left(\\left\\lfloor \\frac{M}{k} \\right\\rfloor\\right) \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} d^{a+b} \\phi(d) S_{\\text{Id}_a}\\left(\\left\\lfloor \\frac{N}{d} \\right\\rfloor\\right) S_{\\text{Id}_b}\\left(\\left\\lfloor \\frac{M}{d} \\right\\rfloor\\right)\n\\end{aligned}\n\\]\n\nwhere $S_{\\text{Id}_k}(n) = \\sum_{d=1}^{n} d^k$.\nWe can compute $S_{\\text{Id}_k}(n)$ in $O(1)$ time using the formulas for sums of powers.\nGrouping by values of $\\lfloor N/d \\rfloor$ and $\\lfloor M/d \\rfloor$, we can reduce the\nnumber of terms in the sum to $O(\\sqrt{N} + \\sqrt{M})$.\nBy denoting as $d_0 = 1$, $p_i = \\lfloor N/d_i \\rfloor$, $q_i = \\lfloor M/d_i \\rfloor$, and\n\n\\[\nd_{i+1} = \\min\\left(\\left\\lfloor \\frac{N}{p_i} \\right\\rfloor, \\left\\lfloor \\frac{M}{q_i} \\right\\rfloor\\right) + 1\n\\]\n\nBy defining $f(d) = d^{a+b} \\phi(d)$, the sum can be computed as:\n\n\\[\n\\sum_{i:d_i \\le \\min(N,M)} \\left( S_f(d_{i+1}-1) - S_f(d_i-1) \\right) S_{\\text{Id}_a}(p_i) S_{\\text{Id}_b}(q_i)\n\\]\n\nNow what remains is to compute $S_f$ efficiently.\nBy using the Mertens trick, we can compute $S_f(n)$ in $O\\left(n^{2/3}\\right)$ time.\nUsing the relationship $f * \\text{Id}_{a+b} = \\text{Id}_{a+b+1}$, we have:\n\n\\[\n\\begin{aligned}\nS_f(n) &amp; = \\frac{1}{\\text{Id}_{a+b}(1)} \\left( S_{\\text{Id}_{a+b+1}}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_{\\text{Id}_{a+b}}(d_{i+1}-1) - S_{\\text{Id}_{a+b}}(d_i-1) \\right) \\right) \\nl\n&amp; = S_{\\text{Id}_{a+b+1}}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_{\\text{Id}_{a+b}}(d_{i+1}-1) - S_{\\text{Id}_{a+b}}(d_i-1) \\right)\n\\end{aligned}\n\\]\n\nSince $S_{\\text{Id}_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\\left(N^{2/3}+M^{2/3}\\right)$ time.\nThus, the overall time complexity is $O\\left(N^{2/3}+M^{2/3}+\\sqrt{N}+\\sqrt{M}\\right) = O\\left(N^{2/3}+M^{2/3}\\right)$, which is efficient enough for the given constraints.\n\n[BOJ 32240] 비로소 서로소\n\nTask\n\nCompute:\n\n\\[\n\\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) [\\gcd(i,j) = 1]\n\\]\n\nfor given integer $N$.\n\nSolution\n\nComputing directly would take more than $O(N^2)$ time, which is too slow for large $N$.\nInstead, we transform the sum as follows:\n\n\\[\n\\begin{align*}\n&amp; \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) [\\gcd(i,j) = 1] \\nl\n=&amp; \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) \\sum_{d | \\gcd(i,j)} \\mu(d)\n= \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) \\sum_{d=1}^{\\min(i,j)} \\mu(d) [d | i] [d | j] \\nl\n=&amp; \\sum_{d=1}^{N} \\mu(d) \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor N/d \\rfloor} (di + dj)\n= \\sum_{d=1}^{N} d \\mu(d) \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor N/d \\rfloor} (i + j) \\nl\n=&amp; \\sum_{d=1}^{N} d \\mu(d) \\left\\lfloor \\frac{N}{d} \\right\\rfloor^2 \\left( \\left\\lfloor \\frac{N}{d} \\right\\rfloor + 1 \\right)\n\\end{align*}\n\\]\n\nComputing this transformed sum takes $O(N \\log \\log N)$ time to precompute the Möbius function values and $O(N)$ time to\ncompute the final sum. However, this is not enough for the given constraints.\n\nOptimization\n\nLet’s optimize the summation by grouping terms with the same value of $\\left\\lfloor \\frac{N}{d} \\right\\rfloor$.\nDenote $d_0 = 1$ and $a_i = \\left\\lfloor \\frac{N}{d_i} \\right\\rfloor$.\n\n\\[\nd_{i+1} = \\left\\lfloor \\frac{N}{a_i} \\right\\rfloor + 1\n\\]\n\nThen, we can rewrite the sum as follows:\n\n\\[\n\\sum_{i:d_i \\le N} \\left( \\sum_{j=d_i}^{d_{i+1}-1} d \\mu(d) \\right) a_i^2 (a_i + 1)\n\\]\n\nThis reduces the number of terms in the summation to $O(\\sqrt{N})$.\nNext, we have to efficiently compute the inner sum $\\sum_{j=d_i}^{d_{i+1}-1} d \\mu(d)$.\nPrecomputing $\\mu(d)$ naively takes $O(N \\log \\log N)$ time, which is still too slow.\nInstead, we can use the Mertens trick to compute the inner sum in $O\\left(N^{2/3}\\right)$ time.\nLet $f(n) = n \\mu(n)$ and we should compute $S_f(n)$ quickly.\nWe should find a function $g(n)$ such that $S_g(n)$ and $S_{f * g}(n)$ can be computed in almost $O(1)$ time.\nWe can choose $g = \\text{Id}$, so that $f * g = \\varepsilon$.\nThen, we have:\n\n\\[\n\\begin{align*}\nS_f(n) &amp;= \\frac{1}{g(1)} \\left( S_{f * g}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_g(d_{i+1}-1) - S_g(d_i-1) \\right) \\right) \\nl\n&amp;= 1 - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right)\n\\frac{(d_{i+1}-1)d_{i+1}-d_i(d_i-1)}{2}\n\\end{align*}\n\\]\n\nUsing memoization, we can compute $S_f(n)$ in $O\\left(N^{2/3}\\right)$ time.\nThe final sum is written as:\n\n\\[\n\\sum_{i:d_i \\le N} \\left( S_f(d_{i+1}-1) - S_f(d_i-1) \\right) a_i^2 (a_i + 1)\n\\]\n\nThe overall time complexity is $O\\left(N^{2/3}+\\sqrt{N}\\right)=O\\left(N^{2/3}\\right)$, which is efficient enough for the given constraints.\n",
       "categories": ["computer-science"],
       "tags": ["problem-solving"],
       
       "collection": "posts",
-      "url": "/computer-science/boj16164.html"
-    },{
-      
-      "title": "[BOJ 19549] 레이저 연구소",
-      "date": "2025-11-11 00:00:00 +0900",
-      
-      "content": "https://www.acmicpc.net/problem/19549\n\n\n\n  Task\n  Solution\n\n\nTask\n\nWe have an $N\\times M$ grid of unit squares:\n\n  $(N+1)(M+1)$ buildings at grid points\n  $2NM + N + M$ walls on edges\n\n\nA laser is fired between every pair of buildings (not parallel to x/y axes).\nEach shot burns:\n\n  all buildings on the line (cost $A$ each)\n  all crossed walls (cost $B$ each)\n\n\nAfter every shot, everything is repaired.\nFind the total repair cost for all valid laser shots.\n\nSolution\n\nSuppose firing a laser from building $(0,0)$ to $(n,m)$.\n\n  It burns $\\gcd(n,m) + 1$ buildings.\n  It crosses $(n-\\gcd(n,m)) + (m-\\gcd(n,m)) = n+m-2\\gcd(n,m)$ walls.\n\n\nThus, the cost for this shot is:\n\n\\[\nA + (n+m)B + \\gcd(n,m)(A - 2B)\n\\]\n\nTo find the total cost, we sum over all pairs of buildings.\nThere are $(N+1-n)(M+1-m)$ pairs of buildings with relative position $(n,m)$.\nAlso, we can fire lasers in four distinct ways for each pair, since there are two diagonals and two directions for each rectangle.\nThus, the total cost is:\n\n\\[\n4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) \\left( A + (i+j)B + \\gcd(i,j)(A - 2B) \\right)\n\\]\n\nWe can sum up the first two terms easily.\n\n\\[\n4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) A = 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} Aij = AN(N+1)M(M+1) \\nl\n\\]\n\n\\[\n\\begin{aligned}\n&amp; 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} (N+1-i)(M+1-j) (i+j)B \\nl\n= &amp; 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} i(N+1-i)jB + 4 \\sum_{i=1}^{N} \\sum_{j=1}^{M} j(N+1-i)jB \\nl\n= &amp; 4 \\cdot \\frac{N(N+1)(N+2)}{6} \\cdot \\frac{M(M+1)}{2} B + 4 \\cdot \\frac{M(M+1)(M+2)}{6} \\cdot \\frac{N(N+1)}{2} B \\nl\n= &amp; \\frac{BN(N+1)M(M+1)(N+M+4)}{3}\n\\end{aligned}\n\\]\n\nTo compute the last term, let’s define a sum:\n\n\\[\nS_{ab} = \\sum_{i=1}^{N} \\sum_{j=1}^{M} i^a j^b \\gcd(i,j)\n\\]\n\nThen, we can express the last term as:\n\n\\[\n4(A - 2B) \\left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \\right]\n\\]\n\nThen, the total cost is:\n\n\\[\nN(N+1)M(M+1) \\left( A + \\frac{B(N+M+4)}{3} \\right) + 4(A - 2B) \\left[ (N+1)(M+1) S_{00} - (N+1) S_{01} - (M+1) S_{10} + S_{11} \\right]\n\\]\n\nNow, we need to compute $S_{ab}$ efficiently.\nLet’s transform the sum by grouping terms with the same gcd.\n\n\\[\n\\begin{aligned}\nS_{ab} &amp; = \\sum_{i=1}^{N} \\sum_{j=1}^{M} i^a j^b \\gcd(i,j) \\nl\n&amp; = \\sum_{i=1}^N \\sum_{j=1}^M i^a j^b \\sum_{d=1}^{\\min(i,j)} d \\cdot [\\gcd(i,j) = d] \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor M/d \\rfloor} (di)^a (dj)^b d \\cdot [\\gcd(i,j) = 1] \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor M/d \\rfloor} d^{a+b+1} i^a j^b \\sum_{t|i,j} \\mu(t) \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{t\\ge 1} d^{a+b+1} \\mu(t) \\sum_{i=1}^{\\lfloor N/dt \\rfloor} \\sum_{j=1}^{\\lfloor M/dt \\rfloor} (it)^a (jt)^b \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} \\sum_{t\\ge 1} d^{a+b+1} t^{a+b} \\mu(t) \\sum_{i=1}^{\\lfloor N/dt \\rfloor} i^a \\sum_{j=1}^{\\lfloor M/dt \\rfloor} j^b \\nl\n&amp; = \\sum_{k=1}^{\\min(N,M)} \\sum_{t|k} \\frac{k^{a+b+1}}{t} \\mu(t) \\sum_{i=1}^{\\lfloor N/k \\rfloor} i^a \\sum_{j=1}^{\\lfloor M/k \\rfloor} j^b \\nl\n&amp; = \\sum_{k=1}^{\\min(N,M)} k^{a+b+1} \\cdot \\frac{\\phi(k)}{k} \\cdot S_{\\text{Id}_a}\\left(\\left\\lfloor \\frac{N}{k} \\right\\rfloor\\right) S_{\\text{Id}_b}\\left(\\left\\lfloor \\frac{M}{k} \\right\\rfloor\\right) \\nl\n&amp; = \\sum_{d=1}^{\\min(N,M)} d^{a+b} \\phi(d) S_{\\text{Id}_a}\\left(\\left\\lfloor \\frac{N}{d} \\right\\rfloor\\right) S_{\\text{Id}_b}\\left(\\left\\lfloor \\frac{M}{d} \\right\\rfloor\\right)\n\\end{aligned}\n\\]\n\nwhere $S_{\\text{Id}_k}(n) = \\sum_{d=1}^{n} d^k$.\nWe can compute $S_{\\text{Id}_k}(n)$ in $O(1)$ time using the formulas for sums of powers.\nGrouping by values of $\\lfloor N/d \\rfloor$ and $\\lfloor M/d \\rfloor$, we can reduce the\nnumber of terms in the sum to $O(\\sqrt{N} + \\sqrt{M})$.\nBy denoting as $d_0 = 1$, $p_i = \\lfloor N/d_i \\rfloor$, $q_i = \\lfloor M/d_i \\rfloor$, and\n\n\\[\nd_{i+1} = \\min\\left(\\left\\lfloor \\frac{N}{p_i} \\right\\rfloor, \\left\\lfloor \\frac{M}{q_i} \\right\\rfloor\\right) + 1\n\\]\n\nBy defining $f(d) = d^{a+b} \\phi(d)$, the sum can be computed as:\n\n\\[\n\\sum_{i:d_i \\le \\min(N,M)} \\left( S_f(d_{i+1}-1) - S_f(d_i-1) \\right) S_{\\text{Id}_a}(p_i) S_{\\text{Id}_b}(q_i)\n\\]\n\nNow what remains is to compute $S_f$ efficiently.\nBy using the Mertens trick, we can compute $S_f(n)$ in $O\\left(n^{2/3}\\right)$ time.\nUsing the relationship $f * \\text{Id}_{a+b} = \\text{Id}_{a+b+1}$, we have:\n\n\\[\n\\begin{aligned}\nS_f(n) &amp; = \\frac{1}{\\text{Id}_{a+b}(1)} \\left( S_{\\text{Id}_{a+b+1}}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_{\\text{Id}_{a+b}}(d_{i+1}-1) - S_{\\text{Id}_{a+b}}(d_i-1) \\right) \\right) \\nl\n&amp; = S_{\\text{Id}_{a+b+1}}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_{\\text{Id}_{a+b}}(d_{i+1}-1) - S_{\\text{Id}_{a+b}}(d_i-1) \\right)\n\\end{aligned}\n\\]\n\nSince $S_{\\text{Id}_k}(n)$ can be computed in $O(1)$ time, we can compute all required $S_f(n)$ values using memoization in $O\\left(N^{2/3}+M^{2/3}\\right)$ time.\nThus, the overall time complexity is $O\\left(N^{2/3}+M^{2/3}+\\sqrt{N}+\\sqrt{M}\\right) = O\\left(N^{2/3}+M^{2/3}\\right)$, which is efficient enough for the given constraints.\n",
-      "categories": ["computer-science"],
-      "tags": ["problem-solving"],
-      
-      "collection": "posts",
-      "url": "/computer-science/boj19549.html"
-    },{
-      
-      "title": "[BOJ 32240] 비로소 서로소",
-      "date": "2025-11-11 00:00:00 +0900",
-      
-      "content": "https://www.acmicpc.net/problem/32240\n\n\n\n  Task\n  Solution\n  Optimization\n\n\nTask\n\nCompute:\n\n\\[\n\\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) [\\gcd(i,j) = 1]\n\\]\n\nfor given integer $N$.\n\nSolution\n\nComputing directly would take more than $O(N^2)$ time, which is too slow for large $N$.\nInstead, we transform the sum as follows:\n\n\\[\n\\begin{align*}\n&amp; \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) [\\gcd(i,j) = 1] \\nl\n=&amp; \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) \\sum_{d | \\gcd(i,j)} \\mu(d)\n= \\sum_{i=1}^{N} \\sum_{j=1}^{N} (i+j) \\sum_{d=1}^{\\min(i,j)} \\mu(d) [d | i] [d | j] \\nl\n=&amp; \\sum_{d=1}^{N} \\mu(d) \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor N/d \\rfloor} (di + dj)\n= \\sum_{d=1}^{N} d \\mu(d) \\sum_{i=1}^{\\lfloor N/d \\rfloor} \\sum_{j=1}^{\\lfloor N/d \\rfloor} (i + j) \\nl\n=&amp; \\sum_{d=1}^{N} d \\mu(d) \\left\\lfloor \\frac{N}{d} \\right\\rfloor^2 \\left( \\left\\lfloor \\frac{N}{d} \\right\\rfloor + 1 \\right)\n\\end{align*}\n\\]\n\nComputing this transformed sum takes $O(N \\log \\log N)$ time to precompute the Möbius function values and $O(N)$ time to\ncompute the final sum. However, this is not enough for the given constraints.\n\nOptimization\n\nLet’s optimize the summation by grouping terms with the same value of $\\left\\lfloor \\frac{N}{d} \\right\\rfloor$.\nDenote $d_0 = 1$ and $a_i = \\left\\lfloor \\frac{N}{d_i} \\right\\rfloor$.\n\n\\[\nd_{i+1} = \\left\\lfloor \\frac{N}{a_i} \\right\\rfloor + 1\n\\]\n\nThen, we can rewrite the sum as follows:\n\n\\[\n\\sum_{i:d_i \\le N} \\left( \\sum_{j=d_i}^{d_{i+1}-1} d \\mu(d) \\right) a_i^2 (a_i + 1)\n\\]\n\nThis reduces the number of terms in the summation to $O(\\sqrt{N})$.\nNext, we have to efficiently compute the inner sum $\\sum_{j=d_i}^{d_{i+1}-1} d \\mu(d)$.\nPrecomputing $\\mu(d)$ naively takes $O(N \\log \\log N)$ time, which is still too slow.\nInstead, we can use the Mertens trick to compute the inner sum in $O\\left(N^{2/3}\\right)$ time.\nLet $f(n) = n \\mu(n)$ and we should compute $S_f(n)$ quickly.\nWe should find a function $g(n)$ such that $S_g(n)$ and $S_{f * g}(n)$ can be computed in almost $O(1)$ time.\nWe can choose $g = \\text{Id}$, so that $f * g = \\varepsilon$.\nThen, we have:\n\n\\[\n\\begin{align*}\nS_f(n) &amp;= \\frac{1}{g(1)} \\left( S_{f * g}(n) - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right) \\left( S_g(d_{i+1}-1) - S_g(d_i-1) \\right) \\right) \\nl\n&amp;= 1 - \\sum_{i:2\\le d_i \\le n} S_f\\left( a_i \\right)\n\\frac{(d_{i+1}-1)d_{i+1}-d_i(d_i-1)}{2}\n\\end{align*}\n\\]\n\nUsing memoization, we can compute $S_f(n)$ in $O\\left(N^{2/3}\\right)$ time.\nThe final sum is written as:\n\n\\[\n\\sum_{i:d_i \\le N} \\left( S_f(d_{i+1}-1) - S_f(d_i-1) \\right) a_i^2 (a_i + 1)\n\\]\n\nThe overall time complexity is $O\\left(N^{2/3}+\\sqrt{N}\\right)=O\\left(N^{2/3}\\right)$, which is efficient enough for the given constraints.\n",
-      "categories": ["computer-science"],
-      "tags": ["problem-solving"],
-      
-      "collection": "posts",
-      "url": "/computer-science/boj32240.html"
+      "url": "/computer-science/PS-mertens-trick.html"
     },{
       
       "title": "Merge Sort Tree",
@@ -1483,6 +1439,28 @@
       "url": "/mathematics/antiderivatives-and-indefinite-integrals.html"
     },{
       
+      "title": "[BOJ 7139] Toll",
+      "date": "2025-12-04 00:00:00 +0900",
+      
+      "content": "[BOJ 7139] Toll\n\n\n\n  Task\n  Solution\n\n\nTask\n\nLet’s define the following notation:\n\n  $\\mathcal{G}(V) := \\Set{ (V,E) | E \\subseteq \\dbinom{V}{2} }$\n  $\\mathcal{G}_C(V) := \\Set{ G \\in \\mathcal{G}(V) | G \\text{ is connected} }$\n  $\\mathcal{F}(V) := \\Set{ G \\in \\mathcal{G}(V) | G \\text{ is a forest} }$\n  $\\mathcal{T}(V) := \\mathcal{F}(V) \\cap \\mathcal{G}_C(V)$\n  $\\mathcal{ST}(G) := \\Set{ (V(G),F) \\in \\mathcal{T}(V(G)) | F \\subseteq E(G) }$\n  A path from $u$ to $v$ in a graph $G$ is a vertex-edge sequence\n$P=(v_0,e_1,v_1,\\ldots,e_\\ell,v_\\ell)$ such that\n$v_0=u$, $v_\\ell=v$, $e_j=\\set{v_{j-1},v_j}\\in E(G)$, and\n$v_0,\\ldots,v_\\ell$ are distinct. We also allow the length-zero path $(u)$.\n  $\\mathcal{P}_G(u,v)$: the set of all paths from $u$ to $v$ in $G$.\n  For a path $P=(v_0,e_1,v_1,\\ldots,e_\\ell,v_\\ell)$,\n$E(P):=\\set{e_1,\\ldots,e_\\ell}$.\n  $u\\simeq_G v \\iff \\mathcal{P}_G(u,v)\\neq\\emptyset$.\n  If $T$ is a tree, $P_T(u,v)$ denotes the unique element of $\\mathcal{P}_T(u,v)$.\n\n\nThat is, $\\mathcal{T}(V)$ is a set of trees on $V$, and $\\mathcal{ST}(G)$ is a set of spanning trees of $G$.\n\n\n\nAn undirected connected graph $G_0=(V,E_0)\\in \\mathcal{G}_C(V)$ is given with $V=\\set{1,\\cdots,N}$ and $\\card{E_0}=M$.\nA new set of edges $E_1 = \\Set{ e_1, \\cdots, e_K }$ is given so that we are going to make a\nspanning tree $T\\in \\mathcal{ST}(G_1)$, where $G_1=(V,E_0\\sqcup E_1)$.\nEvery edge $e\\in E_0$ has a distinct fixed cost $c_e$,\nand we should assign a cost $f_i$ to each edge $e_i\\in E_1$.\nThen we can think of a weight function $w_{\\b{f}}: E_0\\sqcup E_1 \\to \\mathbb{R}_{&gt;0} $,\nwhere $ w_{\\b{f}} \\big|_{E_0}$ is one-to-one mapping.\nLet’s define the set of MST(Minimum spanning tree)\nof $G_1$ with a given cost $\\b{f}$.\n\n\\[\n\\mathcal{M}(\\b{f}):= \\argmin_{T\\in \\mathcal{ST}(G_1)} \\sum_{e\\in E(T)} w_{\\b{f}}(e)\n\\]\n\nAlso, at each vertex $v\\in V$, a weight $p_v \\in \\mathbb{R}_{&gt;0}$ is assigned to it.\nThe goal is to choose a proper $\\b{f}$ so that we can maximize the following objective function:\n\n\\[\nJ(\\b{f}) = \\max_{ T\\in \\mathcal{M}(\\b{f}) } \\sum_{v\\in V} p_v \\sum_{e\\in E(P_T(v,1)) \\cap E_1 } w_{\\b{f}}(e)\n\\]\n\nSolution\n\nFirst, we can observe that $e\\in E(T)$ in a MST $T \\in \\mathcal{ST}(G_1)$ divides $T$\ninto two parts: $T-e$ is composed of one tree with the root (vertex $1$) and another tree without the root.\nLet $D_T(e)$ be the tree without the root, then we can rewrite the objective function as follows:\n\n\\[\n\\begin{align*}\nJ(\\b{f}) &amp;= \\max_{ T\\in \\mathcal{M}(\\b{f}) } \\sum_{e\\in E(T)\\cap E_1} w_{\\b{f}}(e) \\sum_{v\\in V(D_T(e))} p_v \\nl\n&amp;= \\max_{ T\\in \\mathcal{M}(\\b{f}) } \\sum_{e\\in E(T)\\cap E_1} w_{\\b{f}}(e) q_T(e)\n\\end{align*}\n\\]\n\nby defining the following quantity:\n\n\\[\nq_T(e) := \\sum_{v\\in V(D_T(e))} p_v\n\\]\n\nNow, for a fixed $T \\in \\mathcal{ST}(G_1)$, let’s define $S_T:=E(T)\\cap E_1$.\nSince $T$ is a tree, $S_T$ forms a forest: $(V,S_T)\\in \\mathcal{F}(V)$.\nNext, define the following set:\n\n\\[\n\\mathcal{S}:=\\Set{S\\subseteq E_1 | (V,S)\\in\\mathcal{F}(V)}\n\\]\n\nFor a fixed $S\\in\\mathcal{S}$,\nlet $T_S$ be the unique spanning tree obtained by joining all edges in $S$ first\nand then applying Kruskal’s algorithm to $E_0$.\nEquivalently,\n\n\\[\n\\Set{T_S} := \\argmin_{\\substack{\nT\\in\\mathcal{ST}(G_1) \\nl\nS_T = S }}\n\\sum_{e\\in E(T)\\cap E_0} c_e\n\\]\n\nIndeed, after contracting every edge in $S$, this is an MST problem whose\nremaining edge weights $c_e$ are pairwise distinct, so its minimizer is unique.\nIf $T\\in\\mathcal{M}(\\b{f})$ and $S_T=S$, then\n\n\\[\n\\begin{align*}\n\\sum_{e\\in E(T)} w_{\\b{f}}(e)\n&amp;= \\sum_{e_i\\in S} f_i +\n\\sum_{e\\in E(T)\\cap E_0} c_e,\n\\end{align*}\n\\]\n\nwhere the first term is fixed for a fixed $S$. Therefore,\n\n\\[\nT\\in\\mathcal{M}(\\b{f}) \\ \\land\\ \nS_T=S\n\\quad\\Longrightarrow\\quad\nT=T_S\n\\]\n\nFor $e\\in E(T_S)$, let $\\delta_{T_S}(e)$ be the cut induced by $T_S-e$:\n\n\\[\n\\delta_{T_S}(e)\n=\n\\Big\\{\ng \\in E_0\\sqcup E_1\n\\;\\Big|\\;\n\\card{g \\cap V(D_{T_S}(e))}=1\n\\Big\\}.\n\\]\n\nFor $e_i\\in S$, define\n\n\\[\n\\lambda_S(e_i) = \\min_{e\\in E_0\\cap\\delta_{T_S}(e_i)} c_e.\n\\]\n\nIf $f_i&gt;\\lambda_S(e_i)$, then there exists $e\\in E_0\\cap\\delta_{T_S}(e_i)$ such that\n$c_e=\\lambda_S(e_i)&lt;f_i$. Since\n\n\\[\nT^\\prime=T_S-e_i+e\\in\\mathcal{ST}(G_1),\n\\]\n\nwe have\n\n\\[\n\\sum_{g\\in E(T^\\prime)} w_{\\b{f}}(g) =\n\\sum_{g\\in E(T_S)} w_{\\b{f}}(g)-f_i+c_e &lt;\n\\sum_{g\\in E(T_S)} w_{\\b{f}}(g)\n\\]\n\nThus,\n\n\\[\nT_S\\in\\mathcal{M}(\\b{f})\n\\quad\\Longrightarrow\\quad\nf_i\\leq\\lambda_S(e_i)\n\\qquad\n(e_i\\in S)\n\\]\n\nOn the other hand, let’s choose $\\b{f}$ as\n\n\\[\nf_i= \\begin{cases}\n\\lambda_S(e_i) &amp;; e_i\\in S \\nl\nL &amp;; e_i\\in E_1\\setminus S\n\\end{cases}\n\\]\n\nwhere $\\dps L&gt;\\max_{e\\in E_0} c_e$.\nRecall that a spanning tree $T$ is an MST if and only if every $e\\in E(T)$ is a minimum-weight edge of the cut induced by $T-e$, i.e.,\n\n\\[\nT\\in\\mathcal{M}(\\b{f})\n\\iff\n\\forall e\\in E(T),\\;\n\\forall g\\in\\delta_T(e) \\; : \\;\nw_{\\b{f}}(e)\\leq w_{\\b{f}}(g)\n\\]\n\nFor $e_i\\in S$,\n\n\\[\nw_{\\b{f}}(e_i) = \\lambda_S(e_i) =\n\\min_{e\\in E_0\\cap\\delta_{T_S}(e_i)} c_e.\n\\]\n\nAlso, no other edge of $T_S$ crosses $\\delta_{T_S}(e_i)$, so\n\n\\[\n(S\\setminus\\Set{e_i})\\cap\\delta_{T_S}(e_i)=\\emptyset\n\\]\n\nEvery edge in $E_1\\setminus S$ has weight $L&gt;\\max_{e\\in E_0}c_e\\geq\n\\lambda_S(e_i)$. Hence, $e_i$ is a minimum-weight edge of\n$\\delta_{T_S}(e_i)$.\n\nFor $e\\in E(T_S)\\cap E_0$, consider the weight function\n\n\\[\nw^\\prime(g) =\n\\begin{cases}\n0 &amp;; g\\in S,\\nl\nc_g &amp;; g\\in E_0,\\nl\nL &amp;; g\\in E_1\\setminus S\n\\end{cases}\n\\]\n\nBy the definition of $T_S$, Kruskal’s algorithm selects $T_S$ with respect to $w^\\prime$, so $T_S$ is a MST under $w^\\prime$.\nSince no other edge of $T_S$ crosses $\\delta_{T_S}(e)$,\n\n\\[\nS\\cap\\delta_{T_S}(e)=\\emptyset\n\\]\n\nand hence\n\n\\[\nc_e \\leq c_g \\qquad\n\\left(\ng\\in E_0\\cap\\delta_{T_S}(e)\n\\right)\n\\]\n\nTherefore, after replacing $w^\\prime(e_i)=0$ with $w_{\\b{f}}(e_i)=\\lambda_S(e_i)$ for every $e_i\\in S$, every edge in $T_S$ is still a minimum-weight edge of its induced cut, and thus\n\n\\[\nT_S\\in\\mathcal{M}(\\b{f}).\n\\]\n\nThe same argument works whenever $0&lt;f_i\\leq\\lambda_S(e_i)$ for every\n$e_i\\in S$, after setting $f_j=L$ for every $e_j\\in E_1\\setminus S$.\nSince $q_{T_S}(e_i)&gt;0$, for a fixed $S$ we obtain\n\n\\[\n\\begin{align*}\n\\max_{\\substack{\\b{f} \\nl\nT_S\\in \\mathcal{M}(\\b{f})} } \\sum_{e_i\\in S} f_i q_{T_S}(e_i) &amp;=\n\\max_{\\substack{\n0&lt;f_i\\leq\\lambda_S(e_i)\\nl\ne_i\\in S} } \\sum_{e_i\\in S} f_i q_{T_S}(e_i) \\nl\n&amp;= \\sum_{e_i\\in S} \\lambda_S(e_i)q_{T_S}(e_i).\n\\end{align*}\n\\]\n\nHence,\n\n\\[\n\\begin{align*}\n\\max_{\\b{f}} J(\\b{f}) &amp;=\n\\max_{\\b{f}} \\max_{ T\\in \\mathcal{M}(\\b{f}) } \\sum_{e_i\\in S_T} f_i q_T(e_i) \\nl\n&amp;= \\max_{S\\in\\mathcal{S}}\n\\max_{\\substack{\\b{f}\\nl T_S\\in\\mathcal{M}(\\b{f})}}\n\\sum_{e_i\\in S} f_i q_{T_S}(e_i) \\nl\n&amp;= \\max_{S\\in\\mathcal{S}} \\sum_{e_i\\in S} \\lambda_S(e_i)q_{T_S}(e_i)\n\\end{align*}\n\\]\n\nNow, let\n\n\\[\n\\Set{T_0} := \\argmin_{T\\in\\mathcal{ST}(G_0)}\n\\sum_{e\\in E(T)} c_e.\n\\]\n\n$T_0$ is unique since all $c_e$ are distinct.\nFor $e\\in E_0$, define\n\n\\[\nE_{&lt;e} := \\Set{ g\\in E_0 \\mid c_g&lt;c_e }\n\\]\n\nThen the Kruskal characterization gives:\n\n\\[\nE(T_0) = \\Big\\{\ne=\\{u,v\\}\\in E_0 \\;\\Big|\\; u\\not\\simeq_{(V,E_{&lt;e})} v\n\\Big\\}\n\\]\n\nNow define\n\n\\[\nB := \\Big\\{\ne=\\{u,v\\}\\in E_0 \\;\\Big|\\; u\\not\\simeq_{(V,E_1\\cup E_{&lt;e})} v\n\\Big\\}\n\\]\n\nThus, $B$ is exactly the set of edges selected by Kruskal’s algorithm after joining every edge in $E_1$ beforehand.\nSince $E_{&lt;e}\\subseteq E_1\\cup E_{&lt;e}$, we have $B\\subseteq E(T_0)$.\nMoreover, for any $S\\subseteq E_1$ with $(V,S)\\in\\mathcal{F}(V)$,\n$S\\cup E_{&lt;e} \\subseteq E_1\\cup E_{&lt;e}$, and similarly,\n\n\\[\nE(T_S) = S \\sqcup \\Big\\{\ne=\\{u,v\\}\\in E_0 \\;\\Big|\\; u\\not\\simeq_{(V,S\\cup E_{&lt;e})} v\n\\Big\\}\n\\]\n\nHence, $B\\subseteq E(T_S)\\cap E_0 \\subseteq E(T_0)$.\n\nWe’ll contract every connected component of $(V,B)$ into one vertex.\nFor $v\\in V$, the connected component containing $v$ is written as:\n\n\\[\n[v]_G = \\Set{ u \\in V(G) \\mid u\\simeq_G v }\n\\]\n\nThen, define the corresponding mapping as:\n\n\\[\n\\pi_G: V \\to V/\\simeq_G : v \\mapsto [v]_G\n\\]\n\nwhere we’ll denote as $\\overline{V}:=V/\\simeq_{(V,B)} =\\Set{ [v]_{(V,B)} \\mid v\\in V }$.\nFrom now on, write $\\pi:=\\pi_{(V,B)}$. We extend $\\pi$ to subsets of $V$\nby\n\n\\[\n\\pi(X):=\\Set{\\pi(x)\\mid x\\in X}\\qquad(X\\subseteq V).\n\\]\n\nIn particular, for an edge $e=\\set{a,b}$, we write\n$\\pi(e)=\\set{\\pi(a),\\pi(b)}$. For an edge set $F$, we also write\n$\\pi(F):=\\Set{\\pi(e)\\mid e\\in F}$ whenever these images are edges.\nRecall the definition of the graph theoretic rank:\n\n\\[\n\\rank(G) = \\max\\Big\\{ \\card{F}\n\\;\\Big|\\;\nF \\subseteq E(G),\\;\n(V(G),F) \\in\\mathcal{F}(V(G))\n\\Big\\} = \\card{V(G)}-\\card{V(G)/ \\simeq_G}\n\\]\n\nLet’s denote as $\\rank_V(E):= \\rank(V,E)$ and $r:= \\rank_V(E_1)$.\nThen we have $r\\leq\\card{E_1}=K$.\nOrder the edges of $B$ as $b_1,\\ldots,b_t$ by increasing cost.\nImmediately before Kruskal’s algorithm selects $b_j$, the connected components\nformed by the already selected edges are the same as those of\n\n\\[\n\\left(V,E_1\\cup E_{&lt;b_j}\\right).\n\\]\n\nSince $b_j\\in B$, its endpoints lie in different components, so adjoining\n$b_j$ increases the rank by exactly one. Consequently,\n\n\\[\n\\rank_V(E_1\\cup B)=\\rank_V(E_1)+\\card{B}.\n\\]\n\nAfter every edge of $E_0$ has been processed, Kruskal’s algorithm connects the\ngraph because $G_0$ is connected. Hence $(V,E_1\\cup B)\\in\\mathcal{G}_C(V)$.\nMoreover, $B\\subseteq E(T_0)$ implies that $B$ is a forest and therefore\n$\\rank_V(B)=\\card{B}$. It follows that\n\n\\[\n\\begin{align*}\nN-1 &amp;= \\rank_V(E_1\\cup B) \\nl\n&amp;= \\rank_V(E_1)+\\card{B} \\nl\n&amp;= r+\\rank_V(B)\n\\end{align*}\n\\]\n\nTherefore,\n\n\\[\n\\begin{align*}\n\\card{\\overline{V}} &amp;= \\card{V}-\\rank_V(B) \\nl\n&amp;= N-(N-1-r) = r+1 \\nl\n&amp;\\leq K+1.\n\\end{align*}\n\\]\n\nSince $B\\subseteq E(T_0)$, define $A:=E(T_0)\\setminus B$ then\n\n\\[\n\\begin{align*}\n\\card{A} &amp;= \\card{E(T_0)}-\\card{B} \\nl\n&amp;= (N-1)-(N-1-r) = r \\nl\n&amp;\\leq K\n\\end{align*}\n\\]\n\nWhenever a tree $R$ contains $B$, contraction induces a bijection\n\n\\[\nE(R)\\setminus B\\longrightarrow E(R/B),\n\\qquad e\\longmapsto\\pi(e).\n\\]\n\nIndeed, an edge outside $B$ cannot have both endpoints in the same\n$B$-component, and two different such edges cannot have the same image;\neither situation would create a cycle in $R$. Applying this observation to\n$T_0$, the set\n\n\\[\n\\overline{A}:=\\pi(A)\n\\]\n\nforms a tree on $\\overline{V}$:\n\n\\[\n\\left( \\overline{V},\\overline{A} \\right) \\in \\mathcal{T}\\left(\\overline{V}\\right)\n\\]\n\nTogether with $B\\subseteq E(T_S) \\cap E_0 \\subseteq E(T_0) = B\\sqcup A$, we have\n\n\\[\nE(T_S)\\setminus B\n\\subseteq\nS\\sqcup A.\n\\]\n\nHence, after contracting $B$, every edge of $T_S$ belongs to\n$\\pi(S)\\sqcup\\overline A$, regarded as a family of edges retaining their\noriginal labels. Edges from $S$ and $A$ may have the same pair of contracted\nendpoints, so this candidate family should temporarily be regarded as a\nmultigraph. In fact, $\\overline T_S$ can be reconstructed by\nfirst joining every edge of $\\pi(S)$ and then processing the edges of\n$\\overline A$ in increasing order of their original costs. Let\n$\\overline{T}_S$ denote this contracted tree, rooted at $\\pi(1)$.\n\n\\[\n\\overline{T}_S = \\left( \\overline{V}, \\pi(E(T_S)\\setminus B) \\right)\n\\in \\mathcal{T}\\left(\\overline{V}\\right)\n\\]\n\nFor $v\\in\\overline{V}\\setminus\\{\\pi(1)\\}$,\nlet $\\operatorname{par}_{\\overline{T}_S}(v)$ be its parent in $\\overline{T}_S$ and define\n\n\\[\n\\tau_v:=\\Set{v,\\operatorname{par}_{\\overline{T}_S}(v)}, \\quad\nC_v:=V\\left(D_{\\overline{T}_S}(\\tau_v)\\right)\n\\]\n\nand for $X\\in\\overline{V}$, define\n\n\\[\n\\overline{p}_X:= \\sum_{v\\in X} p_v\n\\]\n\nFor $e_i=\\set{x_i,y_i}\\in S$, define its contracted image by\n\n\\[\n\\overline e_i:=\\pi(e_i)=\\set{\\pi(x_i),\\pi(y_i)}.\n\\]\n\nLet $d_i$ be the endpoint of $\\overline e_i$ farther from the root $\\pi(1)$\nin $\\overline T_S$. Then\n\n\\[\n\\overline e_i = \\set{d_i,\\operatorname{par}_{\\overline{T}_S}(d_i)}\n= \\tau_{d_i}.\n\\]\n\nThe vertices in $\\pi^{-1}(C_{d_i})$ are exactly the vertices in the\nroot-free component of $T_S-e_i$. Therefore,\n\n\\[\nV(D_{T_S}(e_i))=\\pi^{-1}(C_{d_i})\n\\]\n\nand hence\n\n\\[\nq_{T_S}(e_i) = \\sum_{X\\in C_{d_i}}\\overline{p}_X.\n\\]\n\nThe definition of $\\lambda_S(e_i)$ gives\n\n\\[\n\\lambda_S(e_i)\n=\n\\min_{\\substack{\ne=\\set{a,b}\\in E_0 \\nl\n\\card{\\set{a,b}\\cap\\pi^{-1}\\left(C_{d_i}\\right)}=1\n}}\nc_e\n\\]\n\nLet $e_i^\\star$ be the unique edge attaining this minimum. By the cut property,\n$e_i^\\star\\in E(T_0)$. Every edge in $B$ has both endpoints in one\n$B$-component, whereas $\\pi^{-1}\\left(C_{d_i}\\right)$ is a union of $B$-components.\nThus no edge of $B$ crosses this cut, and hence $e_i^\\star\\in A$. Consequently,\n\n\\[\n\\lambda_S(e_i)\n=\n\\min_{\\substack{\ne=\\set{a,b}\\in A \\nl\n\\card{\\set{a,b}\\cap\\pi^{-1}\\left(C_{d_i}\\right)}=1\n}}\nc_e\n\\]\n\nFor $e=\\set{a,b}\\in A$, the endpoints $\\pi(a)$ and $\\pi(b)$ are distinct.\nSince $\\overline T_S$ is a tree,\n\n\\[\n\\begin{align*}\n\\card{\\set{a,b}\\cap\\pi^{-1}(C_{d_i})}=1\n&amp;\\iff\n\\card{\\set{\\pi(a),\\pi(b)}\\cap C_{d_i}}=1 \\nl\n&amp;\\iff\n\\overline e_i\\in E\\left(P_{\\overline T_S}(\\pi(a),\\pi(b))\\right)\n\\end{align*}\n\\]\n\nIt follows that\n\n\\[\n\\lambda_S(e_i)\n=\n\\min_{\\substack{\ne=\\set{a,b}\\in A \\nl\n\\overline e_i\\in E\\left(P_{\\overline T_S}(\\pi(a),\\pi(b))\\right)\n}}\nc_e\n\\]\n\nSubstituting them into the objective function,\n\n\\[\n\\max_{\\b{f}}J(\\b{f}) = \\max_{S\\in\\mathcal{S}}\n\\sum_{e_i\\in S} \\left(\n\\min_{\\substack{\ne=\\{a,b\\}\\in A \\nl\n\\overline e_i\\in E\\left(P_{\\overline T_S}(\\pi(a),\\pi(b))\\right)\n}}\nc_e\n\\right)\n\\left(\n\\sum_{X\\in C_{d_i}}\\overline{p}_X\n\\right)\n\\]\n\n$T_0$, $B$, and $A$ can be obtained by Kruskal’s algorithm in\n\n\\[\nO(M\\log M)\n\\]\n\ntime.\nSince\n\n\\[\n\\card{\\overline{V}}=r+1\\leq K+1\n,\\qquad\n\\card{A}=r\\leq K\n\\]\n\nafter enumerating every $S\\subseteq E_1$, each $\\overline{T}_S$ and the corresponding objective value can be evaluated in $O(K^2)$ time by tree traversal and path processing.\nTherefore, the total time complexity is\n\n\\[\nO\\left(M\\log M+2^K K^2\\right).\n\\]\n",
+      "categories": ["computer-science"],
+      "tags": ["problem-solving"],
+      
+      "collection": "posts",
+      "url": "/computer-science/boj7139-rank.html"
+    },{
+      
+      "title": "[BOJ 26194] Money Laundering",
+      "date": "2025-12-06 00:00:00 +0900",
+      
+      "content": "https://www.acmicpc.net/problem/26194\n\n\n\n  Task\n  Solution\n\n\nTask\n\nSolution\n",
+      "categories": ["computer-science"],
+      "tags": ["problem-solving"],
+      
+      "collection": "posts",
+      "url": "/computer-science/boj26194.html"
+    },{
+      
       "title": "Viscous Fluids and the Navier–Stokes Equation",
       "date": "2025-12-15 00:00:00 +0900",
       
@@ -1492,17 +1470,6 @@
       
       "collection": "posts",
       "url": "/physics/viscous-fluids-and-the-navier-stokes-equation.html"
-    },{
-      
-      "title": "[BOJ 22849] 수식 알아맞히기 퀴즈 게임",
-      "date": "2025-12-16 00:00:00 +0900",
-      
-      "content": "https://www.acmicpc.net/problem/22849\n\n\n",
-      "categories": ["computer-science"],
-      "tags": ["problem-solving"],
-      
-      "collection": "posts",
-      "url": "/computer-science/boj22849.html"
     },{
       
       "title": "Fast Fourier Transform",
@@ -1835,6 +1802,17 @@
       "url": "/computer-science/convex-hull-trick.html"
     },{
       
+      "title": "PS: Segment Tree Beats",
+      "date": "2026-07-29 00:00:00 +0900",
+      
+      "content": "\n\n  [BOJ 14899] 수열과 쿼리 19\n\n\n[BOJ 14899] 수열과 쿼리 19\n",
+      "categories": ["computer-science"],
+      "tags": ["problem-solving"],
+      
+      "collection": "posts",
+      "url": "/computer-science/PS-segbeats.html"
+    },{
+      
       "title": "Sum over Subsets(SOS) DP",
       "date": "2026-08-12 00:00:00 +0900",
       
@@ -1847,7 +1825,7 @@
     },{
       
       "title": "Classical Music",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Analysis, reviews, and performances.\n",
       "content": "\n",
       "categories": [],
@@ -1858,7 +1836,7 @@
     },{
       
       "title": "Computer Science",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "The study of algorithms and computer programming\n",
       "content": "\n",
       "categories": [],
@@ -1869,7 +1847,7 @@
     },{
       
       "title": "Games",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Game playthroughs and reviews.\n",
       "content": "\n",
       "categories": [],
@@ -1880,7 +1858,7 @@
     },{
       
       "title": "Mathematics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "The foundation of all academic disciplines\n",
       "content": "\n",
       "categories": [],
@@ -1891,7 +1869,7 @@
     },{
       
       "title": "Physics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "The intrinsic nature of the universe\n",
       "content": "\n",
       "categories": [],
@@ -1902,7 +1880,7 @@
     },{
       
       "title": "Algorithms",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Algorithms\n",
       "content": "\n",
       "categories": ["computer-science"],
@@ -1913,7 +1891,7 @@
     },{
       
       "title": "Artificial Intelligence",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Artificial Intelligence\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\hat{f} = \\argmin_f \\sum_i \\mathcal{L} ( f(x_i), y_i )\\) }\\]\n",
       "categories": ["computer-science"],
@@ -1924,7 +1902,7 @@
     },{
       
       "title": "Calculus",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "calculus\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\nf(x) = \\odv{}{x} \\int_a^x f(x') \\dd{x'}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -1935,7 +1913,7 @@
     },{
       
       "title": "Classical Electromagnetism",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Classical electromagnetism\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\partial_\\mu \\partial^\\mu A^\\nu = \\mu_0 J^\\nu\\) }\\]\n",
       "categories": ["physics"],
@@ -1946,7 +1924,7 @@
     },{
       
       "title": "Classical Mechanics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Classical mechanics\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\delta S = 0\\) }\\]\n",
       "categories": ["physics"],
@@ -1957,7 +1935,7 @@
     },{
       
       "title": "Differential Geometry",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Differential Geometry\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\mathcal{L}_X=\\mathrm{d}\\iota_X+\\iota_X\\mathrm{d}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -1968,7 +1946,7 @@
     },{
       
       "title": "Elementary Physics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Elementary physics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\b{F}=m\\b{a}\\) }\\]\n",
       "categories": ["physics"],
@@ -1979,7 +1957,7 @@
     },{
       
       "title": "Factorio",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Factorio\n",
       "content": "\n",
       "categories": ["games"],
@@ -1990,7 +1968,7 @@
     },{
       
       "title": "Fluid Mechanics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Fluid mechanics\n",
       "content": "\\[ \\huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\rho \\mdv{\\b{v}} = - \\grad p + \\div \\left[ \\eta \\left\\{ \\grad \\b{v} + (\\grad \\b{v})^\\top - \\frac{2}{3} (\\div \\b{v}) \\b{I} \\right\\} \\right] + \\grad [ \\zeta (\\div \\b{v}) ] + \\rho \\b{a}\\) }\\]\n",
       "categories": ["physics"],
@@ -2001,7 +1979,7 @@
     },{
       
       "title": "Linear Algebra",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Linear algebra\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\nf(\\b{u})+f(\\b{v})=f(\\b{u}+\\b{v})\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2012,7 +1990,7 @@
     },{
       
       "title": "Number Theory",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Number theory\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\zeta(s)=\\sum_{n=1}^\\infty \\frac{1}{n^s} = \\prod_{p\\in\\mathbb{P}} \\frac{1}{1-p^{-s}}\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2023,7 +2001,7 @@
     },{
       
       "title": "Problem Solving",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Problem Solving  BOJ: \n",
       "content": "\n",
       "categories": ["computer-science"],
@@ -2034,7 +2012,7 @@
     },{
       
       "title": "Quantum Mechanics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Quantum mechanics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\hat{H}\\ket{\\psi} = i\\hbar\\frac{\\partial}{\\partial t}\\ket{\\psi}\\) }\\]\n",
       "categories": ["physics"],
@@ -2045,7 +2023,7 @@
     },{
       
       "title": "Rachmaninoff",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Мой любимый русский виртуоз - Рахманинов.\n",
       "content": "Серге́й Васи́льевич Рахма́нинов (1873-1943), Post Romantic composer, pianist, and conductor.\n\n",
       "categories": ["classical-music"],
@@ -2056,7 +2034,7 @@
     },{
       
       "title": "Ravel",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Ravel, avec ses mélodies fluides et sa technique redoutable\n",
       "content": "Joseph Maurice Ravel (1875-1937), Impressionist composer, pianist, and conductor.\n\n",
       "categories": ["classical-music"],
@@ -2067,7 +2045,7 @@
     },{
       
       "title": "Statistics",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "statistics\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n\\frac{\\bar{X}_n - \\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{d} \\mathcal{N}(0,1)\\) }\\]\n",
       "categories": ["mathematics"],
@@ -2078,7 +2056,7 @@
     },{
       
       "title": "Topology",
-      "date": "2026-08-13 01:01:56 +0900",
+      "date": "2026-08-29 03:45:48 +0900",
       "description": "Topology\n",
       "content": "\\[ \\Huge \\fcolorbox{transparent}{transparent}{ \\(\\dps\n(X,\\mathcal{T})\\) }\\]\n",
       "categories": ["mathematics"],
